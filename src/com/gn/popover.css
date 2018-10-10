@@ -1,0 +1,37 @@
+
+/*
+    Created on : 03/05/2018, 08:00:15
+    Author     : Gleidson Neves da Silveira
+*/
+
+.popover > .border {
+    /* -fx-stroke: linear-gradient(to bottom, rgba(0,0,0, .3), rgba(0, 0, 0, .7)); */
+    -fx-stroke : black;
+    -fx-stroke-width: 0.2;
+    -fx-fill: white;
+    -fx-effect: none;
+}
+
+.popover .jfx-button {
+    -fx-cursor : hand;
+    -fx-alignment : CENTER;
+}
+
+.popover .jfx-button:pressed {
+  -fx-text-fill : white;
+}
+
+.occupied {
+    -fx-fill : #FF3547;
+    -fx-stroke : transparent;
+}
+
+.unavaiable {
+    -fx-fill : #FF8800;
+    -fx-stroke : transparent;
+}
+
+.online {
+    -fx-fill : #02C852;
+    -fx-stroke : transparent;
+}

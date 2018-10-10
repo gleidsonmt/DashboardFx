@@ -1,0 +1,1336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="1848.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.Colors">
+   <children>
+      <JFXTabPane style="-fx-tab-min-width: 100;">
+         <tabs>
+            <Tab text="Colors">
+               <content>
+                  <ScrollPane fitToWidth="true">
+                     <content>
+                        <VBox alignment="CENTER" maxHeight="-Infinity" prefWidth="937.0" spacing="10.0" style="-fx-background-color: white;">
+                           <children>
+                              <VBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="890.0">
+                                 <children>
+                                    <Label prefHeight="29.0" prefWidth="201.0" text="Bootstrap Colors">
+                                       <styleClass>
+                                          <String fx:value="h3" />
+                                          <String fx:value="title" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <TilePane alignment="TOP_CENTER" hgap="20.0" prefHeight="259.0" prefTileWidth="200.0" prefWidth="890.0" styleClass="body" vgap="20.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox fx:id="pinterest" layoutX="599.0" layoutY="1279.0" onMouseClicked="#open" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-pinterest, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane fx:id="teste" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -pinterest;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-pinterest, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Pinterest">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#c61118" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="google" layoutX="640.0" layoutY="1058.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-google, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -google;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-google, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Google">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#dd4b39" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="youtube" layoutX="709.0" layoutY="1279.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-youtube, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -youtube;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-youtube, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Youtube">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#ed302f" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="danger" layoutX="10.0" layoutY="10.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-red, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -red;" styleClass="red" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-red, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Danger / Red">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="-10%" textAlignment="CENTER" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="80.0" text="#ffeb3b" />
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="bitterswet" layoutX="220.0" layoutY="10.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-bittersweet, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -bittersweet;" styleClass="red" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-bittersweet, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Bitterswet">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#FC6E51" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="deeporange" layoutX="430.0" layoutY="927.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-deep-orange, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -deep-orange;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-deep-orange, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Deeporange">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#FF7043" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="warning" layoutX="430.0" layoutY="796.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-warning, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -warning;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-warning, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Warning / Orange">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#FF8800" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="amber" layoutX="640.0" layoutY="10.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-amber, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -amber;" styleClass="red" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-amber, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Amber">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#FFA000" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="sunflower" layoutX="10.0" layoutY="131.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-sunflower, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -sunflower;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-sunflower, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Sunflower">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#FFCE54" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="yellow" layoutX="430.0" layoutY="10.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-yellow, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -yellow;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-yellow, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Yellow">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#ffeb3b" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="lime" layoutX="220.0" layoutY="796.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-lime, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -lime;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-lime, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Lime">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#cddc39" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="grass" layoutX="430.0" layoutY="141.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-grass, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -grass;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-grass, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Grass">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#A0D468" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="lightgreen" layoutX="220.0" layoutY="1058.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-light-green, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -light-green;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-light-green, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Lightgreen">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#8BC34A" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="success" layoutX="220.0" layoutY="131.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-success, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -success;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-success, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Success / Green">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#02C852" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="mint" layoutX="640.0" layoutY="141.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-mint, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -mint;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-mint, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Mint">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#48CFAD" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="teal" layoutX="10.0" layoutY="796.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-teal, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -teal;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-teal, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Teal / Base">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#2bbbad" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="cyan" layoutX="640.0" layoutY="272.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-cyan, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -cyan;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-cyan, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Cyan">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#00BCD4" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="aqua" layoutX="220.0" layoutY="272.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-aqua, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -aqua;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-aqua, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Aqua">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#4FC1E9" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="info" layoutX="10.0" layoutY="272.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-info, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -info;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-info, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Info">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#33B5E5" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="lightblue" layoutX="10.0" layoutY="1058.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-light-blue, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -light-blue;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-light-blue, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Lightblue">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#82B1FF" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="twitter" layoutX="430.0" layoutY="665.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-twitter, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -twitter;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-twitter, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Twitter">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#55acee" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="bluejeans" layoutX="430.0" layoutY="272.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-blue-jeans, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -blue-jeans;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-blue-jeans, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Bluejeans">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#5D9CEC" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="primary" layoutX="220.0" layoutY="534.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-primary, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -primary;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-primary, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Primary / Blue">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#4285f4" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="linkedin" layoutX="379.0" layoutY="1279.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-linkedin, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -linkedin;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-linkedin, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Linkedin">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#0082ca" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="indigo" layoutX="640.0" layoutY="796.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-indigo, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -indigo;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-indigo, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Indigo">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#3F51B5" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="facebook" layoutX="220.0" layoutY="665.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-facebook, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -facebook;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-facebook ,20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Facebook">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#3b5998" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="Instagram" layoutX="489.0" layoutY="1279.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-instagram, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -instagram;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-instagram, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Instagram">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#2e5e86" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="Deeppurple" layoutX="10.0" layoutY="927.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-deep-purple, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -deep-purple;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-deep-purple, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Deeppurple">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#512DA8" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="secondary" layoutX="10.0" layoutY="665.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-secondary, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -secondary;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-secondary, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label prefHeight="29.0" prefWidth="209.0" style="-fx-font-size: 22;" styleClass="title" text="Secondary / Purple" />
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#656D78" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="lavander" layoutX="640.0" layoutY="272.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-lavander, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -lavander;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-lavander, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Lavander">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#AC92EC" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="pinkrose" layoutX="220.0" layoutY="403.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-pink-rose, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -pink-rose;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-pink-rose, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Pinkrose">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#EC87C0" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="pink" layoutX="10.0" layoutY="403.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-pink, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -pink;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-pink, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Pink">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#EC407A" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="grapefruit" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-grapefruit, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -grapefruit;" styleClass="red" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-grapefruit, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Grapefruit">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#ED5565" />
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="unique" layoutX="640.0" layoutY="534.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-unique, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -unique;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-unique, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Unique">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#880E4F" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="brown" layoutX="220.0" layoutY="927.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-brown, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -brown;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-brown, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Brown">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#795548" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="elegant" layoutX="430.0" layoutY="534.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-elegant, -50%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -elegant;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-elegant, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Elegant">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-50%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#656D78" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="darkgray" layoutX="10.0" layoutY="534.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-dark-gray, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -dark-gray;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-dark-gray, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Darkgray">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#656D78" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="bluegray" layoutX="640.0" layoutY="927.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-blue-gray, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -blue-gray;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-blue-gray, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Bluegray">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#78909C" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="gray" layoutX="430.0" layoutY="1058.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-gray, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -gray;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-gray, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Gray">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#8e8e8e" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="mediumgray" layoutX="640.0" layoutY="403.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-medium-gray, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -medium-gray;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-medium-gray, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Mediumgray">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#AAB2BD" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="lightgray" layoutX="430.0" layoutY="403.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                       <children>
+                                          <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
+                                             <children>
+                                                <Pane layoutX="150.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-light-gray, -10%); -fx-background-radius: 10 0 0 0;" styleClass="primary" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -light-gray;" />
+                                                <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: derive(-light-gray, 20%); -fx-background-radius: 0 10 0 0;" styleClass="primary" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="52.0" prefWidth="196.0">
+                                             <children>
+                                                <Label text="Lightgray">
+                                                   <styleClass>
+                                                      <String fx:value="h3" />
+                                                      <String fx:value="title" />
+                                                   </styleClass>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="20.0">
+                                                   <children>
+                                                      <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
+                                                      <Label layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="115.0" text="#EC87C0" />
+                                                      <Label layoutX="39.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="20%" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                                 </padding>
+                              </TilePane>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="30.0" right="30.0" top="30.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </ScrollPane>
+               </content>
+            </Tab>
+         </tabs>
+         <styleClass>
+            <String fx:value="tab-white" />
+            <String fx:value="tab-line-aqua" />
+            <String fx:value="tab-shadow-none" />
+            <String fx:value="border-bottom-1" />
+            <String fx:value="border-gray" />
+         </styleClass>
+      </JFXTabPane>
+   </children>
+   <stylesheets>
+      <URL value="@fonts.css" />
+      <URL value="@material.css" />
+      <URL value="@custom.css" />
+   </stylesheets>
+</StackPane>

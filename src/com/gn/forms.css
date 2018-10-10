@@ -1,0 +1,129 @@
+/*
+    Created on : 03/05/2018, 08:00:15
+    Author     : Gleidson Neves da Silveira
+*/
+/************************************************************************************
+*
+*               #Background
+*
+*************************************************************************************/
+
+.rectangle {
+  -fx-background-radius : 0px;
+}
+
+.round {
+  -fx-background-radius : 100px;
+}
+
+.rounded {
+  -fx-background-radius : 20px;
+}
+
+.leaf {
+   -fx-background-radius : 100px 0px 100px 0px;
+}
+
+.semi-leaf {
+   -fx-background-radius : 20px 0px 20px 0px;
+}
+
+.mountain {
+   -fx-background-radius : 100px 100px 0px 0px;
+}
+
+.reverse-mountain {
+  -fx-background-radius :  0px 0px 100px 100px;
+}
+
+.round-tl {
+   -fx-background-radius : 50px 0px 0px 0px;
+}
+
+.round-tr {
+   -fx-background-radius : 0px 50px 0px 0px;
+}
+
+.round-br {
+   -fx-background-radius : 0px 0px 50px 0px;
+}
+
+.round-bl {
+   -fx-background-radius : 0px 0px 0px 50px;
+}
+
+.pill-left {
+  -fx-background-radius : 50px 0px 0px 50px;
+}
+
+.pill-right {
+  -fx-background-radius : 0px 50px 50px 0px;
+}
+
+.jelly {
+  -fx-background-radius :  100px 100px 50px 50px;
+}
+
+.info {
+  -fx-background-radius : 100px 100px 100px 0px;
+}
+
+.parallelogram-l {
+  -fx-shape : "M 450 300 L 200 300 L 250 400 L 500 400 L 450 300 ";
+}
+
+.parallelogram-r {
+  -fx-shape : "M 450 300 L 250 300 L 200 400 L 400 400 L 450 300 ";
+}
+
+.trapeze {
+  -fx-shape : "M 450 300 L 250 300 L 200 400 L 500 400 L 450 300 ";
+}
+
+.trapeze-inverse {
+  -fx-shape :   "M 450 300 L 200 300 L 250 400 L 400 400 L 450 300 ";
+}
+
+.comb-close {
+  -fx-shape : "M 300 350 L 250 400 L 450 400 L 450 300 L 250 300 L 300 350 ";
+}
+
+.comb-open {
+  -fx-shape :  "M 250 300 L 250 400 L 450 400 L 400 350 L 450 300 L 250 300 ";
+}
+
+.comb-right {
+  -fx-shape :  "M 250 300 L 250 400 L 450 400 L 500 350 L 450 300 L 250 300 ";
+}
+
+.comb-left {
+  -fx-shape : "M 200 350 L 250 400 L 450 400 L 450 300 L 250 300 L 200 350 ";
+}
+
+.hexagom {
+  -fx-shape : "M 200 350 L 250 400 L 450 400 L 500 350 L 450 300 L 250 300 L 200 350 ";
+}
+
+.arrow {
+  -fx-shape : "M 550 400 L 350 400 L 400 350 L 350 300 L 550 300 L 600 350 L 550 400 ";
+}
+
+.star-2 {
+  -fx-shape : "M 400 200 L 350 300 L 250 350 L 350 400 L 400 500 L 450 400 L 550 350 L 450 300 L 400 200";
+}
+
+.star {
+  -fx-shape : "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z";
+}
+
+.pac {
+  -fx-shape : "M 300 500 A 50 50 360 1 1 300 200 L 300 350 L 450 350 C 450 400 400 500 300 500 ";
+}
+
+.heart {
+  -fx-shape : "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z";
+}
+
+.tool-tip {
+  -fx-shape : "M 300 150 L 300 200 L 200 250 L 300 300 L 300 450 C 300 475 300 500 350 500 L 750 500 C 800 500 800 475 800 450 L 800 150 C 800 100 800 100 750 100 L 350 100 C 300 100 300 150 300 150 ";
+}

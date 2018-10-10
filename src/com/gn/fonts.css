@@ -1,0 +1,19 @@
+@font-face {
+    -fx-font-family : 'Mechanization';
+    src: url('/com/gn/fonts/Mechanization.ttf');
+}
+
+@font-face {
+    -fx-font-family : 'Roboto';
+    src: url('/com/gn/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+    -fx-font-family : 'Roboto Thin';
+    src: url('/com/gn/fonts/Roboto-Thin.ttf');
+}
+
+@font-face {
+    -fx-font-family : 'Roboto Bold';
+    src: url('/com/gn/fonts/Roboto-Bold.ttf');
+}

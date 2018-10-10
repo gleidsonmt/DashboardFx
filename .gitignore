@@ -1,0 +1,4 @@
+./gitignore
+.idea/**
+/out/**
+scenicView.properties
