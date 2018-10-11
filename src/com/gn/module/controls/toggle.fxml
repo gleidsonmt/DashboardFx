@@ -210,8 +210,8 @@
       </JFXTabPane>
    </children>
    <stylesheets>
-      <URL value="@fonts.css" />
-      <URL value="@material.css" />
-      <URL value="@custom.css" />
+      <URL value="@../../theme/css/fonts.css" />
+      <URL value="@../../theme/css/material.css" />
+      <URL value="@../../theme/css/custom.css" />
    </stylesheets>
 </StackPane>
