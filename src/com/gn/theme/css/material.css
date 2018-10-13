@@ -77,7 +77,6 @@
 
 {
   -fx-font-family : 'Roboto';
-  -fx-font-size :10px;
 }
 
 .toggle-button {
@@ -121,6 +120,11 @@
   -fx-background-color : transparent;
 }
 
+.text-field {
+  -fx-background-color : transparent;
+  -fx-border-color : -base;
+}
+
 /************************************************************************************
 *
 *               #Colors
@@ -128,7 +132,11 @@
 *************************************************************************************/
 
 
-.transparent, .flat, .flat:pressed, .flat:focused, .outlined {
+.transparent, .flat, .flat:pressed, .flat:focused,
+.btn-transparent:focused, .btn-transparent:pressed, .btn-transparent:hover,
+.btn-transparent,
+.outlined
+ {
   -fx-background-color : transparent;
 }
 
@@ -286,27 +294,33 @@
 .toggle-light:focused,
 .toggle-light:pressed,
 .toggle-light:hover,
-.toggle-light:selected
+.toggle-light:selected,
+.toggle-light:selected SVGPath
 {
     -fx-effect : null;
     -fx-text-fill : white;
+    -fx-fill : WHITE;
 }
 
 
 
 .toggle-center {
   -fx-background-radius : 0;
+  -fx-border-width : 1px 0px 1px 0px;
+  -fx-border-radius : 0px;
 }
 
 .toggle-left {
    -fx-background-radius : 4px 0px 0px 4px;
    -fx-border-radius : 4px 0px 0px 4px;
+   -fx-border-width : 1px 0px 1px 1px;
 }
 
 .toggle-right
 {
   -fx-background-radius : 0px 4px 4px 0px;
   -fx-border-radius : 0px 4px 4px 0px;
+  -fx-border-width : 1px 1px 1px 0px;
 }
 
 /************************************************************************************
@@ -342,7 +356,7 @@
 }
 
 .text-36, .h1 {
-  -fx-font-size : 36px;
+  -fx-font-size : 36pt;
 }
 
 .title {
@@ -357,30 +371,37 @@
 
 .rectangle {
   -fx-background-radius : 0px;
+  -fx-border-radius : 0px;
 }
 
 .round {
+  -fx-border-radius : 100px;
   -fx-background-radius : 100px;
 }
 
 .rounded {
   -fx-background-radius : 20px;
+  -fx-border-radius : 20px;
 }
 
 .leaf {
+  -fx-border-radius : 100px 0px 100px 0px;
    -fx-background-radius : 100px 0px 100px 0px;
 }
 
 .semi-leaf {
    -fx-background-radius : 20px 0px 20px 0px;
+   -fx-border-radius : 20px 0px 20px 0px;
 }
 
 .mountain {
    -fx-background-radius : 100px 100px 0px 0px;
+   -fx-border-radius : 100px 100px 0px 0px;
 }
 
 .reverse-mountain {
   -fx-background-radius :  0px 0px 100px 100px;
+  -fx-border-radius :  0px 0px 100px 100px;
 }
 
 .round-tl {
@@ -488,7 +509,7 @@
 }
 
 .border-2, .outlined{
-  -fx-border-width : 2px;
+  -fx-border-width : 1px;
 }
 
 /* position */
@@ -536,42 +557,42 @@
     -fx-border-color : -grey;
 }
 
-.border-primary, .out-primary
+.border-primary, .out-primary, .txt-primary
 {
     -fx-border-color : -primary;
 }
 
-.border-jfoenix   {
+.border-base   {
     -fx-border-color : -base;
     -fx-border-style : solid;
 }
 
-.border-info, .out-info{
+.border-info, .out-info, .txt-info{
     -fx-border-color : -info;
 }
 
-.border-success, .out-success{
+.border-success, .out-success, .txt-success {
     -fx-border-color : -success;
 }
 
 
-.border-warning, .out-warning{
+.border-warning, .out-warning, .txt-warning {
     -fx-border-color : -warning;
 }
 
-.border-secondary, .out-secondary{
+.border-secondary, .out-secondary, .txt-secondary{
     -fx-border-color : -secondary;
 }
 
-.border-danger, .out-danger{
+.border-danger, .out-danger, .txt-danger {
     -fx-border-color : -danger;
 }
 
-.border-unique, .out-unique {
+.border-unique, .out-unique, .txt-unique {
   -fx-border-color : -unique;
 }
 
-.border-elegant, .out-elegant {
+.border-elegant, .out-elegant, .txt-elegant {
   -fx-border-color : -elegant;
 }
 

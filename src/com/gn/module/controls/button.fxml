@@ -28,7 +28,7 @@
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Label prefHeight="38.0" prefWidth="99.0" text="Button">
+                              <Label prefHeight="58.0" prefWidth="302.0" text="Button">
                                  <styleClass>
                                     <String fx:value="h3" />
                                     <String fx:value="title" />
@@ -117,10 +117,10 @@
                                           <String fx:value="outlined" />
                                           <String fx:value="out-base" />
                                        </styleClass></Button>
-                                    <Button layoutX="470.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Default" />
-                                    <Button layoutX="558.0" layoutY="77.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="raised" text="Raised" />
                                     <Button layoutX="490.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="54.0" styleClass="round" text="Round" />
                                     <Button layoutX="693.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="95.0" styleClass="rounded" text="Rounded" />
+                                    <Button layoutX="470.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Default" />
+                                    <Button layoutX="558.0" layoutY="77.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="raised" text="Raised" />
                                  </children>
                               </HBox>
                            </children>
@@ -290,94 +290,6 @@
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
-                              </VBox>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" left="30.0" right="30.0" top="100.0" />
-                           </padding>
-                        </VBox>
-                     </content>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </ScrollPane>
-               </content>
-            </Tab>
-            <Tab text="Group">
-               <content>
-                  <ScrollPane fitToHeight="true" fitToWidth="true">
-                     <content>
-                        <VBox alignment="CENTER" prefHeight="559.0" prefWidth="937.0" spacing="10.0" style="-fx-background-color: white;">
-                           <children>
-                              <VBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="890.0">
-                                 <children>
-                                    <Label prefHeight="29.0" prefWidth="201.0" text="Button Size">
-                                       <styleClass>
-                                          <String fx:value="h3" />
-                                          <String fx:value="title" />
-                                       </styleClass>
-                                    </Label>
-                                    <TextFlow prefHeight="54.0" prefWidth="952.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." />
-                                       </children></TextFlow>
-                                 </children>
-                              </VBox>
-                              <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="239.0" prefWidth="890.0" spacing="20.0" style="-fx-background-color: -light-gray;" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="165.0" prefWidth="478.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Left">
-                                             <styleClass>
-                                                <String fx:value="btn-primary" />
-                                                <String fx:value="toogle" />
-                                                <String fx:value="toogle-left" />
-                                             </styleClass></Button>
-                                          <Button layoutX="369.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Center">
-                                             <styleClass>
-                                                <String fx:value="btn-primary" />
-                                                <String fx:value="toogle" />
-                                                <String fx:value="toogle-center" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="474.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Right">
-                                             <styleClass>
-                                                <String fx:value="btn-primary" />
-                                                <String fx:value="toogle" />
-                                                <String fx:value="toogle-right" />
-                                             </styleClass>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" layoutX="20.0" layoutY="419.0" prefWidth="478.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Left">
-                                             <styleClass>
-                                                <String fx:value="toogle-light" />
-                                                <String fx:value="btn-primary" />
-                                                <String fx:value="toogle-left" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="369.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Center">
-                                             <styleClass>
-                                                <String fx:value="toogle-light" />
-                                                <String fx:value="toogle-center" />
-                                                <String fx:value="btn-primary" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="474.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Right">
-                                             <styleClass>
-                                                <String fx:value="toogle-light" />
-                                                <String fx:value="toogle-right" />
-                                                <String fx:value="btn-primary" />
-                                             </styleClass>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
                               </VBox>
                            </children>
                            <padding>

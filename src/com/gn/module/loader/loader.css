@@ -1,0 +1,15 @@
+
+.root {
+    -fx-background-image : url('background.png');
+    -fx-background-repeat : no-repeat;
+    -fx-background-size : cover;
+}
+
+.jfx-progress-bar:determinate .bar
+{
+    -fx-background-color : white;
+}
+
+.jfx-progress-bar:determinate .track {
+  -fx-background-color : transparent;
+}

@@ -18,9 +18,18 @@
 package com.gn;
 
 import com.gn.decorator.GNDecorator;
+import com.gn.module.loader.Loader;
+import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.application.Preloader;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -29,11 +38,27 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
+    private int total = 5;
+    private double increment = 100 / total;
+    private double progress=0;
+
+
     @Override
-    public void init(){
-        ViewManager.getInstance().load("button");
-        ViewManager.getInstance().load("designer");
-        ViewManager.getInstance().load("main");
+    public synchronized void init(){
+
+        load("designer", "colors");
+
+        load("designer", "cards");
+        load("controls","button");
+        load("controls", "toggle");
+        load("controls", "textfield");
+        load("main", "main");
+        // delay
+        try {
+            wait(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -42,7 +67,7 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage primary) {
+    public  void start(Stage primary) {
         GNDecorator decorator = new GNDecorator();
         decorator.setTitle("Dashboard JavaFx");
         decorator.setContent(ViewManager.getInstance().getCurrentView());
@@ -55,11 +80,31 @@ public class App extends Application {
         );
 
         decorator.initTheme(GNDecorator.Theme.DEFAULT);
-        decorator.show();
+
+        decorator.getStage().show();
+
+
 //        ScenicView.show(decorator.getScene());
     }
 
     public static void main(String[] args) {
-        launch(args);
+        LauncherImpl.launchApplication(App.class, Loader.class, args);
+    }
+
+    private void load(String module, String name){
+        try {
+                ViewManager.getInstance().put(
+                        name,
+                        FXMLLoader.load(getClass().getResource("/com/gn/module/" + module + "/" + name + ".fxml"))
+                );
+                preloaderNotify();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
+
+    private synchronized void preloaderNotify() {
+        progress += increment;
+        LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
     }
 }

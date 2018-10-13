@@ -16,6 +16,8 @@
  */
 package com.gn;
 
+import com.sun.javafx.application.LauncherImpl;
+import javafx.application.Preloader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
@@ -44,7 +46,7 @@ public class ViewManager {
         return instance;
     }
 
-    private void put(String name, Node node){
+    void put(String name, Node node){
         nameView = name;
         SCREENS.put(name, node);
     }
@@ -57,15 +59,7 @@ public class ViewManager {
         return SCREENS.size();
     }
 
-    public Node getCurrentView(){
+    Node getCurrentView(){
         return SCREENS.get(nameView);
-    }
-
-    public void load(String name){
-        try {
-            put(name, FXMLLoader.load(getClass().getResource("/com/gn/" + name + ".fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

@@ -14,27 +14,29 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn;
+package com.gn.module.main;
 
+import com.gn.ViewManager;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXHamburger;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.NodeOrientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -51,31 +53,37 @@ import java.util.ResourceBundle;
  */
 public class Main implements Initializable {
 
-    @FXML
-    private ImageView avatar;
-    @FXML
-    public VBox sideBar;
-    @FXML
-    private HBox searchBox;
-    @FXML
-    private HBox boxStatus;
-    @FXML
-    private VBox info;
-    @FXML
-    private VBox views;
-    @FXML
-    private Circle cStatus;
-    @FXML
-    private HBox status;
-    @FXML
-    private ScrollPane body;
-    @FXML
-    private Label title;
+    @FXML private ImageView avatar;
+    @FXML public VBox sideBar;
+    @FXML private HBox searchBox;
+    @FXML private HBox boxStatus;
+    @FXML private VBox info;
+    @FXML private VBox views;
+    @FXML private Circle cStatus;
+    @FXML private HBox status;
+    @FXML private ScrollPane body;
+    @FXML private Label title;
+    @FXML private TextField search;
+    @FXML private ScrollPane scrollBar;
+    @FXML private TitledPane design;
+    @FXML private TitledPane controls;
+    @FXML private TitledPane menu;
+    @FXML private TitledPane shapes;
+    @FXML private TitledPane charts;
+    @FXML private JFXButton  home;
+    @FXML private JFXButton  about;
+    @FXML private JFXHamburger hamburger;
 
+    private FilteredList<JFXButton> filteredList = null;
 
     private final PopOver pop = new PopOver();
 
-    private ObservableList<JFXButton> controls = FXCollections.observableArrayList();
+    private ObservableList<JFXButton> items      = FXCollections.observableArrayList();
+    private ObservableList<JFXButton> designItems = FXCollections.observableArrayList();
+    private ObservableList<JFXButton> controlsItems = FXCollections.observableArrayList();
+    private ObservableList<JFXButton> menuItems = FXCollections.observableArrayList();
+    private ObservableList<JFXButton> shapesItems = FXCollections.observableArrayList();
+    private ObservableList<JFXButton> chartsItems = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -86,8 +94,19 @@ public class Main implements Initializable {
         avatar.setClip(circle);
 
         configPop();
+        populateItems();
+        filteredList = new FilteredList<>(items, s -> true);
 
-        body.setContent(ViewManager.getInstance().get("button"));
+        search.textProperty().addListener(obs -> {
+            String filter = search.getText();
+            if (filter == null || filter.length() == 0) {
+                barInitial();
+            } else {
+                barFiltered(filter);
+            }
+        });
+
+        body.setContent(ViewManager.getInstance().get("textfield"));
     }
 
     private void configPop() {
@@ -103,7 +122,7 @@ public class Main implements Initializable {
 
         double init = 70;
         double end = 250;
-        boolean scrolling;
+        boolean scrolling = false;
 
         if (sideBar.getPrefWidth() == end) {
             open.getKeyFrames().addAll(
@@ -125,6 +144,7 @@ public class Main implements Initializable {
             info.setAlignment(Pos.TOP_CENTER);
             info.getChildren().add(cStatus);
             cStatus.setRadius(8);
+            scrolling = true;
 
             for (Node node : views.getChildren()) {
 
@@ -211,6 +231,22 @@ public class Main implements Initializable {
                 }
             }
         }
+
+        boolean finalScrolling = scrolling;
+
+        open.setOnFinished(event -> {
+            if (finalScrolling) {
+                scrollBar.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+                scrollBar.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+//                    sideBar.setMinWidth(end);
+            } else {
+                scrollBar.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+                scrollBar.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+//                    sideBar.setMinWidth(init);
+
+            }
+        });
+
         open.playFrom(Duration.millis(100));
     }
 
@@ -248,6 +284,84 @@ public class Main implements Initializable {
         });
     }
 
+    private void barInitial(){
+        filteredList.setPredicate(s -> true);
+        scrollBar.setContent(views);
+        ( (VBox) design.getContent()).getChildren().setAll(designItems);
+        ( (VBox) controls.getContent()).getChildren().setAll(controlsItems);
+        ( (VBox) menu.getContent()).getChildren().setAll(menuItems);
+        ( (VBox) shapes.getContent()).getChildren().setAll(shapesItems);
+        ( (VBox) charts.getContent()).getChildren().setAll(chartsItems);
+
+        views.getChildren().removeAll(home, about);
+        views.getChildren().add(home);
+        views.getChildren().add(about);
+        home.setContentDisplay(ContentDisplay.RIGHT);
+        about.setContentDisplay(ContentDisplay.RIGHT);
+        home.toBack();
+        about.toFront();
+        hamburger.setMouseTransparent(false);
+    }
+
+    private void barFiltered(String filter){
+        views.getChildren().removeAll(home, about);
+        filteredList.setPredicate(s -> s.getText().toUpperCase().contains(filter.toUpperCase()));
+        scrollBar.setContent(filter(filteredList));
+        hamburger.setMouseTransparent(true);
+    }
+
+    private VBox filter(ObservableList<JFXButton>  nodes){
+        VBox vBox = new VBox();
+        vBox.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+        vBox.setAlignment(Pos.TOP_RIGHT);
+        VBox.setVgrow(vBox, Priority.ALWAYS);
+        for (JFXButton node : nodes){
+            if (node.getGraphic() != null) node.setContentDisplay(ContentDisplay.TEXT_ONLY);
+            node.setAlignment(Pos.CENTER_RIGHT);
+        }
+        vBox.getChildren().setAll(nodes);
+        return vBox;
+    }
+
+    private void populateItems() {
+
+        for (Node node : views.getChildren()) {
+            if (node instanceof JFXButton) {
+                items.add((JFXButton) node);
+            }
+        }
+
+        for (Node node : ((VBox) controls.getContent()).getChildren()) {
+            controlsItems.add((JFXButton) node);
+            items.add((JFXButton) node);
+        }
+
+        for (Node node : ((VBox) design.getContent()).getChildren()) {
+            designItems.add((JFXButton) node);
+            items.add((JFXButton) node);
+        }
+
+        for (Node node : ((VBox) shapes.getContent()).getChildren()) {
+            shapesItems.add((JFXButton) node);
+        }
+
+        for (Node node : ((VBox) menu.getContent()).getChildren()) {
+            menuItems.add((JFXButton) node);
+            items.add((JFXButton) node);
+        }
+
+        for (Node node : ((VBox) charts.getContent()).getChildren()) {
+            chartsItems.add((JFXButton) node);
+            items.add((JFXButton) node);
+        }
+    }
+
+    @FXML
+    private void colors() {
+        title.setText("Designer");
+        body.setContent(ViewManager.getInstance().get("colors"));
+    }
+
     @FXML
     private void buttons() {
         body.setContent(ViewManager.getInstance().get("button"));
@@ -255,9 +369,21 @@ public class Main implements Initializable {
     }
 
     @FXML
-    private void designer() {
-        title.setText("Designer");
-        body.setContent(ViewManager.getInstance().get("designer"));
+    private void toggle() {
+        title.setText("Toggle Button");
+        body.setContent(ViewManager.getInstance().get("toggle"));
+    }
+
+    @FXML
+    private void cards(){
+        title.setText("Cards");
+        body.setContent(ViewManager.getInstance().get("cards"));
+    }
+
+    @FXML
+    private void textField(){
+        title.setText("Cards");
+        body.setContent(ViewManager.getInstance().get("textfield"));
     }
 
 }

@@ -156,6 +156,7 @@
     -fx-scale-x : 1;
     -fx-scale-y : 1;
     -fx-font-weight : bold;
+    -fx-text-fill : -gray;
 }
 
 
@@ -166,10 +167,22 @@
 
 #side-bar .jfx-button:focused,
 #side-bar .jfx-button:focused .text,
-#side-bar .jfx-button:focused SVGPath
+#side-bar .jfx-button:focused .glyph-icon
 {
     -fx-background-color : derive(-aqua, -10%);
     -fx-fill : white;
+}
+
+#side-bar .jfx-button .glyph-icon
+{
+    -fx-fill : -gray;
+    -glyph-size : 22px;
+}
+
+#side-bar .titled-pane .glyph-icon
+{
+    -fx-fill : -gray;
+    -glyph-size : 22px;
 }
 
 #side-bar .jfx-button .jfx-rippler {

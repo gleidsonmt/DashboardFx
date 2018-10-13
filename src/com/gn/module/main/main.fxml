@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -35,7 +36,7 @@
    <children>
       <HBox fx:id="main" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;">
          <children>
-            <VBox id="side-bar" fx:id="sideBar" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="250.0" stylesheets="@theme/css/side.css">
+            <VBox id="side-bar" fx:id="sideBar" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="250.0" stylesheets="@../../theme/css/side.css">
                <styleClass>
                   <String fx:value="border-right-1" />
                   <String fx:value="border-gray" />
@@ -45,7 +46,7 @@
                      <children>
                         <ImageView fx:id="avatar" fitHeight="103.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
                            <image>
-                              <Image url="@theme/img/avatar.jpg" />
+                              <Image url="@../../theme/img/avatar.jpg" />
                            </image>
                         </ImageView>
                         <HBox fx:id="boxStatus" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="44.0" prefWidth="249.0" VBox.vgrow="ALWAYS">
@@ -68,7 +69,7 @@
                                                 <Font size="10.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="btnStatus" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="transparent" text="Button">
+                                          <Button fx:id="btnStatus" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="btn-transparent" text="Button">
                                              <graphic>
                                                 <SVGPath content="M7 10l5 5 5-5z" fill="#00000080" />
                                              </graphic>
@@ -89,7 +90,7 @@
                   </VBox>
                   <HBox id="box-search" fx:id="searchBox" alignment="CENTER" layoutX="10.0" layoutY="634.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="239.0">
                      <children>
-                        <TextField fx:id="search" prefHeight="38.0" prefWidth="212.0" promptText="Search.." />
+                        <TextField fx:id="search" prefHeight="38.0" prefWidth="212.0" promptText="Search.." style="-fx-background-color: transparent; -fx-border-color: transparent;" />
                         <FontAwesomeIconView fill="#0000004d" glyphName="SEARCH" scaleX="1.4" scaleY="1.4" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="8.0" top="5.0" />
@@ -110,23 +111,27 @@
                      <content>
                         <VBox fx:id="views">
                            <children>
-                              <JFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="6.0" layoutX="10.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" text="Dashboard">
-                                 <graphic>
-                                    <SVGPath content="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" fill="#00000080" />
-                                 </graphic>
+                              <JFXButton fx:id="home" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="6.0" layoutX="10.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" text="Dashboard">
                                  <styleClass>
                                     <String fx:value="transparent" />
                                     <String fx:value="text-gray" />
                                  </styleClass>
+                                 <graphic>
+                                    <MaterialDesignIconView fill="#0000007e" glyphName="VIEW_DASHBOARD" size="22" />
+                                 </graphic>
                               </JFXButton>
                               <TitledPane fx:id="design" alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="6.0" layoutY="50.0" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" styleClass="text-gray" text="Design">
                                  <content>
                                     <VBox prefWidth="100.0">
                                        <children>
-                                          <JFXButton layoutX="20.0" layoutY="420.0" onMouseClicked="#designer" text="Colors" />
+                                          <JFXButton layoutX="20.0" layoutY="420.0" onMouseClicked="#colors" text="Colors" />
+                                          <JFXButton layoutX="20.0" layoutY="20.0" onMouseClicked="#cards" text="Cards" />
                                        </children>
                                     </VBox>
                                  </content>
+                                 <graphic>
+                                    <MaterialDesignIconView fill="#0000007d" glyphName="PALETTE_ADVANCED" size="22" />
+                                 </graphic>
                               </TitledPane>
                               <TitledPane fx:id="controls" alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="6.0" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" styleClass="text-gray" text="Controls">
                                  <content>
@@ -150,109 +155,47 @@
                                           <JFXButton layoutX="20.0" layoutY="370.0" text="PasswordField" />
                                           <JFXButton layoutX="20.0" layoutY="395.0" text="ProgressBar" />
                                           <JFXButton layoutX="20.0" layoutY="420.0" text="ProgressIndicator" />
-                                          <JFXButton layoutX="20.0" layoutY="836.0" onMouseClicked="#colors" text="ToggleButton" />
+                                          <JFXButton layoutX="20.0" layoutY="884.0" onMouseClicked="#textField" text="TextField" />
+                                          <JFXButton layoutX="20.0" layoutY="836.0" onMouseClicked="#toggle" text="ToggleButton" />
                                        </children>
                                     </VBox>
                                  </content>
                                  <graphic>
-                                    <SVGPath content="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" fill="#00000081" />
+                                    <MaterialDesignIconView glyphName="CHEMICAL_WEAPON" />
                                  </graphic>
                               </TitledPane>
                               <TitledPane fx:id="menu" alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="6.0" layoutX="10.0" layoutY="184.0" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" styleClass="text-gray" text="Menu">
                                  <content>
-                                    <VBox prefHeight="200.0" prefWidth="100.0">
-                                       <children>
-                                          <JFXButton text="Button" />
-                                          <JFXButton layoutX="20.0" layoutY="20.0" text="CheckBox" />
-                                          <JFXButton layoutX="20.0" layoutY="45.0" text="ChoiceBox" />
-                                          <JFXButton layoutX="20.0" layoutY="70.0" text="ColorPicker" />
-                                          <JFXButton layoutX="20.0" layoutY="95.0" text="ComboBox" />
-                                          <JFXButton layoutX="20.0" layoutY="120.0" text="DatePicker" />
-                                          <JFXButton layoutX="20.0" layoutY="145.0" text="HTMLEditor" />
-                                          <JFXButton layoutX="20.0" layoutY="170.0" text="Hyperlink" />
-                                          <JFXButton layoutX="20.0" layoutY="195.0" text="ImageView" />
-                                          <JFXButton layoutX="20.0" layoutY="220.0" text="Label" />
-                                          <JFXButton layoutX="20.0" layoutY="245.0" text="ListView" />
-                                          <JFXButton layoutX="20.0" layoutY="270.0" text="MediaView" />
-                                          <JFXButton layoutX="20.0" layoutY="295.0" text="MenuBar" />
-                                          <JFXButton layoutX="20.0" layoutY="320.0" text="MenuButton" />
-                                          <JFXButton layoutX="20.0" layoutY="345.0" text="Pagination" />
-                                          <JFXButton layoutX="20.0" layoutY="370.0" text="PasswordField" />
-                                          <JFXButton layoutX="20.0" layoutY="395.0" text="ProgressBar" />
-                                          <JFXButton layoutX="20.0" layoutY="420.0" text="ProgressIndicator" />
-                                       </children>
-                                    </VBox>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" />
                                  </content>
                                  <graphic>
-                                    <SVGPath content="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" fill="#00000081" />
+                                    <MaterialDesignIconView glyphName="TAB" />
                                  </graphic>
                               </TitledPane>
                               <TitledPane fx:id="shapes" alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="6.0" layoutX="10.0" layoutY="184.0" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" styleClass="text-gray" text="Shapes">
                                  <content>
-                                    <VBox prefHeight="200.0" prefWidth="100.0">
-                                       <children>
-                                          <JFXButton text="Button" />
-                                          <JFXButton layoutX="20.0" layoutY="20.0" text="CheckBox" />
-                                          <JFXButton layoutX="20.0" layoutY="45.0" text="ChoiceBox" />
-                                          <JFXButton layoutX="20.0" layoutY="70.0" text="ColorPicker" />
-                                          <JFXButton layoutX="20.0" layoutY="95.0" text="ComboBox" />
-                                          <JFXButton layoutX="20.0" layoutY="120.0" text="DatePicker" />
-                                          <JFXButton layoutX="20.0" layoutY="145.0" text="HTMLEditor" />
-                                          <JFXButton layoutX="20.0" layoutY="170.0" text="Hyperlink" />
-                                          <JFXButton layoutX="20.0" layoutY="195.0" text="ImageView" />
-                                          <JFXButton layoutX="20.0" layoutY="220.0" text="Label" />
-                                          <JFXButton layoutX="20.0" layoutY="245.0" text="ListView" />
-                                          <JFXButton layoutX="20.0" layoutY="270.0" text="MediaView" />
-                                          <JFXButton layoutX="20.0" layoutY="295.0" text="MenuBar" />
-                                          <JFXButton layoutX="20.0" layoutY="320.0" text="MenuButton" />
-                                          <JFXButton layoutX="20.0" layoutY="345.0" text="Pagination" />
-                                          <JFXButton layoutX="20.0" layoutY="370.0" text="PasswordField" />
-                                          <JFXButton layoutX="20.0" layoutY="395.0" text="ProgressBar" />
-                                          <JFXButton layoutX="20.0" layoutY="420.0" text="ProgressIndicator" />
-                                       </children>
-                                    </VBox>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" />
                                  </content>
                                  <graphic>
-                                    <SVGPath content="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" fill="#00000081" />
+                                    <MaterialDesignIconView glyphName="VECTOR_POLYGON" />
                                  </graphic>
                               </TitledPane>
                               <TitledPane fx:id="charts" alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="6.0" layoutX="10.0" layoutY="231.0" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" styleClass="text-gray" text="Charts">
                                  <content>
-                                    <VBox prefHeight="200.0" prefWidth="100.0">
-                                       <children>
-                                          <JFXButton text="Button" />
-                                          <JFXButton layoutX="20.0" layoutY="20.0" text="CheckBox" />
-                                          <JFXButton layoutX="20.0" layoutY="45.0" text="ChoiceBox" />
-                                          <JFXButton layoutX="20.0" layoutY="70.0" text="ColorPicker" />
-                                          <JFXButton layoutX="20.0" layoutY="95.0" text="ComboBox" />
-                                          <JFXButton layoutX="20.0" layoutY="120.0" text="DatePicker" />
-                                          <JFXButton layoutX="20.0" layoutY="145.0" text="HTMLEditor" />
-                                          <JFXButton layoutX="20.0" layoutY="170.0" text="Hyperlink" />
-                                          <JFXButton layoutX="20.0" layoutY="195.0" text="ImageView" />
-                                          <JFXButton layoutX="20.0" layoutY="220.0" text="Label" />
-                                          <JFXButton layoutX="20.0" layoutY="245.0" text="ListView" />
-                                          <JFXButton layoutX="20.0" layoutY="270.0" text="MediaView" />
-                                          <JFXButton layoutX="20.0" layoutY="295.0" text="MenuBar" />
-                                          <JFXButton layoutX="20.0" layoutY="320.0" text="MenuButton" />
-                                          <JFXButton layoutX="20.0" layoutY="345.0" text="Pagination" />
-                                          <JFXButton layoutX="20.0" layoutY="370.0" text="PasswordField" />
-                                          <JFXButton layoutX="20.0" layoutY="395.0" text="ProgressBar" />
-                                          <JFXButton layoutX="20.0" layoutY="420.0" text="ProgressIndicator" />
-                                       </children>
-                                    </VBox>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" />
                                  </content>
                                  <graphic>
-                                    <SVGPath content="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" fill="#00000081" />
+                                    <MaterialDesignIconView glyphName="CHART_PIE" />
                                  </graphic>
                               </TitledPane>
-                              <JFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="6.0" layoutX="10.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" text="About">
-                                 <graphic>
-                                    <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" strokeDashOffset="20.0" strokeMiterLimit="20.0" strokeWidth="5.0" />
-                                 </graphic>
+                              <JFXButton fx:id="about" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="6.0" layoutX="10.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" text="About">
                                  <styleClass>
                                     <String fx:value="transparent" />
                                     <String fx:value="text-gray" />
                                  </styleClass>
+                                 <graphic>
+                                    <MaterialDesignIconView glyphName="ACCOUNT_CIRCLE" />
+                                 </graphic>
                               </JFXButton>
                            </children>
                         </VBox>
@@ -322,16 +265,16 @@
                                  </control>
                               </JFXBadge>
                               <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="83.0" prefWidth="40.0" ripplerFill="BLACK">
-                                 <styleClass>
-                                    <String fx:value="transparent" />
-                                    <String fx:value="round" />
-                                 </styleClass>
                                  <graphic>
                                     <SVGPath content="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="#00000080" />
                                  </graphic>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
+                                 <styleClass>
+                                    <String fx:value="btn-transparent" />
+                                    <String fx:value="round" />
+                                 </styleClass>
                               </JFXButton>
                            </children>
                            <HBox.margin>
@@ -344,7 +287,7 @@
                      <children>
                         <ScrollPane fx:id="body" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT">
                            <content>
-                              <StackPane prefHeight="600.0" prefWidth="952.0" stylesheets="@theme/css/material.css">
+                              <StackPane prefHeight="600.0" prefWidth="952.0" stylesheets="@../../theme/css/material.css">
                                  <children>
                                     <JFXTabPane>
                                        <tabs>
@@ -641,7 +584,7 @@
       </HBox>
    </children>
    <stylesheets>
-      <URL value="@theme/css/material.css" />
-      <URL value="@theme/css/fonts.css" />
+      <URL value="@../../theme/css/material.css" />
+      <URL value="@../../theme/css/fonts.css" />
    </stylesheets>
 </StackPane>

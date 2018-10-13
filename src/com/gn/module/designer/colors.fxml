@@ -7,8 +7,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
@@ -17,15 +20,84 @@
    <children>
       <JFXTabPane style="-fx-tab-min-width: 100;">
          <tabs>
+            <Tab text="Flat Ui">
+               <content>
+                  <ScrollPane fitToWidth="true">
+                     <content>
+                        <VBox alignment="CENTER" maxHeight="-Infinity" prefWidth="937.0" spacing="10.0" style="-fx-background-color: white;">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="86.0" prefWidth="890.0">
+                                 <children>
+                                    <Label prefHeight="29.0" prefWidth="201.0" text="Material Color">
+                                       <styleClass>
+                                          <String fx:value="h3" />
+                                          <String fx:value="title" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <GridPane fx:id="grid" alignment="CENTER" prefWidth="938.0" VBox.vgrow="ALWAYS">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="50" GridPane.columnIndex="1" />
+                                    <Label layoutX="257.0" layoutY="18.0" text="100" GridPane.columnIndex="2" />
+                                    <Label layoutX="504.0" layoutY="18.0" text="200" GridPane.columnIndex="3" />
+                                    <Label text="300" GridPane.columnIndex="4" />
+                                    <Label text="400" GridPane.columnIndex="5" />
+                                    <Label text="500" GridPane.columnIndex="6" />
+                                    <Label text="600" GridPane.columnIndex="7" />
+                                    <Label text="700" GridPane.columnIndex="8" />
+                                    <Label text="800" GridPane.columnIndex="9" />
+                                    <Label text="900" GridPane.columnIndex="10" />
+                                    <Label text="A100" GridPane.columnIndex="11" />
+                                    <Label text="A400" GridPane.columnIndex="13" />
+                                    <Label text="A700" GridPane.columnIndex="14" />
+                                    <Label text="A200" GridPane.columnIndex="12" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </ScrollPane>
+               </content>
+            </Tab>
             <Tab text="Colors">
                <content>
                   <ScrollPane fitToWidth="true">
                      <content>
                         <VBox alignment="CENTER" maxHeight="-Infinity" prefWidth="937.0" spacing="10.0" style="-fx-background-color: white;">
                            <children>
-                              <VBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="890.0">
+                              <VBox alignment="CENTER" prefHeight="86.0" prefWidth="890.0">
                                  <children>
-                                    <Label prefHeight="29.0" prefWidth="201.0" text="Bootstrap Colors">
+                                    <Label prefHeight="29.0" prefWidth="201.0" text="Material Color">
                                        <styleClass>
                                           <String fx:value="h3" />
                                           <String fx:value="title" />
@@ -35,7 +107,7 @@
                               </VBox>
                               <TilePane alignment="TOP_CENTER" hgap="20.0" prefHeight="259.0" prefTileWidth="200.0" prefWidth="890.0" styleClass="body" vgap="20.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <VBox fx:id="pinterest" layoutX="599.0" layoutY="1279.0" onMouseClicked="#open" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
+                                    <VBox fx:id="pinterest" layoutX="599.0" layoutY="1279.0" prefHeight="121.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="elevator">
                                        <children>
                                           <HBox prefHeight="54.0" prefWidth="200.0" style="-fx-background-radius: 100;">
                                              <children>
@@ -46,7 +118,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Pinterest">
+                                                <Label text="-pinterest">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -77,7 +149,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Google">
+                                                <Label text="-google">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -108,7 +180,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Youtube">
+                                                <Label text="-youtube">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -139,7 +211,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Danger / Red">
+                                                <Label text="-danger / -red">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -170,7 +242,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Bitterswet">
+                                                <Label text="-bitterswet">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -201,7 +273,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Deeporange">
+                                                <Label text="-deeporange">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -232,7 +304,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Warning / Orange">
+                                                <Label style="-fx-font-size: 22;" text="-warning / -orange">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -263,7 +335,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Amber">
+                                                <Label text="-amber">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -294,7 +366,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Sunflower">
+                                                <Label text="-sunflower">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -325,7 +397,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Yellow">
+                                                <Label text="-yellow">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -356,7 +428,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Lime">
+                                                <Label text="-lime">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -387,7 +459,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Grass">
+                                                <Label text="-grass">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -418,7 +490,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Lightgreen">
+                                                <Label text="-lightgreen">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -449,7 +521,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Success / Green">
+                                                <Label text="-success / -green">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -480,7 +552,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Mint">
+                                                <Label text="-mint">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -511,7 +583,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Teal / Base">
+                                                <Label text="-teal / -base">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -542,7 +614,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Cyan">
+                                                <Label text="-cyan">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -573,7 +645,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Aqua">
+                                                <Label text="-aqua">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -604,7 +676,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Info">
+                                                <Label text="-info">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -635,7 +707,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Lightblue">
+                                                <Label text="-lightblue">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -666,7 +738,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Twitter">
+                                                <Label text="-twitter">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -697,7 +769,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Bluejeans">
+                                                <Label text="-bluejeans">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -728,7 +800,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Primary / Blue">
+                                                <Label text="-primary / -blue">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -759,7 +831,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Linkedin">
+                                                <Label text="-linkedin">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -790,7 +862,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Indigo">
+                                                <Label text="-indigo">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -821,7 +893,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Facebook">
+                                                <Label text="-facebook">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -852,7 +924,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Instagram">
+                                                <Label text="-instagram">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -883,7 +955,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Deeppurple">
+                                                <Label text="-deeppurple">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -914,7 +986,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label prefHeight="29.0" prefWidth="209.0" style="-fx-font-size: 22;" styleClass="title" text="Secondary / Purple" />
+                                                <Label prefHeight="29.0" prefWidth="209.0" style="-fx-font-size: 20;" styleClass="title" text="-secondary / -purple" />
                                                 <HBox alignment="CENTER" spacing="20.0">
                                                    <children>
                                                       <Label prefHeight="18.0" prefWidth="82.0" text="-10%" />
@@ -940,7 +1012,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Lavander">
+                                                <Label text="-lavander">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -971,7 +1043,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Pinkrose">
+                                                <Label text="-pinkrose">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -1002,7 +1074,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Pink">
+                                                <Label text="-pink">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -1033,7 +1105,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Grapefruit">
+                                                <Label text="-grapefruit">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -1064,7 +1136,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Unique">
+                                                <Label text="-unique">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -1095,7 +1167,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Brown">
+                                                <Label text="-brown">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -1126,7 +1198,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Elegant">
+                                                <Label text="-elegant">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -1157,7 +1229,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Darkgray">
+                                                <Label text="-darkgray">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -1188,7 +1260,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Bluegray">
+                                                <Label text="-bluegray">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -1219,7 +1291,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Gray">
+                                                <Label text="-gray">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -1250,7 +1322,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Mediumgray">
+                                                <Label text="-mediumgray">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -1281,7 +1353,7 @@
                                           </HBox>
                                           <VBox prefHeight="52.0" prefWidth="196.0">
                                              <children>
-                                                <Label text="Lightgray">
+                                                <Label text="-lightgray">
                                                    <styleClass>
                                                       <String fx:value="h3" />
                                                       <String fx:value="title" />
@@ -1303,12 +1375,12 @@
                                     </VBox>
                                  </children>
                                  <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                                    <Insets top="20.0" />
                                  </padding>
                               </TilePane>
                            </children>
                            <padding>
-                              <Insets bottom="10.0" left="30.0" right="30.0" top="30.0" />
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </VBox>
                      </content>
