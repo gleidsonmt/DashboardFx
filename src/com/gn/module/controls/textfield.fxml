@@ -28,7 +28,7 @@
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Label prefHeight="58.0" prefWidth="302.0" text="Button">
+                              <Label prefHeight="58.0" prefWidth="302.0" text="Text Field">
                                  <styleClass>
                                     <String fx:value="h3" />
                                     <String fx:value="title" />
@@ -180,8 +180,6 @@
             <String fx:value="tab-white" />
             <String fx:value="tab-line-aqua" />
             <String fx:value="tab-shadow-none" />
-            <String fx:value="border-bottom-1" />
-            <String fx:value="border-gray" />
          </styleClass>
       </JFXTabPane>
    </children>

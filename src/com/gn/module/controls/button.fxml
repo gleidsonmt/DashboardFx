@@ -308,8 +308,6 @@
             <String fx:value="tab-white" />
             <String fx:value="tab-line-aqua" />
             <String fx:value="tab-shadow-none" />
-            <String fx:value="border-bottom-1" />
-            <String fx:value="border-gray" />
          </styleClass>
       </JFXTabPane>
    </children>

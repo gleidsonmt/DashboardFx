@@ -122,7 +122,9 @@
 
 .text-field {
   -fx-background-color : transparent;
-  -fx-border-color : -base;
+  -fx-border-color : derive(-light-gray, -10%);
+  -fx-background-radius : 4;
+  -fx-border-radius : 4;
 }
 
 .date-picker {
@@ -273,7 +275,7 @@
 
 .check-box {
     -fx-label-padding: 0.0em 0.0em 0.0em 0.416667em; /* 0 0 0 5 */
-    -fx-text-fill: -fx-text-background-color;
+    -fx-text-fill: -dark-gray;
 }
 
 .check-box:determinate .box {
@@ -298,9 +300,93 @@
 }
 
 .check-box:hover:determinate .box  {
-    -fx-background-color : -medium-gray;
-    -fx-border-color : -medium-gray;
+    /* -fx-background-color : -base; */
+    -fx-border-color : -base;
 }
+
+.check-box:indeterminate .box  {
+    -fx-background-color : -base;
+    -fx-border-color : -base;
+
+    -fx-border-radius : 2px;
+    -fx-border-width : 2px;
+}
+
+.check-box:indeterminate .box .mark {
+    -fx-background-color : white;
+    -fx-scale-x : 1.2;
+    -fx-scale-y : 1.2;
+}
+
+.radio-button {
+    -fx-text-fill: -dark-gray;
+}
+
+.radio-button > .radio  {
+   -fx-background-color: transparent;
+   -fx-background-radius: 1.0em; /* large value to make sure this remains circular */
+   -fx-background-insets: 0;
+
+   -fx-border-radius: 1.0em;
+   -fx-border-color: -dark-gray;
+   -fx-border-width: 2px;
+
+   -fx-padding: 4px; /* 4 -- padding from outside edge to the inner black dot */
+}
+
+.radio-button > .radio > .dot {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1.0em; /* large value to make sure this remains circular */
+    -fx-padding: 6px; /* 3 -- radius of the inner black dot when selected */
+}
+
+.radio-button:selected > .radio,
+.radio-button:pressed > .radio
+{
+  -fx-border-color: -base;
+  -fx-border-width: 6px;
+}
+
+.radio-button:hover > .radio {
+    /* -fx-border-color: -gray; */
+      -fx-border-width: 6px;
+}
+
+.radio-button:armed  > .radio
+{
+  -fx-border-color: -base;
+}
+
+.radio-button:selected > .radio > .dot,
+.radio-button:pressed > .radio > .dot
+{
+  -fx-padding: 2px;
+}
+
+.radio-button:hover > .radio > .dot {
+  -fx-padding: 2px;
+}
+
+
+
+/* .radio-button:pressed > .radio, */
+.radio-button:pressed > .radio {
+    -fx-border-color: -base;
+}
+
+.radio-button:disabled
+{
+    -fx-opacity: 0.5;
+}
+
+.radio-button:disabled > .radio
+{
+    -fx-background-color: #e6e6e6;
+    -fx-border-color: #d9d9d9;
+}
+
+
 
 .tooltip {
     -fx-background-color: -dark-gray;
@@ -529,10 +615,10 @@
 }
 
 .text-12, .h6 {
-    -fx-font-size : 12;
+    -fx-font-size : 12px;
 }
 
-.text-14, .h5,
+.text-14, .h5, .sub-title,
 .text-large, .flat:focused,
 .btn-large {
   -fx-font-size : 14px;
@@ -551,7 +637,7 @@
 }
 
 .text-36, .h1 {
-  -fx-font-size : 36pt;
+  -fx-font-size : 36px;
 }
 
 .title {
@@ -629,6 +715,10 @@
 
 .information {
   -fx-background-radius : 100px 100px 100px 0px;
+}
+
+.semi-paral-r {
+  -fx-shape : "M 250 200 L 250 300 L 450 300 L 500 200 L 250 200";
 }
 
 .parallelogram-l {
@@ -826,7 +916,7 @@
 *
 *******************************************************************************/
 
-.text-gray, .text-gray .text, .text-gray SVGPath{
+.text-gray, .h3, .h4, .h5, .h6, .text-gray .text, .text-gray SVGPath{
     -fx-fill : -gray;
     -fx-text-fill : -gray;
 }
@@ -1204,7 +1294,8 @@
 
 .tab-white .tab-header-background
 {
-    -fx-background-color: white;
+  -fx-border-color : transparent transparent -medium-gray transparent;
+  -fx-background-color: red;
 }
 
 .tab-white.headers-region .tab-selected-line{

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<StackPane prefHeight="2000.0" prefWidth="669.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane fitToWidth="true">
+         <content>
+            <VBox prefHeight="2000.0" prefWidth="771.0" spacing="10.0">
+               <children>
+                  <HBox prefHeight="27.0" prefWidth="731.0">
+                     <children>
+                        <Label prefHeight="60.0" prefWidth="141.0" text="Guide Style">
+                           <styleClass>
+                              <String fx:value="text-base" />
+                              <String fx:value="h3" />
+                           </styleClass>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="30.0" layoutY="30.0">
+                     <children>
+                        <Label prefHeight="60.0" prefWidth="141.0" text="GnFx">
+                           <styleClass>
+                              <String fx:value="text-gray" />
+                              <String fx:value="h3" />
+                           </styleClass>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="30.0" layoutY="90.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="445.0" prefWidth="731.0">
+                     <children>
+                        <VBox prefHeight="345.0" prefWidth="198.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="169.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Pane minHeight="-Infinity" prefHeight="60.0" prefWidth="60.0">
+                                       <styleClass>
+                                          <String fx:value="primary" />
+                                          <String fx:value="round" />
+                                       </styleClass>
+                                    </Pane>
+                                    <Label styleClass="text-gray" text="Primary / -primary " />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="51.0" prefWidth="169.0" spacing="10.0">
+                                 <children>
+                                    <Pane minHeight="-Infinity" prefHeight="60.0" prefWidth="60.0">
+                                       <styleClass>
+                                          <String fx:value="info" />
+                                          <String fx:value="round" />
+                                       </styleClass>
+                                    </Pane>
+                                    <Label styleClass="text-gray" text="Info / -info" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="295.0" prefHeight="51.0" prefWidth="169.0" spacing="10.0">
+                                 <children>
+                                    <Pane minHeight="-Infinity" prefHeight="60.0" prefWidth="60.0">
+                                       <styleClass>
+                                          <String fx:value="base" />
+                                          <String fx:value="round" />
+                                       </styleClass>
+                                    </Pane>
+                                    <Label styleClass="text-gray" text="Base / -base " />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="295.0" prefHeight="51.0" prefWidth="169.0" spacing="10.0">
+                                 <children>
+                                    <Pane minHeight="-Infinity" prefHeight="60.0" prefWidth="60.0">
+                                       <styleClass>
+                                          <String fx:value="success" />
+                                          <String fx:value="round" />
+                                       </styleClass>
+                                    </Pane>
+                                    <Label styleClass="text-gray" text="Success / -success" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="295.0" prefHeight="51.0" prefWidth="169.0" spacing="10.0">
+                                 <children>
+                                    <Pane minHeight="-Infinity" prefHeight="60.0" prefWidth="60.0">
+                                       <styleClass>
+                                          <String fx:value="warning" />
+                                          <String fx:value="round" />
+                                       </styleClass>
+                                    </Pane>
+                                    <Label styleClass="text-gray" text="Warning / -warning" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="295.0" prefHeight="51.0" prefWidth="169.0" spacing="10.0">
+                                 <children>
+                                    <Pane minHeight="-Infinity" prefHeight="60.0" prefWidth="60.0">
+                                       <styleClass>
+                                          <String fx:value="danger" />
+                                          <String fx:value="round" />
+                                       </styleClass>
+                                    </Pane>
+                                    <Label styleClass="text-gray" text="Danger / -danger" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="395.0" prefHeight="51.0" prefWidth="169.0" spacing="10.0">
+                                 <children>
+                                    <Pane minHeight="-Infinity" prefHeight="60.0" prefWidth="60.0">
+                                       <styleClass>
+                                          <String fx:value="secondary" />
+                                          <String fx:value="round" />
+                                       </styleClass>
+                                    </Pane>
+                                    <Label styleClass="text-gray" text="Secondary / -secondary" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="395.0" prefHeight="51.0" prefWidth="169.0" spacing="10.0">
+                                 <children>
+                                    <Pane minHeight="-Infinity" prefHeight="60.0" prefWidth="60.0">
+                                       <styleClass>
+                                          <String fx:value="unique" />
+                                          <String fx:value="round" />
+                                       </styleClass>
+                                    </Pane>
+                                    <Label styleClass="text-gray" text="Unique / -unique" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="430.0" prefHeight="51.0" prefWidth="169.0" spacing="10.0" styleClass="elevant">
+                                 <children>
+                                    <Pane minHeight="-Infinity" prefHeight="60.0" prefWidth="60.0">
+                                       <styleClass>
+                                          <String fx:value="elegant" />
+                                          <String fx:value="round" />
+                                       </styleClass>
+                                    </Pane>
+                                    <Label styleClass="text-gray" text="Elegant / -elegant" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="257.0" spacing="40.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label styleClass="h1" text="Header 1" />
+                                    <Label text="Roboto 32px / black" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="15.0" layoutY="15.0">
+                                 <children>
+                                    <Label styleClass="h2" text="Header 2" />
+                                    <Label text="Roboto 30px / black" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="15.0" layoutY="84.0">
+                                 <children>
+                                    <Label styleClass="h3" text="Header 3" />
+                                    <Label text="Roboto 24px / -gray" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="15.0" layoutY="147.0">
+                                 <children>
+                                    <Label styleClass="h4" text="Header 4" />
+                                    <Label text="Roboto 18px / -gray" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="15.0" layoutY="201.0">
+                                 <children>
+                                    <Label styleClass="h5" text="Header 5" />
+                                    <Label text="Roboto 14px / -gray" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="15.0" layoutY="249.0">
+                                 <children>
+                                    <Label styleClass="h5" text="Header 6" />
+                                    <Label text="Roboto 12px / -gray" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="15.0" layoutY="292.0">
+                                 <children>
+                                    <Label styleClass="sub-title" text="Subtitle" />
+                                    <Label text="Roboto 14px / black" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+                  <HBox layoutX="30.0" layoutY="149.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label styleClass="h2" text="Buttons" />
+                              <HBox spacing="5.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="round" text="R" />
+                                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Default" />
+                                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="rounded" text="Default" />
+                                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="rectangle" text="Default" />
+                                    <Button disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Disabled" />
+                                 </children>
+                              </HBox>
+                              <VBox layoutX="10.0" layoutY="108.0">
+                                 <children>
+                                    <Label styleClass="h2" text="DatePicker" />
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <VBox spacing="10.0">
+                                             <children>
+                                                <DatePicker prefHeight="29.0" prefWidth="226.0" promptText="02/20/1992" />
+                                                <DatePicker disable="true" layoutX="10.0" layoutY="49.0" prefHeight="29.0" prefWidth="226.0" />
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets top="15.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <ImageView fitHeight="318.0" fitWidth="284.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@theme/img/calendar.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="108.0">
+                                 <children>
+                                    <Label styleClass="h2" text="CheckBox" />
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <CheckBox mnemonicParsing="false" text="Default" />
+                                          <CheckBox disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Disabled" />
+                                          <CheckBox allowIndeterminate="true" indeterminate="true" mnemonicParsing="false" selected="true" text="Indeterminated" />
+                                          <CheckBox mnemonicParsing="false" selected="true" text="Check" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="537.0">
+                                 <children>
+                                    <Label styleClass="h2" text="CheckBox" />
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <RadioButton mnemonicParsing="false" text="Default" />
+                                          <RadioButton disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Disabled" />
+                                          <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" selected="true" text="Selected" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+   <stylesheets>
+      <URL value="@theme/css/material.css" />
+      <URL value="@theme/css/custom.css" />
+   </stylesheets>
+</StackPane>

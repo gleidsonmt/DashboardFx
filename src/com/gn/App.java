@@ -24,6 +24,7 @@ import javafx.application.Application;
 import javafx.application.Preloader;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
 
@@ -43,7 +44,7 @@ public class App extends Application {
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     @Override
     public synchronized void init(){
-        byte total = 7;
+        byte total = 9;
         increment = 100 / total;
         load("designer", "colors");
         load("designer", "cards");
@@ -52,6 +53,8 @@ public class App extends Application {
         load("controls", "toggle");
         load("controls", "textfield");
         load("controls", "datepicker");
+        load("controls", "checkbox");
+        load("controls", "radiobutton");
 
         load("main",     "main");
         // delay

@@ -392,4 +392,16 @@ public class Main implements Initializable {
         body.setContent(ViewManager.getInstance().get("datepicker"));
     }
 
+    @FXML
+    private void checkBox(){
+        title.setText("CheckBox");
+        body.setContent(ViewManager.getInstance().get("checkbox"));
+    }
+
+
+    @FXML
+    private void radio(){
+        title.setText("RadioButton");
+        body.setContent(ViewManager.getInstance().get("radiobutton"));
+    }
 }

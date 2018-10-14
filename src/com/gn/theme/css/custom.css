@@ -18,3 +18,16 @@
 #block:hover {
   -fx-background-color : -light-gray;
 }
+
+
+.p1 {
+  -fx-shape : "M 350 200 L 300 300 L 450 300 L 500 200 L 350 200 ";
+}
+
+.p2 {
+  -fx-shape : "M 400 200 L 350 300 L 450 300 L 500 200 L 400 200 ";
+}
+
+.p3 {
+  -fx-shape : "M 450 200 L 400 300 L 450 300 L 500 200 L 450 200 ";
+}

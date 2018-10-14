@@ -138,7 +138,7 @@
                                     <VBox prefHeight="200.0" prefWidth="100.0">
                                        <children>
                                           <JFXButton onMouseClicked="#buttons" text="Button" />
-                                          <JFXButton layoutX="20.0" layoutY="20.0" text="CheckBox" />
+                                          <JFXButton layoutX="20.0" layoutY="20.0" text="CheckBox" onMouseClicked="#checkBox" />
                                           <JFXButton layoutX="20.0" layoutY="45.0" text="ChoiceBox" />
                                           <JFXButton layoutX="20.0" layoutY="70.0" text="ColorPicker" />
                                           <JFXButton layoutX="20.0" layoutY="95.0" text="ComboBox" />
@@ -155,8 +155,9 @@
                                           <JFXButton layoutX="20.0" layoutY="370.0" text="PasswordField" />
                                           <JFXButton layoutX="20.0" layoutY="395.0" text="ProgressBar" />
                                           <JFXButton layoutX="20.0" layoutY="420.0" text="ProgressIndicator" />
-                                          <JFXButton layoutX="20.0" layoutY="884.0" onMouseClicked="#textField" text="TextField" />
+                                          <JFXButton layoutX="20.0" layoutY="884.0" text="TextField" onMouseClicked="#textField"/>
                                           <JFXButton layoutX="20.0" layoutY="836.0" onMouseClicked="#toggle" text="ToggleButton" />
+                                          <JFXButton layoutX="20.0" layoutY="836.0" onMouseClicked="#radio" text="RadioButton" />
                                        </children>
                                     </VBox>
                                  </content>
