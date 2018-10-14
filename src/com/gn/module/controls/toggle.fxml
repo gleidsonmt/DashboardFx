@@ -239,6 +239,62 @@
                   </ScrollPane>
                </content>
             </Tab>
+            <Tab text="Bootstrap">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
+                     <content>
+                        <VBox alignment="CENTER" prefHeight="559.0" prefWidth="937.0" spacing="10.0" style="-fx-background-color: white;">
+                           <children>
+                              <VBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="890.0">
+                                 <children>
+                                    <Label prefHeight="29.0" prefWidth="201.0" text="Bootstrap Colors">
+                                       <styleClass>
+                                          <String fx:value="h3" />
+                                          <String fx:value="title" />
+                                       </styleClass>
+                                    </Label>
+                                    <TextFlow prefHeight="54.0" prefWidth="952.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." />
+                                       </children>
+                                    </TextFlow>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="239.0" prefWidth="890.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
+                                       <children>
+                                          <ToggleButton layoutX="101.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="166.0" styleClass="btn-primary" text="Primary" />
+                                          <ToggleButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="166.0" styleClass="btn-info" text="Info" />
+                                          <ToggleButton mnemonicParsing="false" prefHeight="40.0" prefWidth="166.0" text="Default" />
+                                          <ToggleButton layoutX="236.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="166.0" styleClass="btn-success" text="Default" />
+                                          <ToggleButton layoutX="343.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="166.0" styleClass="btn-warning" text="Warning" />
+                                          <ToggleButton layoutX="448.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="166.0" styleClass="btn-danger" text="Danger" />
+                                          <ToggleButton layoutX="550.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="166.0" styleClass="btn-secondary" text="Secondary" />
+                                          <ToggleButton layoutX="647.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="166.0" styleClass="btn-unique" text="Secondary" />
+                                          <ToggleButton layoutX="842.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="166.0" styleClass="btn-elegant" text="Elegant" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="30.0" right="30.0" top="100.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </ScrollPane>
+               </content>
+            </Tab>
          </tabs>
          <styleClass>
             <String fx:value="tab-white" />

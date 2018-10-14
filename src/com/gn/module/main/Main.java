@@ -106,7 +106,7 @@ public class Main implements Initializable {
             }
         });
 
-        body.setContent(ViewManager.getInstance().get("textfield"));
+        body.setContent(ViewManager.getInstance().get("datepicker"));
     }
 
     private void configPop() {
@@ -382,8 +382,14 @@ public class Main implements Initializable {
 
     @FXML
     private void textField(){
-        title.setText("Cards");
+        title.setText("TextField");
         body.setContent(ViewManager.getInstance().get("textfield"));
+    }
+
+    @FXML
+    private void datePicker(){
+        title.setText("DatePicker");
+        body.setContent(ViewManager.getInstance().get("datepicker"));
     }
 
 }

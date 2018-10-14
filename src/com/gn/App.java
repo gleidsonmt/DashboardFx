@@ -21,15 +21,13 @@ import com.gn.decorator.GNDecorator;
 import com.gn.module.loader.Loader;
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.application.Preloader;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import org.scenicview.ScenicView;
 
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -38,21 +36,23 @@ import java.util.TimerTask;
  */
 public class App extends Application {
 
-    private int total = 5;
-    private double increment = 100 / total;
-    private double progress=0;
+    private float increment = 0;
+    private byte   progress = 0;
 
 
     @Override
     public synchronized void init(){
-
+        byte total = 7;
+        increment = 100 / total;
         load("designer", "colors");
-
         load("designer", "cards");
-        load("controls","button");
+
+        load("controls", "button");
         load("controls", "toggle");
         load("controls", "textfield");
-        load("main", "main");
+        load("controls", "datepicker");
+
+        load("main",     "main");
         // delay
         try {
             wait(300);
