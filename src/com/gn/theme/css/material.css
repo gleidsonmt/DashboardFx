@@ -271,6 +271,22 @@
     /* -fx-text-fill : -light-gray; */
 }
 
+.tooltip {
+    -fx-background-color: -dark-gray;
+    -fx-background-insets: 0;
+    -fx-background-radius: 2;
+
+    -fx-padding: 7px;  /*4 8 4 8 */
+
+    -fx-font-family: Roboto;
+    -fx-font-weight : bold;
+    -fx-text-fill:  white;
+
+    -fx-border-width: 0px;
+
+    -fx-effect: null;
+}
+
 
 
 /************************************************************************************

@@ -40,6 +40,7 @@ public class App extends Application {
     private byte   progress = 0;
 
 
+    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     @Override
     public synchronized void init(){
         byte total = 7;
