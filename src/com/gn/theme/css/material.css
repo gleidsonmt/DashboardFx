@@ -271,6 +271,37 @@
     /* -fx-text-fill : -light-gray; */
 }
 
+.check-box {
+    -fx-label-padding: 0.0em 0.0em 0.0em 0.416667em; /* 0 0 0 5 */
+    -fx-text-fill: -fx-text-background-color;
+}
+
+.check-box:determinate .box {
+  -fx-background-color : transparent;
+  -fx-border-color : -dark-gray;
+  -fx-border-radius : 2px;
+  -fx-border-width : 2px;
+}
+
+.check-box:selected:determinate .box {
+  -fx-background-color : -base;
+  -fx-border-color : -base;
+  -fx-border-radius : 2px;
+  -fx-border-width : 2px;
+}
+
+.check-box:selected:determinate .box .mark {
+  -fx-shape : "M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z";
+    -fx-background-color : white;
+    -fx-scale-x : 1.2;
+    -fx-scale-y : 1.2;
+}
+
+.check-box:hover:determinate .box  {
+    -fx-background-color : -medium-gray;
+    -fx-border-color : -medium-gray;
+}
+
 .tooltip {
     -fx-background-color: -dark-gray;
     -fx-background-insets: 0;
