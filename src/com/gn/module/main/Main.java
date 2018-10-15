@@ -398,6 +398,11 @@ public class Main implements Initializable {
         body.setContent(ViewManager.getInstance().get("checkbox"));
     }
 
+    @FXML
+    private void comboBox(){
+        title.setText("ComboBox");
+        body.setContent(ViewManager.getInstance().get("combobox"));
+    }
 
     @FXML
     private void radio(){

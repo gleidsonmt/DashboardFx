@@ -5,11 +5,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -17,6 +19,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
 <StackPane prefHeight="2000.0" prefWidth="669.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -52,7 +55,11 @@
                   </HBox>
                   <HBox layoutX="30.0" layoutY="90.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." />
+                        <TextFlow>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." />
+                           </children>
+                        </TextFlow>
                      </children>
                   </HBox>
                   <HBox prefHeight="445.0" prefWidth="731.0">
@@ -231,20 +238,21 @@
                                     <Label styleClass="h2" text="DatePicker" />
                                     <HBox spacing="5.0">
                                        <children>
-                                          <VBox spacing="10.0">
-                                             <children>
-                                                <DatePicker prefHeight="29.0" prefWidth="226.0" promptText="02/20/1992" />
-                                                <DatePicker disable="true" layoutX="10.0" layoutY="49.0" prefHeight="29.0" prefWidth="226.0" />
-                                             </children>
-                                             <HBox.margin>
-                                                <Insets top="15.0" />
-                                             </HBox.margin>
-                                          </VBox>
                                           <ImageView fitHeight="318.0" fitWidth="284.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@theme/img/calendar.png" />
                                              </image>
                                           </ImageView>
+                                          <VBox spacing="10.0">
+                                             <children>
+                                                <DatePicker prefHeight="36.0" prefWidth="226.0" promptText="02/20/1992" />
+                                                <DatePicker disable="true" layoutX="10.0" layoutY="49.0" prefHeight="30.0" prefWidth="226.0" promptText="02/20/1992" />
+                                                <DatePicker editable="false" layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="226.0" promptText="02/20/1992" />
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets top="15.0" />
+                                             </HBox.margin>
+                                          </VBox>
                                        </children>
                                     </HBox>
                                  </children>
@@ -264,12 +272,46 @@
                               </VBox>
                               <VBox layoutX="10.0" layoutY="537.0">
                                  <children>
-                                    <Label styleClass="h2" text="CheckBox" />
+                                    <Label styleClass="h2" text="RadioButton" />
                                     <HBox spacing="5.0">
                                        <children>
                                           <RadioButton mnemonicParsing="false" text="Default" />
                                           <RadioButton disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Disabled" />
                                           <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" selected="true" text="Selected" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="540.0">
+                                 <children>
+                                    <Label styleClass="h2" text="TextField" />
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <TextField prefHeight="30.0" />
+                                          <TextField disable="true" layoutX="242.0" layoutY="10.0" prefHeight="30.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="612.0">
+                                 <children>
+                                    <Label styleClass="h2" text="ComboBox" />
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@theme/img/combo.png" />
+                                             </image>
+                                          </ImageView>
+                                          <VBox spacing="5.0">
+                                             <children>
+                                                <ComboBox prefHeight="30.0" prefWidth="150.0" promptText="02/20/1992" />
+                                                <ComboBox editable="true" layoutX="10.0" layoutY="20.0" prefHeight="30.0" prefWidth="150.0" promptText="02/20/1992" />
+                                             </children>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
+                                          </VBox>
                                        </children>
                                     </HBox>
                                  </children>

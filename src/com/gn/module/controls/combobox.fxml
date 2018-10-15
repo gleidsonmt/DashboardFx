@@ -3,11 +3,14 @@
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import java.lang.String?>
 <?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.HBox?>
@@ -27,7 +30,7 @@
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Label prefHeight="38.0" prefWidth="195.0" text="CheckBox">
+                              <Label prefHeight="38.0" prefWidth="195.0" text="ComboBox">
                                  <styleClass>
                                     <String fx:value="h3" />
                                     <String fx:value="title" />
@@ -44,7 +47,22 @@
                            <children>
                               <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
                                  <children>
-                                    <CheckBox mnemonicParsing="false" text="CheckBox" />
+                                    <ComboBox prefHeight="30.0" prefWidth="179.0" promptText="ComboBox">
+                                       <items>
+                                          <FXCollections fx:factory="observableArrayList">
+                                             <String fx:value="Item 1" />
+                                             <String fx:value="Item 2" />
+                                             <String fx:value="Item 3" />
+                                          </FXCollections>
+                                       </items>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                    </ComboBox>
                                  </children>
                               </HBox>
                            </children>

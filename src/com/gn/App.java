@@ -44,7 +44,7 @@ public class App extends Application {
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     @Override
     public synchronized void init(){
-        byte total = 9;
+        byte total = 10;
         increment = 100 / total;
         load("designer", "colors");
         load("designer", "cards");
@@ -55,6 +55,7 @@ public class App extends Application {
         load("controls", "datepicker");
         load("controls", "checkbox");
         load("controls", "radiobutton");
+        load("controls", "combobox");
 
         load("main",     "main");
         // delay
