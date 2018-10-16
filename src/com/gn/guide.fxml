@@ -2,15 +2,23 @@
 
 <?import java.lang.String?>
 <?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -21,7 +29,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<StackPane prefHeight="2000.0" prefWidth="669.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane prefHeight="3000.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane fitToWidth="true">
          <content>
@@ -224,75 +232,86 @@
                         <VBox spacing="10.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Label styleClass="h2" text="Buttons" />
-                              <HBox spacing="5.0">
+                              <HBox spacing="75.0">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="round" text="R" />
-                                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Default" />
-                                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="rounded" text="Default" />
-                                    <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="rectangle" text="Default" />
-                                    <Button disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Disabled" />
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="round" text="R" />
+                                          <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Default" />
+                                          <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="rounded" text="Default" />
+                                          <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="rectangle" text="Default" />
+                                          <Button disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Disabled" />
+                                       </children>
+                                    </HBox>
+                                    <VBox>
+                                       <children>
+                                          <Label styleClass="h2" text="CheckBox" />
+                                          <HBox spacing="5.0">
+                                             <children>
+                                                <CheckBox mnemonicParsing="false" text="Default" />
+                                                <CheckBox disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Disabled" />
+                                                <CheckBox allowIndeterminate="true" indeterminate="true" mnemonicParsing="false" selected="true" text="Indeterminated" />
+                                                <CheckBox mnemonicParsing="false" selected="true" text="Check" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
                                  </children>
                               </HBox>
-                              <VBox layoutX="10.0" layoutY="108.0">
+                              <HBox spacing="20.0">
                                  <children>
-                                    <Label styleClass="h2" text="DatePicker" />
-                                    <HBox spacing="5.0">
+                                    <VBox>
                                        <children>
-                                          <ImageView fitHeight="318.0" fitWidth="284.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@theme/img/calendar.png" />
-                                             </image>
-                                          </ImageView>
-                                          <VBox spacing="10.0">
+                                          <Label styleClass="h2" text="DatePicker" />
+                                          <HBox spacing="5.0">
                                              <children>
-                                                <DatePicker prefHeight="36.0" prefWidth="226.0" promptText="02/20/1992" />
-                                                <DatePicker disable="true" layoutX="10.0" layoutY="49.0" prefHeight="30.0" prefWidth="226.0" promptText="02/20/1992" />
-                                                <DatePicker editable="false" layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="226.0" promptText="02/20/1992" />
+                                                <ImageView fitHeight="318.0" fitWidth="284.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@theme/img/calendar.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <VBox spacing="10.0">
+                                                   <children>
+                                                      <DatePicker prefHeight="36.0" prefWidth="226.0" promptText="02/20/1992" />
+                                                      <DatePicker disable="true" layoutX="10.0" layoutY="49.0" prefHeight="30.0" prefWidth="226.0" promptText="02/20/1992" />
+                                                      <DatePicker editable="false" layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="226.0" promptText="02/20/1992" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets top="15.0" />
+                                                   </HBox.margin>
+                                                </VBox>
                                              </children>
-                                             <HBox.margin>
-                                                <Insets top="15.0" />
-                                             </HBox.margin>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox>
+                                       <children>
+                                          <Label styleClass="h2" text="RadioButton" />
+                                          <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="307.0" spacing="5.0">
+                                             <children>
+                                                <RadioButton mnemonicParsing="false" text="Default" />
+                                                <RadioButton disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Disabled" />
+                                                <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" selected="true" text="Selected" />
+                                             </children>
+                                          </HBox>
+                                          <VBox>
+                                             <children>
+                                                <Label styleClass="h2" text="TextField" />
+                                                <HBox spacing="5.0">
+                                                   <children>
+                                                      <TextField prefHeight="30.0" />
+                                                      <TextField disable="true" layoutX="242.0" layoutY="10.0" prefHeight="30.0" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
                                           </VBox>
                                        </children>
-                                    </HBox>
+                                    </VBox>
                                  </children>
-                              </VBox>
-                              <VBox layoutX="10.0" layoutY="108.0">
-                                 <children>
-                                    <Label styleClass="h2" text="CheckBox" />
-                                    <HBox spacing="5.0">
-                                       <children>
-                                          <CheckBox mnemonicParsing="false" text="Default" />
-                                          <CheckBox disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Disabled" />
-                                          <CheckBox allowIndeterminate="true" indeterminate="true" mnemonicParsing="false" selected="true" text="Indeterminated" />
-                                          <CheckBox mnemonicParsing="false" selected="true" text="Check" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                              <VBox layoutX="10.0" layoutY="537.0">
-                                 <children>
-                                    <Label styleClass="h2" text="RadioButton" />
-                                    <HBox spacing="5.0">
-                                       <children>
-                                          <RadioButton mnemonicParsing="false" text="Default" />
-                                          <RadioButton disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Disabled" />
-                                          <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" selected="true" text="Selected" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                              <VBox layoutX="10.0" layoutY="540.0">
-                                 <children>
-                                    <Label styleClass="h2" text="TextField" />
-                                    <HBox spacing="5.0">
-                                       <children>
-                                          <TextField prefHeight="30.0" />
-                                          <TextField disable="true" layoutX="242.0" layoutY="10.0" prefHeight="30.0" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
+                              </HBox>
                               <VBox layoutX="10.0" layoutY="612.0">
                                  <children>
                                     <Label styleClass="h2" text="ComboBox" />
@@ -307,6 +326,105 @@
                                              <children>
                                                 <ComboBox prefHeight="30.0" prefWidth="150.0" promptText="02/20/1992" />
                                                 <ComboBox editable="true" layoutX="10.0" layoutY="20.0" prefHeight="30.0" prefWidth="150.0" promptText="02/20/1992" />
+                                             </children>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="690.0">
+                                 <children>
+                                    <Label styleClass="h2" text="ChoiceBox" />
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@theme/img/choicebox.png" />
+                                             </image>
+                                          </ImageView>
+                                          <VBox spacing="5.0">
+                                             <children>
+                                                <ChoiceBox prefHeight="30.0" prefWidth="179.0">
+                                                   <items>
+                                                      <FXCollections fx:factory="observableArrayList">
+                                                         <String fx:value="Item 1" />
+                                                         <String fx:value="Item 2" />
+                                                         <String fx:value="Item 3" />
+                                                      </FXCollections>
+                                                   </items>
+                                                   <contextMenu>
+                                                      <ContextMenu>
+                                                         <items>
+                                                            <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                                         </items>
+                                                      </ContextMenu>
+                                                   </contextMenu>
+                                                </ChoiceBox>
+                                             </children>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="888.0">
+                                 <children>
+                                    <Label styleClass="h2" text="MenuButton" />
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@theme/img/menubutton.png" />
+                                             </image>
+                                          </ImageView>
+                                          <VBox spacing="5.0">
+                                             <children>
+                                                <MenuButton mnemonicParsing="false" prefHeight="30.0" prefWidth="179.0" text="MenuButton">
+                                                  <items>
+                                                    <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                    <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                  </items>
+                                                </MenuButton>
+                                             </children>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="1059.0">
+                                 <children>
+                                    <Label styleClass="h2" text="SplitMenuButton" />
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <ImageView fitHeight="142.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@theme/img/split.png" />
+                                             </image>
+                                          </ImageView>
+                                          <VBox spacing="5.0">
+                                             <children>
+                                                <SplitMenuButton mnemonicParsing="false" prefHeight="30.0" text="SplitMenuButton">
+                                                  <items>
+                                                    <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                    <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                  </items>
+                                                </SplitMenuButton>
+                                                <SplitMenuButton mnemonicParsing="false" prefHeight="30.0" text="SplitMenuButton">
+                                                  <items>
+                                                    <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                    <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                      <RadioMenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                                      <CheckMenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                                  </items>
+                                                </SplitMenuButton>
                                              </children>
                                              <padding>
                                                 <Insets top="10.0" />

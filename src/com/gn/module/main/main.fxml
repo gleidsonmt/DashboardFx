@@ -139,7 +139,7 @@
                                        <children>
                                           <JFXButton onMouseClicked="#buttons" text="Button" />
                                           <JFXButton layoutX="20.0" layoutY="20.0" text="CheckBox" onMouseClicked="#checkBox" />
-                                          <JFXButton layoutX="20.0" layoutY="45.0" text="ChoiceBox" />
+                                          <JFXButton layoutX="20.0" layoutY="45.0" text="ChoiceBox" onMouseClicked="#choiceBox"/>
                                           <JFXButton layoutX="20.0" layoutY="45.0" text="ComboBox" onMouseClicked="#comboBox"/>
                                           <JFXButton layoutX="20.0" layoutY="70.0" text="ColorPicker" />
                                           <JFXButton layoutX="20.0" layoutY="95.0" text="ComboBox" />

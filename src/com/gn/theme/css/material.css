@@ -74,7 +74,6 @@
 *************************************************************************************/
 
 .button, .label
-
 {
   -fx-font-family : 'Roboto';
 }
@@ -99,7 +98,7 @@
   -fx-background-color : -base;
   -fx-text-fill : white;
   -fx-border-color : transparent;
-  -fx-border-widht : 0px;
+  -fx-border-width : 0px;
 }
 
 .button:pressed, .toggle-button:pressed {
@@ -118,6 +117,7 @@
 
 .gn-buttons .gn-close, .gn-buttons .gn-minimize, .gn-buttons .gn-maximize {
   -fx-background-color : transparent;
+
 }
 
 .text-field {
@@ -154,8 +154,6 @@
   -fx-border-color : transparent;
   -fx-pref-width : 10px;
 }
-
-
 
 .date-picker > .arrow-button
 {
@@ -311,7 +309,7 @@
 }
 
 .check-box:selected:determinate .box .mark {
-  -fx-shape : "M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z";
+  -fx-shape : "M9.005,17.766l13.759,14.739h1.716L49.02,0l10.298,8.488L25.997,50.453h-3.629L0,26.897L9.005,17.766z";
     -fx-background-color : white;
     -fx-scale-x : 1.2;
     -fx-scale-y : 1.2;
@@ -405,10 +403,10 @@
 .context-menu {
     -fx-background-color: white;
     -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 0 0 0 0, 0 0 0 0, 0 0 0 0;
+    -fx-background-radius: 0 0 0 0, 0 0 0 0, 10;
     -fx-padding: 0.5em 0em 0.5em 0em; /* 6 0 6 0 */
 
-    -fx-border-color: #212121;
+    -fx-border-color: -base;
     -fx-border-style: solid;
 }
 
@@ -424,19 +422,19 @@
 
 .menu-item .label {
     -fx-padding: 0em 1.333332em 0em 0em;
-    -fx-text-fill: #212121;
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-    -fx-font-size: 11pt;
+    -fx-text-fill: -dark-gray;
+    -fx-font-family: Roboto;
+    /* -fx-font-size: 10pt; */
 }
 
-.menu-item:focused {
-     -fx-background: -fx-accent;
-     -fx-background-color: #dedede;
+.menu-item:focused, .menu-item:focused .label {
+     -fx-background-color: -base;
+     -fx-text-fill : white;
 }
 
-.menu-item:pressed
+.menu-item:pressed, .menu-item:pressed .label
 {
-    -fx-background-color: #212121;
+    -fx-background-color: derive(-base, -20%);
     -fx-text-fill: white;
 }
 
@@ -445,12 +443,14 @@
     -fx-text-fill: white;
 }
 
+
+
 .combo-box-base  {
     -fx-border-width : 1px;
     -fx-border-color : -medium-gray;
     -fx-background-color : transparent;
     -fx-background-radius: 0, 0, 0, 0;
-    -fx-padding: 0em 0.166667em 0em 0.166667em; /* 0 2px 0 2px*/
+    -fx-padding: 0em 0.166667em 0em 0.166667em; /* 0 2px 0 2px
 
     -fx-font-family: Roboto;
     /* -fx-font-size: 1.333333em; /* 16 */
@@ -482,8 +482,7 @@
 .combo-box .arrow-button .arrow {
     -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em; /* (2/3 * 4.25) 4 (2/3 * 4.25) 4 */
     -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
-     -fx-background-insets: 0 0 0 0, 0;
-    -fx-background-color: black;
+    -fx-background-insets: 0 0 0 0, 0;
 }
 
 .combo-box:editable .text-field {
@@ -499,9 +498,8 @@
 
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
     -fx-font-family: Roboto;
-    -fx-font-size: 11pt;
+    /* -fx-font-size: 11pt; */
     -fx-padding: 8;
-
 }
 
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:hover{
@@ -512,6 +510,135 @@
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected{
     -fx-background-color: -light-gray;
     -fx-text-fill: black;
+}
+
+.choice-box .open-button .arrow  {
+    -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em; /* (2/3 * 4.25) 4 (2/3 * 4.25) 4 */
+    -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
+     -fx-background-insets: 0 0 0 0, 0;
+}
+
+.choice-box {
+  -fx-border-color : -medium-gray;
+  -fx-background-color: transparent;
+  /* -fx-background-insets: -1.4, 0, 1, 2; */
+
+  -fx-background-radius: 0;
+}
+
+.choice-box:focused {
+    -fx-border-color : -base;
+    -fx-background-color: transparent;
+    -fx-background-insets: -1.4, 0, 1, 2;
+    -fx-background-radius: 0;
+}
+
+.choice-box:focused:hover {
+    /* -fx-background-color: transparent, #909090, transparent, white; */
+}
+
+.choice-box:disabled {
+    -fx-opacity: .4;
+}
+
+.split-menu-button {
+  -fx-background-color : transparent;
+  -fx-border-color : -base;
+}
+
+.split-menu-button .label {
+  -fx-background-color : transparent;
+}
+
+.split-menu-button .arrow-button {
+    -fx-border-width : 0px 0px 0px 1px;
+    -fx-border-color : -base;
+    -fx-background-color : transparent;
+}
+
+.split-menu-button:openvertically > .arrow-button > .arrow {
+    -fx-background-color: -fx-mark-highlight-color, -dark-color;
+    -fx-background-insets: 0 0 -1 0, 0;
+    -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em;
+    -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
+    -fx-background-color : -dark-gray;
+}
+
+.split-menu-button > .arrow-button > .arrow {
+    -fx-background-color: -fx-mark-highlight-color, -dark-color;
+    -fx-shape: "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z";
+    -fx-padding:  0.333333em 0.236110875em  0.333333em;
+    -fx-background-insets: 0 0 -1 0, 0;
+}
+
+.menu-button {
+  -fx-background-color : transparent;
+  -fx-border-color : -base;
+}
+
+.menu-button:openvertically > .arrow-button > .arrow {
+    -fx-background-color: -fx-mark-highlight-color, -dark-gray;
+    /* -fx-background-insets: 0 0 -1 0, 0; */
+    -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em; /* (2/3 * 4.25) 4 (2/3 * 4.25) 4 */
+    -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
+}
+
+.menu-button > .arrow-button > .arrow {
+    -fx-background-color: -fx-mark-highlight-color, -dark-gray;
+    -fx-shape: "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z";
+    -fx-padding:  0.333333em 0.236110875em  0.333333em;
+}
+
+.menu-bar {
+  -fx-background-color : -base;
+  -fx-border-width : 0px;
+  -fx-padding : 0px;
+  -fx-background-insets : 0px;
+
+}
+
+.menu-bar .container .menu:openvertically .arrow-button .arrow {
+  -fx-shape : null;
+  -fx-fill : transparent;
+  -fx-background-insets : 0px;
+  -fx-padding : 0;
+}
+
+.menu-bar>*.container>*.menu-button>*.label  {
+  -fx-padding : 10px;
+  -fx-background-insets : 0px;
+  -fx-border-width : 0px;
+  -fx-text-fill : white;
+}
+
+.menu-bar>*.container>*.menu-button:hover  {
+  -fx-background-color : derive(-base, -10%);
+  -fx-border-color : derive(-base, -10%);
+}
+
+.radio-menu-item > .left-container > .radio {
+  -fx-padding : 4px;
+}
+
+.radio-menu-item:checked > .left-container > .radio {
+    -fx-background-color: -dark-gray;
+    -fx-shape: "M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z";
+}
+.radio-menu-item:focused:checked > .left-container > .radio {
+    -fx-background-color: white;
+}
+
+.check-menu-item:checked > .left-container > .check {
+  -fx-padding : 4px;
+}
+
+.check-menu-item:checked > .left-container > .check {
+    -fx-background-color: -dark-gray;
+    -fx-shape: "M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z";
+}
+
+.check-menu-item:focused:checked > .left-container > .check {
+    -fx-background-color: white;
 }
 
 .tooltip {
@@ -529,8 +656,6 @@
 
     -fx-effect: null;
 }
-
-
 
 /************************************************************************************
 *

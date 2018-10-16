@@ -405,6 +405,12 @@ public class Main implements Initializable {
     }
 
     @FXML
+    private void choiceBox(){
+        title.setText("ChoiceBox");
+        body.setContent(ViewManager.getInstance().get("choicebox"));
+    }
+
+    @FXML
     private void radio(){
         title.setText("RadioButton");
         body.setContent(ViewManager.getInstance().get("radiobutton"));
