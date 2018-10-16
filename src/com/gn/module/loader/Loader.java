@@ -69,12 +69,12 @@ public class Loader extends Preloader {
     @Override
     public synchronized void handleApplicationNotification(Preloader.PreloaderNotification info) {
         // Handle application notification in this point (see MyApplication#Init).
+
         if (info instanceof Preloader.ProgressNotification) {
             double x = (int) ((Preloader.ProgressNotification) info).getProgress();
             double percent = x / 100;
             progressBar.progressProperty().set(percent > 1 ? 1 : percent);
         }
-
     }
 
     @Override

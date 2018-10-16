@@ -65,6 +65,11 @@
   -instagram : #2e5e86;
   -pinterest : #c61118;
   -youtube   : #ed302f; /* Falta */
+
+  -default-border   : -dark-gray;
+  -highlight-border : -base;
+  -icon-color       : -dark-gray;
+  -text-color       : -dark-gray;
 }
 
 /************************************************************************************
@@ -121,22 +126,23 @@
 }
 
 .text-field {
+  /* -fx-background-color : -medium-gray, transparent, white; */
   -fx-background-color : transparent;
-  -fx-border-color : -medium-gray;
-  -fx-background-radius : 4;
-  -fx-border-radius : 4;
+  -fx-border-color : -default-border;
+  /* -fx-background-radius : 20px;
+  -fx-border-radius : 20px; */
+
 }
 
 .text-field:focused {
   -fx-background-color : transparent;
   -fx-border-color : -base;
-  -fx-background-radius : 4;
-  -fx-border-radius : 4;
+  /* -fx-background-radius : 0; */
 }
 
 .date-picker {
   -fx-background-color : transparent;
-  -fx-border-color : -base;
+  -fx-border-color : -default-border;
 }
 
 .date-picker .date-picker-display-node:readonly {
@@ -171,7 +177,7 @@
   /* -fx-shape : "M 550 400 L 350 400 L 400 350 L 350 300 L 550 300 L 600 350 L 550 400"; */
    -fx-scale-x : 1.5;
    -fx-scale-y : 1.5;
-   -fx-background-color : -base;
+   -fx-background-color : -icon-color;
 }
 
 .date-picker-popup {
@@ -310,9 +316,9 @@
 
 .check-box:selected:determinate .box .mark {
   -fx-shape : "M9.005,17.766l13.759,14.739h1.716L49.02,0l10.298,8.488L25.997,50.453h-3.629L0,26.897L9.005,17.766z";
-    -fx-background-color : white;
-    -fx-scale-x : 1.2;
-    -fx-scale-y : 1.2;
+  -fx-background-color : white;
+  -fx-scale-x : 1.2;
+  -fx-scale-y : 1.2;
 }
 
 .check-box:hover:determinate .box  {
@@ -335,7 +341,7 @@
 }
 
 .radio-button {
-    -fx-text-fill: -dark-gray;
+    -fx-text-fill: -text-color;
 }
 
 .radio-button > .radio  {
@@ -443,15 +449,11 @@
     -fx-text-fill: white;
 }
 
-
-
 .combo-box-base  {
     -fx-border-width : 1px;
-    -fx-border-color : -medium-gray;
+    -fx-border-color : -default-border;
     -fx-background-color : transparent;
     -fx-background-radius: 0, 0, 0, 0;
-    -fx-padding: 0em 0.166667em 0em 0.166667em; /* 0 2px 0 2px
-
     -fx-font-family: Roboto;
     /* -fx-font-size: 1.333333em; /* 16 */
 }
@@ -480,9 +482,10 @@
 
 /* ARROW */
 .combo-box .arrow-button .arrow {
-    -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em; /* (2/3 * 4.25) 4 (2/3 * 4.25) 4 */
+    -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em;
     -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
     -fx-background-insets: 0 0 0 0, 0;
+    -fx-background-color : -icon-color;
 }
 
 .combo-box:editable .text-field {
@@ -515,14 +518,14 @@
 .choice-box .open-button .arrow  {
     -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em; /* (2/3 * 4.25) 4 (2/3 * 4.25) 4 */
     -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
-     -fx-background-insets: 0 0 0 0, 0;
+    -fx-background-insets: 0 0 0 0, 0;
+    -fx-background-color : -icon-color;
 }
 
 .choice-box {
-  -fx-border-color : -medium-gray;
+  -fx-border-color : -dark-gray;
   -fx-background-color: transparent;
   /* -fx-background-insets: -1.4, 0, 1, 2; */
-
   -fx-background-radius: 0;
 }
 
@@ -543,6 +546,11 @@
 
 .split-menu-button {
   -fx-background-color : transparent;
+  -fx-border-color : -default-border;
+}
+
+.split-menu-button:focused {
+  -fx-background-color : transparent;
   -fx-border-color : -base;
 }
 
@@ -550,34 +558,50 @@
   -fx-background-color : transparent;
 }
 
-.split-menu-button .arrow-button {
-    -fx-border-width : 0px 0px 0px 1px;
-    -fx-border-color : -base;
-    -fx-background-color : transparent;
-}
-
-.split-menu-button:openvertically > .arrow-button > .arrow {
-    -fx-background-color: -fx-mark-highlight-color, -dark-color;
-    -fx-background-insets: 0 0 -1 0, 0;
-    -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em;
-    -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
-    -fx-background-color : -dark-gray;
-}
-
-.split-menu-button > .arrow-button > .arrow {
-    -fx-background-color: -fx-mark-highlight-color, -dark-color;
-    -fx-shape: "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z";
-    -fx-padding:  0.333333em 0.236110875em  0.333333em;
-    -fx-background-insets: 0 0 -1 0, 0;
-}
-
-.menu-button {
+.split-menu-button:focused .arrow-button,
+.split-menu-button:openvertically:focused .arrow-button   {
   -fx-background-color : transparent;
   -fx-border-color : -base;
 }
 
+
+.split-menu-button .arrow-button {
+    -fx-border-width : 0px 0px 0px 1px;
+    -fx-border-color : -default-border;
+    -fx-background-color : transparent;
+    -fx-padding: 10 11 10 11; /* 6 8 6 8 */
+}
+
+.split-menu-button:openvertically .arrow-button {
+    -fx-border-width : 0px 0px 0px 1px;
+    -fx-border-color : -default-border;
+    -fx-background-color : transparent;
+    -fx-padding: 10;
+}
+
+
+.split-menu-button:openvertically > .arrow-button > .arrow {
+    -fx-background-color: -icon-color;
+    -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
+    -fx-background-color : -icon-color;
+}
+
+.split-menu-button > .arrow-button > .arrow {
+    -fx-background-color: -icon-color;
+    -fx-shape: "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z";
+}
+
+.menu-button {
+  -fx-background-color : transparent;
+  -fx-border-color : -default-border;
+}
+
+.menu-button:focused {
+  -fx-border-color : -base;
+}
+
 .menu-button:openvertically > .arrow-button > .arrow {
-    -fx-background-color: -fx-mark-highlight-color, -dark-gray;
+    -fx-background-color: -icon-color;
     /* -fx-background-insets: 0 0 -1 0, 0; */
     -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em; /* (2/3 * 4.25) 4 (2/3 * 4.25) 4 */
     -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
@@ -609,6 +633,10 @@
   -fx-background-insets : 0px;
   -fx-border-width : 0px;
   -fx-text-fill : white;
+}
+
+.menu-bar .container .menu:openvertically {
+  -fx-border-color : transparent;
 }
 
 .menu-bar>*.container>*.menu-button:hover  {
@@ -819,7 +847,6 @@
 .toggle-light {
   -fx-background-color : white;
   -fx-text-fill : -gray;
-  /* -fx-border-color : -gray; */
   -fx-border-width : 1px;
 }
 
@@ -1535,7 +1562,7 @@
 
 }
 
-.tab-white:disabled {
+.tab:disabled {
     -fx-opacity : .5;
 }
 

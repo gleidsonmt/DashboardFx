@@ -12,6 +12,8 @@
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
@@ -26,6 +28,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
@@ -430,8 +433,33 @@
                                                 <Insets top="10.0" />
                                              </padding>
                                           </VBox>
+                                          <SVGPath content="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
                                        </children>
                                     </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="1064.0">
+                                 <children>
+                                    <Label styleClass="h2" text="MenuBar" />
+                                    <MenuBar>
+                                      <menus>
+                                        <Menu mnemonicParsing="false" text="File">
+                                          <items>
+                                            <MenuItem mnemonicParsing="false" text="Close" />
+                                          </items>
+                                        </Menu>
+                                        <Menu mnemonicParsing="false" text="Edit">
+                                          <items>
+                                            <MenuItem mnemonicParsing="false" text="Delete" />
+                                          </items>
+                                        </Menu>
+                                        <Menu mnemonicParsing="false" text="Help">
+                                          <items>
+                                            <MenuItem mnemonicParsing="false" text="About" />
+                                          </items>
+                                        </Menu>
+                                      </menus>
+                                    </MenuBar>
                                  </children>
                               </VBox>
                            </children>

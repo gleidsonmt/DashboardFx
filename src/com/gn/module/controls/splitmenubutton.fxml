@@ -3,15 +3,13 @@
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import java.lang.String?>
 <?import java.net.URL?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -47,26 +45,12 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="198.0" prefWidth="940.0" spacing="10.0">
                                  <children>
-                                    <VBox alignment="CENTER" spacing="5.0">
-                                       <children>
-                                          <ChoiceBox prefHeight="30.0" prefWidth="179.0">
-                                             <items>
-                                                <FXCollections fx:factory="observableArrayList">
-                                                   <String fx:value="Item 1" />
-                                                   <String fx:value="Item 2" />
-                                                   <String fx:value="Item 3" />
-                                                </FXCollections>
-                                             </items>
-                                             <contextMenu>
-                                                <ContextMenu>
-                                                  <items>
-                                                    <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                                                  </items>
-                                                </ContextMenu>
-                                             </contextMenu>
-                                          </ChoiceBox>
-                                       </children>
-                                    </VBox>
+                                    <SplitMenuButton contentDisplay="TOP" layoutX="328.0" layoutY="94.0" mnemonicParsing="false" popupSide="TOP" prefHeight="30.0" prefWidth="144.0" text="SplitMenuButton">
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" text="Action 1" />
+                                          <MenuItem mnemonicParsing="false" text="Action 2" />
+                                       </items>
+                                    </SplitMenuButton>
                                  </children>
                               </HBox>
                            </children>

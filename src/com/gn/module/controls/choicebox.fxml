@@ -6,18 +6,12 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -51,55 +45,30 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
+                              <HBox alignment="CENTER" prefHeight="198.0" prefWidth="940.0" spacing="10.0">
                                  <children>
-                                    <SplitMenuButton contentDisplay="TOP" mnemonicParsing="false" popupSide="RIGHT" prefHeight="29.0" prefWidth="142.0" text="SplitMenuButton">
-                                      <items>
-                                          <RadioMenuItem mnemonicParsing="false" text="Radio" />
-                                          <CheckMenuItem mnemonicParsing="false" text="Check" />
-                                      </items>
-                                    </SplitMenuButton>
-                                    <MenuButton mnemonicParsing="false" popupSide="RIGHT" prefHeight="31.0" prefWidth="110.0" text="MenuButton">
-                                      <items>
-                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                                      </items>
-                                    </MenuButton>
-                                    <ChoiceBox prefHeight="30.0" prefWidth="179.0">
-                                       <items>
-                                          <FXCollections fx:factory="observableArrayList">
-                                             <String fx:value="Item 1" />
-                                             <String fx:value="Item 2" />
-                                             <String fx:value="Item 3" />
-                                          </FXCollections>
-                                       </items>
-                                       <contextMenu>
-                                          <ContextMenu>
-                                            <items>
-                                              <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                                            </items>
-                                          </ContextMenu>
-                                       </contextMenu>
-                                    </ChoiceBox>
+                                    <VBox alignment="CENTER" spacing="5.0">
+                                       <children>
+                                          <ChoiceBox prefHeight="30.0" prefWidth="179.0">
+                                             <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                   <String fx:value="Item 1" />
+                                                   <String fx:value="Item 2" />
+                                                   <String fx:value="Item 3" />
+                                                </FXCollections>
+                                             </items>
+                                             <contextMenu>
+                                                <ContextMenu>
+                                                  <items>
+                                                    <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                                  </items>
+                                                </ContextMenu>
+                                             </contextMenu>
+                                          </ChoiceBox>
+                                       </children>
+                                    </VBox>
                                  </children>
                               </HBox>
-                              <ComboBox prefHeight="30.0" prefWidth="179.0" promptText="ComboBox">
-                                 <items>
-                                    <FXCollections fx:factory="observableArrayList">
-                                       <String fx:value="Item 1" />
-                                       <String fx:value="Item 2" />
-                                       <String fx:value="Item 3" />
-                                    </FXCollections>
-                                 </items>
-                                 <contextMenu>
-                                    <ContextMenu>
-                                       <items>
-                                          <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                                       </items>
-                                    </ContextMenu>
-                                 </contextMenu>
-                              </ComboBox>
-                              <CheckBox mnemonicParsing="false" text="CheckBox" />
                            </children>
                         </VBox>
                         <VBox prefWidth="952.0" spacing="20.0">

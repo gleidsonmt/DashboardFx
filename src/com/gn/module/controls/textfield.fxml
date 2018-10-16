@@ -45,7 +45,7 @@
                            <children>
                               <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
                                  <children>
-                                    <TextField prefHeight="40.0" prefWidth="156.0" />
+                                    <TextField prefHeight="30.0" prefWidth="156.0" />
                                  </children>
                               </HBox>
                            </children>
@@ -83,7 +83,7 @@
                   </VBox>
                </content>
             </Tab>
-            <Tab text="Types">
+            <Tab disable="true" text="Types">
                <content>
                   <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0" style="-fx-background-color: white;">
                      <children>
@@ -120,7 +120,7 @@
                   </VBox>
                </content>
             </Tab>
-            <Tab text="Bootstrap">
+            <Tab disable="true" text="Bootstrap">
                <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>

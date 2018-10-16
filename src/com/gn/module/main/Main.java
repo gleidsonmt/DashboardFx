@@ -411,6 +411,18 @@ public class Main implements Initializable {
     }
 
     @FXML
+    private void splitMenuButton(){
+        title.setText("SplitMenuButton");
+        body.setContent(ViewManager.getInstance().get("splitmenubutton"));
+    }
+
+    @FXML
+    private void menuButton(){
+        title.setText("MenuButton");
+        body.setContent(ViewManager.getInstance().get("menubutton"));
+    }
+
+    @FXML
     private void radio(){
         title.setText("RadioButton");
         body.setContent(ViewManager.getInstance().get("radiobutton"));

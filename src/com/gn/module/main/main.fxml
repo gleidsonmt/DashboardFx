@@ -151,14 +151,16 @@
                                           <JFXButton layoutX="20.0" layoutY="245.0" text="ListView" />
                                           <JFXButton layoutX="20.0" layoutY="270.0" text="MediaView" />
                                           <JFXButton layoutX="20.0" layoutY="295.0" text="MenuBar" />
-                                          <JFXButton layoutX="20.0" layoutY="320.0" text="MenuButton" />
+                                          <JFXButton layoutX="20.0" layoutY="320.0" text="MenuButton" onMouseClicked="#menuButton"/>
                                           <JFXButton layoutX="20.0" layoutY="345.0" text="Pagination" />
                                           <JFXButton layoutX="20.0" layoutY="370.0" text="PasswordField" />
                                           <JFXButton layoutX="20.0" layoutY="395.0" text="ProgressBar" />
                                           <JFXButton layoutX="20.0" layoutY="420.0" text="ProgressIndicator" />
+                                           <JFXButton layoutX="20.0" layoutY="836.0" onMouseClicked="#radio" text="RadioButton" />
+                                          <JFXButton layoutX="20.0" layoutY="420.0" text="SplitMenuButton" onMouseClicked="#splitMenuButton"/>
                                           <JFXButton layoutX="20.0" layoutY="884.0" text="TextField" onMouseClicked="#textField"/>
                                           <JFXButton layoutX="20.0" layoutY="836.0" onMouseClicked="#toggle" text="ToggleButton" />
-                                          <JFXButton layoutX="20.0" layoutY="836.0" onMouseClicked="#radio" text="RadioButton" />
+
                                        </children>
                                     </VBox>
                                  </content>

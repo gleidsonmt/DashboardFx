@@ -5,12 +5,12 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -28,7 +28,7 @@
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Label prefHeight="38.0" prefWidth="195.0" text="CheckBox">
+                              <Label prefHeight="38.0" prefWidth="195.0" text="MenuButton">
                                  <styleClass>
                                     <String fx:value="h3" />
                                     <String fx:value="title" />
@@ -43,12 +43,14 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
+                              <HBox alignment="CENTER" prefHeight="198.0" prefWidth="940.0" spacing="10.0">
                                  <children>
-                                    <CheckBox mnemonicParsing="false" text="CheckBox">
-                                       <tooltip>
-                                          <Tooltip text="Empty Tooltip" />
-                                       </tooltip></CheckBox>
+                                    <MenuButton mnemonicParsing="false" prefHeight="30.0" text="MenuButton">
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                                      </items>
+                                    </MenuButton>
                                  </children>
                               </HBox>
                            </children>
