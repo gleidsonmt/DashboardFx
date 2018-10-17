@@ -106,7 +106,7 @@ public class Main implements Initializable {
             }
         });
 
-        body.setContent(ViewManager.getInstance().get("datepicker"));
+        body.setContent(ViewManager.getInstance().get("colorpicker"));
     }
 
     private void configPop() {
@@ -405,6 +405,13 @@ public class Main implements Initializable {
     }
 
     @FXML
+    private void colorPicker(){
+        title.setText("ComboBox");
+        body.setContent(ViewManager.getInstance().get("colorpicker"));
+    }
+
+
+    @FXML
     private void choiceBox(){
         title.setText("ChoiceBox");
         body.setContent(ViewManager.getInstance().get("choicebox"));
@@ -420,6 +427,18 @@ public class Main implements Initializable {
     private void menuButton(){
         title.setText("MenuButton");
         body.setContent(ViewManager.getInstance().get("menubutton"));
+    }
+
+    @FXML
+    private void menuBar(){
+        title.setText("MenuBar");
+        body.setContent(ViewManager.getInstance().get("menubar"));
+    }
+
+    @FXML
+    private void slider(){
+        title.setText("Slider");
+        body.setContent(ViewManager.getInstance().get("slider"));
     }
 
     @FXML

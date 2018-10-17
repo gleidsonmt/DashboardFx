@@ -17,6 +17,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
+<?import javafx.scene.control.Slider?>
 <StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.controls.Button">
    <children>
       <JFXTabPane style="-fx-tab-min-width: 100;">
@@ -27,7 +28,7 @@
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Label prefHeight="58.0" prefWidth="302.0" text="ColorPicker">
+                              <Label prefHeight="58.0" prefWidth="302.0" text="Slider">
                                  <styleClass>
                                     <String fx:value="h3" />
                                     <String fx:value="title" />
@@ -44,7 +45,7 @@
                            <children>
                               <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
                                  <children>
-                                    <ColorPicker prefHeight="30.0" prefWidth="145.0" />
+                                    <Slider prefHeight="30.0" prefWidth="145.0" />
                                  </children>
                               </HBox>
                            </children>

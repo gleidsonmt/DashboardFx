@@ -11,7 +11,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TextField?>
@@ -138,27 +140,28 @@
                                     <VBox prefHeight="200.0" prefWidth="100.0">
                                        <children>
                                           <JFXButton onMouseClicked="#buttons" text="Button" />
-                                          <JFXButton layoutX="20.0" layoutY="20.0" text="CheckBox" onMouseClicked="#checkBox" />
-                                          <JFXButton layoutX="20.0" layoutY="45.0" text="ChoiceBox" onMouseClicked="#choiceBox"/>
-                                          <JFXButton layoutX="20.0" layoutY="45.0" text="ComboBox" onMouseClicked="#comboBox"/>
-                                          <JFXButton layoutX="20.0" layoutY="70.0" text="ColorPicker" />
+                                          <JFXButton layoutX="20.0" layoutY="20.0" onMouseClicked="#checkBox" text="CheckBox" />
+                                          <JFXButton layoutX="20.0" layoutY="45.0" onMouseClicked="#choiceBox" text="ChoiceBox" />
+                                          <JFXButton layoutX="20.0" layoutY="45.0" onMouseClicked="#comboBox" text="ComboBox" />
+                                          <JFXButton layoutX="20.0" layoutY="70.0" onMouseClicked="#colorPicker" text="ColorPicker" />
                                           <JFXButton layoutX="20.0" layoutY="95.0" text="ComboBox" />
-                                          <JFXButton layoutX="20.0" layoutY="120.0" text="DatePicker" onMouseClicked="#datePicker" />
+                                          <JFXButton layoutX="20.0" layoutY="120.0" onMouseClicked="#datePicker" text="DatePicker" />
                                           <JFXButton layoutX="20.0" layoutY="145.0" text="HTMLEditor" />
                                           <JFXButton layoutX="20.0" layoutY="170.0" text="Hyperlink" />
                                           <JFXButton layoutX="20.0" layoutY="195.0" text="ImageView" />
                                           <JFXButton layoutX="20.0" layoutY="220.0" text="Label" />
                                           <JFXButton layoutX="20.0" layoutY="245.0" text="ListView" />
                                           <JFXButton layoutX="20.0" layoutY="270.0" text="MediaView" />
-                                          <JFXButton layoutX="20.0" layoutY="295.0" text="MenuBar" />
-                                          <JFXButton layoutX="20.0" layoutY="320.0" text="MenuButton" onMouseClicked="#menuButton"/>
+                                          <JFXButton layoutX="20.0" layoutY="295.0" onMouseClicked="#menuBar" text="MenuBar" />
+                                          <JFXButton layoutX="20.0" layoutY="320.0" onMouseClicked="#menuButton" text="MenuButton" />
                                           <JFXButton layoutX="20.0" layoutY="345.0" text="Pagination" />
                                           <JFXButton layoutX="20.0" layoutY="370.0" text="PasswordField" />
                                           <JFXButton layoutX="20.0" layoutY="395.0" text="ProgressBar" />
                                           <JFXButton layoutX="20.0" layoutY="420.0" text="ProgressIndicator" />
                                            <JFXButton layoutX="20.0" layoutY="836.0" onMouseClicked="#radio" text="RadioButton" />
-                                          <JFXButton layoutX="20.0" layoutY="420.0" text="SplitMenuButton" onMouseClicked="#splitMenuButton"/>
-                                          <JFXButton layoutX="20.0" layoutY="884.0" text="TextField" onMouseClicked="#textField"/>
+                                           <JFXButton layoutX="20" text="Slider" onMouseClicked="#slider"/>
+                                          <JFXButton layoutX="20.0" layoutY="420.0" onMouseClicked="#splitMenuButton" text="SplitMenuButton" />
+                                          <JFXButton layoutX="20.0" layoutY="884.0" onMouseClicked="#textField" text="TextField" />
                                           <JFXButton layoutX="20.0" layoutY="836.0" onMouseClicked="#toggle" text="ToggleButton" />
 
                                        </children>
@@ -279,6 +282,13 @@
                                     <String fx:value="btn-transparent" />
                                     <String fx:value="round" />
                                  </styleClass>
+                                 <contextMenu>
+                                    <ContextMenu>
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
                               </JFXButton>
                            </children>
                            <HBox.margin>

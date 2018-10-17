@@ -24,6 +24,7 @@ import javafx.application.Application;
 import javafx.application.Preloader;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ColorPicker;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
 
@@ -43,7 +44,7 @@ public class App extends Application {
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     @Override
     public synchronized void init(){
-        byte total = 13;
+        byte total = 15;
         increment = 100 / total;
         load("designer", "colors"); // 1
         load("designer", "cards"); // 2
@@ -58,7 +59,12 @@ public class App extends Application {
         load("controls", "choicebox");  //10
         load("controls", "splitmenubutton"); // 11
         load("controls", "menubutton");// 12
+        load("controls", "menubar");// 13
+        load("controls", "colorpicker");// 14
+        load("controls", "slider");// 15
         load("main",     "main");  // last
+
+        new ColorPicker();
         // delay
         try {
             wait(300);
