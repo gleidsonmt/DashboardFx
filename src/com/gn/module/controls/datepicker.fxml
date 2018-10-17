@@ -42,8 +42,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0" />
-                              <DatePicker prefHeight="40.0" prefWidth="270.0" />
+                              <DatePicker prefHeight="30.0" prefWidth="185.0" />
                            </children>
                         </VBox>
                         <VBox prefWidth="952.0" spacing="20.0">
