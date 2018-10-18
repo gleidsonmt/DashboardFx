@@ -145,7 +145,7 @@
                                           <JFXButton layoutX="20.0" layoutY="70.0" onMouseClicked="#colorPicker" text="ColorPicker" />
                                            <JFXButton layoutX="20.0" layoutY="45.0" onMouseClicked="#comboBox" text="ComboBox" />
                                           <JFXButton layoutX="20.0" layoutY="120.0" onMouseClicked="#datePicker" text="DatePicker" />
-                                          <JFXButton layoutX="20.0" layoutY="145.0" text="HTMLEditor" />
+                                          <JFXButton layoutX="20.0" layoutY="145.0" text="HTMLEditor" onMouseClicked="#html" />
                                           <JFXButton layoutX="20.0" layoutY="170.0" text="Hyperlink" />
                                           <JFXButton layoutX="20.0" layoutY="195.0" text="ImageView" />
                                           <JFXButton layoutX="20.0" layoutY="220.0" text="Label" />

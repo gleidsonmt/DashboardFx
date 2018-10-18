@@ -3,14 +3,11 @@
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import java.lang.String?>
 <?import java.net.URL?>
-<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.HBox?>
@@ -30,7 +27,7 @@
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Label prefHeight="38.0" prefWidth="195.0" text="ComboBox">
+                              <Label prefHeight="38.0" prefWidth="195.0" text="ProgressBar">
                                  <styleClass>
                                     <String fx:value="h3" />
                                     <String fx:value="title" />
@@ -45,32 +42,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
-                                 <children>
-                                    <ComboBox prefHeight="30.0" prefWidth="179.0" promptText="ComboBox">
-                                       <items>
-                                          <FXCollections fx:factory="observableArrayList">
-                                             <String fx:value="Item 1" />
-                                             <String fx:value="Item 2" />
-                                             <String fx:value="Item 3" />
-                                             <String fx:value="Item 3" />
-                                             <String fx:value="Item 3" />
-                                             <String fx:value="Item 3" />
-                                             <String fx:value="Item 3" />
-                                             <String fx:value="Item 3" />
-                                             <String fx:value="Item 3" />
-                                          </FXCollections>
-                                       </items>
-                                       <contextMenu>
-                                          <ContextMenu>
-                                            <items>
-                                              <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                                            </items>
-                                          </ContextMenu>
-                                       </contextMenu>
-                                    </ComboBox>
-                                 </children>
-                              </HBox>
+                              <ProgressBar prefHeight="0.0" prefWidth="200.0" progress="0.27" />
                            </children>
                         </VBox>
                         <VBox prefWidth="952.0" spacing="20.0">
@@ -111,7 +83,6 @@
             <String fx:value="tab-white" />
             <String fx:value="tab-line-aqua" />
             <String fx:value="tab-shadow-none" />
-            <String fx:value="border-bottom-1" />
          </styleClass>
       </JFXTabPane>
    </children>

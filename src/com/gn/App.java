@@ -62,6 +62,8 @@ public class App extends Application {
         load("controls", "menubar");// 13
         load("controls", "colorpicker");// 14
         load("controls", "slider");// 15
+//        load("controls", "htmleditor");// 16
+        load("controls", "progressbar");
         load("main",     "main");  // last
 
         new ColorPicker();

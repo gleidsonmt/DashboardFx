@@ -442,6 +442,12 @@ public class Main implements Initializable {
     }
 
     @FXML
+    private void html(){
+        title.setText("HTMLEditor");
+        body.setContent(ViewManager.getInstance().get("htmleditor"));
+    }
+
+    @FXML
     private void radio(){
         title.setText("RadioButton");
         body.setContent(ViewManager.getInstance().get("radiobutton"));
