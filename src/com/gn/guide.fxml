@@ -8,27 +8,36 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
@@ -242,11 +251,15 @@
                                           <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="round" text="R" />
                                           <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Default" />
                                           <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="rounded" text="Default" />
-                                          <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="rectangle" text="Default" />
+                                          <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Default">
+                                             <styleClass>
+                                                <String fx:value="rectangle" />
+                                                <String fx:value="raised" />
+                                             </styleClass></Button>
                                           <Button disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Disabled" />
                                        </children>
                                     </HBox>
-                                    <VBox>
+                                    <VBox HBox.hgrow="ALWAYS">
                                        <children>
                                           <Label styleClass="h2" text="CheckBox" />
                                           <HBox spacing="5.0">
@@ -287,7 +300,7 @@
                                           </HBox>
                                        </children>
                                     </VBox>
-                                    <VBox>
+                                    <VBox HBox.hgrow="ALWAYS">
                                        <children>
                                           <Label styleClass="h2" text="RadioButton" />
                                           <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="307.0" spacing="5.0">
@@ -311,133 +324,282 @@
                                                 <Insets top="10.0" />
                                              </VBox.margin>
                                           </VBox>
+                                          <VBox layoutX="10.0" layoutY="92.0">
+                                             <children>
+                                                <Label styleClass="h2" text="ProgressIndicator" />
+                                                <HBox spacing="5.0">
+                                                   <children>
+                                                      <ProgressIndicator progress="0.0" />
+                                                      <ProgressIndicator progress="0.61" />
+                                                      <ProgressIndicator layoutX="69.0" layoutY="10.0" />
+                                                      <ProgressIndicator disable="true" layoutX="128.0" layoutY="10.0" progress="0.61" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox layoutX="10.0" layoutY="160.0" prefHeight="106.0" prefWidth="423.0">
+                                             <children>
+                                                <Label styleClass="h2" text="ProgressBar" />
+                                                <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="423.0" spacing="5.0">
+                                                   <children>
+                                                      <ProgressBar prefHeight="18.0" prefWidth="127.0" progress="0.0" />
+                                                      <ProgressBar layoutX="10.0" layoutY="35.0" prefHeight="18.0" prefWidth="127.0" progress="0.48" />
+                                                      <ProgressBar layoutX="142.0" layoutY="35.0" prefHeight="18.0" prefWidth="127.0" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
                                        </children>
                                     </VBox>
                                  </children>
                               </HBox>
-                              <VBox layoutX="10.0" layoutY="612.0">
+                              <HBox spacing="20.0">
                                  <children>
-                                    <Label styleClass="h2" text="ComboBox" />
-                                    <HBox spacing="5.0">
+                                    <VBox>
                                        <children>
-                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@theme/img/combo.png" />
-                                             </image>
-                                          </ImageView>
-                                          <VBox spacing="5.0">
+                                          <Label styleClass="h2" text="ComboBox" />
+                                          <HBox prefWidth="515.0" spacing="5.0">
                                              <children>
-                                                <ComboBox prefHeight="30.0" prefWidth="150.0" promptText="02/20/1992" />
-                                                <ComboBox editable="true" layoutX="10.0" layoutY="20.0" prefHeight="30.0" prefWidth="150.0" promptText="02/20/1992" />
+                                                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@theme/img/combo.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <VBox spacing="5.0">
+                                                   <children>
+                                                      <ComboBox prefHeight="30.0" prefWidth="150.0" promptText="02/20/1992" />
+                                                      <ComboBox editable="true" layoutX="10.0" layoutY="20.0" prefHeight="30.0" prefWidth="150.0" promptText="02/20/1992" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
+                                                </VBox>
                                              </children>
-                                             <padding>
-                                                <Insets top="10.0" />
-                                             </padding>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="545.0" layoutY="10.0" prefHeight="106.0" prefWidth="423.0">
+                                       <children>
+                                          <Label styleClass="h2" text="Slider" />
+                                          <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="423.0" spacing="5.0">
+                                             <children>
+                                                <Slider />
+                                                <Slider layoutX="10.0" layoutY="37.0" value="50.0" />
+                                                <Slider disable="true" layoutX="10.0" layoutY="37.0" />
+                                             </children>
+                                          </HBox>
+                                          <VBox prefHeight="106.0" prefWidth="423.0">
+                                             <children>
+                                                <Label styleClass="h2" text="ToggleButton" />
+                                                <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="423.0">
+                                                   <children>
+                                                      <ToggleButton mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" selected="true" style="-fx-border-color: -base;" text="On">
+                                                         <styleClass>
+                                                            <String fx:value="toggle-light" />
+                                                            <String fx:value="toggle-left" />
+                                                            <String fx:value="btn-base" />
+                                                         </styleClass>
+                                                         <toggleGroup>
+                                                            <ToggleGroup fx:id="group" />
+                                                         </toggleGroup>
+                                                      </ToggleButton>
+                                                      <ToggleButton mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" style="-fx-border-color: -base;" text="Off" toggleGroup="$group">
+                                                         <styleClass>
+                                                            <String fx:value="toggle-light" />
+                                                            <String fx:value="toggle-right" />
+                                                            <String fx:value="btn-base" />
+                                                         </styleClass>
+                                                      </ToggleButton>
+                                                   </children>
+                                                </HBox>
+                                             </children>
                                           </VBox>
                                        </children>
-                                    </HBox>
+                                    </VBox>
                                  </children>
-                              </VBox>
-                              <VBox layoutX="10.0" layoutY="690.0">
+                              </HBox>
+                              <HBox spacing="20.0">
                                  <children>
-                                    <Label styleClass="h2" text="ChoiceBox" />
-                                    <HBox spacing="5.0">
+                                    <VBox prefWidth="515.0">
                                        <children>
-                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@theme/img/choicebox.png" />
-                                             </image>
-                                          </ImageView>
-                                          <VBox spacing="5.0">
+                                          <Label styleClass="h2" text="ChoiceBox" />
+                                          <HBox spacing="5.0">
                                              <children>
-                                                <ChoiceBox prefHeight="30.0" prefWidth="179.0">
-                                                   <items>
-                                                      <FXCollections fx:factory="observableArrayList">
-                                                         <String fx:value="Item 1" />
-                                                         <String fx:value="Item 2" />
-                                                         <String fx:value="Item 3" />
-                                                      </FXCollections>
-                                                   </items>
-                                                   <contextMenu>
-                                                      <ContextMenu>
+                                                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@theme/img/choicebox.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <VBox spacing="5.0">
+                                                   <children>
+                                                      <ChoiceBox prefHeight="30.0" prefWidth="179.0">
                                                          <items>
-                                                            <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                                            <FXCollections fx:factory="observableArrayList">
+                                                               <String fx:value="Item 1" />
+                                                               <String fx:value="Item 2" />
+                                                               <String fx:value="Item 3" />
+                                                            </FXCollections>
                                                          </items>
-                                                      </ContextMenu>
-                                                   </contextMenu>
-                                                </ChoiceBox>
+                                                         <contextMenu>
+                                                            <ContextMenu>
+                                                               <items>
+                                                                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                                               </items>
+                                                            </ContextMenu>
+                                                         </contextMenu>
+                                                      </ChoiceBox>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
+                                                </VBox>
                                              </children>
-                                             <padding>
-                                                <Insets top="10.0" />
-                                             </padding>
-                                          </VBox>
+                                          </HBox>
                                        </children>
-                                    </HBox>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="10.0">
+                                       <children>
+                                          <Label styleClass="h2" text="ColorPicker" />
+                                          <HBox spacing="5.0">
+                                             <children>
+                                                <ImageView fitHeight="262.0" fitWidth="237.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@theme/img/colorpicker.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <VBox spacing="5.0">
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox>
+                                       <children>
+                                          <ColorPicker />
+                                       </children>
+                                       <padding>
+                                          <Insets top="40.0" />
+                                       </padding>
+                                    </VBox>
                                  </children>
-                              </VBox>
+                              </HBox>
                               <VBox layoutX="10.0" layoutY="888.0">
                                  <children>
                                     <Label styleClass="h2" text="MenuButton" />
                                     <HBox spacing="5.0">
                                        <children>
-                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@theme/img/menubutton.png" />
-                                             </image>
-                                          </ImageView>
-                                          <VBox spacing="5.0">
+                                          <HBox prefWidth="515.0" spacing="20.0">
                                              <children>
-                                                <MenuButton mnemonicParsing="false" prefHeight="30.0" prefWidth="179.0" text="MenuButton">
-                                                  <items>
-                                                    <MenuItem mnemonicParsing="false" text="Action 1" />
-                                                    <MenuItem mnemonicParsing="false" text="Action 2" />
-                                                  </items>
-                                                </MenuButton>
+                                                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@theme/img/menubutton.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <VBox spacing="5.0">
+                                                   <children>
+                                                      <MenuButton mnemonicParsing="false" prefHeight="30.0" prefWidth="179.0" text="MenuButton">
+                                                        <items>
+                                                          <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                          <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                        </items>
+                                                      </MenuButton>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
+                                                </VBox>
                                              </children>
-                                             <padding>
-                                                <Insets top="10.0" />
-                                             </padding>
-                                          </VBox>
+                                          </HBox>
+                                          <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label styleClass="h2" text="Pagination" />
+                                                <HBox>
+                                                   <children>
+                                                      <Pagination maxPageIndicatorCount="5" pageCount="10" prefHeight="53.0" prefWidth="256.0" />
+                                                   </children>
+                                                </HBox>
+                                                <Label styleClass="h2" text="Spinner" />
+                                                <Spinner />
+                                             </children></VBox>
                                        </children>
                                     </HBox>
                                  </children>
                               </VBox>
-                              <VBox layoutX="10.0" layoutY="1059.0">
+                              <HBox>
                                  <children>
-                                    <Label styleClass="h2" text="SplitMenuButton" />
-                                    <HBox spacing="5.0">
+                                    <VBox prefWidth="515.0">
                                        <children>
-                                          <ImageView fitHeight="142.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@theme/img/split.png" />
-                                             </image>
-                                          </ImageView>
-                                          <VBox spacing="5.0">
+                                          <Label styleClass="h2" text="SplitMenuButton" />
+                                          <HBox spacing="5.0">
                                              <children>
-                                                <SplitMenuButton mnemonicParsing="false" prefHeight="30.0" text="SplitMenuButton">
-                                                  <items>
-                                                    <MenuItem mnemonicParsing="false" text="Action 1" />
-                                                    <MenuItem mnemonicParsing="false" text="Action 2" />
-                                                  </items>
-                                                </SplitMenuButton>
-                                                <SplitMenuButton mnemonicParsing="false" prefHeight="30.0" text="SplitMenuButton">
-                                                  <items>
-                                                    <MenuItem mnemonicParsing="false" text="Action 1" />
-                                                    <MenuItem mnemonicParsing="false" text="Action 2" />
-                                                      <RadioMenuItem mnemonicParsing="false" text="Unspecified Action" />
-                                                      <CheckMenuItem mnemonicParsing="false" text="Unspecified Action" />
-                                                  </items>
-                                                </SplitMenuButton>
+                                                <ImageView fitHeight="142.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@theme/img/split.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <VBox spacing="5.0">
+                                                   <children>
+                                                      <SplitMenuButton mnemonicParsing="false" prefHeight="30.0" text="SplitMenuButton">
+                                                        <items>
+                                                          <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                          <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                        </items>
+                                                      </SplitMenuButton>
+                                                      <SplitMenuButton mnemonicParsing="false" prefHeight="30.0" text="SplitMenuButton">
+                                                        <items>
+                                                          <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                          <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                            <RadioMenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                                            <CheckMenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                                        </items>
+                                                      </SplitMenuButton>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
+                                                </VBox>
                                              </children>
-                                             <padding>
-                                                <Insets top="10.0" />
-                                             </padding>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <HBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <VBox prefHeight="165.0" prefWidth="202.0">
+                                             <children>
+                                                <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Label styleClass="h2" text="ScrollBar" />
+                                                      <HBox prefHeight="66.0" prefWidth="443.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <ScrollBar prefHeight="22.0" prefWidth="130.0" />
+                                                            <ScrollBar orientation="VERTICAL" prefHeight="60.0" prefWidth="23.0" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
                                           </VBox>
-                                          <SVGPath content="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                                          <VBox layoutX="10.0" layoutY="10.0" prefHeight="165.0" prefWidth="202.0">
+                                             <children>
+                                                <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Label styleClass="h2" text="Hyperlink" />
+                                                      <HBox prefHeight="66.0" prefWidth="443.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Hyperlink text="Hyperlink" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
                                        </children>
                                     </HBox>
                                  </children>
-                              </VBox>
+                              </HBox>
                               <VBox layoutX="10.0" layoutY="1064.0">
                                  <children>
                                     <Label styleClass="h2" text="MenuBar" />

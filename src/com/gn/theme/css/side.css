@@ -189,6 +189,10 @@
     -jfx-rippler-fill : white;
 }
 
+
+
+
+
 .titled-pane:collapsed .title {
     -fx-background-color : transparent;
     -fx-cursor : hand;
@@ -256,4 +260,32 @@
 
 .titled-pane>*.title {
     -fx-padding: 15;
+}
+
+
+#side-bar >* .close,
+#side-bar >* .close:hover,
+#side-bar >* .close:focused,
+#side-bar >* .close:pressed {
+  -fx-background-color : transparent;
+  /* -fx-background-radius : 100px; */
+}
+
+
+ #side-bar >* .close:hover,
+ #side-bar >* .close:focused,
+ #side-bar >* .close:focused .glyph-icon{
+   -fx-fill : #00000080;
+
+}
+
+ #side-bar >* .close:focused {
+   -fx-background-color : transparent;
+ }
+
+
+
+
+ #side-bar >* .close .jfx-rippler {
+   -jfx-rippler-fill : black;
 }

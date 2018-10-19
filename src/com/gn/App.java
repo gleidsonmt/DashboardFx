@@ -44,7 +44,7 @@ public class App extends Application {
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     @Override
     public synchronized void init(){
-        byte total = 15;
+        byte total = 24 - 1; // the difference represents the views not loaded
         increment = 100 / total;
         load("designer", "colors"); // 1
         load("designer", "cards"); // 2
@@ -63,10 +63,16 @@ public class App extends Application {
         load("controls", "colorpicker");// 14
         load("controls", "slider");// 15
 //        load("controls", "htmleditor");// 16
-        load("controls", "progressbar");
+        load("controls", "progressbar"); // 17
+        load("controls", "progressindicator"); // 18
+        load("controls", "pagination"); // 19
+        load("controls", "mediaview"); // 20
+        load("controls", "listview"); // 21
+        load("controls", "label"); // 22
+        load("controls", "hyperlink"); // 23
+        load("controls", "imageview"); // 24
         load("main",     "main");  // last
 
-        new ColorPicker();
         // delay
         try {
             wait(300);
@@ -94,7 +100,7 @@ public class App extends Application {
         );
 
         decorator.initTheme(GNDecorator.Theme.DEFAULT);
-
+        decorator.setMaximized(true);
         decorator.getStage().show();
 
 

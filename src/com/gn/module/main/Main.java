@@ -469,6 +469,18 @@ public class Main implements Initializable {
     }
 
     @FXML
+    private void imageView(){
+        title.setText("ImageView");
+        body.setContent(ViewManager.getInstance().get("imageview"));
+    }
+
+    @FXML
+    private void hyperlink(){
+        title.setText("HyperLink");
+        body.setContent(ViewManager.getInstance().get("hyperlink"));
+    }
+
+    @FXML
     private void listView(){
         title.setText("ListView");
         body.setContent(ViewManager.getInstance().get("listview"));

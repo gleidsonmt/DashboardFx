@@ -13,10 +13,12 @@
 *
 *************************************************************************************/
 .root {
+
+
+
   /* bootstrap */
   -primary   : #4285f4;
   -info      : #33B5E5;
-  -base      : #2bbbad;
   -success   : #02C852;
   -warning   : #FF8800;
   -danger    : #FF3547;
@@ -66,10 +68,20 @@
   -pinterest : #c61118;
   -youtube   : #ed302f; /* Falta */
 
-  -default-border   : -medium-gray;
+  -base             : #2BBBAD;
+  -box-base         : transparent;
+  -box-text-color   : -dark-gray;
+  -box-fill         : -dark-gray;
+  -track-fill       : -light-gray;
+  -background-color : white;
+  -highlight-text   : -medium-gray;
+
+  -default-border   : -dark-gray;
   -highlight-border : -base;
   -icon-color       : -dark-gray;
   -text-color       : -dark-gray;
+
+  -fx-background-color : -background-color;
 }
 
 /************************************************************************************
@@ -78,9 +90,30 @@
 *
 *************************************************************************************/
 
-.button, .label
+.combo-box-base, .split-menu-button, .menu-button, .choice-box
+{
+  -fx-background-radius : 0px;
+}
+
+.menu-button .label, .choice-box .label, .split-menu-button .label,
+.color-picker .label {
+    -fx-text-fill : -box-text-color;
+}
+
+.menu-button:focused, .choice-box:focused, .split-menu-button:focused {
+  -fx-border-color : -base;
+}
+
+.split-menu-button, .menu-button, .choice-box,
+.split-menu-button .arrow-button, .combo-box-base   {
+  -fx-background-color : -box-base;
+  -fx-border-color : -default-border;
+}
+
+.button, .label, .combo-box-base
 {
   -fx-font-family : 'Roboto';
+  -fx-text-fill : -text-color;
 }
 
 .toggle-button {
@@ -102,7 +135,7 @@
  {
   -fx-background-color : -base;
   -fx-text-fill : white;
-  -fx-border-color : transparent;
+  /* -fx-border-color : transparent; */
   -fx-border-width : 0px;
 }
 
@@ -126,22 +159,18 @@
 }
 
 .text-field {
-  /* -fx-background-color : -medium-gray, transparent, white; */
-  -fx-background-color : transparent;
+  -fx-text-fill : -box-text-color;
+  -fx-background-color : -box-base;
   -fx-border-color : -default-border;
-  /* -fx-background-radius : 20px;
-  -fx-border-radius : 20px; */
-
 }
 
 .text-field:focused {
-  -fx-background-color : transparent;
   -fx-border-color : -base;
-  /* -fx-background-radius : 0; */
+  -fx-background-radius : 0;
 }
 
 .date-picker {
-  -fx-background-color : transparent;
+  -fx-background-color : -box-base;
   -fx-border-color : -default-border;
 }
 
@@ -159,19 +188,16 @@
   -fx-background-color : transparent;
   -fx-border-color : transparent;
   -fx-pref-width : 10px;
-}
-
-.date-picker > .arrow-button
-{
-    -fx-cursor : hand;
+  -fx-cursor : hand;
 }
 
 .date-picker .text-field {
   -fx-border-color : transparent;
+  -fx-background-color : transparent;
 }
 
 .date-picker .arrow-button .arrow,
-.date-picker:editable * .arrow-button .arrow
+.date-picker>*.arrow-button>*.arrow
 {
   -fx-shape : "M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z";
   /* -fx-shape : "M 550 400 L 350 400 L 400 350 L 350 300 L 550 300 L 600 350 L 550 400"; */
@@ -197,12 +223,26 @@
 
 .date-picker-popup > .month-year-pane {
     -fx-background-color: white;
+
+    -fx-border-color : transparent;
     -fx-background-insets: 0;
     -fx-font-size : 12px;
+
+}
+
+.date-picker-popup > .month-year-pane > .secondary-label {
+    -fx-alignment: BASELINE_CENTER;
+    -fx-padding: 0.5em 0 0 0; /* 6 0 0 0 */
+    -fx-background-color : red;
+}
+
+.date-picker-popup > .month-year-pane >* .label {
+    -fx-text-fill : -box-text-color;
 }
 
 .date-picker-popup > * > .spinner > .button {
-    -fx-padding: 0.25em 0.583333em 0.25em 0.583333em; /* 3 7 3 7 */
+    -fx-padding: 0.25em 0.583333em 0.25em 0.583333em;
+
 }
 
 .date-picker-popup > * > .spinner > .button {
@@ -221,7 +261,8 @@
     -fx-background-color: -light-gray;
 }
 
-.date-picker-popup > * > .spinner > .button:armed {
+.date-picker-popup > * > .spinner > .button:armed
+{
     -fx-background-color: #606060;
 }
 
@@ -233,7 +274,10 @@
 }
 
 .date-picker-popup > * > .spinner > .button:pressed > .left-arrow,
-.date-picker-popup > * > .spinner > .button:pressed > .right-arrow {
+.date-picker-popup > * > .spinner > .button:pressed > .right-arrow,
+.pagination .pagination-control .control-box .right-arrow-button:pressed .left-arrow ,
+.pagination .pagination-control .control-box .left-arrow-button:pressed  .right-arrow
+{
     -fx-background-color: white;
     -fx-background-insets: 0;
 }
@@ -295,14 +339,16 @@
     /* -fx-text-fill : -light-gray; */
 }
 
+
+
 .check-box {
     -fx-label-padding: 0.0em 0.0em 0.0em 0.416667em; /* 0 0 0 5 */
-    -fx-text-fill: -dark-gray;
+    -fx-text-fill : -highlight-text;
 }
 
 .check-box:determinate .box {
   -fx-background-color : transparent;
-  -fx-border-color : -dark-gray;
+  -fx-border-color : -box-fill;
   -fx-border-radius : 2px;
   -fx-border-width : 2px;
 }
@@ -341,7 +387,7 @@
 }
 
 .radio-button {
-    -fx-text-fill: -text-color;
+    -fx-text-fill: -highlight-text;
 }
 
 .radio-button > .radio  {
@@ -350,7 +396,7 @@
    -fx-background-insets: 0;
 
    -fx-border-radius: 1.0em;
-   -fx-border-color: -dark-gray;
+   -fx-border-color: -box-fill;
    -fx-border-width: 2px;
 
    -fx-padding: 4px; /* 4 -- padding from outside edge to the inner black dot */
@@ -451,14 +497,12 @@
 
 .combo-box-base  {
     -fx-border-width : 1px;
-    -fx-border-color : -default-border;
-    -fx-background-color : transparent;
-    -fx-background-radius: 0, 0, 0, 0;
-    -fx-font-family: Roboto;
+    -fx-text-fill : -box-text-color;
     /* -fx-font-size: 1.333333em; /* 16 */
 }
 
 .combo-box-base:hover {
+
     /* -fx-background-color: transparent, #909090, transparent, white; */
 }
 
@@ -468,7 +512,7 @@
 }
 
 .combo-box-base:focused:hover {
-    -fx-background-color: transparent, #909090, transparent, white;
+    /* -fx-background-color: transparent, #909090, transparent, white; */
 }
 
 .combo-box-base:disabled {
@@ -499,6 +543,7 @@
   -fx-effect: null;
 }
 
+
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
     -fx-font-family: Roboto;
     /* -fx-font-size: 11pt; */
@@ -522,36 +567,12 @@
     -fx-background-color : -icon-color;
 }
 
-.choice-box {
-  -fx-border-color : -dark-gray;
-  -fx-background-color: transparent;
-  /* -fx-background-insets: -1.4, 0, 1, 2; */
-  -fx-background-radius: 0;
-}
-
-.choice-box:focused {
-    -fx-border-color : -base;
-    -fx-background-color: transparent;
-    -fx-background-insets: -1.4, 0, 1, 2;
-    -fx-background-radius: 0;
-}
-
 .choice-box:focused:hover {
     /* -fx-background-color: transparent, #909090, transparent, white; */
 }
 
 .choice-box:disabled {
     -fx-opacity: .4;
-}
-
-.split-menu-button {
-  -fx-background-color : transparent;
-  -fx-border-color : -default-border;
-}
-
-.split-menu-button:focused {
-  -fx-background-color : transparent;
-  -fx-border-color : -base;
 }
 
 .split-menu-button .label {
@@ -591,15 +612,6 @@
     -fx-shape: "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z";
 }
 
-.menu-button {
-  -fx-background-color : transparent;
-  -fx-border-color : -default-border;
-}
-
-.menu-button:focused {
-  -fx-border-color : -base;
-}
-
 .menu-button:openvertically > .arrow-button > .arrow {
     -fx-background-color: -icon-color;
     /* -fx-background-insets: 0 0 -1 0, 0; */
@@ -637,6 +649,7 @@
 
 .menu-bar .container .menu:openvertically {
   -fx-border-color : transparent;
+  -fx-background-color : -base;
 }
 
 .menu-bar>*.container>*.menu-button:hover  {
@@ -670,14 +683,14 @@
 }
 
 .color-picker .arrow-button .arrow {
-      -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em; /* (2/3 * 4.25) 4 (2/3 * 4.25) 4 */
+  -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em; /* (2/3 * 4.25) 4 (2/3 * 4.25) 4 */
   -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
+  -fx-background-color : -icon-color;
 }
 
 .color-picker > .color-picker-label > .picker-color > .picker-color-rect {
     -fx-stroke: -dark-gray;
 }
-
 
 .color-palette {
     -fx-spacing: 0.833333em; /* 10px */
@@ -799,7 +812,6 @@
 
 .custom-color-dialog .controls-pane #settings-pane .slider {
     -fx-pref-width: 8.25em;
-
 }
 
 .custom-color-dialog .controls-pane .color-input-field {
@@ -850,18 +862,6 @@
     -fx-max-width : 65px;
 }
 
-.slider {
-}
-
-.slider .track {
-
-}
-
-.slider .thumb {
-
-}
-
-
 .slider .thumb {
     -fx-background-color: -base;
     -fx-background-insets: 0, 1, 2;
@@ -873,13 +873,13 @@
     -fx-background-radius: 1.0em; /* makes sure this remains circular */
 }
 .slider .track {
-      -fx-background-color: -light-gray;
+    -fx-background-color: -track-fill ;
     -fx-background-insets: 0 0 -1 0, 0, 1;
     -fx-background-radius: 0.25em, 0.25em, 0.166667em; /* 3 3 2 */
     -fx-padding: 0.25em; /* 3 */
 }
 .slider:vertical .track {
-    -fx-background-color:-light-gray;
+    -fx-background-color: -track-fill;
 }
 .slider .axis {
     -fx-tick-label-fill: red;
@@ -887,7 +887,6 @@
     -fx-minor-tick-length: 3px;
     -fx-border-color: null;
 }
-
 
 .html-editor-foreground {
     -fx-color-label-visible: false;
@@ -985,7 +984,7 @@
 }
 
 .progress-bar:determinate .track {
-  -fx-background-color : -light-gray;
+  -fx-background-color : -track-fill;
 }
 
 .progress-bar:determinate .bar {
@@ -1000,6 +999,217 @@
 
 .progress-bar:indeterminate .track {
     -fx-background-color : -light-gray;
+}
+
+.progress-indicator > .determinate-indicator > .indicator {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.progress-indicator:determinate .determinate-indicator .progress{
+    -fx-background-color : -base;
+}
+
+.progress-indicator:determinate .determinate-indicator .percentage {
+  -fx-fill : -box-fill;
+}
+
+.progress-indicator:indeterminate .segment {
+      -fx-background-color : -base;
+}
+
+.scroll-pane:fitToWidth .viewport {
+  -fx-background-color : -background-color;
+}
+
+.scroll-bar > .thumb{
+    -fx-background-color: #cdcdcd;
+    -fx-background-insets: 2;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar > .thumb:hover {
+    -fx-background-color: #dadada;
+}
+
+.scroll-bar > .thumb:pressed {
+    -fx-background-color: #606060;
+}
+
+.scroll-bar > .track {
+    -fx-background-color: #f0f0f0;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+.scroll-bar > .track-background {
+    -fx-background-color: #f0f0f0;
+    -fx-background-insets: 20px;
+}
+
+.scroll-bar > .increment-button,
+.scroll-bar > .decrement-button {
+    -fx-background-color: #f0f0f0;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+
+    -fx-padding: 5px; /* 3 */
+}
+
+.scroll-bar > .increment-button:hover,
+.scroll-bar > .decrement-button:hover  {
+    -fx-background-color: #dadada;
+}
+
+.scroll-bar > .increment-button:pressed,
+.scroll-bar > .decrement-button:pressed {
+    -fx-background-color: #606060;
+}
+
+.scroll-bar > .decrement-button > .decrement-arrow,
+.scroll-bar > .increment-button > .increment-arrow{
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-background-color: transparent, #606060;
+    -fx-effect: null;
+}
+
+.scroll-bar > .decrement-button:pressed > .decrement-arrow,
+.scroll-bar > .increment-button:pressed > .increment-arrow {
+    -fx-background-color: transparent, white;
+    -fx-effect: null;
+}
+
+.scroll-bar:vertical > .increment-button > .increment-arrow,
+.scroll-bar:vertical > .decrement-button > .decrement-arrow {
+    -fx-padding: 0.333333em 0.5em 0.0em 0.0em; /* 4 6 0 0 */
+}
+
+.scroll-bar:horizontal > .increment-button > .increment-arrow,
+.scroll-bar:horizontal > .decrement-button > .decrement-arrow {
+    -fx-padding: 0.5em 0.333333em 0.0em 0.0em; /* 6 4 0 0 */
+}
+
+.scroll-bar:disabled {
+    -fx-opacity: 0.4;
+}
+
+/* ARROW SHAPES */
+.scroll-bar:horizontal > .decrement-button > .decrement-arrow {
+    -fx-shape: "M11,17H8.111l-3.86-4.124l3.86-4.125H11l-3.375,4.125L11,17z";
+}
+
+.scroll-bar:horizontal > .increment-button > .increment-arrow {
+    -fx-shape: "M7.626,12.876L4.251,8.751H7.14L11,12.876L7.14,17H4.251L7.626,12.876z";
+}
+
+.scroll-bar:vertical > .decrement-button > .decrement-arrow {
+    -fx-shape: "M4,17v-2.889l4.124-3.86l4.125,3.86V17l-4.125-3.375L4,17z";
+}
+
+.scroll-bar:vertical > .increment-button > .increment-arrow {
+    -fx-shape: "M8.124,13.625l4.125-3.375v2.889l-4.125,3.86L4,13.139V10.25L8.124,13.625z";
+}
+
+
+.pagination .pagination-control .control-box .right-arrow-button,
+.pagination .pagination-control .control-box .left-arrow-button {
+  -fx-background-color : transparent;
+}
+
+.pagination .pagination-control .control-box .right-arrow-button .right-arrow {
+    -fx-shape: "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z";
+}
+
+.pagination .pagination-control .control-box .left-arrow-button .left-arrow {
+  -fx-shape: "M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z";
+}
+
+.pagination .pagination-control .control-box .number-button
+ {
+  -fx-min-width : 30px;
+  -fx-min-height : 30px;
+}
+
+.spinner {
+  /* -fx-border-color : -default-border; */
+  -fx-background-color : transparent;
+  -fx-text-fill : -default-border;
+}
+
+.spinner:focused {
+  -fx-border-color : -base;
+}
+
+.spinner .text-field,
+.spinner .text-field:readonly {
+  -fx-border-color : transparent;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button
+ {
+  -fx-background-color : transparent;
+  -fx-background-insets : 0px;
+  /* -fx-padding : 0px; */
+}
+
+.spinner .increment-arrow-button {
+  -fx-border-width : 0px 0px 1px 1px;
+}
+
+.spinner .decrement-arrow-button {
+  -fx-border-width : 0px 0px 0px 1px;
+}
+
+.list-view {
+    -fx-background-color : -box-base;
+    -fx-background-insets : 0;
+    -fx-padding: 1;
+}
+
+.list-view:focused {
+    -fx-background-color : -base;
+    -fx-background-insets : 0;
+    -fx-background-radius : 0;
+}
+
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-padding: 1em 2em 1em 2em;
+    -fx-font-family: Roboto ;
+  }
+
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-background-color: white;
+}
+
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:focused {
+    -fx-background-color: -base;
+}
+
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:hover {
+    -fx-background-color: -light-gray;
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-background-color : white;
+
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused {
+    -fx-background-color: -base;
+    -fx-background-insets: 0;
+}
+
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:selected {
+    -fx-text-fill : white;
+}
+
+.list-view:focused .virtual-flow .scroll-bar:vertical {
+  -fx-border-color :  -base -base -base transparent;
+}
+
+.hyperlink {
+  -fx-underline : false;
 }
 
 .tooltip {
@@ -1162,7 +1372,7 @@
     -fx-background-position : right;
     -fx-background-size : 20;
     -fx-background-insets : 50;
-    -fx-min-height : 35px;
+    -fx-min-height : 38px;
 }
 
 .box-search .text-field{
@@ -1266,7 +1476,7 @@
   -fx-border-radius : 0px;
 }
 
-.round {
+.round, .pagination .pagination-control .control-box .number-button {
   -fx-border-radius : 100px;
   -fx-background-radius : 100px;
 }
@@ -1655,7 +1865,9 @@
   -fx-background-color : -light-gray;
 }
 
-.flat:pressed, .flat {
+.flat:pressed, .flat, .pagination .pagination-control .control-box .number-button,
+.pagination .pagination-control .control-box .left-arrow-button,
+.pagination .pagination-control .control-box .right-arrow-button {
   -fx-scale-x : 1;
   -fx-scale-y : 1;
   -fx-cursor : hand;
@@ -1663,11 +1875,11 @@
 }
 
 .raised:pressed {
-  -fx-effect: dropshadow( gaussian , rgba(0,0,0,.2) , 20, 0 , 0 , 10 );
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,.2) , 18, 0 , 0 , 10 );
 }
 
 .raised {
-  -fx-effect: dropshadow( gaussian , rgba(0,0,0,.3) , 20, 0 , 0 , 4 );
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,.3) , 15, 0 , 0 , 4 );
 }
 
 .btn-primary:focused, .btn-primary:selected {
