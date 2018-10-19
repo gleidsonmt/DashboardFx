@@ -19,6 +19,7 @@ package com.gn.module.main;
 import com.gn.ViewManager;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXHamburger;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -73,6 +74,9 @@ public class Main implements Initializable {
     @FXML private JFXButton  home;
     @FXML private JFXButton  about;
     @FXML private JFXHamburger hamburger;
+    @FXML private FontAwesomeIconView searchIcon;
+    @FXML private Button clear;
+
 
     private FilteredList<JFXButton> filteredList = null;
 
@@ -98,15 +102,21 @@ public class Main implements Initializable {
         filteredList = new FilteredList<>(items, s -> true);
 
         search.textProperty().addListener(obs -> {
+
             String filter = search.getText();
             if (filter == null || filter.length() == 0) {
                 barInitial();
+                clear.setMouseTransparent(true);
+                searchIcon.setGlyphName("SEARCH");
             } else {
                 barFiltered(filter);
+                clear.setMouseTransparent(false);
+                searchIcon.setGlyphName("CLOSE");
+
             }
         });
 
-        body.setContent(ViewManager.getInstance().get("colorpicker"));
+        body.setContent(ViewManager.getInstance().get("listview"));
     }
 
     private void configPop() {
@@ -357,6 +367,11 @@ public class Main implements Initializable {
     }
 
     @FXML
+    private void clearText(){
+        search.clear();
+    }
+
+    @FXML
     private void colors() {
         title.setText("Designer");
         body.setContent(ViewManager.getInstance().get("colors"));
@@ -442,6 +457,24 @@ public class Main implements Initializable {
     }
 
     @FXML
+    private void mediaView(){
+        title.setText("MediaView");
+        body.setContent(ViewManager.getInstance().get("mediaview"));
+    }
+
+    @FXML
+    private void label(){
+        title.setText("Label");
+        body.setContent(ViewManager.getInstance().get("label"));
+    }
+
+    @FXML
+    private void listView(){
+        title.setText("ListView");
+        body.setContent(ViewManager.getInstance().get("listview"));
+    }
+
+    @FXML
     private void html(){
         title.setText("HTMLEditor");
         body.setContent(ViewManager.getInstance().get("htmleditor"));
@@ -452,4 +485,23 @@ public class Main implements Initializable {
         title.setText("RadioButton");
         body.setContent(ViewManager.getInstance().get("radiobutton"));
     }
+
+    @FXML
+    private void progressBar(){
+        title.setText("ProgressBar");
+        body.setContent(ViewManager.getInstance().get("progressbar"));
+    }
+
+    @FXML
+    private void progressIndicator(){
+        title.setText("ProgressIndicator");
+        body.setContent(ViewManager.getInstance().get("progressindicator"));
+    }
+
+    @FXML
+    private void pagination(){
+        title.setText("Pagination");
+        body.setContent(ViewManager.getInstance().get("pagination"));
+    }
+
 }

@@ -90,14 +90,17 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </VBox>
-                  <HBox id="box-search" fx:id="searchBox" alignment="CENTER" layoutX="10.0" layoutY="634.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="40.0" prefWidth="239.0">
+                  <HBox id="box-search" fx:id="searchBox" alignment="CENTER" layoutX="10.0" layoutY="634.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" prefWidth="239.0">
                      <children>
-                        <TextField fx:id="search" prefHeight="38.0" prefWidth="212.0" promptText="Search.." style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-                        <FontAwesomeIconView fill="#0000004d" glyphName="SEARCH" scaleX="1.4" scaleY="1.4" HBox.hgrow="ALWAYS">
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="8.0" top="5.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
+                        <TextField fx:id="search" minHeight="-Infinity" prefHeight="38.0" prefWidth="358.0" promptText="Search.." style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+                        <Button fx:id="clear" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#clearText" prefHeight="38.0" prefWidth="15.0" styleClass="close" text="Button" HBox.hgrow="ALWAYS">
+                           <graphic>
+                              <FontAwesomeIconView fx:id="searchIcon" fill="#0000007e" glyphName="SEARCH" size="16" smooth="false" textAlignment="RIGHT" wrappingWidth="16.0" />
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                      <styleClass>
                         <String fx:value="box-search" />
@@ -145,20 +148,20 @@
                                           <JFXButton layoutX="20.0" layoutY="70.0" onMouseClicked="#colorPicker" text="ColorPicker" />
                                            <JFXButton layoutX="20.0" layoutY="45.0" onMouseClicked="#comboBox" text="ComboBox" />
                                           <JFXButton layoutX="20.0" layoutY="120.0" onMouseClicked="#datePicker" text="DatePicker" />
-                                          <JFXButton layoutX="20.0" layoutY="145.0" text="HTMLEditor" onMouseClicked="#html" />
+                                          <JFXButton layoutX="20.0" layoutY="145.0" onMouseClicked="#html" text="HTMLEditor" />
                                           <JFXButton layoutX="20.0" layoutY="170.0" text="Hyperlink" />
                                           <JFXButton layoutX="20.0" layoutY="195.0" text="ImageView" />
-                                          <JFXButton layoutX="20.0" layoutY="220.0" text="Label" />
-                                          <JFXButton layoutX="20.0" layoutY="245.0" text="ListView" />
-                                          <JFXButton layoutX="20.0" layoutY="270.0" text="MediaView" />
+                                          <JFXButton layoutX="20.0" layoutY="220.0" text="Label" onMouseClicked="#label"/>
+                                          <JFXButton layoutX="20.0" layoutY="245.0" text="ListView" onMouseClicked="#listView" />
+                                          <JFXButton layoutX="20.0" layoutY="270.0" text="MediaView" onMouseClicked="#mediaView" />
                                           <JFXButton layoutX="20.0" layoutY="295.0" onMouseClicked="#menuBar" text="MenuBar" />
                                           <JFXButton layoutX="20.0" layoutY="320.0" onMouseClicked="#menuButton" text="MenuButton" />
-                                          <JFXButton layoutX="20.0" layoutY="345.0" text="Pagination" />
+                                          <JFXButton layoutX="20.0" layoutY="345.0" onMouseClicked="#pagination" text="Pagination" />
                                           <JFXButton layoutX="20.0" layoutY="370.0" text="PasswordField" />
-                                          <JFXButton layoutX="20.0" layoutY="395.0" text="ProgressBar" />
-                                          <JFXButton layoutX="20.0" layoutY="420.0" text="ProgressIndicator" />
+                                          <JFXButton layoutX="20.0" layoutY="395.0" onMouseClicked="#progressBar" text="ProgressBar" />
+                                          <JFXButton layoutX="20.0" layoutY="420.0" onMouseClicked="#progressIndicator" text="ProgressIndicator" />
                                            <JFXButton layoutX="20.0" layoutY="836.0" onMouseClicked="#radio" text="RadioButton" />
-                                           <JFXButton layoutX="20" text="Slider" onMouseClicked="#slider"/>
+                                           <JFXButton layoutX="20" onMouseClicked="#slider" text="Slider" />
                                           <JFXButton layoutX="20.0" layoutY="420.0" onMouseClicked="#splitMenuButton" text="SplitMenuButton" />
                                           <JFXButton layoutX="20.0" layoutY="884.0" onMouseClicked="#textField" text="TextField" />
                                           <JFXButton layoutX="20.0" layoutY="836.0" onMouseClicked="#toggle" text="ToggleButton" />
