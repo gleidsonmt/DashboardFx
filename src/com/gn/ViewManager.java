@@ -66,7 +66,6 @@ public class ViewManager {
     }
 
     public ObservableList<Node> getAll(){
-        ObservableList<Node> nodes = FXCollections.observableArrayList(SCREENS.values());
-        return nodes;
+        return FXCollections.observableArrayList(SCREENS.values());
     }
 }
