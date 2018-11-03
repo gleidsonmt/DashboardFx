@@ -18,6 +18,7 @@ package com.gn.module.main;
 
 import com.gn.App;
 import com.gn.ViewManager;
+import com.gn.control.UserDetail;
 import com.gn.decorator.GNDecorator;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
@@ -97,7 +98,7 @@ public class Config implements Initializable {
         }
 
         Platform.runLater(() -> {
-            Main.popup.getScene().getStylesheets().add(path + "material-colors.css");
+//          force pop's transition
             Main.popup.getRoot().getStylesheets().remove(Main.popup.getRoot().getStylesheets().size() - 1);
             Main.popConfig.getRoot().getStylesheets().remove(Main.popup.getRoot().getStylesheets().size() - 1);
             Main.popup.getRoot().getStylesheets().add(path + "pop" + theme);
