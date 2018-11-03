@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gn.control.DrawerContent?>
+<?import com.gn.control.DrawerItem?>
+<?import com.gn.control.DrawerList?>
+<?import com.gn.control.GNDrawer?>
 <?import com.jfoenix.controls.JFXBadge?>
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXHamburger?>
-<?import com.jfoenix.controls.JFXTabPane?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -15,222 +16,152 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.text.TextFlow?>
 
 <StackPane prefHeight="653.0" prefWidth="1106.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.main.Main">
    <children>
-      <HBox fx:id="main" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;">
+      <HBox fx:id="main" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <VBox id="side-bar" fx:id="sideBar" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="250.0" stylesheets="@../../theme/css/side.css">
-               <styleClass>
-                  <String fx:value="border-right-1" />
-                  <String fx:value="border-gray" />
-               </styleClass>
+            <GNDrawer fx:id="drawer" arrowContent="" email="gleidisonmt@gmail.com" name="Gleidson Neves da Silveira" spacing="20.0" type="AVATAR">
+               <image>
+                  <Image url="@../../theme/img/avatar.jpg" />
+               </image>
                <children>
-                  <VBox fx:id="info" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="165.0" prefWidth="249.0" spacing="5.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <ImageView fx:id="avatar" fitHeight="103.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
-                           <image>
-                              <Image url="@../../theme/img/avatar.jpg" />
-                           </image>
-                        </ImageView>
-                        <HBox fx:id="boxStatus" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="44.0" prefWidth="249.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="51.0" prefWidth="249.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="142.0" text="Gleidson Neves da Silveira" />
-                                    <HBox fx:id="status" alignment="CENTER" minHeight="-Infinity">
-                                       <children>
-                                          <Circle fx:id="cStatus" fill="DODGERBLUE" radius="4.0" stroke="#ffffff00" strokeType="INSIDE" styleClass="text-success">
-                                             <effect>
-                                                <DropShadow color="#00000016" />
-                                             </effect>
-                                             <HBox.margin>
-                                                <Insets right="4.0" />
-                                             </HBox.margin>
-                                          </Circle>
-                                          <Label text="Online">
-                                             <font>
-                                                <Font size="10.0" />
-                                             </font>
-                                          </Label>
-                                          <Button fx:id="btnStatus" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="btn-transparent" text="Button">
-                                             <graphic>
-                                                <SVGPath content="M7 10l5 5 5-5z" fill="#00000080" />
-                                             </graphic>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </VBox>
-                  <HBox id="box-search" fx:id="searchBox" alignment="CENTER" layoutX="10.0" layoutY="634.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" prefWidth="239.0">
+                  <HBox fx:id="searchBox" alignment="CENTER" focusTraversable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" prefWidth="239.0" styleClass="box-search">
                      <children>
                         <TextField fx:id="search" minHeight="-Infinity" prefHeight="38.0" prefWidth="358.0" promptText="Search.." style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-                        <Button fx:id="clear" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#clearText" prefHeight="38.0" prefWidth="15.0" styleClass="close" text="Button" HBox.hgrow="ALWAYS">
-                           <graphic>
-                              <FontAwesomeIconView fx:id="searchIcon" fill="#0000007e" glyphName="SEARCH" size="16" smooth="false" textAlignment="RIGHT" wrappingWidth="16.0" />
-                           </graphic>
+                        <Button fx:id="clear" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#clearText" prefHeight="38.0" prefWidth="15.0" styleClass="btn-transparent" text="Button" HBox.hgrow="ALWAYS">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <graphic>
+                              <SVGPath fx:id="searchIcon" content="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" styleClass="icon" />
+                           </graphic>
                         </Button>
                      </children>
-                     <styleClass>
-                        <String fx:value="box-search" />
-                        <String fx:value="border-1" />
-                        <String fx:value="border-gray" />
-                        <String fx:value="margin-5" />
-                     </styleClass>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="20.0" />
-                     </VBox.margin>
                   </HBox>
-                  <ScrollPane fx:id="scrollBar" fitToWidth="true" VBox.vgrow="ALWAYS">
-                     <content>
-                        <VBox fx:id="views">
+                  <ScrollPane fx:id="scroll" fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="600.0" prefWidth="250.0" stylesheets="@../../theme/css/custom-scroll.css">
+                    <content>
+                        <DrawerContent fx:id="views" alignment="TOP_CENTER" prefWidth="248.0">
                            <children>
-                              <JFXButton fx:id="home" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="6.0" layoutX="10.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" text="Dashboard">
-                                 <styleClass>
-                                    <String fx:value="transparent" />
-                                    <String fx:value="text-gray" />
-                                 </styleClass>
+                              <DrawerItem fx:id="home" onMouseClicked="#dashboard" selected="true" styleClass="rectangle" text="Dashboard">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="group" />
+                                 </toggleGroup>
                                  <graphic>
-                                    <MaterialDesignIconView fill="#0000007e" glyphName="VIEW_DASHBOARD" size="22" />
+                                    <SVGPath content="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" mouseTransparent="true" styleClass="icon" />
                                  </graphic>
-                              </JFXButton>
-                              <TitledPane fx:id="design" alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="6.0" layoutY="50.0" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" styleClass="text-gray" text="Design">
+                              </DrawerItem>
+                              <DrawerList fx:id="design" expanded="false" onMouseClicked="#cards" selected="true" styleClass="text-gray" text="Design" toggleGroup="$group">
                                  <content>
-                                    <VBox prefWidth="100.0">
+                                    <VBox styleClass="gn-drawer-list">
                                        <children>
-                                          <JFXButton layoutX="20.0" layoutY="420.0" onMouseClicked="#colors" text="Colors" />
-                                          <JFXButton layoutX="20.0" layoutY="20.0" onMouseClicked="#cards" text="Cards" />
+                                          <DrawerItem onMouseClicked="#colors" text="Colors" toggleGroup="$group" />
+                                          <DrawerItem cache="true" layoutX="20.0" layoutY="20.0" text="Cards" toggleGroup="$group" />
                                        </children>
                                     </VBox>
                                  </content>
                                  <graphic>
-                                    <MaterialDesignIconView fill="#0000007d" glyphName="PALETTE_ADVANCED" size="22" />
+                                    <SVGPath content="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" styleClass="icon" />
                                  </graphic>
-                              </TitledPane>
-                              <TitledPane fx:id="controls" alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="6.0" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" styleClass="text-gray" text="Controls">
+                              </DrawerList>
+                              <DrawerList fx:id="controls" expanded="false" layoutX="10.0" layoutY="80.0" selected="true" styleClass="text-gray" text="Controls" toggleGroup="$group">
                                  <content>
                                     <VBox prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <JFXButton onMouseClicked="#buttons" text="Button" />
-                                          <JFXButton layoutX="20.0" layoutY="20.0" onMouseClicked="#checkBox" text="CheckBox" />
-                                          <JFXButton layoutX="20.0" layoutY="45.0" onMouseClicked="#choiceBox" text="ChoiceBox" />
-                                          <JFXButton layoutX="20.0" layoutY="70.0" onMouseClicked="#colorPicker" text="ColorPicker" />
-                                           <JFXButton layoutX="20.0" layoutY="45.0" onMouseClicked="#comboBox" text="ComboBox" />
-                                          <JFXButton layoutX="20.0" layoutY="120.0" onMouseClicked="#datePicker" text="DatePicker" />
-                                          <JFXButton layoutX="20.0" layoutY="145.0" onMouseClicked="#html" text="HTMLEditor" />
-                                          <JFXButton layoutX="20.0" layoutY="170.0" text="Hyperlink" onMouseClicked="#hyperlink"/>
-                                          <JFXButton layoutX="20.0" layoutY="195.0" text="ImageView" onMouseClicked="#imageView"/>
-                                          <JFXButton layoutX="20.0" layoutY="220.0" text="Label" onMouseClicked="#label"/>
-                                          <JFXButton layoutX="20.0" layoutY="245.0" text="ListView" onMouseClicked="#listView" />
-                                          <JFXButton layoutX="20.0" layoutY="270.0" text="MediaView" onMouseClicked="#mediaView" />
-                                          <JFXButton layoutX="20.0" layoutY="295.0" onMouseClicked="#menuBar" text="MenuBar" />
-                                          <JFXButton layoutX="20.0" layoutY="320.0" onMouseClicked="#menuButton" text="MenuButton" />
-                                          <JFXButton layoutX="20.0" layoutY="345.0" onMouseClicked="#pagination" text="Pagination" />
-                                          <JFXButton layoutX="20.0" layoutY="370.0" text="PasswordField" />
-                                          <JFXButton layoutX="20.0" layoutY="395.0" onMouseClicked="#progressBar" text="ProgressBar" />
-                                          <JFXButton layoutX="20.0" layoutY="420.0" onMouseClicked="#progressIndicator" text="ProgressIndicator" />
-                                           <JFXButton layoutX="20.0" layoutY="836.0" onMouseClicked="#radio" text="RadioButton" />
-                                           <JFXButton layoutX="20" onMouseClicked="#slider" text="Slider" />
-                                          <JFXButton layoutX="20.0" layoutY="420.0" onMouseClicked="#splitMenuButton" text="SplitMenuButton" />
-                                          <JFXButton layoutX="20.0" layoutY="884.0" onMouseClicked="#textField" text="TextField" />
-                                          <JFXButton layoutX="20.0" layoutY="836.0" onMouseClicked="#toggle" text="ToggleButton" />
+                                          <DrawerItem onMouseClicked="#buttons" text="Button" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="20.0" onMouseClicked="#checkBox" text="CheckBox" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="45.0" onMouseClicked="#choiceBox" text="ChoiceBox" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="70.0" onMouseClicked="#colorPicker" text="ColorPicker" toggleGroup="$group" />
+                                           <DrawerItem layoutX="20.0" layoutY="45.0" onMouseClicked="#comboBox" text="ComboBox" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="120.0" onMouseClicked="#datePicker" text="DatePicker" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="145.0" onMouseClicked="#html" text="HTMLEditor" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="170.0" onMouseClicked="#hyperlink" text="Hyperlink" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="195.0" onMouseClicked="#imageView" text="ImageView" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="220.0" onMouseClicked="#label" text="Label" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="245.0" onMouseClicked="#listView" text="ListView" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="270.0" onMouseClicked="#mediaView" text="MediaView" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="295.0" onMouseClicked="#menuBar" text="MenuBar" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="320.0" onMouseClicked="#menuButton" text="MenuButton" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="345.0" onMouseClicked="#pagination" text="Pagination" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="370.0" onMouseClicked="#passwordField" text="PasswordField" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="395.0" onMouseClicked="#progressBar" text="ProgressBar" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="420.0" onMouseClicked="#progressIndicator" text="ProgressIndicator" toggleGroup="$group" />
+                                           <DrawerItem layoutX="20.0" layoutY="836.0" onMouseClicked="#radio" text="RadioButton" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="1076.0" onMouseClicked="#toggle" text="ScrollBar" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="1076.0" onMouseClicked="#textField" text="Separator" toggleGroup="$group" />
+                                           <DrawerItem layoutX="20" onMouseClicked="#slider" text="Slider" toggleGroup="$group" />
+                                           <DrawerItem layoutX="20" onMouseClicked="#spinner" text="Spinner" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="420.0" onMouseClicked="#splitMenuButton" text="SplitMenuButton" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="1364.0" onMouseClicked="#toggle" text="TableView" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="1172.0" onMouseClicked="#toggle" text="TextArea" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="884.0" onMouseClicked="#textField" text="TextField" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="836.0" onMouseClicked="#toggle" text="ToggleButton" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="1124.0" onMouseClicked="#toggle" text="TreeTableView" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="1172.0" onMouseClicked="#toggle" text="TreeView" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="1412.0" onMouseClicked="#toggle" text="WebView" toggleGroup="$group" />
 
                                        </children>
                                     </VBox>
                                  </content>
                                  <graphic>
-                                    <MaterialDesignIconView glyphName="CHEMICAL_WEAPON" />
+                                    <SVGPath content="M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10S2 17.52 2 12zm10 6c3.31 0 6-2.69 6-6s-2.69-6-6-6-6 2.69-6 6 2.69 6 6 6z" styleClass="icon" />
                                  </graphic>
-                              </TitledPane>
-                              <TitledPane fx:id="menu" alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="6.0" layoutX="10.0" layoutY="184.0" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" styleClass="text-gray" text="Menu">
+                              </DrawerList>
+                              <DrawerList fx:id="charts" layoutX="10.0" layoutY="130.0" selected="true" styleClass="text-gray" text="Charts" toggleGroup="$group">
                                  <content>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" />
+                                    <VBox prefHeight="200.0" prefWidth="100.0">
+                                       <children>
+                                          <DrawerItem onMouseClicked="#areaChart" text="AreaChart" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="20.0" onMouseClicked="#barChart" text="BarChart" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="68.0" onMouseClicked="#bubbleChart" text="BubbleChart" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="116.0" onMouseClicked="#lineChart" text="LineChart" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="164.0" onMouseClicked="#pieChart" text="PieChart" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="212.0" onMouseClicked="#scatterChart" text="ScatterChart" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="260.0" onMouseClicked="#stackedAreaChart" text="StackedAreaChart" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="308.0" onMouseClicked="#stackedBarChart" text="StackBarChart" toggleGroup="$group" />
+                                       </children></VBox>
                                  </content>
                                  <graphic>
-                                    <MaterialDesignIconView glyphName="TAB" />
+                                    <SVGPath content="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97" styleClass="icon" />
                                  </graphic>
-                              </TitledPane>
-                              <TitledPane fx:id="shapes" alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="6.0" layoutX="10.0" layoutY="184.0" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" styleClass="text-gray" text="Shapes">
-                                 <content>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" />
-                                 </content>
+                              </DrawerList>
+                              <DrawerItem fx:id="about" text="About" toggleGroup="$group">
                                  <graphic>
-                                    <MaterialDesignIconView glyphName="VECTOR_POLYGON" />
+                                    <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" styleClass="icon" />
                                  </graphic>
-                              </TitledPane>
-                              <TitledPane fx:id="charts" alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="6.0" layoutX="10.0" layoutY="231.0" minHeight="-Infinity" nodeOrientation="RIGHT_TO_LEFT" styleClass="text-gray" text="Charts">
-                                 <content>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" />
-                                 </content>
-                                 <graphic>
-                                    <MaterialDesignIconView glyphName="CHART_PIE" />
-                                 </graphic>
-                              </TitledPane>
-                              <JFXButton fx:id="about" alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="6.0" layoutX="10.0" layoutY="10.0" nodeOrientation="RIGHT_TO_LEFT" text="About">
-                                 <styleClass>
-                                    <String fx:value="transparent" />
-                                    <String fx:value="text-gray" />
-                                 </styleClass>
-                                 <graphic>
-                                    <MaterialDesignIconView glyphName="ACCOUNT_CIRCLE" />
-                                 </graphic>
-                              </JFXButton>
+                              </DrawerItem>
                            </children>
-                        </VBox>
-                     </content>
-                     <padding>
-                        <Insets top="20.0" />
-                     </padding>
+                        </DrawerContent>
+                    </content>
                   </ScrollPane>
                </children>
-            </VBox>
+               <styleClass>
+                  <String fx:value="border" />
+                  <String fx:value="border-right-1" />
+               </styleClass>
+            </GNDrawer>
             <VBox fx:id="content" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="904.0">
-                     <styleClass>
-                        <String fx:value="border-gray" />
-                        <String fx:value="border-bottom-1" />
-                     </styleClass>
                      <children>
                         <VBox alignment="CENTER">
-                           <children>
-                              <JFXHamburger fx:id="hamburger" onMouseClicked="#altLayout" prefHeight="40.0" prefWidth="40.0" />
-                           </children>
                            <padding>
                               <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                            </padding>
                         </VBox>
+                        <Button fx:id="hamburger" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#altLayout" prefWidth="40.0" styleClass="hamburger" text="Button">
+                           <graphic>
+                              <SVGPath content="M2 15.5v2h20v-2H2zm0-5v2h20v-2H2zm0-5v2h20v-2H2z" styleClass="icon" />
+                           </graphic>
+                        </Button>
                         <Label fx:id="title" styleClass="h4" text="Dashboard" textFill="#0000008c">
                            <font>
                               <Font size="17.0" />
@@ -238,20 +169,20 @@
                         </Label>
                         <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <JFXBadge layoutX="732.0" layoutY="12.0" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" text="2">
+                              <JFXBadge layoutX="732.0" layoutY="12.0" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" text="32">
                                  <styleClass>
                                     <String fx:value="icon" />
                                     <String fx:value="icon-danger" />
                                  </styleClass>
                                  <control>
-                                    <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 10;">
+                                    <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 10;" styleClass="icon-notification">
                                        <children>
-                                          <FontAwesomeIconView glyphName="FLAG" size="20" styleClass="text-gray" StackPane.alignment="CENTER" />
+                                          <FontAwesomeIconView glyphName="FLAG" size="20" styleClass="icon" StackPane.alignment="CENTER" />
                                        </children>
                                     </StackPane>
                                  </control>
                               </JFXBadge>
-                              <JFXBadge position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" text="2">
+                              <JFXBadge position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" text="41">
                                  <styleClass>
                                     <String fx:value="icon" />
                                     <String fx:value="icon-warning" />
@@ -259,23 +190,23 @@
                                  <control>
                                     <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 10;">
                                        <children>
-                                          <FontAwesomeIconView glyphName="BELL" size="20" styleClass="text-gray" StackPane.alignment="CENTER" />
+                                          <FontAwesomeIconView glyphName="BELL" size="20" styleClass="icon" StackPane.alignment="CENTER" />
                                        </children>
                                     </StackPane>
                                  </control>
                               </JFXBadge>
-                              <JFXBadge layoutX="759.0" layoutY="12.0" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" styleClass="icon" text="2">
+                              <JFXBadge layoutX="759.0" layoutY="12.0" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" styleClass="icon" text="12">
                                  <control>
                                     <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 10;">
                                        <children>
-                                          <FontAwesomeIconView glyphName="ENVELOPE" size="20" styleClass="text-gray" />
+                                          <FontAwesomeIconView glyphName="ENVELOPE" size="20" styleClass="icon" />
                                        </children>
                                     </StackPane>
                                  </control>
                               </JFXBadge>
-                              <JFXButton contentDisplay="GRAPHIC_ONLY" prefHeight="83.0" prefWidth="40.0" ripplerFill="BLACK">
+                              <JFXButton fx:id="config" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#openConfig" prefHeight="83.0" prefWidth="40.0" ripplerFill="BLACK">
                                  <graphic>
-                                    <SVGPath content="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="#00000080" />
+                                    <SVGPath content="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="#00000080" styleClass="icon" />
                                  </graphic>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
@@ -298,296 +229,14 @@
                            </HBox.margin>
                         </HBox>
                      </children>
+                     <styleClass>
+                        <String fx:value="border" />
+                        <String fx:value="border-bottom-1" />
+                     </styleClass>
                   </HBox>
                   <StackPane prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ScrollPane fx:id="body" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT">
-                           <content>
-                              <StackPane prefHeight="600.0" prefWidth="952.0" stylesheets="@../../theme/css/material.css">
-                                 <children>
-                                    <JFXTabPane>
-                                       <tabs>
-                                          <Tab text="Introduction">
-                                             <content>
-                                                <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0" style="-fx-background-color: white;">
-                                                   <children>
-                                                      <VBox alignment="CENTER_LEFT">
-                                                         <children>
-                                                            <Label prefHeight="38.0" prefWidth="99.0" text="Button">
-                                                               <styleClass>
-                                                                  <String fx:value="h3" />
-                                                                  <String fx:value="title" />
-                                                               </styleClass>
-                                                            </Label>
-                                                            <TextFlow prefHeight="54.0" prefWidth="952.0">
-                                                               <children>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Buttons communicate an action a user can take. They are typically placed throughout your UI, in places like dialogs, forms, cards, and toolbars. (Google)" wrappingWidth="558.283203125" />
-                                                               </children>
-                                                            </TextFlow>
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="light-gray-1" VBox.vgrow="ALWAYS">
-                                                         <children>
-                                                            <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
-                                                               <children>
-                                                                  <Button layoutX="512.0" layoutY="77.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" text="Default" />
-                                                                  <Button layoutX="558.0" layoutY="77.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="65.0" styleClass="info" text="info" />
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                   <padding>
-                                                      <Insets bottom="10.0" left="30.0" right="30.0" top="100.0" />
-                                                   </padding>
-                                                </VBox>
-                                             </content>
-                                          </Tab>
-                                          <Tab text="Combine">
-                                             <content>
-                                                <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="50.0" style="-fx-background-color: white;">
-                                                   <children>
-                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Background" />
-                                                      <VBox spacing="50.0" styleClass="light-gray-1">
-                                                         <children>
-                                                            <HBox alignment="CENTER" prefHeight="111.0" prefWidth="952.0" spacing="10.0">
-                                                               <children>
-                                                                  <GridPane prefHeight="109.0" prefWidth="133.0">
-                                                                    <columnConstraints>
-                                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                    </columnConstraints>
-                                                                    <rowConstraints>
-                                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                    </rowConstraints>
-                                                                     <children>
-                                                                        <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="61.0" style="-fx-background-radius: 0;" text="Rect" GridPane.columnIndex="1" />
-                                                                        <Button layoutX="130.0" layoutY="18.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="61.0" style="-fx-background-radius: 0;" text="Rect" />
-                                                                        <Button layoutX="30.0" layoutY="18.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="61.0" style="-fx-background-radius: 0;" text="Rect" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                                        <Button layoutX="130.0" layoutY="87.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="61.0" style="-fx-background-radius: 0;" text="Rect" GridPane.rowIndex="1" />
-                                                                     </children>
-                                                                  </GridPane>
-                                                                  <GridPane prefHeight="110.0" prefWidth="113.0">
-                                                                    <columnConstraints>
-                                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                    </columnConstraints>
-                                                                    <rowConstraints>
-                                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                    </rowConstraints>
-                                                                     <children>
-                                                                        <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="53.0" style="-fx-background-radius: 100;" text="Round" />
-                                                                        <Button layoutX="10.0" layoutY="11.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="53.0" style="-fx-background-radius: 100;" text="Round" GridPane.rowIndex="1" />
-                                                                        <Button layoutX="10.0" layoutY="66.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="53.0" style="-fx-background-radius: 100;" text="Round" GridPane.columnIndex="1" />
-                                                                        <Button layoutX="110.0" layoutY="11.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="53.0" style="-fx-background-radius: 100;" text="Round" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                                     </children>
-                                                                  </GridPane>
-                                                                  <GridPane prefHeight="110.0" prefWidth="162.0">
-                                                                    <columnConstraints>
-                                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                    </columnConstraints>
-                                                                    <rowConstraints>
-                                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                    </rowConstraints>
-                                                                     <children>
-                                                                        <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" style="-fx-background-radius: 0 0 50 0;" text="Rect" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                                        <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" style="-fx-background-radius: 0 0 0 50;" text="Rect" GridPane.rowIndex="1" />
-                                                                        <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" style="-fx-background-radius: 50 0 0 0;" text="Rect" />
-                                                                        <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" style="-fx-background-radius: 0 50 0 0;" text="Rect" GridPane.columnIndex="1" />
-                                                                     </children>
-                                                                  </GridPane>
-                                                                  <GridPane prefHeight="110.0" prefWidth="148.0">
-                                                                    <columnConstraints>
-                                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                    </columnConstraints>
-                                                                    <rowConstraints>
-                                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                    </rowConstraints>
-                                                                     <children>
-                                                                        <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="65.0" style="-fx-background-radius: 0 100 100 100;" text="info" GridPane.columnIndex="1" />
-                                                                        <Button layoutX="110.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="65.0" style="-fx-background-radius: 100 0 100 100;" text="info" />
-                                                                        <Button layoutX="10.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="65.0" style="-fx-background-radius: 100 100 0 100;" text="info" GridPane.rowIndex="1" />
-                                                                        <Button layoutX="10.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="65.0" style="-fx-background-radius: 100 100 100 0;" text="info" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                                     </children>
-                                                                  </GridPane>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER" prefHeight="174.0" prefWidth="952.0" spacing="10.0" VBox.vgrow="ALWAYS">
-                                                               <children>
-                                                                  <VBox>
-                                                                     <children>
-                                                                        <AnchorPane VBox.vgrow="ALWAYS">
-                                                                           <children>
-                                                                              <Button alignment="CENTER" layoutX="237.0" layoutY="-13.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="82.0" style="-fx-shape: &quot;M 200 350 L 250 400 L 450 400 L 500 350 L 450 300 L 250 300 L 200 350 &quot;;" styleClass="custom" text="Rect" AnchorPane.leftAnchor="240.0" />
-                                                                              <Button alignment="CENTER" layoutX="374.0" layoutY="-13.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="82.0" style="-fx-shape: &quot;M 200 350 L 250 400 L 450 400 L 500 350 L 450 300 L 250 300 L 200 350 &quot;;" styleClass="custom" text="Rect" />
-                                                                              <Button alignment="CENTER" layoutX="170.0" layoutY="61.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="82.0" style="-fx-shape: &quot;M 200 350 L 250 400 L 450 400 L 500 350 L 450 300 L 250 300 L 200 350 &quot;;" styleClass="custom" text="Rect" AnchorPane.leftAnchor="173.0" />
-                                                                              <Button alignment="CENTER" layoutX="238.0" layoutY="86.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="82.0" style="-fx-shape: &quot;M 200 350 L 250 400 L 450 400 L 500 350 L 450 300 L 250 300 L 200 350 &quot;;" styleClass="custom" text="Rect" AnchorPane.leftAnchor="240.0" />
-                                                                              <Button alignment="CENTER" layoutX="240.0" layoutY="36.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="82.0" style="-fx-shape: &quot;M 200 350 L 250 400 L 450 400 L 500 350 L 450 300 L 250 300 L 200 350 &quot;;" styleClass="custom" text="R" AnchorPane.leftAnchor="240.0" />
-                                                                              <Button alignment="CENTER" layoutX="307.0" layoutY="12.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="82.0" style="-fx-shape: &quot;M 200 350 L 250 400 L 450 400 L 500 350 L 450 300 L 250 300 L 200 350 &quot;;" styleClass="custom" text="Rect" />
-                                                                              <Button alignment="CENTER" layoutX="307.0" layoutY="61.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="82.0" style="-fx-shape: &quot;M 200 350 L 250 400 L 450 400 L 500 350 L 450 300 L 250 300 L 200 350 &quot;;" styleClass="custom" text="Rect" />
-                                                                              <Button alignment="CENTER" layoutX="374.0" layoutY="36.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="82.0" style="-fx-shape: &quot;M 200 350 L 250 400 L 450 400 L 500 350 L 450 300 L 250 300 L 200 350 &quot;;" styleClass="custom" text="Rect" />
-                                                                              <Button alignment="CENTER" layoutX="374.0" layoutY="85.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="82.0" style="-fx-shape: &quot;M 200 350 L 250 400 L 450 400 L 500 350 L 450 300 L 250 300 L 200 350 &quot;;" styleClass="custom" text="Rect" />
-                                                                           </children>
-                                                                        </AnchorPane>
-                                                                     </children>
-                                                                  </VBox>
-                                                                  <VBox prefHeight="174.0" prefWidth="475.0">
-                                                                     <children>
-                                                                        <AnchorPane VBox.vgrow="ALWAYS">
-                                                                           <children>
-                                                                              <Button alignment="CENTER" layoutX="66.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="92.0" style="-fx-shape: &quot;M 550 400 L 350 400 L 400 350 L 350 300 L 550 300 L 600 350 L 550 400 &quot;;" text="Rect" />
-                                                                              <Button alignment="CENTER" layoutX="140.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="92.0" style="-fx-shape: &quot;M 550 400 L 350 400 L 400 350 L 350 300 L 550 300 L 600 350 L 550 400 &quot;;" text="Rect" />
-                                                                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="83.0" style="-fx-shape: &quot;M 250 300 L 250 400 L 450 400 L 500 350 L 450 300 L 250 300 &quot;;" text="Rect" />
-                                                                              <Button alignment="CENTER" layoutX="213.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="80.0" style="-fx-shape: &quot;M 300 350 L 250 400 L 450 400 L 450 300 L 250 300 L 300 350 &quot;;" text="Rect" />
-                                                                           </children>
-                                                                        </AnchorPane>
-                                                                     </children>
-                                                                  </VBox>
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </VBox>
-                                             </content>
-                                          </Tab>
-                                          <Tab text="Forms">
-                                             <content>
-                                                <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0" style="-fx-background-color: white;">
-                                                   <children>
-                                                      <VBox alignment="CENTER_LEFT">
-                                                         <children>
-                                                            <Label prefHeight="38.0" prefWidth="99.0" styleClass="h3" text="Button" />
-                                                            <TextFlow prefHeight="54.0" prefWidth="952.0">
-                                                               <children>
-                                                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Buttons communicate an action a user can take. They are typically placed throughout your UI, in places like dialogs, forms, cards, and toolbars. (Google)" wrappingWidth="558.283203125" />
-                                                               </children>
-                                                            </TextFlow>
-                                                         </children>
-                                                      </VBox>
-                                                      <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="light-gray-1">
-                                                         <children>
-                                                            <Text fill="#00000066" strokeType="OUTSIDE" strokeWidth="0.0" text="Background / Radius">
-                                                               <font>
-                                                                  <Font name="Roboto Bold" size="23.0" />
-                                                               </font>
-                                                            </Text>
-                                                            <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
-                                                               <children>
-                                                                  <Button mnemonicParsing="false" prefHeight="54.0" text="Default" />
-                                                                  <Button layoutX="186.0" layoutY="67.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="61.0" styleClass="rectangle" text="Rect" />
-                                                                  <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="53.0" styleClass="round" text="Round" />
-                                                                  <Button layoutX="297.0" layoutY="67.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" styleClass="rounded" text="Rect" />
-                                                                  <Button layoutX="313.0" layoutY="52.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" styleClass="semi-leaf" text="Semi leaf" />
-                                                                  <Button layoutX="359.0" layoutY="52.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="100.0" styleClass="leaf" text="Leaf" />
-                                                                  <Button layoutX="488.0" layoutY="52.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" styleClass="mountain" text="Montain" />
-                                                                  <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="82.0" styleClass="reverse-mountain" text="Reverse" />
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
-                                                               <children>
-                                                                  <Button layoutX="297.0" layoutY="67.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" styleClass="round-tl" text="Round tl" />
-                                                                  <Button layoutX="445.0" layoutY="52.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" styleClass="round-tr" text="Round tr" />
-                                                                  <Button layoutX="491.0" layoutY="52.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" styleClass="round-bl" text="Round bl" />
-                                                                  <Button layoutX="491.0" layoutY="52.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" styleClass="round-br" text="Round br" />
-                                                                  <Button layoutX="537.0" layoutY="52.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" styleClass="pill-left" text="Pill Left" />
-                                                                  <Button layoutX="546.0" layoutY="52.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" styleClass="pill-right" text="Pill Right" />
-                                                                  <Button layoutX="512.0" layoutY="77.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" styleClass="jelly" text="jelly" />
-                                                                  <Button layoutX="558.0" layoutY="77.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="65.0" styleClass="info" text="info" />
-                                                               </children>
-                                                            </HBox>
-                                                            <Text fill="#00000066" strokeType="OUTSIDE" strokeWidth="0.0" text="Background / Shape">
-                                                               <font>
-                                                                  <Font name="System Bold" size="20.0" />
-                                                               </font>
-                                                            </Text>
-                                                            <HBox alignment="CENTER" prefWidth="200.0" spacing="10.0">
-                                                               <children>
-                                                                  <Button alignment="CENTER" layoutX="287.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="92.0" text="Parale">
-                                                                     <styleClass>
-                                                                        <String fx:value="parallelogram-l" />
-                                                                        <String fx:value="text-white" />
-                                                                     </styleClass>
-                                                                  </Button>
-                                                                  <Button alignment="CENTER" layoutX="533.0" layoutY="37.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" text="Parale">
-                                                                     <styleClass>
-                                                                        <String fx:value="parallelogram-r" />
-                                                                        <String fx:value="text-white" />
-                                                                     </styleClass>
-                                                                  </Button>
-                                                                  <Button alignment="CENTER" layoutX="440.0" layoutY="40.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="92.0" styleClass="trapeze" text="trapeze" />
-                                                                  <Button alignment="CENTER" layoutX="486.0" layoutY="40.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="trapeze-inverse" text="trapeze" />
-                                                                  <Button alignment="CENTER" layoutX="593.0" layoutY="35.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="comb-open" text="Rect" />
-                                                                  <Button alignment="CENTER" layoutX="643.0" layoutY="35.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="comb-right" text="Rect" />
-                                                                  <Button alignment="CENTER" layoutX="693.0" layoutY="35.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="comb-close" text="Rect" />
-                                                                  <Button alignment="CENTER" layoutX="743.0" layoutY="35.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="comb-left" text="Rect" />
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox alignment="CENTER" prefWidth="200.0" spacing="10.0">
-                                                               <children>
-                                                                  <Button alignment="CENTER" layoutX="287.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="82.0" styleClass="hexagom" text="Rect" />
-                                                                  <Button alignment="CENTER" layoutX="440.0" layoutY="40.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="92.0" styleClass="arrow" text="Rect" />
-                                                                  <Button alignment="CENTER" layoutX="537.0" layoutY="19.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="92.0" styleClass="star" text="Star" />
-                                                                  <Button alignment="CENTER" layoutX="486.0" layoutY="19.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="92.0" text="Star 2">
-                                                                     <styleClass>
-                                                                        <String fx:value="star-2" />
-                                                                        <String fx:value="text-white" />
-                                                                     </styleClass>
-                                                                  </Button>
-                                                                  <Button alignment="CENTER" layoutX="588.0" layoutY="19.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="72.0" text="pac">
-                                                                     <padding>
-                                                                        <Insets top="20.0" />
-                                                                     </padding>
-                                                                     <styleClass>
-                                                                        <String fx:value="pac" />
-                                                                        <String fx:value="text-white" />
-                                                                     </styleClass>
-                                                                  </Button>
-                                                                  <Button alignment="CENTER" layoutX="649.0" layoutY="27.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="88.0" text="Heart">
-                                                                     <styleClass>
-                                                                        <String fx:value="heart" />
-                                                                        <String fx:value="text-white" />
-                                                                     </styleClass>
-                                                                  </Button>
-                                                                  <Button alignment="CENTER" layoutX="690.0" layoutY="27.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="112.0" text="Tip">
-                                                                     <padding>
-                                                                        <Insets left="20.0" />
-                                                                     </padding>
-                                                                     <styleClass>
-                                                                        <String fx:value="tool-tip" />
-                                                                        <String fx:value="text-white" />
-                                                                     </styleClass>
-                                                                  </Button>
-                                                                  <Button mnemonicParsing="false" prefHeight="69.0" prefWidth="84.0" text="Button" />
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                   <padding>
-                                                      <Insets left="30.0" right="30.0" />
-                                                   </padding>
-                                                </VBox>
-                                             </content>
-                                          </Tab>
-                                       </tabs>
-                                       <styleClass>
-                                          <String fx:value="tab-white" />
-                                          <String fx:value="tab-line-aqua" />
-                                          <String fx:value="tab-shadow-none" />
-                                          <String fx:value="border-bottom-1" />
-                                          <String fx:value="border-gray" />
-                                       </styleClass>
-                                    </JFXTabPane>
-                                 </children>
-                              </StackPane>
-                           </content></ScrollPane>
+                        <ScrollPane fx:id="body" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT" />
                      </children>
                   </StackPane>
                </children>
@@ -595,12 +244,19 @@
          </children>
          <styleClass>
             <String fx:value="border-top-1" />
-            <String fx:value="border-gray" />
+            <String fx:value="border" />
          </styleClass>
       </HBox>
    </children>
    <stylesheets>
-      <URL value="@../../theme/css/material.css" />
-      <URL value="@../../theme/css/fonts.css" />
+      <URL value="@../../theme/css/material-color.css" />
+      <URL value="@../../theme/css/skeleton.css" />
+      <URL value="@../../theme/css/light.css" />
+      <URL value="@../../theme/css/bootstrap.css" />
+      <URL value="@../../theme/css/simple-green.css" />
+      <URL value="@../../theme/css/forms.css" />
+      <URL value="@../../theme/css/typographic.css" />
+      <URL value="@../../theme/css/helpers.css" />
+      <URL value="@../../theme/css/master.css" />
    </stylesheets>
 </StackPane>

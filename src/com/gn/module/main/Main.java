@@ -17,33 +17,44 @@
 package com.gn.module.main;
 
 import com.gn.ViewManager;
+import com.gn.control.DrawerContent;
+import com.gn.control.DrawerItem;
+import com.gn.control.DrawerList;
+import com.gn.control.GNDrawer;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXHamburger;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import com.jfoenix.controls.JFXPopup;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.NodeOrientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.util.Duration;
+import javafx.scene.shape.Path;
+import javafx.scene.shape.SVGPath;
+import javafx.stage.Popup;
+import javafx.stage.PopupWindow;
 import org.controlsfx.control.PopOver;
 
+import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -59,45 +70,42 @@ public class Main implements Initializable {
     @FXML private HBox searchBox;
     @FXML private HBox boxStatus;
     @FXML private VBox info;
-    @FXML private VBox views;
+    @FXML private DrawerContent views;
     @FXML private Circle cStatus;
     @FXML private HBox status;
     @FXML private ScrollPane body;
     @FXML private Label title;
     @FXML private TextField search;
-    @FXML private ScrollPane scrollBar;
-    @FXML private TitledPane design;
-    @FXML private TitledPane controls;
-    @FXML private TitledPane menu;
-    @FXML private TitledPane shapes;
-    @FXML private TitledPane charts;
-    @FXML private JFXButton  home;
-    @FXML private JFXButton  about;
-    @FXML private JFXHamburger hamburger;
-    @FXML private FontAwesomeIconView searchIcon;
+    @FXML private ScrollPane scroll;
+    @FXML private DrawerList design;
+    @FXML private DrawerList controls;
+    @FXML private DrawerList charts;
+    @FXML private DrawerItem home;
+    @FXML private DrawerItem  about;
+    @FXML private Button hamburger;
+    @FXML private SVGPath searchIcon;
     @FXML private Button clear;
+    @FXML private JFXButton config;
+    @FXML private GNDrawer drawer;
+
+    private FilteredList<DrawerItem> filteredList = null;
 
 
-    private FilteredList<JFXButton> filteredList = null;
+    public static  final PopOver popConfig = new PopOver();
+    public static  final PopOver popup = new PopOver();
 
-    private final PopOver pop = new PopOver();
+    private ObservableList<DrawerItem> items      = FXCollections.observableArrayList();
+    private ObservableList<DrawerItem> designItems = FXCollections.observableArrayList();
+    private ObservableList<DrawerItem> controlsItems = FXCollections.observableArrayList();
+    private ObservableList<DrawerItem> chartsItems = FXCollections.observableArrayList();
 
-    private ObservableList<JFXButton> items      = FXCollections.observableArrayList();
-    private ObservableList<JFXButton> designItems = FXCollections.observableArrayList();
-    private ObservableList<JFXButton> controlsItems = FXCollections.observableArrayList();
-    private ObservableList<JFXButton> menuItems = FXCollections.observableArrayList();
-    private ObservableList<JFXButton> shapesItems = FXCollections.observableArrayList();
-    private ObservableList<JFXButton> chartsItems = FXCollections.observableArrayList();
+    private Parent popContent;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        Circle circle = new Circle(45);
-        circle.setStroke(Color.WHITE);
-        circle.setCenterX(avatar.getFitWidth() / 2);
-        circle.setCenterY(avatar.getFitHeight() / 2);
-        avatar.setClip(circle);
+    public void initialize(URL location, ResourceBundle resources)  {
 
-        configPop();
+        loadContentPopup();
+
         populateItems();
         filteredList = new FilteredList<>(items, s -> true);
 
@@ -107,207 +115,133 @@ public class Main implements Initializable {
             if (filter == null || filter.length() == 0) {
                 barInitial();
                 clear.setMouseTransparent(true);
-                searchIcon.setGlyphName("SEARCH");
+                searchIcon.setContent("M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z");
             } else {
                 barFiltered(filter);
                 clear.setMouseTransparent(false);
-                searchIcon.setGlyphName("CLOSE");
+                searchIcon.setContent("M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z");
 
             }
         });
+        body.setContent(ViewManager.getInstance().get("dashboard"));
 
-        body.setContent(ViewManager.getInstance().get("listview"));
+        try {
+            addSubPop();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        drawer.setPopStylesheet(getClass().getResource("/com/gn/theme/css/popover.css"));
     }
 
-    private void configPop() {
-        pop.setCornerRadius(0);
-        pop.setArrowIndent(10);
-        pop.setArrowSize(0);
-        pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/popover.css").toExternalForm());
-    }
+    boolean scrolling = false;
+
 
     @FXML
     private void altLayout() {
-        Timeline open = new Timeline();
 
-        double init = 70;
-        double end = 250;
-        boolean scrolling = false;
-
-        if (sideBar.getPrefWidth() == end) {
-            open.getKeyFrames().addAll(
-                    new KeyFrame(Duration.ZERO, new KeyValue(sideBar.prefWidthProperty(), end)),
-                    new KeyFrame(Duration.millis(300), new KeyValue(sideBar.prefWidthProperty(), init))
-            );
-
-            sideBar.getChildren().remove(searchBox);
-            info.getChildren().remove(boxStatus);
-            avatar.setFitHeight(60);
-            avatar.setFitWidth(60);
-
-            Circle circle = new Circle(20);
-            circle.setStroke(Color.WHITE);
-            circle.setCenterX(avatar.getFitWidth() / 2);
-            circle.setCenterY(avatar.getFitHeight() / 2);
-            avatar.setClip(circle);
-
-            info.setAlignment(Pos.TOP_CENTER);
-            info.getChildren().add(cStatus);
-            cStatus.setRadius(8);
-            scrolling = true;
-
-            for (Node node : views.getChildren()) {
-
-                if (node instanceof TitledPane) {
-
-                    TitledPane pane = (TitledPane) node;
-
-                    pane.expandedProperty().set(false);
-
-                    pane.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                    pane.setAlignment(Pos.CENTER);
-                    pane.setCollapsible(false);
-
-                    if (pane.getGraphic() instanceof ImageView) {
-                        ((ImageView) pane.getGraphic()).setFitHeight(25);
-                        ((ImageView) pane.getGraphic()).setFitWidth(25);
-                    }
-                    addEvent(node);
-                }
-
-                if (node instanceof JFXButton) {
-                    JFXButton button = (JFXButton) node;
-                    button.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                    button.setAlignment(Pos.CENTER);
-                    button.setPadding(new Insets(0, 0, 0, 6));
-
-                    button.setOnMouseEntered(e -> {
-                        if (pop.isShowing())
-                            pop.hide();
-                    });
-                }
-            }
+        if(drawer.getType().equals(GNDrawer.Type.AVATAR)){
+            scrolling = false;
+            drawer.setType(GNDrawer.Type.MINIMUN);
+            drawer.getChildren().remove(searchBox);
         } else {
-            open.getKeyFrames().addAll(
-                    new KeyFrame(Duration.ZERO, new KeyValue(sideBar.prefWidthProperty(), init)),
-                    new KeyFrame(Duration.millis(300), new KeyValue(sideBar.prefWidthProperty(), end))
-            );
-
-            avatar.setFitHeight(117);
-            avatar.setFitWidth(103);
-            Circle circle = new Circle(40);
-            circle.setStroke(Color.WHITE);
-            circle.setCenterX(avatar.getFitWidth() / 2);
-            circle.setCenterY(avatar.getFitHeight() / 2);
-            avatar.setClip(circle);
-
-            info.setAlignment(Pos.CENTER);
-            info.getChildren().add(boxStatus);
-
-            sideBar.getChildren().add(searchBox);
-            searchBox.toBack();
-            info.toBack();
-            info.getChildren().remove(cStatus);
-            cStatus.setRadius(4);
-            status.getChildren().add(cStatus);
-            cStatus.toBack();
-
-            for (Node node : views.getChildren()) {
-
-                if (node instanceof TitledPane) {
-
-                    TitledPane pane = (TitledPane) node;
-
-                    pane.setContentDisplay(ContentDisplay.RIGHT);
-                    pane.setAlignment(Pos.CENTER_RIGHT);
-                    pane.setCollapsible(true);
-
-                    pane.expandedProperty().set(false);
-
-                    pane.setOnMouseEntered(null);
-                    pane.setOnMouseExited(null);
-
-                    if (pane.getGraphic() instanceof ImageView) {
-                        ((ImageView) pane.getGraphic()).setFitHeight(20);
-                        ((ImageView) pane.getGraphic()).setFitWidth(20);
-                    }
-                }
-                if (node instanceof JFXButton) {
-                    JFXButton button = (JFXButton) node;
-                    button.setContentDisplay(ContentDisplay.RIGHT);
-                    button.setAlignment(Pos.CENTER_RIGHT);
-                    button.setPadding(new Insets(0, 8, 0, 0));
-
-                }
-            }
+            scrolling = true;
+            drawer.getChildren().add(searchBox);
+            scroll.toFront();
+            drawer.setType(GNDrawer.Type.AVATAR);
         }
-
-        boolean finalScrolling = scrolling;
-
-        open.setOnFinished(event -> {
-            if (finalScrolling) {
-                scrollBar.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-                scrollBar.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-//                    sideBar.setMinWidth(end);
-            } else {
-                scrollBar.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-                scrollBar.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-//                    sideBar.setMinWidth(init);
-
-            }
-        });
-
-        open.playFrom(Duration.millis(100));
     }
 
+    private void addSubPop() throws Exception {
+        popup.setContentNode(FXMLLoader.load(getClass().getResource("/com/gn/module/main/Popover.fxml")));
+
+        popup.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+        popup.setArrowLocation(PopOver.ArrowLocation.LEFT_CENTER);
+        popup.setArrowIndent(0);
+        popup.setArrowSize(0);
+        popup.setCornerRadius(0);
+        popup.setAutoFix(true);
+        popup.setAnimated(false);
+
+        DrawerContent drawerContent;
+
+        for (Node node : drawer.getChildren()) { // root
+
+            if (node instanceof ScrollPane){
+
+                drawerContent = (DrawerContent) ((ScrollPane) node).getContent();
+
+                for(Node child : drawerContent.getChildren()){
+
+                    if(child instanceof DrawerItem){
+                        child.setOnMouseEntered(e -> {
+                            popup.setAutoHide(true);
+                            if(popup.isShowing())
+                                popup.hide();
+                        });
+                    }
+
+                    else if(child instanceof DrawerList){
+                        addEvent(child);
+                    }
+                }
+            }
+
+            else {
+                // for others layouts
+            }
+        }
+    }
+
+
     private void addEvent(Node node) {
+        popup.setAnimated(false);
+        popup.setDetached(false);
+        popup.setDetachable(false);
+        popup.setCloseButtonEnabled(false);
+        popup.setArrowSize(0);
+        popup.setHeaderAlwaysVisible(false);
 
         ScrollPane scrollPane = new ScrollPane();
+        scrollPane.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
+
         VBox v = new VBox();
         v.setPrefWidth(200);
 
-        TitledPane pane = (TitledPane) node;
+        TitledPane pane = (DrawerList) node;
         VBox vbox = (VBox) pane.getContent();
 
         for (Node btn : vbox.getChildren()) {
-            EventHandler event = ((JFXButton) btn).getOnMouseClicked();
-            String title = ((JFXButton) btn).getText();
+
+            EventHandler event = ((DrawerItem) btn).getOnMouseClicked();
+            String title = ((DrawerItem) btn).getText();
             JFXButton button = new JFXButton(title);
-            button.getStyleClass().addAll("btn-transparent", "text-gray");
-            button.setOnMouseReleased(e -> pop.hide());
-            button.setFocusTraversable(false);
+            button.setOnMouseReleased(e -> popup.hide());
             button.setPrefWidth(v.getPrefWidth());
             button.setOnMouseClicked(event);
             button.setMinHeight(40);
             v.getChildren().add(button);
         }
 
-        scrollPane.setContent(v);
-        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-
         node.setOnMouseEntered((Event e) -> {
-            pop.getRoot().setMaxHeight(600);
-            pop.setContentNode(scrollPane);
-            pop.show(node, 0);
-            scrollPane.setFocusTraversable(true);
+            if (drawer.getType() == GNDrawer.Type.MINIMUN) {
 
+                Config.ctrl.options.getChildren().clear();
+                Config.ctrl.options.getChildren().setAll(v);
+                popup.show(pane, -2);
+            }
         });
     }
 
     private void barInitial(){
         filteredList.setPredicate(s -> true);
-        scrollBar.setContent(views);
+        scroll.setContent(views);
         ( (VBox) design.getContent()).getChildren().setAll(designItems);
         ( (VBox) controls.getContent()).getChildren().setAll(controlsItems);
-        ( (VBox) menu.getContent()).getChildren().setAll(menuItems);
-        ( (VBox) shapes.getContent()).getChildren().setAll(shapesItems);
         ( (VBox) charts.getContent()).getChildren().setAll(chartsItems);
 
         views.getChildren().removeAll(home, about);
         views.getChildren().add(home);
         views.getChildren().add(about);
-        home.setContentDisplay(ContentDisplay.RIGHT);
-        about.setContentDisplay(ContentDisplay.RIGHT);
         home.toBack();
         about.toFront();
         hamburger.setMouseTransparent(false);
@@ -316,16 +250,16 @@ public class Main implements Initializable {
     private void barFiltered(String filter){
         views.getChildren().removeAll(home, about);
         filteredList.setPredicate(s -> s.getText().toUpperCase().contains(filter.toUpperCase()));
-        scrollBar.setContent(filter(filteredList));
+        scroll.setContent(filter(filteredList));
         hamburger.setMouseTransparent(true);
     }
 
-    private VBox filter(ObservableList<JFXButton>  nodes){
+    private VBox filter(ObservableList<DrawerItem>  nodes){
         VBox vBox = new VBox();
         vBox.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
         vBox.setAlignment(Pos.TOP_RIGHT);
         VBox.setVgrow(vBox, Priority.ALWAYS);
-        for (JFXButton node : nodes){
+        for (DrawerItem node : nodes){
             if (node.getGraphic() != null) node.setContentDisplay(ContentDisplay.TEXT_ONLY);
             node.setAlignment(Pos.CENTER_RIGHT);
         }
@@ -337,32 +271,52 @@ public class Main implements Initializable {
 
         for (Node node : views.getChildren()) {
             if (node instanceof JFXButton) {
-                items.add((JFXButton) node);
+                items.add((DrawerItem) node);
             }
         }
 
         for (Node node : ((VBox) controls.getContent()).getChildren()) {
-            controlsItems.add((JFXButton) node);
-            items.add((JFXButton) node);
+            controlsItems.add((DrawerItem) node);
+            items.add((DrawerItem) node);
         }
 
         for (Node node : ((VBox) design.getContent()).getChildren()) {
-            designItems.add((JFXButton) node);
-            items.add((JFXButton) node);
-        }
-
-        for (Node node : ((VBox) shapes.getContent()).getChildren()) {
-            shapesItems.add((JFXButton) node);
-        }
-
-        for (Node node : ((VBox) menu.getContent()).getChildren()) {
-            menuItems.add((JFXButton) node);
-            items.add((JFXButton) node);
+            designItems.add((DrawerItem) node);
+            items.add((DrawerItem) node);
         }
 
         for (Node node : ((VBox) charts.getContent()).getChildren()) {
-            chartsItems.add((JFXButton) node);
-            items.add((JFXButton) node);
+            chartsItems.add((DrawerItem) node);
+            items.add((DrawerItem) node);
+        }
+    }
+
+
+    private void loadContentPopup(){
+        try {
+            popContent = FXMLLoader.load(getClass().getResource("/com/gn/module/main/Config.fxml"));
+            popConfig.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+            popConfig.setContentNode(popContent);
+            popConfig.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
+            popConfig.setArrowIndent(0);
+            popConfig.setArrowSize(0);
+            popConfig.setCornerRadius(0);
+            popConfig.setAutoFix(true);
+            popConfig.setAnimated(false);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void openConfig(){
+        if(popConfig.isShowing()){
+            popConfig.hide();
+        } else {
+            popConfig.show(config, 0);
+            popConfig.getRoot().setFocusTraversable(true);
         }
     }
 
@@ -481,6 +435,12 @@ public class Main implements Initializable {
     }
 
     @FXML
+    private void spinner(){
+        title.setText("Spinner");
+        body.setContent(ViewManager.getInstance().get("spinner"));
+    }
+
+    @FXML
     private void listView(){
         title.setText("ListView");
         body.setContent(ViewManager.getInstance().get("listview"));
@@ -505,6 +465,12 @@ public class Main implements Initializable {
     }
 
     @FXML
+    private void passwordField(){
+        title.setText("PasswordField");
+        body.setContent(ViewManager.getInstance().get("passwordfield"));
+    }
+
+    @FXML
     private void progressIndicator(){
         title.setText("ProgressIndicator");
         body.setContent(ViewManager.getInstance().get("progressindicator"));
@@ -514,6 +480,61 @@ public class Main implements Initializable {
     private void pagination(){
         title.setText("Pagination");
         body.setContent(ViewManager.getInstance().get("pagination"));
+    }
+
+    @FXML
+    private void pieChart(){
+        title.setText("PieChart");
+        body.setContent(ViewManager.getInstance().get("piechart"));
+    }
+
+    @FXML
+    private void stackedBarChart(){
+        title.setText("StackedBarChart");
+        body.setContent(ViewManager.getInstance().get("stackedbarchart"));
+    }
+
+    @FXML
+    private void stackedAreaChart(){
+        title.setText("StackedAreaChart");
+        body.setContent(ViewManager.getInstance().get("stackedareachart"));
+    }
+
+    @FXML
+    private void scatterChart(){
+        title.setText("ScatterChart");
+        body.setContent(ViewManager.getInstance().get("scatterchart"));
+    }
+
+
+    @FXML
+    private void dashboard(){
+        title.setText("Dashboard");
+        body.setContent(ViewManager.getInstance().get("dashboard"));
+    }
+
+    @FXML
+    private void areaChart(){
+        title.setText("AreaChart");
+        body.setContent(ViewManager.getInstance().get("areachart"));
+    }
+
+    @FXML
+    private void barChart(){
+        title.setText("BarChart");
+        body.setContent(ViewManager.getInstance().get("barchart"));
+    }
+
+    @FXML
+    private void bubbleChart(){
+        title.setText("BubbleChart");
+        body.setContent(ViewManager.getInstance().get("bubblechart"));
+    }
+
+    @FXML
+    private void lineChart(){
+        title.setText("LineChart");
+        body.setContent(ViewManager.getInstance().get("linechart"));
     }
 
 }
