@@ -41,6 +41,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -87,6 +88,7 @@ public class Main implements Initializable {
     @FXML private Button clear;
     @FXML private JFXButton config;
     @FXML private GNDrawer drawer;
+    @FXML private DrawerItem colors;
 
     private FilteredList<DrawerItem> filteredList = null;
 
@@ -132,6 +134,12 @@ public class Main implements Initializable {
             e.printStackTrace();
         }
 //        drawer.setPopStylesheet(getClass().getResource("/com/gn/theme/css/popover.css"));
+
+
+        colors.setOnMouseClicked(event -> {
+            title.setText("Designer");
+            body.setContent(ViewManager.getInstance().get("colors"));
+        });
     }
 
     boolean scrolling = false;
@@ -144,6 +152,7 @@ public class Main implements Initializable {
             scrolling = false;
             drawer.setType(GNDrawer.Type.MINIMUN);
             drawer.getChildren().remove(searchBox);
+            addEvents();
         } else {
             scrolling = true;
             drawer.getChildren().add(searchBox);
@@ -152,17 +161,7 @@ public class Main implements Initializable {
         }
     }
 
-    private void addSubPop() throws Exception {
-        popup.setContentNode(FXMLLoader.load(getClass().getResource("/com/gn/module/main/Popover.fxml")));
-
-        popup.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
-        popup.setArrowLocation(PopOver.ArrowLocation.LEFT_CENTER);
-        popup.setArrowIndent(0);
-        popup.setArrowSize(0);
-        popup.setCornerRadius(0);
-        popup.setAutoFix(true);
-        popup.setAnimated(false);
-
+    private void addEvents(){
         DrawerContent drawerContent;
 
         for (Node node : drawer.getChildren()) { // root
@@ -193,6 +192,17 @@ public class Main implements Initializable {
         }
     }
 
+    private void addSubPop() throws Exception {
+        popup.setContentNode(FXMLLoader.load(getClass().getResource("/com/gn/module/main/Popover.fxml")));
+
+        popup.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+        popup.setArrowLocation(PopOver.ArrowLocation.LEFT_CENTER);
+        popup.setArrowIndent(0);
+        popup.setArrowSize(0);
+        popup.setCornerRadius(0);
+        popup.setAutoFix(true);
+        popup.setAnimated(false);
+    }
 
     private void addEvent(Node node) {
         popup.setAnimated(false);
@@ -214,20 +224,23 @@ public class Main implements Initializable {
         for (Node btn : vbox.getChildren()) {
 
             EventHandler event = ((DrawerItem) btn).getOnMouseClicked();
-            String title = ((DrawerItem) btn).getText();
-            JFXButton button = new JFXButton(title);
-            button.setOnMouseReleased(e -> popup.hide());
+            String text = ((DrawerItem) btn).getText();
+            JFXButton button = new JFXButton(text);
             button.setPrefWidth(v.getPrefWidth());
-            button.setOnMouseClicked(event);
+            button.setOnMouseClicked(e -> {
+                    body.setContent(ViewManager.getInstance().get(button.getText().toLowerCase()));
+                    title.setText(button.getText());
+                    popup.hide();
+            });
             button.setMinHeight(40);
             v.getChildren().add(button);
         }
 
+//        Popover.ctrl.options.getChildren().clear();
+
         node.setOnMouseEntered((Event e) -> {
             if (drawer.getType() == GNDrawer.Type.MINIMUN) {
-
-                Config.ctrl.options.getChildren().clear();
-                Config.ctrl.options.getChildren().setAll(v);
+                Popover.ctrl.options.getChildren().setAll(v);
                 popup.show(pane, -2);
             }
         });
@@ -326,11 +339,6 @@ public class Main implements Initializable {
         search.clear();
     }
 
-    @FXML
-    private void colors() {
-        title.setText("Designer");
-        body.setContent(ViewManager.getInstance().get("colors"));
-    }
 
     @FXML
     private void buttons() {

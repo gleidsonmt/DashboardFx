@@ -76,7 +76,6 @@ public class Config implements Initializable {
             invert = false;
         }
 
-
         ObservableList<String> stylesheets = App.decorator.getStage().getScene().getStylesheets();
 
         stylesheets.addAll(
@@ -92,7 +91,6 @@ public class Config implements Initializable {
                 getClass().getResource(path + "master.css").toExternalForm()
         );
 
-        System.out.println(path + "pop" + theme);
         for (Node node : ViewManager.getInstance().getAll()) {
             ((StackPane) node).getStylesheets().setAll(stylesheets);
         }

@@ -59,11 +59,11 @@
                                     <SVGPath content="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" mouseTransparent="true" styleClass="icon" />
                                  </graphic>
                               </DrawerItem>
-                              <DrawerList fx:id="design" expanded="false" onMouseClicked="#cards" selected="true" styleClass="text-gray" text="Design" toggleGroup="$group">
+                              <DrawerList fx:id="design" expanded="false" selected="true" styleClass="text-gray" text="Design" toggleGroup="$group">
                                  <content>
                                     <VBox styleClass="gn-drawer-list">
                                        <children>
-                                          <DrawerItem onMouseClicked="#colors" text="Colors" toggleGroup="$group" />
+                                          <DrawerItem fx:id="colors" text="Colors" toggleGroup="$group" />
                                           <DrawerItem cache="true" layoutX="20.0" layoutY="20.0" text="Cards" toggleGroup="$group" />
                                        </children>
                                     </VBox>
