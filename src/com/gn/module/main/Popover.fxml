@@ -20,7 +20,7 @@
                         <MaterialDesignIconView glyphName="ACCOUNT_CIRCLE" size="25" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="theme" alignment="BASELINE_LEFT" graphicTextGap="20.0" onMouseClicked="#altTheme" prefHeight="50.0" prefWidth="241.0" text="Theme Dark : desatived ">
+                  <JFXButton fx:id="theme" alignment="BASELINE_LEFT" graphicTextGap="20.0" prefHeight="50.0" prefWidth="241.0" text="Theme Dark : desatived ">
                      <padding>
                         <Insets left="28.0" />
                      </padding>
