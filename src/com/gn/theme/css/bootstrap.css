@@ -1,0 +1,127 @@
+
+/************************************************************************************
+*
+*               @-fx-background-size
+*
+*************************************************************************************/
+
+.btn-small
+{
+  -fx-pref-height : 30px;
+  -fx-max-height : 30px;
+  -fx-min-height : 30px;
+}
+
+.btn-medium
+{
+  -fx-pref-height : 40px;
+  -fx-max-height : 40px;
+  -fx-min-height : 40px;
+}
+
+.btn-large
+ {
+  -fx-pref-height : 50px;
+  -fx-max-height : 50px;
+  -fx-min-height : 50px;
+}
+
+/************************************************************************************
+*
+*               @-fx-background-color
+*
+*************************************************************************************/
+
+.outlined, .outlined:hover, .btn-flat, .btn-flat:hover, .btn-transparent:focused,
+.btn-transparent, .btn-transparent:pressed, .btn-transparent:hover
+{
+  -fx-background-color : transparent;
+}
+
+.btn-flat:focused {
+  -fx-background-color : derive(-base, 90%);
+}
+
+.btn-primary
+{
+  -base : -primary;
+  -fx-background-color : -base;
+}
+
+.btn-info {
+  -base : -info;
+  -fx-background-color : -base;
+}
+
+.btn-success {
+  -base : -success;
+  -fx-background-color : -success;
+}
+
+.btn-warning {
+  -base : -warning;
+  -fx-background-color : -base;
+}
+
+.btn-danger {
+  -base : -danger;
+  -fx-background-color : -base;
+}
+
+.btn-secondary {
+  -base : -purple;
+  -fx-background-color : -base;
+}
+
+
+
+/************************************************************************************
+*
+*               @-fx-border-width
+*
+*************************************************************************************/
+
+.outlined, .btn-flat:hover
+{
+  -fx-border-width : 1px;
+}
+
+.outlined:hover
+{
+  -fx-border-width : 2px;
+}
+
+/************************************************************************************
+*
+*               @-fx-border-color
+*
+*************************************************************************************/
+
+.outlined, .btn-flat:hover
+{
+    -fx-border-color : -base;
+}
+
+/************************************************************************************
+*
+*               @-fx-text-fill
+*
+*************************************************************************************/
+
+.outlined:focused
+{
+  -fx-text-fill : white;
+}
+
+.outlined, .btn-flat,
+.outlined:pressed, .outlined:focus,
+.outlined:hover
+{
+  -fx-text-fill : -base;
+}
+
+.text-gray, .h3, .h4, .h5, .h6, .text-gray .text, .text-gray SVGPath
+{
+    -fx-fill : -gray;
+    -fx-text-fill : -gray;
+}
