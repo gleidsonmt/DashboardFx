@@ -100,6 +100,7 @@ public class Main implements Initializable {
     private ObservableList<DrawerItem> chartsItems = FXCollections.observableArrayList();
 
     private Parent popContent;
+    private String path = "/com/gn/theme/css/";
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
