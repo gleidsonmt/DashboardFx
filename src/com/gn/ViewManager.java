@@ -18,6 +18,8 @@ package com.gn;
 
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Preloader;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
@@ -61,5 +63,10 @@ public class ViewManager {
 
     Node getCurrentView(){
         return SCREENS.get(nameView);
+    }
+
+    public ObservableList<Node> getAll(){
+        ObservableList<Node> nodes = FXCollections.observableArrayList(SCREENS.values());
+        return nodes;
     }
 }
