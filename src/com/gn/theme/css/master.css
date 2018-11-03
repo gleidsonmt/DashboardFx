@@ -1,0 +1,113 @@
+
+/*
+    Created on : 25/10/2018, 18:42:15
+    Author     : Gleidson Neves da Silveira
+    Samples styles
+*/
+
+.btn-hover
+{
+  -fx-background-color : derive(-base, -40%);
+}
+
+.btn-focused
+{
+  -fx-background-color : derive(-base, -40%), derive(-base, -40%), derive(-base, -40%), -base;
+}
+
+.gn-buttons .gn-close, .gn-buttons .gn-minimize, .gn-buttons .gn-maximize,
+.gn-buttons .gn-full-screen
+ {
+  -fx-background-color : transparent;
+  -fx-cursor : default;
+}
+
+.gn-drawer-item:hover
+{
+  -fx-background-color : transparent;
+}
+
+.gn-drawer-item:selected
+{
+  -fx-effect : null;
+  -fx-background-color : -base;
+}
+
+.gn-drawer-item:selected .text,
+.gn-drawer-item:selected .glyph-icon,
+.gn-drawer-item:selected .icon
+{
+  -fx-fill : -inner-text;
+}
+
+.gn-drawer-item .text
+{
+  -fx-fill : -text-color;
+}
+
+.gn-drawer-item .glyph-icon
+{
+    -fx-fill : -icon-color;
+}
+
+/* menu */
+
+.gn-drawer-menu .title .text
+{
+  -fx-fill : -text-color;
+}
+
+.gn-drawer-menu:hover:focused .title
+{
+  -fx-background-radius : 0px;
+}
+
+
+.gn-drawer-menu .title .arrow-button .arrow,
+.gn-drawer-menu .title .icon
+{
+  -fx-background-color : -icon-color;
+  -fx-fill : -icon-color;
+}
+
+.gn-drawer-menu:selected .title
+{
+  -fx-background-color : -base;
+  -fx-background-radius : 0px;
+}
+
+.gn-drawer-menu:selected .title .text,
+.gn-drawer-menu:selected .title .glyph-icon,
+.gn-drawer-menu:selected .title .icon
+{
+  -fx-fill : -inner-text;
+}
+
+.gn-drawer-menu:selected .title .arrow-button .arrow
+{
+  -fx-background-color : -inner-text;
+}
+
+.gn-drawer-menu:selected .gn-drawer-item:focused
+{
+  -fx-border-color : transparent transparent -base transparent;
+}
+
+.gn-drawer .box .gn-info .detail .label
+{
+  -fx-text-fill : -text-color;
+}
+
+.gn-drawer .box .gn-info .arrow-button:focused,
+.gn-drawer .box .gn-info .arrow-button:pressed,
+.gn-drawer .box .gn-info .arrow-button:hover,
+.gn-drawer .box .gn-info .arrow-button
+{
+  -fx-cursor : default;
+  -fx-focus-traversable : false;
+  -fx-background-color : transparent;
+}
+
+.gn-title .text {
+  -fx-fill : -base;
+}
