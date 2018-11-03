@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTabPane?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -11,6 +10,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -20,11 +20,11 @@
 
 <StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <JFXTabPane style="-fx-tab-min-width: 100;">
+      <TabPane tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab text="Introduction">
+            <Tab closable="false" text="Introduction">
                <content>
-                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0" style="-fx-background-color: white;">
+                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
@@ -36,16 +36,16 @@
                               </Label>
                               <TextFlow prefHeight="54.0" prefWidth="952.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Buttons communicate an action a user can take. They are typically placed throughout your UI, in places like dialogs, forms, cards, and toolbars. (Google)" wrappingWidth="558.283203125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Buttons communicate an action a user can take. They are typically placed throughout your UI, in places like dialogs, forms, cards, and toolbars. (Google)" wrappingWidth="558.283203125" />
                                  </children>
                               </TextFlow>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" style="-fx-background-color: -light-gray;" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
                            <children>
                               <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
                                  <children>
-                                    <Button layoutX="512.0" layoutY="77.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="100.0" text="Default" />
+                                    <Button layoutX="430.0" layoutY="10.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="100.0" text="Default" />
                                  </children>
                               </HBox>
                            </children>
@@ -83,9 +83,9 @@
                   </VBox>
                </content>
             </Tab>
-            <Tab text="Types">
+            <Tab closable="false" text="States">
                <content>
-                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0" style="-fx-background-color: white;">
+                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
@@ -97,30 +97,18 @@
                               </Label>
                               <TextFlow prefHeight="54.0" prefWidth="952.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Common types of buttons, used in an application." wrappingWidth="558.283203125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Common types of buttons, used in an application." wrappingWidth="558.283203125" />
                                  </children>
                               </TextFlow>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" style="-fx-background-color: -light-gray;" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
                            <children>
                               <HBox alignment="CENTER" prefWidth="478.0" spacing="20.0">
                                  <children>
-                                    <Button layoutX="512.0" layoutY="77.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="100.0" text="Flat">
-                                       <styleClass>
-                                          <String fx:value="flat" />
-                                          <String fx:value="text-base" />
-                                       </styleClass>
-                                    </Button>
-                                    <Button layoutX="507.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Outlined">
-                                       <styleClass>
-                                          <String fx:value="outlined" />
-                                          <String fx:value="out-base" />
-                                       </styleClass></Button>
-                                    <Button layoutX="490.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="54.0" styleClass="round" text="Round" />
-                                    <Button layoutX="693.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="95.0" styleClass="rounded" text="Rounded" />
-                                    <Button layoutX="470.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Default" />
-                                    <Button layoutX="558.0" layoutY="77.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="raised" text="Raised" />
+                                    <Button layoutX="512.0" layoutY="77.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="100.0" text="Normal" />
+                                    <Button layoutX="430.0" layoutY="10.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="100.0" styleClass="btn-hover" text="Hover" />
+                                    <Button layoutX="490.0" layoutY="10.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="100.0" styleClass="btn-focused" text="Focused" />
                                  </children>
                               </HBox>
                            </children>
@@ -132,11 +120,11 @@
                   </VBox>
                </content>
             </Tab>
-            <Tab text="Bootstrap">
+            <Tab closable="false" styleClass="box-light" text="Size">
                <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
-                        <VBox alignment="CENTER" prefHeight="559.0" prefWidth="937.0" spacing="10.0" style="-fx-background-color: white;">
+                        <VBox alignment="CENTER" prefHeight="559.0" prefWidth="937.0" spacing="10.0">
                            <children>
                               <VBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="890.0">
                                  <children>
@@ -148,139 +136,18 @@
                                     </Label>
                                     <TextFlow prefHeight="54.0" prefWidth="952.0">
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." />
-                                       </children></TextFlow>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." />
+                                       </children>
+                                    </TextFlow>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="239.0" prefWidth="890.0" spacing="20.0" style="-fx-background-color: -light-gray;" VBox.vgrow="ALWAYS">
+                              <VBox alignment="CENTER_LEFT" minHeight="-Infinity" prefHeight="239.0" prefWidth="890.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
+                                    <HBox alignment="CENTER" prefHeight="176.0" prefWidth="918.0" spacing="10.0">
                                        <children>
-                                          <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Primary">
-                                             <styleClass>
-                                                <String fx:value="flat" />
-                                                <String fx:value="text-primary" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="406.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Info">
-                                             <styleClass>
-                                                <String fx:value="flat" />
-                                                <String fx:value="text-info" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="461.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Default">
-                                             <styleClass>
-                                                <String fx:value="flat" />
-                                                <String fx:value="text-base" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="516.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Success">
-                                             <styleClass>
-                                                <String fx:value="flat" />
-                                                <String fx:value="text-success" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="571.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Warning">
-                                             <styleClass>
-                                                <String fx:value="flat" />
-                                                <String fx:value="text-warning" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="626.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Danger">
-                                             <styleClass>
-                                                <String fx:value="flat" />
-                                                <String fx:value="text-danger" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="681.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Secondary">
-                                             <styleClass>
-                                                <String fx:value="flat" />
-                                                <String fx:value="text-secondary" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="736.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Unique">
-                                             <styleClass>
-                                                <String fx:value="flat" />
-                                                <String fx:value="text-unique" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="791.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Elegant">
-                                             <styleClass>
-                                                <String fx:value="flat" />
-                                                <String fx:value="text-elegant" />
-                                             </styleClass>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="128.0" prefWidth="478.0" spacing="10.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Primary">
-                                             <styleClass>
-                                                <String fx:value="outlined" />
-                                                <String fx:value="out-primary" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="406.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Info">
-                                             <styleClass>
-                                                <String fx:value="outlined" />
-                                                <String fx:value="out-info" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="461.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Default">
-                                             <styleClass>
-                                                <String fx:value="outlined" />
-                                                <String fx:value="out-base" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="516.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Success">
-                                             <styleClass>
-                                                <String fx:value="outlined" />
-                                                <String fx:value="out-success" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="571.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Warning">
-                                             <styleClass>
-                                                <String fx:value="outlined" />
-                                                <String fx:value="out-warning" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="626.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Danger">
-                                             <styleClass>
-                                                <String fx:value="outlined" />
-                                                <String fx:value="out-danger" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="681.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Secondary">
-                                             <styleClass>
-                                                <String fx:value="outlined" />
-                                                <String fx:value="out-secondary" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="736.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Unique">
-                                             <styleClass>
-                                                <String fx:value="outlined" />
-                                                <String fx:value="out-unique" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button layoutX="791.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Elegant">
-                                             <styleClass>
-                                                <String fx:value="outlined" />
-                                                <String fx:value="out-elegant" />
-                                             </styleClass>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="165.0" prefWidth="478.0" spacing="10.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-primary" text="Primary" />
-                                          <Button layoutX="406.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-info" text="Info" />
+                                          <Button layoutX="406.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-small" text="Small" />
                                           <Button layoutX="461.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Default" />
-                                          <Button layoutX="516.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-success" text="Success" />
-                                          <Button layoutX="571.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-warning" text="Warning" />
-                                          <Button layoutX="626.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-danger" text="Danger" />
-                                          <Button layoutX="681.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-secondary" text="Secondary" />
-                                          <Button layoutX="736.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-unique" text="Unique" />
-                                          <Button layoutX="791.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-elegant" text="Elegant" />
+                                          <Button layoutX="516.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-large" text="Large" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -303,17 +170,115 @@
                   </ScrollPane>
                </content>
             </Tab>
+            <Tab closable="false" text="Bootstrap">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
+                     <content>
+                        <VBox alignment="CENTER" prefHeight="559.0" prefWidth="937.0" spacing="10.0">
+                           <children>
+                              <VBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="890.0">
+                                 <children>
+                                    <Label prefHeight="29.0" prefWidth="201.0" text="Bootstrap Colors">
+                                       <styleClass>
+                                          <String fx:value="h3" />
+                                          <String fx:value="title" />
+                                       </styleClass>
+                                    </Label>
+                                    <TextFlow prefHeight="54.0" prefWidth="952.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." />
+                                       </children></TextFlow>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="239.0" prefWidth="890.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="165.0" prefWidth="478.0" spacing="10.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-primary" text="Primary" />
+                                          <Button layoutX="406.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-info" text="Info" />
+                                          <Button layoutX="516.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-success" text="Success" />
+                                          <Button layoutX="571.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-warning" text="Warning" />
+                                          <Button layoutX="626.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-danger" text="Danger" />
+                                          <Button layoutX="681.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-secondary" text="Secondary" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="30.0" right="30.0" top="100.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Types">
+               <content>
+                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
+                     <children>
+                        <VBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label prefHeight="38.0" prefWidth="99.0" text="Types">
+                                 <styleClass>
+                                    <String fx:value="h3" />
+                                    <String fx:value="title" />
+                                 </styleClass>
+                              </Label>
+                              <TextFlow prefHeight="54.0" prefWidth="952.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Common types of buttons, used in an application." wrappingWidth="558.283203125" />
+                                 </children>
+                              </TextFlow>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER" prefWidth="478.0" spacing="20.0">
+                                 <children>
+                                    <Button layoutX="512.0" layoutY="77.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="100.0" styleClass="btn-flat" text="Flat" />
+                                    <Button layoutX="490.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="40.0" styleClass="round" text="R" />
+                                    <Button layoutX="693.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="95.0" styleClass="rounded" text="Rounded" />
+                                    <Button layoutX="470.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Default" />
+                                    <Button layoutX="558.0" layoutY="77.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="raised" text="Raised" />
+                                    <Button layoutX="507.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Outlined">
+                                       <styleClass>
+                                          <String fx:value="outlined" />
+                                          <String fx:value="out-base" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="30.0" right="30.0" top="100.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
          </tabs>
-         <styleClass>
-            <String fx:value="tab-white" />
-            <String fx:value="tab-line-aqua" />
-            <String fx:value="tab-shadow-none" />
-         </styleClass>
-      </JFXTabPane>
+      </TabPane>
    </children>
    <stylesheets>
-      <URL value="@../../theme/css/fonts.css" />
-      <URL value="@../../theme/css/material.css" />
-      <URL value="@../../theme/css/custom.css" />
+      <URL value="@../../theme/css/material-color.css" />
+      <URL value="@../../theme/css/skeleton.css" />
+      <URL value="@../../theme/css/light.css" />
+      <URL value="@../../theme/css/bootstrap.css" />
+      <URL value="@../../theme/css/simple-green.css" />
+      <URL value="@../../theme/css/forms.css" />
+      <URL value="@../../theme/css/typographic.css" />
+      <URL value="@../../theme/css/helpers.css" />
+      <URL value="@../../theme/css/master.css" />
    </stylesheets>
 </StackPane>
