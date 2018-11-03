@@ -1,0 +1,296 @@
+/*
+    Created on : 25/10/2018, 08:00:15
+    Author     : Gleidson Neves da Silveira
+    Skeleton
+*/
+
+
+
+/************************************************************************************
+*
+*               @-fx-background-color
+*
+*************************************************************************************/
+
+.root {
+
+}
+
+.button {
+  -fx-background-color : -base;
+}
+
+.button:hover {
+  -fx-background-color : derive(-base, -40%);
+}
+
+.button:focused {
+  -fx-background-color: -base;
+  -fx-background-color : derive(-base, -40%), derive(-base, -40%), -base;
+}
+
+.hyperlink:focused {
+  -fx-border-color : transparent;
+}
+
+.tab-pane:top, .tab-pane:top .tab-header-area, .tab-pane:top .tab-header-area .headers-region .tab:selected:top,
+.tab-pane:top .tab-header-area .tab-header-background,
+.tab-pane:top .tab-content-area, .scroll-pane:fitToHeight,
+.tab-pane:top .tab-header-area .headers-region .tab:top,
+.scroll-pane .viewport, .scroolPane, .scroll-pane:fitToWidth,
+.scroll-pane:fitToWidth:fitToHeight
+{
+  -fx-background-color : transparent;
+}
+
+
+/************************************************************************************
+*
+*               @-fx-border-width
+*
+*************************************************************************************/
+
+.button:focused
+{
+  -fx-border-width : 4px;
+}
+
+.tab-pane:top .tab-header-area .tab-header-background
+{
+  -fx-border-width : 0px 0px 1px 0px;
+}
+
+.tab-pane:top .tab-header-area .headers-region .tab:top
+{
+  -fx-border-width : 0px 0px 2px 0px;
+}
+
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top
+{
+  -fx-border-width : 2px 0px 2px 0px;
+}
+
+/************************************************************************************
+*
+*               @-fx-effect
+*
+*************************************************************************************/
+
+.toggle-button:selected
+{
+    -fx-effect : innershadow(gaussian, #00000045, 16, 0, 0, 5);
+}
+
+
+/************************************************************************************
+*
+*               @-fx-text-fill
+*
+*************************************************************************************/
+
+.button {
+  -fx-text-fill : -inner-text;
+
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label,
+.hyperlink
+{
+  -fx-text-fill : -text-color;
+}
+
+.hyperlink:pressed
+{
+    -fx-text-fill : black;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab:selected > .tab-container > .tab-label
+{
+  -fx-text-fill : -base;
+}
+
+/************************************************************************************
+*
+*               @-fx-underline
+*
+*************************************************************************************/
+
+.hyperlink {
+  -fx-underline : false;
+}
+
+/************************************************************************************
+*
+*               @-fx-font-family
+*
+*************************************************************************************/
+
+.text {
+  -fx-font-family : 'Roboto Regular';
+  /* -fx-font-family : 'Mechanization'; */
+}
+
+/************************************************************************************
+*
+*               @-fx-fill
+*
+*************************************************************************************/
+
+
+.hyperlink SVGPath
+{
+  -fx-fill : -icon-color;
+}
+
+.hyperlink:pressed SVGPath
+{
+  -fx-fill : black;
+}
+
+/************************************************************************************
+*
+*               @-fx-cursor
+*
+*************************************************************************************/
+
+.button,
+.tab-pane:top .tab-header-area .headers-region
+{
+  -fx-cursor : hand;
+}
+
+/************************************************************************************
+*
+*               @-fx-pref-height
+*
+*************************************************************************************/
+
+.button,
+.tab-pane:top .tab-header-area .headers-region .tab:top
+{
+  -fx-pref-height : 40px;
+}
+
+/************************************************************************************
+*
+*               @-fx-border-color
+*
+*************************************************************************************/
+
+.tab-pane:top .tab-header-area .tab-header-background
+{
+    -fx-border-color : -separator-color;
+}
+
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top
+{
+  -fx-border-color : transparent transparent -base transparent ;
+}
+
+/************************************************************************************
+*
+*               @-fx-pref-width
+*
+*************************************************************************************/
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label
+{
+    -fx-pref-width : 100px;
+}
+
+/************************************************************************************
+*
+*               @-fx-focus-color
+*
+*************************************************************************************/
+
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top
+{
+  -fx-focus-color : transparent;
+}
+
+/************************************************************************************
+*
+*               @-fx-faint-focus-color
+*
+*************************************************************************************/
+
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top
+{
+  -fx-faint-focus-color : transparent;
+}
+
+/************************************************************************************
+*
+*               @-font-weight
+*
+*************************************************************************************/
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label
+{
+  -fx-font-weight : bold;
+}
+
+/************************************************************************************
+*
+*               @-fx-alignment
+*
+*************************************************************************************/
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label
+{
+  -fx-alignment: CENTER;
+}
+
+
+
+
+
+.tile
+{
+  -fx-background-color : transparent;
+  -fx-border-color : -separator-color;
+  -fx-border-width : 1;
+}
+
+
+.tile >* .label,
+.tile >* .text
+{
+  -fx-text-fill : -text-color;
+}
+
+.chart-pie {
+    -fx-border-color : transparent ;
+}
+
+
+.chart-pie-label {
+    -fx-padding: 3px;
+}
+
+.chart-pie-label-line {
+    -fx-stroke: -text-color;
+}
+
+.negative.chart-pie {
+    -fx-pie-color: transparent;
+    -fx-background-color: -text-color;
+}
+
+.pie-legend-symbol.chart-pie {
+    -fx-background-radius: 10px;
+    -fx-padding: 10px;
+    -fx-border-color: null;
+}
+
+.chart .chart-legend
+{
+  -fx-background-color : transparent;
+}
+
+.chart .chart-legend .text,
+.chart .chart-content .text
+{
+  -fx-fill : -text-color;
+}
