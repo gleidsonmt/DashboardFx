@@ -1,0 +1,111 @@
+
+.root {
+  -base             : -primary;
+  -box-base         : transparent;
+  -box-text-color   : -dark-gray;
+  -box-fill         : -dark-gray;
+  -track-fill       : -light-gray;
+  -background-color : -elegant;
+  -highlight-text   : -medium-gray;
+
+  -default-border   : -dark-gray;
+  -highlight-border : -base;
+  -icon-color       : white;
+  -text-color       : white;
+  -inner-text       : white;
+  -separator-color  : derive(-elegant, 10%);
+  -light-hover      : #1de9b6;
+  -box-search-color : -base;
+  -box-search-fill  : -base;
+
+  -fx-background-color : -background-color;
+}
+
+.box-search
+{
+    -fx-background-repeat : no-repeat;
+    -fx-background-position : right;
+    -fx-border-width : 1px;
+    -fx-min-height : 38px;
+    -fx-border-color : -box-search-color;
+}
+
+.box-search .text-field
+{
+    -fx-text-fill : -box-search-fill;
+}
+
+.box-light
+{
+  -fx-background-color : derive( -light-gray, -70%);
+}
+
+.hamburger
+{
+  -fx-background-radius : 100px;
+  -fx-background-color : transparent;
+}
+
+.hamburger:hover
+{
+  -fx-background-color : derive(-light-gray, -30%);
+}
+
+.hamburger:pressed {
+  -fx-background-color :  derive(-light-gray, -50%);
+}
+
+.hamburger:focused {
+  -fx-background-color : white, -light-gray, -elegant;
+}
+
+.icon
+{
+  -fx-cursor: hand;
+  -fx-fill : -icon-color;
+}
+
+.icon .badge-pane {
+    -fx-background-color: -base;
+    -fx-background-radius: 100;
+    -fx-pref-width: 20;
+    -fx-pref-height: 20;
+    -fx-alignment: center;
+}
+
+.icon .badge-pane .label{
+    -fx-font-weight: BOLD;
+    -fx-font-size: 10px;
+    -fx-text-fill: WHITE;
+}
+
+.icon-notification .badge-pane {
+  -fx-background-color : -mint;
+}
+
+.icon-warning .badge-pane {
+  -fx-background-color : -warning;
+}
+
+.icon-danger .badge-pane {
+  -fx-background-color : -danger;
+}
+
+.gn-drawer-menu:selected:expanded .content,
+.gn-drawer-menu:expanded .content,
+.gn-drawer-menu:collapsed .content
+{
+  -fx-background-color : derive(-light-gray, -70%);
+}
+
+.follow {
+  -fx-border-color : -light-gray;
+  -fx-border-width : 2px;
+  -fx-background-radius : 20px;
+  -fx-border-radius : 20px;
+  -fx-text-fill : -light-gray;
+}
+
+.follow, .follow:focused, .follow:hover, .follow:pressed {
+  -fx-background-color : transparent;
+}

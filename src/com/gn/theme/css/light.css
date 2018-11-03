@@ -1,0 +1,124 @@
+
+.root {
+  -base             : #2BBBAD;
+  -box-base         : transparent;
+  -box-text-color   : -dark-gray;
+  -box-fill         : -dark-gray;
+  -box-color        : -light-gray;
+  -track-fill       : -light-gray;
+  -background-color : white;
+  -highlight-text   : -medium-gray;
+
+  -default-border   : -dark-gray;
+  -highlight-border : -base;
+  -icon-color       : -dark-gray;
+  -text-color       : -dark-gray;
+  -inner-text       : white;
+  -separator-color  : -light-gray;
+  -light-hover      : -light-gray;
+  -box-search-color : -separator-color;
+  -box-search-fill  : -text-color;
+
+  -fx-background-color : -background-color;
+}
+
+
+.box-search
+{
+    -fx-background-repeat : no-repeat;
+    -fx-background-position : right;
+    -fx-border-width : 1px 0px 1px 0px;
+    -fx-min-height : 38px;
+    -fx-border-color : -box-search-color;
+}
+
+.box-search .text-field
+{
+    -fx-text-fill : -box-search-fill;
+}
+
+.box-light
+{
+  -fx-background-color : derive( -light-gray, 50%);
+}
+
+.hamburger
+{
+  -fx-background-radius : 100px;
+  -fx-background-color : transparent;
+}
+
+.hamburger:hover
+{
+  -fx-background-color : -light-gray;
+}
+
+.hamburger:pressed
+{
+  -fx-background-color : derive(-light-gray, -10%);
+}
+
+.hamburger:focused
+{
+  -fx-background-color : derive(-light-gray, -10%), derive(-light-gray, -10%), -light-gray;
+}
+
+.icon
+{
+  -fx-cursor: hand;
+  -fx-fill : -icon-color;
+}
+
+.icon .badge-pane
+{
+    -fx-background-color: -base;
+    -fx-background-radius: 100;
+    -fx-pref-width: 20;
+    -fx-pref-height: 20;
+    -fx-alignment: center;
+}
+
+.icon .badge-pane .label
+{
+    -fx-font-weight: BOLD;
+    -fx-font-size: 10px;
+    -fx-text-fill: WHITE;
+}
+
+
+.icon-notification .badge-pane {
+  -fx-background-color : -mint;
+}
+
+.icon-warning .badge-pane {
+  -fx-background-color : -warning;
+}
+
+.icon-danger .badge-pane {
+  -fx-background-color : -danger;
+}
+
+
+.gn-drawer-menu:selected:expanded .content,
+.gn-drawer-menu:expanded .content,
+.gn-drawer-menu:collapsed .content
+{
+  -fx-background-color : derive(-light-gray, 30%);
+}
+
+.popover .gn-drawer-item
+{
+    -fx-background-color: white;
+}
+
+.follow {
+  -fx-border-color : #8e8e8e;
+  -fx-border-width : 2px;
+  -fx-background-radius : 20px;
+  -fx-border-radius : 20px;
+  -fx-text-fill : #8e8e8e;
+}
+
+.follow, .follow:focused, .follow:hover, .follow:pressed {
+  -fx-background-color : transparent;
+}
