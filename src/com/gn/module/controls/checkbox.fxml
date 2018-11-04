@@ -36,7 +36,7 @@
                               </Label>
                               <TextFlow prefHeight="54.0" prefWidth="952.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." wrappingWidth="558.283203125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." wrappingWidth="558.283203125" />
                                  </children>
                               </TextFlow>
                            </children>
