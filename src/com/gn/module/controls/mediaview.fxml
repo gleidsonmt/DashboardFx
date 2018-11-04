@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTabPane?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -21,13 +22,13 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<StackPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.controls.MediaView">
+<StackPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.controls.MediaView">
    <children>
-      <JFXTabPane style="-fx-tab-min-width: 100;">
+      <TabPane style="-fx-tab-min-width: 100;">
          <tabs>
-            <Tab text="Introduction">
+            <Tab closable="false" text="Introduction">
                <content>
-                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0" style="-fx-background-color: white;">
+                  <VBox alignment="CENTER" prefHeight="600.0" prefWidth="1000.0" spacing="10.0">
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
@@ -39,45 +40,54 @@
                               </Label>
                               <TextFlow prefHeight="54.0" prefWidth="952.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Buttons communicate an action a user can take. They are typically placed throughout your UI, in places like dialogs, forms, cards, and toolbars. (Google)" wrappingWidth="558.283203125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Buttons communicate an action a user can take. They are typically placed throughout your UI, in places like dialogs, forms, cards, and toolbars. (Google)" wrappingWidth="558.283203125" />
                                  </children>
                               </TextFlow>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="558.0" prefWidth="940.0" spacing="10.0">
+                              <HBox alignment="CENTER" prefHeight="345.0" prefWidth="940.0" spacing="10.0">
                                  <children>
-                                    <VBox>
+                                    <VBox prefHeight="393.0" prefWidth="800.0">
                                        <children>
                                           <AnchorPane>
                                              <children>
-                                                <MediaView fx:id="mediaView" fitHeight="380.0" fitWidth="800.0" />
+                                                <VBox alignment="CENTER" layoutY="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                                                   <children>
+                                                      <MediaView fx:id="mediaView" fitHeight="330.0" fitWidth="800.0">
+                                                         <viewport>
+                                                            <Rectangle2D />
+                                                         </viewport>
+                                                      </MediaView>
+                                                      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="462.0">
+                                                         <children>
+                                                            <JFXButton contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#play" prefHeight="30.0" prefWidth="40.0" ripplerFill="#000000c7" text="Play">
+                                                               <graphic>
+                                                                  <FontAwesomeIconView fx:id="icon" fill="#00000080" glyphName="PLAY" style="-fx-fill: -icon-color;" />
+                                                               </graphic>
+                                                               <styleClass>
+                                                                  <String fx:value="btn-transparent" />
+                                                                  <String fx:value="round" />
+                                                               </styleClass>
+                                                            </JFXButton>
+                                                            <Slider fx:id="slider" prefHeight="16.0" prefWidth="266.0" />
+                                                            <Label fx:id="playTime" prefHeight="15.0" prefWidth="95.0" style="-fx-text-fill: -text-color;" text="Label" />
+                                                            <Label prefHeight="17.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" text="Volume" />
+                                                            <Slider fx:id="volumeSlider" prefHeight="18.0" prefWidth="81.0" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
                                              </children>
                                           </AnchorPane>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                             <children>
-                                                <JFXButton contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#play" prefHeight="30.0" prefWidth="30.0" ripplerFill="#000000c7" text="Play">
-                                                   <graphic>
-                                                      <FontAwesomeIconView fx:id="icon" fill="#00000080" glyphName="PLAY" />
-                                                   </graphic>
-                                                   <styleClass>
-                                                      <String fx:value="btn-transparent" />
-                                                      <String fx:value="round" />
-                                                   </styleClass></JFXButton>
-                                                <Slider fx:id="slider" prefHeight="14.0" prefWidth="392.0" />
-                                                <Label fx:id="playTime" prefHeight="15.0" prefWidth="95.0" text="Label" />
-                                                <Label prefHeight="15.0" prefWidth="62.0" text="Volume" />
-                                                <Slider fx:id="volumeSlider" />
-                                             </children>
-                                          </HBox>
                                        </children>
                                     </VBox>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
-                        <VBox prefWidth="952.0" spacing="20.0">
+                        <VBox prefHeight="188.0" prefWidth="940.0" spacing="20.0" VBox.vgrow="ALWAYS">
                            <children>
                               <Label text="Resources">
                                  <styleClass>
@@ -86,7 +96,7 @@
                                  </styleClass>
                               </Label>
                               <Separator prefWidth="200.0" />
-                              <HBox id="block" alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="42.0" prefWidth="892.0" VBox.vgrow="ALWAYS">
+                              <HBox id="block" alignment="CENTER_LEFT" maxHeight="-Infinity" prefWidth="892.0" VBox.vgrow="ALWAYS">
                                  <children>
                                     <Hyperlink styleClass="h5" text="Documentation" HBox.hgrow="ALWAYS">
                                        <graphic>
@@ -111,16 +121,17 @@
                </content>
             </Tab>
          </tabs>
-         <styleClass>
-            <String fx:value="tab-white" />
-            <String fx:value="tab-line-aqua" />
-            <String fx:value="tab-shadow-none" />
-         </styleClass>
-      </JFXTabPane>
+      </TabPane>
    </children>
    <stylesheets>
-      <URL value="@../../theme/css/fonts.css" />
-      <URL value="@../../theme/css/material.css" />
-      <URL value="@../../theme/css/custom.css" />
+      <URL value="@../../theme/css/material-color.css" />
+      <URL value="@../../theme/css/skeleton.css" />
+      <URL value="@../../theme/css/light.css" />
+      <URL value="@../../theme/css/bootstrap.css" />
+      <URL value="@../../theme/css/simple-green.css" />
+      <URL value="@../../theme/css/forms.css" />
+      <URL value="@../../theme/css/typographic.css" />
+      <URL value="@../../theme/css/helpers.css" />
+      <URL value="@../../theme/css/master.css" />
    </stylesheets>
 </StackPane>
