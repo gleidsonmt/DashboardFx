@@ -16,9 +16,10 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
+<?import javafx.scene.control.TabPane?>
 <StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <JFXTabPane style="-fx-tab-min-width: 100;">
+      <TabPane style="-fx-tab-min-width: 100;">
          <tabs>
             <Tab text="Introduction">
                <content>
@@ -84,11 +85,17 @@
             <String fx:value="tab-line-aqua" />
             <String fx:value="tab-shadow-none" />
          </styleClass>
-      </JFXTabPane>
+      </TabPane>
    </children>
    <stylesheets>
-      <URL value="@../../theme/css/fonts.css" />
-      <URL value="@../../theme/css/material.css" />
-      <URL value="@../../theme/css/custom.css" />
+      <URL value="@../../theme/css/material-color.css" />
+      <URL value="@../../theme/css/skeleton.css" />
+      <URL value="@../../theme/css/light.css" />
+      <URL value="@../../theme/css/bootstrap.css" />
+      <URL value="@../../theme/css/simple-green.css" />
+      <URL value="@../../theme/css/forms.css" />
+      <URL value="@../../theme/css/typographic.css" />
+      <URL value="@../../theme/css/helpers.css" />
+      <URL value="@../../theme/css/master.css" />
    </stylesheets>
 </StackPane>
