@@ -17,15 +17,23 @@
 
 package com.gn;
 
+import com.gn.control.UserDetail;
 import com.gn.decorator.GNDecorator;
+import com.gn.decorator.options.ButtonType;
 import com.gn.module.loader.Loader;
+import com.gn.module.main.Main;
+import com.jfoenix.controls.JFXButton;
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.application.Preloader;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;
 import javafx.stage.Stage;
+import org.controlsfx.control.decoration.Decorator;
 import org.scenicview.ScenicView;
 
 import java.io.IOException;
@@ -44,34 +52,50 @@ public class App extends Application {
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     @Override
     public synchronized void init(){
-        byte total = 24 - 1; // the difference represents the views not loaded
+        byte total = 32 - 1; // the difference represents the views not loaded
         increment = 100 / total;
-        load("designer", "colors"); // 1
-        load("designer", "cards"); // 2
+        load("designer", "colors");
+        load("designer", "cards");
 
-        load("controls", "button");   // 3
-        load("controls", "toggle");  // 4
-        load("controls", "textfield");  //5
-        load("controls", "datepicker");  //6
-        load("controls", "checkbox");  //7
-        load("controls", "radiobutton");  //8
-        load("controls", "combobox");  //9
-        load("controls", "choicebox");  //10
-        load("controls", "splitmenubutton"); // 11
-        load("controls", "menubutton");// 12
-        load("controls", "menubar");// 13
-        load("controls", "colorpicker");// 14
-        load("controls", "slider");// 15
-//        load("controls", "htmleditor");// 16
-        load("controls", "progressbar"); // 17
-        load("controls", "progressindicator"); // 18
-        load("controls", "pagination"); // 19
-        load("controls", "mediaview"); // 20
-        load("controls", "listview"); // 21
-        load("controls", "label"); // 22
-        load("controls", "hyperlink"); // 23
-        load("controls", "imageview"); // 24
-        load("main",     "main");  // last
+        load("controls", "button");
+        load("controls", "toggle");
+        load("controls", "textfield");
+        load("controls", "datepicker");
+        load("controls", "checkbox");
+        load("controls", "radiobutton");
+        load("controls", "combobox");
+        load("controls", "choicebox");
+        load("controls", "splitmenubutton");
+        load("controls", "menubutton");
+        load("controls", "menubar");
+        load("controls", "colorpicker");
+        load("controls", "slider");
+        load("controls", "spinner");
+        load("controls", "progressbar");
+        load("controls", "progressindicator");
+        load("controls", "pagination");
+        load("controls", "mediaview");
+        load("controls", "listview");
+        load("controls", "label");
+        load("controls", "hyperlink");
+        load("controls", "imageview");
+        load("controls", "tableview");
+        load("controls", "scrollbar");
+        load("controls", "passwordfield");
+        load("controls", "treetableview");
+        load("dashboard", "dashboard");
+
+        load("charts", "piechart");
+        load("charts", "areachart");
+        load("charts", "barchart");
+        load("charts", "bubblechart");
+        load("charts", "linechart");
+        load("charts", "stackedbarchart");
+        load("charts", "stackedareachart");
+        load("charts", "scatterchart");
+
+        load("main",     "main");  // 35
+
 
         // delay
         try {
@@ -86,22 +110,50 @@ public class App extends Application {
 
     }
 
-    @Override
-    public  void start(Stage primary) {
-        GNDecorator decorator = new GNDecorator();
-        decorator.setTitle("Dashboard JavaFx");
-        decorator.setContent(ViewManager.getInstance().getCurrentView());
+    public static ObservableList<String>    stylesheets;
+    public static Scene                     scene;
+    public static GNDecorator               decorator;
 
-        ObservableList<String> stylesheets = decorator.getScene().getStylesheets();
+    @Override
+    public  void start(Stage primary) throws Exception {
+        GNDecorator decorator = new GNDecorator();
+        App.decorator = decorator;
+        scene = decorator.getScene();
+        decorator.setTitle("Dashboard JavaFx");
+        Parent root = FXMLLoader.load(getClass().getResource("/com/gn/module/controls/button.fxml"));
+        decorator.setContent(ViewManager.getInstance().getCurrentView());
+        decorator.initTheme(GNDecorator.Theme.DEFAULT);
+        decorator.addButton(ButtonType.FULL_EFFECT);
+
+        stylesheets = decorator.getScene().getStylesheets();
 
         stylesheets.addAll(
                 getClass().getResource("/com/gn/theme/css/fonts.css").toExternalForm(),
-                getClass().getResource("/com/gn/theme/css/material.css").toExternalForm()
+                getClass().getResource("/com/gn/theme/css/material-color.css").toExternalForm(),
+                getClass().getResource("/com/gn/theme/css/skeleton.css").toExternalForm(),
+                getClass().getResource("/com/gn/theme/css/light.css").toExternalForm(),
+                getClass().getResource("/com/gn/theme/css/bootstrap.css").toExternalForm(),
+                getClass().getResource("/com/gn/theme/css/simple-green.css").toExternalForm(),
+                getClass().getResource("/com/gn/theme/css/forms.css").toExternalForm(),
+                getClass().getResource("/com/gn/theme/css/typographic.css").toExternalForm(),
+                getClass().getResource("/com/gn/theme/css/helpers.css").toExternalForm(),
+                getClass().getResource("/com/gn/theme/css/master.css").toExternalForm()
+//                getClass().getResource("/com/gn/theme/css/popover.css").toExternalForm()
         );
+//
 
-        decorator.initTheme(GNDecorator.Theme.DEFAULT);
+        UserDetail detail = new UserDetail();
+        decorator.addCustom(detail);
+
         decorator.setMaximized(true);
-        decorator.getStage().show();
+        decorator.getStage().setOnCloseRequest(event -> {
+            detail.getPopOver().hide();
+
+            if(Main.popConfig.isShowing()) Main.popConfig.hide();
+            if(Main.popup.isShowing()) Main.popup.hide();
+            Platform.exit();
+        });
+        decorator.show();
 
 
 //        ScenicView.show(decorator.getScene());
@@ -127,4 +179,5 @@ public class App extends Application {
         progress += increment;
         LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
     }
+
 }
