@@ -1,23 +1,47 @@
 
 .root {
-  -base             : #2BBBAD;
-  -box-base         : transparent;
-  -box-text-color   : -dark-gray;
-  -box-fill         : -dark-gray;
-  -box-color        : -light-gray;
-  -track-fill       : -light-gray;
-  -background-color : white;
-  -highlight-text   : -medium-gray;
 
-  -default-border   : -dark-gray;
-  -highlight-border : -base;
-  -icon-color       : -dark-gray;
-  -text-color       : -dark-gray;
-  -inner-text       : white;
+
+
+
+
+
+
   -separator-color  : -light-gray;
   -light-hover      : -light-gray;
   -box-search-color : -separator-color;
   -box-search-fill  : -text-color;
+
+
+
+  /* Initial themeing */
+  -base    : #2BBBAD;
+  -hover   : -light-gray;
+  -pressed : -base;
+
+  /* Text */
+  -highlight-text   : -light-gray;
+  -medium-text      : -text-color;
+  -dark-text        : -elegant;
+
+  /* icon and tex */
+  -background-color : white;
+  -icon-color       : -dark-gray;
+  -text-color       : -dark-gray;
+
+  /* box components */
+  -box-fill         : -medium-gray;  /* cor da borda */
+  -box-base         : transparent;   /* background */
+  -box-text-color   : -dark-gray;    /* cor do combo */
+
+  /* inner components*/
+  -inner-text       : white;
+
+  /* track components*/
+  -track-fill       : -light-gray;
+
+  /* list components*/
+  -list-fill        : white;
 
   -fx-background-color : -background-color;
 }
@@ -121,4 +145,58 @@
 
 .follow, .follow:focused, .follow:hover, .follow:pressed {
   -fx-background-color : transparent;
+}
+
+#block .hyperlink, #block .hyperlink:pressed, #block .hyperlink:visited {
+  -fx-underline : false;
+  -fx-border-color : transparent;
+  -fx-border-width : 0px;
+  -fx-text-fill : -text-color;
+}
+
+#block:pressed {
+  -fx-background-color : -medium-gray;
+}
+
+#block:hover {
+  -fx-background-color : -light-gray;
+}
+
+#block .hyperlink SVGPath
+{
+  -fx-fill : -text-color;
+}
+
+.custom-color-dialog  {
+    -fx-background-color: white;
+    -fx-padding: 1.25em;
+    -fx-spacing: 1.25em;
+}
+
+
+.table-view
+{
+  -fx-background-color : white;
+}
+
+.table-row-cell:filled:even
+{
+  -fx-background-color : white;
+}
+
+.table-row-cell:filled:odd
+{
+    -fx-background-color : white;
+}
+
+.table-row-cell:filled:hover
+{
+    -fx-background-color : -light-gray;
+}
+
+.table-row-cell
+{
+  -fx-text-color : -text-color;
+  /* -fx-background-color : derive(-light-gray, 20%); */
+  -fx-background-color : white;
 }
