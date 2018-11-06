@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<StackPane prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.controls.SpinnerCtrl">
    <children>
       <TabPane>
          <tabs>
@@ -44,7 +44,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="707.0" prefWidth="940.0" spacing="10.0">
                                  <children>
-                                    <Spinner>
+                                    <Spinner fx:id="spinner" editable="true">
 
                                     </Spinner>
                                  </children></HBox>
