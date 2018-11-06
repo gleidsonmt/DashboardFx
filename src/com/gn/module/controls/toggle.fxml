@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTabPane?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -10,6 +9,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
@@ -21,9 +21,9 @@
 
 <StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <JFXTabPane style="-fx-tab-min-width: 100;">
+      <TabPane>
          <tabs>
-            <Tab text="Introduction">
+            <Tab closable="false" text="Introduction">
                <content>
                   <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0" style="-fx-background-color: white;">
                      <children>
@@ -84,7 +84,7 @@
                   </VBox>
                </content>
             </Tab>
-            <Tab text="Group">
+            <Tab closable="false" text="Group">
                <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
@@ -239,7 +239,7 @@
                   </ScrollPane>
                </content>
             </Tab>
-            <Tab text="Bootstrap">
+            <Tab closable="false" text="Bootstrap">
                <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
@@ -301,11 +301,17 @@
             <String fx:value="tab-line-aqua" />
             <String fx:value="tab-shadow-none" />
          </styleClass>
-      </JFXTabPane>
+      </TabPane>
    </children>
    <stylesheets>
-      <URL value="@../../theme/css/fonts.css" />
-      <URL value="@../../theme/css/material.css" />
-      <URL value="@../../theme/css/custom.css" />
+      <URL value="@../../theme/css/material-color.css" />
+      <URL value="@../../theme/css/skeleton.css" />
+      <URL value="@../../theme/css/light.css" />
+      <URL value="@../../theme/css/bootstrap.css" />
+      <URL value="@../../theme/css/simple-green.css" />
+      <URL value="@../../theme/css/forms.css" />
+      <URL value="@../../theme/css/typographic.css" />
+      <URL value="@../../theme/css/helpers.css" />
+      <URL value="@../../theme/css/master.css" />
    </stylesheets>
 </StackPane>
