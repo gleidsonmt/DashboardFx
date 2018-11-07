@@ -1,7 +1,7 @@
 .root
 {
-	  -elegant   : #2E2E2E;
-	  -dark-gray   : #656D78;
+	  -elegant    : #2E2E2E;
+	  -dark-gray  : #656D78;
 }
 
 .popover  {
@@ -43,12 +43,12 @@
 .options .jfx-button
 {
 	-fx-background-color : transparent;
-	-fx-text-fill : -text-color;
+	-fx-text-fill : #656D78;
 }
 
 .options .jfx-button .text
 {
-	-fx-fill : -text-color;
+	-fx-fill : #656D78;
 }
 
 .options .jfx-button:hover .glyph-icon,

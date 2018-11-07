@@ -1,7 +1,8 @@
 .root
 {
-	  -elegant   : #2E2E2E;
-	  -dark-gray   : #656D78;
+	  -elegant    : #2E2E2E;
+	  -dark-gray  : #656D78;
+		-text-color : white;
 }
 
 .popover  {
