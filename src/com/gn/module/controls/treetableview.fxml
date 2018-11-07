@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.controls.TableViewCtrl">
+<StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.controls.TreeTableViewCtrl">
    <children>
       <TabPane>
          <tabs>
@@ -28,7 +28,7 @@
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Label prefHeight="38.0" prefWidth="195.0" text="TableView">
+                              <Label prefHeight="38.0" prefWidth="195.0" text="TreeTableView">
                                  <styleClass>
                                     <String fx:value="h3" />
                                     <String fx:value="title" />
@@ -43,15 +43,23 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
                            <children>
-                              <TreeTableView prefHeight="200.0" prefWidth="200.0">
-                                <columns>
-                                  <TreeTableColumn prefWidth="75.0" text="C1" />
-                                  <TreeTableColumn prefWidth="75.0" text="C2" />
-                                </columns>
-                                 <columnResizePolicy>
-                                    <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                 </columnResizePolicy>
-                              </TreeTableView>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <TreeTableView fx:id="treeTableView" prefHeight="407.0" prefWidth="472.0">
+                                      <columns>
+                                        <TreeTableColumn fx:id="c1" prefWidth="75.0" text="FirstName" />
+                                        <TreeTableColumn fx:id="c2" prefWidth="75.0" text="LastName" />
+                                          <TreeTableColumn fx:id="c3" prefWidth="75.0" text="Email" />
+                                      </columns>
+                                       <columnResizePolicy>
+                                          <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TreeTableView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </HBox>
                               <HBox alignment="CENTER" prefHeight="283.0" prefWidth="940.0" spacing="10.0" />
                            </children>
                         </VBox>
