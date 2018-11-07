@@ -29,7 +29,7 @@ public class Person {
     private final SimpleStringProperty email = new SimpleStringProperty("");
 
     public Person() {
-        this("", "", "");
+        this("First Name", "Last Name", "Email");
     }
 
     public Person(String firstName, String lastName, String email) {
@@ -60,5 +60,17 @@ public class Person {
 
     public void setEmail(String fName) {
         email.set(fName);
+    }
+
+    public SimpleStringProperty firstNameProperty() {
+        return firstName;
+    }
+
+    public SimpleStringProperty lastNameProperty() {
+        return lastName;
+    }
+
+    public SimpleStringProperty emailProperty() {
+        return email;
     }
 }
