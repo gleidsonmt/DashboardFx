@@ -33,9 +33,27 @@
 *************************************************************************************/
 
 .outlined, .outlined:hover, .btn-flat, .btn-flat:hover, .btn-transparent:focused,
-.btn-transparent, .btn-transparent:pressed, .btn-transparent:hover
+.btn-transparent, .btn-transparent:pressed, .btn-transparent:hover, .check-box:determinate .box
 {
   -fx-background-color : transparent;
+}
+
+.text-field , .list-view,
+.split-menu-button, .menu-button, .choice-box,
+.split-menu-button .arrow-button, .combo-box-base, .date-picker  {
+  -fx-background-color : -box-base;
+}
+
+.check-box:selected:determinate .box .mark,
+.check-box:indeterminate .box .mark
+{
+    -fx-background-color : white;
+}
+
+.check-box:selected:determinate .box,
+.check-box:indeterminate .box
+ {
+  -fx-background-color : -base;
 }
 
 .btn-flat:focused {
@@ -86,7 +104,8 @@
   -fx-border-width : 1px;
 }
 
-.outlined:hover
+.outlined:hover, .check-box:determinate .box,
+.check-box:selected:determinate .box, .check-box:indeterminate .box
 {
   -fx-border-width : 2px;
 }
@@ -97,9 +116,24 @@
 *
 *************************************************************************************/
 
-.outlined, .btn-flat:hover
+.text-field, .spinner,
+.split-menu-button, .menu-button, .choice-box,
+.split-menu-button .arrow-button, .combo-box-base, .date-picker
+ {
+  -fx-border-color : -box-fill;
+}
+
+.outlined, .btn-flat:hover, .check-box:selected:determinate .box,
+.check-box:hover:determinate .box, .check-box:indeterminate .box,
+.text-field:focused, .list-view,
+.menu-button:focused, .choice-box:focused, .split-menu-button:focused
 {
-    -fx-border-color : -base;
+  -fx-border-color : -base;
+}
+
+.check-box:determinate .box
+{
+  -fx-border-color : -box-fill;
 }
 
 /************************************************************************************
@@ -124,4 +158,80 @@
 {
     -fx-fill : -gray;
     -fx-text-fill : -gray;
+}
+
+.check-box{
+  -fx-text-fill : -text-color;
+}
+
+/************************************************************************************
+*
+*               @-fx-padding
+*
+*************************************************************************************/
+
+
+.check-box {
+    -fx-label-padding: 0.0em 0.0em 0.0em 0.416667em; /* 0 0 0 5 */
+}
+
+/************************************************************************************
+*
+*               @-fx-cursor
+*
+*************************************************************************************/
+
+.check-box, .radio-button
+{
+  -fx-cursor : hand;
+}
+
+/************************************************************************************
+*
+*               @-fx-scale
+*
+*************************************************************************************/
+
+.check-box:selected:determinate .box .mark,
+.check-box:indeterminate .box .mark
+{
+  -fx-scale-x : 1.2;
+  -fx-scale-y : 1.2;
+}
+
+/************************************************************************************
+*
+*               @-fx-border-radius
+*
+*************************************************************************************/
+
+.check-box:determinate .box,
+.check-box:selected:determinate .box,
+.check-box:indeterminate .box
+{
+  -fx-border-radius : 2px;
+}
+
+/************************************************************************************
+*
+*               @-fx-shape
+*
+*************************************************************************************/
+
+
+.check-box:selected:determinate .box .mark {
+  -fx-shape : "M9.005,17.766l13.759,14.739h1.716L49.02,0l10.298,8.488L25.997,50.453h-3.629L0,26.897L9.005,17.766z";
+}
+
+
+/************************************************************************************
+*
+*               @-fx-background-radius
+*
+*************************************************************************************/
+
+.text-field,
+.combo-box-base, .split-menu-button, .menu-button, .choice-box
+{
+  -fx-background-radius : 0px;
 }

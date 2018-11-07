@@ -1,19 +1,6 @@
 
 .root {
 
-
-
-
-
-
-
-  -separator-color  : -light-gray;
-  -light-hover      : -light-gray;
-  -box-search-color : -separator-color;
-  -box-search-fill  : -text-color;
-
-
-
   /* Initial themeing */
   -base    : #2BBBAD;
   -hover   : -light-gray;
@@ -42,6 +29,11 @@
 
   /* list components*/
   -list-fill        : white;
+
+  /* custom styles */
+  -separator-color  : -light-gray;
+  -box-search-color : -separator-color;
+  -box-search-fill  : -text-color;
 
   -fx-background-color : -background-color;
 }
@@ -174,29 +166,12 @@
 }
 
 
-.table-view
+.table-view, .tree-table-view
 {
   -fx-background-color : white;
-}
-
-.table-row-cell:filled:even
-{
-  -fx-background-color : white;
-}
-
-.table-row-cell:filled:odd
-{
-    -fx-background-color : white;
 }
 
 .table-row-cell:filled:hover
 {
     -fx-background-color : -light-gray;
-}
-
-.table-row-cell
-{
-  -fx-text-color : -text-color;
-  /* -fx-background-color : derive(-light-gray, 20%); */
-  -fx-background-color : white;
 }
