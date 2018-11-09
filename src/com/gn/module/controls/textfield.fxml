@@ -176,11 +176,6 @@
                </content>
             </Tab>
          </tabs>
-         <styleClass>
-            <String fx:value="tab-white" />
-            <String fx:value="tab-line-aqua" />
-            <String fx:value="tab-shadow-none" />
-         </styleClass>
       </TabPane>
    </children>
    <stylesheets>
