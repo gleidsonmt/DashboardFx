@@ -25,7 +25,7 @@
          <tabs>
             <Tab closable="false" text="Introduction">
                <content>
-                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0" style="-fx-background-color: white;">
+                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
@@ -37,12 +37,12 @@
                               </Label>
                               <TextFlow prefHeight="54.0" prefWidth="952.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." wrappingWidth="558.283203125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." wrappingWidth="558.283203125" />
                                  </children>
                               </TextFlow>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" style="-fx-background-color: -light-gray;" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
                            <children>
                               <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
                                  <children>
@@ -296,11 +296,6 @@
                </content>
             </Tab>
          </tabs>
-         <styleClass>
-            <String fx:value="tab-white" />
-            <String fx:value="tab-line-aqua" />
-            <String fx:value="tab-shadow-none" />
-         </styleClass>
       </TabPane>
    </children>
    <stylesheets>
