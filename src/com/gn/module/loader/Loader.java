@@ -25,6 +25,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -61,6 +62,7 @@ public class Loader extends Preloader {
         stage = primary;
         primary.initStyle(StageStyle.UNDECORATED);
         Scene scene = new Scene(view);
+        scene.getStylesheets().add(getClass().getResource("/com/gn/theme/css/fonts.css").toExternalForm());
         progressBar = (JFXProgressBar) scene.lookup("#progressBar");
         primary.setScene(scene);
         primary.show();
