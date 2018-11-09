@@ -13,7 +13,7 @@
          <children>
             <JFXProgressBar fx:id="progressBar" layoutX="43.0" layoutY="381.0" prefHeight="0.0" prefWidth="516.0" progress="0.0" />
             <Label layoutX="267.0" layoutY="355.0" text="Loading views.." textFill="WHITE" />
-            <Label layoutX="145.0" layoutY="147.0" prefHeight="114.0" prefWidth="343.0" text="Dashboard Fx" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="145.0" layoutY="147.0" prefHeight="114.0" prefWidth="343.0" styleClass="fix" text="Dashboard Fx" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Roboto Bold" size="51.0" />
                </font>
