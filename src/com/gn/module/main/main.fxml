@@ -51,7 +51,7 @@
                     <content>
                         <DrawerContent fx:id="views" alignment="TOP_CENTER" prefWidth="248.0">
                            <children>
-                              <DrawerItem fx:id="home" onMouseClicked="#dashboard" selected="true" styleClass="rectangle" text="Dashboard">
+                              <DrawerItem fx:id="home" onMouseClicked="#dashboard" selected="true" text="Dashboard">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="group" />
                                  </toggleGroup>
@@ -82,7 +82,6 @@
                                           <DrawerItem layoutX="20.0" layoutY="70.0" onMouseClicked="#colorPicker" text="ColorPicker" toggleGroup="$group" />
                                            <DrawerItem layoutX="20.0" layoutY="45.0" onMouseClicked="#comboBox" text="ComboBox" toggleGroup="$group" />
                                           <DrawerItem layoutX="20.0" layoutY="120.0" onMouseClicked="#datePicker" text="DatePicker" toggleGroup="$group" />
-                                          <DrawerItem layoutX="20.0" layoutY="145.0" onMouseClicked="#html" text="HTMLEditor" toggleGroup="$group" />
                                           <DrawerItem layoutX="20.0" layoutY="170.0" onMouseClicked="#hyperlink" text="Hyperlink" toggleGroup="$group" />
                                           <DrawerItem layoutX="20.0" layoutY="195.0" onMouseClicked="#imageView" text="ImageView" toggleGroup="$group" />
                                           <DrawerItem layoutX="20.0" layoutY="220.0" onMouseClicked="#label" text="Label" toggleGroup="$group" />
@@ -95,18 +94,16 @@
                                           <DrawerItem layoutX="20.0" layoutY="395.0" onMouseClicked="#progressBar" text="ProgressBar" toggleGroup="$group" />
                                           <DrawerItem layoutX="20.0" layoutY="420.0" onMouseClicked="#progressIndicator" text="ProgressIndicator" toggleGroup="$group" />
                                            <DrawerItem layoutX="20.0" layoutY="836.0" onMouseClicked="#radio" text="RadioButton" toggleGroup="$group" />
-                                          <DrawerItem layoutX="20.0" layoutY="1076.0" onMouseClicked="#toggle" text="ScrollBar" toggleGroup="$group" />
-                                          <DrawerItem layoutX="20.0" layoutY="1076.0" onMouseClicked="#textField" text="Separator" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="1076.0" text="ScrollBar" toggleGroup="$group" />
                                            <DrawerItem layoutX="20" onMouseClicked="#slider" text="Slider" toggleGroup="$group" />
                                            <DrawerItem layoutX="20" onMouseClicked="#spinner" text="Spinner" toggleGroup="$group" />
                                           <DrawerItem layoutX="20.0" layoutY="420.0" onMouseClicked="#splitMenuButton" text="SplitMenuButton" toggleGroup="$group" />
-                                          <DrawerItem layoutX="20.0" layoutY="1364.0" onMouseClicked="#toggle" text="TableView" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="1364.0" onMouseClicked="#tableView" text="TableView" toggleGroup="$group" />
                                           <DrawerItem layoutX="20.0" layoutY="1172.0" onMouseClicked="#toggle" text="TextArea" toggleGroup="$group" />
                                           <DrawerItem layoutX="20.0" layoutY="884.0" onMouseClicked="#textField" text="TextField" toggleGroup="$group" />
                                           <DrawerItem layoutX="20.0" layoutY="836.0" onMouseClicked="#toggle" text="ToggleButton" toggleGroup="$group" />
-                                          <DrawerItem layoutX="20.0" layoutY="1124.0" onMouseClicked="#toggle" text="TreeTableView" toggleGroup="$group" />
-                                          <DrawerItem layoutX="20.0" layoutY="1172.0" onMouseClicked="#toggle" text="TreeView" toggleGroup="$group" />
-                                          <DrawerItem layoutX="20.0" layoutY="1412.0" onMouseClicked="#toggle" text="WebView" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="1124.0" onMouseClicked="#treeTableView" text="TreeTableView" toggleGroup="$group" />
+                                          <DrawerItem layoutX="20.0" layoutY="1172.0" onMouseClicked="#treeView" text="TreeView" toggleGroup="$group" />
 
                                        </children>
                                     </VBox>
