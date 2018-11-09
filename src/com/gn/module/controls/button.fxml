@@ -83,6 +83,51 @@
                   </VBox>
                </content>
             </Tab>
+            <Tab closable="false" text="Types">
+               <content>
+                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
+                     <children>
+                        <VBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label prefHeight="38.0" prefWidth="99.0" text="Types">
+                                 <styleClass>
+                                    <String fx:value="h3" />
+                                    <String fx:value="title" />
+                                 </styleClass>
+                              </Label>
+                              <TextFlow prefHeight="54.0" prefWidth="952.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Common types of buttons, used in an application." wrappingWidth="558.283203125" />
+                                 </children>
+                              </TextFlow>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER" prefWidth="478.0" spacing="20.0">
+                                 <children>
+                                    <Button layoutX="512.0" layoutY="77.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="100.0" styleClass="btn-flat" text="Flat" />
+                                    <Button layoutX="490.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="40.0" styleClass="round" text="R" />
+                                    <Button layoutX="693.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="95.0" styleClass="rounded" text="Rounded" />
+                                    <Button layoutX="470.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Default" />
+                                    <Button layoutX="558.0" layoutY="77.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="raised" text="Raised" />
+                                    <Button layoutX="507.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Outlined">
+                                       <styleClass>
+                                          <String fx:value="outlined" />
+                                          <String fx:value="out-base" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="30.0" right="30.0" top="100.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
             <Tab closable="false" text="States">
                <content>
                   <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
@@ -136,7 +181,7 @@
                                     </Label>
                                     <TextFlow prefHeight="54.0" prefWidth="952.0">
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Three standard sizes" />
                                        </children>
                                     </TextFlow>
                                  </children>
@@ -186,7 +231,7 @@
                                     </Label>
                                     <TextFlow prefHeight="54.0" prefWidth="952.0">
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Standard colors based on bootstrap." />
                                        </children></TextFlow>
                                  </children>
                               </VBox>
@@ -220,51 +265,6 @@
                         <Insets />
                      </opaqueInsets>
                   </ScrollPane>
-               </content>
-            </Tab>
-            <Tab closable="false" text="Types">
-               <content>
-                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
-                     <children>
-                        <VBox alignment="CENTER_LEFT">
-                           <children>
-                              <Label prefHeight="38.0" prefWidth="99.0" text="Types">
-                                 <styleClass>
-                                    <String fx:value="h3" />
-                                    <String fx:value="title" />
-                                 </styleClass>
-                              </Label>
-                              <TextFlow prefHeight="54.0" prefWidth="952.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Common types of buttons, used in an application." wrappingWidth="558.283203125" />
-                                 </children>
-                              </TextFlow>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
-                           <children>
-                              <HBox alignment="CENTER" prefWidth="478.0" spacing="20.0">
-                                 <children>
-                                    <Button layoutX="512.0" layoutY="77.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="100.0" styleClass="btn-flat" text="Flat" />
-                                    <Button layoutX="490.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="40.0" styleClass="round" text="R" />
-                                    <Button layoutX="693.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="95.0" styleClass="rounded" text="Rounded" />
-                                    <Button layoutX="470.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Default" />
-                                    <Button layoutX="558.0" layoutY="77.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="raised" text="Raised" />
-                                    <Button layoutX="507.0" layoutY="11.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Outlined">
-                                       <styleClass>
-                                          <String fx:value="outlined" />
-                                          <String fx:value="out-base" />
-                                       </styleClass>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="30.0" right="30.0" top="100.0" />
-                     </padding>
-                  </VBox>
                </content>
             </Tab>
          </tabs>

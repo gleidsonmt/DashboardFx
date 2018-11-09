@@ -7,6 +7,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -36,7 +37,7 @@
                               </Label>
                               <TextFlow prefHeight="54.0" prefWidth="952.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." wrappingWidth="558.283203125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="A JavaFX CheckBox is a button which can be in three different states: Selected, not selected and unknown (indeterminate). " wrappingWidth="558.283203125" />
                                  </children>
                               </TextFlow>
                            </children>
@@ -45,7 +46,7 @@
                            <children>
                               <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
                                  <children>
-                                    <CheckBox mnemonicParsing="false" selected="true" text="CheckBox">
+                                    <CheckBox mnemonicParsing="false" text="CheckBox">
                                        <tooltip>
                                           <Tooltip text="Empty Tooltip" />
                                        </tooltip></CheckBox>
@@ -84,6 +85,206 @@
                         <Insets bottom="10.0" left="30.0" right="30.0" top="100.0" />
                      </padding>
                   </VBox>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Types">
+               <content>
+                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
+                     <children>
+                        <VBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label prefHeight="38.0" prefWidth="195.0" text="CheckBox">
+                                 <styleClass>
+                                    <String fx:value="h3" />
+                                    <String fx:value="title" />
+                                 </styleClass>
+                              </Label>
+                              <TextFlow prefHeight="54.0" prefWidth="952.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Three standard sizes." wrappingWidth="558.283203125" />
+                                 </children>
+                              </TextFlow>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
+                                 <children>
+                                    <CheckBox mnemonicParsing="false" selected="true" styleClass="check-small" text="Default">
+                                       <tooltip>
+                                          <Tooltip text="Empty Tooltip" />
+                                       </tooltip>
+                                    </CheckBox>
+                                    <CheckBox layoutX="448.0" layoutY="10.0" mnemonicParsing="false" selected="true" styleClass="check-rounded" text="Rounded">
+                                       <tooltip>
+                                          <Tooltip text="Empty Tooltip" />
+                                       </tooltip>
+                                    </CheckBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="30.0" right="30.0" top="100.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Sizes">
+               <content>
+                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
+                     <children>
+                        <VBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label prefHeight="38.0" prefWidth="195.0" text="CheckBox">
+                                 <styleClass>
+                                    <String fx:value="h3" />
+                                    <String fx:value="title" />
+                                 </styleClass>
+                              </Label>
+                              <TextFlow prefHeight="54.0" prefWidth="952.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Three standard sizes." wrappingWidth="558.283203125" />
+                                 </children>
+                              </TextFlow>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
+                                 <children>
+                                    <CheckBox mnemonicParsing="false" selected="true" styleClass="check-small" text="Default">
+                                       <tooltip>
+                                          <Tooltip text="Empty Tooltip" />
+                                       </tooltip>
+                                    </CheckBox>
+                                    <CheckBox layoutX="442.0" layoutY="10.0" mnemonicParsing="false" selected="true" styleClass="check-medium" text="Medium">
+                                       <tooltip>
+                                          <Tooltip text="Empty Tooltip" />
+                                       </tooltip>
+                                    </CheckBox>
+                                    <CheckBox layoutX="485.0" layoutY="10.0" mnemonicParsing="false" selected="true" styleClass="check-large" text="Large">
+                                       <tooltip>
+                                          <Tooltip text="Empty Tooltip" />
+                                       </tooltip>
+                                    </CheckBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="30.0" right="30.0" top="100.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab closable="false" text="States">
+               <content>
+                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
+                     <children>
+                        <VBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label prefHeight="38.0" prefWidth="195.0" text="CheckBox">
+                                 <styleClass>
+                                    <String fx:value="h3" />
+                                    <String fx:value="title" />
+                                 </styleClass>
+                              </Label>
+                              <TextFlow prefHeight="54.0" prefWidth="952.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Main states for component." wrappingWidth="558.283203125" />
+                                 </children>
+                              </TextFlow>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
+                                 <children>
+                                    <CheckBox mnemonicParsing="false" styleClass="check-small" text="Default">
+                                       <tooltip>
+                                          <Tooltip text="Empty Tooltip" />
+                                       </tooltip>
+                                    </CheckBox>
+                                    <CheckBox allowIndeterminate="true" indeterminate="true" layoutX="448.0" layoutY="10.0" mnemonicParsing="false" styleClass="check-small" text="Indeterminate">
+                                       <tooltip>
+                                          <Tooltip text="Empty Tooltip" />
+                                       </tooltip>
+                                    </CheckBox>
+                                    <CheckBox layoutX="485.0" layoutY="10.0" mnemonicParsing="false" selected="true" styleClass="check-small" text="Selected">
+                                       <tooltip>
+                                          <Tooltip text="Empty Tooltip" />
+                                       </tooltip>
+                                    </CheckBox>
+                                    <CheckBox disable="true" layoutX="522.0" layoutY="10.0" mnemonicParsing="false" selected="true" styleClass="check-small" text="Disable">
+                                       <tooltip>
+                                          <Tooltip text="Empty Tooltip" />
+                                       </tooltip>
+                                    </CheckBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="30.0" right="30.0" top="100.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Bootstrap">
+               <content>
+                  <ScrollPane fitToHeight="true" fitToWidth="true">
+                     <content>
+                        <VBox alignment="CENTER" prefHeight="559.0" prefWidth="937.0" spacing="10.0">
+                           <children>
+                              <VBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="890.0">
+                                 <children>
+                                    <Label prefHeight="29.0" prefWidth="201.0" text="Bootstrap Colors">
+                                       <styleClass>
+                                          <String fx:value="h3" />
+                                          <String fx:value="title" />
+                                       </styleClass>
+                                    </Label>
+                                    <TextFlow prefHeight="54.0" prefWidth="952.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Standard colors based on bootstrap." />
+                                       </children>
+                                    </TextFlow>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="239.0" prefWidth="890.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="165.0" prefWidth="478.0" spacing="10.0">
+                                       <children>
+                                          <CheckBox mnemonicParsing="false" prefWidth="81.0" selected="true" styleClass="check-primary" text="Primary" />
+                                          <CheckBox layoutX="102.0" layoutY="20.0" mnemonicParsing="false" prefWidth="81.0" selected="true" styleClass="check-info" text="Info" />
+                                          <CheckBox layoutX="705.0" layoutY="20.0" mnemonicParsing="false" prefWidth="81.0" selected="true" styleClass="check-success" text="Success" />
+                                          <CheckBox layoutX="723.0" layoutY="20.0" mnemonicParsing="false" prefWidth="81.0" selected="true" styleClass="check-warning" text="Warning" />
+                                          <CheckBox layoutX="649.0" layoutY="20.0" mnemonicParsing="false" prefWidth="81.0" selected="true" styleClass="check-danger" text="Danger" />
+                                          <CheckBox layoutX="689.0" layoutY="20.0" mnemonicParsing="false" selected="true" styleClass="check-secondary" text="Secondary" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="30.0" right="30.0" top="100.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </ScrollPane>
                </content>
             </Tab>
          </tabs>
