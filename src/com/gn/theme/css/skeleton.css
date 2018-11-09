@@ -33,11 +33,13 @@
 .progress-indicator:determinate .determinate-indicator .progress,
 .list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused:selected,
 .check-box:determinate .box, .check-box:selected:determinate .box,
-.check-box:indeterminate .box
+.check-box:indeterminate .box, .spinner:focused
+
 {
   -fx-background-color : -base;
 }
 
+.spinner,
 .tab-pane:top, .tab-pane:top .tab-header-area, .tab-pane:top .tab-header-area .headers-region .tab:selected:top,
 .tab-pane:top .tab-header-area .tab-header-background,
 .tab-pane:top .tab-content-area, .scroll-pane:fitToHeight,
@@ -46,7 +48,10 @@
 .scroll-pane:fitToWidth:fitToHeight,
 .tree-table-row-cell:filled .table-column:filled,
 .tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell,
-.check-box:determinate .box
+.check-box:determinate .box,
+.spinner:focused,
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button
 {
   -fx-background-color : transparent;
 }
@@ -123,7 +128,9 @@
 *
 *************************************************************************************/
 
-.check-box
+.check-box,
+.radio-button,
+.spinner
 {
   -fx-text-fill : -text-color;
 }
@@ -226,7 +233,7 @@
   -fx-border-color : -base;
 }
 
-.text-field, .spinner,
+.text-field, .spinner, .spinner,
 .check-box:determinate .box,
 .split-menu-button, .menu-button, .choice-box,
 .split-menu-button .arrow-button, .combo-box-base, .date-picker,
@@ -600,13 +607,6 @@
     -fx-border-color : transparent;
 }
 
-
-
-
-
-.radio-button {
-    -fx-text-fill: -highlight-text;
-}
 
 .radio-button > .radio  {
    -fx-background-color: transparent;
@@ -1425,22 +1425,10 @@
   -fx-text-fill : white;
 }
 
-.spinner {
-  -fx-border-color : -default-border;
-  -fx-background-color : transparent;
-  -fx-text-fill : -default-border;
-}
-
-.spinner:focused {
-  -fx-border-color : -base;
-}
-
 .spinner .increment-arrow-button,
 .spinner .decrement-arrow-button
  {
-  -fx-background-color : transparent;
   -fx-background-insets : 0px;
-  /* -fx-padding : 0px; */
 }
 
 .spinner .increment-arrow-button {
