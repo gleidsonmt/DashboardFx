@@ -546,4 +546,28 @@ public class Main implements Initializable {
         body.setContent(ViewManager.getInstance().get("linechart"));
     }
 
+    @FXML
+    private void tableView(){
+        title.setText("TableView");
+        body.setContent(ViewManager.getInstance().get("tableview"));
+    }
+
+    @FXML
+    private void scrollBar(){
+        title.setText("TableView");
+        body.setContent(ViewManager.getInstance().get("scrollbar"));
+    }
+
+    @FXML
+    private void treeTableView(){
+        title.setText("TreeTableView");
+        body.setContent(ViewManager.getInstance().get("treetableview"));
+    }
+
+    @FXML
+    private void treeView(){
+        title.setText("TreeView");
+        body.setContent(ViewManager.getInstance().get("treeview"));
+    }
+
 }
