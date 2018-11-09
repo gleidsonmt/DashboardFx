@@ -12,21 +12,30 @@
 *
 *************************************************************************************/
 
-.button {
+.button, .toggle-button, .menu-bar,
+.icon .badge-pane,
+.menu-bar .container .menu,
+.date-picker-popup > * > .today:hover,
+.date-picker-popup > * > .today.selected, .menu-item:focused, .menu-item:focused .label,
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:hover,
+.slider .thumb, .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:focused,
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell:focused:filled,
+.progress-bar:determinate .bar, .progress-indicator:indeterminate .segment,
+.pagination .pagination-control .control-box .number-button:selected,
+.table-view .column-resize-line,
+.table-view .column-overlay,
+.table-view .column-header-background .column-drag-header,
+.tree-table-view .column-resize-line,
+.tree-table-view .column-overlay,
+.tree-table-view .column-header-background .column-drag-header,
+.table-row-cell:filled:selected:focused,
+.tree-table-row-cell:filled:selected .table-column:filled,
+.progress-indicator:determinate .determinate-indicator .progress,
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused:selected,
+.check-box:determinate .box, .check-box:selected:determinate .box,
+.check-box:indeterminate .box
+{
   -fx-background-color : -base;
-}
-
-.button:hover {
-  -fx-background-color : derive(-base, -40%);
-}
-
-.button:focused {
-  -fx-background-color: -base;
-  -fx-background-color : derive(-base, -40%), derive(-base, -40%), -base;
-}
-
-.hyperlink:focused {
-  -fx-border-color : transparent;
 }
 
 .tab-pane:top, .tab-pane:top .tab-header-area, .tab-pane:top .tab-header-area .headers-region .tab:selected:top,
@@ -34,11 +43,41 @@
 .tab-pane:top .tab-content-area, .scroll-pane:fitToHeight,
 .tab-pane:top .tab-header-area .headers-region .tab:top,
 .scroll-pane .viewport, .scroolPane, .scroll-pane:fitToWidth,
-.scroll-pane:fitToWidth:fitToHeight
+.scroll-pane:fitToWidth:fitToHeight,
+.tree-table-row-cell:filled .table-column:filled,
+.tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell,
+.check-box:determinate .box
 {
   -fx-background-color : transparent;
 }
 
+.text-field , .list-view,
+.split-menu-button, .menu-button, .choice-box,
+.split-menu-button .arrow-button, .combo-box-base, .date-picker
+{
+  -fx-background-color : -box-base;
+}
+
+.check-box:selected:determinate .box .mark,
+.check-box:indeterminate .box .mark
+{
+    -fx-background-color : white;
+}
+
+.button:hover,
+.table-row-cell:filled:pressed
+{
+  -fx-background-color : derive(-base, -40%);
+}
+
+.button:focused {
+  -fx-background-color : derive(-base, -40%), derive(-base, -40%), -base;
+}
+
+.hyperlink:focused {
+  -fx-border-color : transparent;
+  -fx-text-fill : -primary;
+}
 
 /************************************************************************************
 *
@@ -83,6 +122,11 @@
 *               @-fx-text-fill
 *
 *************************************************************************************/
+
+.check-box
+{
+  -fx-text-fill : -text-color;
+}
 
 .button {
   -fx-text-fill : -inner-text;
@@ -149,7 +193,7 @@
 *
 *************************************************************************************/
 
-.button, .toggle-button,
+.button, .toggle-button, .check-box,
 .tab-pane:top .tab-header-area .headers-region
 {
   -fx-cursor : hand;
@@ -172,6 +216,24 @@
 *               @-fx-border-color
 *
 *************************************************************************************/
+
+.tree-view:focused,
+.text-field:focused, .list-view,
+.menu-button:focused, .choice-box:focused, .split-menu-button:focused,
+.check-box:indeterminate .box, .check-box:hover:determinate .box,
+.check-box:selected:determinate .box
+{
+  -fx-border-color : -base;
+}
+
+.text-field, .spinner,
+.check-box:determinate .box,
+.split-menu-button, .menu-button, .choice-box,
+.split-menu-button .arrow-button, .combo-box-base, .date-picker,
+.check-box:determinate .box
+{
+  -fx-border-color : -box-fill;
+}
 
 .tab-pane:top .tab-header-area .tab-header-background
 {
@@ -238,8 +300,56 @@
   -fx-alignment: CENTER;
 }
 
+/************************************************************************************
+*
+*               @-fx-shape
+*
+*************************************************************************************/
 
 
+.check-box:selected:determinate .box .mark
+{
+  -fx-shape : "M9.005,17.766l13.759,14.739h1.716L49.02,0l10.298,8.488L25.997,50.453h-3.629L0,26.897L9.005,17.766z";
+}
+
+
+/************************************************************************************
+*
+*               @-fx-background-radius
+*
+*************************************************************************************/
+
+.text-field,
+.combo-box-base, .split-menu-button, .menu-button, .choice-box
+{
+  -fx-background-radius : 0px;
+}
+
+/************************************************************************************
+*
+*               @-fx-border-radius
+*
+*************************************************************************************/
+
+.check-box:indeterminate .box,
+.check-box:determinate .box
+{
+    -fx-border-radius : 0px;
+}
+
+/************************************************************************************
+*
+*               @-fx-background-insets
+*
+*************************************************************************************/
+
+.check-box:indeterminate .box,
+.check-box:determinate .box
+{
+  -fx-background-insets : 0px;
+}
+
+/***************************/
 
 .tile
 {
@@ -414,15 +524,6 @@
 }
 
 
-
-.date-picker-popup > * > .today:hover,
-.date-picker-popup > * > .today.selected, .menu-item:focused, .menu-item:focused .label,
-.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:hover,
-.slider .thumb, .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:focused
-{
-   -fx-background-color : -base;
-}
-
 .combo-box-base,
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell
 {
@@ -596,12 +697,9 @@
 
 .toggle-button
  {
-  -fx-background-color : -base;
   -fx-text-fill : white;
   -fx-border-width : 0px;
 }
-
-
 
 .gn-buttons .gn-close, .gn-buttons .gn-minimize, .gn-buttons .gn-maximize,
 .gn-buttons .gn-full-screen
@@ -821,8 +919,8 @@
     -fx-padding:  0.333333em 0.236110875em  0.333333em;
 }
 
-.menu-bar {
-  -fx-background-color : -base;
+.menu-bar
+{
   -fx-border-width : 0px;
   -fx-padding : 0px;
   -fx-background-insets : 0px;
@@ -841,10 +939,6 @@
   -fx-background-insets : 0px;
   -fx-border-width : 0px;
   -fx-text-fill : white;
-}
-
-.menu-bar .container .menu:openvertically {
-  -fx-background-color : -base;
 }
 
 .menu-bar>*.container>*.menu-button:hover  {
@@ -1190,7 +1284,6 @@
 }
 
 .progress-bar:determinate .bar {
-  -fx-background-color : -base;
   -fx-background-insets : 0px;
 }
 
@@ -1210,16 +1303,8 @@
     -fx-padding: 0;
 }
 
-.progress-indicator:determinate .determinate-indicator .progress{
-    -fx-background-color : -base;
-}
-
 .progress-indicator:determinate .determinate-indicator .percentage {
   -fx-fill : -box-fill;
-}
-
-.progress-indicator:indeterminate .segment {
-      -fx-background-color : -base;
 }
 
 .scroll-pane:fitToWidth .viewport {
@@ -1336,8 +1421,7 @@
 }
 
 .pagination .pagination-control .control-box .number-button:selected {
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,.2) , 5, 0 , 0 , 0 );
-  -fx-background-color : -base;
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,.2) , 5, 0 , 0 , 0 );
   -fx-text-fill : white;
 }
 
@@ -1396,7 +1480,6 @@
 }
 
 .list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused {
-    -fx-background-color : -base;
     -fx-background-insets: 0;
 }
 
@@ -1557,10 +1640,6 @@
 
 .gray, .btn-gray {
   -fx-background-color : -gray;
-}
-
-.base {
-  -fx-background-color : -base;
 }
 
 /************************************************************************************
@@ -2103,10 +2182,6 @@
     -fx-text-fill: WHITE;
 }
 
-.icon .badge-pane {
-  -fx-background-color : -base;
-}
-
 .icon-danger .badge-pane {
   -fx-background-color : -danger;
 }
@@ -2324,16 +2399,6 @@
 }
 
 
-.table-view .column-resize-line,
-.table-view .column-overlay,
-.table-view .column-header-background .column-drag-header,
-.tree-table-view .column-resize-line,
-.tree-table-view .column-overlay,
-.tree-table-view .column-header-background .column-drag-header
-{
-    -fx-background-color : -base;
-}
-
 .table-row-cell:filled:odd
 {
   -fx-background-color : transparent;
@@ -2345,9 +2410,7 @@
 {
   /* -fx-background-color : derive(-light-gray, 20%); */
   -fx-text-color : -text-color;
-  -fx-background-color : -base;
   -fx-border-color : transparent;
-
 }
 
 .table-row-cell:filled:selected .table-column .text
@@ -2359,12 +2422,6 @@
 {
   -fx-fill : -text-color;
 }
-
-.table-row-cell:filled:pressed
-{
-    -fx-background-color : derive(-base, -40%);
-}
-
 
 .table-row-cell
 {
@@ -2441,17 +2498,6 @@
     -fx-background-color : white;
 }
 
-
-.tree-table-row-cell:filled .table-column:filled
-{
-  -fx-background-color : transparent;
-}
-
-.tree-table-row-cell:filled:selected .table-column:filled
-{
-  -fx-background-color : -base;
-}
-
 .tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell:selected .table-column:filled .text
 {
   -fx-fill : white;
@@ -2467,12 +2513,6 @@
     -fx-border-color : transparent;
 }
 
-
-.tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell
-{
-  -fx-background-color : transparent;
-}
-
 .tree-table-view .column-header-background .nested-column-header .table-column .label .text
 {
   -fx-fill : -text-color;
@@ -2482,4 +2522,33 @@
 {
   -fx-background-color : -icon-color;
   -fx-shape: "M8.124,13.625l4.125-3.375v2.889l-4.125,3.86L4,13.139V10.25L8.124,13.625z";
+}
+
+
+.tree-view
+{
+  -fx-border-color : -box-fill;
+  -fx-background-color : transparent;
+}
+
+.tree-view .virtual-flow .clipped-container,
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell
+{
+  -fx-background-color : transparent;
+}
+
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell:focused:filled .tree-disclosure-node .arrow
+{
+  -fx-background-color : white;
+}
+
+
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell:filled
+{
+  -fx-text-fill : -text-color;
+}
+
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell:filled:selected
+{
+  -fx-text-fill : white;
 }
