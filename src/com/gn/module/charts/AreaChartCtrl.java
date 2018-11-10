@@ -56,6 +56,7 @@ public class AreaChartCtrl implements Initializable {
 
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Legend 1");
+        series.getData().add(new XYChart.Data<>("0", 2D));
         series.getData().add(new XYChart.Data<>("1", 8D));
         series.getData().add(new XYChart.Data<>("2", 5D));
         series.getData().add(new XYChart.Data<>("3", 3D));
@@ -68,6 +69,7 @@ public class AreaChartCtrl implements Initializable {
 
         XYChart.Series<String, Number> secondaySeries = new XYChart.Series<>();
         secondaySeries.setName("Legend 2");
+        secondaySeries.getData().add(new XYChart.Data<>("0", 2D));
         secondaySeries.getData().add(new XYChart.Data<>("1", 2D));
         secondaySeries.getData().add(new XYChart.Data<>("2", 7D));
         secondaySeries.getData().add(new XYChart.Data<>("3", 8D));
@@ -80,6 +82,7 @@ public class AreaChartCtrl implements Initializable {
 
         XYChart.Series<String, Number> thirdSeries = new XYChart.Series<>();
         thirdSeries.setName("Legend 3");
+        thirdSeries.getData().add(new XYChart.Data<>("0", 0D));
         thirdSeries.getData().add(new XYChart.Data<>("1", 6D));
         thirdSeries.getData().add(new XYChart.Data<>("2", 3D));
         thirdSeries.getData().add(new XYChart.Data<>("3", 4D));
