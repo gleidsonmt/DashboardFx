@@ -17,15 +17,11 @@
 package com.gn.control;
 
 import com.gn.decorator.component.GNControl;
-import com.jfoenix.controls.JFXPopup;
-import com.sun.javafx.scene.control.skin.DatePickerSkin;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -60,7 +56,7 @@ public class UserDetail extends GNControl {
 
     @Override
     protected Node icon() {
-        Image image = new Image(getClass().getResource("/com/gn/theme/img/avatar.jpg").toExternalForm());
+        Image image = new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm());
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(30);
         imageView.setFitWidth(30);
