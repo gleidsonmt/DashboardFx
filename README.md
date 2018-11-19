@@ -8,12 +8,12 @@
 ![Guide](src/com/gn/module/media/profile.png)
 
 ### Library Dependency 
-##### colors-1.4
-##### controlsfx-8.40.14
-##### fontawesomefx-8.9
-##### GNDrawer
-##### GNCarousel
-##### GNDecorator
-##### jfoenix-8.0.7
-##### scenicView
-##### tilesfx-1.5.2
+    colors-1.4
+    controlsfx-8.40.14
+    fontawesomefx-8.9
+    GNDrawer
+    GNCarousel
+    GNDecorator
+    jfoenix-8.0.7
+    scenicView
+    tilesfx-1.5.2
