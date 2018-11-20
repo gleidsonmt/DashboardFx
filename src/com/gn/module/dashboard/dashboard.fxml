@@ -10,6 +10,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
@@ -24,7 +27,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane prefHeight="612.0" prefWidth="992.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.dashboard.Dashboard">
+<StackPane prefHeight="1500.0" prefWidth="992.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.dashboard.Dashboard">
    <children>
       <VBox spacing="20.0">
          <children>
@@ -222,6 +225,22 @@
                   </VBox>
                </children>
             </HBox>
+            <HBox alignment="CENTER" prefHeight="280.0" prefWidth="972.0">
+               <children>
+                  <AreaChart fx:id="areaChart" alternativeColumnFillVisible="true" createSymbols="false" horizontalGridLinesVisible="false" prefHeight="299.0" prefWidth="972.0" styleClass="main-chart" title="Sales Year" HBox.hgrow="ALWAYS">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis minorTickCount="0" side="LEFT" />
+                    </yAxis>
+                  </AreaChart>
+               </children>
+               <styleClass>
+                  <String fx:value="border" />
+                  <String fx:value="border-1" />
+               </styleClass>
+            </HBox>
             <HBox alignment="CENTER" spacing="20.0" VBox.vgrow="ALWAYS">
                <children>
                   <VBox HBox.hgrow="ALWAYS">
@@ -237,9 +256,9 @@
                                        </styleClass></PieChart>
                                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <GNAvatar>
+                                          <GNAvatar radius="39.0" strokeWidth="0.0">
                                              <image>
-                                                <Image url="@../../theme/img/avatar.jpg" />
+                                                <Image url="@../media/avatar.jpg" />
                                              </image>
                                           </GNAvatar>
                                           <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
@@ -255,7 +274,10 @@
                                        <styleClass>
                                           <String fx:value="border" />
                                           <String fx:value="border-1" />
-                                       </styleClass></HBox>
+                                       </styleClass>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" top="5.0" />
+                                       </padding></HBox>
                                  </children>
                               </VBox>
                               <VBox spacing="10.0" HBox.hgrow="ALWAYS">
@@ -265,7 +287,7 @@
                                        <children>
                                           <ImageView fx:id="avatarFollow" fitHeight="169.0" fitWidth="293.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../theme/img/girl.png" />
+                                                <Image url="@../media/girl.png" />
                                              </image>
                                           </ImageView>
                                           <JFXButton styleClass="follow" text="Follow me">
@@ -310,17 +332,17 @@
                                              </cursor>
                                           </VBox>
                                           <Label layoutX="13.0" layoutY="35.0" minHeight="5.0" prefHeight="5.0" prefWidth="238.0" styleClass="success" />
-                                          <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" text="Total number of users" textAlignment="RIGHT">
+                                          <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total number of users" textAlignment="RIGHT">
                                              <font>
                                                 <Font name="Roboto Regular" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="CENTER_RIGHT" layoutX="160.0" layoutY="-34.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" text="Registered" textFill="#8d8b8b">
+                                          <Label alignment="CENTER_RIGHT" layoutX="160.0" layoutY="-34.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h4" text="Registered" textFill="#8d8b8b">
                                              <font>
                                                 <Font name="Roboto Black" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="TOP_RIGHT" layoutX="159.0" layoutY="2.0" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" text="10">
+                                          <Label alignment="TOP_RIGHT" layoutX="159.0" layoutY="2.0" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="10">
                                              <font>
                                                 <Font name="Roboto Black" size="24.0" />
                                              </font>
@@ -353,17 +375,17 @@
                                              </cursor>
                                           </VBox>
                                           <Label layoutX="13.0" layoutY="35.0" minHeight="5.0" prefHeight="5.0" prefWidth="238.0" styleClass="btn-info" />
-                                          <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" text="Total Items in stock" textAlignment="RIGHT">
+                                          <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total Items in stock" textAlignment="RIGHT">
                                              <font>
                                                 <Font name="Roboto Regular" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="CENTER_RIGHT" layoutX="160.0" layoutY="-34.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" text="Registered" textFill="#8d8b8b">
+                                          <Label alignment="CENTER_RIGHT" layoutX="160.0" layoutY="-34.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h4" text="Registered" textFill="#8d8b8b">
                                              <font>
                                                 <Font name="Roboto Black" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="TOP_RIGHT" layoutX="159.0" layoutY="2.0" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" text="20">
+                                          <Label alignment="TOP_RIGHT" layoutX="159.0" layoutY="2.0" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="20">
                                              <font>
                                                 <Font name="Roboto Black" size="24.0" />
                                              </font>
@@ -396,17 +418,17 @@
                                              </cursor>
                                           </VBox>
                                           <Label layoutX="13.0" layoutY="35.0" minHeight="5.0" prefHeight="5.0" prefWidth="238.0" styleClass="secondary" />
-                                          <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" text="Total number of employers" textAlignment="RIGHT">
+                                          <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total number of employers" textAlignment="RIGHT">
                                              <font>
                                                 <Font name="Roboto Regular" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="CENTER_RIGHT" layoutX="160.0" layoutY="-34.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" text="Registered" textFill="#8d8b8b">
+                                          <Label alignment="CENTER_RIGHT" layoutX="160.0" layoutY="-34.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h4" text="Registered" textFill="#8d8b8b">
                                              <font>
                                                 <Font name="Roboto Black" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="TOP_RIGHT" layoutX="159.0" layoutY="2.0" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" text="30">
+                                          <Label alignment="TOP_RIGHT" layoutX="159.0" layoutY="2.0" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="30">
                                              <font>
                                                 <Font name="Roboto Black" size="24.0" />
                                              </font>
@@ -439,17 +461,17 @@
                                              </cursor>
                                           </VBox>
                                           <Label layoutX="13.0" layoutY="35.0" minHeight="5.0" prefHeight="5.0" prefWidth="238.0" styleClass="warning" />
-                                          <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" text="Total number of clients" textAlignment="RIGHT">
+                                          <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total number of clients" textAlignment="RIGHT">
                                              <font>
                                                 <Font name="Roboto Regular" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="CENTER_RIGHT" layoutX="160.0" layoutY="-34.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" text="Registered" textFill="#8d8b8b">
+                                          <Label alignment="CENTER_RIGHT" layoutX="160.0" layoutY="-34.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h4" text="Registered" textFill="#8d8b8b">
                                              <font>
                                                 <Font name="Roboto Black" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="TOP_RIGHT" layoutX="159.0" layoutY="2.0" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" text="40">
+                                          <Label alignment="TOP_RIGHT" layoutX="159.0" layoutY="2.0" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="40">
                                              <font>
                                                 <Font name="Roboto Black" size="24.0" />
                                              </font>
