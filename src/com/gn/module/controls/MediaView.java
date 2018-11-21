@@ -115,6 +115,7 @@ public class MediaView implements Initializable {
             }
         });
 
+
         slider.valueProperty().addListener(new InvalidationListener() {
             @Override
             public void invalidated(javafx.beans.Observable observable) {
