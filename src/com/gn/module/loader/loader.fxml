@@ -3,6 +3,8 @@
 <?import com.jfoenix.controls.JFXProgressBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
@@ -13,18 +15,23 @@
          <children>
             <JFXProgressBar fx:id="progressBar" layoutX="43.0" layoutY="381.0" prefHeight="0.0" prefWidth="516.0" progress="0.0" />
             <Label layoutX="267.0" layoutY="355.0" text="Loading views.." textFill="WHITE" />
-            <Label layoutX="145.0" layoutY="147.0" prefHeight="114.0" prefWidth="343.0" styleClass="fix" text="Dashboard Fx" textAlignment="CENTER" textFill="WHITE">
+            <Label layoutX="144.0" layoutY="147.0" prefHeight="114.0" prefWidth="343.0" styleClass="fix" text="Dashboard Fx" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Roboto Bold" size="51.0" />
+                  <Font name="Berlin Sans FB" size="56.0" />
                </font>
                <effect>
-                  <Glow level="0.36" />
+                  <Glow level="0.84" />
                </effect>
             </Label>
-            <Label layoutX="450.0" layoutY="385.0" prefHeight="17.0" prefWidth="130.0" text="© Gleidson Neves da Silveira" textFill="WHITE">
+            <Label layoutX="43.0" layoutY="385.0" prefHeight="17.0" prefWidth="130.0" text="© Gleidson Neves da Silveira" textFill="WHITE">
                <font>
                   <Font size="10.0" />
                </font></Label>
+            <ImageView fitHeight="68.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../media/logo.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

@@ -65,7 +65,9 @@ public class Loader extends Preloader {
         scene.getStylesheets().add(getClass().getResource("/com/gn/theme/css/fonts.css").toExternalForm());
         progressBar = (JFXProgressBar) scene.lookup("#progressBar");
         primary.setScene(scene);
+        primary.setAlwaysOnTop(true);
         primary.show();
+
     }
 
     @Override
