@@ -16,13 +16,13 @@
  */
 package com.gn.module.main;
 
+import com.gn.App;
 import com.gn.ViewManager;
 import com.gn.control.DrawerContent;
 import com.gn.control.DrawerItem;
 import com.gn.control.DrawerList;
 import com.gn.control.GNDrawer;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPopup;
+import com.jfoenix.controls.*;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -42,10 +42,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Path;
@@ -62,20 +59,20 @@ import java.util.ResourceBundle;
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  08/10/2018
- * Version 1.0
+ * Version 2.0
  */
 public class Main implements Initializable {
 
     @FXML private ImageView avatar;
-    @FXML public VBox sideBar;
+    @FXML public  VBox sideBar;
     @FXML private HBox searchBox;
     @FXML private HBox boxStatus;
     @FXML private VBox info;
     @FXML private DrawerContent views;
     @FXML private Circle cStatus;
     @FXML private HBox status;
-    @FXML private ScrollPane body;
-    @FXML private Label title;
+    @FXML public  ScrollPane body;
+    @FXML public  Label title;
     @FXML private TextField search;
     @FXML private ScrollPane scroll;
     @FXML private DrawerList design;
@@ -85,28 +82,35 @@ public class Main implements Initializable {
     @FXML private DrawerItem  about;
     @FXML private Button hamburger;
     @FXML private SVGPath searchIcon;
+    @FXML private StackPane root;
     @FXML private Button clear;
     @FXML private JFXButton config;
     @FXML private GNDrawer drawer;
     @FXML private DrawerItem colors;
+    @FXML private JFXBadge messages;
 
     private FilteredList<DrawerItem> filteredList = null;
 
-
     public static  final PopOver popConfig = new PopOver();
-    public static  final PopOver popup = new PopOver();
+    public static  final PopOver popup     = new PopOver();
 
-    private ObservableList<DrawerItem> items      = FXCollections.observableArrayList();
-    private ObservableList<DrawerItem> designItems = FXCollections.observableArrayList();
+    private ObservableList<DrawerItem> items         = FXCollections.observableArrayList();
+    private ObservableList<DrawerItem> designItems   = FXCollections.observableArrayList();
     private ObservableList<DrawerItem> controlsItems = FXCollections.observableArrayList();
-    private ObservableList<DrawerItem> chartsItems = FXCollections.observableArrayList();
+    private ObservableList<DrawerItem> chartsItems   = FXCollections.observableArrayList();
+
+    private JFXDialog       dialog          = new JFXDialog();
+    private JFXDialogLayout dialog_layout   = new JFXDialogLayout();
+
+    private String path = "/com/gn/theme/css/";
+    boolean scrolling   = false;
 
     private Parent popContent;
-    private String path = "/com/gn/theme/css/";
+    public static Main ctrl;
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
-
+        ctrl = this;
         loadContentPopup();
 
         populateItems();
@@ -138,12 +142,10 @@ public class Main implements Initializable {
 
         colors.setOnMouseClicked(event -> {
             title.setText("Designer");
-            body.setContent(ViewManager.getInstance().get("colors"));
+            body.setContent(ViewManager.getInstance().get("carousel"));
         });
+
     }
-
-    boolean scrolling = false;
-
 
     @FXML
     private void altLayout() {
@@ -570,4 +572,23 @@ public class Main implements Initializable {
         body.setContent(ViewManager.getInstance().get("treeview"));
     }
 
+
+    @FXML
+    private void openNotification(){
+        VBox root = new VBox(new Label("teste"));
+        root.setPrefSize(200, 200);
+
+
+        PopOver pop = new PopOver();
+        pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+        pop.setContentNode(root);
+        pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
+        pop.setArrowIndent(0);
+        pop.setArrowSize(0);
+        pop.setCornerRadius(0);
+        pop.setAutoFix(true);
+        pop.setAnimated(false);
+        pop.show(messages);
+
+    }
 }

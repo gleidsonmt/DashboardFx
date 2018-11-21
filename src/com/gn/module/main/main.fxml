@@ -25,13 +25,13 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="653.0" prefWidth="1106.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.main.Main">
+<StackPane fx:id="root" prefHeight="653.0" prefWidth="1106.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.main.Main">
    <children>
       <HBox fx:id="main" prefHeight="100.0" prefWidth="200.0">
          <children>
             <GNDrawer fx:id="drawer" arrowContent="" email="gleidisonmt@gmail.com" name="Gleidson Neves da Silveira" spacing="20.0" type="AVATAR">
                <image>
-                  <Image url="@../../theme/img/avatar.jpg" />
+                  <Image url="@../media/avatar.jpg" />
                </image>
                <children>
                   <HBox fx:id="searchBox" alignment="CENTER" focusTraversable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" prefWidth="239.0" styleClass="box-search">
@@ -47,7 +47,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <ScrollPane fx:id="scroll" fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="600.0" prefWidth="250.0" stylesheets="@../../theme/css/custom-scroll.css">
+                  <ScrollPane fx:id="scroll" fitToHeight="true" fitToWidth="true" pannable="true" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: transparent;" stylesheets="@../../theme/css/custom-scroll.css">
                     <content>
                         <DrawerContent fx:id="views" alignment="TOP_CENTER" prefWidth="248.0">
                            <children>
@@ -59,12 +59,21 @@
                                     <SVGPath content="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" mouseTransparent="true" styleClass="icon" />
                                  </graphic>
                               </DrawerItem>
+                              <DrawerList fx:id="JFoenix" expanded="false" layoutX="10.0" layoutY="80.0" selected="true" styleClass="text-gray" text="JFoenix" toggleGroup="$group">
+                                 <content>
+                                    <VBox styleClass="gn-drawer-list" />
+                                 </content>
+                                 <graphic>
+                                    <SVGPath content="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16zM11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z" styleClass="icon" />
+                                 </graphic>
+                              </DrawerList>
                               <DrawerList fx:id="design" expanded="false" selected="true" styleClass="text-gray" text="Design" toggleGroup="$group">
                                  <content>
                                     <VBox styleClass="gn-drawer-list">
                                        <children>
-                                          <DrawerItem fx:id="colors" text="Colors" toggleGroup="$group" />
-                                          <DrawerItem cache="true" layoutX="20.0" layoutY="20.0" text="Cards" toggleGroup="$group" />
+                                          <DrawerItem cache="true" layoutX="20.0" layoutY="20.0" onMouseClicked="#cards" text="Banners" toggleGroup="$group" />
+                                          <DrawerItem fx:id="colors" text="Carousel" toggleGroup="$group" />
+                                          <DrawerItem cache="true" layoutX="20.0" layoutY="20.0" onMouseClicked="#cards" text="Cards" toggleGroup="$group" />
                                        </children>
                                     </VBox>
                                  </content>
@@ -192,7 +201,7 @@
                                     </StackPane>
                                  </control>
                               </JFXBadge>
-                              <JFXBadge layoutX="759.0" layoutY="12.0" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" styleClass="icon" text="12">
+                              <JFXBadge fx:id="messages" layoutX="759.0" layoutY="12.0" onMouseClicked="#openNotification" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" styleClass="icon" text="12">
                                  <control>
                                     <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 10;">
                                        <children>
@@ -233,7 +242,10 @@
                   </HBox>
                   <StackPane prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ScrollPane fx:id="body" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT" />
+                        <ScrollPane fx:id="body" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT">
+                           <content>
+                              <fx:include source="../profile/profile.fxml" />
+                           </content></ScrollPane>
                      </children>
                   </StackPane>
                </children>
