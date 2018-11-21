@@ -18,28 +18,21 @@ package com.gn.module.dashboard;
 
 import eu.hansolo.tilesfx.Tile;
 import eu.hansolo.tilesfx.chart.ChartData;
-import eu.hansolo.tilesfx.chart.TilesFXSeries;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
 
 import java.net.URL;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 /**
@@ -50,10 +43,12 @@ import java.util.ResourceBundle;
 public class Dashboard implements Initializable {
 
     @FXML private Tile calendar;
+    @FXML private AreaChart<String, Number> areaChart;
 
     @FXML private PieChart pieChart;
     @FXML private ImageView avatarFollow;
 
+    @SuppressWarnings("unchecked")
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -91,5 +86,20 @@ public class Dashboard implements Initializable {
         circle.setCenterX(avatarFollow.getFitWidth() / 2);
         circle.setCenterY(avatarFollow.getFitHeight() / 2);
         avatarFollow.setClip(circle);
+
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Legend 1");
+        series.getData().add(new XYChart.Data<>("0", 2D));
+        series.getData().add(new XYChart.Data<>("1", 8D));
+        series.getData().add(new XYChart.Data<>("2", 5D));
+        series.getData().add(new XYChart.Data<>("3", 3D));
+        series.getData().add(new XYChart.Data<>("4", 6D));
+        series.getData().add(new XYChart.Data<>("5", 8D));
+        series.getData().add(new XYChart.Data<>("6", 5D));
+        series.getData().add(new XYChart.Data<>("7", 6D));
+        series.getData().add(new XYChart.Data<>("8", 5D));
+
+        areaChart.getData().setAll(series);
+        areaChart.setCreateSymbols(true);
     }
 }
