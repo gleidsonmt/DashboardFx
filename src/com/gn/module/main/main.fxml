@@ -71,7 +71,7 @@
                                  <content>
                                     <VBox styleClass="gn-drawer-list">
                                        <children>
-                                          <DrawerItem cache="true" layoutX="20.0" layoutY="20.0" onMouseClicked="#cards" text="Banners" toggleGroup="$group" />
+                                          <DrawerItem cache="true" layoutX="20.0" layoutY="20.0" onMouseClicked="#banners" text="Banners" toggleGroup="$group" />
                                           <DrawerItem fx:id="colors" text="Carousel" toggleGroup="$group" />
                                           <DrawerItem cache="true" layoutX="20.0" layoutY="20.0" onMouseClicked="#cards" text="Cards" toggleGroup="$group" />
                                        </children>

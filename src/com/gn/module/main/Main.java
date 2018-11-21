@@ -361,6 +361,12 @@ public class Main implements Initializable {
     }
 
     @FXML
+    private void banners(){
+        title.setText("Banners");
+        body.setContent(ViewManager.getInstance().get("banners"));
+    }
+
+    @FXML
     private void textField(){
         title.setText("TextField");
         body.setContent(ViewManager.getInstance().get("textfield"));
