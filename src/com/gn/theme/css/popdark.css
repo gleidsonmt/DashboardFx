@@ -48,7 +48,7 @@
 
 .options .jfx-button .text
 {
-	-fx-fill : -text-color;
+	-fx-fill : white;
 }
 
 .options .jfx-button:hover .glyph-icon,
@@ -61,7 +61,7 @@
 
 .configTitle
 {
-	-fx-text-fill : -text-color;
+	-fx-text-fill : white
 }
 
 .configTitle SVGPath

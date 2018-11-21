@@ -15,113 +15,7 @@
   -fx-background-color : transparent;
 }
 
-/************************************************************************************
-*
-*               @ScroolBar
-*
-*************************************************************************************/
 
-.scroll-bar > .thumb{
-    -fx-background-color: white;
-    -fx-border-color: rgba(0, 0, 0, .5);
-    -fx-background-insets: 0;
-    -fx-background-radius: 0;
-    -fx-padding : 0;
-}
-
-.scroll-bar > .thumb:hover {
-    -fx-background-color: #dadada;
-}
-
-.scroll-bar > .thumb:pressed {
-    -fx-background-color: #606060;
-}
-
-.scroll-bar > .track {
-    -fx-background-color: #f0f0f0;
-    -fx-background-insets: 0;
-    -fx-background-radius: 0;
-}
-.scroll-bar > .track-background {
-    -fx-background-color: #f0f0f0;
-    -fx-background-insets: 0;
-}
-
-.scroll-bar > .increment-button,
-.scroll-bar > .decrement-button {
-    -fx-background-color: black;
-    -fx-background-insets: 0;
-    -fx-background-radius: 0;
-    -fx-padding: 0em; /* 3 */
-    -fx-opacity : 0;
-}
-
-.scroll-bar:hover > .increment-button,
-.scroll-bar:hover > .decrement-button {
-     -fx-background-color: #dadada;
-    -fx-padding: 0.25em; /* 3 */
-}
-
-.scroll-bar:pressed > .increment-button,
-.scroll-bar:pressed > .decrement-button {
-     -fx-background-color: #dadada;
-    -fx-padding: 0.25em; /* 3 */
-}
-
-
-.scroll-bar > .increment-button:hover,
-.scroll-bar > .decrement-button:hover  {
-
-}
-
-.scroll-bar > .increment-button:pressed,
-.scroll-bar > .decrement-button:pressed {
-    -fx-background-color: #606060;
-}
-
-.scroll-bar > .decrement-button > .decrement-arrow,
-.scroll-bar > .increment-button > .increment-arrow{
-    -fx-background-insets: 1 0 -1 0, 0;
-    -fx-background-color: transparent, #606060;
-    -fx-effect: null;
-}
-
-.scroll-bar > .decrement-button:pressed > .decrement-arrow,
-.scroll-bar > .increment-button:pressed > .increment-arrow {
-    -fx-background-color: transparent, white;
-    -fx-effect: null;
-}
-
-.scroll-bar:vertical > .increment-button > .increment-arrow,
-.scroll-bar:vertical > .decrement-button > .decrement-arrow {
-    -fx-padding: 0.333333em 0.5em 0.0em 0.0em; /* 4 6 0 0 */
-}
-
-.scroll-bar:horizontal > .increment-button > .increment-arrow,
-.scroll-bar:horizontal > .decrement-button > .decrement-arrow {
-    -fx-padding: 0.5em 0.333333em 0.0em 0.0em; /* 6 4 0 0 */
-}
-
-.scroll-bar:disabled {
-    -fx-opacity: 0.4;
-}
-
-/* ARROW SHAPES */
-.scroll-bar:horizontal > .decrement-button > .decrement-arrow {
-    -fx-shape: null;
-}
-
-.scroll-bar:horizontal > .increment-button > .increment-arrow {
-    -fx-shape: null;
-}
-
-.scroll-bar:vertical > .decrement-button > .decrement-arrow {
-    -fx-shape: null;
-}
-
-.scroll-bar:vertical > .increment-button > .increment-arrow {
-    -fx-shape: null;
-}
 
 /************************************************************************************
 *
@@ -169,7 +63,7 @@
 #side-bar .jfx-button:focused .text,
 #side-bar .jfx-button:focused .glyph-icon
 {
-    -fx-background-color : derive(-aqua, -10%);
+    -fx-background-color : derive(-base, -10%);
     -fx-fill : white;
 }
 
@@ -190,7 +84,17 @@
 }
 
 
+.titled-pane:focused {
+    -fx-background-color : derive(-base, -10%);
+}
 
+.titled-pane:focused .title .text,
+.titled-pane:focused .title .arrow-button .arrow,
+#side-bar *.titled-pane:focused *.glyph-icon
+{
+  -fx-fill : white;
+  -fx-background-color : white;
+}
 
 
 .titled-pane:collapsed .title {
@@ -202,6 +106,11 @@
  .titled-pane .title:hover {
      -fx-background-color : -light-gray;
  }
+
+ .titled-pane:focused .title:hover {
+    -fx-background-color : derive(-base, -10%);
+ }
+
 
 .titled-pane .title:hover SVGPath{
 

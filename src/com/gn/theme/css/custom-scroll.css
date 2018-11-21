@@ -42,6 +42,7 @@
 .scroll-pane .viewport,
 .scroll-pane .corner
 {
+  -fx-border-color : transparent;
   -fx-background-color : transparent;
 }
 

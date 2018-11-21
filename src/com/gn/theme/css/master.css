@@ -22,6 +22,12 @@
   -fx-cursor : default;
 }
 
+.gn-drawer-item
+{
+  -fx-background-radius : 0px;
+  -fx-background-color : transparent;
+}
+
 .gn-drawer-item:hover
 {
   -fx-background-color : transparent;
@@ -91,6 +97,7 @@
 .gn-drawer-menu:selected .gn-drawer-item:focused
 {
   -fx-border-color : transparent transparent -base transparent;
+  -fx-border-width : 1px;
 }
 
 .gn-drawer .box .gn-info .detail .label
@@ -110,4 +117,131 @@
 
 .gn-title .text {
   -fx-fill : -base;
+}
+
+
+.lbl-profile,
+.lbl-profile:focused,
+.lbl-profile:pressed,
+.lbl-profile:hover,
+.lbl-profile .text
+{
+  -fx-padding : 5px;
+  -fx-background-radius : 2px;
+  -fx-background-color : derive(-base, 90%);
+  -fx-fill : -base;
+}
+
+.btn-profile:focused,
+.btn-profile:pressed,
+.btn-profile:hover,
+.btn-profile:hover:pressed,
+.btn-profile:focused .text,
+.btn-profile:hover .text,
+.btn-profile:focused SVGPath,
+.btn-profile:hover SVGPath
+{
+    -fx-background-color : derive(-base, 90%);
+    -fx-fill : -base;
+}
+
+.btn-profile .text
+{
+  -fx-fill : -text-color;
+}
+
+.btn-profile SVGPath
+{
+  -fx-fill : -icon-color;
+}
+
+.btn-profile
+{
+  -fx-border-width : 0px;
+  -fx-background-color : transparent;
+}
+
+.rating .container .button.strong
+{
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,.3) , 5, 0 , 0 , 1 );
+  -fx-background-color : -base;
+  -fx-background-image : null;
+  -fx-shape : "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z";
+}
+
+.rating .container .button
+{
+  -fx-scale-x : 0.7;
+  -fx-scale-y : 0.7;
+  -fx-effect : null;
+  -fx-background-color : -light-gray;
+  -fx-background-image : null;
+  -fx-shape : "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z";
+}
+
+
+.carousel
+{
+    -fx-background-color : transparent;
+}
+
+.carousel > .button
+{
+  -fx-cursor : hand;
+  -fx-pref-width : 80px;
+  -fx-background-color : transparent;
+}
+
+.carousel .left-button:hover
+{
+  -fx-background-color : linear-gradient(to left, transparent, #00000040);
+}
+
+.carousel .right-button:hover{
+  -fx-background-color : linear-gradient(to right, transparent, #00000040);
+}
+
+.carousel .button SVGPath
+{
+  -fx-fill : #ffffff40;
+  -fx-scale-x : 1.8;
+  -fx-scale-y : 1.5;
+}
+
+.carousel .button:hover SVGPath,
+.carousel .button:pressed SVGPath,
+.carousel .indicators .toggle-button:selected
+{
+  -fx-background-color : white;
+  -fx-fill : white;
+}
+
+.carousel .wrapper .sub-title
+{
+  -fx-font-size : 14px;
+  -fx-fill : white;
+}
+
+.carousel .wrapper .title
+{
+  -fx-font-size : 20px;
+  -fx-fill : white;
+}
+
+.carousel .indicators .toggle-button
+{
+    -fx-cursor : hand;
+    -fx-background-color : #ffffff40;
+    -fx-background-radius : 0px;
+    -fx-border-width : 0px;
+    -fx-min-height : 0px;
+    -fx-pref-height : 10px;
+    -fx-pref-width : 30px;
+    -fx-background-insets  : 3px;
+    -fx-translate-y : -10px;
+}
+
+.jfx-dialog StackPane
+{
+  -fx-background-color : transparent;
 }

@@ -35,6 +35,16 @@
   -box-search-color : -base;
   -box-search-fill  : -base;
 
+
+  CHART_COLOR_1_TRANS_20: linear-gradient(to bottom, #FF7043, transparent);
+  CHART_COLOR_2_TRANS_20: linear-gradient(to bottom, #FF8800, transparent);
+  CHART_COLOR_3_TRANS_20: linear-gradient(to bottom, #02C852, transparent);
+  CHART_COLOR_4_TRANS_20: linear-gradient(to bottom, #33B5E5, transparent);
+  CHART_COLOR_5_TRANS_20 :linear-gradient(to bottom, #4285f4, transparent);
+  CHART_COLOR_6_TRANS_20: linear-gradient(to bottom, #AA66CC, transparent);
+  CHART_COLOR_7_TRANS_20: linear-gradient(to bottom, #EC407A, transparent);
+  CHART_COLOR_8_TRANS_20: linear-gradient(to bottom, #888888, transparent);
+
   -fx-background-color : -background-color;
 
 }
@@ -421,7 +431,8 @@
 }
 
 .pagination .pagination-control .control-box .right-arrow-button .right-arrow,
-.pagination .pagination-control .control-box .left-arrow-button .left-arrow {
+.pagination .pagination-control .control-box .left-arrow-button .left-arrow
+{
   -fx-background-color : white;
 }
 
@@ -433,4 +444,49 @@
 .table-view, .tree-table-view
 {
   -fx-background-color : -elegant;
+}
+
+.chart-area-symbol,
+.chart-line-symbol
+{
+  -fx-padding: 5px;
+}
+
+.chart-vertical-grid-lines,
+.chart-horizontal-grid-lines
+{
+    -fx-stroke: transparent;
+}
+
+.default-color0.chart-area-symbol { -fx-background-color: CHART_COLOR_1, -elegant; }
+.default-color1.chart-area-symbol { -fx-background-color: CHART_COLOR_2, -elegant; }
+.default-color2.chart-area-symbol { -fx-background-color: CHART_COLOR_3, -elegant; }
+.default-color3.chart-area-symbol { -fx-background-color: CHART_COLOR_4, -elegant; }
+.default-color4.chart-area-symbol { -fx-background-color: CHART_COLOR_5, -elegant; }
+.default-color5.chart-area-symbol { -fx-background-color: CHART_COLOR_6, -elegant; }
+.default-color6.chart-area-symbol { -fx-background-color: CHART_COLOR_7, -elegant; }
+.default-color7.chart-area-symbol { -fx-background-color: CHART_COLOR_8, -elegant; }
+
+.default-color0.chart-line-symbol { -fx-background-color: CHART_COLOR_1, -elegant; }
+.default-color1.chart-line-symbol { -fx-background-color: CHART_COLOR_2, -elegant; }
+.default-color2.chart-line-symbol { -fx-background-color: CHART_COLOR_3, -elegant; }
+.default-color3.chart-line-symbol { -fx-background-color: CHART_COLOR_4, -elegant; }
+.default-color4.chart-line-symbol { -fx-background-color: CHART_COLOR_5, -elegant; }
+.default-color5.chart-line-symbol { -fx-background-color: CHART_COLOR_6, -elegant; }
+.default-color6.chart-line-symbol { -fx-background-color: CHART_COLOR_7, -elegant; }
+.default-color7.chart-line-symbol { -fx-background-color: CHART_COLOR_8, -elegant; }
+
+
+.main-chart .chart-series-area-fill  {
+   -fx-fill : linear-gradient(to bottom, -base, transparent);
+}
+
+.main-chart .chart-series-area-line {
+    -fx-stroke: -base;
+    -fx-stroke-width: 2px;
+}
+
+.main-chart .chart-area-symbol
+{
+    -fx-background-color : -base;
 }

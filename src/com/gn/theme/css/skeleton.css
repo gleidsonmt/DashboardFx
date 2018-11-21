@@ -4,8 +4,6 @@
     Skeleton
 */
 
-
-
 /************************************************************************************
 *
 *               @-fx-background-color
@@ -79,9 +77,9 @@
   -fx-background-color : derive(-base, -40%), derive(-base, -40%), -base;
 }
 
-.hyperlink:focused {
+.hyperlink {
   -fx-border-color : transparent;
-  -fx-text-fill : -primary;
+  -fx-text-fill : -base;
 }
 
 /************************************************************************************
@@ -140,8 +138,7 @@
 
 }
 
-.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label,
-.hyperlink
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label
 {
   -fx-text-fill : -text-color;
 }
@@ -172,7 +169,9 @@
 *
 *************************************************************************************/
 
-.text {
+.text
+/* .label */
+{
   -fx-font-family : 'Roboto Regular';
   /* -fx-font-family : 'Mechanization'; */
 }
@@ -356,6 +355,8 @@
   -fx-background-insets : 0px;
 }
 
+
+
 /***************************/
 
 .tile
@@ -366,10 +367,12 @@
 }
 
 
-.tile >* .label,
-.tile >* .text
+.tile >* .text,
+.tile > .text,
+.tile .text
 {
   -fx-text-fill : -text-color;
+  -fx-fill : -text-color;
 }
 
 .chart-pie {
@@ -2002,7 +2005,8 @@
 }
 
 .text-secondary, .out-secondary,
-.text-secondary .text   {
+.text-secondary .text
+{
     -fx-fill : -secondary;
     -fx-text-fill :-secondary;
 }
@@ -2026,7 +2030,8 @@
 }
 
 .text-warning , .out-warning,
-.text-warning .text {
+.text-warning .text
+{
     -fx-fill : -warning;
     -fx-text-fill : -warning;
 }
@@ -2038,7 +2043,8 @@
 }
 
 .text-success, .out-success,
-.text-success .text{
+.text-success .text
+{
     -fx-fill : -success;
     -fx-text-fill : -success;
 }
@@ -2055,7 +2061,6 @@
   -fx-text-fill : -unique;
 }
 
-
 .text-facebook,
 .text-facebook .text{
     -fx-fill : -facebook;
@@ -2063,13 +2068,15 @@
 }
 
 .text-twitter,
-.text-twitter .text{
+.text-twitter .text
+{
     -fx-fill : -twitter;
     -fx-text-fill : -twitter;
 }
 
 .text-google,
-.text-google .text {
+.text-google .text
+{
     -fx-fill : -google;
     -fx-text-fill : -google;
 }
@@ -2539,4 +2546,13 @@
 .tree-view .virtual-flow .clipped-container .sheet .tree-cell:filled:selected
 {
   -fx-text-fill : white;
+}
+
+.axis {
+    -fx-tick-label-fill: -text-color;
+}
+
+.chart-title
+{
+  -fx-text-fill : -text-color;
 }

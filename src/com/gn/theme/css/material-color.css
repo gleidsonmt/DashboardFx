@@ -75,14 +75,39 @@
   -separator-color  : -light-gray;
   -light-hover      : -light-gray;
 
-  CHART_COLOR_1: -danger;
+  /* CHART_COLOR_1: -danger;
   CHART_COLOR_2: -pink;
   CHART_COLOR_3: -secondary;
   CHART_COLOR_4: -primary;
   CHART_COLOR_5: -info;
   CHART_COLOR_6: -mint;
   CHART_COLOR_7: -success;
-  CHART_COLOR_8: -yellow;
+  CHART_COLOR_8: -yellow; */
+
+ CHART_COLOR_1: -deep-orange;
+ CHART_COLOR_2: -warning;
+ CHART_COLOR_3: -success;
+ CHART_COLOR_4: -info;
+ CHART_COLOR_5: -primary;
+ CHART_COLOR_6: -secondary;
+ CHART_COLOR_7: -pink;
+ CHART_COLOR_8: #888888;
+ /* Chart Color Palette Semi-Transparent
+  * These are used by charts that need semi transparent versions of the above colors, such as BubbleChart. They
+  * are exactly the same colors as above just with alpha
+  *
+  * 20% opacity
+  */
+ CHART_COLOR_1_TRANS_20: #FF704333;
+ CHART_COLOR_2_TRANS_20: #FF880033;
+ CHART_COLOR_3_TRANS_20: #02C85233;
+ CHART_COLOR_4_TRANS_20: #33B5E533;
+ CHART_COLOR_5_TRANS_20 :#4285f433;
+ CHART_COLOR_6_TRANS_20: #AA66CC33;
+ CHART_COLOR_7_TRANS_20: #EC407A33;
+ CHART_COLOR_8_TRANS_20: #88888833;
+ /* 70% opacity */
+
 
 }
 
