@@ -42,7 +42,7 @@ import java.util.ResourceBundle;
 public class Config implements Initializable {
 
     @FXML
-    private JFXButton theme;
+    private JFXButton btn_theme;
 
     @FXML
     public VBox options;
@@ -60,19 +60,26 @@ public class Config implements Initializable {
         invertTheme(!invert);
     }
 
+    @FXML
+    private void profile(){
+        Main.ctrl.title.setText("Profile");
+        Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
+    }
+
     private void invertTheme(boolean dark) {
         String theme;
         App.stylesheets.clear();
         String path = "/com/gn/theme/css/";
 
         if (dark) {
-
             App.decorator.initTheme(GNDecorator.Theme.DARKULA);
             theme = "dark.css";
+            btn_theme.setText("Theme dark : actived");
             invert = true;
         } else {
             App.decorator.initTheme(GNDecorator.Theme.DEFAULT);
             theme = "light.css";
+            btn_theme.setText("Theme dark : desactived");
             invert = false;
         }
 
@@ -95,6 +102,8 @@ public class Config implements Initializable {
             ((StackPane) node).getStylesheets().setAll(stylesheets);
         }
 
+        Main.popConfig.hide();
+
         Platform.runLater(() -> {
 //          force pop's transition
             Main.popup.getRoot().getStylesheets().remove(Main.popup.getRoot().getStylesheets().size() - 1);
@@ -102,5 +111,6 @@ public class Config implements Initializable {
             Main.popup.getRoot().getStylesheets().add(path + "pop" + theme);
             Main.popConfig.getRoot().getStylesheets().add(path + "pop" + theme);
         });
+
     }
 }
