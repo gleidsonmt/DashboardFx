@@ -141,7 +141,7 @@ public class MediaView implements Initializable {
     }
 
 
-    protected void updateValues() {
+    private void updateValues() {
         if (playTime != null && slider != null && volumeSlider != null && duration != null) {
             Platform.runLater(new Runnable() {
                 public void run() {
