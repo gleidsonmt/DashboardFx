@@ -85,7 +85,7 @@ public class UserDetail extends GNControl {
         link.setMinHeight(30);
 
         link.setOnMouseClicked(event -> {
-            popOver.show(link,0);
+            popOver.show(link, 0);
 //            popOver.show(link);
         });
         return link;
@@ -94,11 +94,11 @@ public class UserDetail extends GNControl {
     private Button signOut = new Button("Sign Out");
     private Button profile = new Button("Profile");
 
-    public void setSignAction(EventHandler<MouseEvent> event){
+    public void setSignAction(EventHandler<MouseEvent> event) {
         this.signOut.setOnMouseClicked(event);
     }
 
-    public void setProfileAction(EventHandler<MouseEvent> event){
+    public void setProfileAction(EventHandler<MouseEvent> event) {
         this.profile.setOnMouseClicked(event);
     }
 
@@ -124,7 +124,6 @@ public class UserDetail extends GNControl {
         box.setPrefHeight(300);
         avatar.setFitWidth(139);
         avatar.setFitHeight(136D);
-
 
 
         signOut.getStyleClass().addAll("outlined", "out-primary", "signout");
@@ -180,8 +179,4 @@ public class UserDetail extends GNControl {
         return box;
     }
 
-
-    public PopOver getPopover(){
-        return this.popOver;
-    }
 }
