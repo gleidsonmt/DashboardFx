@@ -19,7 +19,6 @@
     <orderEntry type="library" name="GNDrawer" level="project" />
     <orderEntry type="library" name="TrayNotification" level="project" />
     <orderEntry type="library" name="GNCarousel" level="project" />
-    <orderEntry type="library" exported="" name="javax.mail-1.6.2" level="project" />
     <orderEntry type="library" exported="" name="commons-email-1.5" level="project" />
     <orderEntry type="library" name="animatefx-1.2.0" level="project" />
   </component>

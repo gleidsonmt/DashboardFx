@@ -22,30 +22,17 @@ import com.gn.decorator.GNDecorator;
 import com.gn.decorator.options.ButtonType;
 import com.gn.module.loader.Loader;
 import com.gn.module.main.Main;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.application.Preloader;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.SimpleEmail;
-import org.scenicview.ScenicView;
 
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
 import java.io.IOException;
-import java.util.Properties;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -170,61 +157,8 @@ public class App extends Application {
             Platform.exit();
         });
 
-
-        decorator.getStage().setOnShowing(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-//                try {
-//                    Parent root = FXMLLoader.load(getClass().getResource("/com/gn/module/login/login.fxml"));
-//                    JFXDialogLayout layout = new JFXDialogLayout();
-//                    layout.setBody(root);
-//                    JFXDialog welcome = new JFXDialog();
-//                    welcome.setContent(layout);
-//                    welcome.setDialogContainer(decorator.getBackground());
-//                    welcome.show();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-            }
-        });
-
         decorator.getStage().getIcons().add(new Image("/com/gn/module/media/icon.png"));
         decorator.show();
-
-
-//        Properties props = new Properties();
-//
-//        props.put("mail.smtp.host", "smtp.gmail.com");
-//        props.put("mail.smtp.socketFactory.port", "465");
-//        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-//        props.put("mail.smtp.auth", "true");
-//        props.put("mail.smtp.port", "465");
-
-//        Session session = Session.getDefaultInstance(props,
-//                new javax.mail.Authenticator() {
-//                    protected PasswordAuthentication getPasswordAuthentication()
-//                    {
-//                        return new PasswordAuthentication("gleidisonmt@gmail.com", "Developerglen");
-//                    }
-//                });
-//
-////        Session session = Session.getDefaultInstance(props);
-//
-//        SimpleEmail email = new SimpleEmail();
-////        email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
-//        try {
-//            email.setMailSession(session);
-//            email.addTo("jezieljunio10@gmail.com", "Jeziel Junio"); //destinatário
-//            email.setFrom("gleidisonmt@gmail.com", "Me"); // remetente
-//            email.setSubject("Mensagem de Teste"); // assunto do e-mail
-//            email.setMsg("Teste de Email utilizando commons-email"); //conteudo do e-mail
-//            email.send(); //envia o e-mail
-//        } catch (EmailException e) {
-//            e.printStackTrace();
-//        }
-//
-//        /** Ativa Debug para sessão */
-//        session.setDebug(true);
 
 //        ScenicView.show(decorator.getScene());
     }
