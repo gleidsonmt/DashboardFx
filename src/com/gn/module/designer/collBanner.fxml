@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light">
+         <children>
+            <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="10.0" prefHeight="400.0" prefWidth="899.0" vgap="10.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="155.0" prefWidth="248.0" style="-fx-background-color: white;" styleClass="elevator">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="256.0">
+                                 <children>
+                                    <VBox prefHeight="100.0" prefWidth="211.0">
+                                       <children>
+                                          <Label styleClass="h3" text="540" />
+                                          <Label layoutX="10.0" layoutY="10.0" styleClass="h5" text="New Post" />
+                                       </children>
+                                    </VBox>
+                                    <FontAwesomeIconView glyphName="ENVELOPE" size="40" styleClass="text-warning" />
+                                 </children>
+                              </HBox>
+                              <JFXProgressBar progress="0.73">
+                                 <styleClass>
+                                    <String fx:value="progress-bar-big" />
+                                    <String fx:value="progress-bar-warning" />
+                                 </styleClass>
+                              </JFXProgressBar>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="250.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="155.0" prefWidth="271.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="155.0" prefWidth="165.0">
+                                       <children>
+                                          <Label styleClass="h3" text="320" />
+                                          <Label styleClass="h5" text="New Post" />
+                                       </children>
+                                       <padding>
+                                          <Insets right="40.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <FontAwesomeIconView glyphName="SEND" size="40" styleClass="text-white" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <styleClass>
+                              <String fx:value="elevator" />
+                              <String fx:value="secondary" />
+                              <String fx:value="text-white" />
+                           </styleClass>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="250.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="155.0" prefWidth="271.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="155.0" prefWidth="162.0" style="-fx-border-color: rgba(0,0,0,.2);" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <FontAwesomeIconView glyphName="PENCIL" size="40" styleClass="text-white" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="155.0" prefWidth="165.0" style="-fx-background-color: white;">
+                                       <children>
+                                          <Label styleClass="h3" text="120" />
+                                          <Label styleClass="h5" text="New Post" />
+                                       </children>
+                                       <padding>
+                                          <Insets right="40.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <styleClass>
+                              <String fx:value="elevator" />
+                              <String fx:value="success" />
+                           </styleClass>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="158.0" prefWidth="250.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="155.0" prefWidth="271.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="155.0" prefWidth="162.0" style="-fx-background-color: #c71d2c;" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <FontAwesomeIconView glyphName="PENCIL" size="40" styleClass="text-white" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="155.0" prefWidth="165.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label styleClass="h3" text="290" />
+                                          <Label styleClass="h5" text="New Post" />
+                                       </children>
+                                       <padding>
+                                          <Insets right="40.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <styleClass>
+                              <String fx:value="elevator" />
+                              <String fx:value="danger" />
+                              <String fx:value="text-white" />
+                           </styleClass>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="158.0" prefWidth="250.0">
+                           <children>
+                              <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <VBox alignment="CENTER" prefHeight="155.0" prefWidth="162.0">
+                                       <children>
+                                          <FontAwesomeIconView glyphName="PENCIL" size="40" styleClass="text-white" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefHeight="155.0" prefWidth="165.0">
+                                       <children>
+                                          <Label prefHeight="35.0" prefWidth="44.0" styleClass="h3" text="100" />
+                                          <Label styleClass="h5" text="New Post" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <styleClass>
+                              <String fx:value="elevator" />
+                              <String fx:value="btn-info" />
+                              <String fx:value="text-white" />
+                           </styleClass>
+                        </HBox>
+                     </children>
+                  </FlowPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../../theme/css/material-color.css" />
+      <URL value="@../../theme/css/skeleton.css" />
+      <URL value="@../../theme/css/light.css" />
+      <URL value="@../../theme/css/bootstrap.css" />
+      <URL value="@../../theme/css/forms.css" />
+      <URL value="@../../theme/css/typographic.css" />
+      <URL value="@../../theme/css/helpers.css" />
+      <URL value="@../../theme/css/master.css" />
+   </stylesheets>
+</StackPane>

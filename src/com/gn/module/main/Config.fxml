@@ -24,14 +24,6 @@
             <Separator prefWidth="200.0" />
             <VBox fx:id="options" styleClass="options">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" onMouseClicked="#profile" prefHeight="50.0" prefWidth="241.0" text="Profile">
-                     <padding>
-                        <Insets left="28.0" />
-                     </padding>
-                     <graphic>
-                        <MaterialDesignIconView glyphName="ACCOUNT_CIRCLE" size="25" />
-                     </graphic>
-                  </JFXButton>
                   <JFXButton fx:id="btn_theme" alignment="BASELINE_LEFT" graphicTextGap="20.0" onMouseClicked="#altTheme" prefHeight="50.0" prefWidth="241.0" text="Theme Dark : desatived ">
                      <padding>
                         <Insets left="28.0" />

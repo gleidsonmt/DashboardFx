@@ -6,8 +6,9 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.HBox?>
@@ -27,7 +28,7 @@
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Label prefHeight="38.0" prefWidth="195.0" text="ScrollBar">
+                              <Label prefHeight="38.0" prefWidth="195.0" text="SplitMenuButton">
                                  <styleClass>
                                     <String fx:value="h3" />
                                     <String fx:value="title" />
@@ -44,7 +45,12 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="198.0" prefWidth="940.0" spacing="10.0">
                                  <children>
-                                    <ScrollBar prefHeight="14.0" prefWidth="175.0" />
+                                    <SplitMenuButton contentDisplay="TOP" mnemonicParsing="false" popupSide="TOP" prefHeight="30.0" prefWidth="144.0" text="SplitMenuButton">
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" text="Action 1" />
+                                          <MenuItem mnemonicParsing="false" text="Action 2" />
+                                       </items>
+                                    </SplitMenuButton>
                                  </children>
                               </HBox>
                            </children>

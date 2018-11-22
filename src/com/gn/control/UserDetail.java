@@ -17,6 +17,7 @@
 package com.gn.control;
 
 import com.gn.decorator.component.GNControl;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
@@ -26,6 +27,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -42,7 +44,7 @@ public class UserDetail extends GNControl {
     public static PopOver root;
 
     public UserDetail() {
-        this.root = popOver;
+        UserDetail.root = popOver;
         popOver.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
         popOver.setArrowIndent(0);
         popOver.setArrowSize(0);
@@ -89,6 +91,16 @@ public class UserDetail extends GNControl {
         return link;
     }
 
+    private Button signOut = new Button("Sign Out");
+    private Button profile = new Button("Profile");
+
+    public void setSignAction(EventHandler<MouseEvent> event){
+        this.signOut.setOnMouseClicked(event);
+    }
+
+    public void setProfileAction(EventHandler<MouseEvent> event){
+        this.profile.setOnMouseClicked(event);
+    }
 
     private VBox configLayout() {
 
@@ -113,8 +125,7 @@ public class UserDetail extends GNControl {
         avatar.setFitWidth(139);
         avatar.setFitHeight(136D);
 
-        Button signOut = new Button("Sign Out");
-        Button profile = new Button("Profile");
+
 
         signOut.getStyleClass().addAll("outlined", "out-primary", "signout");
         profile.getStyleClass().addAll("outlined", "out-primary", "profile");
@@ -167,5 +178,10 @@ public class UserDetail extends GNControl {
         popOver.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
 
         return box;
+    }
+
+
+    public PopOver getPopover(){
+        return this.popOver;
     }
 }

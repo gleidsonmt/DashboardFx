@@ -16,16 +16,17 @@
  */
 package com.gn.module.main;
 
-import com.gn.App;
 import com.gn.ViewManager;
-import com.gn.control.DrawerContent;
-import com.gn.control.DrawerItem;
-import com.gn.control.DrawerList;
-import com.gn.control.GNDrawer;
-import com.jfoenix.controls.*;
+import com.gn.control.*;
+import com.gn.control.factory.AlertCell;
+import com.gn.control.factory.AlertFactory;
+import com.jfoenix.controls.JFXBadge;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -34,26 +35,30 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.geometry.NodeOrientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Path;
 import javafx.scene.shape.SVGPath;
-import javafx.stage.Popup;
-import javafx.stage.PopupWindow;
+import javafx.util.Callback;
+import javafx.util.Duration;
 import org.controlsfx.control.PopOver;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 /**
@@ -140,10 +145,8 @@ public class Main implements Initializable {
 //        drawer.setPopStylesheet(getClass().getResource("/com/gn/theme/css/popover.css"));
 
 
-        colors.setOnMouseClicked(event -> {
-            title.setText("Designer");
-            body.setContent(ViewManager.getInstance().get("carousel"));
-        });
+
+
 
     }
 
@@ -349,6 +352,12 @@ public class Main implements Initializable {
     }
 
     @FXML
+    private void carousel() {
+        title.setText("Carousel");
+        body.setContent(ViewManager.getInstance().get("carousel"));
+    }
+
+    @FXML
     private void toggle() {
         title.setText("Toggle Button");
         body.setContent(ViewManager.getInstance().get("toggle"));
@@ -464,12 +473,6 @@ public class Main implements Initializable {
     }
 
     @FXML
-    private void html(){
-        title.setText("HTMLEditor");
-        body.setContent(ViewManager.getInstance().get("htmleditor"));
-    }
-
-    @FXML
     private void radio(){
         title.setText("RadioButton");
         body.setContent(ViewManager.getInstance().get("radiobutton"));
@@ -581,8 +584,33 @@ public class Main implements Initializable {
 
     @FXML
     private void openNotification(){
-        VBox root = new VBox(new Label("teste"));
-        root.setPrefSize(200, 200);
+
+        GNAvatar avatar = new GNAvatar();
+        GNAvatar avatar1 = new GNAvatar();
+        GNAvatar avatar2 = new GNAvatar();
+        GNAvatar avatar3 = new GNAvatar();
+        GNAvatar avatar4 = new GNAvatar();
+
+        avatar.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
+        avatar1.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
+        avatar2.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
+        avatar3.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
+        avatar4.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
+
+        ObservableList<AlertCell> list = FXCollections.observableArrayList(
+                new AlertCell(avatar1, "New Comment", "24 minutes ago"),
+                new AlertCell(avatar2, "New Comment", "41 minutes ago"),
+                new AlertCell(avatar3, "New Comment", "43 minutes ago"),
+                new AlertCell(avatar4, "New Comment", "23 minutes ago")
+
+        );
+
+        ListView<AlertCell> listView = new ListView<>();
+
+        listView.getItems().addAll(list);
+
+        VBox root = new VBox(listView);
+        root.setPrefSize(300, 300);
 
 
         PopOver pop = new PopOver();
@@ -593,7 +621,6 @@ public class Main implements Initializable {
         pop.setArrowSize(0);
         pop.setCornerRadius(0);
         pop.setAutoFix(true);
-        pop.setAnimated(false);
         pop.show(messages);
 
     }

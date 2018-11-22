@@ -184,16 +184,16 @@
 
 
 .main-chart .chart-series-area-fill  {
-  /* -fx-fill : linear-gradient(to bottom, #2BBBAD95, #2BBBAD95); */
-  -fx-fill : derive(-base, 20%);
+  -fx-fill : linear-gradient(to left, -base, -success);
+  /* -fx-fill : derive(-base, 20%); */
 }
 
 .main-chart .chart-series-area-line {
-    -fx-stroke: -base;
+    -fx-stroke: linear-gradient(to left, -base, -success);
     -fx-stroke-width: 2px;
 }
 
 .main-chart .chart-area-symbol
 {
-    -fx-background-color : -base;
+    -fx-background-color : linear-gradient(to left, -base, -success);
 }

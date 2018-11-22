@@ -22,21 +22,24 @@ import com.gn.decorator.GNDecorator;
 import com.gn.decorator.options.ButtonType;
 import com.gn.module.loader.Loader;
 import com.gn.module.main.Main;
-import com.jfoenix.controls.JFXButton;
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.application.Preloader;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ColorPicker;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.controlsfx.control.decoration.Decorator;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
 import org.scenicview.ScenicView;
 
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import java.io.IOException;
+import java.util.Properties;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -45,17 +48,16 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-    private float increment = 0;
+    private float  increment = 0;
     private byte   progress = 0;
 
-
-    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     @Override
     public synchronized void init(){
-        byte total = 32 - 1; // the difference represents the views not loaded
+        byte total = 41; // the difference represents the views not loaded
         increment = 100 / total;
-        load("designer", "colors");
+        load("designer", "carousel");
         load("designer", "cards");
+        load("designer", "banners");
 
         load("controls", "button");
         load("controls", "toggle");
@@ -82,6 +84,7 @@ public class App extends Application {
         load("controls", "tableview");
         load("controls", "scrollbar");
         load("controls", "passwordfield");
+        load("controls", "treeview");
         load("controls", "treetableview");
         load("dashboard", "dashboard");
 
@@ -94,8 +97,11 @@ public class App extends Application {
         load("charts", "stackedareachart");
         load("charts", "scatterchart");
 
-        load("main",     "main");  // 35
+        load("main",     "main");
 
+        load("profile", "profile");
+
+        System.out.println(ViewManager.getInstance().getSize());
 
         // delay
         try {
@@ -115,13 +121,12 @@ public class App extends Application {
     public static GNDecorator               decorator;
 
     @Override
-    public  void start(Stage primary) throws Exception {
+    public  void start(Stage primary) {
         GNDecorator decorator = new GNDecorator();
         App.decorator = decorator;
         scene = decorator.getScene();
         decorator.setTitle("Dashboard JavaFx");
-        Parent root = FXMLLoader.load(getClass().getResource("/com/gn/module/controls/button.fxml"));
-        decorator.setContent(ViewManager.getInstance().getCurrentView());
+        decorator.setContent(ViewManager.getInstance().get("main"));
         decorator.initTheme(GNDecorator.Theme.DEFAULT);
         decorator.addButton(ButtonType.FULL_EFFECT);
 
@@ -133,17 +138,20 @@ public class App extends Application {
                 getClass().getResource("/com/gn/theme/css/skeleton.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/light.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/bootstrap.css").toExternalForm(),
-                getClass().getResource("/com/gn/theme/css/simple-green.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/forms.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/typographic.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/helpers.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/master.css").toExternalForm()
 //                getClass().getResource("/com/gn/theme/css/popover.css").toExternalForm()
         );
-//
 
         UserDetail detail = new UserDetail();
         decorator.addCustom(detail);
+        detail.setProfileAction(event -> {
+            Main.ctrl.title.setText("Profile");
+            Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
+            detail.getPopOver().hide();
+        });
 
         decorator.setMaximized(true);
         decorator.getStage().setOnCloseRequest(event -> {
@@ -155,6 +163,39 @@ public class App extends Application {
         });
         decorator.show();
 
+//        Properties props = new Properties();
+//
+//        props.put("mail.smtp.host", "smtp.gmail.com");
+//        props.put("mail.smtp.socketFactory.port", "465");
+//        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+//        props.put("mail.smtp.auth", "true");
+//        props.put("mail.smtp.port", "465");
+
+//        Session session = Session.getDefaultInstance(props,
+//                new javax.mail.Authenticator() {
+//                    protected PasswordAuthentication getPasswordAuthentication()
+//                    {
+//                        return new PasswordAuthentication("gleidisonmt@gmail.com", "Developerglen");
+//                    }
+//                });
+//
+////        Session session = Session.getDefaultInstance(props);
+//
+//        SimpleEmail email = new SimpleEmail();
+////        email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
+//        try {
+//            email.setMailSession(session);
+//            email.addTo("jezieljunio10@gmail.com", "Jeziel Junio"); //destinatário
+//            email.setFrom("gleidisonmt@gmail.com", "Me"); // remetente
+//            email.setSubject("Mensagem de Teste"); // assunto do e-mail
+//            email.setMsg("Teste de Email utilizando commons-email"); //conteudo do e-mail
+//            email.send(); //envia o e-mail
+//        } catch (EmailException e) {
+//            e.printStackTrace();
+//        }
+//
+//        /** Ativa Debug para sessão */
+//        session.setDebug(true);
 
 //        ScenicView.show(decorator.getScene());
     }
@@ -179,5 +220,4 @@ public class App extends Application {
         progress += increment;
         LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
     }
-
 }

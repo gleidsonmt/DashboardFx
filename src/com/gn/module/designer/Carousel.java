@@ -59,8 +59,8 @@ public class Carousel implements Initializable {
         carousel.setVelocity(Duration.millis(500));
         carousel.setTitle("Title");
         carousel.setSubtitle("This is a subtitle");
-        carousel.setCycleCount(5000, 5000);
     }
+
     private ObservableList<Node> createItems(){
 
         Label lb1 = new Label("First");

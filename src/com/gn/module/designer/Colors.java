@@ -152,6 +152,7 @@ public class Colors implements Initializable {
         grid.setVgap(1);
         grid.getRowConstraints().clear();
         grid.getColumnConstraints().clear();
+
     }
 
     private static String formatHexString(Color c) {

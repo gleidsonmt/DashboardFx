@@ -9,11 +9,17 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="controlsfx-8.40.14" level="project" />
-    <orderEntry type="library" name="jfoenix-8.0.7" level="project" />
-    <orderEntry type="library" name="scenicView" level="project" />
-    <orderEntry type="library" name="GNDecorator" level="project" />
-    <orderEntry type="library" name="colors-1.4" level="project" />
-    <orderEntry type="library" name="fontawesomefx-8.9" level="project" />
+    <orderEntry type="library" exported="" name="controlsfx-8.40.14" level="project" />
+    <orderEntry type="library" exported="" name="jfoenix-8.0.7" level="project" />
+    <orderEntry type="library" exported="" name="scenicView" level="project" />
+    <orderEntry type="library" exported="" name="GNDecorator" level="project" />
+    <orderEntry type="library" exported="" name="colors-1.4" level="project" />
+    <orderEntry type="library" exported="" name="fontawesomefx-8.9" level="project" />
+    <orderEntry type="library" exported="" name="tilesfx-1.5.2" level="project" />
+    <orderEntry type="library" name="GNDrawer" level="project" />
+    <orderEntry type="library" name="TrayNotification" level="project" />
+    <orderEntry type="library" name="GNCarousel" level="project" />
+    <orderEntry type="library" exported="" name="javax.mail-1.6.2" level="project" />
+    <orderEntry type="library" exported="" name="commons-email-1.5" level="project" />
   </component>
 </module>

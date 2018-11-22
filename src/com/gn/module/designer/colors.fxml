@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTabPane?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -18,13 +18,13 @@
 
 <StackPane prefHeight="1848.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.designer.Colors">
    <children>
-      <JFXTabPane style="-fx-tab-min-width: 100;">
+      <TabPane>
          <tabs>
-            <Tab text="Flat Ui">
+            <Tab closable="false" text="Flat Ui">
                <content>
                   <ScrollPane fitToWidth="true">
                      <content>
-                        <VBox alignment="CENTER" maxHeight="-Infinity" prefWidth="937.0" spacing="10.0" style="-fx-background-color: white;">
+                        <VBox alignment="CENTER" maxHeight="-Infinity" spacing="10.0">
                            <children>
                               <VBox alignment="CENTER" prefHeight="86.0" prefWidth="890.0">
                                  <children>
@@ -36,7 +36,7 @@
                                     </Label>
                                  </children>
                               </VBox>
-                              <GridPane fx:id="grid" alignment="CENTER" prefWidth="938.0" VBox.vgrow="ALWAYS">
+                              <GridPane fx:id="grid" alignment="CENTER" VBox.vgrow="ALWAYS">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -89,11 +89,11 @@
                   </ScrollPane>
                </content>
             </Tab>
-            <Tab text="Colors">
+            <Tab closable="false" text="Colors">
                <content>
                   <ScrollPane fitToWidth="true">
                      <content>
-                        <VBox alignment="CENTER" maxHeight="-Infinity" prefWidth="937.0" spacing="10.0" style="-fx-background-color: white;">
+                        <VBox alignment="CENTER" maxHeight="-Infinity" prefWidth="937.0" spacing="10.0">
                            <children>
                               <VBox alignment="CENTER" prefHeight="86.0" prefWidth="890.0">
                                  <children>
@@ -1391,18 +1391,16 @@
                </content>
             </Tab>
          </tabs>
-         <styleClass>
-            <String fx:value="tab-white" />
-            <String fx:value="tab-line-aqua" />
-            <String fx:value="tab-shadow-none" />
-            <String fx:value="border-bottom-1" />
-            <String fx:value="border-gray" />
-         </styleClass>
-      </JFXTabPane>
+      </TabPane>
    </children>
    <stylesheets>
-      <URL value="@../../theme/css/fonts.css" />
-      <URL value="@../../theme/css/material.css" />
-      <URL value="@../../theme/css/custom.css" />
+      <URL value="@../../theme/css/material-color.css" />
+      <URL value="@../../theme/css/skeleton.css" />
+      <URL value="@../../theme/css/light.css" />
+      <URL value="@../../theme/css/bootstrap.css" />
+      <URL value="@../../theme/css/forms.css" />
+      <URL value="@../../theme/css/typographic.css" />
+      <URL value="@../../theme/css/helpers.css" />
+      <URL value="@../../theme/css/master.css" />
    </stylesheets>
 </StackPane>

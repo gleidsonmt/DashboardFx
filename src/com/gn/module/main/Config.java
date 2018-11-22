@@ -60,12 +60,6 @@ public class Config implements Initializable {
         invertTheme(!invert);
     }
 
-    @FXML
-    private void profile(){
-        Main.ctrl.title.setText("Profile");
-        Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
-    }
-
     private void invertTheme(boolean dark) {
         String theme;
         App.stylesheets.clear();
