@@ -19,6 +19,7 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.RadioButton?>
@@ -191,7 +192,7 @@
                            <children>
                               <VBox>
                                  <children>
-                                    <Label styleClass="h1" text="Header 1" />
+                                    <Label styleClass="h1" text="Header  1" />
                                     <Label text="Roboto 32px / black" />
                                  </children>
                               </VBox>
@@ -589,7 +590,7 @@
                                                       <Label styleClass="h2" text="Hyperlink" />
                                                       <HBox prefHeight="66.0" prefWidth="443.0" spacing="20.0" VBox.vgrow="ALWAYS">
                                                          <children>
-                                                            <Hyperlink text="Hyperlink" />
+                                                            <Hyperlink text="Hyperlink" visited="true" />
                                                          </children>
                                                       </HBox>
                                                    </children>
@@ -624,6 +625,59 @@
                                     </MenuBar>
                                  </children>
                               </VBox>
+                              <HBox layoutX="10.0" layoutY="1202.0">
+                                 <children>
+                                    <VBox prefWidth="515.0">
+                                       <children>
+                                          <Label styleClass="h2" text="PasswordField" />
+                                          <HBox spacing="5.0">
+                                             <children>
+                                                <VBox spacing="5.0">
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <PasswordField promptText="Password" text="Armarianam" />
+                                                <PasswordField disable="true" layoutX="15.0" layoutY="10.0" promptText="Password" text="Armarianam" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <HBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <VBox prefHeight="165.0" prefWidth="202.0">
+                                             <children>
+                                                <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Label styleClass="h2" text="ScrollBar" />
+                                                      <HBox prefHeight="66.0" prefWidth="443.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <ScrollBar prefHeight="22.0" prefWidth="130.0" />
+                                                            <ScrollBar orientation="VERTICAL" prefHeight="60.0" prefWidth="23.0" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox layoutX="10.0" layoutY="10.0" prefHeight="165.0" prefWidth="202.0">
+                                             <children>
+                                                <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                                   <children>
+                                                      <Label styleClass="h2" text="Hyperlink" />
+                                                      <HBox prefHeight="66.0" prefWidth="443.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Hyperlink text="Hyperlink" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                      </children>

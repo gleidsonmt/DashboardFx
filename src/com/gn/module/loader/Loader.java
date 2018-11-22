@@ -26,6 +26,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -60,10 +61,11 @@ public class Loader extends Preloader {
     @Override
     public void start(Stage primary){
         stage = primary;
-        primary.initStyle(StageStyle.UNDECORATED);
+        primary.initStyle(StageStyle.TRANSPARENT);
         Scene scene = new Scene(view);
         scene.getStylesheets().add(getClass().getResource("/com/gn/theme/css/fonts.css").toExternalForm());
         progressBar = (JFXProgressBar) scene.lookup("#progressBar");
+        primary.getIcons().add(new Image("/com/gn/module/media/icon.png"));
         primary.setScene(scene);
         primary.setAlwaysOnTop(true);
         primary.show();

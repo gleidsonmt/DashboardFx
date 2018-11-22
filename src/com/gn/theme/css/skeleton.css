@@ -1487,7 +1487,7 @@
 }
 
 .hyperlink:focused {
-  -fx-border-width : 0px;
+  -fx-border-width : 1px;
 }
 
 .tooltip {
