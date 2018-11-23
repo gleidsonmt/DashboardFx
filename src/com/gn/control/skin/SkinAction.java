@@ -32,7 +32,7 @@ import javafx.scene.layout.StackPane;
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  23/11/2018
- * Version 1.0
+ * Version 1.2
  */
 public abstract class SkinAction extends TextFieldSkin {
 
