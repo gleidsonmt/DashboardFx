@@ -18,6 +18,7 @@ package com.gn.module.login;
 
 import animatefx.animation.Pulse;
 import com.gn.App;
+import com.gn.ViewManager;
 import com.gn.control.GNAvatar;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
@@ -33,7 +34,7 @@ import java.util.ResourceBundle;
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  22/11/2018
- * Version 1.0
+ * Version 1.0.1
  */
 public class Account implements Initializable {
 
@@ -41,5 +42,10 @@ public class Account implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+    }
+
+    @FXML
+    private void back(){
+        App.decorator.setContent(ViewManager.getInstance().get("login"));
     }
 }

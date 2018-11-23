@@ -16,36 +16,28 @@
  */
 package com.gn.module.login;
 
-import animatefx.animation.*;
+import animatefx.animation.Pulse;
 import com.gn.App;
 import com.gn.ViewManager;
 import com.gn.control.GNAvatar;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.RotateTransition;
-import javafx.animation.Timeline;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  22/11/2018
- * Version 1.0
+ * Version 1.0.2
  */
 public class login implements Initializable {
 
@@ -107,6 +99,6 @@ public class login implements Initializable {
 
     @FXML
     private void switchCreate(){
-
+        App.decorator.setContent(ViewManager.getInstance().get("account"));
     }
 }
