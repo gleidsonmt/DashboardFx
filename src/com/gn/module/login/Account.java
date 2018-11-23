@@ -21,10 +21,12 @@ import com.gn.App;
 import com.gn.ViewManager;
 import com.gn.control.GNAvatar;
 import javafx.animation.RotateTransition;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
@@ -38,14 +40,57 @@ import java.util.ResourceBundle;
  */
 public class Account implements Initializable {
 
+    @FXML private GNAvatar avatar;
+
+    @FXML private HBox box_fullname;
+    @FXML private HBox box_username;
+    @FXML private HBox box_email;
+    @FXML private HBox box_conEmail;
+    @FXML private HBox box_password;
+
+    @FXML private TextField fullname;
+    @FXML private TextField username;
+    @FXML private TextField email;
+    @FXML private TextField conEmail;
+    @FXML private TextField password;
+
+    private RotateTransition rotateTransition = new RotateTransition();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        rotateTransition.setNode(avatar);
+        rotateTransition.setByAngle(360);
+        rotateTransition.setDuration(Duration.seconds(1));
+        rotateTransition.setAutoReverse(true);
+
+        addEffect(email);
+        addEffect(conEmail);
+        addEffect(fullname);
+        addEffect(username);
+        addEffect(password);
 
     }
 
     @FXML
     private void back(){
         App.decorator.setContent(ViewManager.getInstance().get("login"));
+    }
+
+    private void addEffect(Node node){
+        node.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                rotateTransition.play();
+                Pulse pulse = new Pulse(node.getParent());
+                pulse.setDelay(Duration.millis(100));
+                pulse.setSpeed(5);
+                pulse.play();
+                node.getParent().setStyle("-icon-color : -success; -fx-border-color : -success");
+            }
+        });
+
+        node.focusedProperty().addListener((observable, oldValue, newValue) -> node.getParent().setStyle("-icon-color : -dark-gray; -fx-border-color : transparent"));
+
     }
 }

@@ -58,7 +58,7 @@
                               <HBox fx:id="box_email111" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="341.0" prefHeight="50.0">
                                  <children>
                                     <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" scaleX="1.3" scaleY="1.3" strokeWidth="2.0" style="-fx-fill: -icon-color;" />
-                                    <TextField fx:id="email111" prefHeight="38.0" prefWidth="249.0" promptText="Full Name" />
+                                    <TextField fx:id="fullname" prefHeight="38.0" prefWidth="249.0" promptText="Full Name" />
                                  </children>
                                  <styleClass>
                                     <String fx:value="box-light" />
@@ -68,7 +68,7 @@
                               <HBox fx:id="box_email11" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="144.0" prefHeight="50.0">
                                  <children>
                                     <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" scaleX="1.3" scaleY="1.3" strokeWidth="2.0" style="-fx-fill: -icon-color;" />
-                                    <TextField fx:id="email11" prefHeight="38.0" prefWidth="249.0" promptText="Username" />
+                                    <TextField fx:id="username" prefHeight="38.0" prefWidth="249.0" promptText="Username" />
                                  </children>
                                  <styleClass>
                                     <String fx:value="box-light" />
@@ -88,7 +88,7 @@
                               <HBox fx:id="box_email1" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="106.0" prefHeight="50.0">
                                  <children>
                                     <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" scaleX="1.3" scaleY="1.3" strokeWidth="2.0" style="-fx-fill: -icon-color;" />
-                                    <TextField fx:id="email1" prefHeight="38.0" prefWidth="249.0" promptText="Confirm Email" />
+                                    <TextField fx:id="conEmail" prefHeight="38.0" prefWidth="249.0" promptText="Confirm Email" />
                                  </children>
                                  <styleClass>
                                     <String fx:value="box-light" />
@@ -117,7 +117,7 @@
                   </HBox>
                </children>
             </FlowPane>
-            <Hyperlink alignment="CENTER_RIGHT" onMouseClicked="#back" contentDisplay="RIGHT" text="Return">
+            <Hyperlink alignment="CENTER_RIGHT" contentDisplay="RIGHT" onMouseClicked="#back" text="Return">
                <graphic>
                   <SVGPath content="M16.01 11H4v2h12.01v3L20 12l-3.99-4z" />
                </graphic>
