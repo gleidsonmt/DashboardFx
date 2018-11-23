@@ -225,3 +225,9 @@
     -fx-padding: 0.5em 0.5em; /* TODO: put the real number here 18 18 */
     -fx-background-color: -icon-color;
 }
+
+.password-field > .right-button > .right-button-graphic {
+    -fx-shape : "M307.688,399.564c0,1.484-1.203,2.688-2.688,2.688c-1.484,0-2.688-1.203-2.688-2.688s1.203-2.688,2.688-2.688C306.484,396.876,307.688,398.08,307.688,399.564z M297.5,399h2.5c0,0,1.063-4,5-4c3.688,0,5,4,5,4h2.5c0,0-2.063-6.5-7.5-6.5C299,392.5,297.5,399,297.5,399z";
+    -fx-scale-shape : false;
+    -fx-background-color: -icon-color;
+}

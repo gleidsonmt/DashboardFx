@@ -20,6 +20,7 @@ import animatefx.animation.Pulse;
 import com.gn.App;
 import com.gn.ViewManager;
 import com.gn.control.GNAvatar;
+import com.gn.control.skin.ClearableSkin;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,14 +43,16 @@ import java.util.ResourceBundle;
 public class login implements Initializable {
 
     @FXML private GNAvatar avatar;
-    @FXML private HBox box_email;
+    @FXML private HBox box_username;
     @FXML private HBox box_password;
-    @FXML private TextField email;
+    @FXML private TextField username;
     @FXML private TextField password;
     @FXML private Button login;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+//        new ClearableSkin(username);
 
         RotateTransition rotateTransition = new RotateTransition();
         rotateTransition.setNode(avatar);
@@ -57,16 +60,16 @@ public class login implements Initializable {
         rotateTransition.setDuration(Duration.seconds(1));
         rotateTransition.setAutoReverse(true);
 
-        email.setOnMouseClicked(event -> {
+        username.setOnMouseClicked(event -> {
             rotateTransition.play();
-            Pulse pulse = new Pulse(box_email);
+            Pulse pulse = new Pulse(box_username);
             pulse.setDelay(Duration.millis(100));
             pulse.setSpeed(5);
             pulse.play();
-            box_email.setStyle("-icon-color : -success; -fx-border-color : -success");
+            box_username.setStyle("-icon-color : -success; -fx-border-color : -success");
         });
 
-        email.focusedProperty().addListener((observable, oldValue, newValue) -> box_email.setStyle("-icon-color : -dark-gray; -fx-border-color : transparent"));
+        username.focusedProperty().addListener((observable, oldValue, newValue) -> box_username.setStyle("-icon-color : -dark-gray; -fx-border-color : transparent"));
 
       password.setOnMouseClicked(event -> {
             rotateTransition.play();
