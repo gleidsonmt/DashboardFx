@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXProgressBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="407.0" prefWidth="602.0" stylesheets="@loader.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane prefHeight="438.0" prefWidth="589.0" stylesheets="@loader.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane>
          <children>
@@ -27,10 +28,13 @@
                <font>
                   <Font size="10.0" />
                </font></Label>
-            <ImageView fitHeight="68.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="81.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../media/logo.png" />
+                  <Image url="@../media/icon.png" />
                </image>
+               <effect>
+                  <ColorAdjust brightness="-0.05" hue="0.14" />
+               </effect>
             </ImageView>
          </children>
       </AnchorPane>
