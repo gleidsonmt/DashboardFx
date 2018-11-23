@@ -6,16 +6,18 @@
 ### Library Dependency 
 #### find lib directory
 
-    colors-1.4
-    controlsfx-8.40.14
-    fontawesomefx-8.9
     GNDrawer
     GNCarousel
     GNDecorator
+    controlsfx-8.40.14
     jfoenix-8.0.7
-    scenicView
+    fontawesomefx-8.9
     tilesfx-1.5.2
-    
+    animatefx-1.2.0 
+    colors-1.4
+    TrayNotification
+    scenicView
+
 ## Screenshots
 
 ![Guide](src/com/gn/module/media/dashlight.png)
