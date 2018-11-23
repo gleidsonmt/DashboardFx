@@ -96,6 +96,7 @@ public class App extends Application {
         load("profile", "profile");
 
         load("login", "login");
+        load("login", "account");
 
 //        System.out.println(ViewManager.getInstance().getSize());
 
