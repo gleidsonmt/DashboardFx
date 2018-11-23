@@ -151,7 +151,7 @@ public class App extends Application {
 
         decorator.setMaximized(true);
         decorator.getStage().setOnCloseRequest(event -> {
-            detail.getPopOver().hide();
+//            detail.getPopOver().hide();
 
             if(Main.popConfig.isShowing()) Main.popConfig.hide();
             if(Main.popup.isShowing()) Main.popup.hide();
@@ -163,7 +163,7 @@ public class App extends Application {
 
         decorator.show();
 
-        ScenicView.show(decorator.getScene());
+//        ScenicView.show(decorator.getScene());
     }
 
     public static void main(String[] args) {

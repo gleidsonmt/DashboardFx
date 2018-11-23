@@ -16,11 +16,13 @@
  */
 package com.gn.module.login;
 
-import animatefx.animation.Pulse;
+import animatefx.animation.*;
 import com.gn.App;
 import com.gn.ViewManager;
 import com.gn.control.GNAvatar;
 import javafx.animation.RotateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -70,6 +72,22 @@ public class Account implements Initializable {
         addEffect(username);
         addEffect(password);
 
+        password.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(password.getText().isEmpty()){
+                    if(!newValue){
+                        Flash swing = new Flash(box_password);
+                        swing.setDelay(Duration.millis(100));
+                        swing.play();
+                        box_password.setStyle("-icon-color : -danger; -fx-border-color : -danger");
+                    }
+
+
+                }
+            }
+        });
+
     }
 
     @FXML
@@ -89,7 +107,7 @@ public class Account implements Initializable {
                 node.getParent().setStyle("-icon-color : -success; -fx-border-color : -success");
             }
         });
-
+//
         node.focusedProperty().addListener((observable, oldValue, newValue) -> node.getParent().setStyle("-icon-color : -dark-gray; -fx-border-color : transparent"));
 
     }
