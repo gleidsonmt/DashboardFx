@@ -67,7 +67,7 @@ public class Loader extends Preloader {
         progressBar = (JFXProgressBar) scene.lookup("#progressBar");
         primary.getIcons().add(new Image("/com/gn/module/media/icon.png"));
         primary.setScene(scene);
-        primary.setAlwaysOnTop(true);
+//        primary.setAlwaysOnTop(true);
         primary.show();
 
     }

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="836.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label styleClass="h3" text="Guide" />
+         </children>
+      </HBox>
+      <VBox spacing="5.0">
+         <children>
+            <Label text="Light" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Theme" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: -light-gray;" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hover" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="547.0" layoutY="10.0" style="-fx-background-color: -base;" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Focused | Selected" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="10.0" layoutY="10.0" spacing="5.0">
+         <children>
+            <Label text="Dark" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" style="-fx-background-color: -elegant;" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Theme" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-background-color: derive( -light-gray, -70%);" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Hover" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="547.0" layoutY="10.0" style="-fx-background-color: -base;" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Focused | Selected" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="20.0" layoutY="262.0" spacing="5.0">
+         <children>
+            <Label text="Component Text | Label, Text, HyperLink" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label text="Label" />
+                  <VBox alignment="CENTER_LEFT" prefHeight="85.0" prefWidth="205.0">
+                     <children>
+                        <Label layoutX="10.0" layoutY="61.0" text="Background : background-color" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Icon : -icon-color" />
+                        <Label layoutX="10.0" layoutY="27.0" text="Text fill: -text-color" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="20.0" layoutY="359.0" spacing="5.0">
+         <children>
+            <Label layoutX="30.0" layoutY="20.0" text="Component Box | ComboBox, ChoiceBox, MenuButton, SplitMenuButton, ColorPicker, DatePicker," />
+            <Label text=" TextField, PasswordField, TextArea, Spinner" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <ComboBox prefWidth="150.0" />
+                  <VBox alignment="CENTER_LEFT" prefHeight="85.0" prefWidth="205.0">
+                     <children>
+                        <Label layoutX="10.0" layoutY="61.0" text="Background : -box-base" />
+                        <Label text="Border : -box-fill" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Icon : -icon-color" />
+                        <Label layoutX="10.0" layoutY="27.0" text="Text fill: -box-text-color" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="20.0" layoutY="376.0" spacing="5.0">
+         <children>
+            <Label text="Misted Component : RadioButton, Chekbox, Pagination" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <CheckBox mnemonicParsing="false" text="CheckBox" />
+                  <VBox alignment="CENTER_LEFT" prefHeight="85.0" prefWidth="205.0">
+                     <children>
+                        <Label layoutX="10.0" layoutY="61.0" text="Background : background-color" />
+                        <Label text="Border : -box-fill" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Icon : -icon-color" />
+                        <Label layoutX="10.0" layoutY="27.0" text="Text fill: -text-color" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="20.0" layoutY="490.0" spacing="5.0">
+         <children>
+            <Label text="Track Components | Slider, ScrollBar, ProgressBar" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Slider />
+                  <VBox alignment="CENTER_LEFT" prefHeight="85.0" prefWidth="205.0">
+                     <children>
+                        <Label layoutX="10.0" layoutY="61.0" text="Background : -background-color" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Track fill : -track-fill" />
+                        <Label layoutX="10.0" layoutY="27.0" text="Text fill: -text-color" />
+                        <Label layoutX="10.0" layoutY="44.0" text="Shape color : -base" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="20.0" layoutY="641.0" spacing="5.0">
+         <children>
+            <Label text="Menus | MenuBar" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" prefWidth="86.0" text="Button" />
+                  <VBox alignment="CENTER_LEFT" prefHeight="85.0" prefWidth="205.0">
+                     <children>
+                        <Label layoutX="10.0" layoutY="61.0" text="Background : -base" />
+                        <Label text="Border : none" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Icon : -icon-color" />
+                        <Label layoutX="10.0" layoutY="27.0" text="Text fill: -inner-text" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="20.0" layoutY="422.0" spacing="5.0">
+         <children>
+            <Label text="List Components | ListView, TableView" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <ListView prefHeight="200.0" prefWidth="200.0" />
+                  <VBox alignment="CENTER_LEFT" prefHeight="85.0" prefWidth="205.0">
+                     <children>
+                        <Label layoutX="10.0" layoutY="61.0" text="Background : -background-color" />
+                        <Label text="List fill : -list-fill" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Icon : -icon-color" />
+                        <Label layoutX="10.0" layoutY="27.0" text="Text fill: -text-color" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../../gn/theme/css/material-color.css" />
+      <URL value="@../../gn/theme/css/skeleton.css" />
+      <URL value="@../../gn/theme/css/light.css" />
+      <URL value="@../../gn/theme/css/bootstrap.css" />
+      <URL value="@../../gn/theme/css/simple-green.css" />
+      <URL value="@../../gn/theme/css/forms.css" />
+      <URL value="@../../gn/theme/css/typographic.css" />
+      <URL value="@../../gn/theme/css/helpers.css" />
+      <URL value="@../../gn/theme/css/master.css" />
+   </stylesheets>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>
