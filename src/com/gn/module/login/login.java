@@ -52,8 +52,6 @@ public class login implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-//        new ClearableSkin(username);
-
         RotateTransition rotateTransition = new RotateTransition();
         rotateTransition.setNode(avatar);
         rotateTransition.setByAngle(360);
@@ -80,7 +78,9 @@ public class login implements Initializable {
             box_password.setStyle("-icon-color : -success; -fx-border-color : -success");
         });
 
-        password.focusedProperty().addListener((observable, oldValue, newValue) -> box_password.setStyle("-icon-color : -dark-gray; -fx-border-color : transparent"));
+        password.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            box_password.setStyle("-icon-color : -dark-gray; -fx-border-color : transparent");
+        });
 
     }
 

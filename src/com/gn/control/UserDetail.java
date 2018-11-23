@@ -116,7 +116,7 @@ public class UserDetail extends GNControl {
 
         header.setText("Gleidson Neves da Silveira");
         subTitle.setText("Member since 2018");
-        avatar.setImage(new Image(getClass().getResource("/img/avatar.jpg").toExternalForm()));
+        avatar.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
 
         background.setPrefHeight(500);
 
