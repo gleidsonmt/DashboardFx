@@ -163,7 +163,7 @@ public class App extends Application {
 
         decorator.show();
 
-//        ScenicView.show(decorator.getScene());
+        ScenicView.show(decorator.getScene());
     }
 
     public static void main(String[] args) {

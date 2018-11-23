@@ -1,0 +1,105 @@
+
+
+
+config pop notification
+add jfoenix - dialog
+
+Amanhã reorganizar projeto decorator
+
+
+/********************************************************************************************************
+
+                            Versionamento
+
+/********************************************************************************************************
+
+x.x.X   release de revisao  -> Correção de bugs
+x.X.x   release menor       -> melhores e ou evoluções
+X.x.x   releaase maior      -> novas funções de grande importancia
+
+x.x.x-alpha primeira versao
+x.x.x-beta  primera versao aceitavel
+x.x.x-rc    versao release candidadte mais perto do final
+x.x.x-gold  versao final
+
+
+/********************************************************************************************************
+
+                            Css
+
+/********************************************************************************************************
+
+material-color
+light | dark
+squeleton
+simple-green
+drawer
+hidden-scroll
+forms
+popoup
+master
+
+
+optionals
+
+hiddenscroll
+scroll
+forms
+
+/********************************************************************************************************
+
+                Bootstrap
+
+/********************************************************************************************************
+
+cor
+form
+size
+effect
+bord
+text
+
+bootrlevels
+
+.rounded -> level 1 | attribute
+
+.comp-form -> level 2 | component-attribute
+
+
+/********************************************************************************************************
+
+                Responsabilidades
+
+/********************************************************************************************************
+
+
+responsablidae dos templates
+
+fonts : carrega as fonts para a cena
+material-colors : carregar variaves de cores para layout e texto, e classes para fundos
+skeleton : fonts padrao, variaveis de texto, dar transparencia aos controles
+light | dark : define a intensidade de cor e as tres cores padrao
+bootstrap : helpers e construtor para estilos personalizados para supertipos
+forms : formas para objetos
+typographic : estilo de fontes e titulos
+helpers : efeitos e estilos extras
+master : css de customizacao
+
+
+
+
+
+
+
+
+
+http://tutorials.jenkov.com/javafx/menubutton.html
+
+
+Update
+
+controls
+    buttons -> documentation
+
+sidebar
+popup
