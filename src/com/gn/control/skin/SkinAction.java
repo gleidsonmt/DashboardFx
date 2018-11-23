@@ -36,13 +36,21 @@ import javafx.scene.layout.StackPane;
  */
 public abstract class SkinAction extends TextFieldSkin {
 
-    private StackPane   button;
-    private Region      graphic;
-    private TextField   textField;
+    private StackPane       button;
+    private Region          graphic;
+    private TextField       textField;
+    private PasswordField   passwordField;
 
     SkinAction(TextField textField) {
         super(textField);
         this.textField = textField;
+        config();
+        setupListeners();
+    }
+
+    SkinAction(PasswordField passwordField){
+        super(passwordField);
+        this.passwordField = passwordField;
         config();
         setupListeners();
     }
@@ -117,4 +125,9 @@ public abstract class SkinAction extends TextFieldSkin {
     TextField getTextField() {
         return textField;
     }
+
+    PasswordField getPasswordField() {
+        return passwordField;
+    }
+
 }
