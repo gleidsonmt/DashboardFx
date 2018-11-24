@@ -45,12 +45,13 @@ import java.io.IOException;
 public class App extends Application {
 
     private float  increment = 0;
-    private byte   progress = 0;
+    private float  progress = 0;
 
     @Override
     public synchronized void init(){
-        byte total = 42; // the difference represents the views not loaded
-        increment = 100 / total;
+        float total = 43; // the difference represents the views not loaded
+        increment = 100f / total;
+        System.out.println(increment);
         load("designer", "carousel");
         load("designer", "cards");
         load("designer", "banners");
@@ -100,7 +101,7 @@ public class App extends Application {
         load("login", "login");
         load("login", "account");
 
-//        System.out.println(ViewManager.getInstance().getSize());
+        System.out.println(ViewManager.getInstance().getSize());
 
         // delay
         try {
@@ -143,13 +144,7 @@ public class App extends Application {
                 getClass().getResource("/com/gn/theme/css/master.css").toExternalForm()
         );
 
-        UserDetail detail = new UserDetail();
-//        decorator.addCustom(detail);
-//        detail.setProfileAction(event -> {
-//            Main.ctrl.title.setText("Profile");
-//            Main.ctrl.body.setContent(ViewManager.getInstance().get("login"));
-//            detail.getPopOver().hide();
-//        });
+
 
 
         decorator.setMaximized(true);
