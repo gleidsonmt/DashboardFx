@@ -51,7 +51,6 @@ public class ClearableSkin extends SkinAction {
         }
         getButton().setVisible(getTextField().isFocused() && !getTextField().getText().isEmpty());
         getGraphic().setVisible(getTextField().isFocused() && !getTextField().getText().isEmpty());
-        System.out.println(getButton().isVisible());
     }
 
     private void altCursor(){

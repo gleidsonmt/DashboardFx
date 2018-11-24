@@ -27,9 +27,11 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.application.Preloader;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
 
@@ -148,6 +150,7 @@ public class App extends Application {
 //            Main.ctrl.body.setContent(ViewManager.getInstance().get("login"));
 //            detail.getPopOver().hide();
 //        });
+
 
         decorator.setMaximized(true);
         decorator.getStage().setOnCloseRequest(event -> {
