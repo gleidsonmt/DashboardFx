@@ -3,11 +3,17 @@
 ##### Find templates, themes, controls, custom uis.
 
 
-### Library Dependency 
-#### find lib directory
+### Library Dependency.
+#### 
+find the dependencies in the lib folder or the links for source projects.
+
+##### [GNCarousel](https://github.com/Gleidson28/GNCarousel)
+##### [GNDecorator](https://github.com/Gleidson28/GNDecorator)
+##### [ControlsFx](https://bitbucket.org/controlsfx/controlsfx)
+##### [GNDrawer](https://github.com/Gleidson28/GNDrawer)
+
 
     GNDrawer
-    GNCarousel
     GNDecorator
     controlsfx-8.40.14
     jfoenix-8.0.7

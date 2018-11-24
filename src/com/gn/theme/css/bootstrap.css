@@ -142,6 +142,12 @@
 *
 *************************************************************************************/
 
+.text-danger
+{
+    -fx-text-fill : -danger;
+    -fx-fill : -danger;
+}
+
 .outlined:focused
 {
   -fx-text-fill : white;
