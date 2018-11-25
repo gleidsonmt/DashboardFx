@@ -21,6 +21,8 @@ import com.gn.App;
 import com.gn.ViewManager;
 import com.gn.control.GNAvatar;
 import com.gn.control.Mask;
+import com.gn.control.UserDetail;
+import com.gn.module.main.Main;
 import javafx.animation.RotateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -41,6 +43,7 @@ import javax.swing.text.View;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -48,7 +51,6 @@ import java.util.ResourceBundle;
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  22/11/2018
- * Version 1.0.1
  */
 public class Account implements Initializable {
 
@@ -68,6 +70,8 @@ public class Account implements Initializable {
     @FXML private Label lbl_fullname;
     @FXML private Label lbl_email;
     @FXML private Label lbl_username;
+
+    @FXML private Label lbl_error;
 
     @FXML private Button register;
 
@@ -98,23 +102,68 @@ public class Account implements Initializable {
         pulse.play();
 
         if(validEmail() && validFullname() && validFullname() && validUsername()){
-            Properties properties = new Properties();
-            File file = new File("src/com/gn/properties/login.properties");
-            FileInputStream fileInputStream = new FileInputStream(file);
-            properties.load(fileInputStream);
-            properties.setProperty("username", username.getText());
-            properties.setProperty("fullname", fullname.getText());
-            properties.setProperty("email", email.getText());
-            properties.setProperty("password", password.getText());
-            FileOutputStream fos = new FileOutputStream(file);
-            properties.store(fos, "Login properties");
-            App.decorator.setContent(ViewManager.getInstance().get("main"));
+
+            String user = username.getText();
+            String extesion = "properties";
+
+            File directory = new File("user/");
+            File file = new File("user/" + user + "." + extesion);
+
+            if(!directory.exists()){
+                directory.mkdir();
+                file.createNewFile();
+                setProperties(file);
+            } else if (!file.exists()){
+                file.createNewFile();
+                setProperties(file);
+            } else {
+                lbl_error.setVisible(true);
+            }
+
+
         } else {
             lbl_fullname.setVisible(true);
             lbl_username.setVisible(true);
             lbl_email.setVisible(true);
             lbl_password.setVisible(true);
         }
+    }
+
+    private void setProperties(File file){
+        try {
+            Properties properties = new Properties();
+
+            FileInputStream fileInputStream = new FileInputStream(file);
+
+            properties.load(fileInputStream);
+
+            properties.putIfAbsent("password", password.getText());
+            properties.putIfAbsent("fullname", fullname.getText());
+            properties.putIfAbsent("email", email.getText());
+
+            FileOutputStream fos = new FileOutputStream(file);
+            properties.store(fos, "Login properties");
+
+            UserDetail detail = new UserDetail();
+
+            App.decorator.addCustom(detail);
+            detail.setProfileAction(event -> {
+                Main.ctrl.title.setText("Profile");
+                Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
+                detail.getPopOver().hide();
+            });
+            detail.setSignAction(event -> {
+                App.decorator.setContent(ViewManager.getInstance().get("login"));
+                detail.getPopOver().hide();
+                App.decorator.removeCustom(detail);
+            });
+
+            App.decorator.setContent(ViewManager.getInstance().get("main"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     @FXML
@@ -163,21 +212,21 @@ public class Account implements Initializable {
 
 
     private void setupListenters(){
-        password.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!validPassword()){
-                    if(!newValue){
-                        Flash swing = new Flash(box_password);
-                        lbl_password.setVisible(true);
-                        new SlideInLeft(lbl_password).play();
-                        swing.setDelay(Duration.millis(100));
-                        swing.play();
-                        box_password.setStyle("-icon-color : -danger; -fx-border-color : -danger");
-                    } else {
-                        lbl_password.setVisible(false);
-                    }
+        password.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if(!validPassword()){
+                if(!newValue){
+                    Flash swing = new Flash(box_password);
+                    lbl_password.setVisible(true);
+                    new SlideInLeft(lbl_password).play();
+                    swing.setDelay(Duration.millis(100));
+                    swing.play();
+                    box_password.setStyle("-icon-color : -danger; -fx-border-color : -danger");
+                } else {
+                    lbl_password.setVisible(false);
+
                 }
+            } else {
+                lbl_error.setVisible(false);
             }
         });
 
@@ -196,6 +245,8 @@ public class Account implements Initializable {
                     } else {
                         lbl_username.setVisible(false);
                     }
+                } else {
+                    lbl_error.setVisible(false);
                 }
             }
         });
@@ -214,6 +265,8 @@ public class Account implements Initializable {
                     } else {
                         lbl_email.setVisible(false);
                     }
+                }  else {
+                    lbl_error.setVisible(false);
                 }
             }
         });
@@ -232,6 +285,8 @@ public class Account implements Initializable {
                     } else {
                         lbl_fullname.setVisible(false);
                     }
+                } else {
+                    lbl_error.setVisible(false);
                 }
             }
         });
