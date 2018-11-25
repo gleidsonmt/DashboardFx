@@ -1,6 +1,7 @@
 ./gitignore
 .idea/**
 /out/**
+/user/**
 annotation.txt
 scenicView.properties
 DashboardFx.iml
