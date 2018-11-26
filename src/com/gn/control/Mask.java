@@ -17,6 +17,7 @@
 package com.gn.control;
 
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
 
 /**
@@ -25,14 +26,20 @@ import javafx.scene.control.TextField;
  * Version 1.0
  */
 public class Mask  {
-    public static void noSpaces(TextField textField){
-        if (textField.getText() != null) {
-            if (textField.getText().length() > 0) {
-                String value = textField.getText();
-                value = value.replaceFirst("[ ]", "");
-                textField.setText(value);
+    public static void noSpaces(TextField field){
+        field.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (field.getText() != null) {
+                    if (field.getText().length() > 0) {
+                        String value = field.getText();
+                        value = value.replaceFirst("[ ]", "");
+                        field.setText(value);
+                    }
+                }
             }
-        }
+        });
+
     }
 
     public static void maxField(TextField field, int length) {

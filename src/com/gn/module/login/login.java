@@ -22,7 +22,9 @@ import animatefx.animation.SlideInLeft;
 import com.gn.App;
 import com.gn.ViewManager;
 import com.gn.control.GNAvatar;
+import com.gn.control.UserDetail;
 import com.gn.control.skin.ClearableSkin;
+import com.gn.module.main.Main;
 import javafx.animation.RotateTransition;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -164,7 +166,7 @@ public class login implements Initializable {
         pulse.setDelay(Duration.millis(20));
         pulse.play();
         if(validPassword() && validUsername())
-        enter();
+            enter();
         else {
             lbl_password.setVisible(true);
             lbl_username.setVisible(true);
@@ -173,14 +175,41 @@ public class login implements Initializable {
 
     private void enter() {
         try {
+
             Properties properties = new Properties();
-            File file = new File("src/com/gn/properties/login.properties");
+
+            String user = username.getText();
+            String extension = "properties";
+
+            File file = new File("user/" + user + "." + extension);
+
             FileInputStream fileInputStream = new FileInputStream(file);
             properties.load(fileInputStream);
-            String username = properties.getProperty("username");
+
+
             String password = properties.getProperty("password");
-            if(username.equals(this.username.getText()) && password.equals(this.password.getText())){
+
+            if(user.equals(this.username.getText()) && password.equals(this.password.getText())){
                 App.decorator.setContent(ViewManager.getInstance().get("main"));
+                UserDetail detail = new UserDetail();
+
+                App.decorator.addCustom(detail);
+                detail.setProfileAction(event -> {
+                    Main.ctrl.title.setText("Profile");
+                    Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
+                    detail.getPopOver().hide();
+
+                });
+
+                detail.setSignAction(event -> {
+                    App.decorator.setContent(ViewManager.getInstance().get("login"));
+                    this.username.setText("");
+                    this.password.setText("");
+                    detail.getPopOver().hide();
+                    if(Main.popConfig.isShowing()) Main.popConfig.hide();
+                    if(Main.popup.isShowing()) Main.popup.hide();
+                    App.decorator.removeCustom(detail);
+                });
 
                 TimerTask timerTask = new TimerTask() {
                     @Override

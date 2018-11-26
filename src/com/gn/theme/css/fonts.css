@@ -1,9 +1,4 @@
 @font-face {
-    -fx-font-family : 'Mechanization';
-    src: url('/com/gn/theme/fonts/Mechanization.ttf');
-}
-
-@font-face {
     -fx-font-family : 'Roboto Regular';
     src: url('/com/gn/theme/fonts/Roboto-Regular.ttf');
 }

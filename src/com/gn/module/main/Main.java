@@ -38,13 +38,19 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.SVGPath;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import org.controlsfx.control.PopOver;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 import java.io.IOException;
 import java.net.URL;
@@ -82,6 +88,7 @@ public class Main implements Initializable {
     @FXML private GNDrawer drawer;
     @FXML private DrawerItem colors;
     @FXML private JFXBadge messages;
+    @FXML private JFXBadge bg_info;
 
     private FilteredList<DrawerItem> filteredList = null;
 
@@ -132,11 +139,6 @@ public class Main implements Initializable {
             e.printStackTrace();
         }
 //        drawer.setPopStylesheet(getClass().getResource("/com/gn/theme/css/popover.css"));
-
-
-
-
-
     }
 
     @FXML

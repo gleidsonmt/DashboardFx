@@ -12,7 +12,7 @@ HBox, .text-field
 
 .login
 {
-   -fx-background-color : linear-gradient(to left, -success, -mint);
+   -fx-background-color : linear-gradient(to left, -mint, -success);
 }
 
 .login:focused, .login:hover

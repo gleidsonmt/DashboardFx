@@ -478,15 +478,15 @@
 
 
 .main-chart .chart-series-area-fill  {
-   -fx-fill : linear-gradient(to bottom, -base, transparent);
+   -fx-fill : linear-gradient(to left, -base, -success);
 }
 
 .main-chart .chart-series-area-line {
-    -fx-stroke: -base;
-    -fx-stroke-width: 2px;
+    -fx-stroke: linear-gradient(to left, -base, -success);
+    -fx-stroke-width: 1px;
 }
 
 .main-chart .chart-area-symbol
 {
-    -fx-background-color : -base;
+    -fx-background-color : linear-gradient(to left, -base, -success);
 }

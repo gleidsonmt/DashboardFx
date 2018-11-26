@@ -17,19 +17,13 @@
 package com.gn.module.loader;
 
 import com.jfoenix.controls.JFXProgressBar;
-import javafx.animation.FadeTransition;
-import javafx.application.Platform;
 import javafx.application.Preloader;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -43,11 +37,6 @@ public class Loader extends Preloader {
     private JFXProgressBar progressBar;
     private Parent view;
     private Stage stage;
-
-    private int total = 5;
-    private double increment = 100 / total;
-    private double progress = increment;
-
 
     @Override
     public void init(){
@@ -77,8 +66,9 @@ public class Loader extends Preloader {
         // Handle application notification in this point (see MyApplication#Init).
 
         if (info instanceof Preloader.ProgressNotification) {
-            double x = (int) ((Preloader.ProgressNotification) info).getProgress();
-            double percent = x / 100;
+            double x = ((Preloader.ProgressNotification) info).getProgress();
+
+            double percent = x / 100f;
             progressBar.progressProperty().set(percent > 1 ? 1 : percent);
         }
     }
