@@ -34,6 +34,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.TextFlow;
@@ -91,8 +93,9 @@ public class Account implements Initializable {
         addEffect(password);
 
         Mask.nameField(fullname);
+        Mask.noInitSpace(username);
+        Mask.noSpaces(username);
         setupListenters();
-
     }
 
     @FXML
@@ -101,30 +104,31 @@ public class Account implements Initializable {
         pulse.setDelay(Duration.millis(20));
         pulse.play();
 
-        if(validEmail() && validFullname() && validFullname() && validUsername()){
+        if (validEmail() && validFullname() && validFullname() && validUsername()) {
 
             String user = username.getText();
-            String extesion = "properties";
+            String extension = "properties";
 
             File directory = new File("user/");
-            File file = new File("user/" + user + "." + extesion);
+            File file = new File("user/" + user + "." + extension);
 
-            if(!directory.exists()){
+            if (!directory.exists()) {
                 directory.mkdir();
                 file.createNewFile();
                 setProperties(file);
-            } else if (!file.exists()){
+            } else if (!file.exists()) {
                 file.createNewFile();
                 setProperties(file);
             } else {
                 lbl_error.setVisible(true);
             }
-
-
-        } else {
-            lbl_fullname.setVisible(true);
+        } else if (!validUsername()){
             lbl_username.setVisible(true);
+        } else if (!validFullname()) {
+            lbl_fullname.setVisible(true);
+        } else if (!validEmail()){
             lbl_email.setVisible(true);
+        } else {
             lbl_password.setVisible(true);
         }
     }

@@ -112,6 +112,7 @@
                                                 <Insets right="10.0" />
                                              </padding>
                                           </HBox>
+                                          <Label fx:id="lbl_error" styleClass="text-danger" text="The user already exists" visible="false" />
                                           <Button fx:id="register" mnemonicParsing="false" onMouseClicked="#register" prefWidth="478.0" text="Register">
                                              <styleClass>
                                                 <String fx:value="btn-large" />
