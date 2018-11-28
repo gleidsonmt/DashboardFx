@@ -22,7 +22,7 @@
 <?import javafx.scene.text.TextFlow?>
 <?import org.controlsfx.control.Rating?>
 
-<StackPane prefHeight="762.0" prefWidth="977.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane prefHeight="762.0" prefWidth="977.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.profile.Profile">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <padding>
@@ -171,8 +171,8 @@
                               <Label style="-fx-text-fill: -text-color;" text="Rankings" />
                               <HBox alignment="CENTER_LEFT" spacing="10.0">
                                  <children>
-                                    <Label style="-fx-font-weight: bold;" styleClass="h3" text="8,6" />
-                                    <Rating partialRating="true" prefHeight="33.0" prefWidth="176.0" rating="1.0" updateOnHover="true" />
+                                    <Label fx:id="note" style="-fx-font-weight: bold;" styleClass="h3" text="8,6" />
+                                    <Rating fx:id="rating" prefHeight="33.0" prefWidth="176.0" rating="5.0" updateOnHover="true" />
                                  </children>
                               </HBox>
                            </children>
