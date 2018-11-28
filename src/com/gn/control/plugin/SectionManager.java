@@ -59,8 +59,9 @@ public class SectionManager {
 
             FileOutputStream outputStream = new FileOutputStream(file);
 
-            properties.putIfAbsent("logged", String.valueOf(section.isLogged()));
-            properties.putIfAbsent("userLogged", section.getUserLogged());
+
+            properties.setProperty("logged", String.valueOf(section.isLogged()));
+            properties.setProperty("userLogged", section.getUserLogged());
             properties.store(outputStream, "Update Section");
 
         } catch (IOException e){
