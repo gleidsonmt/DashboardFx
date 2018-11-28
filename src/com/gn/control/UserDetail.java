@@ -25,6 +25,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -120,7 +121,6 @@ public class UserDetail extends GNControl {
         gnAvatar.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
 
         background.setPrefHeight(500);
-
         box.setPrefWidth(387);
         box.setPrefHeight(300);
 
