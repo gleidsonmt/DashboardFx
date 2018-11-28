@@ -113,7 +113,7 @@
                                              </padding>
                                           </HBox>
                                           <Label fx:id="lbl_error" styleClass="text-danger" text="The user already exists" visible="false" />
-                                          <Button fx:id="register" mnemonicParsing="false" onMouseClicked="#register" prefWidth="478.0" text="Register">
+                                          <Button fx:id="register" defaultButton="true" mnemonicParsing="false" onAction="#register" onMouseClicked="#register" prefWidth="478.0" text="Register">
                                              <styleClass>
                                                 <String fx:value="btn-large" />
                                                 <String fx:value="login" />
@@ -143,7 +143,7 @@
                   </HBox>
                </children>
             </FlowPane>
-            <Hyperlink alignment="CENTER_RIGHT" contentDisplay="RIGHT" onMouseClicked="#back" text="Return">
+            <Hyperlink alignment="CENTER_RIGHT" contentDisplay="RIGHT" onAction="#back" text="Return">
                <graphic>
                   <SVGPath content="M16.01 11H4v2h12.01v3L20 12l-3.99-4z" />
                </graphic>

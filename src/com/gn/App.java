@@ -17,7 +17,9 @@
 
 package com.gn;
 
-import com.gn.control.UserDetail;
+import com.gn.control.*;
+import com.gn.control.plugin.SectionManager;
+import com.gn.control.plugin.UserManager;
 import com.gn.decorator.GNDecorator;
 import com.gn.decorator.options.ButtonType;
 import com.gn.module.loader.Loader;
@@ -27,15 +29,16 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.application.Preloader;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import org.scenicview.ScenicView;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -46,6 +49,7 @@ public class App extends Application {
 
     private float  increment = 0;
     private float  progress = 0;
+
 
     @Override
     public synchronized void init(){
@@ -125,9 +129,36 @@ public class App extends Application {
         App.decorator = decorator;
         scene = decorator.getScene();
         decorator.setTitle("Dashboard Fx");
-        decorator.setContent(ViewManager.getInstance().get("login"));
-        decorator.initTheme(GNDecorator.Theme.DEFAULT);
         decorator.addButton(ButtonType.FULL_EFFECT);
+        String log = logged();
+        assert log != null;
+        if (log.equals("account") || log.equals("login")) {
+            decorator.setContent(ViewManager.getInstance().get(log));
+        } else {
+            Section section = SectionManager.get();
+            User user = UserManager.get(section.getUserLogged());
+            UserDetail detail = new UserDetail(section.getUserLogged(), user.getFullName(), "subtitle");
+
+            App.decorator.addCustom(detail);
+            UserDetail finalDetail = detail;
+            detail.setProfileAction(event -> {
+                Main.ctrl.title.setText("Profile");
+                Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
+                finalDetail.getPopOver().hide();
+
+            });
+
+            detail.setSignAction(event -> {
+                App.decorator.setContent(ViewManager.getInstance().get("login"));
+                finalDetail.getPopOver().hide();
+                if(Main.popConfig.isShowing()) Main.popConfig.hide();
+                if(Main.popup.isShowing()) Main.popup.hide();
+                App.decorator.removeCustom(finalDetail);
+            });
+            decorator.setContent(ViewManager.getInstance().get("main"));
+        }
+        decorator.initTheme(GNDecorator.Theme.DEFAULT);
+
 
         stylesheets = decorator.getScene().getStylesheets();
 
@@ -143,7 +174,6 @@ public class App extends Application {
                 getClass().getResource("/com/gn/theme/css/master.css").toExternalForm()
         );
 
-        decorator.setMaximized(true);
         decorator.getStage().setOnCloseRequest(event -> {
 //            detail.getPopOver().hide();
 
@@ -153,8 +183,9 @@ public class App extends Application {
             Platform.exit();
         });
 
-        decorator.getStage().getIcons().add(new Image("/com/gn/module/media/icon.png"));
 
+        decorator.setMaximized(true);
+        decorator.getStage().getIcons().add(new Image("/com/gn/module/media/icon.png"));
         decorator.show();
 
 //        ScenicView.show(decorator.getScene());
@@ -179,5 +210,37 @@ public class App extends Application {
     private synchronized void preloaderNotify() {
         progress += increment;
         LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
+    }
+
+    private String logged(){
+        try {
+            File file = new File("dashboard.properties");
+            Properties properties = new Properties();
+
+            if(!file.exists()){
+                file.createNewFile();
+                return "account";
+            } else {
+                FileInputStream fileInputStream = new FileInputStream(file);
+                properties.load(fileInputStream);
+                properties.putIfAbsent("logged", "false");
+                FileOutputStream fileOutputStream = new FileOutputStream(file);
+                properties.store(fileOutputStream, "Dashboard properties");
+
+
+                File directory = new File("user/");
+                properties.load(fileInputStream);
+                if(directory.exists()){
+                    if(properties.getProperty("logged").equals("false"))
+                        return "login";
+                    else
+                        return "main";
+                } else
+                    return "account";
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

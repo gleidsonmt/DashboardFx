@@ -19,35 +19,23 @@ package com.gn.module.login;
 import animatefx.animation.*;
 import com.gn.App;
 import com.gn.ViewManager;
-import com.gn.control.GNAvatar;
-import com.gn.control.Mask;
-import com.gn.control.UserDetail;
+import com.gn.control.*;
+import com.gn.control.plugin.SectionManager;
+import com.gn.control.plugin.UserManager;
 import com.gn.module.main.Main;
 import javafx.animation.RotateTransition;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
 
-import javax.swing.text.View;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
-import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
@@ -95,7 +83,7 @@ public class Account implements Initializable {
         Mask.nameField(fullname);
         Mask.noInitSpace(username);
         Mask.noSpaces(username);
-        setupListenters();
+        setupListeners();
     }
 
     @FXML
@@ -115,10 +103,10 @@ public class Account implements Initializable {
             if (!directory.exists()) {
                 directory.mkdir();
                 file.createNewFile();
-                setProperties(file);
+                setProperties();
             } else if (!file.exists()) {
                 file.createNewFile();
-                setProperties(file);
+                setProperties();
             } else {
                 lbl_error.setVisible(true);
             }
@@ -133,22 +121,13 @@ public class Account implements Initializable {
         }
     }
 
-    private void setProperties(File file){
-        try {
-            Properties properties = new Properties();
+    private void setProperties(){
 
-            FileInputStream fileInputStream = new FileInputStream(file);
+            Section section = new Section(true, username.getText());
+            SectionManager.save(section);
 
-            properties.load(fileInputStream);
-
-            properties.putIfAbsent("password", password.getText());
-            properties.putIfAbsent("fullname", fullname.getText());
-            properties.putIfAbsent("email", email.getText());
-
-            FileOutputStream fos = new FileOutputStream(file);
-            properties.store(fos, "Login properties");
-
-            UserDetail detail = new UserDetail();
+            UserManager.save(new User(username.getText(), fullname.getText(), email.getText(), password.getText()));
+            UserDetail detail = new UserDetail(username.getText(),fullname.getText(), "subtitle");
 
             App.decorator.addCustom(detail);
             detail.setProfileAction(event -> {
@@ -156,18 +135,21 @@ public class Account implements Initializable {
                 Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
                 detail.getPopOver().hide();
             });
+
             detail.setSignAction(event -> {
-                App.decorator.setContent(ViewManager.getInstance().get("login"));
-                detail.getPopOver().hide();
-                App.decorator.removeCustom(detail);
+                    SectionManager.save(new Section(false, ""));
+
+                    this.password.setText("");
+                    this.email.setText("");
+                    this.fullname.setText("");
+                    this.username.setText("");
+
+                    App.decorator.setContent(ViewManager.getInstance().get("login"));
+                    detail.getPopOver().hide();
+                    App.decorator.removeCustom(detail);
             });
 
             App.decorator.setContent(ViewManager.getInstance().get("main"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
     }
 
     @FXML
@@ -176,25 +158,19 @@ public class Account implements Initializable {
     }
 
     private void addEffect(Node node){
-        node.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                rotateTransition.play();
-                Pulse pulse = new Pulse(node.getParent());
-                pulse.setDelay(Duration.millis(100));
-                pulse.setSpeed(5);
-                pulse.play();
-                node.getParent().setStyle("-icon-color : -success; -fx-border-color : -success");
-            }
+        node.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
+            rotateTransition.play();
+            Pulse pulse = new Pulse(node.getParent());
+            pulse.setDelay(Duration.millis(100));
+            pulse.setSpeed(5);
+            pulse.play();
+            node.getParent().setStyle("-icon-color : -success; -fx-border-color : -success");
         });
 
-        node.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!node.isFocused())
-                node.getParent().setStyle("-icon-color : -dark-gray; -fx-border-color : transparent");
-                else node.getParent().setStyle("-icon-color : -success; -fx-border-color : -success");
-            }
+        node.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if(!node.isFocused())
+            node.getParent().setStyle("-icon-color : -dark-gray; -fx-border-color : transparent");
+            else node.getParent().setStyle("-icon-color : -success; -fx-border-color : -success");
         });
     }
 
@@ -215,7 +191,7 @@ public class Account implements Initializable {
     }
 
 
-    private void setupListenters(){
+    private void setupListeners(){
         password.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if(!validPassword()){
                 if(!newValue){
@@ -227,71 +203,60 @@ public class Account implements Initializable {
                     box_password.setStyle("-icon-color : -danger; -fx-border-color : -danger");
                 } else {
                     lbl_password.setVisible(false);
-
                 }
             } else {
                 lbl_error.setVisible(false);
             }
         });
 
-        username.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!validUsername()){
-                    if(!newValue){
-
-                        Flash swing = new Flash(box_username);
-                        lbl_username.setVisible(true);
-                        new SlideInLeft(lbl_username).play();
-                        swing.setDelay(Duration.millis(100));
-                        swing.play();
-                        box_username.setStyle("-icon-color : -danger; -fx-border-color : -danger");
-                    } else {
-                        lbl_username.setVisible(false);
-                    }
+        username.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if(!validUsername()){
+                if(!newValue){
+                    Flash swing = new Flash(box_username);
+                    lbl_username.setVisible(true);
+                    new SlideInLeft(lbl_username).play();
+                    swing.setDelay(Duration.millis(100));
+                    swing.play();
+                    box_username.setStyle("-icon-color : -danger; -fx-border-color : -danger");
                 } else {
-                    lbl_error.setVisible(false);
+                    lbl_username.setVisible(false);
                 }
+            } else {
+                lbl_error.setVisible(false);
             }
         });
 
-        email.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!validEmail()){
-                    if(!newValue){
-                        Flash swing = new Flash(box_email);
-                        lbl_email.setVisible(true);
-                        new SlideInLeft(lbl_email).play();
-                        swing.setDelay(Duration.millis(100));
-                        swing.play();
-                        box_email.setStyle("-icon-color : -danger; -fx-border-color : -danger");
-                    } else {
-                        lbl_email.setVisible(false);
-                    }
-                }  else {
-                    lbl_error.setVisible(false);
+        email.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if(!validEmail()){
+                if(!newValue){
+                    Flash swing = new Flash(box_email);
+                    lbl_email.setVisible(true);
+                    new SlideInLeft(lbl_email).play();
+                    swing.setDelay(Duration.millis(100));
+                    swing.play();
+                    box_email.setStyle("-icon-color : -danger; -fx-border-color : -danger");
+                } else {
+                    lbl_email.setVisible(false);
                 }
+            }  else {
+                lbl_error.setVisible(false);
             }
         });
 
-        fullname.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!validFullname()){
-                    if(!newValue){
-                        Flash swing = new Flash(box_fullname);
-                        lbl_fullname.setVisible(true);
-                        new SlideInLeft(lbl_fullname).play();
-                        swing.setDelay(Duration.millis(100));
-                        swing.play();
-                        box_fullname.setStyle("-icon-color : -danger; -fx-border-color : -danger");
-                    } else {
-                        lbl_fullname.setVisible(false);
-                    }
+        fullname.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if(!validFullname()){
+                if(!newValue){
+                    Flash swing = new Flash(box_fullname);
+                    lbl_fullname.setVisible(true);
+                    new SlideInLeft(lbl_fullname).play();
+                    swing.setDelay(Duration.millis(100));
+                    swing.play();
+                    box_fullname.setStyle("-icon-color : -danger; -fx-border-color : -danger");
                 } else {
-                    lbl_error.setVisible(false);
+                    lbl_fullname.setVisible(false);
                 }
+            } else {
+                lbl_error.setVisible(false);
             }
         });
     }

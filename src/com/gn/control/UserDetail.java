@@ -40,10 +40,14 @@ import org.controlsfx.control.PopOver;
  */
 public class UserDetail extends GNControl {
 
+    private String name;
+
     private PopOver popOver = new PopOver();
     public static PopOver root;
 
-    public UserDetail() {
+    public UserDetail(String name, String header, String subtitle) {
+        super(header, subtitle);
+        this.name = name;
         UserDetail.root = popOver;
         popOver.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
         popOver.setArrowIndent(0);
@@ -57,7 +61,7 @@ public class UserDetail extends GNControl {
     }
 
     @Override
-    protected Node icon() {
+    public Node icon() {
         Image image = new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm());
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(30);
@@ -74,19 +78,18 @@ public class UserDetail extends GNControl {
     }
 
     @Override
-    protected Node status() {
+    public Node status() {
         return null;
     }
 
     @Override
-    protected Node action() {
+    public Node action() {
 
-        Hyperlink link = new Hyperlink("Gleidson Neves da Silveira");
+        Hyperlink link = new Hyperlink(getHeader());
         link.setMinHeight(30);
 
         link.setOnMouseClicked(event -> {
             popOver.show(link, 0);
-//            popOver.show(link);
         });
         return link;
     }
@@ -114,7 +117,7 @@ public class UserDetail extends GNControl {
 
         header.getStyleClass().add("h4");
 
-        header.setText("Gleidson Neves da Silveira");
+        header.setText(getName());
         subTitle.setText("Member since 2018");
         avatar.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
 
@@ -179,4 +182,7 @@ public class UserDetail extends GNControl {
         return box;
     }
 
+    public String getName(){
+        return name;
+    }
 }

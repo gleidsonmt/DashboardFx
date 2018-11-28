@@ -21,31 +21,26 @@ import animatefx.animation.Pulse;
 import animatefx.animation.SlideInLeft;
 import com.gn.App;
 import com.gn.ViewManager;
-import com.gn.control.GNAvatar;
-import com.gn.control.UserDetail;
-import com.gn.control.skin.ClearableSkin;
+import com.gn.control.*;
+import com.gn.control.plugin.SectionManager;
+import com.gn.control.plugin.UserManager;
 import com.gn.module.main.Main;
 import javafx.animation.RotateTransition;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -88,66 +83,54 @@ public class login implements Initializable {
     }
 
     private void addEffect(Node node){
-        node.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                rotateTransition.play();
-                Pulse pulse = new Pulse(node.getParent());
-                pulse.setDelay(Duration.millis(100));
-                pulse.setSpeed(5);
-                pulse.play();
-                node.getParent().setStyle("-icon-color : -success; -fx-border-color : -success");
-            }
+        node.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
+            rotateTransition.play();
+            Pulse pulse = new Pulse(node.getParent());
+            pulse.setDelay(Duration.millis(100));
+            pulse.setSpeed(5);
+            pulse.play();
+            node.getParent().setStyle("-icon-color : -success; -fx-border-color : -success");
         });
 
-        node.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!node.isFocused())
-                    node.getParent().setStyle("-icon-color : -dark-gray; -fx-border-color : transparent");
-                else node.getParent().setStyle("-icon-color : -success; -fx-border-color : -success");
-            }
+        node.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if(!node.isFocused())
+                node.getParent().setStyle("-icon-color : -dark-gray; -fx-border-color : transparent");
+            else node.getParent().setStyle("-icon-color : -success; -fx-border-color : -success");
         });
     }
 
     private void setupListeners(){
-        password.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!validPassword()){
-                    if(!newValue){
-                        Flash swing = new Flash(box_password);
-                        lbl_password.setVisible(true);
-                        new SlideInLeft(lbl_password).play();
-                        swing.setDelay(Duration.millis(100));
-                        swing.play();
-                        box_password.setStyle("-icon-color : -danger; -fx-border-color : -danger");
-                    } else {
-                        lbl_password.setVisible(false);
-                    }
+        password.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if(!validPassword()){
+                if(!newValue){
+                    Flash swing = new Flash(box_password);
+                    lbl_password.setVisible(true);
+                    new SlideInLeft(lbl_password).play();
+                    swing.setDelay(Duration.millis(100));
+                    swing.play();
+                    box_password.setStyle("-icon-color : -danger; -fx-border-color : -danger");
                 } else {
-                    lbl_error.setVisible(false);
+                    lbl_password.setVisible(false);
                 }
+            } else {
+                lbl_error.setVisible(false);
             }
         });
 
-        username.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!validUsername()){
-                    if(!newValue){
-                        Flash swing = new Flash(box_username);
-                        lbl_username.setVisible(true);
-                        new SlideInLeft(lbl_username).play();
-                        swing.setDelay(Duration.millis(100));
-                        swing.play();
-                        box_username.setStyle("-icon-color : -danger; -fx-border-color : -danger");
-                    } else {
-                        lbl_username.setVisible(false);
-                    }
+        username.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if(!validUsername()){
+                if(!newValue){
+                    Flash swing = new Flash(box_username);
+                    lbl_username.setVisible(true);
+                    new SlideInLeft(lbl_username).play();
+                    swing.setDelay(Duration.millis(100));
+                    swing.play();
+                    box_username.setStyle("-icon-color : -danger; -fx-border-color : -danger");
                 } else {
-                    lbl_error.setVisible(false);
+                    lbl_username.setVisible(false);
                 }
+            } else {
+                lbl_error.setVisible(false);
             }
         });
     }
@@ -174,81 +157,58 @@ public class login implements Initializable {
     }
 
     private void enter() {
-        try {
 
-            Properties properties = new Properties();
+        User user = UserManager.get(username.getText());
 
-            String user = username.getText();
-            String extension = "properties";
+        if(user.getUserName().equals(this.username.getText()) && user.getPassword().equals(this.password.getText())){
+            Section section = new Section();
+            section.setLogged(true);
+            section.setUserLogged(this.username.getText());
+            SectionManager.save(section);
 
-            File file = new File("user/" + user + "." + extension);
+            App.decorator.setContent(ViewManager.getInstance().get("main"));
+            UserDetail detail = new UserDetail(username.getText(), user.getFullName(), "subtitle");
 
-            FileInputStream fileInputStream = new FileInputStream(file);
-            properties.load(fileInputStream);
+            App.decorator.addCustom(detail);
+            detail.setProfileAction(event -> {
+                Main.ctrl.title.setText("Profile");
+                Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
+                detail.getPopOver().hide();
 
+            });
 
-            String password = properties.getProperty("password");
+            detail.setSignAction(event -> {
+                App.decorator.setContent(ViewManager.getInstance().get("login"));
+                this.username.setText("");
+                this.password.setText("");
+                detail.getPopOver().hide();
+                if(Main.popConfig.isShowing()) Main.popConfig.hide();
+                if(Main.popup.isShowing()) Main.popup.hide();
+                App.decorator.removeCustom(detail);
+            });
 
-            if(user.equals(this.username.getText()) && password.equals(this.password.getText())){
-                App.decorator.setContent(ViewManager.getInstance().get("main"));
-                UserDetail detail = new UserDetail();
+            TimerTask timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    Platform.runLater(()-> {
+                        // add notification in later
+    //                                    TrayNotification tray = new TrayNotification();
+    //                                    tray.setNotificationType(NotificationType.NOTICE);
+    //                                    tray.setRectangleFill(Color.web(""));
+    //                                    tray.setTitle("Welcome!");
+    //                                    tray.setMessage("Welcome back " + username);
+    //                                    tray.showAndDismiss(Duration.millis(10000));
+                        }
+                    );
+                }
+            };
 
-                App.decorator.addCustom(detail);
-                detail.setProfileAction(event -> {
-                    Main.ctrl.title.setText("Profile");
-                    Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
-                    detail.getPopOver().hide();
+            Timer timer = new Timer();
+            timer.schedule(timerTask, 300);
 
-                });
-
-                detail.setSignAction(event -> {
-                    App.decorator.setContent(ViewManager.getInstance().get("login"));
-                    this.username.setText("");
-                    this.password.setText("");
-                    detail.getPopOver().hide();
-                    if(Main.popConfig.isShowing()) Main.popConfig.hide();
-                    if(Main.popup.isShowing()) Main.popup.hide();
-                    App.decorator.removeCustom(detail);
-                });
-
-                TimerTask timerTask = new TimerTask() {
-                    @Override
-                    public void run() {
-                        Platform.runLater(()-> {
-                            // add notification in later
-//                                    TrayNotification tray = new TrayNotification();
-//                                    tray.setNotificationType(NotificationType.NOTICE);
-//                                    tray.setRectangleFill(Color.web(""));
-//                                    tray.setTitle("Welcome!");
-//                                    tray.setMessage("Welcome back " + username);
-//                                    tray.showAndDismiss(Duration.millis(10000));
-                            }
-                        );
-                    }
-                };
-
-                Timer timer = new Timer();
-                timer.schedule(timerTask, 300);
-
-
-            } else {
-                lbl_error.setVisible(true);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else {
+            lbl_error.setVisible(true);
         }
-
-//        properties.setProperty("username", username.getText());
-//        properties.setProperty("fullname", fullname.getText());
-//        properties.setProperty("email", email.getText());
-//        properties.setProperty("password", password.getText());
-//        FileOutputStream fos = new FileOutputStream(file);
-//        properties.store(fos, "Login properties");
-//        App.decorator.setContent(ViewManager.getInstance().get("main"));
-    }
-
-    private void createAccount(){
-
     }
 
     @FXML
