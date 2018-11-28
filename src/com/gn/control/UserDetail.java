@@ -40,10 +40,12 @@ import org.controlsfx.control.PopOver;
  */
 public class UserDetail extends GNControl {
 
-    private String name;
+    private         String  name;
+    public static   PopOver root;
 
+    private Button signOut  = new Button("Sign Out");
+    private Button profile  = new Button("Profile");
     private PopOver popOver = new PopOver();
-    public static PopOver root;
 
     public UserDetail(String name, String header, String subtitle) {
         super(header, subtitle);
@@ -84,18 +86,13 @@ public class UserDetail extends GNControl {
 
     @Override
     public Node action() {
-
         Hyperlink link = new Hyperlink(getHeader());
         link.setMinHeight(30);
-
-        link.setOnMouseClicked(event -> {
-            popOver.show(link, 0);
-        });
+        link.setOnMouseClicked(event -> popOver.show(link, 0));
         return link;
     }
 
-    private Button signOut = new Button("Sign Out");
-    private Button profile = new Button("Profile");
+
 
     public void setSignAction(EventHandler<MouseEvent> event) {
         this.signOut.setOnMouseClicked(event);
@@ -109,7 +106,6 @@ public class UserDetail extends GNControl {
 
         VBox box = new VBox();
         VBox background = new VBox();
-        ImageView avatar = new ImageView();
         Label header = new Label();
         Label subTitle = new Label();
         HBox content = new HBox();
@@ -119,18 +115,17 @@ public class UserDetail extends GNControl {
 
         header.setText(getName());
         subTitle.setText("Member since 2018");
-        avatar.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
+
+        GNAvatar gnAvatar = new GNAvatar();
+        gnAvatar.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
 
         background.setPrefHeight(500);
 
         box.setPrefWidth(387);
         box.setPrefHeight(300);
-        avatar.setFitWidth(139);
-        avatar.setFitHeight(136D);
 
-
-        signOut.getStyleClass().addAll("outlined", "out-primary", "signout");
-        profile.getStyleClass().addAll("outlined", "out-primary", "profile");
+        signOut.getStyleClass().addAll("outlined", "profile");
+        profile.getStyleClass().addAll("outlined", "profile");
 
         signOut.setPrefWidth(100);
         profile.setPrefWidth(100);
@@ -158,7 +153,7 @@ public class UserDetail extends GNControl {
         layoutContent.getRowConstraints().addAll(row);
 
         background.setAlignment(Pos.CENTER);
-        background.getChildren().addAll(avatar, header, subTitle);
+        background.getChildren().addAll(gnAvatar, header, subTitle);
 
         content.setPrefHeight(300);
         content.setAlignment(Pos.CENTER);
@@ -169,13 +164,6 @@ public class UserDetail extends GNControl {
         HBox.setHgrow(layoutContent, Priority.ALWAYS);
 
         box.getChildren().addAll(background, content);
-
-        Circle circle = new Circle(60);
-        circle.setStroke(Color.WHITE);
-        circle.setStrokeWidth(5);
-        circle.setCenterX(avatar.getFitWidth() / 2);
-        circle.setCenterY(avatar.getFitHeight() / 2);
-        avatar.setClip(circle);
 
         popOver.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
 
