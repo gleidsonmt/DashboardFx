@@ -92,7 +92,7 @@ public class Account implements Initializable {
         pulse.setDelay(Duration.millis(20));
         pulse.play();
 
-        if (validEmail() && validFullname() && validFullname() && validUsername()) {
+        if (validEmail() && validFullname() && validFullname() && validUsername() && validPassword()) {
 
             String user = username.getText();
             String extension = "properties";
@@ -126,17 +126,23 @@ public class Account implements Initializable {
             Section section = new Section(true, username.getText());
             SectionManager.save(section);
 
-            UserManager.save(new User(username.getText(), fullname.getText(), email.getText(), password.getText()));
-            UserDetail detail = new UserDetail(username.getText(),fullname.getText(), "subtitle");
+            User user = new User(username.getText(), fullname.getText(), email.getText(), password.getText());
+            UserManager.save(user);
+
+            UserDetail detail = App.getUserDetail();
+            detail.setText(user.getFullName());
+            detail.setHeader(user.getUserName());
 
             App.decorator.addCustom(detail);
             detail.setProfileAction(event -> {
+                App.getUserDetail().getPopOver().hide();
                 Main.ctrl.title.setText("Profile");
                 Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
-                detail.getPopOver().hide();
+
             });
 
             detail.setSignAction(event -> {
+                    App.getUserDetail().getPopOver().hide();
                     SectionManager.save(new Section(false, ""));
 
                     this.password.setText("");
@@ -145,7 +151,7 @@ public class Account implements Initializable {
                     this.username.setText("");
 
                     App.decorator.setContent(ViewManager.getInstance().get("login"));
-                    detail.getPopOver().hide();
+
                     App.decorator.removeCustom(detail);
             });
 

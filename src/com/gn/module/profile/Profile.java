@@ -16,6 +16,14 @@
  */
 package com.gn.module.profile;
 
+import com.gn.App;
+import com.gn.control.Section;
+import com.gn.control.User;
+import com.gn.control.plugin.SectionManager;
+import com.gn.control.plugin.UserManager;
+import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -33,10 +41,11 @@ public class Profile implements Initializable {
 
     @FXML private Label note;
     @FXML private Rating rating;
-
+    @FXML private Label fullName;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         note.textProperty().bind(rating.ratingProperty().asString(Locale.ENGLISH, "%.2f"));
+        fullName.textProperty().bind(App.getUserDetail().textProperty());
     }
 }

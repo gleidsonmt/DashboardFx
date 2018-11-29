@@ -33,6 +33,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.scenicview.ScenicView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -50,9 +51,19 @@ public class App extends Application {
     private float  increment = 0;
     private float  progress = 0;
 
+    private static UserDetail userDetail = null;
 
     @Override
     public synchronized void init(){
+        Section section = SectionManager.get();
+
+        if(section.isLogged()){
+            User user = UserManager.get(section.getUserLogged());
+            userDetail = new UserDetail(section.getUserLogged(), user.getFullName(), "subtitle");
+        } else {
+            userDetail = new UserDetail();
+        }
+
         float total = 43; // the difference represents the views not loaded
         increment = 100f / total;
         load("designer", "carousel");
@@ -135,31 +146,25 @@ public class App extends Application {
         if (log.equals("account") || log.equals("login")) {
             decorator.setContent(ViewManager.getInstance().get(log));
         } else {
-            Section section = SectionManager.get();
-            User user = UserManager.get(section.getUserLogged());
-            UserDetail detail = new UserDetail(section.getUserLogged(), user.getFullName(), "subtitle");
-
-            App.decorator.addCustom(detail);
-            UserDetail finalDetail = detail;
-            detail.setProfileAction(event -> {
+            App.decorator.addCustom(userDetail);
+            userDetail.setProfileAction(event -> {
                 Main.ctrl.title.setText("Profile");
                 Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
-                finalDetail.getPopOver().hide();
+                userDetail.getPopOver().hide();
 
             });
 
-            detail.setSignAction(event -> {
+            userDetail.setSignAction(event -> {
                 App.decorator.setContent(ViewManager.getInstance().get("login"));
-                finalDetail.getPopOver().hide();
+                userDetail.getPopOver().hide();
                 if(Main.popConfig.isShowing()) Main.popConfig.hide();
                 if(Main.popup.isShowing()) Main.popup.hide();
-                App.decorator.removeCustom(finalDetail);
+                App.decorator.removeCustom(userDetail);
             });
             decorator.setContent(ViewManager.getInstance().get("main"));
         }
+
         decorator.initTheme(GNDecorator.Theme.DEFAULT);
-
-
         stylesheets = decorator.getScene().getStylesheets();
 
         stylesheets.addAll(
@@ -175,14 +180,11 @@ public class App extends Application {
         );
 
         decorator.getStage().setOnCloseRequest(event -> {
-//            detail.getPopOver().hide();
-
+            App.getUserDetail().getPopOver().hide();
             if(Main.popConfig.isShowing()) Main.popConfig.hide();
             if(Main.popup.isShowing()) Main.popup.hide();
-
             Platform.exit();
         });
-
 
         decorator.setMaximized(true);
         decorator.getStage().getIcons().add(new Image("/com/gn/module/media/icon.png"));
@@ -197,14 +199,14 @@ public class App extends Application {
 
     private void load(String module, String name){
         try {
-                ViewManager.getInstance().put(
-                        name,
-                        FXMLLoader.load(getClass().getResource("/com/gn/module/" + module + "/" + name + ".fxml"))
-                );
-                preloaderNotify();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            ViewManager.getInstance().put(
+                    name,
+                    FXMLLoader.load(getClass().getResource("/com/gn/module/" + module + "/" + name + ".fxml"))
+            );
+            preloaderNotify();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private synchronized void preloaderNotify() {
@@ -242,5 +244,9 @@ public class App extends Application {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static UserDetail getUserDetail() {
+        return userDetail;
     }
 }

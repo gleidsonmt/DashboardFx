@@ -131,7 +131,7 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Label style="-fx-font-weight: bold;" styleClass="h3" text="Gleidson Neves da Silveira" />
+                                          <Label fx:id="fullName" style="-fx-font-weight: bold;" styleClass="h3" text="Gleidson Neves da Silveira" />
                                           <Hyperlink text="Product Designer" />
                                        </children>
                                     </VBox>
