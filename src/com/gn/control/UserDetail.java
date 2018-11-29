@@ -17,6 +17,8 @@
 package com.gn.control;
 
 import com.gn.decorator.component.GNControl;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -25,7 +27,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -48,9 +49,10 @@ public class UserDetail extends GNControl {
     private Button profile  = new Button("Profile");
     private PopOver popOver = new PopOver();
 
-    public UserDetail(String name, String header, String subtitle) {
-        super(header, subtitle);
-        this.name = name;
+    private StringProperty header = new SimpleStringProperty();
+
+    public UserDetail(){
+        super("", "");
         UserDetail.root = popOver;
         popOver.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
         popOver.setArrowIndent(0);
@@ -59,8 +61,15 @@ public class UserDetail extends GNControl {
         popOver.setContentNode(configLayout());
     }
 
-    public PopOver getPopOver() {
-        return popOver;
+    public UserDetail(String name, String text, String subtitle) {
+        super(text, subtitle);
+        this.headerProperty().set(name);
+        UserDetail.root = popOver;
+        popOver.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
+        popOver.setArrowIndent(0);
+        popOver.setArrowSize(0);
+        popOver.setCornerRadius(0);
+        popOver.setContentNode(configLayout());
     }
 
     @Override
@@ -87,20 +96,11 @@ public class UserDetail extends GNControl {
 
     @Override
     public Node action() {
-        Hyperlink link = new Hyperlink(getHeader());
+        Hyperlink link = new Hyperlink();
+        link.textProperty().bind(super.textProperty());
         link.setMinHeight(30);
         link.setOnMouseClicked(event -> popOver.show(link, 0));
         return link;
-    }
-
-
-
-    public void setSignAction(EventHandler<MouseEvent> event) {
-        this.signOut.setOnMouseClicked(event);
-    }
-
-    public void setProfileAction(EventHandler<MouseEvent> event) {
-        this.profile.setOnMouseClicked(event);
     }
 
     private VBox configLayout() {
@@ -108,13 +108,15 @@ public class UserDetail extends GNControl {
         VBox box = new VBox();
         VBox background = new VBox();
         Label header = new Label();
+        header.textProperty().bind(headerProperty());
         Label subTitle = new Label();
         HBox content = new HBox();
         GridPane layoutContent = new GridPane();
 
         header.getStyleClass().add("h4");
 
-        header.setText(getName());
+//        System.out.println(getName());
+        header.textProperty().bind(headerProperty());
         subTitle.setText("Member since 2018");
 
         GNAvatar gnAvatar = new GNAvatar();
@@ -124,8 +126,8 @@ public class UserDetail extends GNControl {
         box.setPrefWidth(387);
         box.setPrefHeight(300);
 
-        signOut.getStyleClass().addAll("outlined", "profile");
-        profile.getStyleClass().addAll("outlined", "profile");
+        signOut.getStyleClass().addAll("outlined");
+        profile.getStyleClass().addAll("outlined");
 
         signOut.setPrefWidth(100);
         profile.setPrefWidth(100);
@@ -172,5 +174,29 @@ public class UserDetail extends GNControl {
 
     public String getName(){
         return name;
+    }
+
+    public PopOver getPopOver() {
+        return popOver;
+    }
+
+    public void setSignAction(EventHandler<MouseEvent> event) {
+        this.signOut.setOnMouseClicked(event);
+    }
+
+    public void setProfileAction(EventHandler<MouseEvent> event) {
+        this.profile.setOnMouseClicked(event);
+    }
+
+    public void setHeader(String header){
+        headerProperty().setValue(header);
+    }
+
+    public String getHeader() {
+        return header.get();
+    }
+
+    public StringProperty headerProperty() {
+        return header;
     }
 }
