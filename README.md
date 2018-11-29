@@ -5,20 +5,7 @@
 
 ### Library Dependency.
 #### 
-find the dependencies in the lib folder or the links for source projects.
-
-##### [GNCarousel](https://github.com/Gleidson28/GNCarousel)
-##### [GNDecorator](https://github.com/Gleidson28/GNDecorator)
-##### [GNDrawer](https://github.com/Gleidson28/GNDrawer)
-##### [ControlsFx](https://bitbucket.org/controlsfx/controlsfx)
-
-
-    jfoenix-8.0.7
-    fontawesomefx-8.9
-    tilesfx-1.5.2
-    animatefx-1.2.0 
-    colors-1.4
-    scenicView
+find the dependencies in the lib folder. 
 
 ## Screenshots
 
