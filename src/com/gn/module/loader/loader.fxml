@@ -2,41 +2,40 @@
 
 <?import com.jfoenix.controls.JFXProgressBar?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<StackPane prefHeight="438.0" prefWidth="589.0" stylesheets="@loader.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <AnchorPane>
-         <children>
-            <JFXProgressBar fx:id="progressBar" layoutX="43.0" layoutY="381.0" prefHeight="0.0" prefWidth="516.0" progress="0.0" />
-            <Label layoutX="267.0" layoutY="355.0" text="Loading views.." textFill="WHITE" />
-            <Label layoutX="144.0" layoutY="147.0" prefHeight="114.0" prefWidth="343.0" styleClass="fix" text="Dashboard Fx" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="Berlin Sans FB" size="56.0" />
-               </font>
-               <effect>
-                  <Glow level="0.84" />
-               </effect>
-            </Label>
-            <Label layoutX="43.0" layoutY="385.0" prefHeight="17.0" prefWidth="130.0" text="© Gleidson Neves da Silveira" textFill="WHITE">
-               <font>
-                  <Font size="10.0" />
-               </font></Label>
-            <ImageView fitHeight="81.0" fitWidth="80.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../media/icon.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="-0.05" hue="0.14" />
-               </effect>
-            </ImageView>
-         </children>
-      </AnchorPane>
-   </children>
+<StackPane prefHeight="438.0" prefWidth="589.0" stylesheets="@loader.css" xmlns="http://javafx.com/javafx/8.0.171"
+           xmlns:fx="http://javafx.com/fxml/1">
+   <AnchorPane>
+      <JFXProgressBar fx:id="progressBar" layoutX="43.0" layoutY="381.0" prefHeight="0.0" prefWidth="516.0"
+                      progress="0.0"/>
+      <Label layoutX="267.0" layoutY="355.0" text="Loading views.." textFill="WHITE"/>
+      <Label layoutX="144.0" layoutY="147.0" prefHeight="114.0" prefWidth="343.0" styleClass="fix"
+             text="Dashboard Fx" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="56.0"/>
+         </font>
+         <effect>
+            <Glow level="0.84"/>
+         </effect>
+      </Label>
+      <Label layoutX="43.0" layoutY="385.0" prefHeight="17.0" prefWidth="130.0" text="© Gleidson Neves da Silveira"
+             textFill="WHITE">
+         <font>
+            <Font size="10.0"/>
+         </font>
+      </Label>
+      <Text fill="WHITE" layoutX="29.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="G"
+            AnchorPane.bottomAnchor="343.0" AnchorPane.leftAnchor="32.0">
+         <font>
+            <Font name="System Bold" size="63.0"/>
+         </font>
+      </Text>
+      <Circle fill="#1f93ff00" layoutX="56.0" layoutY="56.0" radius="42.0" stroke="WHITE" strokeType="INSIDE"/>
+   </AnchorPane>
 </StackPane>
