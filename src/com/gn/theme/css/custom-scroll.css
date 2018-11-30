@@ -83,3 +83,9 @@
      -fx-background-color: transparent;
      -fx-background-color : -dark-gray;
 }
+
+.list-view:focused .virtual-flow .scroll-bar:vertical
+{
+  /* -fx-background-color: red; */
+  -fx-border-color : transparent;
+}
