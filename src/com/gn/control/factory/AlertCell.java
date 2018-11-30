@@ -21,13 +21,16 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
-import org.controlsfx.control.spreadsheet.Grid;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 
 /**
@@ -43,22 +46,26 @@ public class AlertCell extends HBox {
 
     private GNAvatar avatar;
 
-    private GridPane grid = new GridPane();
+    private VBox content = new VBox();
 
+    private TextFlow textFlow = new TextFlow();
+    private Text text = new Text();
     private Label title = new Label("tile");
     private Label time  = new Label("n minutes ago");
 
-    public AlertCell(String title, String time) {
+    public AlertCell(String title, String text, String time) {
         this.title.setText(title);
         this.time.setText(time);
+        this.text.setText(text);
         config();
     }
 
-    public AlertCell(GNAvatar avatar, String title, String time) {
+    public AlertCell(GNAvatar avatar, String title, String text, String time) {
         setIcon(avatar);
         avatar.setStrokeWidth(0);
         this.title.setText(title);
         this.time.setText(time);
+        this.text.setText(text);
         config();
     }
 
@@ -87,14 +94,21 @@ public class AlertCell extends HBox {
     private void config(){
         this.getStyleClass().add("alert-cell");
         this.setAlignment(Pos.CENTER_LEFT);
-        this.setPrefSize(200,40);
-        this.grid.add(this.title, 0, 0 );
-        this.grid.add(this.time, 1, 0 );
-        this.getChildren().add(grid);
-        HBox.setHgrow(grid, Priority.ALWAYS);
+//        this.setPrefSize(200,40);
+        this.title.setStyle("-fx-font-size : 14;");
+        this.text.getStyleClass().addAll("h6");
+        this.text.setStyle("-fx-fill : -text-color;");
+        this.time.setStyle("-fx-text-fill : -text-color; -fx-font-style : italic; ");
+        textFlow.getChildren().addAll(text);
+        this.content.getChildren().addAll(this.title, textFlow, this.time);
+        this.content.setAlignment(Pos.CENTER_LEFT);
+        this.getChildren().add(content);
+        this.setAlignment(Pos.CENTER);
+        HBox.setHgrow(content, Priority.ALWAYS);
         GridPane.setHalignment(this.time, HPos.RIGHT);
+        GridPane.setValignment(this.time, VPos.CENTER);
         GridPane.setHgrow(this.time, Priority.ALWAYS);
-        HBox.setMargin(this.grid, new Insets(0,0,0,10));
+        HBox.setMargin(this.content, new Insets(0,0,0,10));
     }
 
     public void setTitle(Label title) {
