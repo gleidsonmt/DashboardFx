@@ -146,8 +146,6 @@ public class Main implements Initializable {
         int minimum = 70;
         int max = 250;
 
-        Timeline timeline = new Timeline();
-
         if(drawer.getPrefWidth() == max){
 
             drawer.setPrefWidth(minimum);
@@ -288,6 +286,7 @@ public class Main implements Initializable {
         views.getChildren().add(about);
         home.setContentDisplay(ContentDisplay.LEFT);
         about.setContentDisplay(ContentDisplay.LEFT);
+
         home.toBack();
         about.toFront();
         hamburger.setMouseTransparent(false);
