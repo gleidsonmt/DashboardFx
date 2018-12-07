@@ -23,14 +23,20 @@ import com.jfoenix.controls.JFXBadge;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.NodeOrientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -38,19 +44,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
-import org.controlsfx.control.Notifications;
 import org.controlsfx.control.PopOver;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
 
 import java.io.IOException;
 import java.net.URL;
@@ -63,42 +61,41 @@ import java.util.ResourceBundle;
  */
 public class Main implements Initializable {
 
-    @FXML private ImageView avatar;
+    @FXML private GNAvatarView avatar;
     @FXML public  VBox sideBar;
     @FXML private HBox searchBox;
     @FXML private HBox boxStatus;
     @FXML private VBox info;
-    @FXML private DrawerContent views;
+    @FXML private VBox views;
     @FXML private Circle cStatus;
     @FXML private HBox status;
     @FXML public  ScrollPane body;
     @FXML public  Label title;
     @FXML private TextField search;
     @FXML private ScrollPane scroll;
-    @FXML private DrawerList design;
-    @FXML private DrawerList controls;
-    @FXML private DrawerList charts;
-    @FXML private DrawerItem home;
-    @FXML private DrawerItem  about;
+    @FXML private TitledPane design;
+    @FXML private TitledPane controls;
+    @FXML private TitledPane charts;
+    @FXML private Button home;
+    @FXML private Button  about;
     @FXML private Button hamburger;
     @FXML private SVGPath searchIcon;
     @FXML private StackPane root;
     @FXML private Button clear;
     @FXML private JFXButton config;
-    @FXML private GNDrawer drawer;
-    @FXML private DrawerItem colors;
+    @FXML private VBox drawer;
     @FXML private JFXBadge messages;
     @FXML private JFXBadge bg_info;
 
-    private FilteredList<DrawerItem> filteredList = null;
+    private FilteredList<Button> filteredList = null;
 
     public static  final PopOver popConfig = new PopOver();
     public static  final PopOver popup     = new PopOver();
 
-    private ObservableList<DrawerItem> items         = FXCollections.observableArrayList();
-    private ObservableList<DrawerItem> designItems   = FXCollections.observableArrayList();
-    private ObservableList<DrawerItem> controlsItems = FXCollections.observableArrayList();
-    private ObservableList<DrawerItem> chartsItems   = FXCollections.observableArrayList();
+    private ObservableList<Button> items         = FXCollections.observableArrayList();
+    private ObservableList<Button> designItems   = FXCollections.observableArrayList();
+    private ObservableList<Button> controlsItems = FXCollections.observableArrayList();
+    private ObservableList<Button> chartsItems   = FXCollections.observableArrayList();
 
     private JFXDialog       dialog          = new JFXDialog();
     private JFXDialogLayout dialog_layout   = new JFXDialogLayout();
@@ -141,19 +138,56 @@ public class Main implements Initializable {
 //        drawer.setPopStylesheet(getClass().getResource("/com/gn/theme/css/popover.css"));
     }
 
+
     @FXML
     private void altLayout() {
 
-        if(drawer.getType().equals(GNDrawer.Type.AVATAR)){
-            scrolling = false;
-            drawer.setType(GNDrawer.Type.MINIMUN);
+
+        int minimum = 70;
+        int max = 250;
+
+        Timeline timeline = new Timeline();
+
+        if(drawer.getPrefWidth() == max){
+
+            drawer.setPrefWidth(minimum);
+
+            drawer.getChildren().remove(info);
             drawer.getChildren().remove(searchBox);
-            addEvents();
+
+            for(Node node : views.getChildren()){
+                if(node instanceof Button){
+                    ((Button) node).setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                    ((Button) node).setAlignment(Pos.BASELINE_CENTER);
+                } else if(node instanceof TitledPane){
+                    ((TitledPane) node).setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                    ((TitledPane) node).setAlignment(Pos.BASELINE_CENTER);
+                    ((TitledPane) node).setCollapsible(false);
+                } else {
+                    break;
+                }
+            }
         } else {
-            scrolling = true;
-            drawer.getChildren().add(searchBox);
-            scroll.toFront();
-            drawer.setType(GNDrawer.Type.AVATAR);
+            drawer.setPrefWidth(max);
+
+            drawer.getChildren().addAll(info, searchBox);
+            searchBox.toBack();
+            info.toBack();
+            avatar.toBack();
+
+
+            for(Node node : views.getChildren()){
+                if(node instanceof Button){
+                    ((Button) node).setContentDisplay(ContentDisplay.LEFT);
+                    ((Button) node).setAlignment(Pos.BASELINE_LEFT);
+                } else if(node instanceof TitledPane){
+                    ((TitledPane) node).setContentDisplay(ContentDisplay.RIGHT);
+                    ((TitledPane) node).setAlignment(Pos.BASELINE_RIGHT);
+                    ((TitledPane) node).setCollapsible(true);
+                } else {
+                    break;
+                }
+            }
         }
     }
 
@@ -235,10 +269,10 @@ public class Main implements Initializable {
 //        Popover.ctrl.options.getChildren().clear();
 
         node.setOnMouseEntered((Event e) -> {
-            if (drawer.getType() == GNDrawer.Type.MINIMUN) {
-                Popover.ctrl.options.getChildren().setAll(v);
-                popup.show(pane, -2);
-            }
+//            if (drawer.getType() == GNDrawer.Type.MINIMUN) {
+//                Popover.ctrl.options.getChildren().setAll(v);
+//                popup.show(pane, -2);
+//            }
         });
     }
 
@@ -252,6 +286,8 @@ public class Main implements Initializable {
         views.getChildren().removeAll(home, about);
         views.getChildren().add(home);
         views.getChildren().add(about);
+        home.setContentDisplay(ContentDisplay.LEFT);
+        about.setContentDisplay(ContentDisplay.LEFT);
         home.toBack();
         about.toFront();
         hamburger.setMouseTransparent(false);
@@ -261,15 +297,17 @@ public class Main implements Initializable {
         views.getChildren().removeAll(home, about);
         filteredList.setPredicate(s -> s.getText().toUpperCase().contains(filter.toUpperCase()));
         scroll.setContent(filter(filteredList));
+
         hamburger.setMouseTransparent(true);
     }
 
-    private VBox filter(ObservableList<DrawerItem>  nodes){
+    private VBox filter(ObservableList<Button>  nodes){
         VBox vBox = new VBox();
-        vBox.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+        vBox.getStyleClass().add("drawer-content");
+        vBox.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
         vBox.setAlignment(Pos.TOP_RIGHT);
         VBox.setVgrow(vBox, Priority.ALWAYS);
-        for (DrawerItem node : nodes){
+        for (Button node : nodes){
             if (node.getGraphic() != null) node.setContentDisplay(ContentDisplay.TEXT_ONLY);
             node.setAlignment(Pos.CENTER_RIGHT);
         }
@@ -280,24 +318,24 @@ public class Main implements Initializable {
     private void populateItems() {
 
         for (Node node : views.getChildren()) {
-            if (node instanceof JFXButton) {
-                items.add((DrawerItem) node);
+            if (node instanceof Button) {
+                items.add( (Button) node);
             }
         }
 
         for (Node node : ((VBox) controls.getContent()).getChildren()) {
-            controlsItems.add((DrawerItem) node);
-            items.add((DrawerItem) node);
+            controlsItems.add((Button) node);
+            items.add((Button) node);
         }
 
         for (Node node : ((VBox) design.getContent()).getChildren()) {
-            designItems.add((DrawerItem) node);
-            items.add((DrawerItem) node);
+            designItems.add((Button) node);
+            items.add((Button) node);
         }
 
         for (Node node : ((VBox) charts.getContent()).getChildren()) {
-            chartsItems.add((DrawerItem) node);
-            items.add((DrawerItem) node);
+            chartsItems.add((Button) node);
+            items.add((Button) node);
         }
     }
 
@@ -575,34 +613,56 @@ public class Main implements Initializable {
 
     @FXML
     private void openNotification(){
-
-        GNAvatar avatar = new GNAvatar();
         GNAvatar avatar1 = new GNAvatar();
         GNAvatar avatar2 = new GNAvatar();
         GNAvatar avatar3 = new GNAvatar();
         GNAvatar avatar4 = new GNAvatar();
 
-        avatar.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
-        avatar1.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
-        avatar2.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
-        avatar3.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
-        avatar4.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
+        avatar1.setImage(new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm()));
+        avatar2.setImage(new Image(getClass().getResource("/com/gn/module/media/woman.png").toExternalForm()));
+        avatar3.setImage(new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm()));
+        avatar4.setImage(new Image(getClass().getResource("/com/gn/module/media/woman.png").toExternalForm()));
 
         ObservableList<AlertCell> list = FXCollections.observableArrayList(
-                new AlertCell(avatar1, "New Comment", "24 minutes ago"),
-                new AlertCell(avatar2, "New Comment", "41 minutes ago"),
-                new AlertCell(avatar3, "New Comment", "43 minutes ago"),
-                new AlertCell(avatar4, "New Comment", "23 minutes ago")
-
+                new AlertCell(avatar1, "Will Junior","Lorem ipsum dolor color", "24 minutes ago"),
+                new AlertCell(avatar2, "Jad Gail","Lorem ipsum dolor color", "today"),
+                new AlertCell(avatar3, "Bart","Lorem ipsum dolor color", "3 seconds ago"),
+                new AlertCell(avatar4, "Ana","Lorem ipsum dolor color", "22 minutes ago")
         );
+
+        Separator top = new Separator();
+        Separator bottom = new Separator();
+
+        Label message = new Label("Messages");
+        Label count = new Label("4 News");
+        count.getStyleClass().add("text-success");
+        GridPane title = new GridPane();
+        title.setMinHeight(40D);
+
+        title.setAlignment(Pos.CENTER);
+        title.add(message, 0, 0);
+        title.add(count, 1,0);
+        GridPane.setHalignment(count, HPos.RIGHT);
 
         ListView<AlertCell> listView = new ListView<>();
 
         listView.getItems().addAll(list);
+        listView.getStyleClass().add("border-0");
 
-        VBox root = new VBox(listView);
+        Button btn = new Button("Read all messages");
+        btn.getStyleClass().add("btn-flat");
+
+        VBox root = new VBox(title, top, listView, bottom, btn);
+        root.setAlignment(Pos.CENTER);
         root.setPrefSize(300, 300);
+        title.setPrefWidth(root.getPrefWidth());
+        count.setPrefWidth(root.getPrefWidth());
+        message.setPrefWidth(root.getPrefWidth());
+        count.setAlignment(Pos.CENTER_RIGHT);
+        title.setPadding(new Insets(0, 25, 0, 25));
+        btn.setPrefWidth(root.getPrefWidth());
 
+        listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
 
         PopOver pop = new PopOver();
         pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
@@ -611,6 +671,7 @@ public class Main implements Initializable {
         pop.setArrowIndent(0);
         pop.setArrowSize(0);
         pop.setCornerRadius(0);
+        pop.setAutoHide(false);
         pop.setAutoFix(true);
         pop.show(messages);
 
