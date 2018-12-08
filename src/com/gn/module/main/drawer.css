@@ -1,0 +1,77 @@
+
+
+.drawer {
+  -fx-background-color : transparent;
+}
+
+.drawer .box-search
+{
+    -fx-background-repeat : no-repeat;
+    -fx-background-position : right;
+    -fx-border-width : 1px 0px 1px 0px;
+    -fx-min-height : 38px;
+    -fx-border-color : -box-search-color;
+}
+
+.drawer .box-search .text-field
+{
+    -fx-text-fill : -box-search-fill;
+}
+
+.drawer .scroll .drawer-content .drawer-item
+{
+  -fx-background-radius : 0px;
+  -fx-background-color : transparent;
+  -fx-min-height : 50px;
+}
+
+.drawer .scroll .drawer-content .drawer-menu .title
+{
+    -fx-background-radius : 0px;
+    -fx-background-color : transparent;
+    -fx-pref-height : 50px;
+    -fx-cursor : hand;
+}
+
+.drawer .scroll .drawer-content .drawer-item  .text,
+.drawer .scroll .drawer-content .drawer-menu  .text,
+.drawer .scroll .drawer-content .drawer-menu .drawer-item:focused .text
+{
+  -fx-fill : -text-color;
+}
+
+.drawer .scroll .drawer-content .drawer-item  .glyph-icon,
+.drawer .scroll .drawer-content .drawer-item  .icon
+{
+    -fx-fill : -icon-color;
+}
+
+.drawer .scroll .drawer-content .drawer-menu .content
+{
+  -fx-border-insets : 0px;
+  -fx-border-color : -light-gray;
+}
+
+.drawer .scroll .drawer-content .drawer-item:focused,
+.drawer .scroll .drawer-content .drawer-item:focused .icon,
+.drawer .scroll .drawer-content .drawer-item:focused .text,
+.drawer .scroll .drawer-content .drawer-menu:focused .title,
+.drawer .scroll .drawer-content .drawer-menu:focused .title .text,
+.drawer .scroll .drawer-content .drawer-menu:focused .title .icon
+
+{
+  -fx-background-color : -base;
+  -fx-fill : white;
+}
+
+.drawer .scroll .drawer-content .drawer-menu:focused .title .arrow
+{
+  -fx-background-color : white;
+}
+
+.drawer .scroll .drawer-content .drawer-menu .drawer-item:focused
+{
+  -fx-border-color : -base;
+  -fx-border-width : 0 0 1 0;
+  -fx-background-color : transparent;
+}
