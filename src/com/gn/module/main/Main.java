@@ -604,9 +604,12 @@ public class Main implements Initializable {
         body.setContent(ViewManager.getInstance().get("treeview"));
     }
 
-
+    private PopOver pop = new PopOver();
     @FXML
     private void openNotification(){
+        if(!pop.isShowing()){
+
+
         GNAvatarView avatar1 = new GNAvatarView();
         GNAvatarView avatar2 = new GNAvatarView();
         GNAvatarView avatar3 = new GNAvatarView();
@@ -658,16 +661,18 @@ public class Main implements Initializable {
 
         listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
 
-        PopOver pop = new PopOver();
+
         pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
         pop.setContentNode(root);
         pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
         pop.setArrowIndent(0);
         pop.setArrowSize(0);
+        pop.setCloseButtonEnabled(false);
+        pop.setHeaderAlwaysVisible(false);
         pop.setCornerRadius(0);
-        pop.setAutoHide(false);
         pop.setAutoFix(true);
         pop.show(messages);
 
+        }
     }
 }
