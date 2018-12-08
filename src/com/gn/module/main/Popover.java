@@ -16,15 +16,9 @@
  */
 package com.gn.module.main;
 
-import com.gn.App;
-import com.gn.ViewManager;
-import com.gn.decorator.GNDecorator;
 import com.jfoenix.controls.JFXButton;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;

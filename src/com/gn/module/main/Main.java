@@ -17,20 +17,15 @@
 package com.gn.module.main;
 
 import com.gn.GNAvatarView;
-import com.gn.ViewManager;
-import com.gn.control.*;
+import com.gn.control.plugin.ViewManager;
 import com.gn.control.factory.AlertCell;
 import com.jfoenix.controls.JFXBadge;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -44,11 +39,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.SVGPath;
-import javafx.util.Duration;
 import org.controlsfx.control.PopOver;
 
 import java.io.IOException;
@@ -161,6 +154,7 @@ public class Main implements Initializable {
                 } else if(node instanceof TitledPane){
                     ((TitledPane) node).setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                     ((TitledPane) node).setAlignment(Pos.BASELINE_CENTER);
+                    ((TitledPane) node).setExpanded(false);
                     ((TitledPane) node).setCollapsible(false);
                 } else {
                     break;

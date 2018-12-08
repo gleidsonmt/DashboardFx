@@ -17,17 +17,14 @@
 package com.gn.module.main;
 
 import com.gn.App;
-import com.gn.ViewManager;
-import com.gn.control.UserDetail;
+import com.gn.control.plugin.ViewManager;
 import com.gn.decorator.GNDecorator;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 

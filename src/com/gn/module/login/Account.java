@@ -19,7 +19,7 @@ package com.gn.module.login;
 import animatefx.animation.*;
 import com.gn.App;
 import com.gn.GNAvatarView;
-import com.gn.ViewManager;
+import com.gn.control.plugin.ViewManager;
 import com.gn.control.*;
 import com.gn.control.plugin.SectionManager;
 import com.gn.control.plugin.UserManager;
