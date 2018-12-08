@@ -25,6 +25,11 @@
   -fx-min-height : 50px;
 }
 
+.drawer .scroll .drawer-content .drawer-menu .drawer-item
+{
+    -fx-alignment : baseline_left;
+}
+
 .drawer .scroll .drawer-content .drawer-menu .title
 {
     -fx-background-radius : 0px;
