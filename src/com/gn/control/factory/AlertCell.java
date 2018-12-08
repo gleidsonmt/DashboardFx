@@ -16,6 +16,7 @@
  */
 package com.gn.control.factory;
 
+import com.gn.AvatarType;
 import com.gn.GNAvatarView;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.geometry.HPos;
@@ -28,6 +29,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -60,7 +62,6 @@ public class AlertCell extends HBox {
 
     public AlertCell(GNAvatarView avatar, String title, String text, String time) {
         setIcon(avatar);
-        avatar.setStrokeWidth(0);
         this.title.setText(title);
         this.time.setText(time);
         this.text.setText(text);
@@ -92,7 +93,7 @@ public class AlertCell extends HBox {
     private void config(){
         this.getStyleClass().add("alert-cell");
         this.setAlignment(Pos.CENTER_LEFT);
-//        this.setPrefSize(200,40);
+        this.setPrefHeight(40D);
         this.title.setStyle("-fx-font-size : 14;");
         this.text.getStyleClass().addAll("h6");
         this.text.setStyle("-fx-fill : -text-color;");
@@ -132,7 +133,10 @@ public class AlertCell extends HBox {
     }
 
     public void setIcon(GNAvatarView icon){
-//        icon.setRadius(20);
+        icon.setType(AvatarType.CIRCLE);
+        icon.setStrokeWidth(1);
+        icon.setStroke(Color.WHITE);
+        icon.setPrefWidth(35);
         this.getChildren().add(icon);
         icon.toBack();
     }
