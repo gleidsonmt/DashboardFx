@@ -147,7 +147,7 @@ public class Main implements Initializable {
             drawer.getChildren().remove(info);
             drawer.getChildren().remove(searchBox);
 
-            for(Node node : views.getChildren()){
+            for(Node node : views.getChildren()) {
                 if(node instanceof Button){
                     ((Button) node).setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                     ((Button) node).setAlignment(Pos.BASELINE_CENTER);
@@ -160,6 +160,9 @@ public class Main implements Initializable {
                     break;
                 }
             }
+
+            avatar.setStrokeWidth(0);
+            addEvents();
         } else {
             drawer.setPrefWidth(max);
 
@@ -167,8 +170,7 @@ public class Main implements Initializable {
             searchBox.toBack();
             info.toBack();
             avatar.toBack();
-
-
+            avatar.setStrokeWidth(2);
             for(Node node : views.getChildren()){
                 if(node instanceof Button){
                     ((Button) node).setContentDisplay(ContentDisplay.LEFT);
@@ -187,14 +189,14 @@ public class Main implements Initializable {
     private void addEvents(){
         VBox drawerContent;
 
-        for (Node node : drawer.getChildren()) { // root
 
+
+        for (Node node : drawer.getChildren()) { // root
             if (node instanceof ScrollPane){
 
                 drawerContent = (VBox) ((ScrollPane) node).getContent();
 
                 for(Node child : drawerContent.getChildren()){
-
                     if(child instanceof Button){
                         child.setOnMouseEntered(e -> {
                             popup.setAutoHide(true);
@@ -219,16 +221,15 @@ public class Main implements Initializable {
         popup.setContentNode(FXMLLoader.load(getClass().getResource("/com/gn/module/main/Popover.fxml")));
 
         popup.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+
         popup.setArrowLocation(PopOver.ArrowLocation.LEFT_CENTER);
         popup.setArrowIndent(0);
         popup.setArrowSize(0);
         popup.setCornerRadius(0);
         popup.setAutoFix(true);
-        popup.setAnimated(false);
     }
 
     private void addEvent(Node node) {
-        popup.setAnimated(false);
         popup.setDetached(false);
         popup.setDetachable(false);
         popup.setCloseButtonEnabled(false);
@@ -245,15 +246,14 @@ public class Main implements Initializable {
         VBox vbox = (VBox) pane.getContent();
 
         for (Node btn : vbox.getChildren()) {
-
             EventHandler event = ((Button) btn).getOnMouseClicked();
             String text = ((Button) btn).getText();
-            JFXButton button = new JFXButton(text);
+            Button button = new Button(text);
             button.setPrefWidth(v.getPrefWidth());
             button.setOnMouseClicked(e -> {
-                    body.setContent(ViewManager.getInstance().get(button.getText().toLowerCase()));
-                    title.setText(button.getText());
-                    popup.hide();
+                body.setContent(ViewManager.getInstance().get(button.getText().toLowerCase()));
+                title.setText(button.getText());
+                popup.hide();
             });
             button.setMinHeight(40);
             v.getChildren().add(button);
@@ -262,10 +262,10 @@ public class Main implements Initializable {
 //        Popover.ctrl.options.getChildren().clear();
 
         node.setOnMouseEntered((Event e) -> {
-//            if (drawer.getType() == GNDrawer.Type.MINIMUN) {
-//                Popover.ctrl.options.getChildren().setAll(v);
-//                popup.show(pane, -2);
-//            }
+            if (drawer.getPrefWidth() == 70) {
+                Popover.ctrl.options.getChildren().setAll(v);
+                popup.show(pane, -1);
+            }
         });
     }
 
