@@ -24,6 +24,7 @@ import com.gn.decorator.GNDecorator;
 import com.gn.decorator.options.ButtonType;
 import com.gn.module.loader.Loader;
 import com.gn.module.main.Main;
+import com.jfoenix.controls.JFXTabPane;
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -143,6 +144,7 @@ public class App extends Application {
         decorator.addButton(ButtonType.FULL_EFFECT);
         String log = logged();
         assert log != null;
+
         if (log.equals("account") || log.equals("login")) {
             decorator.setContent(ViewManager.getInstance().get(log));
         } else {
@@ -190,7 +192,7 @@ public class App extends Application {
         decorator.getStage().getIcons().add(new Image("/com/gn/module/media/icon.png"));
         decorator.show();
 
-//        ScenicView.show(decorator.getScene());
+        ScenicView.show(decorator.getScene());
     }
 
     public static void main(String[] args) {

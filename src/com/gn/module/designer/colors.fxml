@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
@@ -34,6 +35,12 @@
                                           <String fx:value="title" />
                                        </styleClass>
                                     </Label>
+                                    <Button mnemonicParsing="false" text="Button">
+                                       <styleClass>
+                                          <String fx:value="outlined" />
+                                          <String fx:value="btn-profile" />
+                                       </styleClass>
+                                    </Button>
                                  </children>
                               </VBox>
                               <GridPane fx:id="grid" alignment="CENTER" VBox.vgrow="ALWAYS">

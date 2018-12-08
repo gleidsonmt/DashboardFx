@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gn.control.GNAvatar?>
+<?import com.gn.GNAvatarView?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -42,14 +42,14 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="437.0" prefWidth="544.0" spacing="40.0" styleClass="teste">
                            <children>
-                              <GNAvatar fx:id="avatar" radius="82.0">
+                              <GNAvatarView fx:id="avatar">
                                  <image>
                                     <Image url="@../media/logo-mini.png" />
                                  </image>
                                  <effect>
                                     <DropShadow color="#00000035" />
                                  </effect>
-                              </GNAvatar>
+                              </GNAvatarView>
                               <Separator orientation="VERTICAL" prefHeight="200.0" />
                               <VBox alignment="CENTER" prefHeight="347.0" prefWidth="297.0" spacing="20.0">
                                  <children>

@@ -20,6 +20,7 @@ import animatefx.animation.Flash;
 import animatefx.animation.Pulse;
 import animatefx.animation.SlideInLeft;
 import com.gn.App;
+import com.gn.GNAvatarView;
 import com.gn.ViewManager;
 import com.gn.control.*;
 import com.gn.control.plugin.SectionManager;
@@ -54,7 +55,7 @@ import java.util.TimerTask;
  */
 public class login implements Initializable {
 
-    @FXML private GNAvatar avatar;
+    @FXML private GNAvatarView avatar;
     @FXML private HBox box_username;
     @FXML private HBox box_password;
     @FXML private TextField username;

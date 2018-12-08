@@ -7,6 +7,7 @@
 
 .root {
 /* bootstrap */
+  -base      : #2BBBAD;
   -primary   : #4285f4;
   -info      : #33B5E5;
   -success   : #02C852;

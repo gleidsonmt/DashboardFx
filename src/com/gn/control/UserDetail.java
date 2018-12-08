@@ -16,6 +16,7 @@
  */
 package com.gn.control;
 
+import com.gn.GNAvatarView;
 import com.gn.decorator.component.GNControl;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -119,7 +120,7 @@ public class UserDetail extends GNControl {
         header.textProperty().bind(headerProperty());
         subTitle.setText("Member since 2018");
 
-        GNAvatar gnAvatar = new GNAvatar();
+        GNAvatarView gnAvatar = new GNAvatarView();
         gnAvatar.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
 
         background.setPrefHeight(500);

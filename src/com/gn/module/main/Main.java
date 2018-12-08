@@ -16,6 +16,7 @@
  */
 package com.gn.module.main;
 
+import com.gn.GNAvatarView;
 import com.gn.ViewManager;
 import com.gn.control.*;
 import com.gn.control.factory.AlertCell;
@@ -190,17 +191,17 @@ public class Main implements Initializable {
     }
 
     private void addEvents(){
-        DrawerContent drawerContent;
+        VBox drawerContent;
 
         for (Node node : drawer.getChildren()) { // root
 
             if (node instanceof ScrollPane){
 
-                drawerContent = (DrawerContent) ((ScrollPane) node).getContent();
+                drawerContent = (VBox) ((ScrollPane) node).getContent();
 
                 for(Node child : drawerContent.getChildren()){
 
-                    if(child instanceof DrawerItem){
+                    if(child instanceof Button){
                         child.setOnMouseEntered(e -> {
                             popup.setAutoHide(true);
                             if(popup.isShowing())
@@ -208,7 +209,7 @@ public class Main implements Initializable {
                         });
                     }
 
-                    else if(child instanceof DrawerList){
+                    else if(child instanceof TitledPane){
                         addEvent(child);
                     }
                 }
@@ -246,13 +247,13 @@ public class Main implements Initializable {
         VBox v = new VBox();
         v.setPrefWidth(200);
 
-        TitledPane pane = (DrawerList) node;
+        TitledPane pane = (TitledPane) node;
         VBox vbox = (VBox) pane.getContent();
 
         for (Node btn : vbox.getChildren()) {
 
-            EventHandler event = ((DrawerItem) btn).getOnMouseClicked();
-            String text = ((DrawerItem) btn).getText();
+            EventHandler event = ((Button) btn).getOnMouseClicked();
+            String text = ((Button) btn).getText();
             JFXButton button = new JFXButton(text);
             button.setPrefWidth(v.getPrefWidth());
             button.setOnMouseClicked(e -> {
@@ -612,10 +613,10 @@ public class Main implements Initializable {
 
     @FXML
     private void openNotification(){
-        GNAvatar avatar1 = new GNAvatar();
-        GNAvatar avatar2 = new GNAvatar();
-        GNAvatar avatar3 = new GNAvatar();
-        GNAvatar avatar4 = new GNAvatar();
+        GNAvatarView avatar1 = new GNAvatarView();
+        GNAvatarView avatar2 = new GNAvatarView();
+        GNAvatarView avatar3 = new GNAvatarView();
+        GNAvatarView avatar4 = new GNAvatarView();
 
         avatar1.setImage(new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm()));
         avatar2.setImage(new Image(getClass().getResource("/com/gn/module/media/woman.png").toExternalForm()));

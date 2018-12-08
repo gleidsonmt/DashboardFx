@@ -18,6 +18,7 @@ package com.gn.module.login;
 
 import animatefx.animation.*;
 import com.gn.App;
+import com.gn.GNAvatarView;
 import com.gn.ViewManager;
 import com.gn.control.*;
 import com.gn.control.plugin.SectionManager;
@@ -44,7 +45,7 @@ import java.util.ResourceBundle;
  */
 public class Account implements Initializable {
 
-    @FXML private GNAvatar avatar;
+    @FXML private GNAvatarView avatar;
 
     @FXML private HBox box_fullname;
     @FXML private HBox box_username;

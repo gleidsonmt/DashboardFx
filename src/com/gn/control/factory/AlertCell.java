@@ -16,7 +16,7 @@
  */
 package com.gn.control.factory;
 
-import com.gn.control.GNAvatar;
+import com.gn.GNAvatarView;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -44,8 +44,6 @@ public class AlertCell extends HBox {
     private ImageView           imageView;
     private SVGPath             path;
 
-    private GNAvatar avatar;
-
     private VBox content = new VBox();
 
     private TextFlow textFlow = new TextFlow();
@@ -60,7 +58,7 @@ public class AlertCell extends HBox {
         config();
     }
 
-    public AlertCell(GNAvatar avatar, String title, String text, String time) {
+    public AlertCell(GNAvatarView avatar, String title, String text, String time) {
         setIcon(avatar);
         avatar.setStrokeWidth(0);
         this.title.setText(title);
@@ -133,8 +131,8 @@ public class AlertCell extends HBox {
         icon.toBack();
     }
 
-    public void setIcon(GNAvatar icon){
-        icon.setRadius(20);
+    public void setIcon(GNAvatarView icon){
+//        icon.setRadius(20);
         this.getChildren().add(icon);
         icon.toBack();
     }

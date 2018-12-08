@@ -24,51 +24,10 @@
   -fx-cursor : default;
 }
 
-.gn-drawer-item
-{
-  -fx-background-radius : 0px;
-  -fx-background-color : transparent;
-}
-
-.gn-drawer-item:hover
-{
-  -fx-background-color : transparent;
-}
-
-.gn-drawer-item:selected
-{
-  -fx-effect : null;
-  -fx-background-color : -base;
-}
-
-.gn-drawer-item:selected .text,
-.gn-drawer-item:selected .glyph-icon,
-.gn-drawer-item:selected .icon
-{
-  -fx-fill : -inner-text;
-}
-
-.gn-drawer-item .text
-{
-  -fx-fill : -text-color;
-}
-
-.gn-drawer-item .glyph-icon
-{
-    -fx-fill : -icon-color;
-}
 
 /* menu */
 
-.gn-drawer-menu .title .text
-{
-  -fx-fill : -text-color;
-}
 
-.gn-drawer-menu:hover:focused .title
-{
-  -fx-background-radius : 0px;
-}
 
 
 .gn-drawer-menu .title .arrow-button .arrow,

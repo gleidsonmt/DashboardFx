@@ -181,11 +181,16 @@
     -fx-stroke: -light-gray;
 }
 
+.main-chart
+{
+  -fx-background-color : transparent;
+}
 
+.main-chart .axis {}
 
 .main-chart .chart-series-area-fill  {
   -fx-fill : linear-gradient(to left, -base, -success);
-  /* -fx-fill : derive(-base, 20%); */
+  /* -fx-fill : linear-gradient(to bottom, white, transp); */
 }
 
 .main-chart .chart-series-area-line {
