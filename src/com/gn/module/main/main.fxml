@@ -195,7 +195,7 @@
                         </Label>
                         <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <JFXBadge fx:id="bg_info" layoutX="732.0" layoutY="12.0" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" text="32">
+                              <JFXBadge fx:id="bg_info" layoutX="732.0" layoutY="12.0" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" text="32" visible="false">
                                  <styleClass>
                                     <String fx:value="icon" />
                                     <String fx:value="icon-danger" />
@@ -208,7 +208,7 @@
                                     </StackPane>
                                  </control>
                               </JFXBadge>
-                              <JFXBadge position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" text="41">
+                              <JFXBadge fx:id="notifications" onMouseClicked="#openNotification" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" text="41">
                                  <styleClass>
                                     <String fx:value="icon" />
                                     <String fx:value="icon-warning" />
@@ -221,7 +221,7 @@
                                     </StackPane>
                                  </control>
                               </JFXBadge>
-                              <JFXBadge fx:id="messages" layoutX="759.0" layoutY="12.0" onMouseClicked="#openNotification" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" styleClass="icon" text="12">
+                              <JFXBadge fx:id="messages" layoutX="759.0" layoutY="12.0" onMouseClicked="#openMessages" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" styleClass="icon" text="12">
                                  <control>
                                     <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 10;">
                                        <children>
