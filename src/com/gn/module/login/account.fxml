@@ -18,7 +18,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
 
-<?import com.gn.GNAvatarView?>
 <StackPane prefHeight="601.0" prefWidth="1004.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.login.Account">
     <stylesheets>
         <URL value="@../../theme/css/material-color.css" />
@@ -43,7 +42,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="437.0" prefWidth="545.0" spacing="40.0" styleClass="teste">
                            <children>
-                              <GNAvatarView fx:id="avatar">
+                              <GNAvatarView fx:id="avatar" strokeWidth="0.0" type="CIRCLE">
                                  <image>
                                     <Image url="@../media/logo-mini.png" />
                                  </image>
@@ -70,9 +69,6 @@
                                                 <String fx:value="box-light" />
                                                 <String fx:value="rounded" />
                                              </styleClass>
-                                             <padding>
-                                                <Insets right="10.0" />
-                                             </padding>
                                           </HBox>
                                           <HBox fx:id="box_username" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="144.0" prefHeight="50.0">
                                              <children>
@@ -83,9 +79,6 @@
                                                 <String fx:value="box-light" />
                                                 <String fx:value="rounded" />
                                              </styleClass>
-                                             <padding>
-                                                <Insets right="10.0" />
-                                             </padding>
                                           </HBox>
                                           <HBox fx:id="box_email" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="106.0" prefHeight="50.0">
                                              <children>
@@ -96,9 +89,6 @@
                                                 <String fx:value="box-light" />
                                                 <String fx:value="rounded" />
                                              </styleClass>
-                                             <padding>
-                                                <Insets right="10.0" />
-                                             </padding>
                                           </HBox>
                                           <HBox fx:id="box_password" alignment="CENTER_RIGHT" prefHeight="50.0">
                                              <children>
@@ -109,9 +99,6 @@
                                                 <String fx:value="box-light" />
                                                 <String fx:value="rounded" />
                                              </styleClass>
-                                             <padding>
-                                                <Insets right="10.0" />
-                                             </padding>
                                           </HBox>
                                           <Label fx:id="lbl_error" styleClass="text-danger" text="The user already exists" visible="false" />
                                           <Button fx:id="register" defaultButton="true" mnemonicParsing="false" onAction="#register" onMouseClicked="#register" prefWidth="478.0" text="Register">

@@ -42,7 +42,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="437.0" prefWidth="544.0" spacing="40.0" styleClass="teste">
                            <children>
-                              <GNAvatarView fx:id="avatar">
+                              <GNAvatarView fx:id="avatar" strokeWidth="0.0">
                                  <image>
                                     <Image url="@../media/logo-mini.png" />
                                  </image>
@@ -70,9 +70,6 @@
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
-                                       <padding>
-                                          <Insets right="10.0" />
-                                       </padding>
                                     </HBox>
                                     <HBox fx:id="box_password" alignment="CENTER_RIGHT" prefHeight="50.0">
                                        <children>
@@ -83,9 +80,6 @@
                                           <String fx:value="box-light" />
                                           <String fx:value="rounded" />
                                        </styleClass>
-                                       <padding>
-                                          <Insets right="10.0" />
-                                       </padding>
                                     </HBox>
                                     <Button fx:id="login" defaultButton="true" mnemonicParsing="false" onAction="#loginAction" prefWidth="322.0" text="Sign In">
                                        <styleClass>
