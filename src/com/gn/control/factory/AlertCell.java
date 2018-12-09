@@ -134,7 +134,7 @@ public class AlertCell extends HBox {
 
     public void setIcon(GNAvatarView icon){
         icon.setType(AvatarType.CIRCLE);
-        icon.setStrokeWidth(1);
+        icon.setStrokeWidth(0);
         icon.setStroke(Color.WHITE);
         icon.setPrefWidth(35);
         this.getChildren().add(icon);

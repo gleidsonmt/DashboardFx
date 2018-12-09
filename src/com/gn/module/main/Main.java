@@ -79,6 +79,7 @@ public class Main implements Initializable {
     @FXML private JFXButton config;
     @FXML private VBox drawer;
     @FXML private JFXBadge messages;
+    @FXML private JFXBadge notifications;
     @FXML private JFXBadge bg_info;
 
     private FilteredList<Button> filteredList = null;
@@ -606,73 +607,138 @@ public class Main implements Initializable {
 
     private PopOver pop = new PopOver();
     @FXML
-    private void openNotification(){
+    private void openMessages(){
         if(!pop.isShowing()){
+            GNAvatarView avatar1 = new GNAvatarView();
+            GNAvatarView avatar2 = new GNAvatarView();
+            GNAvatarView avatar3 = new GNAvatarView();
+            GNAvatarView avatar4 = new GNAvatarView();
+
+            avatar1.setImage(new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm()));
+            avatar2.setImage(new Image(getClass().getResource("/com/gn/module/media/woman.png").toExternalForm()));
+            avatar3.setImage(new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm()));
+
+            ObservableList<AlertCell> list = FXCollections.observableArrayList(
+                    new AlertCell(avatar1, "Will Junior","Lorem ipsum dolor color", "24 minutes ago"),
+                    new AlertCell(avatar2, "Jad Gail","Lorem ipsum dolor color", "today"),
+                    new AlertCell(avatar3, "Bart","Lorem ipsum dolor color", "3 seconds ago")
+            );
+
+            Separator top = new Separator();
+            Separator bottom = new Separator();
+
+            Label message = new Label("Messages");
+            Label count = new Label("4 News");
+            count.getStyleClass().add("text-success");
+            GridPane title = new GridPane();
+            title.setMinHeight(40D);
+
+            title.setAlignment(Pos.CENTER);
+            title.add(message, 0, 0);
+            title.add(count, 1,0);
+            GridPane.setHalignment(count, HPos.RIGHT);
+
+            ListView<AlertCell> listView = new ListView<>();
+
+            listView.getItems().addAll(list);
+            listView.getStyleClass().add("border-0");
+
+            Button btn = new Button("Read all messages");
+            btn.getStyleClass().add("btn-flat");
+
+            VBox root = new VBox(title, top, listView, bottom, btn);
+            root.setAlignment(Pos.CENTER);
+            root.setPrefSize(300, 300);
+            title.setPrefWidth(root.getPrefWidth());
+            count.setPrefWidth(root.getPrefWidth());
+            message.setPrefWidth(root.getPrefWidth());
+            count.setAlignment(Pos.CENTER_RIGHT);
+            title.setPadding(new Insets(0, 25, 0, 25));
+            btn.setPrefWidth(root.getPrefWidth());
+
+            listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
 
 
-        GNAvatarView avatar1 = new GNAvatarView();
-        GNAvatarView avatar2 = new GNAvatarView();
-        GNAvatarView avatar3 = new GNAvatarView();
-        GNAvatarView avatar4 = new GNAvatarView();
+            pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+            pop.setContentNode(root);
+            pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
+            pop.setArrowIndent(0);
+            pop.setArrowSize(0);
+            pop.setCloseButtonEnabled(false);
+            pop.setHeaderAlwaysVisible(false);
+            pop.setCornerRadius(0);
+            pop.setAutoFix(true);
+            pop.show(messages);
 
-        avatar1.setImage(new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm()));
-        avatar2.setImage(new Image(getClass().getResource("/com/gn/module/media/woman.png").toExternalForm()));
-        avatar3.setImage(new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm()));
-        avatar4.setImage(new Image(getClass().getResource("/com/gn/module/media/woman.png").toExternalForm()));
+        } else {
+            pop.hide();
+        }
+    }
 
-        ObservableList<AlertCell> list = FXCollections.observableArrayList(
-                new AlertCell(avatar1, "Will Junior","Lorem ipsum dolor color", "24 minutes ago"),
-                new AlertCell(avatar2, "Jad Gail","Lorem ipsum dolor color", "today"),
-                new AlertCell(avatar3, "Bart","Lorem ipsum dolor color", "3 seconds ago"),
-                new AlertCell(avatar4, "Ana","Lorem ipsum dolor color", "22 minutes ago")
-        );
+    @FXML
+    private void openNotification(){
+      if(!pop.isShowing()){
+            GNAvatarView avatar1 = new GNAvatarView();
+            GNAvatarView avatar2 = new GNAvatarView();
+            GNAvatarView avatar3 = new GNAvatarView();
 
-        Separator top = new Separator();
-        Separator bottom = new Separator();
+            avatar1.setImage(new Image(getClass().getResource("/com/gn/module/media/warning-35.png").toExternalForm()));
+            avatar2.setImage(new Image(getClass().getResource("/com/gn/module/media/error-35.png").toExternalForm()));
+            avatar3.setImage(new Image(getClass().getResource("/com/gn/module/media/notification-35.png").toExternalForm()));
 
-        Label message = new Label("Messages");
-        Label count = new Label("4 News");
-        count.getStyleClass().add("text-success");
-        GridPane title = new GridPane();
-        title.setMinHeight(40D);
+            ObservableList<AlertCell> list = FXCollections.observableArrayList(
+                    new AlertCell(avatar1, "Warning","Lorem ipsum dolor color", "24 minutes ago"),
+                    new AlertCell(avatar2, "Error","Lorem ipsum dolor color", "today"),
+                    new AlertCell(avatar3, "Notification","Lorem ipsum dolor color", "3 seconds ago")
+            );
 
-        title.setAlignment(Pos.CENTER);
-        title.add(message, 0, 0);
-        title.add(count, 1,0);
-        GridPane.setHalignment(count, HPos.RIGHT);
+            Separator top = new Separator();
+            Separator bottom = new Separator();
 
-        ListView<AlertCell> listView = new ListView<>();
+            Label message = new Label("Messages");
+            Label count = new Label("4 News");
+            count.getStyleClass().add("text-success");
+            GridPane title = new GridPane();
+            title.setMinHeight(40D);
 
-        listView.getItems().addAll(list);
-        listView.getStyleClass().add("border-0");
+            title.setAlignment(Pos.CENTER);
+            title.add(message, 0, 0);
+            title.add(count, 1,0);
+            GridPane.setHalignment(count, HPos.RIGHT);
 
-        Button btn = new Button("Read all messages");
-        btn.getStyleClass().add("btn-flat");
+            ListView<AlertCell> listView = new ListView<>();
 
-        VBox root = new VBox(title, top, listView, bottom, btn);
-        root.setAlignment(Pos.CENTER);
-        root.setPrefSize(300, 300);
-        title.setPrefWidth(root.getPrefWidth());
-        count.setPrefWidth(root.getPrefWidth());
-        message.setPrefWidth(root.getPrefWidth());
-        count.setAlignment(Pos.CENTER_RIGHT);
-        title.setPadding(new Insets(0, 25, 0, 25));
-        btn.setPrefWidth(root.getPrefWidth());
+            listView.getItems().addAll(list);
+            listView.getStyleClass().add("border-0");
 
-        listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
+            Button btn = new Button("Read all messages");
+            btn.getStyleClass().add("btn-flat");
+
+            VBox root = new VBox(title, top, listView, bottom, btn);
+            root.setAlignment(Pos.CENTER);
+            root.setPrefSize(300, 300);
+            title.setPrefWidth(root.getPrefWidth());
+            count.setPrefWidth(root.getPrefWidth());
+            message.setPrefWidth(root.getPrefWidth());
+            count.setAlignment(Pos.CENTER_RIGHT);
+            title.setPadding(new Insets(0, 25, 0, 25));
+            btn.setPrefWidth(root.getPrefWidth());
+
+            listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
 
 
-        pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
-        pop.setContentNode(root);
-        pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
-        pop.setArrowIndent(0);
-        pop.setArrowSize(0);
-        pop.setCloseButtonEnabled(false);
-        pop.setHeaderAlwaysVisible(false);
-        pop.setCornerRadius(0);
-        pop.setAutoFix(true);
-        pop.show(messages);
+            pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+            pop.setContentNode(root);
+            pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
+            pop.setArrowIndent(0);
+            pop.setArrowSize(0);
+            pop.setCloseButtonEnabled(false);
+            pop.setHeaderAlwaysVisible(false);
+            pop.setCornerRadius(0);
+            pop.show(notifications);
 
+        } else {
+              pop.hide();
         }
     }
 }
