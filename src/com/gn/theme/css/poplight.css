@@ -2,6 +2,7 @@
 {
 	  -elegant    : #2E2E2E;
 	  -dark-gray  : #656D78;
+		-light-gray : #E6E9ED;
 }
 
 .popover  {
@@ -17,8 +18,8 @@
 }
 
 .popover > .content {
-    -fx-border-color : -dark-gray;
-    -fx-border-width : 2px;
+  -fx-border-color : -dark-gray;
+  -fx-border-width : 2px;
 	-fx-padding: 0;
 }
 
@@ -38,25 +39,33 @@
 }
 
 
-
-.options .jfx-button:hover,
-.options .jfx-button:pressed,
-.options .jfx-button:focused,
-.options .jfx-button
+.options .button:pressed,
+.options .button:focused,
+.options .button
 {
 	-fx-background-color : transparent;
 	-fx-text-fill : #656D78;
 }
 
-.options .jfx-button .text
+.options .button:hover
+{
+		-fx-background-color : -light-gray;
+}
+
+.options .button .text
 {
 	-fx-fill : #656D78;
 }
 
-.options .jfx-button:hover .glyph-icon,
-.options .jfx-button:pressed .glyph-icon,
-.options .jfx-button:focused .glyph-icon,
-.options .jfx-button .glyph-icon
+.options .button:hover .glyph-icon,
+.options .button:pressed .glyph-icon,
+.options .button:focused .glyph-icon,
+.options .button .glyph-icon
 {
 	-fx-fill : -icon-color;
+}
+
+.list-view .list-cell:selected .alert-cell
+{
+	  -text-color : white;
 }

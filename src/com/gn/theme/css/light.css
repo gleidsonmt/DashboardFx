@@ -38,21 +38,6 @@
   -fx-background-color : -background-color;
 }
 
-
-.box-search
-{
-    -fx-background-repeat : no-repeat;
-    -fx-background-position : right;
-    -fx-border-width : 1px 0px 1px 0px;
-    -fx-min-height : 38px;
-    -fx-border-color : -box-search-color;
-}
-
-.box-search .text-field
-{
-    -fx-text-fill : -box-search-fill;
-}
-
 .box-light
 {
   -fx-background-color : derive( -light-gray, 50%);

@@ -206,3 +206,26 @@
 {
   -fx-background-color : transparent;
 }
+
+
+.calendar-pane .calendar-cell
+{
+    -fx-background-color : transparent;
+    -fx-background-radius : 5px;
+}
+
+.calendar-pane .calendar-cell:selected
+{
+    -fx-background-color : -base;
+    -fx-effect : null;
+}
+
+.calendar-pane .calendar-cell:selected .text
+{
+    -fx-fill : white;
+}
+
+.calendar-pane .calendar-cell .text
+{
+     -fx-fill : -text-color;
+}
