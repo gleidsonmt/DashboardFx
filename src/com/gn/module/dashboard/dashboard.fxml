@@ -282,9 +282,9 @@
                               <VBox prefHeight="1058.0" prefWidth="457.0" spacing="10.0" HBox.hgrow="ALWAYS">
                                  <children>
                                     <GNCalendarTile prefHeight="279.0" prefWidth="295.0" style="-fx-border-color: -light-gray;" />
-                                    <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="260.0" prefWidth="318.0" spacing="10.0">
+                                    <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="142.0" prefWidth="303.0" spacing="10.0">
                                        <children>
-                                          <GNAvatarView type="CIRCLE">
+                                          <GNAvatarView prefHeight="104.0" prefWidth="301.0" type="CIRCLE">
                                              <image>
                                                 <Image url="@../media/girl.png" />
                                              </image></GNAvatarView>

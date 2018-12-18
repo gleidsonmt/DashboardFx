@@ -46,28 +46,10 @@ public class Dashboard implements Initializable {
     @FXML private AreaChart<String, Number> areaChart;
 
     @FXML private PieChart pieChart;
-    @FXML private ImageView avatarFollow;
 
     @SuppressWarnings("unchecked")
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-//        calendar.setSkinType(Tile.SkinType.CALENDAR);
-//        calendar.setForegroundColor(Color.RED);
-//        calendar.setBackgroundColor(Color.TRANSPARENT);
-//
-//        ZonedDateTime now          = ZonedDateTime.now();
-//        List<ChartData> calendarData = new ArrayList<>(10);
-//        calendarData.add(new ChartData("Item 1", now.minusDays(1).toInstant()));
-//        calendarData.add(new ChartData("Item 2", now.plusDays(2).toInstant()));
-//        calendarData.add(new ChartData("Item 3", now.plusDays(10).toInstant()));
-//
-//
-//        calendarData.add(new ChartData("Item 4", 0.0, javafx.scene.paint.Color.BLUE, javafx.scene.paint.Color.RED, now.plusDays(5).toInstant(), true, 1000));
-//
-//        calendar.setChartData(calendarData);
-//        calendar.setTooltipText("Tol tip de merda");
-
 
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
                 new PieChart.Data("Sun", 20),
@@ -78,14 +60,6 @@ public class Dashboard implements Initializable {
         );
         pieChart.setData(pieChartData);
         pieChart.setClockwise(false);
-
-        Circle circle = new Circle(80);
-        circle.setStroke(Color.WHITE);
-        circle.setStrokeWidth(5);
-        circle.setStroke(Color.RED);
-        circle.setCenterX(avatarFollow.getFitWidth() / 2);
-        circle.setCenterY(avatarFollow.getFitHeight() / 2);
-        avatarFollow.setClip(circle);
 
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Legend 1");
