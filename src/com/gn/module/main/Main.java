@@ -282,6 +282,8 @@ public class Main implements Initializable {
         views.getChildren().add(about);
         home.setContentDisplay(ContentDisplay.LEFT);
         about.setContentDisplay(ContentDisplay.LEFT);
+        home.setAlignment(Pos.CENTER_LEFT);
+        about.setAlignment(Pos.CENTER_LEFT);
 
         home.toBack();
         about.toFront();
@@ -304,7 +306,7 @@ public class Main implements Initializable {
         VBox.setVgrow(vBox, Priority.ALWAYS);
         for (Button node : nodes){
             if (node.getGraphic() != null) node.setContentDisplay(ContentDisplay.TEXT_ONLY);
-            node.setAlignment(Pos.CENTER_RIGHT);
+            node.setAlignment(Pos.CENTER_LEFT);
         }
         vBox.getChildren().setAll(nodes);
         return vBox;
