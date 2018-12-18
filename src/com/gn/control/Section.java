@@ -16,6 +16,11 @@
  */
 package com.gn.control;
 
+import animatefx.animation.Pulse;
+import com.jfoenix.controls.JFXButton;
+import jfxtras.labs.scene.control.CalendarLabel;
+import jfxtras.scene.control.CalendarPicker;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  27/11/2018
@@ -46,6 +51,7 @@ public class Section {
     }
 
     public void setLogged(boolean logged) {
+        new CalendarPicker();
         this.logged = logged;
     }
 
