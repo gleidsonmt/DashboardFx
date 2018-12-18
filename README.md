@@ -30,7 +30,7 @@
 
 <h1></h1>
 
-## Screenshots
+<h5>View</h5>
 
 ![Guide](src/com/gn/module/media/dashlight.png)
 ![Guide](src/com/gn/module/media/dashdark.png)
