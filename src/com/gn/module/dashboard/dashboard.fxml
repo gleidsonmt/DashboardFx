@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.gn.GNAvatarView?>
+<?import com.gn.lab.GNCalendarTile?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXProgressBar?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import eu.hansolo.tilesfx.Tile?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -256,7 +256,7 @@
                                        </styleClass></PieChart>
                                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <GNAvatarView  strokeWidth="0.0">
+                                          <GNAvatarView strokeWidth="0.0">
                                              <image>
                                                 <Image url="@../media/avatar.jpg" />
                                              </image>
@@ -282,7 +282,7 @@
                               </VBox>
                               <VBox spacing="10.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Tile fx:id="calendar" active="true" prefHeight="282.0" prefWidth="449.0" />
+                                    <GNCalendarTile prefHeight="279.0" prefWidth="295.0" style="-fx-border-color: -light-gray;" />
                                     <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="260.0" prefWidth="318.0" spacing="10.0">
                                        <children>
                                           <ImageView fx:id="avatarFollow" fitHeight="169.0" fitWidth="293.0" pickOnBounds="true" preserveRatio="true">
