@@ -18,7 +18,6 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
@@ -280,16 +279,15 @@
                                        </padding></HBox>
                                  </children>
                               </VBox>
-                              <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                              <VBox prefHeight="1058.0" prefWidth="457.0" spacing="10.0" HBox.hgrow="ALWAYS">
                                  <children>
                                     <GNCalendarTile prefHeight="279.0" prefWidth="295.0" style="-fx-border-color: -light-gray;" />
                                     <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="260.0" prefWidth="318.0" spacing="10.0">
                                        <children>
-                                          <ImageView fx:id="avatarFollow" fitHeight="169.0" fitWidth="293.0" pickOnBounds="true" preserveRatio="true">
+                                          <GNAvatarView type="CIRCLE">
                                              <image>
                                                 <Image url="@../media/girl.png" />
-                                             </image>
-                                          </ImageView>
+                                             </image></GNAvatarView>
                                           <JFXButton styleClass="follow" text="Follow me">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
