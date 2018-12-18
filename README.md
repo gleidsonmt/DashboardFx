@@ -25,8 +25,10 @@
 
 <h1></h1>
 
-</h3> Library Dependency.</h3>
-find the dependencies in the lib folder. 
+<h3> Library Dependency.</h3>
+<p> find the dependencies in the lib folder.</p> 
+
+<h1></h1>
 
 ## Screenshots
 
