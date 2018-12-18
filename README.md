@@ -31,7 +31,7 @@
 
 <h5>View</h5>
 
-![Guide](src/com/gn/module/media/dashlight.png)
+![Guide](src/com/gn/module/media/dash.png)
 ![Guide](src/com/gn/module/media/dashdark.png)
 ![Guide](src/com/gn/module/media/profile.png)
 
