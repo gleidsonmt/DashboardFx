@@ -20,11 +20,11 @@ package com.gn;
 import com.gn.control.*;
 import com.gn.control.plugin.SectionManager;
 import com.gn.control.plugin.UserManager;
+import com.gn.control.plugin.ViewManager;
 import com.gn.decorator.GNDecorator;
 import com.gn.decorator.options.ButtonType;
 import com.gn.module.loader.Loader;
 import com.gn.module.main.Main;
-import com.jfoenix.controls.JFXTabPane;
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -54,12 +54,15 @@ public class App extends Application {
 
     private static UserDetail userDetail = null;
 
+    private Section section;
+    private User    user;
+
     @Override
     public synchronized void init(){
-        Section section = SectionManager.get();
+        section = SectionManager.get();
 
         if(section.isLogged()){
-            User user = UserManager.get(section.getUserLogged());
+            user = UserManager.get(section.getUserLogged());
             userDetail = new UserDetail(section.getUserLogged(), user.getFullName(), "subtitle");
         } else {
             userDetail = new UserDetail();
@@ -158,6 +161,8 @@ public class App extends Application {
 
             userDetail.setSignAction(event -> {
                 App.decorator.setContent(ViewManager.getInstance().get("login"));
+                section.setLogged(false);
+                SectionManager.save(section);
                 userDetail.getPopOver().hide();
                 if(Main.popConfig.isShowing()) Main.popConfig.hide();
                 if(Main.popup.isShowing()) Main.popup.hide();
@@ -192,7 +197,7 @@ public class App extends Application {
         decorator.getStage().getIcons().add(new Image("/com/gn/module/media/icon.png"));
         decorator.show();
 
-        ScenicView.show(decorator.getScene());
+//        ScenicView.show(decorator.getScene());
     }
 
     public static void main(String[] args) {
