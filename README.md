@@ -19,9 +19,9 @@
 <h1> DashboardFx </h1>
 
 
-<h5> This dashboard is a collection of the samples to javafx creators.</h5>
+<h5> This dashboard is a collection of the samples for javafx creators.</h5>
 
-##### Find templates, themes, controls, custom uis.
+> Find templates, themes, controls, custom uis.
 
 
 ### Library Dependency.
