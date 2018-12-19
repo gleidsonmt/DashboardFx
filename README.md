@@ -29,7 +29,7 @@
 
 <h1></h1>
 
-<h5>View</h5>
+## Dashboard
 
 ![Guide](src/com/gn/module/media/dash.png)
 
