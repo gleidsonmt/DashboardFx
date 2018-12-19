@@ -14,22 +14,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn;
+package com.gn.control.plugin;
 
-import com.sun.javafx.application.LauncherImpl;
-import javafx.application.Preloader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  07/10/2018
- * Version 1.0
  */
 public class ViewManager {
 
@@ -37,9 +32,7 @@ public class ViewManager {
     private static final HashMap<String, Node> SCREENS = new HashMap<>();
     private static String nameView;
 
-    private ViewManager(){
-
-    }
+    private ViewManager(){}
 
     public static ViewManager getInstance() {
         if(instance == null){
@@ -48,7 +41,7 @@ public class ViewManager {
         return instance;
     }
 
-    void put(String name, Node node){
+    public void put(String name, Node node){
         nameView = name;
         SCREENS.put(name, node);
     }

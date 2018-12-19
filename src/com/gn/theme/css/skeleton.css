@@ -2462,3 +2462,9 @@
 .titled-pane .title .arrow-button .arrow {
   -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
 }
+
+.deep-button {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 2 0, 0 0 2 0, 0 0 2 0;
+    -fx-background-color : derive(-base, -40%), derive(-base, -40%), derive(-base, -40%), -base;
+}

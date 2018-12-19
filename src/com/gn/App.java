@@ -32,7 +32,9 @@ import javafx.application.Preloader;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
 
@@ -197,7 +199,7 @@ public class App extends Application {
         decorator.getStage().getIcons().add(new Image("/com/gn/module/media/icon.png"));
         decorator.show();
 
-//        ScenicView.show(decorator.getScene());
+        ScenicView.show(decorator.getScene());
     }
 
     public static void main(String[] args) {
