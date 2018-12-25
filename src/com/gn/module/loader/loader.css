@@ -1,6 +1,6 @@
 
 .root {
-    -fx-background-image : url('../media/fore1.jpg');
+
     -fx-background-repeat : no-repeat;
     -fx-background-size : cover;
 }
@@ -12,4 +12,24 @@
 
 .jfx-progress-bar:determinate .track {
   -fx-background-color : transparent;
+}
+
+
+.teste
+{
+    /* -fx-background-image : url('../media/fore1.jpg');
+    -fx-background-size : cover; */
+
+    -fx-background-color: linear-gradient(to top,   derive(#02796b, 50%) ,#73e57b);
+
+}
+
+.teste2
+{
+    /* -fx-background-image : url('../media/b1.png');
+    -fx-background-size : 300px 300px;
+    -fx-background-position : BOTTOM_RIGHT;
+    -fx-background-repeat : no-repeat; */
+    -fx-background-color: linear-gradient(to top,   derive(#02796b, 50%) , derive(#73e57b, 50%)) ;
+    -fx-shape : "M 50 100 L 50 500 L 400 500 L 250 100 L 50 100 ";
 }

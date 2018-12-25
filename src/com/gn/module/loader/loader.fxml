@@ -1,41 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane prefHeight="438.0" prefWidth="589.0" stylesheets="@loader.css" xmlns="http://javafx.com/javafx/8.0.171"
-           xmlns:fx="http://javafx.com/fxml/1">
-   <AnchorPane>
-      <JFXProgressBar fx:id="progressBar" layoutX="43.0" layoutY="381.0" prefHeight="0.0" prefWidth="516.0"
-                      progress="0.0"/>
-      <Label layoutX="267.0" layoutY="355.0" text="Loading views.." textFill="WHITE"/>
-      <Label layoutX="144.0" layoutY="147.0" prefHeight="114.0" prefWidth="343.0" styleClass="fix"
-             text="Dashboard Fx" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="Berlin Sans FB" size="56.0"/>
-         </font>
-         <effect>
-            <Glow level="0.84"/>
-         </effect>
-      </Label>
-      <Label layoutX="43.0" layoutY="385.0" prefHeight="17.0" prefWidth="130.0" text="© Gleidson Neves da Silveira"
-             textFill="WHITE">
-         <font>
-            <Font size="10.0"/>
-         </font>
-      </Label>
-      <Text fill="WHITE" layoutX="29.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="G"
-            AnchorPane.bottomAnchor="343.0" AnchorPane.leftAnchor="32.0">
-         <font>
-            <Font name="System Bold" size="63.0"/>
-         </font>
-      </Text>
-      <Circle fill="#1f93ff00" layoutX="56.0" layoutY="56.0" radius="42.0" stroke="WHITE" strokeType="INSIDE"/>
+<StackPane prefHeight="397.0" prefWidth="657.0" stylesheets="@loader.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <AnchorPane prefHeight="576.0" prefWidth="481.0">
+      <children>
+         <ImageView fitHeight="397.0" fitWidth="532.0" layoutX="462.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <image>
+               <Image url="@../media/predios-e-vetores-3fee7.jpg" />
+            </image>
+            <effect>
+               <ColorAdjust brightness="0.62" contrast="0.33" hue="-0.19" saturation="0.31" />
+            </effect>
+         </ImageView>
+         <VBox alignment="BOTTOM_LEFT" layoutX="449.0" layoutY="188.0" prefHeight="576.0" prefWidth="462.0" styleClass="teste2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+               <Label text="This dashboard is a collection of the samples for javafx creators.&#10;&#10;&#10;" textFill="WHITE" />
+            </children>
+            <padding>
+               <Insets bottom="100.0" left="15.0" />
+            </padding>
+         </VBox>
+         <Label layoutX="5.0" layoutY="407.0" prefHeight="17.0" prefWidth="130.0" text="© Gleidson Neves da Silveira" textFill="WHITE" AnchorPane.bottomAnchor="10.0">
+            <font>
+               <Font size="10.0" />
+            </font>
+         </Label>
+         <Circle fill="#1f93ff00" layoutX="54.0" layoutY="56.0" radius="42.0" stroke="WHITE" strokeType="INSIDE" visible="false" />
+         <Text fill="WHITE" layoutX="32.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="G" visible="false" wrappingWidth="44.7890625" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0">
+            <font>
+               <Font name="System Bold" size="63.0" />
+            </font>
+         </Text>
+         <Label layoutX="14.0" layoutY="336.0" text="Loading views.." textFill="WHITE" AnchorPane.bottomAnchor="60.0" />
+         <JFXProgressBar fx:id="progressBar" layoutX="14.0" layoutY="382.0" prefHeight="9.0" prefWidth="401.0" progress="0.21" AnchorPane.bottomAnchor="36.0" />
+         <Polygon fill="#ffffff00" layoutX="147.0" layoutY="208.0" points="-130.0, 87.0, 141.0, 47.0, 1.0, -133.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false">
+            <effect>
+               <Glow />
+            </effect>
+         </Polygon>
+         <Label layoutX="65.0" layoutY="66.0" prefHeight="114.0" prefWidth="176.0" styleClass="fix" text="Dashboard Fx" textAlignment="CENTER" textFill="WHITE">
+            <font>
+               <Font name="Berlin Sans FB" size="28.0" />
+            </font>
+            <effect>
+               <Glow level="0.84" />
+            </effect>
+         </Label>
+         <Circle fill="#588dbf00" layoutX="147.0" layoutY="123.0" radius="109.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="6.0" />
+         <Label alignment="CENTER" layoutX="364.0" layoutY="38.0" opacity="0.0" prefHeight="73.0" prefWidth="253.0" text="GnFx" textAlignment="CENTER">
+            <font>
+               <Font name="Bradley Hand ITC" size="86.0" />
+            </font>
+            <textFill>
+               <LinearGradient endX="1.0" endY="1.0">
+                  <stops>
+                     <Stop color="#73e57b" />
+                     <Stop color="#73e57b" offset="0.007662835249042145" />
+                     <Stop color="#02796b" offset="1.0" />
+                  </stops>
+               </LinearGradient>
+            </textFill>
+         </Label>
+         <Label layoutX="395.0" layoutY="175.0" opacity="0.0" text="This project is part of the set of custom &#10;components created for JavaFx. " textFill="#00000080" wrapText="true" />
+         <ImageView fitHeight="69.0" fitWidth="84.0" layoutX="582.0" layoutY="320.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../media/logo.png" />
+            </image>
+         </ImageView>
+      </children>
    </AnchorPane>
 </StackPane>

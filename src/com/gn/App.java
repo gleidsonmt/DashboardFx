@@ -25,6 +25,7 @@ import com.gn.decorator.GNDecorator;
 import com.gn.decorator.options.ButtonType;
 import com.gn.module.loader.Loader;
 import com.gn.module.main.Main;
+import com.jfoenix.controls.JFXButton;
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -72,6 +73,7 @@ public class App extends Application {
 
         float total = 43; // the difference represents the views not loaded
         increment = 100f / total;
+
         load("designer", "carousel");
         load("designer", "cards");
         load("designer", "banners");
@@ -103,6 +105,7 @@ public class App extends Application {
         load("controls", "passwordfield");
         load("controls", "treeview");
         load("controls", "treetableview");
+
         load("dashboard", "dashboard");
 
         load("charts", "piechart");
@@ -187,6 +190,8 @@ public class App extends Application {
                 getClass().getResource("/com/gn/theme/css/helpers.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/master.css").toExternalForm()
         );
+
+        new JFXButton();
 
         decorator.getStage().setOnCloseRequest(event -> {
             App.getUserDetail().getPopOver().hide();
