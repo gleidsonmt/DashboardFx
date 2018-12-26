@@ -56,7 +56,7 @@ public class App extends Application {
     private float  increment = 0;
     private float  progress = 0;
 
-    private static UserDetail userDetail = null;
+
 
     private Section section;
     private User    user;
@@ -140,19 +140,24 @@ public class App extends Application {
 
     }
 
-    public static ObservableList<String>    stylesheets;
-    public static Scene                     scene;
-    public static GNDecorator               decorator;
-    public static HostServices              hostServices;
+    public static final GNDecorator decorator = new GNDecorator();
+    public static final Scene scene = decorator.getScene();
 
-    @Override
-    public  void start(Stage primary) {
-        GNDecorator decorator = new GNDecorator();
+    public static ObservableList<String>    stylesheets;
+    public static HostServices              hostServices;
+    private static UserDetail userDetail = null;
+
+    private void configServices(){
         hostServices = getHostServices();
-        App.decorator = decorator;
-        scene = decorator.getScene();
+    }
+
+    private void initialScene(){
+
         decorator.setTitle("Dashboard Fx");
         decorator.addButton(ButtonType.FULL_EFFECT);
+        decorator.initTheme(GNDecorator.Theme.DEFAULT);
+        stylesheets = decorator.getScene().getStylesheets();
+
         String log = logged();
         assert log != null;
 
@@ -179,8 +184,19 @@ public class App extends Application {
             decorator.setContent(ViewManager.getInstance().get("main"));
         }
 
-        decorator.initTheme(GNDecorator.Theme.DEFAULT);
-        stylesheets = decorator.getScene().getStylesheets();
+        decorator.getStage().setOnCloseRequest(event -> {
+            App.getUserDetail().getPopOver().hide();
+            if(Main.popConfig.isShowing()) Main.popConfig.hide();
+            if(Main.popup.isShowing()) Main.popup.hide();
+            Platform.exit();
+        });
+    }
+
+    @Override
+    public  void start(Stage primary) {
+
+        configServices();
+        initialScene();
 
         stylesheets.addAll(
                 getClass().getResource("/com/gn/theme/css/fonts.css").toExternalForm(),
@@ -194,12 +210,6 @@ public class App extends Application {
                 getClass().getResource("/com/gn/theme/css/master.css").toExternalForm()
         );
 
-        decorator.getStage().setOnCloseRequest(event -> {
-            App.getUserDetail().getPopOver().hide();
-            if(Main.popConfig.isShowing()) Main.popConfig.hide();
-            if(Main.popup.isShowing()) Main.popup.hide();
-            Platform.exit();
-        });
 
         decorator.setMaximized(true);
         decorator.getStage().getIcons().add(new Image("/com/gn/module/media/icon.png"));
@@ -229,6 +239,7 @@ public class App extends Application {
         LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private String logged(){
         try {
             File file = new File("dashboard.properties");
