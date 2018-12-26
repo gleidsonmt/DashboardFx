@@ -16,6 +16,7 @@
  */
 package com.gn.module.designer;
 
+import com.gn.App;
 import com.gn.GNCarousel;
 import javafx.animation.*;
 import javafx.collections.FXCollections;
@@ -94,5 +95,11 @@ public class Carousel implements Initializable {
         v5.setStyle("-fx-background-color : #EC407A;");
 
         return FXCollections.observableArrayList(v1, v2, v3, v4, v5);
+    }
+
+
+    @FXML
+    private void openProject() {
+        App.hostServices.showDocument("https://github.com/Gleidson28/GNCarousel");
     }
 }
