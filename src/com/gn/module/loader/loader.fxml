@@ -33,7 +33,11 @@
                   <Insets bottom="100.0" left="15.0" />
                </padding>
                <children>
-                  <Label text="This dashboard is a collection of the samples for javafx creators.&#10;&#10;&#10;" textFill="WHITE" />
+                  <Label prefHeight="68.0" prefWidth="279.0" text="This dashboard is a &#10;collection of the samples for javafx creators.&#10;&#10;&#10;" textFill="WHITE">
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                  </Label>
                </children>
             </VBox>
             <Label layoutX="5.0" layoutY="407.0" prefHeight="17.0" prefWidth="130.0" text="© Gleidson Neves da Silveira" textFill="WHITE" AnchorPane.bottomAnchor="10.0">
@@ -48,7 +52,7 @@
                </font>
             </Text>
             <Label layoutX="14.0" layoutY="336.0" text="Loading views.." textFill="WHITE" AnchorPane.bottomAnchor="60.0" />
-            <JFXProgressBar fx:id="progressBar" layoutX="14.0" layoutY="382.0" prefHeight="4.0" prefWidth="401.0" progress="0.16" AnchorPane.bottomAnchor="36.0" />
+            <JFXProgressBar fx:id="progressBar" layoutX="14.0" layoutY="382.0" prefHeight="4.0" prefWidth="401.0" progress="0.0" AnchorPane.bottomAnchor="36.0" />
             <Label layoutX="65.0" layoutY="75.0" prefHeight="114.0" prefWidth="176.0" styleClass="fix" text="Dashboard Fx" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Berlin Sans FB" size="28.0" />
