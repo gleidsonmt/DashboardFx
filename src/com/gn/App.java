@@ -28,6 +28,7 @@ import com.gn.module.main.Main;
 import com.jfoenix.controls.JFXButton;
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
+import javafx.application.HostServices;
 import javafx.application.Platform;
 import javafx.application.Preloader;
 import javafx.collections.ObservableList;
@@ -142,10 +143,12 @@ public class App extends Application {
     public static ObservableList<String>    stylesheets;
     public static Scene                     scene;
     public static GNDecorator               decorator;
+    public static HostServices              hostServices;
 
     @Override
     public  void start(Stage primary) {
         GNDecorator decorator = new GNDecorator();
+        hostServices = getHostServices();
         App.decorator = decorator;
         scene = decorator.getScene();
         decorator.setTitle("Dashboard Fx");
@@ -190,8 +193,6 @@ public class App extends Application {
                 getClass().getResource("/com/gn/theme/css/helpers.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/master.css").toExternalForm()
         );
-
-        new JFXButton();
 
         decorator.getStage().setOnCloseRequest(event -> {
             App.getUserDetail().getPopOver().hide();
