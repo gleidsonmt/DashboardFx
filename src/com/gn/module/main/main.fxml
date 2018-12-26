@@ -122,7 +122,7 @@
                               <Button layoutX="20.0" layoutY="395.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#progressBar" prefWidth="250" styleClass="drawer-item" text="ProgressBar" />
                               <Button layoutX="20.0" layoutY="420.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#progressIndicator" prefWidth="250" styleClass="drawer-item" text="ProgressIndicator" />
                               <Button layoutX="20.0" layoutY="836.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#radio" prefWidth="250" styleClass="drawer-item" text="RadioButton" />
-                              <Button layoutX="20.0" layoutY="1076.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="250" styleClass="drawer-item" text="ScrollBar" />
+                              <Button layoutX="20.0" layoutY="1076.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#scrollBar" prefWidth="250" styleClass="drawer-item" text="ScrollBar" />
                               <Button layoutX="20" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#slider" prefWidth="250" styleClass="drawer-item" text="Slider" />
                               <Button layoutX="20" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#spinner" prefWidth="250" styleClass="drawer-item" text="Spinner" />
                               <Button layoutX="20.0" layoutY="420.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#splitMenuButton" prefWidth="250" styleClass="drawer-item" text="SplitMenuButton" />

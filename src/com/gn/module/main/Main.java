@@ -591,7 +591,7 @@ public class Main implements Initializable {
 
     @FXML
     private void scrollBar(){
-        title.setText("TableView");
+        title.setText("ScrollBar");
         body.setContent(ViewManager.getInstance().get("scrollbar"));
     }
 
