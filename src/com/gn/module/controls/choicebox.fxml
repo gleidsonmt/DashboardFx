@@ -4,19 +4,15 @@
 <?import java.net.URL?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ContextMenu?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
@@ -30,7 +26,7 @@
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Label prefHeight="38.0" prefWidth="195.0" text="ComboBox">
+                              <Label prefHeight="38.0" prefWidth="195.0" text="ChoiceBox">
                                  <styleClass>
                                     <String fx:value="h3" />
                                     <String fx:value="title" />
@@ -38,7 +34,7 @@
                               </Label>
                               <TextFlow prefHeight="54.0" prefWidth="952.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." wrappingWidth="558.283203125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="The ChoiceBox is used for presenting the user with a relatively small set of predefined choices from which they may choose." wrappingWidth="558.283203125" />
                                  </children>
                               </TextFlow>
                            </children>
@@ -68,32 +64,6 @@
                                        </children>
                                     </VBox>
                                  </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                        <VBox prefWidth="952.0" spacing="20.0">
-                           <children>
-                              <Label text="Resources">
-                                 <styleClass>
-                                    <String fx:value="h3" />
-                                    <String fx:value="title" />
-                                 </styleClass>
-                              </Label>
-                              <Separator prefWidth="200.0" />
-                              <HBox id="block" alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="42.0" prefWidth="892.0" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <Hyperlink styleClass="h5" text="Documentation" HBox.hgrow="ALWAYS">
-                                       <graphic>
-                                          <SVGPath content="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
-                                       </graphic>
-                                    </Hyperlink>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
                               </HBox>
                            </children>
                         </VBox>
