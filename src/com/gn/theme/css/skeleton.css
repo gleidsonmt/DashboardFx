@@ -172,7 +172,7 @@
 .text
 /* .label */
 {
-  -fx-font-family : 'Roboto Regular';
+  -fx-font-family : Roboto Regular;
   /* -fx-font-family : 'Mechanization'; */
 }
 
@@ -1660,13 +1660,22 @@
 
 .toggle-light:focused,
 .toggle-light:pressed,
-.toggle-light:hover,
 .toggle-light:selected,
 .toggle-light:selected SVGPath
 {
+
     -fx-effect : null;
     -fx-text-fill : white;
+    -fx-background-color : -primary;
     -fx-fill : WHITE;
+}
+
+.toggle-light:hover,
+.toggle-light:hover SVGPath
+{
+  -fx-background-color : derive(-primary, 70%);
+  -fx-text-fill : WHITE;
+  -fx-fill : white;
 }
 
 

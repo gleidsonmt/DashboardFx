@@ -49,7 +49,7 @@
 
 .options .button:hover
 {
-		-fx-background-color : -light-gray;
+		-fx-background-color : #E6E9ED;
 }
 
 .options .button .text
