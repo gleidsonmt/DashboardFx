@@ -376,3 +376,30 @@
     -fx-scale-shape : false;
     -fx-background-color: -icon-color;
 }
+
+
+/************************************************************************************
+*
+*               Outilined
+*
+*************************************************************************************/
+
+
+.field-outlined
+{
+  -fx-border-color : transparent transparent -box-fill transparent;
+  -fx-border-width : 0 0 1 0;
+}
+
+.field-outlined:focused
+{
+  -fx-border-color : transparent transparent -base transparent;
+  -fx-border-width : 0 0 2 0;
+}
+
+
+/************************************************************************************
+*
+*               Test
+*
+*************************************************************************************/
