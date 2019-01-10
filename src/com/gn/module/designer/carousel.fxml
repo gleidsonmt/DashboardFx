@@ -42,7 +42,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
                            <children>
-                              <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0" styleClass="box-light">
+                              <HBox alignment="CENTER" prefHeight="482.0" prefWidth="940.0" spacing="10.0" styleClass="box-light">
                                  <padding>
                                     <Insets bottom="10.0" top="10.0" />
                                  </padding>

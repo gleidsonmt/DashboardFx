@@ -18,29 +18,14 @@ package com.gn.module.designer;
 
 import com.gn.App;
 import com.gn.GNCarousel;
-import javafx.animation.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Pagination;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
-import javafx.stage.Screen;
-import javafx.util.Callback;
-import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,10 +41,7 @@ public class Carousel implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        carousel.getItems().setAll(createItems());
-        carousel.setVelocity(Duration.millis(500));
-        carousel.setTitle("Title");
-        carousel.setSubtitle("This is a subtitle");
+        carousel.setItems(createItems());
     }
 
     private ObservableList<Node> createItems(){
