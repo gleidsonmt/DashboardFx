@@ -3,11 +3,8 @@
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.ToggleButton?>
@@ -37,7 +34,7 @@
                               </Label>
                               <TextFlow prefHeight="54.0" prefWidth="952.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." wrappingWidth="558.283203125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Represents a control that can be toggled between selected and non-selected states. In addition, a Toggle can be assigned a ToggleGroup, which manages all assigned Toggles such that only a single Toggle within the ToggleGroup may be selected at any one time." wrappingWidth="558.283203125" />
                                  </children>
                               </TextFlow>
                            </children>
@@ -48,32 +45,6 @@
                                  <children>
                                     <ToggleButton mnemonicParsing="false" prefHeight="54.0" prefWidth="91.0" text="Default" />
                                  </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                        <VBox prefWidth="952.0" spacing="20.0">
-                           <children>
-                              <Label text="Resources">
-                                 <styleClass>
-                                    <String fx:value="h3" />
-                                    <String fx:value="title" />
-                                 </styleClass>
-                              </Label>
-                              <Separator prefWidth="200.0" />
-                              <HBox id="block" alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="42.0" prefWidth="892.0" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <Hyperlink styleClass="h5" text="Documentation" HBox.hgrow="ALWAYS">
-                                       <graphic>
-                                          <SVGPath content="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
-                                       </graphic>
-                                    </Hyperlink>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
                               </HBox>
                            </children>
                         </VBox>
@@ -100,7 +71,7 @@
                                     </Label>
                                     <TextFlow prefHeight="54.0" prefWidth="952.0">
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Samples of the grouped toggle-buttons." />
                                        </children></TextFlow>
                                  </children>
                               </VBox>
@@ -138,7 +109,6 @@
                                           <ToggleButton mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Day">
                                              <styleClass>
                                                 <String fx:value="toggle-light" />
-                                                <String fx:value="btn-primary" />
                                                 <String fx:value="toggle-left" />
                                                 <String fx:value="border-primary" />
                                              </styleClass>
@@ -148,18 +118,16 @@
                                           </ToggleButton>
                                           <ToggleButton layoutX="369.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" selected="true" text="Week" toggleGroup="$t2">
                                              <styleClass>
+                                                <String fx:value="border-primary" />
                                                 <String fx:value="toggle-light" />
                                                 <String fx:value="toggle-center" />
-                                                <String fx:value="btn-primary" />
-                                                <String fx:value="border-primary" />
                                              </styleClass>
                                           </ToggleButton>
-                                          <ToggleButton mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" style="-fx-border-color: -primary;" text="Year" toggleGroup="$t2">
+                                          <ToggleButton mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Year" toggleGroup="$t2">
                                              <styleClass>
                                                 <String fx:value="toggle-light" />
                                                 <String fx:value="toggle-right" />
                                                 <String fx:value="border-primary" />
-                                                <String fx:value="btn-primary" />
                                              </styleClass>
                                           </ToggleButton>
                                        </children>
@@ -169,7 +137,6 @@
                                           <ToggleButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" style="-fx-border-color: -primary transparent -primary -primary;" text="On">
                                              <styleClass>
                                                 <String fx:value="toggle-light" />
-                                                <String fx:value="btn-primary" />
                                                 <String fx:value="toggle-left" />
                                              </styleClass>
                                              <graphic>
@@ -179,21 +146,19 @@
                                                 <ToggleGroup fx:id="t3" />
                                              </toggleGroup>
                                           </ToggleButton>
-                                          <ToggleButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" selected="true" style="-fx-border-color: -primary transparent;" text="Week" toggleGroup="$t3">
+                                          <ToggleButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" style="-fx-border-color: -primary transparent;" text="Week" toggleGroup="$t3">
                                              <styleClass>
                                                 <String fx:value="toggle-light" />
                                                 <String fx:value="toggle-center" />
-                                                <String fx:value="btn-primary" />
                                              </styleClass>
                                              <graphic>
                                                 <SVGPath content="M3 21h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18V7H3v2zm0-6v2h18V3H3z" fill="#00000066" />
                                              </graphic>
                                           </ToggleButton>
-                                          <ToggleButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" style="-fx-border-color: -primary -primary -primary transparent;" text="Year" toggleGroup="$t3">
+                                          <ToggleButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" selected="true" style="-fx-border-color: -primary -primary -primary transparent;" text="Year" toggleGroup="$t3">
                                              <styleClass>
                                                 <String fx:value="toggle-light" />
                                                 <String fx:value="toggle-right" />
-                                                <String fx:value="btn-primary" />
                                              </styleClass>
                                              <graphic>
                                                 <SVGPath content="M3 21h18v-2H3v2zm6-4h12v-2H9v2zm-6-4h18v-2H3v2zm6-4h12V7H9v2zM3 3v2h18V3H3z" fill="#00000067" />
@@ -206,7 +171,6 @@
                                           <ToggleButton mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" style="-fx-border-color: -primary transparent -primary -primary;" text="On">
                                              <styleClass>
                                                 <String fx:value="toggle-light" />
-                                                <String fx:value="btn-primary" />
                                                 <String fx:value="toggle-left" />
                                              </styleClass>
                                              <toggleGroup>
@@ -217,7 +181,6 @@
                                              <styleClass>
                                                 <String fx:value="toggle-light" />
                                                 <String fx:value="toggle-right" />
-                                                <String fx:value="btn-primary" />
                                              </styleClass>
                                           </ToggleButton>
                                        </children>
@@ -255,7 +218,7 @@
                                     </Label>
                                     <TextFlow prefHeight="54.0" prefWidth="952.0">
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec commodo risus. Aenean eu porttitor est. Maecenas a tincidunt nunc." />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Standard colors based on bootstrap." />
                                        </children>
                                     </TextFlow>
                                  </children>
