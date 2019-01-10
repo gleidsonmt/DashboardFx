@@ -17,6 +17,7 @@
 package com.gn.module.main;
 
 import com.gn.App;
+import com.gn.control.UserDetail;
 import com.gn.control.plugin.ViewManager;
 import com.gn.decorator.GNDecorator;
 import com.jfoenix.controls.JFXButton;
@@ -89,7 +90,10 @@ public class Config implements Initializable {
                 getClass().getResource(path + "master.css").toExternalForm()
         );
 
+        App.getUserDetail().getStylesheets().setAll(stylesheets);
+
         for (Node node : ViewManager.getInstance().getAll()) {
+            ((StackPane) node).getStylesheets().clear();
             ((StackPane) node).getStylesheets().setAll(stylesheets);
         }
 
@@ -97,8 +101,10 @@ public class Config implements Initializable {
 
         Platform.runLater(() -> {
 //          force pop's transition
+
             Main.popup.getRoot().getStylesheets().remove(Main.popup.getRoot().getStylesheets().size() - 1);
-            Main.popConfig.getRoot().getStylesheets().remove(Main.popup.getRoot().getStylesheets().size() - 1);
+            Main.popConfig.getRoot().getStylesheets().remove(Main.popConfig.getRoot().getStylesheets().size() - 1);
+
             Main.popup.getRoot().getStylesheets().add(path + "pop" + theme);
             Main.popConfig.getRoot().getStylesheets().add(path + "pop" + theme);
         });
