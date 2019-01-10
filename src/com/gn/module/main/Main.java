@@ -23,6 +23,8 @@ import com.jfoenix.controls.JFXBadge;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -62,7 +64,7 @@ public class Main implements Initializable {
     @FXML private VBox info;
     @FXML private VBox views;
     @FXML private Circle cStatus;
-    @FXML private HBox status;
+    @FXML private Label status;
     @FXML public  ScrollPane body;
     @FXML public  Label title;
     @FXML private TextField search;
@@ -81,6 +83,9 @@ public class Main implements Initializable {
     @FXML private JFXBadge messages;
     @FXML private JFXBadge notifications;
     @FXML private JFXBadge bg_info;
+    @FXML private ToggleGroup group;
+
+    @FXML private RadioButton available;
 
     private FilteredList<Button> filteredList = null;
 
@@ -105,6 +110,16 @@ public class Main implements Initializable {
     public void initialize(URL location, ResourceBundle resources)  {
         ctrl = this;
         loadContentPopup();
+
+        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+                cStatus.setFill( ((RadioButton) newValue).getTextFill());
+                status.setText(((RadioButton)newValue).getText());
+            }
+        });
+
+
 
         populateItems();
         filteredList = new FilteredList<>(items, s -> true);
@@ -221,7 +236,7 @@ public class Main implements Initializable {
     private void addSubPop() throws Exception {
         popup.setContentNode(FXMLLoader.load(getClass().getResource("/com/gn/module/main/Popover.fxml")));
 
-        popup.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+//        popup.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
 
         popup.setArrowLocation(PopOver.ArrowLocation.LEFT_CENTER);
         popup.setArrowIndent(0);

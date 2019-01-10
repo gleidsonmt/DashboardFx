@@ -12,9 +12,12 @@
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.HBox?>
@@ -37,18 +40,68 @@
                         <DropShadow color="#00000032" />
                      </effect>
                   </GNAvatarView>
-               <VBox fx:id="info" alignment="CENTER" minHeight="-Infinity" prefHeight="93.0" prefWidth="249.0">
+               <VBox fx:id="info" alignment="CENTER" minHeight="-Infinity" prefHeight="101.0" prefWidth="249.0">
                   <children>
-                     <Label text="Gleidson Neves da Silveira" />
+                     <Label alignment="CENTER" prefHeight="32.0" prefWidth="166.0" style="-fx-text-fill: -text-color;" text="Gleidson Neves da Silveira" textAlignment="CENTER">
+                        <VBox.margin>
+                           <Insets top="10.0" />
+                        </VBox.margin>
+                        <font>
+                           <Font name="Roboto" size="12.0" />
+                        </font></Label>
                      <HBox alignment="CENTER" prefHeight="27.0" prefWidth="249.0" spacing="4.0">
                         <children>
-                           <Circle fill="DODGERBLUE" radius="6.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: -success;">
+                           <Circle fx:id="cStatus" fill="DODGERBLUE" radius="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: -success;">
                               <effect>
                                  <DropShadow color="#00000032" />
                               </effect>
                            </Circle>
-                           <Label text="Online" />
+                           <Label fx:id="status" alignment="CENTER" maxWidth="50.0" minWidth="50.0" style="-fx-text-fill: -text-color;" text="Available" />
                         </children>
+                     </HBox>
+                     <HBox prefHeight="53.0" prefWidth="249.0" VBox.vgrow="ALWAYS">
+                        <children>
+                           <HBox alignment="CENTER" prefHeight="65.0" prefWidth="249.0" spacing="30.0" HBox.hgrow="ALWAYS">
+                              <children>
+                                 <RadioButton contentDisplay="GRAPHIC_ONLY" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="25.0" selected="true" style="-fx-text-fill: -success;" text="Available">
+                                    <toggleGroup>
+                                       <ToggleGroup fx:id="group" />
+                                    </toggleGroup>
+                                    <styleClass>
+                                       <String fx:value="radio-success" />
+                                       <String fx:value="radio-drawer" />
+                                    </styleClass>
+                                    <tooltip>
+                                       <Tooltip text="Available" />
+                                    </tooltip>
+                                 </RadioButton>
+                                 <RadioButton contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="25.0" style="-fx-text-fill: -warning;" text="Away" toggleGroup="$group">
+                                    <styleClass>
+                                       <String fx:value="radio-warning" />
+                                       <String fx:value="radio-drawer" />
+                                    </styleClass>
+                                    <tooltip>
+                                       <Tooltip text="Away" />
+                                    </tooltip>
+                                 </RadioButton>
+                                 <RadioButton contentDisplay="GRAPHIC_ONLY" layoutX="110.0" layoutY="10.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="24.0" prefWidth="25.0" style="-fx-text-fill: -danger;" text="Busy" toggleGroup="$group">
+                                    <styleClass>
+                                       <String fx:value="radio-danger" />
+                                       <String fx:value="radio-drawer" />
+                                    </styleClass>
+                                    <tooltip>
+                                       <Tooltip text="Busy" />
+                                    </tooltip>
+                                 </RadioButton>
+                              </children>
+                           </HBox>
+                        </children>
+                        <VBox.margin>
+                           <Insets />
+                        </VBox.margin>
+                        <padding>
+                           <Insets bottom="10.0" top="10.0" />
+                        </padding>
                      </HBox>
                   </children>
                </VBox>
@@ -70,7 +123,7 @@
                   <content>
                      <VBox fx:id="views" styleClass="drawer-content">
                         <children>
-                           <Button fx:id="home" alignment="BASELINE_LEFT" graphicTextGap="20.0" mnemonicParsing="false" onMouseClicked="#dashboard" prefHeight="50.0" prefWidth="271.0" styleClass="drawer-item" text="Dashboardd">
+                           <Button fx:id="home" alignment="BASELINE_LEFT" graphicTextGap="20.0" mnemonicParsing="false" onMouseClicked="#dashboard" prefHeight="50.0" prefWidth="271.0" styleClass="drawer-item" text="Dashboard">
                               <graphic>
                                  <SVGPath content="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" mouseTransparent="true" styleClass="icon" />
                               </graphic>
@@ -176,90 +229,86 @@
             </VBox>
             <VBox fx:id="content" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" styleClass="drawer" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="904.0">
+                  <VBox>
                      <children>
-                        <VBox alignment="CENTER">
-                           <padding>
-                              <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                           </padding>
-                        </VBox>
-                        <Button fx:id="hamburger" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#altLayout" prefWidth="40.0" styleClass="hamburger" text="Button">
-                           <graphic>
-                              <SVGPath content="M2 15.5v2h20v-2H2zm0-5v2h20v-2H2zm0-5v2h20v-2H2z" styleClass="icon" />
-                           </graphic>
-                        </Button>
-                        <Label fx:id="title" styleClass="h4" text="Dashboard" textFill="#0000008c">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                        <HBox prefHeight="35.0" prefWidth="854.0" />
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="904.0" style="-fx-border-width: 1 0;" styleClass="border">
                            <children>
-                              <JFXBadge fx:id="bg_info" layoutX="732.0" layoutY="12.0" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" text="32" visible="false">
-                                 <styleClass>
-                                    <String fx:value="icon" />
-                                    <String fx:value="icon-danger" />
-                                 </styleClass>
-                                 <control>
-                                    <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 10;" styleClass="icon-notification">
-                                       <children>
-                                          <FontAwesomeIconView glyphName="FLAG" size="20" styleClass="icon" StackPane.alignment="CENTER" />
-                                       </children>
-                                    </StackPane>
-                                 </control>
-                              </JFXBadge>
-                              <JFXBadge fx:id="notifications" onMouseClicked="#openNotification" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" text="41">
-                                 <styleClass>
-                                    <String fx:value="icon" />
-                                    <String fx:value="icon-warning" />
-                                 </styleClass>
-                                 <control>
-                                    <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 10;">
-                                       <children>
-                                          <FontAwesomeIconView glyphName="BELL" size="20" styleClass="icon" StackPane.alignment="CENTER" />
-                                       </children>
-                                    </StackPane>
-                                 </control>
-                              </JFXBadge>
-                              <JFXBadge fx:id="messages" layoutX="759.0" layoutY="12.0" onMouseClicked="#openMessages" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" styleClass="icon" text="12">
-                                 <control>
-                                    <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 10;">
-                                       <children>
-                                          <FontAwesomeIconView glyphName="ENVELOPE" size="20" styleClass="icon" />
-                                       </children>
-                                    </StackPane>
-                                 </control>
-                              </JFXBadge>
-                              <JFXButton fx:id="config" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#openConfig" prefHeight="83.0" prefWidth="40.0" ripplerFill="BLACK">
+                              <Button fx:id="hamburger" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#altLayout" prefWidth="40.0" styleClass="hamburger" text="Button">
                                  <graphic>
-                                    <SVGPath content="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="#00000080" styleClass="icon" />
+                                    <SVGPath content="M2 15.5v2h20v-2H2zm0-5v2h20v-2H2zm0-5v2h20v-2H2z" styleClass="icon" />
                                  </graphic>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <styleClass>
-                                    <String fx:value="btn-transparent" />
-                                    <String fx:value="round" />
-                                 </styleClass>
-                                 <contextMenu>
-                                    <ContextMenu>
-                                      <items>
-                                        <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                                      </items>
-                                    </ContextMenu>
-                                 </contextMenu>
-                              </JFXButton>
+                              </Button>
+                              <Label fx:id="title" styleClass="h4" text="Dashboard" textFill="#0000008c">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <JFXBadge fx:id="bg_info" layoutX="732.0" layoutY="12.0" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" text="32" visible="false">
+                                       <styleClass>
+                                          <String fx:value="icon" />
+                                          <String fx:value="icon-danger" />
+                                       </styleClass>
+                                       <control>
+                                          <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 10;" styleClass="icon-notification">
+                                             <children>
+                                                <FontAwesomeIconView glyphName="FLAG" size="20" styleClass="icon" StackPane.alignment="CENTER" />
+                                             </children>
+                                          </StackPane>
+                                       </control>
+                                    </JFXBadge>
+                                    <JFXBadge fx:id="notifications" onMouseClicked="#openNotification" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" text="41">
+                                       <styleClass>
+                                          <String fx:value="icon" />
+                                          <String fx:value="icon-warning" />
+                                       </styleClass>
+                                       <control>
+                                          <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 10;">
+                                             <children>
+                                                <FontAwesomeIconView glyphName="BELL" size="20" styleClass="icon" StackPane.alignment="CENTER" />
+                                             </children>
+                                          </StackPane>
+                                       </control>
+                                    </JFXBadge>
+                                    <JFXBadge fx:id="messages" layoutX="759.0" layoutY="12.0" onMouseClicked="#openMessages" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" styleClass="icon" text="12">
+                                       <control>
+                                          <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 10;">
+                                             <children>
+                                                <FontAwesomeIconView glyphName="ENVELOPE" size="20" styleClass="icon" />
+                                             </children>
+                                          </StackPane>
+                                       </control>
+                                    </JFXBadge>
+                                    <JFXButton fx:id="config" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#openConfig" prefHeight="83.0" prefWidth="40.0" ripplerFill="BLACK">
+                                       <graphic>
+                                          <SVGPath content="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="#00000080" styleClass="icon" />
+                                       </graphic>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <styleClass>
+                                          <String fx:value="btn-transparent" />
+                                          <String fx:value="round" />
+                                       </styleClass>
+                                       <contextMenu>
+                                          <ContextMenu>
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                    </JFXButton>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="2.0" />
+                                 </HBox.margin>
+                              </HBox>
                            </children>
-                           <HBox.margin>
-                              <Insets top="2.0" />
-                           </HBox.margin>
                         </HBox>
                      </children>
-                     <styleClass>
-                        <String fx:value="border-b-1" />
-                        <String fx:value="border" />
-                     </styleClass>
-                  </HBox>
+                  </VBox>
                   <StackPane prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <children>
                         <ScrollPane fx:id="body" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT">
@@ -277,15 +326,14 @@
          </styleClass>
       </HBox>
    </children>
-   <stylesheets>
-      <URL value="@../../theme/css/material-color.css" />
-      <URL value="@../../theme/css/skeleton.css" />
-      <URL value="@../../theme/css/light.css" />
-      <URL value="@../../theme/css/bootstrap.css" />
-      <URL value="@../../theme/css/simple-green.css" />
-      <URL value="@../../theme/css/forms.css" />
-      <URL value="@../../theme/css/typographic.css" />
-      <URL value="@../../theme/css/helpers.css" />
-      <URL value="@../../theme/css/master.css" />
-   </stylesheets>
+    <stylesheets>
+        <URL value="@../../theme/css/material-color.css" />
+        <URL value="@../../theme/css/skeleton.css" />
+        <URL value="@../../theme/css/light.css" />
+        <URL value="@../../theme/css/bootstrap.css" />
+        <URL value="@../../theme/css/forms.css" />
+        <URL value="@../../theme/css/typographic.css" />
+        <URL value="@../../theme/css/helpers.css" />
+        <URL value="@../../theme/css/master.css" />
+    </stylesheets>
 </StackPane>
