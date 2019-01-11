@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.control;
+package com.gn.global;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
