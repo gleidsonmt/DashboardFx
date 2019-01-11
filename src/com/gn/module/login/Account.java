@@ -93,7 +93,7 @@ public class Account implements Initializable {
         pulse.setDelay(Duration.millis(20));
         pulse.play();
 
-        if (validEmail() && validFullname() && validFullname() && validUsername() && validPassword()) {
+        if (validEmail() && validFullName() && validFullName() && validUsername() && validPassword()) {
 
             String user = username.getText();
             String extension = "properties";
@@ -113,7 +113,7 @@ public class Account implements Initializable {
             }
         } else if (!validUsername()){
             lbl_username.setVisible(true);
-        } else if (!validFullname()) {
+        } else if (!validFullName()) {
             lbl_fullname.setVisible(true);
         } else if (!validEmail()){
             lbl_email.setVisible(true);
@@ -189,7 +189,7 @@ public class Account implements Initializable {
         return !username.getText().isEmpty() && username.getLength() > 3 ;
     }
 
-    private boolean validFullname(){
+    private boolean validFullName(){
         return !fullname.getText().isEmpty() && fullname.getLength() > 3 ;
     }
 
@@ -251,7 +251,7 @@ public class Account implements Initializable {
         });
 
         fullname.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!validFullname()){
+            if(!validFullName()){
                 if(!newValue){
                     Flash swing = new Flash(box_fullname);
                     lbl_fullname.setVisible(true);
