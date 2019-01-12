@@ -17,8 +17,8 @@
 package com.gn.module.main;
 
 import com.gn.GNAvatarView;
-import com.gn.control.plugin.ViewManager;
-import com.gn.control.factory.AlertCell;
+import com.gn.global.plugin.ViewManager;
+import com.gn.global.factory.AlertCell;
 import com.jfoenix.controls.JFXBadge;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;

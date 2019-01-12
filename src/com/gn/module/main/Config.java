@@ -17,8 +17,7 @@
 package com.gn.module.main;
 
 import com.gn.App;
-import com.gn.control.UserDetail;
-import com.gn.control.plugin.ViewManager;
+import com.gn.global.plugin.ViewManager;
 import com.gn.decorator.GNDecorator;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
