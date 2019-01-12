@@ -330,11 +330,6 @@
                                              </cursor>
                                           </VBox>
                                           <Label layoutX="13.0" layoutY="35.0" minHeight="5.0" prefHeight="5.0" prefWidth="238.0" styleClass="success" />
-                                          <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total number of users" textAlignment="RIGHT">
-                                             <font>
-                                                <Font name="Roboto Regular" size="14.0" />
-                                             </font>
-                                          </Label>
                                           <Label alignment="CENTER_RIGHT" layoutX="160.0" layoutY="-34.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h4" text="Registered" textFill="#8d8b8b">
                                              <font>
                                                 <Font name="Roboto Black" size="14.0" />
@@ -343,6 +338,11 @@
                                           <Label alignment="TOP_RIGHT" layoutX="159.0" layoutY="2.0" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="10">
                                              <font>
                                                 <Font name="Roboto Black" size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="18.0" prefWidth="238.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total number of users" textAlignment="RIGHT">
+                                             <font>
+                                                <Font name="Roboto" size="14.0" />
                                              </font>
                                           </Label>
                                        </children>
@@ -502,7 +502,6 @@
       <URL value="@../../theme/css/skeleton.css" />
       <URL value="@../../theme/css/light.css" />
       <URL value="@../../theme/css/bootstrap.css" />
-      <URL value="@../../theme/css/simple-green.css" />
       <URL value="@../../theme/css/forms.css" />
       <URL value="@../../theme/css/typographic.css" />
       <URL value="@../../theme/css/helpers.css" />
