@@ -17,7 +17,7 @@
   -text-color       : -dark-gray;
 
   /* box components */
-  -box-fill         : -medium-gray;  /* cor da borda */
+  -box-fill         : rgba(0,0,0,.24);  /* cor da borda */
   -box-base         : transparent;   /* background */
   -box-text-color   : -dark-gray;    /* cor do combo */
 

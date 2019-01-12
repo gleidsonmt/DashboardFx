@@ -39,6 +39,10 @@ public class SectionManager {
             File file = new File("dashboard.properties");
             Properties properties = new Properties();
 
+            if(!file.exists()){
+                file.createNewFile();
+            }
+
             FileInputStream inputStream = new FileInputStream(file);
             properties.load(inputStream);
 

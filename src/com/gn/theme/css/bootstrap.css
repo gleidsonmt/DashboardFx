@@ -354,11 +354,11 @@
 *************************************************************************************/
 
 .clearable-field{
-    -fx-skin: "com.gn.control.skin.ClearableSkin";
+    -fx-skin: "com.gn.theme.skin.ClearableSkin";
 }
 
 .viewer-field{
-    -fx-skin: "com.gn.control.skin.ViewerSkin";
+    -fx-skin: "com.gn.theme.skin.ViewerSkin";
 }
 
 .text-input > .right-button{

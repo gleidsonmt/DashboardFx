@@ -17,15 +17,14 @@
 
 package com.gn;
 
-import com.gn.control.*;
-import com.gn.control.plugin.SectionManager;
-import com.gn.control.plugin.UserManager;
-import com.gn.control.plugin.ViewManager;
+import com.gn.global.*;
+import com.gn.global.plugin.SectionManager;
+import com.gn.global.plugin.UserManager;
+import com.gn.global.plugin.ViewManager;
 import com.gn.decorator.GNDecorator;
 import com.gn.decorator.options.ButtonType;
 import com.gn.module.loader.Loader;
 import com.gn.module.main.Main;
-import com.jfoenix.controls.JFXButton;
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.application.HostServices;
@@ -34,9 +33,7 @@ import javafx.application.Preloader;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
 
@@ -55,9 +52,6 @@ public class App extends Application {
 
     private float  increment = 0;
     private float  progress = 0;
-
-
-
     private Section section;
     private User    user;
 
@@ -75,9 +69,9 @@ public class App extends Application {
         float total = 43; // the difference represents the views not loaded
         increment = 100f / total;
 
-        load("designer", "carousel");
         load("designer", "cards");
         load("designer", "banners");
+        load("designer", "carousel");
 
         load("controls", "button");
         load("controls", "toggle");
@@ -153,10 +147,11 @@ public class App extends Application {
 
     private void initialScene(){
 
-        decorator.setTitle("Dashboard Fx");
+        decorator.setTitle(null);
+        decorator.setIcon(null);
         decorator.addButton(ButtonType.FULL_EFFECT);
         decorator.initTheme(GNDecorator.Theme.DEFAULT);
-        stylesheets = decorator.getScene().getStylesheets();
+        decorator.fullBody();
 
         String log = logged();
         assert log != null;
@@ -169,7 +164,6 @@ public class App extends Application {
                 Main.ctrl.title.setText("Profile");
                 Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
                 userDetail.getPopOver().hide();
-
             });
 
             userDetail.setSignAction(event -> {
@@ -198,6 +192,8 @@ public class App extends Application {
         configServices();
         initialScene();
 
+        stylesheets = decorator.getScene().getStylesheets();
+
         stylesheets.addAll(
                 getClass().getResource("/com/gn/theme/css/fonts.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/material-color.css").toExternalForm(),
@@ -210,9 +206,8 @@ public class App extends Application {
                 getClass().getResource("/com/gn/theme/css/master.css").toExternalForm()
         );
 
-
         decorator.setMaximized(true);
-        decorator.getStage().getIcons().add(new Image("/com/gn/module/media/icon.png"));
+        decorator.getStage().getIcons().add(new Image("/com/gn/module/media/logo2.png"));
         decorator.show();
 
         ScenicView.show(decorator.getScene());
@@ -244,6 +239,8 @@ public class App extends Application {
         try {
             File file = new File("dashboard.properties");
             Properties properties = new Properties();
+
+            System.out.println(file.exists());
 
             if(!file.exists()){
                 file.createNewFile();
