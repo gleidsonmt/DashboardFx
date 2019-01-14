@@ -2257,6 +2257,9 @@
   -fx-background-color : -list-cell;
 }
 
+.table-view {
+  -fx-fixed-cell-size : 40px;
+}
 
 .table-view .column-header-background .nested-column-header .table-column,
 .table-view .column-header-background,

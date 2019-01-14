@@ -107,6 +107,21 @@
   -fx-background-color : -base;
 }
 
+.btn-white
+{
+    -base : white;
+    -fx-background-color : -base;
+}
+
+.btn-white:hover:focused
+{
+  -icon-color : -text-color;
+}
+
+.btn-white:hover {
+    -icon-color : white;
+}
+
 /************************************************************************************
 *
 *               @-fx-border-width
