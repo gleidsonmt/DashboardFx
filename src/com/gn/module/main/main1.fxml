@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gn.control.DrawerContent?>
-<?import com.gn.control.DrawerItem?>
-<?import com.gn.control.DrawerList?>
-<?import com.gn.control.GNDrawer?>
+<?import com.gn.global.DrawerContent?>
+<?import com.gn.global.DrawerItem?>
+<?import com.gn.global.DrawerList?>
+<?import com.gn.global.GNDrawer?>
 <?import com.jfoenix.controls.JFXBadge?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
