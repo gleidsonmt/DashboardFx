@@ -37,11 +37,8 @@ public class ClearableSkin extends SkinAction {
     }
     @Override
     void textChanged() {
-        if (getTextField().getText() == null) {
-            return;
-        }
-        getButton().setVisible(!getTextField().getText().isEmpty());
-        getGraphic().setVisible(!getTextField().getText().isEmpty());
+        getButton().setVisible(getTextField().isFocused() && !getTextField().getText().isEmpty());
+        getGraphic().setVisible(getTextField().isFocused() && !getTextField().getText().isEmpty());
     }
 
     @Override
