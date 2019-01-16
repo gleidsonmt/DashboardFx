@@ -622,6 +622,12 @@ public class Main implements Initializable {
         body.setContent(ViewManager.getInstance().get("treeview"));
     }
 
+    @FXML
+    private void animateButtons(){
+        title.setText("Animated Button");
+        body.setContent(ViewManager.getInstance().get("animated-button"));
+    }
+
     private PopOver pop = new PopOver();
     @FXML
     private void openMessages(){

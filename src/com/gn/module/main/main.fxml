@@ -147,6 +147,7 @@
                                        <Button alignment="BASELINE_LEFT" cache="true" layoutX="20.0" layoutY="20.0" onMouseClicked="#banners" prefWidth="250" styleClass="drawer-item" text="Banners" />
                                        <Button onMouseClicked="#carousel" prefWidth="250" styleClass="drawer-item" text="Carousel" />
                                        <Button cache="true" layoutX="20.0" layoutY="20.0" onMouseClicked="#cards" prefWidth="250" styleClass="drawer-item" text="Cards" />
+                                       <Button cache="true" layoutX="20.0" layoutY="120.0" onMouseClicked="#animateButtons" prefWidth="250" styleClass="drawer-item" text="Animated Button" />
                                     </children>
                                  </VBox>
                               </content>
