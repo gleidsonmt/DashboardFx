@@ -32,11 +32,15 @@ public class ClearableSkin extends SkinAction {
 
     @Override
     void mouseReleased() {
-        getTextField().setText(null);
+        getTextField().setText("");
         getGraphic().setVisible(false);
     }
+
     @Override
     void textChanged() {
+        if(getTextField().getLength() > 0 && getTextField().getText() == null )
+            return;
+
         getButton().setVisible(getTextField().isFocused() && !getTextField().getText().isEmpty());
         getGraphic().setVisible(getTextField().isFocused() && !getTextField().getText().isEmpty());
     }
