@@ -69,9 +69,12 @@ public class App extends Application {
         float total = 43; // the difference represents the views not loaded
         increment = 100f / total;
 
+        load("jfoenix", "jfx-text-field");
+
         load("designer", "cards");
         load("designer", "banners");
         load("designer", "carousel");
+        load("designer", "animated-button");
 
         load("controls", "button");
         load("controls", "toggle");
@@ -210,7 +213,7 @@ public class App extends Application {
         decorator.getStage().getIcons().add(new Image("/com/gn/module/media/logo2.png"));
         decorator.show();
 
-        ScenicView.show(decorator.getScene());
+//        ScenicView.show(decorator.getScene());
     }
 
     public static void main(String[] args) {

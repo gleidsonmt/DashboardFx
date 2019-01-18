@@ -224,6 +224,7 @@
 *
 *************************************************************************************/
 
+
 .tree-view:focused,
 .text-field:focused, .list-view,
 .menu-button:focused, .choice-box:focused, .split-menu-button:focused,
@@ -2479,4 +2480,21 @@
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0,0 0 2 0, 0 0 2 0, 0 0 2 0;
     -fx-background-color : derive(-base, -40%), derive(-base, -40%), derive(-base, -40%), -base;
+}
+
+/*******************************************************************************
+*                                                                              *
+*       @jfoenix
+*                                                                              *
+*******************************************************************************/
+
+.jfx-text-field {
+  -fx-border-width : 0px;
+  -fx-border-color : transparent;
+  -jfx-unfocus-color : -box-fill;
+  -jfx-focus-color : -base;
+}
+
+.jfx-text-field .input-line {
+  /* -fx-background-color : -box-fill; */
 }

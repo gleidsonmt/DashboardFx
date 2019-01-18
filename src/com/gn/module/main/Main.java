@@ -628,6 +628,12 @@ public class Main implements Initializable {
         body.setContent(ViewManager.getInstance().get("animated-button"));
     }
 
+    @FXML
+    private void jfxTextField(){
+        title.setText("JFXTextField");
+        body.setContent(ViewManager.getInstance().get("jfx-text-field"));
+    }
+
     private PopOver pop = new PopOver();
     @FXML
     private void openMessages(){
