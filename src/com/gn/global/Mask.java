@@ -18,6 +18,7 @@ package com.gn.global;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 
 /**
@@ -25,7 +26,7 @@ import javafx.scene.control.TextField;
  * Create on  24/11/2018
  * Version 1.0
  */
-public class Mask  {
+public class Mask {
     public static void noSpaces(TextField field){
         field.lengthProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -40,6 +41,22 @@ public class Mask  {
             }
         });
 
+
+    }
+
+    public static void noSpaces(Spinner field) {
+        field.getEditor().lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (field.getEditor().getText() != null) {
+                    if (field.getEditor().getText().length() > 0) {
+                        String value = field.getEditor().getText();
+                        value = value.replaceFirst("[ ]", "");
+                        field.getEditor().setText(value);
+                    }
+                }
+            }
+        });
     }
 
     public static void maxField(TextField field, int length) {
@@ -143,6 +160,32 @@ public class Mask  {
                     value = value.replaceAll("[^a-zA-Z0-9@.]", "");
                     field.setText(value);
 
+                }
+            }
+        });
+    }
+
+    public static void noLetters(final TextField textField) {
+
+        textField.lengthProperty().addListener((observable, oldValue, newValue) -> {
+            if (textField.getText() != null) {
+                if (textField.getText().length() > 0) {
+                    String value = textField.getText();
+                    value = value.replaceAll("[a-zA-Zç]", "");
+                    textField.setText(value);
+                }
+            }
+        });
+    }
+
+    public static void noLetters(final Spinner textField) {
+
+        textField.getEditor().lengthProperty().addListener((observable, oldValue, newValue) -> {
+            if (textField.getEditor().getText() != null) {
+                if (textField.getEditor().getText().length() > 0) {
+                    String value = textField.getEditor().getText();
+                    value = value.replaceAll("[a-zA-Zç]", "");
+                    textField.getEditor().setText(value);
                 }
             }
         });
