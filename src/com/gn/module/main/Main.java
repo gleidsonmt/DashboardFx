@@ -617,6 +617,12 @@ public class Main implements Initializable {
     }
 
     @FXML
+    private void textArea(){
+        title.setText("TextArea");
+        body.setContent(ViewManager.getInstance().get("text-area"));
+    }
+
+    @FXML
     private void treeView(){
         title.setText("TreeView");
         body.setContent(ViewManager.getInstance().get("treeview"));

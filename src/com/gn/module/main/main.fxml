@@ -181,7 +181,7 @@
                               <Button layoutX="20" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#spinner" prefWidth="250" styleClass="drawer-item" text="Spinner" />
                               <Button layoutX="20.0" layoutY="420.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#splitMenuButton" prefWidth="250" styleClass="drawer-item" text="SplitMenuButton" />
                               <Button layoutX="20.0" layoutY="1364.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#tableView" prefWidth="250" styleClass="drawer-item" text="TableView" />
-                              <Button layoutX="20.0" layoutY="1172.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#toggle" prefWidth="250" styleClass="drawer-item" text="TextArea" />
+                              <Button layoutX="20.0" layoutY="1172.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#textArea" prefWidth="250" styleClass="drawer-item" text="TextArea" />
                               <Button layoutX="20.0" layoutY="884.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#textField" prefWidth="250" styleClass="drawer-item" text="TextField" />
                               <Button layoutX="20.0" layoutY="836.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#toggle" prefWidth="250" styleClass="drawer-item" text="ToggleButton" />
                               <Button layoutX="20.0" layoutY="1124.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#treeTableView" prefWidth="250" styleClass="drawer-item" text="TreeTableView" />
