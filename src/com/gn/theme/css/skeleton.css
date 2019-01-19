@@ -46,13 +46,16 @@
 .scroll-pane:fitToWidth:fitToHeight,
 .tree-table-row-cell:filled .table-column:filled,
 .tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell,
-.check-box:determinate .box,
+.check-box:determinate .box, .text-area .scroll-pane .viewport .content,
 .spinner:focused,
 .spinner .increment-arrow-button,
-.spinner .decrement-arrow-button
+.spinner .decrement-arrow-button,
+.text-area
 {
   -fx-background-color : transparent;
 }
+
+
 
 .text-field , .list-view,
 .split-menu-button, .menu-button, .choice-box,
@@ -229,7 +232,8 @@
 .text-field:focused, .list-view,
 .menu-button:focused, .choice-box:focused, .split-menu-button:focused,
 .check-box:indeterminate .box, .check-box:hover:determinate .box,
-.check-box:selected:determinate .box
+.check-box:selected:determinate .box,
+.text-area:focused
 {
   -fx-border-color : -base;
 }
@@ -238,7 +242,7 @@
 .check-box:determinate .box,
 .split-menu-button, .menu-button, .choice-box,
 .split-menu-button .arrow-button, .combo-box-base, .date-picker,
-.check-box:determinate .box
+.check-box:determinate .box, .text-area
 {
   -fx-border-color : -box-fill;
 }
