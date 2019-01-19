@@ -23,6 +23,7 @@ import com.gn.global.plugin.ViewManager;
 import com.gn.global.*;
 import com.gn.global.plugin.SectionManager;
 import com.gn.global.plugin.UserManager;
+import com.gn.global.util.Mask;
 import com.gn.module.main.Main;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;

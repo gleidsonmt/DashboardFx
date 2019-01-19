@@ -14,12 +14,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.global;
+package com.gn.global.util;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -36,23 +42,6 @@ public class Mask {
                         String value = field.getText();
                         value = value.replaceFirst("[ ]", "");
                         field.setText(value);
-                    }
-                }
-            }
-        });
-
-
-    }
-
-    public static void noSpaces(Spinner field) {
-        field.getEditor().lengthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                if (field.getEditor().getText() != null) {
-                    if (field.getEditor().getText().length() > 0) {
-                        String value = field.getEditor().getText();
-                        value = value.replaceFirst("[ ]", "");
-                        field.getEditor().setText(value);
                     }
                 }
             }
@@ -178,15 +167,42 @@ public class Mask {
         });
     }
 
-    public static void noLetters(final Spinner textField) {
+    public static void monetaryField(final TextField field, Locale locale) {
+        AtomicInteger position = new AtomicInteger(1);
+        if (locale.toString().equals("pt_BR")) {
+            field.lengthProperty().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
+                String value = field.getText();
 
-        textField.getEditor().lengthProperty().addListener((observable, oldValue, newValue) -> {
-            if (textField.getEditor().getText() != null) {
-                if (textField.getEditor().getText().length() > 0) {
-                    String value = textField.getEditor().getText();
-                    value = value.replaceAll("[a-zA-Zç]", "");
-                    textField.getEditor().setText(value);
-                }
+                value = value.replaceAll("[^0-9]", "");
+                value = value.replaceAll("([0-9])([0-9]{14})$", "$1.$2");
+                value = value.replaceAll("([0-9])([0-9]{11})$", "$1.$2");
+                value = value.replaceAll("([0-9])([0-9]{8})$", "$1.$2");
+                value = value.replaceAll("([0-9])([0-9]{5})$", "$1.$2");
+                value = value.replaceAll("([0-9])([0-9]{2})$", "$1,$2");
+
+                field.setText(value);
+                field.positionCaret(position.getAndIncrement());
+            }));
+        } else {
+            field.lengthProperty().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
+                String value = field.getText();
+
+                value = value.replaceAll("[^0-9]", "");
+                value = value.replaceAll("([0-9])([0-9]{14})$", "$1,$2");
+                value = value.replaceAll("([0-9])([0-9]{11})$", "$1,$2");
+                value = value.replaceAll("([0-9])([0-9]{8})$", "$1,$2");
+                value = value.replaceAll("([0-9])([0-9]{5})$", "$1,$2");
+                value = value.replaceAll("([0-9])([0-9]{2})$", "$1.$2");
+
+                field.setText(value);
+                field.positionCaret(position.getAndIncrement());
+            }));
+        }
+        field.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            switch (event.getCode()) {
+                case BACK_SPACE:
+                    field.positionCaret(position.decrementAndGet());
+                    break;
             }
         });
     }

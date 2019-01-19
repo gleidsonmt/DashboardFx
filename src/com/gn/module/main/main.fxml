@@ -132,7 +132,7 @@
                              <content>
                                  <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0">
                                     <children>
-                                       <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="547.0" styleClass="drawer-item" text="Button" />
+                                       <Button mnemonicParsing="false" onAction="#jfxTextField" prefHeight="50.0" prefWidth="547.0" styleClass="drawer-item" text="JFXTextField" />
                                     </children>
                                  </VBox>
                              </content>
