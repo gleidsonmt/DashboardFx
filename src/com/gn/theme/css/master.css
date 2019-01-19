@@ -221,7 +221,6 @@
   -fx-background-color : transparent;
 }
 
-
 .calendar-pane .calendar-cell
 {
     -fx-background-color : transparent;
@@ -244,11 +243,9 @@
      -fx-fill : -text-color;
 }
 
-.table-view .column-header-background .nested-column-header .table-column,
-.table-view .column-header-background,
-.tree-table-view .column-header-background
-{
-
-  -fx-padding : 10px 2px 10px 2px;
-  -fx-background-color : red;
-}
+/* .table-view .column-header-background .nested-column-header .table-column, */
+/* .table-view .column-header-background, */
+/* .tree-table-view .column-header-background */
+/* { */
+  /* -fx-padding : 10px 2px 10px 2px; */
+/* } */
