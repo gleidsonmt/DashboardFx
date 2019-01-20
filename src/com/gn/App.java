@@ -79,6 +79,7 @@ public class App extends Application {
         load("controls", "button");
         load("controls", "toggle");
         load("controls", "textfield");
+        load("controls", "text-area");
         load("controls", "datepicker");
         load("controls", "checkbox");
         load("controls", "radiobutton");

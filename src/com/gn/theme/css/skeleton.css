@@ -55,7 +55,10 @@
   -fx-background-color : transparent;
 }
 
-
+.text-area .scroll-pane .viewport .content
+{
+  -fx-background-color : derive(-box-fill, 50%);
+}
 
 .text-field , .list-view,
 .split-menu-button, .menu-button, .choice-box,
@@ -229,7 +232,7 @@
 
 
 .tree-view:focused,
-.text-field:focused, .list-view,
+.text-field:focused,
 .menu-button:focused, .choice-box:focused, .split-menu-button:focused,
 .check-box:indeterminate .box, .check-box:hover:determinate .box,
 .check-box:selected:determinate .box,
@@ -237,6 +240,11 @@
 {
   -fx-border-color : -base;
 }
+
+.list-view
+ {
+    -fx-border-color : -box-fill;
+ }
 
 .text-field, .spinner, .spinner,
 .check-box:determinate .box,
