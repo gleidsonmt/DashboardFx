@@ -1455,33 +1455,22 @@
 .spinner .decrement-arrow-button {
   -fx-border-width : 0px 0px 0px 1px;
 }
-
 .list-view {
-    -fx-background-insets : 0;
-    /* -fx-padding: 1; */
+  -fx-border-color : -box-fill;
 }
 
 .list-view:focused {
-    /* -fx-background-color : -elegant; */
-    -fx-background-insets : 0;
     -fx-background-radius : 0;
 }
 
 .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-background-color: white;
     -fx-padding: 1em 2em 1em 2em;
     -fx-font-family: Roboto ;
-  }
-
-.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
-    -fx-background-color: white;
 }
 
-.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:hover {
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover {
     -fx-background-color: -light-gray;
-}
-
-.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell {
-    -fx-background-color : white;
 }
 
 .list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused {
@@ -1492,8 +1481,8 @@
     -fx-text-fill : white;
 }
 
-.list-view:focused .virtual-flow .scroll-bar:vertical {
-  -fx-border-color :  -base -base -base transparent;
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:selected:hover {
+    -fx-text-fill : -text-color;
 }
 
 .hyperlink {
