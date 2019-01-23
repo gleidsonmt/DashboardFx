@@ -241,10 +241,7 @@
   -fx-border-color : -base;
 }
 
-.list-view
- {
-    -fx-border-color : -box-fill;
- }
+
 
 .text-field, .spinner, .spinner,
 .check-box:determinate .box,
@@ -513,6 +510,7 @@
   -fx-background-color : transparent;
 }
 
+
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell
 {
     -fx-background-color : -list-fill;
@@ -530,8 +528,15 @@
 
 .combo-box .list-cell:filled:selected .text
 {
-  -fx-fill : -text-color;
+  /* -fx-fill : -text-color; */
 }
+
+.combo-box .list-view{
+  -fx-background-color : white;
+  -fx-border-color : -box-fill;
+  -fx-effect : null;
+}
+
 
 .context-menu {
     -fx-background-color: white;
@@ -1455,6 +1460,8 @@
 .spinner .decrement-arrow-button {
   -fx-border-width : 0px 0px 0px 1px;
 }
+
+
 .list-view {
   -fx-border-color : -box-fill;
 }
@@ -1483,6 +1490,20 @@
 
 .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:selected:hover {
     -fx-text-fill : -text-color;
+}
+
+
+.list-view > .text-field-list-cell .text-field
+{
+ -fx-border-color : transparent transparent -box-fill transparent;
+ -fx-border-width : 0 0 1 0;
+}
+
+.list-view .text-field-list-cell:selected .text-field
+{
+ -fx-border-color : transparent transparent -base transparent;
+ -fx-background-insets : 0px 0px 2px 0px;
+ -fx-border-width : 0px 0px 2px 0px;
 }
 
 .hyperlink {
