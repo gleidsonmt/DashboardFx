@@ -27,7 +27,7 @@
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Label prefHeight="38.0" prefWidth="195.0" text="GNButton ">
+                              <Label prefHeight="38.0" prefWidth="195.0" text="GNButton">
                                  <styleClass>
                                     <String fx:value="h3" />
                                     <String fx:value="title" />
@@ -52,8 +52,8 @@
                                           <GNButton prefHeight="462.0" prefWidth="244.0" text="Swipe" />
                                           <GNButton buttonType="DIAGONAL_SWIPE" layoutX="358.0" layoutY="20.0" prefHeight="462.0" prefWidth="244.0" text="Diagonal Swipe" />
                                           <GNButton buttonType="CENTRALIZE" layoutX="485.0" layoutY="20.0" prefHeight="121.0" prefWidth="238.0" text="Centralize" />
-                                          <GNButton buttonType="SMOOSH" layoutX="612.0" layoutY="20.0" prefHeight="462.0" prefWidth="244.0" text="Smoosh" />
-                                          <GNButton buttonType="ALTERNATE" layoutX="722.0" layoutY="20.0" prefHeight="462.0" prefWidth="244.0" text="Alternate" />
+                                          <GNButton buttonType="SMOOSH" layoutX="612.0" layoutY="20.0" prefHeight="462.0" prefWidth="244.0" text="Smoosh"  />
+                                          <GNButton buttonType="ALTERNATE" layoutX="722.0" layoutY="20.0" prefHeight="462.0" prefWidth="244.0" text="Alternate"  />
                                        </children>
                                     </HBox>
                                  </children>

@@ -2520,3 +2520,7 @@
 .jfx-text-field .input-line {
   /* -fx-background-color : -box-fill; */
 }
+
+.list-view {
+    -fx-fixed-cell-size : 40;
+}
