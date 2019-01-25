@@ -99,12 +99,17 @@ public abstract class SkinAction extends TextFieldSkin {
         super.layoutChildren(x, y, w, h);
 
         final double clearGraphicWidth = snapSize(graphic.prefWidth(-1));
-        final double clearButtonWidth = button.snappedLeftInset() + clearGraphicWidth + button.snappedRightInset();
+        final double clearButtonWidth = snappedBottomInset() + clearGraphicWidth + snappedRightInset();
 
         button.resize(clearButtonWidth, h);
-        positionInArea(button,
-                (x + w) - clearButtonWidth, y,
-                clearButtonWidth, h, 0, HPos.LEFT, VPos.CENTER);
+
+        super.layoutChildren(x, y, w, h);
+        layoutInArea(button, x, y, w,h, 0,
+                HPos.LEFT,  VPos.CENTER);
+
+//        positionInArea(button,
+//                (x + w) - clearButtonWidth, y,
+//                clearButtonWidth, h, 0, HPos.LEFT, VPos.CENTER);
     }
 
     abstract void mouseReleased();
