@@ -2521,6 +2521,8 @@
   /* -fx-background-color : -box-fill; */
 }
 
-.list-view {
+.list-view,
+.combo-box > .list-view
+{
     -fx-fixed-cell-size : 40;
 }
