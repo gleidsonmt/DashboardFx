@@ -34,26 +34,30 @@ public class ViewerSkin extends SkinAction {
 
     @Override
     void mouseReleased() {
-        TextField textField = (TextField) getSkinnable();
+        TextField textField = getSkinnable();
         textField.setText(textField.getText());
         textField.end();
     }
 
     @Override
     void textChanged() {
-        getButton().setVisible(getTextField().isFocused() && !getTextField().getText().isEmpty());
-        getGraphic().setVisible(getTextField().isFocused() && !getTextField().getText().isEmpty());
+        if (getPasswordField().getText() == null) {
+            return;
+        }
+        getButton().setVisible(!getPasswordField().getText().isEmpty());
     }
 
     @Override
     void focusChanged() {
+        if (getPasswordField().getText() == null) {
+            return;
+        }
         getButton().setVisible(getPasswordField().isFocused() && !getPasswordField().getText().isEmpty());
-        getGraphic().setVisible(getPasswordField().isFocused() && !getPasswordField().getText().isEmpty());
     }
 
     @Override
     void mousePressed() {
-        TextField textField = (TextField) getSkinnable();
+        TextField textField = getSkinnable();
         shouldMaskText = false;
         textField.setText(textField.getText());
         shouldMaskText = true;
@@ -73,3 +77,4 @@ public class ViewerSkin extends SkinAction {
         }
     }
 }
+
