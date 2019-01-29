@@ -72,6 +72,11 @@
   -fx-background-color : -base;
 }
 
+.btn-grapefruit {
+  -base : -grapefruit;
+  -fx-background-color : -grapefruit;
+}
+
 .btn-info,
 .check-info .box
 {
@@ -120,6 +125,12 @@
 
 .btn-white:hover {
     -icon-color : white;
+}
+
+.btn-mint
+{
+  -base : -mint;
+  -fx-background-color : -base;
 }
 
 /************************************************************************************
