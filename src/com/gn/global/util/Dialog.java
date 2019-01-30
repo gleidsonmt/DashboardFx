@@ -143,10 +143,10 @@ class Dialog {
         ArrayList<EventHandler<MouseEvent>> list = new ArrayList<>(Arrays.asList(event));
 
         switch (type) {
-            case WARNING:
-                actions.getChildren().add(
-                            createButton(ButtonType.CANCEL, "Cancel", close));
-                break;
+//            case WARNING:
+//                actions.getChildren().add(
+//                            createButton(ButtonType.CANCEL, "Cancel", close));
+//                break;
             default:
                 actions.getChildren().add(createButton(ButtonType.OK,"OK", list.get(0)));
                 break;
