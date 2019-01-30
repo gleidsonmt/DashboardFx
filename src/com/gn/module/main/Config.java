@@ -83,7 +83,7 @@ public class Config implements Initializable {
                 getClass().getResource(path + "" + theme).toExternalForm(),
                 getClass().getResource(path + "bootstrap.css").toExternalForm(),
                 getClass().getResource(path + "simple-green.css").toExternalForm(),
-                getClass().getResource(path + "forms.css").toExternalForm(),
+                getClass().getResource(path + "shape.css").toExternalForm(),
                 getClass().getResource(path + "typographic.css").toExternalForm(),
                 getClass().getResource(path + "helpers.css").toExternalForm(),
                 getClass().getResource(path + "master.css").toExternalForm()

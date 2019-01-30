@@ -640,6 +640,12 @@ public class Main implements Initializable {
         body.setContent(ViewManager.getInstance().get("jfx-text-field"));
     }
 
+    @FXML
+    private void alerts(){
+        title.setText("Alerts");
+        body.setContent(ViewManager.getInstance().get("alerts"));
+    }
+
     private PopOver pop = new PopOver();
     @FXML
     private void openMessages(){
