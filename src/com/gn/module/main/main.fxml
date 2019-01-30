@@ -144,10 +144,11 @@
                               <content>
                                  <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0">
                                     <children>
+                                       <Button cache="true" layoutX="20.0" layoutY="120.0" onMouseClicked="#animateButtons" prefWidth="250" styleClass="drawer-item" text="Animated Button" />
+                                       <Button alignment="BASELINE_LEFT" cache="true" layoutX="20.0" layoutY="70.0" onMouseClicked="#alerts" prefWidth="250" styleClass="drawer-item" text="Alerts" />
                                        <Button alignment="BASELINE_LEFT" cache="true" layoutX="20.0" layoutY="20.0" onMouseClicked="#banners" prefWidth="250" styleClass="drawer-item" text="Banners" />
                                        <Button onMouseClicked="#carousel" prefWidth="250" styleClass="drawer-item" text="Carousel" />
                                        <Button cache="true" layoutX="20.0" layoutY="20.0" onMouseClicked="#cards" prefWidth="250" styleClass="drawer-item" text="Cards" />
-                                       <Button cache="true" layoutX="20.0" layoutY="120.0" onMouseClicked="#animateButtons" prefWidth="250" styleClass="drawer-item" text="Animated Button" />
                                     </children>
                                  </VBox>
                               </content>
@@ -332,7 +333,7 @@
         <URL value="@../../theme/css/skeleton.css" />
         <URL value="@../../theme/css/light.css" />
         <URL value="@../../theme/css/bootstrap.css" />
-        <URL value="@../../theme/css/forms.css" />
+        <URL value="@../../theme/css/shape.css" />
         <URL value="@../../theme/css/typographic.css" />
         <URL value="@../../theme/css/helpers.css" />
         <URL value="@../../theme/css/master.css" />
