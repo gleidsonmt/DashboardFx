@@ -41,15 +41,15 @@ public class ViewerSkin extends SkinAction {
 
     @Override
     void textChanged() {
-        if (getPasswordField().getText() == null) {
+        if (!getPasswordField().isFocused() && getPasswordField().getText() == null) {
             return;
         }
-        getButton().setVisible(!getPasswordField().getText().isEmpty());
+        getButton().setVisible(getPasswordField().isFocused() && !getPasswordField().getText().isEmpty());
     }
 
     @Override
     void focusChanged() {
-        if (getPasswordField().getText() == null) {
+        if (!getPasswordField().isFocused() && getPasswordField().getText() == null) {
             return;
         }
         getButton().setVisible(getPasswordField().isFocused() && !getPasswordField().getText().isEmpty());
