@@ -1,6 +1,6 @@
 
 
-![Version](https://img.shields.io/badge/Version-0.3.21-green.svg?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-0.3.22-green.svg?style=for-the-badge)
 [![License](https://img.shields.io/github/license/Gleidson28/GNCarousel.svg?style=for-the-badge)](https://github.com/Gleidson28/GNCarousel/blob/master/LICENSE) 
 
 <h1></h1>
@@ -42,7 +42,7 @@ getScene().getStylesheets().addAll(
     getClass().getResource("/com/gn/theme/css/light.css").toExternalForm(), // 4
     getClass().getResource("/com/gn/theme/css/bootstrap.css").toExternalForm(), // 5
     getClass().getResource("/com/gn/theme/css/simple-info.css").toExternalForm(), // 6
-    getClass().getResource("/com/gn/theme/css/forms.css").toExternalForm(), // 7
+    getClass().getResource("/com/gn/theme/css/shape.css").toExternalForm(), // 7
     getClass().getResource("/com/gn/theme/css/typographic.css").toExternalForm(), // 8
     getClass().getResource("/com/gn/theme/css/helpers.css").toExternalForm(), // 9 
     getClass().getResource("/com/gn/theme/css/master.css").toExternalForm() // 10
@@ -77,15 +77,13 @@ getScene().getStylesheets().addAll(
   <URL value="@../../theme/css/light.css" />
   <URL value="@../../theme/css/bootstrap.css" />
   <URL value="@../../theme/css/simple-info.css" />
-  <URL value="@../../theme/css/forms.css" />
+  <URL value="@../../theme/css/shape.css" />
   <URL value="@../../theme/css/typographic.css" />
   <URL value="@../../theme/css/helpers.css" />
   <URL value="@../../theme/css/master.css" />
   </stylesheets>
 ```
-        
-      
-
+          
 ## Dashboard
 
 ![Guide](src/com/gn/module/media/dash.png)
