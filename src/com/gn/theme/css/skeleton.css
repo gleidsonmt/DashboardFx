@@ -2319,10 +2319,6 @@
   -fx-border-color : -base;
 }
 
-.table-cell
-{
-  -fx-padding : 10px ;
-}
 
 .table-row-cell:filled:even
 {
@@ -2365,13 +2361,27 @@
 
 .table-cell
 {
+  -fx-alignment : center_left;
   -fx-border-color : transparent;
+  -fx-padding : 2px;
 }
 
-.table-view .column-header-background .nested-column-header .table-column .label,
+.table-row-cell
+{
+  -fx-background-insets : 0px;
+  -fx-padding : -1px -1px -1px -1px;
+}
+
+.table-view .virtual-flow .clipped-container .sheet .table-row-cell .table-column
+{
+    -fx-padding : 8px;
+}
+
+.table-view .column-header-background .nested-column-header .table-column ,
+.table-view .column-header-background .nested-column-header .table-column .label ,
 .tree-table-view .column-header-background .nested-column-header .table-column .label
 {
-  -fx-padding : 5px;
+  -fx-padding : 10px 4px 10px 4px;
   -fx-alignment : center_left;
 }
 
