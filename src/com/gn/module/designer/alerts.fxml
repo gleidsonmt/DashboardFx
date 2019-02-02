@@ -23,7 +23,7 @@
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Label prefHeight="38.0" prefWidth="195.0" text="Card">
+                              <Label prefHeight="38.0" prefWidth="195.0" text="Alerts">
                                  <styleClass>
                                     <String fx:value="h3" />
                                     <String fx:value="title" />
@@ -31,7 +31,7 @@
                               </Label>
                               <TextFlow prefHeight="54.0" prefWidth="952.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Cards contain content and actions about a single subject." wrappingWidth="558.283203125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks." wrappingWidth="558.283203125" />
                                  </children>
                               </TextFlow>
                            </children>
@@ -40,10 +40,10 @@
                            <children>
                               <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" prefWidth="100.0" styleClass="btn-info" text="Info" onMouseClicked="#info" />
-                                    <Button layoutX="454.0" layoutY="10.0" mnemonicParsing="false" prefWidth="100.0" styleClass="btn-warning" text="Warning" onMouseClicked="#warning" />
-                                    <Button layoutX="485.0" layoutY="10.0" mnemonicParsing="false" prefWidth="100.0" styleClass="btn-danger" text="Error" onMouseClicked="#error" />
-                                    <Button layoutX="516.0" layoutY="10.0" mnemonicParsing="false" prefWidth="100.0" styleClass="btn-success" text="Success" onMouseClicked="#success"/>
+                                    <Button mnemonicParsing="false" onMouseClicked="#info" prefWidth="100.0" styleClass="btn-info" text="Info" />
+                                    <Button layoutX="454.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#warning" prefWidth="100.0" styleClass="btn-warning" text="Warning" />
+                                    <Button layoutX="485.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#error" prefWidth="100.0" styleClass="btn-danger" text="Error" />
+                                    <Button layoutX="516.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#success" prefWidth="100.0" styleClass="btn-success" text="Success" />
                                  </children>
                               </HBox>
                            </children>

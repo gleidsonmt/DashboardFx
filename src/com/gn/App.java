@@ -75,6 +75,7 @@ public class App extends Application {
         load("designer", "banners");
         load("designer", "carousel");
         load("designer", "animated-button");
+        load("designer", "alerts");
 
         load("controls", "button");
         load("controls", "toggle");
@@ -145,6 +146,10 @@ public class App extends Application {
     public static HostServices              hostServices;
     private static UserDetail userDetail = null;
 
+    public static GNDecorator getDecorator(){
+        return decorator;
+    }
+
     private void configServices(){
         hostServices = getHostServices();
     }
@@ -204,7 +209,7 @@ public class App extends Application {
                 getClass().getResource("/com/gn/theme/css/skeleton.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/light.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/bootstrap.css").toExternalForm(),
-                getClass().getResource("/com/gn/theme/css/forms.css").toExternalForm(),
+                getClass().getResource("/com/gn/theme/css/shape.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/typographic.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/helpers.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/master.css").toExternalForm()
@@ -243,8 +248,6 @@ public class App extends Application {
         try {
             File file = new File("dashboard.properties");
             Properties properties = new Properties();
-
-            System.out.println(file.exists());
 
             if(!file.exists()){
                 file.createNewFile();
