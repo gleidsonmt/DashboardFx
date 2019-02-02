@@ -156,11 +156,11 @@ public class App extends Application {
 
     private void initialScene(){
 
-        decorator.setTitle(null);
-        decorator.setIcon(null);
+        decorator.setTitle("DashboardFx");
+//        decorator.setIcon(null);
         decorator.addButton(ButtonType.FULL_EFFECT);
         decorator.initTheme(GNDecorator.Theme.DEFAULT);
-        decorator.fullBody();
+//        decorator.fullBody();
 
         String log = logged();
         assert log != null;
