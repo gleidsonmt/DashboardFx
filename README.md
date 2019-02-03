@@ -1,7 +1,8 @@
 
-
+[![News](https://img.shields.io/badge/News-1-brightgreen.svg?style=for-the-badge)](http://gleidson28.blogspot.com)
 ![Version](https://img.shields.io/badge/Version-0.3.22-green.svg?style=for-the-badge)
 [![License](https://img.shields.io/github/license/Gleidson28/GNCarousel.svg?style=for-the-badge)](https://github.com/Gleidson28/GNCarousel/blob/master/LICENSE) 
+
 
 <h1></h1>
 
