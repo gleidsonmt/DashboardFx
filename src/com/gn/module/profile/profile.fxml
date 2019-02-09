@@ -194,9 +194,8 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                        <TabPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                           <tabs>
-                            <Tab closable="false" text="Timeline" />
                             <Tab closable="false" text="About">
                                  <content>
                                     <VBox prefHeight="200.0" prefWidth="100.0">
@@ -239,6 +238,7 @@
                                        </padding>
                                     </VBox>
                                  </content></Tab>
+                            <Tab closable="false" text="Timeline" />
                           </tabs>
                         </TabPane>
                      </children>

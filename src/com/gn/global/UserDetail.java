@@ -121,7 +121,7 @@ public class UserDetail extends GNControl {
         subTitle.setText("Member since 2018");
 
         GNAvatarView gnAvatar = new GNAvatarView();
-        gnAvatar.setImage(new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm()));
+        gnAvatar.setImage(new Image(getClass().getResource("/com/gn/media/img/avatar.png").toExternalForm()));
 
         background.setPrefHeight(500);
         box.setPrefWidth(387);
