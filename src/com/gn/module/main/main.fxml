@@ -32,17 +32,17 @@
       <HBox fx:id="main" prefHeight="100.0" prefWidth="200.0">
          <children>
             <VBox fx:id="drawer" alignment="TOP_CENTER" prefHeight="651.0" prefWidth="250.0" stylesheets="@drawer.css">
-                  <GNAvatarView fx:id="avatar" minHeight="-Infinity" prefHeight="142.0" prefWidth="250.0" type="CIRCLE">
+                  <GNAvatarView fx:id="avatar" minHeight="-Infinity" prefHeight="181.0" prefWidth="249.0" type="CIRCLE">
                      <image>
-                        <Image url="@../media/avatar.jpg" />
+                        <Image url="@../../media/img/avatar.png" />
                      </image>
                      <effect>
-                        <DropShadow color="#00000032" />
+                        <DropShadow color="#00000026" />
                      </effect>
                   </GNAvatarView>
                <VBox fx:id="info" alignment="CENTER" minHeight="-Infinity" prefHeight="101.0" prefWidth="249.0">
                   <children>
-                     <Label alignment="CENTER" prefHeight="32.0" prefWidth="166.0" style="-fx-text-fill: -text-color;" text="Gleidson Neves da Silveira" textAlignment="CENTER">
+                     <Label alignment="CENTER" prefHeight="32.0" prefWidth="166.0" style="-fx-text-fill: -text-color;" text="Jane Doe" textAlignment="CENTER">
                         <VBox.margin>
                            <Insets top="10.0" />
                         </VBox.margin>
@@ -233,8 +233,7 @@
                <children>
                   <VBox>
                      <children>
-                        <HBox prefHeight="35.0" prefWidth="854.0" />
-                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="904.0" style="-fx-border-width: 1 0;" styleClass="border">
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="904.0" style="-fx-border-width: 0 0 1 0;" styleClass="border">
                            <children>
                               <Button fx:id="hamburger" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#altLayout" prefWidth="40.0" styleClass="hamburger" text="Button">
                                  <graphic>

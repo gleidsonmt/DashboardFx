@@ -33,9 +33,9 @@
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="742.0" prefWidth="238.0">
                      <children>
-                        <ImageView fitHeight="222.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="226.0" fitWidth="303.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../media/avatar.jpg" />
+                              <Image url="@../../media/img/profile.jpg" />
                            </image>
                         </ImageView>
                         <VBox prefHeight="306.0" prefWidth="238.0">
@@ -131,7 +131,7 @@
                                  <children>
                                     <VBox>
                                        <children>
-                                          <Label fx:id="fullName" style="-fx-font-weight: bold;" styleClass="h3" text="Gleidson Neves da Silveira" />
+                                          <Label fx:id="fullName" style="-fx-font-weight: bold;" styleClass="h3" text="Jane Doe" />
                                           <Hyperlink text="Product Designer" />
                                        </children>
                                     </VBox>
@@ -223,14 +223,14 @@
                                                 <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Addresss :" GridPane.rowIndex="2" />
                                                 <Text style="-fx-fill: -text-color;" text="525 E 68th Street&#10;New York, NT 10651-78 156-187-60&#10;" wrappingWidth="190.166015625" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                 <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Email :" GridPane.rowIndex="3" />
-                                                <Hyperlink text="gleidisonmt@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Hyperlink text="janedoe@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                 <Label styleClass="h5" text="Basic Information" GridPane.rowIndex="5" />
                                                 <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Birthday : " GridPane.rowIndex="6" />
                                                 <Text style="-fx-fill: -text-color;" text="April 06, 1996" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                                 <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Gender : " GridPane.rowIndex="7" />
-                                                <Text style="-fx-fill: -text-color;" text="Male" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Text style="-fx-fill: -text-color;" text="Female" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                                 <Label layoutX="10.0" layoutY="131.0" style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Site :" GridPane.rowIndex="4" />
-                                                <Hyperlink layoutX="146.0" layoutY="128.0" text="gleidison28.github.io" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Hyperlink layoutX="146.0" layoutY="128.0" text="janedoe.github.io" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                              </children>
                                           </GridPane>
                                        </children>

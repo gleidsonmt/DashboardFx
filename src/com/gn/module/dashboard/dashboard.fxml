@@ -284,10 +284,13 @@
                                     <GNCalendarTile prefHeight="279.0" prefWidth="295.0" style="-fx-border-color: -light-gray;" />
                                     <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="219.0" prefWidth="303.0" spacing="10.0">
                                        <children>
-                                          <GNAvatarView prefHeight="151.0" prefWidth="301.0" type="CIRCLE">
+                                          <GNAvatarView prefHeight="149.0" prefWidth="301.0" type="CIRCLE">
                                              <image>
-                                                <Image url="@../media/girl.png" />
-                                             </image></GNAvatarView>
+                                                <Image url="@../../media/img/follow.jpg" />
+                                             </image>
+                                             <effect>
+                                                <DropShadow color="#0000005b" />
+                                             </effect></GNAvatarView>
                                           <JFXButton styleClass="follow" text="Follow me">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
