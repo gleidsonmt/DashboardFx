@@ -44,6 +44,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
+ * Init the app class.
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  07/10/2018
  * Version 1.0
