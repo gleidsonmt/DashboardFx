@@ -75,7 +75,7 @@ public class UserDetail extends GNControl {
 
     @Override
     public Node icon() {
-        Image image = new Image(getClass().getResource("/com/gn/module/media/avatar.jpg").toExternalForm());
+        Image image = new Image(getClass().getResource("/com/gn/media/img/avatar.png").toExternalForm());
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(30);
         imageView.setFitWidth(30);
