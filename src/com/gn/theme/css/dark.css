@@ -126,6 +126,20 @@
   -fx-background-color : derive(-light-gray, -70%);
 }
 
+.drawer .scroll .drawer-content .drawer-menu .content
+{
+  -fx-border-insets : 0px;
+  -fx-border-width : 0px;
+  -fx-border-color : red;
+}
+
+.drawer .scroll .drawer-content .drawer-menu .content
+{
+  -fx-border-insets : 0px;
+  -fx-background-color : derive(-light-gray, -70%);
+  -fx-border-color : -light-gray;
+}
+
 .follow {
   -fx-border-color : -light-gray;
   -fx-border-width : 2px;
