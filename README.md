@@ -15,6 +15,16 @@
 <h6 align="center"> This project is part of the set of custom components created for JavaFx. </h6>
 
 <h1></h1>
+<h6 align="center"> Comming soon. </h6>
+
+* 1  Style Guide. 
+* 2  New custom Controls.
+* 3  More bootstrap theme.
+* 4  New Dashboard Style.
+* 5  New Version of Dashboard.
+* 6  GridFx (tests)
+
+<h1></h1>
 
 <h1> DashboardFx </h1>
 
