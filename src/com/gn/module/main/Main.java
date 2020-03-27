@@ -179,6 +179,7 @@ public class Main implements Initializable {
 
             avatar.setStrokeWidth(0);
             addEvents();
+
         } else {
             drawer.setPrefWidth(max);
 
@@ -204,8 +205,6 @@ public class Main implements Initializable {
 
     private void addEvents(){
         VBox drawerContent;
-
-
 
         for (Node node : drawer.getChildren()) { // root
             if (node instanceof ScrollPane){
