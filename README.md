@@ -22,7 +22,9 @@
 * 3  More bootstrap theme.
 * 4  New Dashboard Style.
 * 5  New Version of Dashboard.
-* 6  GridFx (tests)
+* 6  GridFx (tests).
+* 7  New fxml samples.
+* 8  Default models .
 
 <h1></h1>
 
