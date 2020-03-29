@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.gn.GNAvatarView?>
-<?import com.gn.lab.GNCalendarTile?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXProgressBar?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
@@ -281,7 +280,6 @@
                               </VBox>
                               <VBox prefHeight="1058.0" prefWidth="457.0" spacing="10.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <GNCalendarTile prefHeight="279.0" prefWidth="295.0" style="-fx-border-color: -light-gray;" />
                                     <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="219.0" prefWidth="303.0" spacing="10.0">
                                        <children>
                                           <GNAvatarView prefHeight="149.0" prefWidth="301.0" type="CIRCLE">

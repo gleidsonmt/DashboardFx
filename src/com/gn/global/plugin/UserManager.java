@@ -31,6 +31,8 @@ import java.util.Properties;
 public class UserManager {
 
     public static User get(String name){
+        System.out.println("name");
+        System.out.println(name);
         try {
             File file = new File("user/" + name + ".properties");
             Properties properties = new Properties();
