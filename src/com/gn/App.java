@@ -219,7 +219,7 @@ public class App extends Application {
         decorator.getStage().getIcons().add(new Image("/com/gn/module/media/logo2.png"));
         decorator.show();
 
-        ScenicView.show(decorator.getScene());
+//        ScenicView.show(decorator.getScene());
     }
 
     public static void main(String[] args) {
