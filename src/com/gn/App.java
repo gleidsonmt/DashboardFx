@@ -184,7 +184,7 @@ public class App extends Application {
                 if(Main.popup.isShowing()) Main.popup.hide();
                 App.decorator.removeCustom(userDetail);
             });
-            decorator.setContent(ViewManager.getInstance().get("main"));
+//            decorator.setContent(ViewManager.getInstance().get("main"));
         }
 
         decorator.getStage().setOnCloseRequest(event -> {
