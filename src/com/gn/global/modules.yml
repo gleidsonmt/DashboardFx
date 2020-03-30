@@ -1,0 +1,21 @@
+#Main
+- !!com.gn.global.factory.Module
+  title: Main
+  name: main
+  fxmlFile: main.fxml
+  subModules: null
+
+#Dashboard
+- !!com.gn.global.factory.Module
+  title: Dashboard
+  name: dashboard
+  fxmlFile: dashboard.fxml
+  subModules: null
+
+#Button
+- !!com.gn.global.factory.Module
+  title: Button
+  name: button
+  parentName: controls
+  fxmlFile: button.fxml
+  subModules: null
