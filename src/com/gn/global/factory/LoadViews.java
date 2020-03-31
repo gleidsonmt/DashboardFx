@@ -17,6 +17,8 @@
 package com.gn.global.factory;
 
 import com.gn.App;
+import com.gn.global.exceptions.LoadViewException;
+import com.gn.global.exceptions.NavitagionException;
 import com.gn.global.plugin.ViewManager;
 import javafx.application.Platform;
 import javafx.concurrent.Service;
@@ -27,6 +29,7 @@ import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -42,21 +45,41 @@ public class LoadViews extends Service {
         modules = yaml.load(App.class.getResourceAsStream("/com/gn/global/modules.yml"));
     }
 
-    private View createView(Module module) {
+    private View createView(Module module) throws LoadViewException {
         FXMLLoader loader = new FXMLLoader();
         String moduleName = module.getParentName() == null ? module.getName() : module.getParentName();
-        loader.setLocation(getClass().getResource("/com/gn/module/" + moduleName + "/" + module.getFxmlFile()));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
+        URL location = getClass().getResource("/com/gn/module/" + moduleName + "/" + module.getFxmlFile());
+
+        if(location != null){
+            loader.setLocation(location);
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return new View(module.getTitle(), module.getName(), module, loader);
+        } else {
+            if(module.getName() == null){
+                if (module.getTitle() != null)
+                throw new LoadViewException("LOAD_VIEWS", String.format("The view with the title %s does not have a name, it's used to navigate.", module.getTitle()));
+                else
+                throw new LoadViewException("LOAD_VIEWS", "The view does not have a name, it's used to navigate.");
+            } else {
+                if (module.getParentName() == null)
+                    throw new LoadViewException("LOAD_VIEW", String.format("No encountered fxml file for view %s.", module.getName()));
+                else
+                    throw new LoadViewException("LOAD_VIEW", String.format("Package '%s' does not contains the fxml file %s", module.getParentName(), module.getFxmlFile()));
+            }
         }
-        return new View(module.getTitle(), module.getName(), module, loader);
     }
 //
     @Override
     protected synchronized void succeeded() {
-        ViewManager.INSTANCE.navigate(App.decorator, "main");
+        try {
+            ViewManager.INSTANCE.navigate(App.decorator, "main");
+        } catch (NavitagionException e) {
+            e.printStackTrace();
+        }
         super.succeeded();
     }
 
@@ -76,10 +99,9 @@ public class LoadViews extends Service {
 
         return new Task() {
             @Override
-            protected Object call() throws Exception {
+            protected Object call() throws LoadViewException {
                 for (Module module : modules) {
-                    System.out.println(module);
-                    ViewManager.INSTANCE.put(createView(module));
+                        ViewManager.INSTANCE.put(createView(module));
                 }
                 return null;
             }
@@ -108,6 +130,5 @@ public class LoadViews extends Service {
 //            }
 //
 //        }
-//        System.out.println(modules);
 
 }
