@@ -16,9 +16,17 @@
  */
 package com.gn.global.plugin;
 
+import com.gn.decorator.GNDecorator;
+import com.gn.global.exceptions.LoadViewException;
+import com.gn.global.exceptions.NavitagionException;
+import com.gn.global.factory.ActionView;
+import com.gn.global.factory.View;
+import com.gn.global.factory.View;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.StackPane;
 
 import java.util.HashMap;
 
@@ -26,39 +34,59 @@ import java.util.HashMap;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  07/10/2018
  */
-public class ViewManager {
+public enum  ViewManager {
 
-    private static ViewManager instance;
-    private static final HashMap<String, Node> SCREENS = new HashMap<>();
-    private static String nameView;
+    INSTANCE;
 
-    private ViewManager(){}
+    private final HashMap<String, View> SCREENS = new HashMap<>();
 
-    public static ViewManager getInstance() {
-        if(instance == null){
-            instance =  new ViewManager();
+    private String current;
+    private String previous;
+
+//
+    public void put(View view) throws LoadViewException {
+
+        if(view != null){
+        // testing
+            previous = current;
+            current = view.getModule().getName();
+
+            SCREENS.put(view.getModule().getName(), view);
+        } else {
+            throw new LoadViewException("Code", String.format("The view %s was not found.", view.getTitle()));
         }
-        return instance;
     }
 
-    public void put(String name, Node node){
-        nameView = name;
-        SCREENS.put(name, node);
-    }
-
-    public Node get(String view){
+    private View getWithUpdate(String view){
+        previous = current;
+        current = view;
         return SCREENS.get(view);
     }
 
-    public int getSize(){
-        return SCREENS.size();
+    private View get(String view){
+        return SCREENS.get(view);
     }
 
-    Node getCurrentView(){
-        return SCREENS.get(nameView);
+    public void navigate(GNDecorator decorator, String name) throws NavitagionException {
+        if(get(name) == null)
+            throw new NavitagionException("NAVIGATION", String.format("The view '%s' was not found.", name));
+        else
+            decorator.setContent(get(name).getRoot());
     }
 
-    public ObservableList<Node> getAll(){
-        return FXCollections.observableArrayList(SCREENS.values());
+    public String openSubView(ScrollPane body, String name){
+        View view = getWithUpdate(name);
+
+        if(get(previous).getController() instanceof ActionView)
+            ((ActionView) get(previous).getController()).exit();
+
+        body.setContent(view.getRoot());
+
+        if(view.getController() instanceof ActionView){
+            ((ActionView) view.getController()).enter();
+        }
+
+        return view.getTitle();
     }
+
 }
