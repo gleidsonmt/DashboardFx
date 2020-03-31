@@ -1,6 +1,6 @@
 
 [![News](https://img.shields.io/badge/News-1-brightgreen.svg?style=for-the-badge)](http://gleidson28.blogspot.com)
-![Version](https://img.shields.io/badge/Version-0.3.22-green.svg?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-2.0.13-green.svg?style=for-the-badge)
 [![License](https://img.shields.io/github/license/Gleidson28/GNCarousel.svg?style=for-the-badge)](https://github.com/Gleidson28/GNCarousel/blob/master/LICENSE) 
 
 
@@ -38,7 +38,7 @@
 <h1></h1>
 
 <h3> Library Dependency</h3>
-<p> find the dependencies in the lib folder.</p> 
+<p> Find the dependencies in the lib folder.</p> 
 
 <h1></h1>
 
@@ -58,7 +58,8 @@ getScene().getStylesheets().addAll(
     getClass().getResource("/com/gn/theme/css/shape.css").toExternalForm(), // 7
     getClass().getResource("/com/gn/theme/css/typographic.css").toExternalForm(), // 8
     getClass().getResource("/com/gn/theme/css/helpers.css").toExternalForm(), // 9 
-    getClass().getResource("/com/gn/theme/css/master.css").toExternalForm() // 10
+    getClass().getResource("/com/gn/theme/css/light-green.css").toExternalForm(), // 10 
+    getClass().getResource("/com/gn/theme/css/master.css").toExternalForm() // 11
 );
 ```
 * 1  Load fonts to use in a system that not have this font. 
@@ -77,7 +78,8 @@ getScene().getStylesheets().addAll(
 * 8  Used to configure shapes for nodes.
    - rectangle, polygon, circles...
 * 9  Additional css for add effects and others.
-* 10 For you replace.
+* 10 Them for ap.
+* 11 For you replace.
 
 <h4> Direct FXml </h4>
 
@@ -97,10 +99,7 @@ getScene().getStylesheets().addAll(
   </stylesheets>
 ```
           
-## Dashboard
-
-![Guide](src/com/gn/module/media/dash.png)
 
     
-## Youtube view   
+## View Tests
 [![Youtube link](src/com/gn/module/media/you.png)](https://youtu.be/hZsYU7UbWmU)
