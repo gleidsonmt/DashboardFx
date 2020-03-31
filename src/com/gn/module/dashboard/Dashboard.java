@@ -17,6 +17,7 @@
 package com.gn.module.dashboard;
 
 import com.gn.GNCarousel;
+import com.gn.global.factory.ActionView;
 import core.CurveFittedAreaChart;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,7 +40,7 @@ import java.util.ResourceBundle;
  * Create on  20/10/2018
  * Version 1.0
  */
-public class Dashboard implements Initializable {
+public class Dashboard implements Initializable, ActionView {
 
 //    @FXML private Tile calendar;
     @FXML private AreaChart<String, Number> areaChart;
@@ -138,5 +139,15 @@ public class Dashboard implements Initializable {
         v5.setStyle("-fx-background-color : #EC407A;");
 
         return FXCollections.observableArrayList(v1, v2, v3, v4, v5);
+    }
+
+    @Override
+    public void enter() {
+        System.out.println("Dashboard entered");
+    }
+
+    @Override
+    public void exit() {
+        System.out.println("Dashboard Exited");
     }
 }
