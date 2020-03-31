@@ -20,16 +20,16 @@ package com.gn.global.exceptions;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  31/03/2020
  */
-public class NavitagionException extends Exception {
+public class NavigationException extends Exception {
 
     private String code;
 
-    public NavitagionException(String code, String message) {
+    public NavigationException(String code, String message) {
         super(message);
         this.setCode(code);
     }
 
-    public NavitagionException(String code, String message, Throwable cause) {
+    public NavigationException(String code, String message, Throwable cause) {
         super(message, cause);
         this.setCode(code);
     }
