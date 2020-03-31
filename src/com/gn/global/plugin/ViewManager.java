@@ -17,16 +17,10 @@
 package com.gn.global.plugin;
 
 import com.gn.decorator.GNDecorator;
-import com.gn.global.exceptions.LoadViewException;
 import com.gn.global.exceptions.NavitagionException;
 import com.gn.global.factory.ActionView;
 import com.gn.global.factory.View;
-import com.gn.global.factory.View;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.StackPane;
 
 import java.util.HashMap;
 
@@ -44,17 +38,11 @@ public enum  ViewManager {
     private String previous;
 
 //
-    public void put(View view) throws LoadViewException {
-
-        if(view != null){
+    public void put(View view) {
         // testing
-            previous = current;
-            current = view.getModule().getName();
-
-            SCREENS.put(view.getModule().getName(), view);
-        } else {
-            throw new LoadViewException("Code", String.format("The view %s was not found.", view.getTitle()));
-        }
+        previous = current;
+        current = view.getModule().getName();
+        SCREENS.put(view.getModule().getName(), view);
     }
 
     private View getWithUpdate(String view){
@@ -88,5 +76,4 @@ public enum  ViewManager {
 
         return view.getTitle();
     }
-
 }
