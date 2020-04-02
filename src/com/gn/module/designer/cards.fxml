@@ -127,7 +127,7 @@
    <stylesheets>
       <URL value="@../../theme/css/material-color.css" />
       <URL value="@../../theme/css/skeleton.css" />
-      <URL value="@../../theme/css/light.css" />
+      <URL value="@../../theme/css/light-green.css" />
       <URL value="@../../theme/css/bootstrap.css" />
       <URL value="@../../theme/css/shape.css" />
       <URL value="@../../theme/css/typographic.css" />

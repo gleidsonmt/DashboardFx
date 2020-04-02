@@ -18,6 +18,7 @@ package com.gn.module.designer;
 
 import com.gn.App;
 import com.gn.GNCarousel;
+import com.gn.global.factory.ActionView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,6 +28,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,7 +37,7 @@ import java.util.ResourceBundle;
  * Create on  13/10/2018
  * Version 1.0
  */
-public class Carousel implements Initializable {
+public class Carousel implements Initializable, ActionView {
 
     @FXML private GNCarousel carousel;
 
@@ -83,5 +85,15 @@ public class Carousel implements Initializable {
     @FXML
     private void openProject() {
         App.hostServices.showDocument("https://github.com/Gleidson28/GNCarousel");
+    }
+
+    @Override
+    public void enter() {
+        System.out.println("Carousel enter");
+    }
+
+    @Override
+    public void exit() {
+        System.out.println("Carousel exited");
     }
 }

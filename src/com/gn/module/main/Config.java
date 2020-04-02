@@ -69,7 +69,7 @@ public class Config implements Initializable {
             invert = true;
         } else {
             App.decorator.initTheme(GNDecorator.Theme.DEFAULT);
-            theme = "light.css";
+            theme = "light-green.css";
             btn_theme.setText("Theme dark : desactived");
             invert = false;
         }
@@ -91,10 +91,10 @@ public class Config implements Initializable {
 
         App.getUserDetail().getStylesheets().setAll(stylesheets);
 
-        for (Node node : ViewManager.getInstance().getAll()) {
-            ((StackPane) node).getStylesheets().clear();
-            ((StackPane) node).getStylesheets().setAll(stylesheets);
-        }
+//        for (Node node : ViewManager.getInstance().getAll()) {
+//            ((StackPane) node).getStylesheets().clear();
+//            ((StackPane) node).getStylesheets().setAll(stylesheets);
+//        }
 
         Main.popConfig.hide();
 

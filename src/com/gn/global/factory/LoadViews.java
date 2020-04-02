@@ -18,13 +18,12 @@ package com.gn.global.factory;
 
 import com.gn.App;
 import com.gn.global.exceptions.LoadViewException;
-import com.gn.global.exceptions.NavitagionException;
+import com.gn.global.exceptions.NavigationException;
 import com.gn.global.plugin.ViewManager;
-import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
@@ -77,7 +76,9 @@ public class LoadViews extends Service {
     protected synchronized void succeeded() {
         try {
             ViewManager.INSTANCE.navigate(App.decorator, "main");
-        } catch (NavitagionException e) {
+            ScrollPane body = (ScrollPane) App.getDecorator().getScene().lookup("#body");
+            ViewManager.INSTANCE.openSubView(body, "dashboard");
+        } catch (NavigationException e) {
             e.printStackTrace();
         }
         super.succeeded();

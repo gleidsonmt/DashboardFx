@@ -58,7 +58,7 @@
   -fx-padding : 0px;
   -fx-background-radius : 0px;
   -fx-background-insets : 0px;
-  -fx-background-color : derive(-dark-gray, 30%);
+  -fx-background-color : #ffffff95;
 }
 
 
@@ -88,4 +88,8 @@
 {
   /* -fx-background-color: red; */
   -fx-border-color : transparent;
+}
+
+.scroll:fitToWidth .scroll-bar:vertical .track {
+    -fx-background-color : transparent;
 }

@@ -103,7 +103,7 @@
 
 .icon .badge-pane .label{
     -fx-font-weight: BOLD;
-    -fx-font-size: 10px;
+    -fx-font-size: 8px;
     -fx-text-fill: WHITE;
 }
 

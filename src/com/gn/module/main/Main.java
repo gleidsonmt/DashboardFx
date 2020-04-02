@@ -17,6 +17,10 @@
 package com.gn.module.main;
 
 import com.gn.GNAvatarView;
+import com.gn.GNCarousel;
+import com.gn.global.exceptions.NavigationException;
+import com.gn.global.factory.ActionView;
+import com.gn.global.factory.View;
 import com.gn.global.plugin.ViewManager;
 import com.gn.global.factory.AlertCell;
 import com.jfoenix.controls.JFXBadge;
@@ -72,8 +76,8 @@ public class Main implements Initializable {
     @FXML private TitledPane design;
     @FXML private TitledPane controls;
     @FXML private TitledPane charts;
-    @FXML private Button home;
-    @FXML private Button  about;
+    @FXML private ToggleButton home;
+    @FXML private ToggleButton  about;
     @FXML private Button hamburger;
     @FXML private SVGPath searchIcon;
     @FXML private StackPane root;
@@ -87,15 +91,15 @@ public class Main implements Initializable {
 
     @FXML private RadioButton available;
 
-    private FilteredList<Button> filteredList = null;
+    private FilteredList<ToggleButton> filteredList = null;
 
     public static  final PopOver popConfig = new PopOver();
     public static  final PopOver popup     = new PopOver();
 
-    private ObservableList<Button> items         = FXCollections.observableArrayList();
-    private ObservableList<Button> designItems   = FXCollections.observableArrayList();
-    private ObservableList<Button> controlsItems = FXCollections.observableArrayList();
-    private ObservableList<Button> chartsItems   = FXCollections.observableArrayList();
+    private ObservableList<ToggleButton> items         = FXCollections.observableArrayList();
+    private ObservableList<ToggleButton> designItems   = FXCollections.observableArrayList();
+    private ObservableList<ToggleButton> controlsItems = FXCollections.observableArrayList();
+    private ObservableList<ToggleButton> chartsItems   = FXCollections.observableArrayList();
 
     private JFXDialog       dialog          = new JFXDialog();
     private JFXDialogLayout dialog_layout   = new JFXDialogLayout();
@@ -108,18 +112,20 @@ public class Main implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
-        ctrl = this;
-        loadContentPopup();
+//        ctrl = this;
+//        loadContentPopup();
+//
+//        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+//            @Override
+//            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+//                cStatus.setFill( ((RadioButton) newValue).getTextFill());
+//                status.setText(((RadioButton)newValue).getText());
+//            }
+//        });
 
-        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            @Override
-            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-                cStatus.setFill( ((RadioButton) newValue).getTextFill());
-                status.setText(((RadioButton)newValue).getText());
-            }
-        });
 
-
+        DrawerController drawerController = new DrawerController(drawer);
+        items = drawerController.getItems();
 
         populateItems();
         filteredList = new FilteredList<>(items, s -> true);
@@ -138,14 +144,16 @@ public class Main implements Initializable {
 
             }
         });
-        body.setContent(ViewManager.getInstance().get("dashboard"));
 
-        try {
-            addSubPop();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-//        drawer.setPopStylesheet(getClass().getResource("/com/gn/theme/css/popover.css"));
+//////        body.setContent(ViewManager.INSTANCE.get("dashboard"));
+//
+//        try {
+//            addSubPop();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+////        drawer.setPopStylesheet(getClass().getResource("/com/gn/theme/css/popover.css"));
+
     }
 
 
@@ -266,7 +274,7 @@ public class Main implements Initializable {
             Button button = new Button(text);
             button.setPrefWidth(v.getPrefWidth());
             button.setOnMouseClicked(e -> {
-                body.setContent(ViewManager.getInstance().get(button.getText().toLowerCase()));
+////                body.setContent(ViewManager.INSTANCE.get(button.getText().toLowerCase()));
                 title.setText(button.getText());
                 popup.hide();
             });
@@ -312,13 +320,13 @@ public class Main implements Initializable {
         hamburger.setMouseTransparent(true);
     }
 
-    private VBox filter(ObservableList<Button>  nodes){
+    private VBox filter(ObservableList<ToggleButton>  nodes){
         VBox vBox = new VBox();
         vBox.getStyleClass().add("drawer-content");
         vBox.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
         vBox.setAlignment(Pos.TOP_RIGHT);
         VBox.setVgrow(vBox, Priority.ALWAYS);
-        for (Button node : nodes){
+        for (ToggleButton node : nodes){
             if (node.getGraphic() != null) node.setContentDisplay(ContentDisplay.TEXT_ONLY);
             node.setAlignment(Pos.CENTER_LEFT);
         }
@@ -329,24 +337,24 @@ public class Main implements Initializable {
     private void populateItems() {
 
         for (Node node : views.getChildren()) {
-            if (node instanceof Button) {
-                items.add( (Button) node);
+            if (node instanceof ToggleButton) {
+                items.add( (ToggleButton) node);
             }
         }
 
         for (Node node : ((VBox) controls.getContent()).getChildren()) {
-            controlsItems.add((Button) node);
-            items.add((Button) node);
+            controlsItems.add((ToggleButton) node);
+            items.add((ToggleButton) node);
         }
 
         for (Node node : ((VBox) design.getContent()).getChildren()) {
-            designItems.add((Button) node);
-            items.add((Button) node);
+            designItems.add((ToggleButton) node);
+            items.add((ToggleButton) node);
         }
 
         for (Node node : ((VBox) charts.getContent()).getChildren()) {
-            chartsItems.add((Button) node);
-            items.add((Button) node);
+            chartsItems.add((ToggleButton) node);
+            items.add((ToggleButton) node);
         }
     }
 
@@ -367,6 +375,8 @@ public class Main implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
 
     @FXML
@@ -384,265 +394,224 @@ public class Main implements Initializable {
         search.clear();
     }
 
+    private void updateViewDetails(String viewNm){
+        try {
+            title.setText(ViewManager.INSTANCE.openSubView(body, viewNm));
+        } catch (NavigationException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void buttons() {
-        body.setContent(ViewManager.getInstance().get("button"));
-        title.setText("Button");
+        updateViewDetails("button");
     }
 
     @FXML
-    private void carousel() {
-        title.setText("Carousel");
-        body.setContent(ViewManager.getInstance().get("carousel"));
+    private void goCarousel() {
+        updateViewDetails("carousel");
     }
 
     @FXML
-    private void toggle() {
-        title.setText("Toggle Button");
-        body.setContent(ViewManager.getInstance().get("toggle"));
+    private void goToggle() {
+        updateViewDetails("toggle-button");
     }
 
     @FXML
-    private void cards(){
-        title.setText("Cards");
-        body.setContent(ViewManager.getInstance().get("cards"));
+    private void goCards(){
+        updateViewDetails("cards");
     }
 
     @FXML
-    private void banners(){
-        title.setText("Banners");
-        body.setContent(ViewManager.getInstance().get("banners"));
+    private void goBanners(){
+        updateViewDetails("banners");
     }
 
     @FXML
-    private void textField(){
-        title.setText("TextField");
-        body.setContent(ViewManager.getInstance().get("textfield"));
+    private void goTextField(){
+        updateViewDetails("text-field");
     }
 
     @FXML
-    private void datePicker(){
-        title.setText("DatePicker");
-        body.setContent(ViewManager.getInstance().get("datepicker"));
+    private void goDatePicker(){
+        updateViewDetails("datepicker");
     }
 
     @FXML
-    private void checkBox(){
-        title.setText("CheckBox");
-        body.setContent(ViewManager.getInstance().get("checkbox"));
+    private void goCheckBox(){
+        updateViewDetails("checkbox");
     }
 
     @FXML
-    private void comboBox(){
-        title.setText("ComboBox");
-        body.setContent(ViewManager.getInstance().get("combobox"));
+    private void goComboBox(){
+        updateViewDetails("combobox");
     }
 
     @FXML
-    private void colorPicker(){
-        title.setText("ComboBox");
-        body.setContent(ViewManager.getInstance().get("colorpicker"));
+    private void goColorPicker(){
+        updateViewDetails("colorpicker");
     }
 
 
     @FXML
-    private void choiceBox(){
-        title.setText("ChoiceBox");
-        body.setContent(ViewManager.getInstance().get("choicebox"));
+    private void goChoiceBox(){
+        updateViewDetails("choicebox");
     }
 
     @FXML
-    private void splitMenuButton(){
-        title.setText("SplitMenuButton");
-        body.setContent(ViewManager.getInstance().get("splitmenubutton"));
+    private void goSplitMenuButton(){
+        updateViewDetails("splitmenubutton");
     }
 
     @FXML
-    private void menuButton(){
-        title.setText("MenuButton");
-        body.setContent(ViewManager.getInstance().get("menubutton"));
+    private void goMenuButton(){
+        updateViewDetails("menubutton");
     }
 
     @FXML
-    private void menuBar(){
-        title.setText("MenuBar");
-        body.setContent(ViewManager.getInstance().get("menubar"));
+    private void goMenuBar(){
+       updateViewDetails("menubar");
     }
 
     @FXML
-    private void slider(){
-        title.setText("Slider");
-        body.setContent(ViewManager.getInstance().get("slider"));
+    private void goSlider(){
+        updateViewDetails("slider");
     }
 
     @FXML
-    private void mediaView(){
-        title.setText("MediaView");
-        body.setContent(ViewManager.getInstance().get("mediaview"));
+    private void goMediaView(){
+        updateViewDetails("mediaview");
     }
 
     @FXML
-    private void label(){
-        title.setText("Label");
-        body.setContent(ViewManager.getInstance().get("label"));
+    private void goLabel(){
+        updateViewDetails("label");
     }
 
     @FXML
-    private void imageView(){
-        title.setText("ImageView");
-        body.setContent(ViewManager.getInstance().get("imageview"));
+    private void goImageView(){
+        updateViewDetails("imageview");
     }
 
     @FXML
-    private void hyperlink(){
-        title.setText("HyperLink");
-        body.setContent(ViewManager.getInstance().get("hyperlink"));
+    private void goHyperlink(){
+        updateViewDetails("hyperlink");
     }
 
     @FXML
-    private void spinner(){
-        title.setText("Spinner");
-        body.setContent(ViewManager.getInstance().get("spinner"));
+    private void goSpinner(){
+        updateViewDetails("spinner");
     }
 
     @FXML
-    private void listView(){
-        title.setText("ListView");
-        body.setContent(ViewManager.getInstance().get("listview"));
+    private void goListView(){
+        updateViewDetails("listview");
     }
 
     @FXML
-    private void radio(){
-        title.setText("RadioButton");
-        body.setContent(ViewManager.getInstance().get("radiobutton"));
+    private void goRadioButton(){
+        updateViewDetails("radiobutton");
     }
 
     @FXML
-    private void progressBar(){
-        title.setText("ProgressBar");
-        body.setContent(ViewManager.getInstance().get("progressbar"));
+    private void goProgressBar(){
+        updateViewDetails("progressbar");
     }
 
     @FXML
-    private void passwordField(){
-        title.setText("PasswordField");
-        body.setContent(ViewManager.getInstance().get("passwordfield"));
+    private void goPasswordField(){
+        updateViewDetails("passwordfield");
     }
 
     @FXML
-    private void progressIndicator(){
-        title.setText("ProgressIndicator");
-        body.setContent(ViewManager.getInstance().get("progressindicator"));
+    private void goProgressIndicator(){
+        updateViewDetails("progressindicator");
     }
 
     @FXML
-    private void pagination(){
-        title.setText("Pagination");
-        body.setContent(ViewManager.getInstance().get("pagination"));
+    private void goPagination(){
+        updateViewDetails("pagination");
     }
 
     @FXML
-    private void pieChart(){
-        title.setText("PieChart");
-        body.setContent(ViewManager.getInstance().get("piechart"));
+    private void goPieChart(){
+        updateViewDetails("piechart");
     }
 
     @FXML
-    private void stackedBarChart(){
-        title.setText("StackedBarChart");
-        body.setContent(ViewManager.getInstance().get("stackedbarchart"));
+    private void goStackedBarChart(){
+        updateViewDetails("stackedbarchart");
     }
 
     @FXML
-    private void stackedAreaChart(){
-        title.setText("StackedAreaChart");
-        body.setContent(ViewManager.getInstance().get("stackedareachart"));
+    private void goStackedAreaChart(){
+        updateViewDetails("stackedareachart");
     }
 
     @FXML
-    private void scatterChart(){
-        title.setText("ScatterChart");
-        body.setContent(ViewManager.getInstance().get("scatterchart"));
+    private void goScatterChart(){
+        updateViewDetails("scatterchart");
     }
 
 
     @FXML
-    private void dashboard(){
-        title.setText("Dashboard");
-        body.setContent(ViewManager.getInstance().get("dashboard"));
+    private void goDashboard(){
+        updateViewDetails("dashboard");
     }
 
     @FXML
-    private void areaChart(){
-        title.setText("AreaChart");
-        body.setContent(ViewManager.getInstance().get("areachart"));
+    private void goAreaChart(){
+        updateViewDetails("areachart");
     }
 
     @FXML
-    private void barChart(){
-        title.setText("BarChart");
-        body.setContent(ViewManager.getInstance().get("barchart"));
+    private void goBarChart(){
+        updateViewDetails("barchart");
     }
 
     @FXML
-    private void bubbleChart(){
-        title.setText("BubbleChart");
-        body.setContent(ViewManager.getInstance().get("bubblechart"));
+    private void goBubbleChart(){
+        updateViewDetails("bubblechart");
     }
 
     @FXML
-    private void lineChart(){
-        title.setText("LineChart");
-        body.setContent(ViewManager.getInstance().get("linechart"));
+    private void goLineChart(){
+        updateViewDetails("linechart");
     }
 
     @FXML
-    private void tableView(){
-        title.setText("TableView");
-        body.setContent(ViewManager.getInstance().get("tableview"));
+    private void goTableView(){
+        updateViewDetails("tableview");
     }
 
     @FXML
-    private void scrollBar(){
-        title.setText("ScrollBar");
-        body.setContent(ViewManager.getInstance().get("scrollbar"));
+    private void goScrollBar(){
+        updateViewDetails("scrollbar");
     }
 
     @FXML
-    private void treeTableView(){
-        title.setText("TreeTableView");
-        body.setContent(ViewManager.getInstance().get("treetableview"));
+    private void goTreeTableView(){
+        updateViewDetails("tree-table-view");
     }
 
     @FXML
-    private void textArea(){
-        title.setText("TextArea");
-        body.setContent(ViewManager.getInstance().get("text-area"));
+    private void goTextArea(){
+        updateViewDetails("text-area");
     }
 
     @FXML
-    private void treeView(){
-        title.setText("TreeView");
-        body.setContent(ViewManager.getInstance().get("treeview"));
+    private void goTreeView(){
+        updateViewDetails("tree-view");
     }
 
     @FXML
-    private void animateButtons(){
-        title.setText("Animated Button");
-        body.setContent(ViewManager.getInstance().get("animated-button"));
+    private void goAnimateButtons(){
+        updateViewDetails("animatedbutton");
     }
 
     @FXML
-    private void jfxTextField(){
-        title.setText("JFXTextField");
-        body.setContent(ViewManager.getInstance().get("jfx-text-field"));
-    }
-
-    @FXML
-    private void alerts(){
-        title.setText("Alerts");
-        body.setContent(ViewManager.getInstance().get("alerts"));
+    private void goAlerts(){
+        updateViewDetails("alerts");
     }
 
     private PopOver pop = new PopOver();

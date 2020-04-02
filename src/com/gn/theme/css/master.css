@@ -243,9 +243,14 @@
      -fx-fill : -text-color;
 }
 
+.donut-chart .inner-circle {
+    -fx-fill : -foreground-color;
+}
+
 /* .table-view .column-header-background .nested-column-header .table-column, */
 /* .table-view .column-header-background, */
 /* .tree-table-view .column-header-background */
 /* { */
   /* -fx-padding : 10px 2px 10px 2px; */
 /* } */
+

@@ -5,13 +5,14 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXProgressBar?>
 <?import core.CurveFittedAreaChart?>
+<?import core.DonutChart?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
-<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
@@ -24,23 +25,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane prefHeight="1500.0" prefWidth="992.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.dashboard.Dashboard">
+<StackPane prefHeight="1500.0" prefWidth="1843.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.dashboard.Dashboard">
    <children>
       <VBox spacing="20.0">
          <children>
             <HBox alignment="CENTER" spacing="20.0">
                <children>
-                  <VBox prefHeight="101.0" prefWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                  <VBox prefHeight="101.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="271.0">
+                              <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="271.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <JFXButton cache="true" cacheHint="SPEED" contentDisplay="GRAPHIC_ONLY" minHeight="60.0" minWidth="60.0" prefHeight="60.0" prefWidth="60.0" ripplerFill="WHITE" styleClass="btn-primary" text="Button">
+                                    <Button contentDisplay="GRAPHIC_ONLY" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: linear-gradient(to left, #48CFAD, #4FC1E9);" styleClass="linear-gradient-sun" text="Button">
                                        <graphic>
                                           <SVGPath content="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" fill="WHITE" />
                                        </graphic>
-                                    </JFXButton>
+                                    </Button>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                                        <children>
                                           <Label fx:id="lbl_numberRegisters" text="34" textFill="#4986e7">
@@ -72,9 +73,9 @@
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="271.0">
+                              <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="271.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <JFXButton contentDisplay="GRAPHIC_ONLY" minHeight="60.0" minWidth="60.0" prefHeight="60.0" prefWidth="60.0" ripplerFill="WHITE" styleClass="btn-danger">
+                                    <JFXButton contentDisplay="GRAPHIC_ONLY" minHeight="60.0" minWidth="60.0" prefHeight="60.0" prefWidth="60.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to left, -grapefruit, -bittersweet);">
                                        <graphic>
                                           <FontAwesomeIconView fill="WHITE" glyphName="CART_PLUS" size="30" />
                                        </graphic>
@@ -110,9 +111,9 @@
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="271.0">
+                              <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="271.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <JFXButton contentDisplay="GRAPHIC_ONLY" minHeight="60.0" minWidth="60.0" prefHeight="60.0" prefWidth="60.0" ripplerFill="WHITE" styleClass="btn-warning">
+                                    <JFXButton contentDisplay="GRAPHIC_ONLY" minHeight="60.0" minWidth="60.0" prefHeight="60.0" prefWidth="60.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to left, -warning, -deep-orange);" styleClass="btn-warning">
                                        <graphic>
                                           <SVGPath content="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" fill="WHITE" />
                                        </graphic>
@@ -148,9 +149,9 @@
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="271.0">
+                              <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="271.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <JFXButton contentDisplay="GRAPHIC_ONLY" minHeight="60.0" minWidth="60.0" prefHeight="60.0" prefWidth="60.0" ripplerFill="WHITE" styleClass="btn-secondary">
+                                    <JFXButton contentDisplay="GRAPHIC_ONLY" minHeight="60.0" minWidth="60.0" prefHeight="60.0" prefWidth="60.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to left, -secondary, -lavander);" styleClass="btn-secondary">
                                        <graphic>
                                           <SVGPath content="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" fill="WHITE" />
                                        </graphic>
@@ -186,9 +187,9 @@
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="271.0">
+                              <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="271.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <JFXButton contentDisplay="GRAPHIC_ONLY" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" prefHeight="53.0" prefWidth="52.0" ripplerFill="WHITE">
+                                    <JFXButton contentDisplay="GRAPHIC_ONLY" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" prefHeight="53.0" prefWidth="52.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to left, -info, -cyan);">
                                        <graphic>
                                           <SVGPath content="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="WHITE" />
                                        </graphic>
@@ -239,11 +240,11 @@
                            <children>
                               <VBox spacing="10.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <PieChart fx:id="pieChart" title="Pie Chart">
+                                    <DonutChart fx:id="donutChart" title="Donut Chart">
                                        <styleClass>
                                           <String fx:value="border" />
                                           <String fx:value="border-1" />
-                                       </styleClass></PieChart>
+                                       </styleClass></DonutChart>
                                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                        <children>
                                           <GNAvatarView strokeWidth="0.0">
@@ -254,7 +255,7 @@
                                           <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
                                              <children>
                                                 <Label styleClass="h4" text="Perfil" />
-                                                <JFXProgressBar progress="0.46" />
+                                                <JFXProgressBar prefHeight="3.0" prefWidth="573.0" progress="0.7" />
                                              </children>
                                              <HBox.margin>
                                                 <Insets left="10.0" />
@@ -272,26 +273,102 @@
                               </VBox>
                               <VBox prefHeight="1058.0" prefWidth="457.0" spacing="10.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="219.0" prefWidth="303.0" spacing="10.0">
+                                    <HBox spacing="10.0">
                                        <children>
-                                          <GNAvatarView prefHeight="149.0" prefWidth="301.0" type="CIRCLE">
-                                             <image>
-                                                <Image url="@../../media/img/follow.jpg" />
-                                             </image>
-                                             <effect>
-                                                <DropShadow color="#0000005b" />
-                                             </effect></GNAvatarView>
-                                          <JFXButton styleClass="follow" text="Follow me">
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </JFXButton>
+                                          <StackPane prefHeight="326.0" prefWidth="728.0">
+                                             <children>
+                                                <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER" prefHeight="259.0" prefWidth="728.0" style="-fx-background-color: -twitter;" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minHeight="80.0" prefWidth="80.0" style="-fx-background-color: white;" styleClass="round" text="Label">
+                                                               <graphic>
+                                                                  <FontAwesomeIconView fill="WHITE" glyphName="TWITTER" size="40" style="-fx-fill: -twitter;" />
+                                                               </graphic>
+                                                            </Label>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label contentDisplay="GRAPHIC_ONLY" prefHeight="18.0" prefWidth="37.0" style="-fx-background-color: white;" styleClass="triangle" text="Label" translateY="-15.0" VBox.vgrow="ALWAYS" />
+                                                            <HBox fillHeight="false" VBox.vgrow="ALWAYS">
+                                                               <children>
+                                                                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Label style="-fx-font-size: 30; -fx-text-fill: -twitter;" text="1,534" />
+                                                                        <Label layoutX="156.0" layoutY="54.0" text="Tweets" />
+                                                                     </children>
+                                                                  </VBox>
+                                                                  <VBox prefHeight="200.0" prefWidth="1.0" style="-fx-background-color: -light-gray;" />
+                                                                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Label style="-fx-font-size: 30; -fx-text-fill: -twitter;" text="2,789" />
+                                                                        <Label layoutX="176.0" layoutY="66.0" text="Followers" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                               <VBox.margin>
+                                                                  <Insets bottom="5.0" />
+                                                               </VBox.margin>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <styleClass>
+                                                <String fx:value="border" />
+                                                <String fx:value="border-1" />
+                                             </styleClass>
+                                          </StackPane>
+                                          <StackPane layoutX="10.0" layoutY="10.0" prefHeight="326.0" prefWidth="728.0">
+                                             <children>
+                                                <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER" prefHeight="259.0" prefWidth="728.0" style="-fx-background-color: -facebook;" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minHeight="80.0" prefWidth="80.0" style="-fx-background-color: white;" styleClass="round" text="Label">
+                                                               <graphic>
+                                                                  <FontAwesomeIconView fill="WHITE" glyphName="FACEBOOK" size="40" style="-fx-fill: -facebook;" />
+                                                               </graphic>
+                                                            </Label>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS">
+                                                         <children>
+                                                            <Label contentDisplay="GRAPHIC_ONLY" prefHeight="18.0" prefWidth="37.0" style="-fx-background-color: white;" styleClass="triangle" text="Label" translateY="-15.0" VBox.vgrow="ALWAYS" />
+                                                            <HBox fillHeight="false" VBox.vgrow="ALWAYS">
+                                                               <children>
+                                                                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Label style="-fx-font-size: 30; -fx-text-fill: -facebook;" text="985" />
+                                                                        <Label layoutX="156.0" layoutY="54.0" text="Friends" />
+                                                                     </children>
+                                                                  </VBox>
+                                                                  <VBox prefHeight="200.0" prefWidth="1.0" style="-fx-background-color: -light-gray;" />
+                                                                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                                                     <children>
+                                                                        <Label style="-fx-font-size: 30; -fx-text-fill: -facebook;" text="5,132" />
+                                                                        <Label layoutX="176.0" layoutY="66.0" text="Likes" />
+                                                                     </children>
+                                                                  </VBox>
+                                                               </children>
+                                                               <VBox.margin>
+                                                                  <Insets bottom="5.0" />
+                                                               </VBox.margin>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                             <styleClass>
+                                                <String fx:value="border" />
+                                                <String fx:value="border-1" />
+                                             </styleClass>
+                                          </StackPane>
                                        </children>
-                                       <styleClass>
-                                          <String fx:value="border" />
-                                          <String fx:value="border-1" />
-                                       </styleClass>
-                                    </VBox>
+                                    </HBox>
                                     <GNCarousel fx:id="carousel" VBox.vgrow="ALWAYS" />
                                  </children>
                               </VBox>
@@ -494,7 +571,7 @@
    <stylesheets>
       <URL value="@../../theme/css/material-color.css" />
       <URL value="@../../theme/css/skeleton.css" />
-      <URL value="@../../theme/css/light.css" />
+      <URL value="@../../theme/css/light-green.css" />
       <URL value="@../../theme/css/bootstrap.css" />
       <URL value="@../../theme/css/shape.css" />
       <URL value="@../../theme/css/typographic.css" />

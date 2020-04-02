@@ -12,7 +12,7 @@
   -dark-text        : -elegant;
 
   /* icon and tex */
-  -background-color : white;
+  -background-color : #00000002;
   -icon-color       : -dark-gray;
   -text-color       : -dark-gray;
 
@@ -36,7 +36,14 @@
   -box-search-fill  : -text-color;
 
   -fx-background-color : -background-color;
+
 }
+
+.scroll-pane {
+    -fx-background-color : #00000002;
+}
+
+
 
 .box-light
 {
@@ -74,15 +81,15 @@
 {
     -fx-background-color: -base;
     -fx-background-radius: 100;
-    -fx-pref-width: 20;
-    -fx-pref-height: 20;
+    -fx-pref-width: 16;
+    -fx-pref-height: 16;
     -fx-alignment: center;
 }
 
 .icon .badge-pane .label
 {
     -fx-font-weight: BOLD;
-    -fx-font-size: 10px;
+    -fx-font-size: 8px;
     -fx-text-fill: WHITE;
 }
 
@@ -186,4 +193,8 @@
 .main-chart .chart-area-symbol
 {
     -fx-background-color : linear-gradient(to left, -base, -success);
+}
+
+.main-chart .default-color0 {
+ -fx-background-color : linear-gradient(to right,   derive(#02796b, 50%) , derive(#73e57b, 50%)) ;
 }

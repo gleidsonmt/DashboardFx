@@ -1,8 +1,13 @@
 
-
-.drawer {
-  -fx-background-color : transparent;
+.scroll:fitToWidth .viewport {
+    -fx-background-color : transparent;
 }
+
+.drawer
+{
+    -fx-background-color: linear-gradient(to top,   derive(#02796b, 50%) , derive(#73e57b, 50%)) ;
+}
+
 
 .drawer .box-search
 {
@@ -18,16 +23,66 @@
     -fx-text-fill : -box-search-fill;
 }
 
-.drawer .scroll .drawer-content .drawer-item
+.drawer .scroll .drawer-content .drawer-item:hover {
+    -fx-background-color: #02796b50;
+}
+
+.drawer .scroll .drawer-content .drawer-item,
+.drawer .scroll .drawer-content .drawer-item .text
 {
+  -fx-padding : 2 2 2 22;
   -fx-background-radius : 0px;
   -fx-background-color : transparent;
   -fx-min-height : 50px;
+  -fx-alignment : baseline_left;
+  -fx-fill : white;
+  -fx-border-width : 0 0 0 4;
+  -fx-border-color : transparent;
+  -fx-graphic-text-gap : 20;
 }
 
-.drawer .scroll .drawer-content .drawer-menu .drawer-item
+
+.drawer .scroll .drawer-content .drawer-item:selected,
+.drawer .scroll .drawer-content .drawer-item:selected .text,
+.drawer .scroll .drawer-content .drawer-item:selected .icon,
+.drawer .scroll .drawer-content .drawer-item:selected .group .icon
 {
-    -fx-alignment : baseline_left;
+  -fx-effect : none;
+    -fx-background-color: linear-gradient(to left, #ffffff30, #ffffff50);
+  -fx-border-color : white;
+  -fx-fill : white;
+    /* -fx-padding : 2 2 2 10; */
+}
+
+
+.drawer .scroll .drawer-content .drawer-menu .title:hover {
+    -fx-background-color: #02796b50;
+}
+
+.drawer .scroll .drawer-content .drawer-menu .title .arrow-button .arrow {
+  -fx-shape : "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z";
+}
+
+.drawer-menu:collapsed .title .arrow-button .arrow,
+.drawer .scroll .drawer-content .drawer-menu:expanded .title .arrow-button .arrow {
+  -fx-shape : "M0 0h4v4H0z";
+  -fx-max-height : 10px;
+  -fx-max-width : 10px;
+    -fx-background-color : white;
+
+}
+
+.drawer .scroll .drawer-content .drawer-item  .glyph-icon,
+.drawer .scroll .drawer-content .drawer-item  .icon
+{
+    -fx-fill : white;
+}
+
+.drawer .scroll .drawer-content .drawer-menu .content
+{
+  -fx-border-color : transparent;
+  -fx-padding : 0px;
+  -fx-background-color: #02796b99;
 }
 
 .drawer .scroll .drawer-content .drawer-menu .title
@@ -36,82 +91,52 @@
     -fx-background-color : transparent;
     -fx-pref-height : 50px;
     -fx-cursor : hand;
+    -fx-padding : 2 25 2 10 2;
+    -fx-border-width : 0 4 0 0;
+    -fx-alignment : baseline_right;
 }
 
-.drawer .scroll .drawer-content .drawer-item  .text,
-.drawer .scroll .drawer-content .drawer-menu  .text,
-.drawer .scroll .drawer-content .drawer-menu .drawer-item:focused .text
+.drawer .scroll .drawer-content .drawer-menu .title .arrow-button .arrow {
+  -fx-pref-height : 10px;
+  -fx-pref-width : 10px;
+}
+.drawer .scroll .drawer-content .drawer-menu:expanded .title .arrow-button .arrow
 {
-  -fx-fill : -text-color;
+  -fx-pref-height : -45px;
+  -fx-scale-y : 0.4px;
 }
 
-.drawer .scroll .drawer-content .drawer-item  .glyph-icon,
-.drawer .scroll .drawer-content .drawer-item  .icon
+.drawer .scroll .drawer-content .drawer-menu .title .text,
+.drawer .scroll .drawer-content .drawer-menu .title .icon,
+.drawer .scroll .drawer-content .drawer-menu .title .arrow-button .arrow
 {
-    -fx-fill : -icon-color;
-}
-
-.drawer .scroll .drawer-content .drawer-menu .content
-{
-  -fx-border-insets : 0px;
-  -fx-border-color : -light-gray;
-}
-
-.drawer .scroll .drawer-content .drawer-item:focused,
-.drawer .scroll .drawer-content .drawer-item:focused .icon,
-.drawer .scroll .drawer-content .drawer-item:focused .text,
-.drawer .scroll .drawer-content .drawer-menu:focused .title,
-.drawer .scroll .drawer-content .drawer-menu:focused .title .text,
-.drawer .scroll .drawer-content .drawer-menu:focused .title .icon
-
-{
-  -fx-background-color : -base;
   -fx-fill : white;
 }
 
-.drawer .scroll .drawer-content .drawer-menu:focused .title .arrow
+.drawer .scroll .drawer-content .drawer-menu .drawer-item
 {
-  -fx-background-color : white;
+  -fx-alignment : baseline_right;
+  -fx-padding : 2 20 2 20;
 }
 
-.drawer .scroll .drawer-content .drawer-menu .drawer-item:focused
+.drawer .scroll .drawer-content .drawer-menu .drawer-item .icon
 {
-  -fx-border-color : -base;
-  -fx-border-width : 0 0 1 0;
-  -fx-background-color : transparent;
+  -fx-pref-height : 10px;
 }
 
-.radio-drawer {
-  -fx-cursor : hand;
+.drawer .scroll .drawer-content .drawer-menu .drawer-item:selected
+{
+    -fx-background-color: linear-gradient(to left, #ffffff30, #ffffff50);
+  -fx-border-color : transparent;
 }
 
-.radio-drawer:selected .radio
-{
-  -fx-scale-x : 1.2;
-  -fx-scale-y : 1.2;
 
+.drawer .scroll .drawer-content .menu-selected .title{
+    -fx-background-color: linear-gradient(to left, #ffffff30, #ffffff50);
+    -fx-border-width : 0;
 }
 
-.radio-success .radio,
-.radio-success .radio:hover,
-.radio-success .radio:focused,
-.radio-success:selected .radio
-{
-  -fx-border-color : -success;
-}
-
-.radio-warning .radio,
-.radio-warning .radio:hover,
-.radio-warning .radio:focused,
-.radio-warning:selected .radio
-{
-  -fx-border-color : -warning;
-}
-
-.radio-danger .radio,
-.radio-danger .radio:hover,
-.radio-danger .radio:focused,
-.radio-danger:selected .radio
-{
-  -fx-border-color : -danger;
+.menu-selected {
+    -fx-border-color : white;
+    -fx-border-width : 0 4 0 0;
 }

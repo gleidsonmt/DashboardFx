@@ -19,6 +19,7 @@ package com.gn.module.dashboard;
 import com.gn.GNCarousel;
 import com.gn.global.factory.ActionView;
 import core.CurveFittedAreaChart;
+import core.DonutChart;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -45,6 +46,7 @@ public class Dashboard implements Initializable, ActionView {
 //    @FXML private Tile calendar;
     @FXML private AreaChart<String, Number> areaChart;
     @FXML private CurveFittedAreaChart<Number, Number> curve;
+    @FXML private DonutChart donutChart;
     @FXML private GNCarousel carousel;
 
 
@@ -63,8 +65,9 @@ public class Dashboard implements Initializable, ActionView {
                 new PieChart.Data("Dell", 22),
                 new PieChart.Data("Apple", 30)
         );
-        pieChart.setData(pieChartData);
-        pieChart.setClockwise(false);
+//        pieChart.setData(pieChartData);
+//        pieChart.setClockwise(false);
+        donutChart.setData(pieChartData);
 
         carousel.setItems(createItems());
 

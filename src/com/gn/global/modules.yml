@@ -19,3 +19,323 @@
   parentName: controls
   fxmlFile: button.fxml
   subModules: null
+
+#CheckBox
+- !!com.gn.global.factory.Module
+  title: CheckBox
+  name: checkbox
+  parentName: controls
+  fxmlFile: checkbox.fxml
+  subModules: null
+
+#ChoiceBox
+- !!com.gn.global.factory.Module
+  title: ChoiceBox
+  name: choicebox
+  parentName: controls
+  fxmlFile: choicebox.fxml
+  subModules: null
+
+#ColorPicker
+- !!com.gn.global.factory.Module
+  title: ColorPicker
+  name: colorpicker
+  parentName: controls
+  fxmlFile: colorpicker.fxml
+  subModules: null
+
+#ComboBox
+- !!com.gn.global.factory.Module
+  title: ComboBox
+  name: combobox
+  parentName: controls
+  fxmlFile: combobox.fxml
+  subModules: null
+
+#DatePicker
+- !!com.gn.global.factory.Module
+  title: DatePicker
+  name: datepicker
+  parentName: controls
+  fxmlFile: datepicker.fxml
+  subModules: null
+
+#HyperLink
+- !!com.gn.global.factory.Module
+  title: HyperLink
+  name: hyperlink
+  parentName: controls
+  fxmlFile: hyperlink.fxml
+  subModules: null
+
+#ImageView
+- !!com.gn.global.factory.Module
+  title: ImageView
+  name: imageview
+  parentName: controls
+  fxmlFile: imageview.fxml
+  subModules: null
+
+#Label
+- !!com.gn.global.factory.Module
+  title: Label
+  name: label
+  parentName: controls
+  fxmlFile: label.fxml
+  subModules: null
+
+#ListView
+- !!com.gn.global.factory.Module
+  title: ListView
+  name: listview
+  parentName: controls
+  fxmlFile: listview.fxml
+  subModules: null
+
+#MediaView
+- !!com.gn.global.factory.Module
+  title: MediaView
+  name: mediaview
+  parentName: controls
+  fxmlFile: mediaview.fxml
+  subModules: null
+
+#MenuBar
+- !!com.gn.global.factory.Module
+  title: MenuBar
+  name: menubar
+  parentName: controls
+  fxmlFile: menubar.fxml
+  subModules: null
+
+#MenuButton
+- !!com.gn.global.factory.Module
+  title: MenuButton
+  name: menubutton
+  parentName: controls
+  fxmlFile: menubutton.fxml
+  subModules: null
+
+#Pagination
+- !!com.gn.global.factory.Module
+  title: Pagination
+  name: pagination
+  parentName: controls
+  fxmlFile: pagination.fxml
+  subModules: null
+
+#PasswordField
+- !!com.gn.global.factory.Module
+  title: PasswordField
+  name: passwordfield
+  parentName: controls
+  fxmlFile: passwordfield.fxml
+  subModules: null
+
+#ProgressBar
+- !!com.gn.global.factory.Module
+  title: ProgressBar
+  name: progressbar
+  parentName: controls
+  fxmlFile: progressbar.fxml
+  subModules: null
+
+#ProgressIndicator
+- !!com.gn.global.factory.Module
+  title: ProgressIndicator
+  name: progressindicator
+  parentName: controls
+  fxmlFile: progressindicator.fxml
+  subModules: null
+
+#RadioButton
+- !!com.gn.global.factory.Module
+  title: RadioButton
+  name: radiobutton
+  parentName: controls
+  fxmlFile: radiobutton.fxml
+  subModules: null
+
+#ScrollBar
+- !!com.gn.global.factory.Module
+  title: ScrollBar
+  name: scrollbar
+  parentName: controls
+  fxmlFile: scrollbar.fxml
+  subModules: null
+
+#Slider
+- !!com.gn.global.factory.Module
+  title: Slider
+  name: slider
+  parentName: controls
+  fxmlFile: slider.fxml
+  subModules: null
+
+#Spinner
+- !!com.gn.global.factory.Module
+  title: Spinner
+  name: spinner
+  parentName: controls
+  fxmlFile: spinner.fxml
+  subModules: null
+
+#SplitMenuButton
+- !!com.gn.global.factory.Module
+  title: SplitMenuButton
+  name: splitmenubutton
+  parentName: controls
+  fxmlFile: splitmenubutton.fxml
+  subModules: null
+
+#TableView
+- !!com.gn.global.factory.Module
+  title: TableView
+  name: tableview
+  parentName: controls
+  fxmlFile: tableview.fxml
+  subModules: null
+
+#TextArea
+- !!com.gn.global.factory.Module
+  title: TextArea
+  name: text-area
+  parentName: controls
+  fxmlFile: textArea.fxml
+  subModules: null
+
+#TextField
+- !!com.gn.global.factory.Module
+  title: TextField
+  name: text-field
+  parentName: controls
+  fxmlFile: textField.fxml
+  subModules: null
+
+#ToggleButton
+- !!com.gn.global.factory.Module
+  title: ToggleButton
+  name: toggle-button
+  parentName: controls
+  fxmlFile: toggle.fxml
+  subModules: null
+
+#TreeTableView
+- !!com.gn.global.factory.Module
+  title: TreeTableView
+  name: tree-table-view
+  parentName: controls
+  fxmlFile: treetableview.fxml
+  subModules: null
+
+#TreeView
+- !!com.gn.global.factory.Module
+  title: TreeView
+  name: tree-view
+  parentName: controls
+  fxmlFile: treeview.fxml
+  subModules: null
+
+#AreaChart
+- !!com.gn.global.factory.Module
+  title: AreaChart
+  name: areachart
+  parentName: charts
+  fxmlFile: areachart.fxml
+  subModules: null
+
+#BarChart
+- !!com.gn.global.factory.Module
+  title: BarChart
+  name: barchart
+  parentName: charts
+  fxmlFile: barchart.fxml
+  subModules: null
+
+#BubbleChart
+- !!com.gn.global.factory.Module
+  title: BubbleChart
+  name: bubblechart
+  parentName: charts
+  fxmlFile: bubblechart.fxml
+  subModules: null
+
+#LineChart
+- !!com.gn.global.factory.Module
+  title: LineChart
+  name: linechart
+  parentName: charts
+  fxmlFile: linechart.fxml
+  subModules: null
+
+#PieChart
+- !!com.gn.global.factory.Module
+  title: PieChart
+  name: piechart
+  parentName: charts
+  fxmlFile: piechart.fxml
+  subModules: null
+
+#ScatterChart
+- !!com.gn.global.factory.Module
+  title: ScatterChart
+  name: scatterchart
+  parentName: charts
+  fxmlFile: scatterchart.fxml
+  subModules: null
+
+#StackedAreaChart
+- !!com.gn.global.factory.Module
+  title: StackedAreaChart
+  name: stackedareachart
+  parentName: charts
+  fxmlFile: stackedareachart.fxml
+  subModules: null
+
+#StackedBarChart
+- !!com.gn.global.factory.Module
+  title: StackedBarChart
+  name: stackedbarchart
+  parentName: charts
+  fxmlFile: stackedbarchart.fxml
+  subModules: null
+
+#AnimatedButton
+- !!com.gn.global.factory.Module
+  title: Animated Button
+  name: animatedbutton
+  parentName: designer
+  fxmlFile: animated-button.fxml
+  subModules: null
+
+#Alerts
+- !!com.gn.global.factory.Module
+  title: Alerts
+  name: alerts
+  parentName: designer
+  fxmlFile: alerts.fxml
+  subModules: null
+
+#Banners
+- !!com.gn.global.factory.Module
+  title: Banners
+  name: banners
+  parentName: designer
+  fxmlFile: banners.fxml
+  subModules: null
+
+#Cards
+- !!com.gn.global.factory.Module
+    title: Cards
+    name: cards
+    parentName: designer
+    fxmlFile: cards.fxml
+    subModules: null
+
+#Carousel
+- !!com.gn.global.factory.Module
+  title: Carousel
+  name: carousel
+  parentName: designer
+  fxmlFile: carousel.fxml
+  subModules: null

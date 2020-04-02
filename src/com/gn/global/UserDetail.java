@@ -116,7 +116,6 @@ public class UserDetail extends GNControl {
 
         header.getStyleClass().add("h4");
 
-//        System.out.println(getName());
         header.textProperty().bind(headerProperty());
         subTitle.setText("Member since 2018");
 

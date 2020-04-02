@@ -17,7 +17,7 @@
 package com.gn.global.plugin;
 
 import com.gn.decorator.GNDecorator;
-import com.gn.global.exceptions.NavitagionException;
+import com.gn.global.exceptions.NavigationException;
 import com.gn.global.factory.ActionView;
 import com.gn.global.factory.View;
 import javafx.scene.control.ScrollPane;
@@ -32,12 +32,11 @@ public enum  ViewManager {
 
     INSTANCE;
 
-    private final HashMap<String, View> SCREENS = new HashMap<>();
-
     private String current;
     private String previous;
 
-//
+    private final HashMap<String, View> SCREENS = new HashMap<>();
+
     public void put(View view) {
         // testing
         previous = current;
@@ -51,29 +50,33 @@ public enum  ViewManager {
         return SCREENS.get(view);
     }
 
-    private View get(String view){
+    public View get(String view){
         return SCREENS.get(view);
     }
 
-    public void navigate(GNDecorator decorator, String name) throws NavitagionException {
+    public void navigate(GNDecorator decorator, String name) throws NavigationException {
         if(get(name) == null)
-            throw new NavitagionException("NAVIGATION", String.format("The view '%s' was not found.", name));
+            throw new NavigationException("NAVIGATION", String.format("The view '%s' was not encountered.", name));
         else
             decorator.setContent(get(name).getRoot());
     }
 
-    public String openSubView(ScrollPane body, String name){
+    public String openSubView(ScrollPane body, String name) throws NavigationException {
         View view = getWithUpdate(name);
+        if(view != null) {
 
-        if(get(previous).getController() instanceof ActionView)
-            ((ActionView) get(previous).getController()).exit();
+            if (get(previous).getController() instanceof ActionView)
+                ((ActionView) get(previous).getController()).exit();
 
-        body.setContent(view.getRoot());
+            body.setContent(view.getRoot());
 
-        if(view.getController() instanceof ActionView){
-            ((ActionView) view.getController()).enter();
+            if (view.getController() instanceof ActionView) {
+                ((ActionView) view.getController()).enter();
+            }
+
+            return view.getTitle();
+        } else {
+            throw new NavigationException("NAVIGATION", String.format("The view '%s' was not encountered.", name));
         }
-
-        return view.getTitle();
     }
 }

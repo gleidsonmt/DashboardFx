@@ -162,29 +162,29 @@ public class login implements Initializable {
             section.setUserLogged(this.username.getText());
             SectionManager.save(section);
 
-            App.decorator.setContent(ViewManager.getInstance().get("main"));
+//            App.decorator.setContent(ViewManager.INSTANCE.get("main"));
 
-            UserDetail detail = App.getUserDetail();
-            detail.setText(user.getFullName());
-            detail.setHeader(user.getUserName());
-
-            App.decorator.addCustom(App.getUserDetail());
-
-            App.getUserDetail().setProfileAction(event -> {
-                App.getUserDetail().getPopOver().hide();
-                Main.ctrl.title.setText("Profile");
-                Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
-            });
-
-            App.getUserDetail().setSignAction(event -> {
-                App.getUserDetail().getPopOver().hide();
-                App.decorator.setContent(ViewManager.getInstance().get("login"));
-                this.username.setText("");
-                this.password.setText("");
-                if(Main.popConfig.isShowing()) Main.popConfig.hide();
-                if(Main.popup.isShowing()) Main.popup.hide();
-                App.decorator.removeCustom(App.getUserDetail());
-            });
+//            UserDetail detail = App.getUserDetail();
+//            detail.setText(user.getFullName());
+//            detail.setHeader(user.getUserName());
+//
+//            App.decorator.addCustom(App.getUserDetail());
+//
+//            App.getUserDetail().setProfileAction(event -> {
+//                App.getUserDetail().getPopOver().hide();
+//                Main.ctrl.title.setText("Profile");
+//                Main.ctrl.body.setContent(ViewManager.INSTANCE.get("profile"));
+//            });
+//
+//            App.getUserDetail().setSignAction(event -> {
+//                App.getUserDetail().getPopOver().hide();
+//                App.decorator.setContent(ViewManager.INSTANCE.get("login"));
+//                this.username.setText("");
+//                this.password.setText("");
+//                if(Main.popConfig.isShowing()) Main.popConfig.hide();
+//                if(Main.popup.isShowing()) Main.popup.hide();
+//                App.decorator.removeCustom(App.getUserDetail());
+//            });
 
             TimerTask timerTask = new TimerTask() {
                 @Override
@@ -212,6 +212,6 @@ public class login implements Initializable {
 
     @FXML
     private void switchCreate(){
-        App.decorator.setContent(ViewManager.getInstance().get("account"));
+//        App.decorator.setContent(ViewManager.INSTANCE.get("account"));
     }
 }

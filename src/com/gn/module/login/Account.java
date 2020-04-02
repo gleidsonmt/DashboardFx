@@ -139,7 +139,7 @@ public class Account implements Initializable {
             detail.setProfileAction(event -> {
                 App.getUserDetail().getPopOver().hide();
                 Main.ctrl.title.setText("Profile");
-                Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
+//                Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
 
             });
 
@@ -152,17 +152,17 @@ public class Account implements Initializable {
                     this.fullname.setText("");
                     this.username.setText("");
 
-                    App.decorator.setContent(ViewManager.getInstance().get("login"));
+//                    App.decorator.setContent(ViewManager.getInstance().get("login"));
 
                     App.decorator.removeCustom(detail);
             });
 
-            App.decorator.setContent(ViewManager.getInstance().get("main"));
+//            App.decorator.setContent(ViewManager.getInstance().get("main"));
     }
 
     @FXML
     private void back(){
-        App.decorator.setContent(ViewManager.getInstance().get("login"));
+//        App.decorator.setContent(ViewManager.getInstance().get("login"));
     }
 
     private void addEffect(Node node){

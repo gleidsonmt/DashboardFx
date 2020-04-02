@@ -68,6 +68,10 @@
   -fx-background-radius : 100px 100px 100px 0px;
 }
 
+.triangle {
+    -fx-shape : "M 200 350 L 350 100 L 500 350 L 200 350";
+}
+
 .parallelogram-l {
   -fx-shape : "M 450 300 L 200 300 L 250 400 L 500 400 L 450 300 ";
 }

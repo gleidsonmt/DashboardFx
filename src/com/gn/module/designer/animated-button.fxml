@@ -49,11 +49,11 @@
                                           <Insets bottom="10.0" top="10.0" />
                                        </padding>
                                        <children>
-                                          <GNButton prefHeight="462.0" prefWidth="244.0" text="Swipe" />
-                                          <GNButton buttonType="DIAGONAL_SWIPE" layoutX="358.0" layoutY="20.0" prefHeight="462.0" prefWidth="244.0" text="Diagonal Swipe" />
-                                          <GNButton buttonType="CENTRALIZE" layoutX="485.0" layoutY="20.0" prefHeight="121.0" prefWidth="238.0" text="Centralize" />
-                                          <GNButton buttonType="SMOOSH" layoutX="612.0" layoutY="20.0" prefHeight="462.0" prefWidth="244.0" text="Smoosh"  />
-                                          <GNButton buttonType="ALTERNATE" layoutX="722.0" layoutY="20.0" prefHeight="462.0" prefWidth="244.0" text="Alternate"  />
+                                          <GNButton prefHeight="462.0" prefWidth="244.0" style="-gn-transition-color: -base;" text="Swipe" />
+                                          <GNButton buttonType="DIAGONAL_SWIPE" layoutX="358.0" layoutY="20.0" prefHeight="462.0" prefWidth="244.0" style="-gn-transition-color: -base;" text="Diagonal Swipe" />
+                                          <GNButton buttonType="CENTRALIZE" layoutX="485.0" layoutY="20.0" prefHeight="121.0" prefWidth="238.0" style="-gn-transition-color: -base;" text="Centralize" />
+                                          <GNButton buttonType="SMOOSH" layoutX="612.0" layoutY="20.0" prefHeight="462.0" prefWidth="244.0" style="-gn-transition-color: -base;" text="Smoosh" />
+                                          <GNButton buttonType="ALTERNATE" layoutX="722.0" layoutY="20.0" prefHeight="462.0" prefWidth="244.0" style="-gn-transition-color: -base;" text="Alternate" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -99,7 +99,7 @@
    <stylesheets>
       <URL value="@../../theme/css/material-color.css" />
       <URL value="@../../theme/css/skeleton.css" />
-      <URL value="@../../theme/css/light.css" />
+      <URL value="@../../theme/css/light-green.css" />
       <URL value="@../../theme/css/bootstrap.css" />
       <URL value="@../../theme/css/shape.css" />
       <URL value="@../../theme/css/typographic.css" />

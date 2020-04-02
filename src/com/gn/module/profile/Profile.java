@@ -38,7 +38,7 @@ public class Profile implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        note.textProperty().bind(rating.ratingProperty().asString(Locale.ENGLISH, "%.2f"));
-        fullName.textProperty().bind(App.getUserDetail().textProperty());
+//        note.textProperty().bind(rating.ratingProperty().asString(Locale.ENGLISH, "%.2f"));
+//        fullName.textProperty().bind(App.getUserDetail().textProperty());
     }
 }
