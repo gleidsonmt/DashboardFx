@@ -120,7 +120,7 @@
                      </Button>
                   </children>
                </HBox>
-               <VBox id="drawer-box">
+               <VBox id="drawer-box" VBox.vgrow="ALWAYS">
                   <VBox.margin>
                      <Insets top="10.0" />
                   </VBox.margin>
@@ -135,7 +135,7 @@
                                     </graphic>
                                  </ToggleButton>
       
-                                 <TitledPane fx:id="controls" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="10.0" layoutY="80.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Controls">
+                                 <TitledPane fx:id="controls" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="20.0" layoutX="10.0" layoutY="80.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Controls">
                                  <VBox styleClass="drawer-content">
                                     <ToggleButton onMouseClicked="#buttons" prefWidth="250" styleClass="drawer-item" text="Button" />
                                     <ToggleButton layoutX="20.0" layoutY="20.0" onMouseClicked="#goCheckBox" prefWidth="250" styleClass="drawer-item" text="CheckBox" />

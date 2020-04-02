@@ -4,13 +4,16 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
@@ -20,7 +23,7 @@
          <tabs>
             <Tab closable="false" text="Introduction">
                <content>
-                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
+                  <VBox alignment="CENTER_LEFT" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
@@ -41,7 +44,28 @@
                            <children>
                               <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
                                  <children>
-                                    <Button layoutX="430.0" layoutY="10.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="100.0" text="Default" />
+                                    <VBox alignment="CENTER">
+                                       <children>
+                                          <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="100.0" text="Default">
+                                             <contextMenu>
+                                                <ContextMenu>
+                                                  <items>
+                                                    <MenuItem mnemonicParsing="false" text="Copy Style Class">
+                                                         <graphic>
+                                                            <SVGPath content="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4l6 6v10c0 1.1-.9 2-2 2H7.99C6.89 23 6 22.1 6 21l.01-14c0-1.1.89-2 1.99-2h7zm-1 7h5.5L14 6.5V12z" />
+                                                         </graphic>
+                                                      </MenuItem>
+                                                      <MenuItem mnemonicParsing="false" text="Copy Java Class">
+                                                         <graphic>
+                                                            <SVGPath content="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4l6 6v10c0 1.1-.9 2-2 2H7.99C6.89 23 6 22.1 6 21l.01-14c0-1.1.89-2 1.99-2h7zm-1 7h5.5L14 6.5V12z" />
+                                                         </graphic>
+                                                      </MenuItem>
+                                                  </items>
+                                                </ContextMenu>
+                                             </contextMenu>
+                                          </Button>
+                                       </children>
+                                    </VBox>
                                  </children>
                               </HBox>
                            </children>

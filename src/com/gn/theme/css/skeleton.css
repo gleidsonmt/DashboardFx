@@ -548,6 +548,15 @@
     -fx-border-style: solid;
 }
 
+.context-menu .menu-item:focused SVGPath {
+    -fx-background-color : red;
+    -fx-fill : -inner-text;
+}
+
+.context-menu:show-mnemonics .mnemonic-underline {
+    -fx-stroke: -fx-text-fill;
+}
+
 .context-menu .separator {
     -fx-padding: 0.58333275em 1.333332em 0.58333275em 1.333332em;  /*7 16 7 16 */
 }
