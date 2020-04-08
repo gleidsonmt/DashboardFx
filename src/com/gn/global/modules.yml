@@ -7,6 +7,13 @@
 
 #Dashboard
 - !!com.gn.global.factory.Module
+  title: Login
+  name: login
+  fxmlFile: loginfx.fxml
+  subModules: null
+
+#Dashboard
+- !!com.gn.global.factory.Module
   title: Dashboard
   name: dashboard
   fxmlFile: dashboard.fxml
@@ -338,4 +345,12 @@
   name: carousel
   parentName: designer
   fxmlFile: carousel.fxml
+  subModules: null
+
+#Carousel
+- !!com.gn.global.factory.Module
+  title: About
+  name: about
+  parentName: about
+  fxmlFile: about.fxml
   subModules: null

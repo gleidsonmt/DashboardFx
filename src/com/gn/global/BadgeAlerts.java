@@ -16,12 +16,15 @@
  */
 package com.gn.global;
 
+import com.gn.App;
 import com.gn.decorator.component.GNControl;
+import com.gn.global.util.PopupCreator;
 import com.jfoenix.controls.JFXBadge;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -68,6 +71,10 @@ public class BadgeAlerts extends GNControl {
         control.getChildren().add(icon);
 
         badgeM.setControl(control);
+
+//        badgeM.setOnMouseClicked(event -> {
+////            PopupCreator.INSTANCE.createDrawerLeft((VBox)App.getDecorator().getScene().lookup("#drawer"));
+//        });
 
         return badgeM;
     }

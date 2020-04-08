@@ -63,18 +63,18 @@ public class Config implements Initializable {
         String path = "/com/gn/theme/css/";
 
         if (dark) {
-            App.decorator.initTheme(GNDecorator.Theme.DARKULA);
+            App.getDecorator().initTheme(GNDecorator.Theme.DARKULA);
             theme = "dark.css";
             btn_theme.setText("Theme dark : actived");
             invert = true;
         } else {
-            App.decorator.initTheme(GNDecorator.Theme.DEFAULT);
+            App.getDecorator().initTheme(GNDecorator.Theme.DEFAULT);
             theme = "light-green.css";
             btn_theme.setText("Theme dark : desactived");
             invert = false;
         }
 
-        ObservableList<String> stylesheets = App.decorator.getStage().getScene().getStylesheets();
+        ObservableList<String> stylesheets = App.getDecorator().getStage().getScene().getStylesheets();
 
         stylesheets.addAll(
                 getClass().getResource(path + "fonts.css").toExternalForm(),

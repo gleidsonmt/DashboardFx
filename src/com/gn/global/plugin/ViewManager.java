@@ -22,6 +22,7 @@ import com.gn.global.factory.ActionView;
 import com.gn.global.factory.View;
 import javafx.scene.control.ScrollPane;
 
+import javax.swing.*;
 import java.util.HashMap;
 
 /**
@@ -57,8 +58,13 @@ public enum  ViewManager {
     public void navigate(GNDecorator decorator, String name) throws NavigationException {
         if(get(name) == null)
             throw new NavigationException("NAVIGATION", String.format("The view '%s' was not encountered.", name));
-        else
+        else {
             decorator.setContent(get(name).getRoot());
+            if (get(name).getController() instanceof ActionView){
+                ( (ActionView) get(name).getController()).enter();
+            }
+        }
+
     }
 
     public String openSubView(ScrollPane body, String name) throws NavigationException {

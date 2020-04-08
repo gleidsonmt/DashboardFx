@@ -60,20 +60,37 @@
                               </VBox>
                            </children>
                         </VBox>
-                        <VBox prefWidth="952.0" spacing="20.0">
+                        <VBox spacing="20.0">
                            <children>
-                              <Label text="Resources">
-                                 <styleClass>
-                                    <String fx:value="h3" />
-                                    <String fx:value="title" />
-                                 </styleClass>
-                              </Label>
-                              <Separator prefWidth="200.0" />
+                              <HBox alignment="BOTTOM_LEFT">
+                                 <children>
+                                    <Label style="-fx-font-size: 8pt;" styleClass="min" text="Autor" />
+                                    <Separator prefHeight="0.0" prefWidth="197.0" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" onMouseClicked="#openProject" VBox.vgrow="ALWAYS">
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                                 <children>
+                                    <Label text="Gleidson Neves da Silveira" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="40.0" layoutY="992.0" prefWidth="952.0" spacing="20.0">
+                           <children>
+                              <HBox alignment="BOTTOM_LEFT">
+                                 <children>
+                                    <Label style="-fx-font-size: 8pt;" styleClass="min" text="Resources" />
+                                    <Separator prefHeight="0.0" prefWidth="197.0" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
                               <HBox id="block" alignment="CENTER_LEFT" maxHeight="-Infinity" onMouseClicked="#openProject" prefHeight="42.0" prefWidth="892.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Hyperlink styleClass="h5" text="Project" HBox.hgrow="ALWAYS">
+                                    <Hyperlink style="-fx-font-weight: bold; -fx-text-fill: -text-color;" styleClass="h6" text="Project" HBox.hgrow="ALWAYS">
                                        <graphic>
-                                          <FontAwesomeIconView glyphName="GITHUB" size="30" />
+                                          <FontAwesomeIconView glyphName="GITHUB" size="25" />
                                        </graphic>
                                     </Hyperlink>
                                  </children>

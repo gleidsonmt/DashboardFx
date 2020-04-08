@@ -16,13 +16,16 @@
  */
 package com.gn.module.main;
 
+import com.gn.App;
 import com.gn.GNAvatarView;
 import com.gn.GNCarousel;
 import com.gn.global.exceptions.NavigationException;
 import com.gn.global.factory.ActionView;
 import com.gn.global.factory.View;
+import com.gn.global.plugin.GridFx;
 import com.gn.global.plugin.ViewManager;
 import com.gn.global.factory.AlertCell;
+import com.gn.global.util.PopupCreator;
 import com.jfoenix.controls.JFXBadge;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
@@ -59,7 +62,7 @@ import java.util.ResourceBundle;
  * Create on  08/10/2018
  * Version 2.0
  */
-public class Main implements Initializable {
+public class Main implements Initializable, ActionView {
 
     @FXML private GNAvatarView avatar;
     @FXML public  VBox sideBar;
@@ -88,6 +91,8 @@ public class Main implements Initializable {
     @FXML private JFXBadge notifications;
     @FXML private JFXBadge bg_info;
     @FXML private ToggleGroup group;
+    @FXML private HBox barHeader;
+    @FXML private HBox main;
 
     @FXML private RadioButton available;
 
@@ -112,19 +117,10 @@ public class Main implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
-//        ctrl = this;
-//        loadContentPopup();
-//
-//        group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-//                cStatus.setFill( ((RadioButton) newValue).getTextFill());
-//                status.setText(((RadioButton)newValue).getText());
-//            }
-//        });
 
+//        App.getDecorator().floatActions(barHeader);
 
-        DrawerController drawerController = new DrawerController(drawer);
+        DrawerController drawerController = new DrawerController( drawer);
         items = drawerController.getItems();
 
         populateItems();
@@ -145,6 +141,10 @@ public class Main implements Initializable {
             }
         });
 
+
+
+
+
 //////        body.setContent(ViewManager.INSTANCE.get("dashboard"));
 //
 //        try {
@@ -156,88 +156,39 @@ public class Main implements Initializable {
 
     }
 
+    private void hideHamburger(){
+        hamburger.setMaxWidth(0);
+        hamburger.setPrefWidth(0);
+        hamburger.setMinWidth(0);
+        hamburger.setMinHeight(0);
+        hamburger.setVisible(false);
+        barHeader.setPadding(new Insets(0));
+    }
 
-    @FXML
-    private void altLayout() {
+    private void hideDrawer(){
+        main.getChildren().remove(drawer);
+    }
 
+    private void showHamburger(){
+        hamburger.setMaxWidth(40);
+        hamburger.setPrefWidth(40);
+        hamburger.setMinWidth(40);
+        hamburger.setMinHeight(40);
 
-        int minimum = 70;
-        int max = 250;
-
-        if(drawer.getPrefWidth() == max){
-
-            drawer.setPrefWidth(minimum);
-
-            drawer.getChildren().remove(info);
-            drawer.getChildren().remove(searchBox);
-
-            for(Node node : views.getChildren()) {
-                if(node instanceof Button){
-                    ((Button) node).setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                    ((Button) node).setAlignment(Pos.BASELINE_CENTER);
-                } else if(node instanceof TitledPane){
-                    ((TitledPane) node).setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                    ((TitledPane) node).setAlignment(Pos.BASELINE_CENTER);
-                    ((TitledPane) node).setExpanded(false);
-                    ((TitledPane) node).setCollapsible(false);
-                } else {
-                    break;
-                }
-            }
-
-            avatar.setStrokeWidth(0);
-            addEvents();
-
-        } else {
-            drawer.setPrefWidth(max);
-
-            drawer.getChildren().addAll(info, searchBox);
-            searchBox.toBack();
-            info.toBack();
-            avatar.toBack();
-            avatar.setStrokeWidth(2);
-            for(Node node : views.getChildren()){
-                if(node instanceof Button){
-                    ((Button) node).setContentDisplay(ContentDisplay.LEFT);
-                    ((Button) node).setAlignment(Pos.BASELINE_LEFT);
-                } else if(node instanceof TitledPane){
-                    ((TitledPane) node).setContentDisplay(ContentDisplay.RIGHT);
-                    ((TitledPane) node).setAlignment(Pos.BASELINE_RIGHT);
-                    ((TitledPane) node).setCollapsible(true);
-                } else {
-                    break;
-                }
-            }
+        hamburger.setVisible(true);
+    }
+    private void showDrawer(){
+        if(!main.getChildren().contains(drawer)) {
+            drawer.setPrefWidth(250D);
+            main.getChildren().add(drawer);
+            drawer.toBack();
         }
     }
 
-    private void addEvents(){
-        VBox drawerContent;
 
-        for (Node node : drawer.getChildren()) { // root
-            if (node instanceof ScrollPane){
-
-                drawerContent = (VBox) ((ScrollPane) node).getContent();
-
-                for(Node child : drawerContent.getChildren()){
-                    if(child instanceof Button){
-                        child.setOnMouseEntered(e -> {
-                            popup.setAutoHide(true);
-                            if(popup.isShowing())
-                                popup.hide();
-                        });
-                    }
-
-                    else if(child instanceof TitledPane){
-                        addEvent(child);
-                    }
-                }
-            }
-
-            else {
-                // for others layouts
-            }
-        }
+    @FXML
+    private void openDrawer(){
+        PopupCreator.INSTANCE.createDrawerLeft(drawer);
     }
 
     private void addSubPop() throws Exception {
@@ -400,6 +351,11 @@ public class Main implements Initializable {
         } catch (NavigationException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void goAbout(){
+        updateViewDetails("about");
     }
 
     @FXML
@@ -749,5 +705,30 @@ public class Main implements Initializable {
         } else {
               pop.hide();
         }
+    }
+
+    @Override
+    public void enter() {
+        App.getDecorator().getStage().widthProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue.doubleValue() <= 500) {
+                showHamburger();
+                barHeader.setPadding(new Insets(20,0,0,0));
+            } else if (newValue.doubleValue() <= GridFx.Type.SM.getValue()){
+                showHamburger();
+                hideDrawer();
+                barHeader.setPadding(new Insets(0,0,0,0));
+//                PopupCreator.INSTANCE.closePopup();
+            } else {
+                barHeader.setPadding(new Insets(0,0,0,0));
+                showDrawer();
+                hideHamburger();
+                PopupCreator.INSTANCE.closePopup();
+            }
+        });
+    }
+
+    @Override
+    public void exit() {
+
     }
 }

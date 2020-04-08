@@ -84,7 +84,7 @@ public class Carousel implements Initializable, ActionView {
 
     @FXML
     private void openProject() {
-        App.hostServices.showDocument("https://github.com/Gleidson28/GNCarousel");
+        App.openLink("https://github.com/Gleidson28/GNCarousel");
     }
 
     @Override

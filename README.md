@@ -99,7 +99,9 @@ getScene().getStylesheets().addAll(
   </stylesheets>
 ```
           
+## Preview
 
+![Dash](src/com/gn/media/img/firstScreen.png)
     
 ## View Tests
 [![Youtube link](src/com/gn/module/media/you.png)](https://youtu.be/hZsYU7UbWmU)

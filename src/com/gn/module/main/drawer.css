@@ -13,7 +13,7 @@
 {
     -fx-background-repeat : no-repeat;
     -fx-background-position : right;
-    -fx-border-width : 1px 0px 1px 0px;
+    -fx-border-width : 0px 0px 1px 0px;
     -fx-min-height : 38px;
     -fx-border-color : -box-search-color;
 }

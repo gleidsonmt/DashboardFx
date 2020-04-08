@@ -20,3 +20,9 @@ HBox, .text-field
   -fx-background-color : linear-gradient(to left, -success, -mint);
 
 }
+
+
+.block-image-test
+{
+    -fx-background-size : cover;
+}

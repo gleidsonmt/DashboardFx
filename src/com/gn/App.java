@@ -60,6 +60,24 @@ public class App extends Application {
     private Section section;
     private User    user;
 
+    private static final GNDecorator decorator  = new GNDecorator();
+    private static final Scene       scene      = decorator.getScene();
+
+    public static ObservableList<String>    stylesheets;
+    private static HostServices              hostServices;
+    private static UserDetail userDetail = null;
+
+    private double minWidth = 350;
+    private double minHeight = 500;
+
+    public static GNDecorator getDecorator(){
+        return decorator;
+    }
+
+    public static void openLink(String link){
+        hostServices.showDocument(link);
+    }
+
     @Override
     public synchronized void init(){
 //        section = SectionManager.get();
@@ -72,21 +90,12 @@ public class App extends Application {
 //        }
         LoadViews load = new LoadViews();
         load.start();
-    }
 
-    public static final GNDecorator decorator = new GNDecorator();
-    public static final Scene scene = decorator.getScene();
-
-    public static ObservableList<String>    stylesheets;
-    public static HostServices              hostServices;
-    private static UserDetail userDetail = null;
-
-    public static GNDecorator getDecorator(){
-        return decorator;
-    }
-
-    private void configServices(){
-        hostServices = getHostServices();
+        try {
+            wait(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initialScene(){
@@ -95,15 +104,7 @@ public class App extends Application {
         decorator.setMaximized(true);
         decorator.fullBody();
 
-        App.decorator.addCustom(userDetail);
 
-        App.decorator.addCustom(new ConfigOptions(
-                "Text", "Subtitle"
-        ));
-
-        App.decorator.addCustom(new BadgeMessages());
-        App.decorator.addCustom(new BadgeInfo());
-        App.decorator.addCustom(new BadgeAlerts());
 
 //            userDetail.setProfileAction(event -> {
 //                Main.ctrl.title.setText("Profile");
@@ -135,7 +136,7 @@ public class App extends Application {
     public  void start(Stage primary) throws Exception {
 
         initialScene();
-//        configServices();
+        hostServices = getHostServices();
 
         stylesheets = decorator.getScene().getStylesheets();
 //
@@ -158,11 +159,14 @@ public class App extends Application {
 //        decorator.show();
 
         Parent root = FXMLLoader.load(getClass().getResource("/com/gn/module/loader/loader.fxml"));
+        decorator.getStage().setMinWidth(minWidth);
+        decorator.getStage().setMinHeight(minHeight);
         decorator.setContent(root);
         decorator.getStage().getIcons().add(new Image("/com/gn/module/media/logo2.png"));
+//        decorator.floatActions();
         decorator.show();
 
-        ScenicView.show(decorator.getScene());
+//        ScenicView.show(decorator.getScene());
     }
 
     public static void main(String[] args) {

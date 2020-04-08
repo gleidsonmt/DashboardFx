@@ -16,8 +16,15 @@
  */
 package com.gn.module.dashboard;
 
+import animatefx.animation.BounceIn;
+import animatefx.animation.Pulse;
+import animatefx.animation.RollIn;
+import com.gn.App;
 import com.gn.GNCarousel;
+import com.gn.global.*;
 import com.gn.global.factory.ActionView;
+import com.gn.global.plugin.ViewManager;
+import com.gn.global.util.PopupCreator;
 import core.CurveFittedAreaChart;
 import core.DonutChart;
 import javafx.collections.FXCollections;
@@ -31,7 +38,9 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -146,6 +155,22 @@ public class Dashboard implements Initializable, ActionView {
 
     @Override
     public void enter() {
+        StackPane body = (StackPane) ViewManager.INSTANCE.get("login").getRoot();
+        PopupCreator.INSTANCE.createPopup(body);
+
+
+        App.getDecorator().addCustom(
+                new UserDetail("Gleidson", "Gleidson Neves da Silveira", "Subtitlte")
+        );
+
+        App.getDecorator().addCustom(new ConfigOptions(
+                "Text", "Subtitle"
+        ));
+
+        App.getDecorator().addCustom(new BadgeMessages());
+        App.getDecorator().addCustom(new BadgeInfo());
+        App.getDecorator().addCustom(new BadgeAlerts());
+
         System.out.println("Dashboard entered");
     }
 

@@ -430,3 +430,48 @@
 *               Test
 *
 *************************************************************************************/
+
+
+.radio-drawer {
+  -fx-cursor : hand;
+}
+
+.radio-drawer:selected .radio
+{
+  -fx-scale-x : 1.2;
+  -fx-scale-y : 1.2;
+
+}
+
+.radio-success .radio,
+.radio-success .radio:hover,
+.radio-success .radio:focused,
+.radio-success:selected .radio
+{
+  -fx-border-color : -success;
+}
+
+.radio-warning .radio,
+.radio-warning .radio:hover,
+.radio-warning .radio:focused,
+.radio-warning:selected .radio
+{
+  -fx-border-color : -warning;
+}
+
+.radio-danger .radio,
+.radio-danger .radio:hover,
+.radio-danger .radio:focused,
+.radio-danger:selected .radio
+{
+  -fx-border-color : -danger;
+}
+
+
+.radio-test .radio,
+.radio-test .radio:hover,
+.radio-test .radio:focused,
+.radio-test:selected .radio
+{
+  -fx-border-color : -deep-orange;
+}

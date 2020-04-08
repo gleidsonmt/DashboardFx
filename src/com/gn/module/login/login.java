@@ -25,6 +25,7 @@ import com.gn.global.plugin.ViewManager;
 import com.gn.global.*;
 import com.gn.global.plugin.SectionManager;
 import com.gn.global.plugin.UserManager;
+import com.gn.global.util.PopupCreator;
 import com.gn.module.main.Main;
 import javafx.animation.RotateTransition;
 import javafx.application.Platform;
@@ -74,7 +75,7 @@ public class login implements Initializable {
         addEffect(password);
         addEffect(username);
 
-        setupListeners();
+//        setupListeners();
 
     }
 
@@ -141,15 +142,17 @@ public class login implements Initializable {
 
     @FXML
     private void loginAction(){
-        Pulse pulse = new Pulse(login);
-        pulse.setDelay(Duration.millis(20));
-        pulse.play();
-        if(validPassword() && validUsername())
-            enter();
-        else {
-            lbl_password.setVisible(true);
-            lbl_username.setVisible(true);
-        }
+//        Pulse pulse = new Pulse(login);
+//        pulse.setDelay(Duration.millis(20));
+//        pulse.play();
+//        if(validPassword() && validUsername())
+//            enter();
+//        else {
+//            lbl_password.setVisible(true);
+//            lbl_username.setVisible(true);
+//        }
+
+        PopupCreator.INSTANCE.closePopup();
     }
 
     private void enter() {

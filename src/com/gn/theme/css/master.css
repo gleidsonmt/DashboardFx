@@ -5,6 +5,8 @@
     Samples styles
 */
 
+
+
 .btn-hover
 {
   -fx-background-color : derive(-base, -40%);
@@ -242,6 +244,9 @@
 {
      -fx-fill : -text-color;
 }
+
+
+
 
 .donut-chart .inner-circle {
     -fx-fill : -foreground-color;

@@ -1,74 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXSpinner?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<StackPane prefHeight="397.0" prefWidth="657.0" styleClass="foreground" stylesheets="@loader.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane prefHeight="771.0" prefWidth="1181.0" styleClass="foreground" stylesheets="@loader.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="576.0" prefWidth="481.0">
          <children>
-            <ImageView fitHeight="397.0" fitWidth="536.0" layoutX="462.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
-               <image>
-                  <Image url="@../media/predios-e-vetores-3fee7.jpg" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="0.62" contrast="0.33" hue="-0.19" saturation="0.31" />
-               </effect>
-            </ImageView>
-            <VBox alignment="BOTTOM_LEFT" layoutX="449.0" layoutY="188.0" prefHeight="576.0" prefWidth="462.0" styleClass="block" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <padding>
-                  <Insets bottom="100.0" left="15.0" />
-               </padding>
+            <VBox alignment="CENTER" layoutX="435.0" layoutY="238.0" prefHeight="397.0" prefWidth="474.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label prefHeight="68.0" prefWidth="279.0" text="This dashboard is a &#10;collection of the samples for javafx creators.&#10;&#10;&#10;" textFill="WHITE">
-                     <padding>
-                        <Insets left="40.0" />
-                     </padding>
-                  </Label>
+                  <JFXSpinner prefHeight="77.0" prefWidth="1141.0" />
+                  <Label prefHeight="36.0" style="-fx-font-size: 28;" text="Loading" textFill="#00000081" />
                </children>
             </VBox>
-            <Label layoutX="5.0" layoutY="407.0" prefHeight="17.0" prefWidth="130.0" text="© Gleidson Neves da Silveira" textFill="WHITE" AnchorPane.bottomAnchor="10.0">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Circle fill="#1f93ff00" layoutX="54.0" layoutY="56.0" radius="42.0" stroke="WHITE" strokeType="INSIDE" visible="false" />
-            <Text fill="WHITE" layoutX="32.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="G" visible="false" wrappingWidth="44.7890625" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0">
-               <font>
-                  <Font name="System Bold" size="63.0" />
-               </font>
-            </Text>
-            <Label layoutX="14.0" layoutY="336.0" text="Loading views.." textFill="WHITE" AnchorPane.bottomAnchor="60.0" />
-            <JFXProgressBar fx:id="progressBar" layoutX="14.0" layoutY="382.0" prefHeight="4.0" prefWidth="401.0" progress="0.0" AnchorPane.bottomAnchor="36.0" />
-            <Label layoutX="65.0" layoutY="75.0" prefHeight="114.0" prefWidth="176.0" styleClass="fix" text="Dashboard Fx" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="Berlin Sans FB" size="28.0" />
-               </font>
-               <effect>
-                  <Glow level="0.84" />
-               </effect>
-            </Label>
-            <Pane prefHeight="170.0" prefWidth="4.0" style="-fx-background-color: linear-gradient(to bottom, white, transparent);" AnchorPane.bottomAnchor="180.0" AnchorPane.rightAnchor="350.0" />
-            <Pane layoutX="263.0" layoutY="88.0" prefHeight="4.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(to left, white, transparent);" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="47.0" />
-            <Pane layoutX="97.0" layoutY="57.0" prefHeight="4.0" prefWidth="170.0" style="-fx-background-color: linear-gradient(to right, white, transparent);" AnchorPane.bottomAnchor="180.0" AnchorPane.rightAnchor="400.0" />
-            <Pane layoutX="61.0" layoutY="223.0" prefHeight="170.0" prefWidth="4.0" style="-fx-background-color: linear-gradient(to top, white, transparent);" AnchorPane.leftAnchor="47.0" AnchorPane.topAnchor="47.0" />
          </children>
-         <effect>
-            <DropShadow color="#31b52f44" />
-         </effect>
       </AnchorPane>
    </children>
    <padding>

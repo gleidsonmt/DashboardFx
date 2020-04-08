@@ -74,14 +74,15 @@ public class LoadViews extends Service {
 //
     @Override
     protected synchronized void succeeded() {
+        super.succeeded();
+
         try {
-            ViewManager.INSTANCE.navigate(App.decorator, "main");
+            ViewManager.INSTANCE.navigate(App.getDecorator(), "main");
             ScrollPane body = (ScrollPane) App.getDecorator().getScene().lookup("#body");
             ViewManager.INSTANCE.openSubView(body, "dashboard");
         } catch (NavigationException e) {
             e.printStackTrace();
         }
-        super.succeeded();
     }
 
     @Override
