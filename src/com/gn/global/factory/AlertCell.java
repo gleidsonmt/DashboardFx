@@ -93,8 +93,8 @@ public class AlertCell extends HBox {
     private void config(){
         this.getStyleClass().add("alert-cell");
         this.setAlignment(Pos.CENTER_LEFT);
-        this.setPrefHeight(40D);
-        this.title.setStyle("-fx-font-size : 14;");
+        this.setMinHeight(50D);
+        this.title.setStyle("-fx-font-size : 12;");
         this.text.getStyleClass().addAll("h6");
         this.text.setStyle("-fx-fill : -text-color;");
         this.time.setStyle("-fx-text-fill : -text-color; -fx-font-style : italic; ");
@@ -107,7 +107,7 @@ public class AlertCell extends HBox {
         GridPane.setHalignment(this.time, HPos.RIGHT);
         GridPane.setValignment(this.time, VPos.CENTER);
         GridPane.setHgrow(this.time, Priority.ALWAYS);
-        HBox.setMargin(this.content, new Insets(0,0,0,10));
+        HBox.setMargin(this.content, new Insets(15,0,15,10));
     }
 
     public void setTitle(Label title) {
