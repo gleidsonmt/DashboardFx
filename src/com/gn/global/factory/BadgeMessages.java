@@ -18,12 +18,10 @@ package com.gn.global.factory;
 
 import com.gn.GNAvatarView;
 import com.gn.decorator.component.GNControl;
-import com.gn.global.factory.AlertCell;
 import com.jfoenix.controls.JFXBadge;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;

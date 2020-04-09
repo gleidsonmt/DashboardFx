@@ -119,7 +119,6 @@ public class BadgeNotification extends GNControl {
 
             Label message = new Label("You have " + list.size() + " notifications");
             GridPane title = new GridPane();
-           ;
 
             title.setAlignment(Pos.CENTER);
             title.add(message, 0, 0);
