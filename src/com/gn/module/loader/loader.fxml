@@ -14,7 +14,7 @@
             <VBox alignment="CENTER" layoutX="435.0" layoutY="238.0" prefHeight="397.0" prefWidth="474.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <JFXSpinner prefHeight="77.0" prefWidth="1141.0" />
-                  <Label prefHeight="36.0" style="-fx-font-size: 28;" text="Loading" textFill="#00000081" />
+                  <Label id="labelLoading" prefHeight="36.0" style="-fx-font-size: 18;" text="Loading" textFill="#00000081" />
                </children>
             </VBox>
          </children>

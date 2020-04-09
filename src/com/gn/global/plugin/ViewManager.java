@@ -85,4 +85,8 @@ public enum  ViewManager {
             throw new NavigationException("NAVIGATION", String.format("The view '%s' was not encountered.", name));
         }
     }
+
+    public int size(){
+        return SCREENS.size();
+    }
 }

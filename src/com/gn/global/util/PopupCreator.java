@@ -16,7 +16,7 @@
  */
 package com.gn.global.util;
 
-import animatefx.animation.RollIn;
+import animatefx.animation.*;
 import com.gn.App;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -50,11 +50,6 @@ public enum PopupCreator {
     int velocity = 200;
 
     public void createDrawerLeft(VBox content){
-
-//        defineContents();
-
-        System.out.println(foreground);
-
         foreground.getChildren().clear();
         foreground.getChildren().add(foreContent);
         foreContent.getChildren().clear();
@@ -65,12 +60,6 @@ public enum PopupCreator {
         if(!customDialog.getChildren().contains(content)) {
             customDialog.getChildren().clear();
             customDialog.getChildren().add(content);
-        }
-
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
 
         openFromLeft.getKeyFrames().addAll(
@@ -92,33 +81,48 @@ public enum PopupCreator {
                     closeFromLeft.play();
                 }
             }
-//            closeFromLeft.play();
         });
-        closeFromLeft.setOnFinished(event -> foreground.toBack());
+        closeFromLeft.setOnFinished(event -> {
+            foreground.toBack();
+            App.getDecorator().showCustoms();
+        });
 
         organizeInLeft();
     }
 
     public void closePopup(){
-//        defineContents();
         foreground.toBack();
     }
 
+    public void closePopup(AnimationFX animationFX){
+        animationFX.play();
+        animationFX.getTimeline().setOnFinished(event -> {
+            foreground.toBack();
+        });
+
+    }
+
     public void createPopup(StackPane content){
-//        defineContents();
         customDialog.getChildren().clear();
         customDialog.getChildren().add(content);
         organizeInCenter(content);
         foreground.getChildren().clear();
         foreground.getChildren().add(content);
 
-        RollIn bounceIn = new RollIn(customDialog);
-        bounceIn.setDelay(Duration.millis(5000));
-        bounceIn.setSpeed(3000);
-        bounceIn.play();
+        foreground.toFront();
+
+    }
+
+    public void createPopup(StackPane content, AnimationFX animationFX){
+        customDialog.getChildren().clear();
+        customDialog.getChildren().add(content);
+        organizeInCenter(content);
+        foreground.getChildren().clear();
+        foreground.getChildren().add(content);
 
         foreground.toFront();
 
+        animationFX.play();
     }
 
     private void organizeInCenter(StackPane content){
@@ -142,7 +146,6 @@ public enum PopupCreator {
 
     private void defineContents(){
         foreground = (StackPane) App.getDecorator().getScene().lookup("#foreground");
-        System.out.println(foreground.lookup("#fore-content"));
         foreContent = (AnchorPane) foreground.lookup("#fore-content");
         customDialog = (StackPane) foreground.lookup("#custom-dialog");
     }

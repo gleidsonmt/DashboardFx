@@ -224,7 +224,7 @@
             </HBox>
             <VBox style="-fx-background-color: white;">
                <children>
-                  <CurveFittedAreaChart fx:id="curve" createSymbols="false" styleClass="main-chart" title="Curve Chart" />
+                  <CurveFittedAreaChart fx:id="curve" alternativeColumnFillVisible="true" alternativeRowFillVisible="false" createSymbols="false" horizontalZeroLineVisible="false" legendVisible="false" styleClass="main-chart" title="Curve Chart" verticalGridLinesVisible="false" verticalZeroLineVisible="false" />
                </children>
                <styleClass>
                   <String fx:value="border" />

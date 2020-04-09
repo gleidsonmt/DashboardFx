@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXProgressBar?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
@@ -111,6 +112,24 @@
                         <Label layoutX="10.0" layoutY="10.0" style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="UI/UX" />
                         <Label layoutX="10.0" layoutY="27.0" style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Web - Design" />
                         <Label layoutX="10.0" layoutY="44.0" style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Print &amp; Editorial" />
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="55.0" spacing="5.0">
+                           <children>
+                              <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Java" />
+                              <JFXProgressBar prefHeight="0.0" prefWidth="521.0" progress="0.75" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="263.0" spacing="5.0">
+                           <children>
+                              <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="JavaFx" />
+                              <JFXProgressBar prefHeight="0.0" prefWidth="521.0" progress="0.85" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="JFXCss" />
+                              <JFXProgressBar prefHeight="0.0" prefWidth="521.0" progress="0.9" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
                         <VBox prefHeight="173.0" prefWidth="937.0">
                            <children>
                               <GridPane prefHeight="329.0" prefWidth="579.0">

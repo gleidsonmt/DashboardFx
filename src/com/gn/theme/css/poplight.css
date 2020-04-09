@@ -1,16 +1,16 @@
 .root
 {
-	  -elegant    : #2E2E2E;
-	  -dark-gray  : #656D78;
-		-light-gray : #E6E9ED;
+    -elegant    : #2E2E2E;
+    -dark-gray  : #656D78;
+    -light-gray : #E6E9ED;
+    -foreground-pop : white;
 }
 
 .popover  {
-	-fx-background-color: transparent;
+	-fx-background-color: -foreground-color;
 }
 
 .popover > .border {
-	-fx-stroke: red;
 	-fx-stroke-width: 0.5;
 	-fx-fill: transparent;
 	-fx-effect: null;
@@ -18,7 +18,7 @@
 }
 
 .popover > .content {
-  -fx-border-color : -dark-gray;
+  -fx-border-color : -medium-gray;
   -fx-border-width : 2px;
 	-fx-padding: 0;
 }
@@ -65,7 +65,8 @@
 	-fx-fill : -icon-color;
 }
 
-.list-view .list-cell:selected .alert-cell
+.list-view .list-cell:selected .alert-cell .label
 {
-	  -text-color : white;
+	  -fx-text-fill : -text-color;
 }
+

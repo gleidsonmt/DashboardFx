@@ -24,7 +24,8 @@
 * 5  New Version of Dashboard.
 * 6  GridFx (tests).
 * 7  New fxml samples.
-* 8  Default models .
+* 8  Default models.
+* 9  JFoenix integration.
 
 <h1></h1>
 
@@ -102,6 +103,4 @@ getScene().getStylesheets().addAll(
 ## Preview
 
 ![Dash](src/com/gn/media/img/firstScreen.png)
-    
-## View Tests
-[![Youtube link](src/com/gn/module/media/you.png)](https://youtu.be/hZsYU7UbWmU)
+

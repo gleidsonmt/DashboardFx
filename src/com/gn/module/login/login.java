@@ -16,6 +16,7 @@
  */
 package com.gn.module.login;
 
+import animatefx.animation.BounceOut;
 import animatefx.animation.Flash;
 import animatefx.animation.Pulse;
 import animatefx.animation.SlideInLeft;
@@ -37,6 +38,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -51,6 +53,7 @@ import java.util.TimerTask;
  */
 public class login implements Initializable {
 
+    @FXML private StackPane root;
     @FXML private GNAvatarView avatar;
     @FXML private HBox box_username;
     @FXML private HBox box_password;
@@ -142,9 +145,9 @@ public class login implements Initializable {
 
     @FXML
     private void loginAction(){
-//        Pulse pulse = new Pulse(login);
-//        pulse.setDelay(Duration.millis(20));
-//        pulse.play();
+        Pulse pulse = new Pulse(login);
+        pulse.setDelay(Duration.millis(20));
+        pulse.play();
 //        if(validPassword() && validUsername())
 //            enter();
 //        else {
@@ -152,7 +155,8 @@ public class login implements Initializable {
 //            lbl_username.setVisible(true);
 //        }
 
-        PopupCreator.INSTANCE.closePopup();
+        StackPane body = (StackPane) ViewManager.INSTANCE.get("login").getRoot();
+        PopupCreator.INSTANCE.closePopup(new BounceOut(body));
     }
 
     private void enter() {

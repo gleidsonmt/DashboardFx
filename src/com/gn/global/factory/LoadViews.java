@@ -20,9 +20,11 @@ import com.gn.App;
 import com.gn.global.exceptions.LoadViewException;
 import com.gn.global.exceptions.NavigationException;
 import com.gn.global.plugin.ViewManager;
+import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
@@ -30,6 +32,7 @@ import org.yaml.snakeyaml.constructor.Constructor;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Timer;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -75,6 +78,9 @@ public class LoadViews extends Service {
     @Override
     protected synchronized void succeeded() {
         super.succeeded();
+        System.out.println("+----------------------------------+");
+        System.out.println("|        LoadViews Succeeded       |");
+        System.out.println("+----------------------------------+");
 
         try {
             ViewManager.INSTANCE.navigate(App.getDecorator(), "main");
@@ -94,6 +100,9 @@ public class LoadViews extends Service {
     @Override
     public void start() {
         super.start();
+        System.out.println("+----------------------------------+");
+        System.out.println("|        Starting Load Views       |");
+        System.out.println("+----------------------------------+");
     }
 
     @Override
@@ -101,10 +110,20 @@ public class LoadViews extends Service {
 
         return new Task() {
             @Override
-            protected Object call() throws LoadViewException {
+            protected Object call()  {
+                Label lbl = (Label) App.getDecorator().getScene().lookup("#labelLoading");
                 for (Module module : modules) {
+                    try {
                         ViewManager.INSTANCE.put(createView(module));
+                    } catch (LoadViewException e) {
+                        e.printStackTrace();
+                    }
+                    Platform.runLater(() -> {
+                        lbl.setText("Loading... [ " + (module.getParentName()== null ? module.getName() : module.getParentName()) + " ]/[ " + module.getName() + " ]");
+                    });
                 }
+
+                Platform.runLater(() -> lbl.setText("Going to Main :D"));
                 return null;
             }
         };

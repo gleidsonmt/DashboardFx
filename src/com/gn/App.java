@@ -88,14 +88,24 @@ public class App extends Application {
 //        } else {
 //            userDetail = new UserDetail();
 //        }
-        LoadViews load = new LoadViews();
-        load.start();
 
+        Parent root = null;
         try {
-            wait(3000);
-        } catch (InterruptedException e) {
+            root = FXMLLoader.load(getClass().getResource("/com/gn/module/loader/loader.fxml"));
+        } catch (IOException e) {
             e.printStackTrace();
         }
+        decorator.getStage().setMinWidth(minWidth);
+        decorator.getStage().setMinHeight(minHeight);
+        decorator.setContent(root);
+        decorator.getStage().getIcons().add(new Image("/com/gn/module/media/logo2.png"));
+
+    }
+
+    @Override
+    public void stop(){
+        Platform.exit();
+        System.exit(0);
     }
 
     private void initialScene(){
@@ -103,7 +113,6 @@ public class App extends Application {
         decorator.setIcon(null);
         decorator.setMaximized(true);
         decorator.fullBody();
-
 
 
 //            userDetail.setProfileAction(event -> {
@@ -152,44 +161,17 @@ public class App extends Application {
                 getClass().getResource("/com/gn/theme/css/master.css").toExternalForm()
         );
 
-//        System.out.println("main " + ViewManager.INSTANCE.get("main"));
-//        decorator.setContent(ViewManager.INSTANCE.get("main").getRoot());
-//        decorator.setMaximized(true);
 
-//        decorator.show();
-
-        Parent root = FXMLLoader.load(getClass().getResource("/com/gn/module/loader/loader.fxml"));
-        decorator.getStage().setMinWidth(minWidth);
-        decorator.getStage().setMinHeight(minHeight);
-        decorator.setContent(root);
-        decorator.getStage().getIcons().add(new Image("/com/gn/module/media/logo2.png"));
-//        decorator.floatActions();
         decorator.show();
+
+        LoadViews load = new LoadViews();
+        load.start();
 
 //        ScenicView.show(decorator.getScene());
     }
 
     public static void main(String[] args) {
         launch(args);
-//        LauncherImpl.launchApplication(App.class, Loader.class, args);
-    }
-
-    private void load(String module, String name){
-//        try {
-////            ViewManager.INSTANCE.put(
-////                    name,
-////                    FXMLLoader.load(getClass().getResource("/com/gn/module/" + module + "/" + name + ".fxml"))
-////            );
-////
-//            preloaderNotify();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-    private synchronized void preloaderNotify() {
-        progress += increment;
-        LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")

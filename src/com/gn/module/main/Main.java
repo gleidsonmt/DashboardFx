@@ -16,20 +16,24 @@
  */
 package com.gn.module.main;
 
+import animatefx.animation.Flip;
+import animatefx.animation.Pulse;
+import animatefx.animation.Shake;
 import com.gn.App;
 import com.gn.GNAvatarView;
 import com.gn.GNCarousel;
+import com.gn.global.ConfigOptions;
+import com.gn.global.UserDetail;
 import com.gn.global.exceptions.NavigationException;
-import com.gn.global.factory.ActionView;
-import com.gn.global.factory.View;
+import com.gn.global.factory.*;
 import com.gn.global.plugin.GridFx;
 import com.gn.global.plugin.ViewManager;
-import com.gn.global.factory.AlertCell;
 import com.gn.global.util.PopupCreator;
 import com.jfoenix.controls.JFXBadge;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -56,6 +60,8 @@ import org.controlsfx.control.PopOver;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -141,18 +147,9 @@ public class Main implements Initializable, ActionView {
             }
         });
 
-
-
-
-
-//////        body.setContent(ViewManager.INSTANCE.get("dashboard"));
-//
-//        try {
-//            addSubPop();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-////        drawer.setPopStylesheet(getClass().getResource("/com/gn/theme/css/popover.css"));
+        search.setOnMouseClicked(event -> {
+            new Shake(clear).play();
+        });
 
     }
 
@@ -167,6 +164,7 @@ public class Main implements Initializable, ActionView {
 
     private void hideDrawer(){
         main.getChildren().remove(drawer);
+        App.getDecorator().showCustoms();
     }
 
     private void showHamburger(){
@@ -189,6 +187,7 @@ public class Main implements Initializable, ActionView {
     @FXML
     private void openDrawer(){
         PopupCreator.INSTANCE.createDrawerLeft(drawer);
+        App.getDecorator().hideCustoms();
     }
 
     private void addSubPop() throws Exception {
@@ -408,7 +407,6 @@ public class Main implements Initializable, ActionView {
         updateViewDetails("colorpicker");
     }
 
-
     @FXML
     private void goChoiceBox(){
         updateViewDetails("choicebox");
@@ -509,7 +507,6 @@ public class Main implements Initializable, ActionView {
         updateViewDetails("scatterchart");
     }
 
-
     @FXML
     private void goDashboard(){
         updateViewDetails("dashboard");
@@ -570,147 +567,11 @@ public class Main implements Initializable, ActionView {
         updateViewDetails("alerts");
     }
 
-    private PopOver pop = new PopOver();
-    @FXML
-    private void openMessages(){
-        if(!pop.isShowing()){
-            GNAvatarView avatar1 = new GNAvatarView();
-            GNAvatarView avatar2 = new GNAvatarView();
-            GNAvatarView avatar3 = new GNAvatarView();
-            GNAvatarView avatar4 = new GNAvatarView();
-
-            avatar1.setImage(new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm()));
-            avatar2.setImage(new Image(getClass().getResource("/com/gn/module/media/woman.png").toExternalForm()));
-            avatar3.setImage(new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm()));
-
-            ObservableList<AlertCell> list = FXCollections.observableArrayList(
-                    new AlertCell(avatar1, "Will Junior","Lorem ipsum dolor color", "24 minutes ago"),
-                    new AlertCell(avatar2, "Jad Gail","Lorem ipsum dolor color", "today"),
-                    new AlertCell(avatar3, "Bart","Lorem ipsum dolor color", "3 seconds ago")
-            );
-
-            Separator top = new Separator();
-            Separator bottom = new Separator();
-
-            Label message = new Label("Messages");
-            Label count = new Label("4 News");
-            count.getStyleClass().add("text-success");
-            GridPane title = new GridPane();
-            title.setMinHeight(40D);
-
-            title.setAlignment(Pos.CENTER);
-            title.add(message, 0, 0);
-            title.add(count, 1,0);
-            GridPane.setHalignment(count, HPos.RIGHT);
-
-            ListView<AlertCell> listView = new ListView<>();
-
-            listView.getItems().addAll(list);
-            listView.getStyleClass().add("border-0");
-
-            Button btn = new Button("Read all messages");
-            btn.getStyleClass().add("btn-flat");
-
-            VBox root = new VBox(title, top, listView, bottom, btn);
-            root.setAlignment(Pos.CENTER);
-            root.setPrefSize(300, 300);
-            title.setPrefWidth(root.getPrefWidth());
-            count.setPrefWidth(root.getPrefWidth());
-            message.setPrefWidth(root.getPrefWidth());
-            count.setAlignment(Pos.CENTER_RIGHT);
-            title.setPadding(new Insets(0, 25, 0, 25));
-            btn.setPrefWidth(root.getPrefWidth());
-
-            listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
-
-
-            pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
-            pop.setContentNode(root);
-            pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
-            pop.setArrowIndent(0);
-            pop.setArrowSize(0);
-            pop.setCloseButtonEnabled(false);
-            pop.setHeaderAlwaysVisible(false);
-            pop.setCornerRadius(0);
-            pop.setAutoFix(true);
-            pop.show(messages);
-
-        } else {
-            pop.hide();
-        }
-    }
-
-    @FXML
-    private void openNotification(){
-      if(!pop.isShowing()){
-            GNAvatarView avatar1 = new GNAvatarView();
-            GNAvatarView avatar2 = new GNAvatarView();
-            GNAvatarView avatar3 = new GNAvatarView();
-
-            avatar1.setImage(new Image(getClass().getResource("/com/gn/module/media/warning-35.png").toExternalForm()));
-            avatar2.setImage(new Image(getClass().getResource("/com/gn/module/media/error-35.png").toExternalForm()));
-            avatar3.setImage(new Image(getClass().getResource("/com/gn/module/media/notification-35.png").toExternalForm()));
-
-            ObservableList<AlertCell> list = FXCollections.observableArrayList(
-                    new AlertCell(avatar1, "Warning","Lorem ipsum dolor color", "24 minutes ago"),
-                    new AlertCell(avatar2, "Error","Lorem ipsum dolor color", "today"),
-                    new AlertCell(avatar3, "Notification","Lorem ipsum dolor color", "3 seconds ago")
-            );
-
-            Separator top = new Separator();
-            Separator bottom = new Separator();
-
-            Label message = new Label("Messages");
-            Label count = new Label("4 News");
-            count.getStyleClass().add("text-success");
-            GridPane title = new GridPane();
-            title.setMinHeight(40D);
-
-            title.setAlignment(Pos.CENTER);
-            title.add(message, 0, 0);
-            title.add(count, 1,0);
-            GridPane.setHalignment(count, HPos.RIGHT);
-
-            ListView<AlertCell> listView = new ListView<>();
-
-            listView.getItems().addAll(list);
-            listView.getStyleClass().add("border-0");
-
-            Button btn = new Button("Read all messages");
-            btn.getStyleClass().add("btn-flat");
-
-            VBox root = new VBox(title, top, listView, bottom, btn);
-            root.setAlignment(Pos.CENTER);
-            root.setPrefSize(300, 300);
-            title.setPrefWidth(root.getPrefWidth());
-            count.setPrefWidth(root.getPrefWidth());
-            message.setPrefWidth(root.getPrefWidth());
-            count.setAlignment(Pos.CENTER_RIGHT);
-            title.setPadding(new Insets(0, 25, 0, 25));
-            btn.setPrefWidth(root.getPrefWidth());
-
-            listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
-
-
-            pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
-            pop.setContentNode(root);
-            pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
-            pop.setArrowIndent(0);
-            pop.setArrowSize(0);
-            pop.setCloseButtonEnabled(false);
-            pop.setHeaderAlwaysVisible(false);
-            pop.setCornerRadius(0);
-            pop.show(notifications);
-
-        } else {
-              pop.hide();
-        }
-    }
-
     @Override
     public void enter() {
         App.getDecorator().getStage().widthProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue.doubleValue() <= 500) {
+                hideDrawer();
                 showHamburger();
                 barHeader.setPadding(new Insets(20,0,0,0));
             } else if (newValue.doubleValue() <= GridFx.Type.SM.getValue()){
@@ -725,6 +586,21 @@ public class Main implements Initializable, ActionView {
                 PopupCreator.INSTANCE.closePopup();
             }
         });
+
+        StackPane body = (StackPane) ViewManager.INSTANCE.get("login").getRoot();
+        PopupCreator.INSTANCE.createPopup(body);
+
+        App.getDecorator().addCustom(
+                new UserDetail("Gleidson", "Gleidson Neves da Silveira", "Subtitlte")
+        );
+
+        App.getDecorator().addCustom(new ConfigOptions(
+                "Text", "Subtitle"
+        ));
+
+        App.getDecorator().addCustom(new BadgeMessages());
+        App.getDecorator().addCustom(new BadgeNotification());
+        App.getDecorator().addCustom(new BadgeAlerts());
     }
 
     @Override

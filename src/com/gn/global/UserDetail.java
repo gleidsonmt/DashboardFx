@@ -16,8 +16,12 @@
  */
 package com.gn.global;
 
+import animatefx.animation.BounceIn;
+import animatefx.animation.Pulse;
 import com.gn.GNAvatarView;
 import com.gn.decorator.component.GNControl;
+import com.gn.global.plugin.ViewManager;
+import com.gn.global.util.PopupCreator;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.EventHandler;
@@ -134,6 +138,12 @@ public class UserDetail extends GNControl {
 
         signOut.setMinHeight(40);
         profile.setMinHeight(40);
+
+        signOut.setOnAction(event -> {
+            StackPane body = (StackPane) ViewManager.INSTANCE.get("login").getRoot();
+            PopupCreator.INSTANCE.createPopup(body, new BounceIn(body));
+            popOver.hide();
+        });
 
         layoutContent.add(signOut, 0, 0);
         layoutContent.add(profile, 1, 0);

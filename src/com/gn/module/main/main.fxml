@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.gn.GNAvatarView?>
-<?import com.jfoenix.controls.JFXBadge?>
-<?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
@@ -68,9 +63,9 @@
                            </Label>
                            <HBox alignment="CENTER" prefHeight="27.0" prefWidth="249.0" spacing="4.0" VBox.vgrow="ALWAYS">
                               <children>
-                                 <Circle fx:id="cStatus" fill="DODGERBLUE" radius="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: -success;">
+                                 <Circle fx:id="cStatus" fill="DODGERBLUE" radius="6.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: -success;">
                                     <effect>
-                                       <DropShadow color="#00000032" />
+                                       <DropShadow color="#ffffffad" />
                                     </effect>
                                  </Circle>
                                  <Label fx:id="status" alignment="CENTER" maxWidth="50.0" minWidth="50.0" style="-fx-text-fill: white;" text="Available" />
@@ -217,14 +212,14 @@
                      <children>
                         <VBox>
                            <children>
-                              <HBox fx:id="barHeader" alignment="CENTER" prefHeight="40.0" prefWidth="904.0" style="-fx-border-width: 0 0 1 0;" styleClass="border">
+                              <HBox fx:id="barHeader" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="904.0" style="-fx-border-width: 0 0 1 0;" styleClass="border">
                                  <children>
-                                    <Button fx:id="hamburger" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#openDrawer" styleClass="hamburger" text="Button">
+                                    <Button fx:id="hamburger" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#openDrawer" prefWidth="0.0" styleClass="hamburger" text="Button" visible="false">
                                        <graphic>
                                           <SVGPath content="M2 15.5v2h20v-2H2zm0-5v2h20v-2H2zm0-5v2h20v-2H2z" styleClass="icon" />
                                        </graphic>
                                     </Button>
-                                    <Label fx:id="title" prefHeight="23.0" prefWidth="276.0" styleClass="h4" text="Dashboard" textFill="#0000008c">
+                                    <Label fx:id="title" prefHeight="23.0" styleClass="h4" text="Dashboard" textFill="#0000008c">
                                        <font>
                                           <Font size="17.0" />
                                        </font>
@@ -232,67 +227,6 @@
                                           <Insets left="5.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                                       <children>
-                                          <JFXBadge fx:id="bg_info" layoutX="732.0" layoutY="12.0" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" text="32" visible="false">
-                                             <styleClass>
-                                                <String fx:value="icon" />
-                                                <String fx:value="icon-danger" />
-                                             </styleClass>
-                                             <control>
-                                                <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 10;" styleClass="icon-notification">
-                                                   <children>
-                                                      <FontAwesomeIconView glyphName="FLAG" size="20" styleClass="icon" StackPane.alignment="CENTER" />
-                                                   </children>
-                                                </StackPane>
-                                             </control>
-                                          </JFXBadge>
-                                          <JFXBadge fx:id="notifications" onMouseClicked="#openNotification" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" text="41" visible="false">
-                                             <styleClass>
-                                                <String fx:value="icon" />
-                                                <String fx:value="icon-warning" />
-                                             </styleClass>
-                                             <control>
-                                                <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 10;">
-                                                   <children>
-                                                      <FontAwesomeIconView glyphName="BELL" size="20" styleClass="icon" StackPane.alignment="CENTER" />
-                                                   </children>
-                                                </StackPane>
-                                             </control>
-                                          </JFXBadge>
-                                          <JFXBadge fx:id="messages" layoutX="759.0" layoutY="12.0" onMouseClicked="#openMessages" position="TOP_RIGHT" prefHeight="44.0" prefWidth="35.0" styleClass="icon" text="12" visible="false">
-                                             <control>
-                                                <StackPane prefHeight="32.0" prefWidth="43.0" style="-fx-padding: 0;">
-                                                   <children>
-                                                      <FontAwesomeIconView glyphName="ENVELOPE" size="20" styleClass="icon" />
-                                                   </children>
-                                                </StackPane>
-                                             </control>
-                                          </JFXBadge>
-                                          <JFXButton fx:id="config" contentDisplay="GRAPHIC_ONLY" onMouseClicked="#openConfig" prefHeight="83.0" prefWidth="40.0" ripplerFill="BLACK" visible="false">
-                                             <graphic>
-                                                <SVGPath content="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="#00000080" styleClass="icon" />
-                                             </graphic>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                             <styleClass>
-                                                <String fx:value="btn-transparent" />
-                                                <String fx:value="round" />
-                                             </styleClass>
-                                             <contextMenu>
-                                                <ContextMenu>
-                                                  <items>
-                                                    <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                                                  </items>
-                                                </ContextMenu>
-                                             </contextMenu>
-                                          </JFXButton>
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets top="2.0" />
-                                       </HBox.margin>
-                                    </HBox>
                                  </children>
                               </HBox>
                            </children>
