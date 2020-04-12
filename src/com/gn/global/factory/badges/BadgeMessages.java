@@ -14,26 +14,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.global.factory;
+package com.gn.global.factory.badges;
 
 import com.gn.GNAvatarView;
 import com.gn.decorator.component.GNControl;
-import com.gn.global.factory.AlertCell;
-import com.gn.global.plugin.ViewManager;
-import com.gn.global.util.PopupCreator;
 import com.jfoenix.controls.JFXBadge;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Separator;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -44,15 +37,15 @@ import org.controlsfx.control.PopOver;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  01/04/2020
  */
-public class BadgeNotification extends GNControl {
+public class BadgeMessages extends GNControl {
 
     private PopOver pop = new PopOver();
 
-    public BadgeNotification(){
+    public BadgeMessages() {
         this(null, null);
     }
 
-    public BadgeNotification(String text, String subtitle) {
+    public BadgeMessages(String text, String subtitle) {
         super(text, subtitle);
     }
 
@@ -72,43 +65,38 @@ public class BadgeNotification extends GNControl {
         JFXBadge badgeM = new JFXBadge();
         badgeM.setPrefSize(35, 20);
         badgeM.setPosition(Pos.TOP_RIGHT);
-        badgeM.getStyleClass().addAll("icon", "icon-warning");
+        badgeM.getStyleClass().addAll("icon", "icon");
         badgeM.setText("12");
 
         StackPane control = new StackPane();
         control.setAlignment(Pos.CENTER);
-        control.getStyleClass().add("icon-notification");
+        control.getStyleClass().add("icon");
         control.setStyle("-fx-padding : 0px;");
-        control.setPrefSize(30,20);
+        control.setPrefSize(30, 20);
         FontAwesomeIconView icon = new FontAwesomeIconView();
         icon.getStyleClass().add("icon");
-        icon.setGlyphName("BELL");
+        icon.setGlyphName("ENVELOPE");
         icon.setSize("16");
         control.getChildren().add(icon);
 
         badgeM.setControl(control);
 
-        badgeM.setOnMouseClicked(event -> {
-            openNotification();
-        });
+        badgeM.setOnMouseClicked(event -> openMessages());
 
         return badgeM;
     }
 
-    private void openNotification() {
+    private void openMessages() {
         if (!pop.isShowing()) {
-            GNAvatarView avatar1 = new GNAvatarView();
-            GNAvatarView avatar2 = new GNAvatarView();
-            GNAvatarView avatar3 = new GNAvatarView();
 
-            avatar1.setImage(new Image(getClass().getResource("/com/gn/module/media/warning-35.png").toExternalForm()));
-            avatar2.setImage(new Image(getClass().getResource("/com/gn/module/media/error-35.png").toExternalForm()));
-            avatar3.setImage(new Image(getClass().getResource("/com/gn/module/media/notification-35.png").toExternalForm()));
+            Image img1 = new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm());
+            Image img2 = new Image(getClass().getResource("/com/gn/module/media/woman.png").toExternalForm());
+            Image img3 = new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm());
 
-            ObservableList<AlertCell> list = FXCollections.observableArrayList(
-                    new AlertCell(avatar1, "Warning", "Lorem ipsum", "24 minutes ago"),
-                    new AlertCell(avatar2, "Error", "Lorem ipsum", "today"),
-                    new AlertCell(avatar3, "Notification", "Lorem", "3 seconds ago")
+            ObservableList<BadgeCellMessage> list = FXCollections.observableArrayList(
+                    new BadgeCellMessage("Will Junior", "Lorem ipsum dolor color","24 minutes ago", img1),
+                    new BadgeCellMessage("Jad Gailr", "Lorem ipsum dolor color","today", img2),
+                    new BadgeCellMessage("Bart", "Lorem ipsum dolor color","3 seconds ago", img3)
             );
 
             list.forEach(e -> {
@@ -119,26 +107,22 @@ public class BadgeNotification extends GNControl {
             Separator top = new Separator();
             Separator bottom = new Separator();
 
-            Label message = new Label("You have " + list.size() + " notifications");
+            Label message = new Label("You have " + list.size() + " messages");
             GridPane title = new GridPane();
+            title.setMinHeight(40D);
 
             title.setAlignment(Pos.CENTER);
             title.add(message, 0, 0);
-            title.setMinHeight(40);
-//            title.add(count, 1, 0);
-//            GridPane.setHalignment(count, HPos.RIGHT);
 
-            ListView<AlertCell> listView = new ListView<>();
+            ListView<BadgeCellMessage> listView = new ListView<>();
             int fixedCell = 50;
             listView.setStyle("-fx-fixed-cell-size : " + fixedCell + "px;");
-
-            listView.setFixedCellSize(50);
 
             listView.getItems().addAll(list);
             listView.getStyleClass().add("border-0");
 
-            Button btn = new Button("Read all messages");
-            btn.getStyleClass().add("btn-flat");
+            Hyperlink btn = new Hyperlink("Read all messages");
+            btn.setAlignment(Pos.CENTER);
 
             VBox root = new VBox(title, top, listView, bottom, btn);
             root.setAlignment(Pos.CENTER);
@@ -147,9 +131,7 @@ public class BadgeNotification extends GNControl {
 
             root.setPrefSize(300, height);
             title.setPrefWidth(root.getPrefWidth());
-//            count.setPrefWidth(root.getPrefWidth());
             message.setPrefWidth(root.getPrefWidth());
-//            count.setAlignment(Pos.CENTER_RIGHT);
             title.setPadding(new Insets(0, 25, 0, 25));
             btn.setPrefWidth(root.getPrefWidth());
 
@@ -163,10 +145,13 @@ public class BadgeNotification extends GNControl {
             pop.setHeaderAlwaysVisible(false);
             pop.setCornerRadius(0);
 
+            // test
+//            pop.setAutoHide(false);
+            pop.setAnimated(false);
+
             pop.show(this);
 
-        } else {
+        } else
             pop.hide();
-        }
     }
 }

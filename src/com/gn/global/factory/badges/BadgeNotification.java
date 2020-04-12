@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.global.factory;
+package com.gn.global.factory.badges;
 
 import com.gn.GNAvatarView;
 import com.gn.decorator.component.GNControl;
@@ -40,15 +40,15 @@ import org.controlsfx.control.PopOver;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  01/04/2020
  */
-public class BadgeMessages extends GNControl {
+public class BadgeNotification extends GNControl {
 
     private PopOver pop = new PopOver();
 
-    public BadgeMessages() {
+    public BadgeNotification(){
         this(null, null);
     }
 
-    public BadgeMessages(String text, String subtitle) {
+    public BadgeNotification(String text, String subtitle) {
         super(text, subtitle);
     }
 
@@ -68,41 +68,39 @@ public class BadgeMessages extends GNControl {
         JFXBadge badgeM = new JFXBadge();
         badgeM.setPrefSize(35, 20);
         badgeM.setPosition(Pos.TOP_RIGHT);
-        badgeM.getStyleClass().addAll("icon", "icon");
+        badgeM.getStyleClass().addAll("icon", "icon-warning");
         badgeM.setText("12");
 
         StackPane control = new StackPane();
         control.setAlignment(Pos.CENTER);
-        control.getStyleClass().add("icon");
+        control.getStyleClass().add("icon-notification");
         control.setStyle("-fx-padding : 0px;");
-        control.setPrefSize(30, 20);
+        control.setPrefSize(30,20);
         FontAwesomeIconView icon = new FontAwesomeIconView();
         icon.getStyleClass().add("icon");
-        icon.setGlyphName("ENVELOPE");
+        icon.setGlyphName("BELL");
         icon.setSize("16");
         control.getChildren().add(icon);
 
         badgeM.setControl(control);
 
-        badgeM.setOnMouseClicked(event -> openMessages());
+        badgeM.setOnMouseClicked(event -> {
+            openNotification();
+        });
 
         return badgeM;
     }
 
-    private void openMessages() {
+    private void openNotification() {
         if (!pop.isShowing()) {
-            GNAvatarView avatar1 = new GNAvatarView();
-            GNAvatarView avatar2 = new GNAvatarView();
-            GNAvatarView avatar3 = new GNAvatarView();
+            String icon1 = "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z";
+            String icon2 = "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z";
+            String icon3 = "M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3zM12 17.3c-.72 0-1.3-.58-1.3-1.3 0-.72.58-1.3 1.3-1.3.72 0 1.3.58 1.3 1.3 0 .72-.58 1.3-1.3 1.3zm1-4.3h-2V7h2v6z";
 
-            avatar1.setImage(new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm()));
-            avatar2.setImage(new Image(getClass().getResource("/com/gn/module/media/woman.png").toExternalForm()));
-            avatar3.setImage(new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm()));
-
-            ObservableList<AlertCell> list = FXCollections.observableArrayList(
-                    new AlertCell(avatar1, "Will Junior", "Lorem ipsum dolor color", "24 minutes ago"),
-                    new AlertCell(avatar2, "Jad Gail", "Lorem ipsum dolor color", "today"),
-                    new AlertCell(avatar3, "Bart", "Lorem ipsum dolor color", "3 seconds ago")
+            ObservableList<BadgeCellNotification> list = FXCollections.observableArrayList(
+                    new BadgeCellNotification(icon1,"Leak memory.",  "icon-warning"),
+                    new BadgeCellNotification(icon2,"New 5 members.",  "icon-info"),
+                    new BadgeCellNotification(icon3,"Broken tasks.",  "icon-danger")
             );
 
             list.forEach(e -> {
@@ -113,20 +111,18 @@ public class BadgeMessages extends GNControl {
             Separator top = new Separator();
             Separator bottom = new Separator();
 
-            Label message = new Label("You have " + list.size() + " messages");
-//            Label count = new Label(list.size() + " News");
-//            count.getStyleClass().add("text-success");
+            Label message = new Label("You have " + list.size() + " notifications");
             GridPane title = new GridPane();
-            title.setMinHeight(40D);
 
             title.setAlignment(Pos.CENTER);
             title.add(message, 0, 0);
-//            title.add(count, 1, 0);
-//            GridPane.setHalignment(count, HPos.RIGHT);
+            title.setMinHeight(40);
 
-            ListView<AlertCell> listView = new ListView<>();
+            ListView<BadgeCellNotification> listView = new ListView<>();
             int fixedCell = 50;
             listView.setStyle("-fx-fixed-cell-size : " + fixedCell + "px;");
+
+            listView.setFixedCellSize(50);
 
             listView.getItems().addAll(list);
             listView.getStyleClass().add("border-0");
@@ -141,9 +137,7 @@ public class BadgeMessages extends GNControl {
 
             root.setPrefSize(300, height);
             title.setPrefWidth(root.getPrefWidth());
-//            count.setPrefWidth(root.getPrefWidth());
             message.setPrefWidth(root.getPrefWidth());
-//            count.setAlignment(Pos.CENTER_RIGHT);
             title.setPadding(new Insets(0, 25, 0, 25));
             btn.setPrefWidth(root.getPrefWidth());
 
@@ -157,9 +151,12 @@ public class BadgeMessages extends GNControl {
             pop.setHeaderAlwaysVisible(false);
             pop.setCornerRadius(0);
 
-            pop.show(this);
+            // tests
 
-        } else
+            pop.setAnimated(false);
+            pop.show(this);
+        } else {
             pop.hide();
+        }
     }
 }

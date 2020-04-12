@@ -14,13 +14,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.global;
+package com.gn.global.factory.badges;
 
 import com.gn.decorator.component.GNControl;
+import com.gn.global.plugin.ViewManager;
+import com.gn.global.util.PopupCreator;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.SVGPath;
@@ -30,13 +33,13 @@ import org.controlsfx.control.PopOver;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  01/04/2020
  */
-public class ConfigOptions extends GNControl {
+public class BadgeSettings extends GNControl {
 
     private Button signOut  = new Button("Sign Out");
     private Button profile  = new Button("Profile");
     private PopOver popOver = new PopOver();
 
-    public ConfigOptions(String text, String subtitle) {
+    public BadgeSettings(String text, String subtitle) {
         super(text, subtitle);
     }
 
@@ -61,6 +64,11 @@ public class ConfigOptions extends GNControl {
         button.setGraphic(icon);
         button.setPrefWidth(40);
         button.getStyleClass().addAll("btn-transparent", "round");
+
+        button.setOnMouseClicked(event -> {
+            VBox content = (VBox) ViewManager.INSTANCE.get("settings").getRoot();
+            PopupCreator.INSTANCE.createDrawerRight(content);
+        });
         return button;
     }
 }

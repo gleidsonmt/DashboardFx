@@ -44,20 +44,18 @@ import javafx.scene.text.TextFlow;
  */
 public class BadgeCellTask extends GridPane {
 
-    private VBox content = new VBox();
-
-    private Label title = new Label("title");
-    private Label percent = new Label("80%");
-    private ProgressBar progressBar = new ProgressBar();
+    private final Label title = new Label("title");
+    private final Label percent = new Label("80%");
+    private final ProgressBar progressBar = new ProgressBar();
 
     public BadgeCellTask(String title, double percent, Color color){
         this(title, percent);
         progressBar.setStyle("-fx-background-color : " + color.toString());
     }
 
-    public BadgeCellTask(String title, double percent, String clazz){
+    public BadgeCellTask(String title, double percent, String styleClass){
         this(title, percent);
-        progressBar.getStyleClass().add(clazz);
+        progressBar.getStyleClass().add(styleClass);
     }
 
     public BadgeCellTask(String title, double percent) {
