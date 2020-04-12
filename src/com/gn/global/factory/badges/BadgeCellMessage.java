@@ -35,12 +35,10 @@ import org.controlsfx.control.spreadsheet.Grid;
  */
 public class BadgeCellMessage extends GridPane {
 
-    private VBox content = new VBox();
-
-    private Label title = new Label("title");
-    private Label time = new Label("5 hours ago");
-    private Label message = new Label("message");
-    private GNAvatarView avatarView = new GNAvatarView();
+    private final Label title = new Label("title");
+    private final Label time = new Label("5 hours ago");
+    private final Label message = new Label("message");
+    private final GNAvatarView avatarView = new GNAvatarView();
 
     private ProgressBar progressBar = new ProgressBar();
 
