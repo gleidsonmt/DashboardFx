@@ -1,64 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
-
-<StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <TabPane style="-fx-tab-min-width: 100;">
-         <tabs>
-            <Tab closable="false" text="Introduction">
-               <content>
-                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
-                     <children>
-                        <VBox alignment="CENTER_LEFT">
-                           <children>
-                              <Label prefHeight="38.0" prefWidth="195.0" text="ProgressBar">
-                                 <styleClass>
-                                    <String fx:value="h3" />
-                                    <String fx:value="title" />
-                                 </styleClass>
-                              </Label>
-                              <TextFlow prefHeight="54.0" prefWidth="952.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="A specialization of the ProgressIndicator which is represented as a horizontal bar." wrappingWidth="558.283203125" />
-                                 </children>
-                              </TextFlow>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
-                           <children>
-                              <ProgressBar prefHeight="0.0" prefWidth="200.0" progress="0.27" />
-                           </children>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="30.0" right="30.0" top="100.0" />
-                     </padding>
-                  </VBox>
-               </content>
-            </Tab>
-         </tabs>
-      </TabPane>
-   </children>
+<?import java.lang.String?>
+<?import java.net.*?>
+<StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171"
+           xmlns:fx="http://javafx.com/fxml/1">
    <stylesheets>
-      <URL value="@../../theme/css/material-color.css" />
-      <URL value="@../../theme/css/skeleton.css" />
-      <URL value="@../../theme/css/light-green.css" />
-      <URL value="@../../theme/css/bootstrap.css" />
-      <URL value="@../../theme/css/simple-green.css" />
-      <URL value="@../../theme/css/shape.css" />
-      <URL value="@../../theme/css/typographic.css" />
-      <URL value="@../../theme/css/helpers.css" />
-      <URL value="@../../theme/css/master.css" />
+      <URL value="@../../theme/css/material-color.css"/>
+      <URL value="@../../theme/css/skeleton.css"/>
+      <URL value="@../../theme/css/light-green.css"/>
+      <URL value="@../../theme/css/bootstrap.css"/>
+      <URL value="@../../theme/css/simple-green.css"/>
+      <URL value="@../../theme/css/shape.css"/>
+      <URL value="@../../theme/css/typographic.css"/>
+      <URL value="@../../theme/css/helpers.css"/>
+      <URL value="@../../theme/css/master.css"/>
    </stylesheets>
+   <TabPane style="-fx-tab-min-width: 100;">
+      <tabs>
+         <Tab closable="false" text="Introduction">
+            <content>
+               <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
+                  <children>
+                     <VBox alignment="CENTER_LEFT">
+                        <children>
+                           <Label prefHeight="38.0" prefWidth="195.0" text="ProgressBar">
+                              <styleClass>
+                                 <String fx:value="h3"/>
+                                 <String fx:value="title"/>
+                              </styleClass>
+                           </Label>
+                           <TextFlow prefHeight="54.0" prefWidth="952.0">
+                              <children>
+                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;"
+                                       text="A specialization of the ProgressIndicator which is represented as a horizontal bar."
+                                       wrappingWidth="558.283203125"/>
+                              </children>
+                           </TextFlow>
+                        </children>
+                     </VBox>
+                     <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light"
+                           VBox.vgrow="ALWAYS">
+                        <children>
+                           <ProgressBar prefHeight="0.0" prefWidth="200.0" progress="0.34"
+                                        styleClass="progress-bar-success:"/>
+                        </children>
+                     </VBox>
+                  </children>
+                  <padding>
+                     <Insets bottom="10.0" left="30.0" right="30.0" top="100.0"/>
+                  </padding>
+               </VBox>
+            </content>
+         </Tab>
+         <Tab closable="false" text="Bootstrap">
+            <content>
+               <ScrollPane fitToHeight="true" fitToWidth="true">
+                  <content>
+                     <VBox alignment="CENTER" prefHeight="559.0" prefWidth="937.0" spacing="10.0">
+                        <children>
+                           <VBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="890.0">
+                              <children>
+                                 <Label prefHeight="29.0" prefWidth="201.0" text="Bootstrap Colors">
+                                    <styleClass>
+                                       <String fx:value="h3"/>
+                                       <String fx:value="title"/>
+                                    </styleClass>
+                                 </Label>
+                                 <TextFlow prefHeight="54.0" prefWidth="952.0">
+                                    <children>
+                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;"
+                                             styleClass="text-14" text="Standard colors based on bootstrap."/>
+                                    </children>
+                                 </TextFlow>
+                              </children>
+                           </VBox>
+                           <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="239.0" prefWidth="890.0"
+                                 spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                              <children>
+                                 <HBox alignment="CENTER" layoutX="10.0" layoutY="165.0" prefWidth="478.0"
+                                       spacing="10.0">
+                                    <children>
+                                       <ProgressBar prefWidth="200.0" progress="0.51"
+                                                    styleClass="progress-bar-primary"/>
+                                       <ProgressBar layoutX="700.0" layoutY="28.0" prefWidth="200.0" progress="0.51"
+                                                    styleClass="progress-bar-info"/>
+                                       <ProgressBar layoutX="748.0" layoutY="28.0" prefWidth="200.0" progress="0.51"
+                                                    styleClass="progress-bar-success"/>
+                                       <ProgressBar layoutX="770.0" layoutY="28.0" prefWidth="200.0" progress="0.51"
+                                                    styleClass="progress-bar-warning"/>
+                                       <ProgressBar layoutX="751.0" layoutY="28.0" prefWidth="200.0" progress="0.51"
+                                                    styleClass="progress-bar-danger"/>
+                                       <ProgressBar layoutX="778.0" layoutY="28.0" prefWidth="200.0" progress="0.51"
+                                                    styleClass="progress-bar-secondary"/>
+                                    </children>
+                                 </HBox>
+                              </children>
+                              <padding>
+                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                              </padding>
+                              <VBox.margin>
+                                 <Insets/>
+                              </VBox.margin>
+                           </VBox>
+                        </children>
+                        <padding>
+                           <Insets bottom="10.0" left="30.0" right="30.0" top="100.0"/>
+                        </padding>
+                     </VBox>
+                  </content>
+                  <opaqueInsets>
+                     <Insets/>
+                  </opaqueInsets>
+               </ScrollPane>
+            </content>
+         </Tab>
+      </tabs>
+   </TabPane>
 </StackPane>
