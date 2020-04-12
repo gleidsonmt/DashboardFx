@@ -14,12 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.global.factory;
+package com.gn.global.factory.badges;
 
-import com.gn.App;
 import com.gn.GNAvatarView;
 import com.gn.decorator.component.GNControl;
-import com.gn.global.util.PopupCreator;
 import com.jfoenix.controls.JFXBadge;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
@@ -28,29 +26,27 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Separator;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 import org.controlsfx.control.PopOver;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  01/04/2020
  */
-public class BadgeAlerts extends GNControl {
+public class BadgeTasks extends GNControl {
 
     private PopOver pop = new PopOver();
 
-    public BadgeAlerts(){
+    public BadgeTasks(){
         this(null, null);
     }
 
-    public BadgeAlerts(String text, String subtitle) {
+    public BadgeTasks(String text, String subtitle) {
         super(text, subtitle);
     }
 
@@ -95,18 +91,11 @@ public class BadgeAlerts extends GNControl {
 
     private void opeTasks() {
         if (!pop.isShowing()) {
-            GNAvatarView avatar1 = new GNAvatarView();
-            GNAvatarView avatar2 = new GNAvatarView();
-            GNAvatarView avatar3 = new GNAvatarView();
 
-            avatar1.setImage(new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm()));
-            avatar2.setImage(new Image(getClass().getResource("/com/gn/module/media/woman.png").toExternalForm()));
-            avatar3.setImage(new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm()));
-
-            ObservableList<AlertCell> list = FXCollections.observableArrayList(
-                    new AlertCell(avatar1, "Will Junior", "Lorem ipsum dolor color", "24 minutes ago"),
-                    new AlertCell(avatar2, "Jad Gail", "Lorem ipsum dolor color", "today"),
-                    new AlertCell(avatar3, "Bart", "Lorem ipsum dolor color", "3 seconds ago")
+            ObservableList<BadgeCellTask> list = FXCollections.observableArrayList(
+                    new BadgeCellTask("Designed some buttons", 30, "progress-bar-danger"),
+                    new BadgeCellTask("Create tasks", 80, "progress-bar-info"),
+                    new BadgeCellTask("Create PopOvers", 60, "progress-bar-success")
             );
 
             list.forEach(e -> {
@@ -117,26 +106,22 @@ public class BadgeAlerts extends GNControl {
             Separator top = new Separator();
             Separator bottom = new Separator();
 
-            Label message = new Label("You have " + list.size() + " new tasks");
-//            Label count = new Label(list.size() + " News");
-//            count.getStyleClass().add("text-success");
+            Label message = new Label("You have " + list.size() + " tasks");
             GridPane title = new GridPane();
             title.setMinHeight(40D);
 
             title.setAlignment(Pos.CENTER);
             title.add(message, 0, 0);
-//            title.add(count, 1, 0);
-//            GridPane.setHalignment(count, HPos.RIGHT);
 
-            ListView<AlertCell> listView = new ListView<>();
+            ListView<BadgeCellTask> listView = new ListView<>();
             int fixedCell = 50;
             listView.setStyle("-fx-fixed-cell-size : " + fixedCell + "px;");
 
             listView.getItems().addAll(list);
             listView.getStyleClass().add("border-0");
 
-            Button btn = new Button("Read all messages");
-            btn.getStyleClass().add("btn-flat");
+            Hyperlink btn = new Hyperlink("View all tasks");
+            btn.setAlignment(Pos.CENTER);
 
             VBox root = new VBox(title, top, listView, bottom, btn);
             root.setAlignment(Pos.CENTER);
@@ -145,9 +130,7 @@ public class BadgeAlerts extends GNControl {
 
             root.setPrefSize(300, height);
             title.setPrefWidth(root.getPrefWidth());
-//            count.setPrefWidth(root.getPrefWidth());
             message.setPrefWidth(root.getPrefWidth());
-//            count.setAlignment(Pos.CENTER_RIGHT);
             title.setPadding(new Insets(0, 25, 0, 25));
             btn.setPrefWidth(root.getPrefWidth());
 
@@ -160,6 +143,10 @@ public class BadgeAlerts extends GNControl {
             pop.setCloseButtonEnabled(false);
             pop.setHeaderAlwaysVisible(false);
             pop.setCornerRadius(0);
+
+            // tests
+//            pop.setAutoHide(false);
+            pop.setAnimated(false);
 
             pop.show(this);
 
