@@ -40,8 +40,6 @@ public class BadgeCellMessage extends GridPane {
     private final Label message = new Label("message");
     private final GNAvatarView avatarView = new GNAvatarView();
 
-    private ProgressBar progressBar = new ProgressBar();
-
     public BadgeCellMessage(String title, String message, String time, Image image){
         this.title.setText(title);
         this.message.setText(message);
