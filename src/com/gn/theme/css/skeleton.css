@@ -224,6 +224,11 @@
   -fx-pref-height : 40px;
 }
 
+.progress-bar {
+    -fx-pref-height : 3px;
+    -fx-min-height : 5px;
+}
+
 /************************************************************************************
 *
 *               @-fx-border-color
@@ -336,7 +341,7 @@
 *
 *************************************************************************************/
 
-.text-field,
+.text-field, .progress-bar, .progress-bar .bar,
 .combo-box-base, .split-menu-button, .menu-button, .choice-box
 {
   -fx-background-radius : 0px;
