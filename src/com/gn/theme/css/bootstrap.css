@@ -65,7 +65,7 @@
   -fx-background-color : derive(-base, 90%);
 }
 
-.btn-primary,
+.btn-primary, .progress-bar-primary:determinate .bar,
 .check-primary .box
 {
   -base : -primary;
@@ -77,35 +77,35 @@
   -fx-background-color : -grapefruit;
 }
 
-.btn-info,
+.btn-info, .progress-bar-info:determinate .bar,
 .check-info .box
 {
   -base : -info;
   -fx-background-color : -base;
 }
 
-.btn-success,
+.btn-success, .progress-bar-success:determinate .bar,
 .check-success .box
 {
   -base : -success;
   -fx-background-color : -success;
 }
 
-.btn-warning,
+.btn-warning, .progress-bar-warning:determinate .bar,
 .check-warning .box
 {
   -base : -warning;
   -fx-background-color : -base;
 }
 
-.btn-danger,
+.btn-danger, .progress-bar-danger:determinate .bar,
 .check-danger .box
 {
   -base : -danger;
   -fx-background-color : -base;
 }
 
-.btn-secondary,
+.btn-secondary, .progress-bar-secondary:determinate .bar,
 .check-secondary .box
 {
   -base : -purple;
@@ -131,14 +131,6 @@
 {
   -base : -mint;
   -fx-background-color : -base;
-}
-
-.progress-bar-danger:determinate .bar {
-    -fx-background-color : -danger;
-}
-
-.progress-bar-success:determinate .bar {
-    -fx-background-color : -success;
 }
 
 /************************************************************************************
