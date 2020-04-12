@@ -30,24 +30,28 @@ import javafx.scene.shape.SVGPath;
  * Create on  21/11/2018
  * Version 1.0
  */
-public class BadgeCellNotification extends Label {
+public class BadgeCellNotification extends GridPane {
 
-    private final SVGPath icon = new SVGPath();
+    private final Label   title = new Label();
+    private final SVGPath icon  = new SVGPath();
 
     public BadgeCellNotification(String svgPath, String text,  String styleClass){
-        this(text, svgPath);
-        icon.getStyleClass().add(styleClass);
-    }
-
-    private BadgeCellNotification(String text, String svgPath) {
-        this.setText(text);
+        this.title.setText(text);
         icon.setContent(svgPath);
-        this.setGraphic(icon);
+        icon.getStyleClass().add(styleClass);
         config();
     }
 
     private void config(){
         this.getStyleClass().add("badge-cell");
-        this.setGraphicTextGap(8D);
+
+        this.add(icon, 0,0);
+        this.add(title, 1,0);
+
+        this.icon.setScaleX(1.2);
+        this.icon.setScaleY(1.2);
+
+        this.setHgap(10D);
+
     }
 }

@@ -48,20 +48,11 @@ public class BadgeCellTask extends GridPane {
     private final Label percent = new Label("80%");
     private final ProgressBar progressBar = new ProgressBar();
 
-    public BadgeCellTask(String title, double percent, Color color){
-        this(title, percent);
-        progressBar.setStyle("-fx-background-color : " + color.toString());
-    }
-
     public BadgeCellTask(String title, double percent, String styleClass){
-        this(title, percent);
-        progressBar.getStyleClass().add(styleClass);
-    }
-
-    public BadgeCellTask(String title, double percent) {
         this.percent.setText(percent + "%");
         this.progressBar.setProgress( percent > 1 ? percent / 100 : percent );
         this.title.setText(title);
+        progressBar.getStyleClass().add(styleClass);
         config();
     }
 
