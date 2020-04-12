@@ -5,7 +5,7 @@
   fxmlFile: main.fxml
   subModules: null
 
-#Dashboard
+#Login
 - !!com.gn.global.factory.Module
   title: Login
   name: login
@@ -347,10 +347,26 @@
   fxmlFile: carousel.fxml
   subModules: null
 
-#Carousel
+#About
 - !!com.gn.global.factory.Module
   title: About
   name: about
   parentName: about
   fxmlFile: about.fxml
+  subModules: null
+
+#Profile
+- !!com.gn.global.factory.Module
+  title: Profile
+  name: profile
+  parentName: profile
+  fxmlFile: profile.fxml
+  subModules: null
+
+#Settings
+- !!com.gn.global.factory.Module
+  title: Settings
+  name: settings
+  parentName: main
+  fxmlFile: settings.fxml
   subModules: null
