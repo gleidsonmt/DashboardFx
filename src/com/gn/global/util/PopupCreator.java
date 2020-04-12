@@ -18,6 +18,7 @@ package com.gn.global.util;
 
 import animatefx.animation.*;
 import com.gn.App;
+import com.gn.decorator.component.GNControl;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -36,18 +37,63 @@ public enum PopupCreator {
     INSTANCE;
 
     PopupCreator() {
-    System.out.println("Popup Creator");
         defineContents();
     }
 
-    private StackPane foreground;
-    private AnchorPane foreContent;
-    private StackPane customDialog;
+    private StackPane   foreground;
+    private AnchorPane  foreContent;
+    private StackPane   customDialog;
 
-    private Timeline openFromLeft = new Timeline();
-    private Timeline closeFromLeft = new Timeline();
-    int maxLeftAndRight = 250;
-    int velocity = 200;
+    private final Timeline open   = new Timeline();
+    private final Timeline close  = new Timeline();
+
+    private final int minDrawerSize = 250;
+    private final int velocity      = 200;
+    private final double barSize    = 40;
+
+    public void createDrawerRight(VBox content){
+
+        foreground.getChildren().clear();
+        foreground.getChildren().add(foreContent);
+        foreContent.getChildren().clear();
+        foreContent.getChildren().add(customDialog);
+
+        customDialog.setPrefWidth(minDrawerSize);
+
+        if(!customDialog.getChildren().contains(content)) {
+            customDialog.getChildren().clear();
+            customDialog.getChildren().add(content);
+        }
+
+        organizeInRight();
+
+        open.getKeyFrames().setAll(
+                new KeyFrame(Duration.ZERO, new KeyValue(customDialog.translateXProperty(), minDrawerSize)),
+                new KeyFrame(Duration.millis(velocity), new KeyValue(customDialog.translateXProperty(), 0))
+        );
+
+        close.getKeyFrames().setAll(
+                new KeyFrame(Duration.ZERO, new KeyValue(customDialog.translateXProperty(), 0)),
+                new KeyFrame(Duration.millis(velocity), new KeyValue(customDialog.translateXProperty(), minDrawerSize) )
+        );
+
+        foreground.toFront();
+        open.play();
+
+        foreContent.setOnMouseClicked(event -> {
+            if (event.getTarget() instanceof AnchorPane){
+                if(((AnchorPane) event.getTarget()).getId().equals("fore-content")) {
+                    close.play();
+                }
+            }
+        });
+
+        close.setOnFinished(event -> {
+            foreground.toBack();
+            App.getDecorator().showCustoms();
+        });
+        App.getDecorator().hideCustoms();
+    }
 
     public void createDrawerLeft(VBox content){
         foreground.getChildren().clear();
@@ -55,51 +101,55 @@ public enum PopupCreator {
         foreContent.getChildren().clear();
         foreContent.getChildren().add(customDialog);
 
-        customDialog.setPrefWidth(250);
+        customDialog.setPrefWidth(minDrawerSize);
 
         if(!customDialog.getChildren().contains(content)) {
             customDialog.getChildren().clear();
             customDialog.getChildren().add(content);
         }
 
-        openFromLeft.getKeyFrames().addAll(
-                new KeyFrame(Duration.ZERO, new KeyValue(customDialog.translateXProperty(), maxLeftAndRight * -1)),
+        organizeInLeft();
+
+        open.getKeyFrames().setAll(
+                new KeyFrame(Duration.ZERO, new KeyValue(customDialog.translateXProperty(), minDrawerSize * -1)),
                 new KeyFrame(Duration.millis(velocity), new KeyValue(customDialog.translateXProperty(), 0))
         );
 
-        closeFromLeft.getKeyFrames().addAll(
+        close.getKeyFrames().setAll(
                 new KeyFrame(Duration.ZERO, new KeyValue(customDialog.translateXProperty(), 0)),
-                new KeyFrame(Duration.millis(velocity), new KeyValue(customDialog.translateXProperty(), maxLeftAndRight * -1) )
+                new KeyFrame(Duration.millis(velocity), new KeyValue(customDialog.translateXProperty(), minDrawerSize * -1) )
         );
         foreground.toFront();
 
-        openFromLeft.play();
+        open.play();
 
         foreContent.setOnMouseClicked(event -> {
             if (event.getTarget() instanceof AnchorPane){
                 if(((AnchorPane) event.getTarget()).getId().equals("fore-content")) {
-                    closeFromLeft.play();
+                    close.play();
                 }
             }
         });
-        closeFromLeft.setOnFinished(event -> {
+        close.setOnFinished(event -> {
             foreground.toBack();
             App.getDecorator().showCustoms();
+            App.getDecorator().unblock();
         });
 
-        organizeInLeft();
+        App.getDecorator().block();
     }
 
     public void closePopup(){
+        App.getDecorator().unblock();
         foreground.toBack();
     }
 
     public void closePopup(AnimationFX animationFX){
+        App.getDecorator().unblock();
         animationFX.play();
         animationFX.getTimeline().setOnFinished(event -> {
             foreground.toBack();
         });
-
     }
 
     public void createPopup(StackPane content){
@@ -135,6 +185,13 @@ public enum PopupCreator {
        AnchorPane.clearConstraints(customDialog);
        AnchorPane.setRightAnchor(customDialog, 0D);
        AnchorPane.setBottomAnchor(customDialog, 0D);
+    }
+
+    private void organizeInRight(){
+        AnchorPane.clearConstraints(customDialog);
+        AnchorPane.setTopAnchor(customDialog, 0D);
+        AnchorPane.setRightAnchor(customDialog, 0D);
+        AnchorPane.setBottomAnchor(customDialog, 0D);
     }
 
     private void organizeInLeft(){
