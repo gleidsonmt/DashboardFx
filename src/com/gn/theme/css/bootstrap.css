@@ -133,6 +133,14 @@
   -fx-background-color : -base;
 }
 
+.progress-bar-danger:determinate .bar {
+    -fx-background-color : -danger;
+}
+
+.progress-bar-success:determinate .bar {
+    -fx-background-color : -success;
+}
+
 /************************************************************************************
 *
 *               @-fx-border-width
