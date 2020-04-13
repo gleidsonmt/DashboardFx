@@ -245,13 +245,30 @@
      -fx-fill : -text-color;
 }
 
-
-
-
 .donut-chart .inner-circle {
     -fx-fill : -foreground-color;
+}
+
+.jfx-badge .text {
+    -fx-fill : -inner-text;
 }
 
 .jfx-badge:hover {
     -fx-background-color : -light-gray;
 }
+
+.block-color {
+    -fx-shape : "M 150 200 L 200 150 L 600 150 L 600 350 L 550 400 L 150 400 L 150 200 ";
+}
+
+.badge-drawer:focused,
+.badge-drawer:hover .icon
+{
+    -fx-background-color : #ffffff55;
+}
+
+.badge-drawer .icon {
+    -fx-fill : white;
+    -fx-background-radius : 100px;
+}
+

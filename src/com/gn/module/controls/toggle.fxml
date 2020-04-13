@@ -55,7 +55,7 @@
                   </VBox>
                </content>
             </Tab>
-            <Tab closable="false" text="Group">
+            <Tab closable="false" text="Groups">
                <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>

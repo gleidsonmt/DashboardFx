@@ -38,35 +38,20 @@
     -fx-background-color : white;
 }
 
-
-.options .button:pressed,
-.options .button:focused,
-.options .button
-{
-	-fx-background-color : transparent;
-	-fx-text-fill : #656D78;
-}
-
-.options .button:hover
-{
-		-fx-background-color : #E6E9ED;
-}
-
-.options .button .text
-{
-	-fx-fill : #656D78;
-}
-
-.options .button:hover .glyph-icon,
-.options .button:pressed .glyph-icon,
-.options .button:focused .glyph-icon,
-.options .button .glyph-icon
-{
-	-fx-fill : -icon-color;
-}
-
-.list-view .list-cell:selected .alert-cell .label
+.list-view .list-cell .badge-cell .label,
+.list-view .list-cell:selected .badge-cell .label
 {
 	  -fx-text-fill : -text-color;
 }
 
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:hover {
+    -fx-background-color : derive(-light-gray, 50%);
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused,
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:pressed,
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:selected
+{
+    -fx-background-color : -light-gray;
+    -fx-background-insets: 0;
+}

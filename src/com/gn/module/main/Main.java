@@ -16,26 +16,21 @@
  */
 package com.gn.module.main;
 
-import animatefx.animation.Flip;
-import animatefx.animation.Pulse;
 import animatefx.animation.Shake;
 import com.gn.App;
 import com.gn.GNAvatarView;
-import com.gn.GNCarousel;
-import com.gn.global.ConfigOptions;
+import com.gn.global.factory.badges.BadgeSettings;
 import com.gn.global.UserDetail;
 import com.gn.global.exceptions.NavigationException;
 import com.gn.global.factory.*;
+import com.gn.global.factory.badges.BadgeTasks;
+import com.gn.global.factory.badges.BadgeMessages;
+import com.gn.global.factory.badges.BadgeNotification;
 import com.gn.global.plugin.GridFx;
 import com.gn.global.plugin.ViewManager;
 import com.gn.global.util.PopupCreator;
 import com.jfoenix.controls.JFXBadge;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -44,24 +39,18 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.NodeOrientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.SVGPath;
 import org.controlsfx.control.PopOver;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -99,6 +88,7 @@ public class Main implements Initializable, ActionView {
     @FXML private ToggleGroup group;
     @FXML private HBox barHeader;
     @FXML private HBox main;
+    @FXML private Label name;
 
     @FXML private RadioButton available;
 
@@ -112,30 +102,28 @@ public class Main implements Initializable, ActionView {
     private ObservableList<ToggleButton> controlsItems = FXCollections.observableArrayList();
     private ObservableList<ToggleButton> chartsItems   = FXCollections.observableArrayList();
 
-    private JFXDialog       dialog          = new JFXDialog();
-    private JFXDialogLayout dialog_layout   = new JFXDialogLayout();
-
-    private String path = "/com/gn/theme/css/";
-    boolean scrolling   = false;
-
-    private Parent popContent;
-    public static Main ctrl;
+    private final UserDetail        userDetail          = new UserDetail("Jane Doe", "Jane", "SubTitle");
+    private final BadgeMessages     badgeMessages       = new BadgeMessages();
+    private final BadgeNotification badgeNotification   = new BadgeNotification();
+    private final BadgeTasks badgeAlerts         = new BadgeTasks();
+    private final BadgeSettings     badgeSettings       = new BadgeSettings("Text", "Subtitle");
+    private final HBox              contentBadges       = new HBox();
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
 
 //        App.getDecorator().floatActions(barHeader);
 
-        DrawerController drawerController = new DrawerController( drawer);
+        DrawerController drawerController = new DrawerController( drawer );
         items = drawerController.getItems();
 
         populateItems();
-        filteredList = new FilteredList<>(items, s -> true);
+        filteredList = new FilteredList<>( items, s -> true );
 
-        search.textProperty().addListener(obs -> {
+        search.textProperty().addListener( obs -> {
 
             String filter = search.getText();
-            if (filter == null || filter.length() == 0) {
+            if ( filter == null || filter.length() == 0 ) {
                 barInitial();
                 clear.setMouseTransparent(true);
                 searchIcon.setContent("M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z");
@@ -151,6 +139,10 @@ public class Main implements Initializable, ActionView {
             new Shake(clear).play();
         });
 
+        name.setOnMouseEntered(event ->{
+            new Shake(name).play();
+        });
+
     }
 
     private void hideHamburger(){
@@ -162,9 +154,12 @@ public class Main implements Initializable, ActionView {
         barHeader.setPadding(new Insets(0));
     }
 
-    private void hideDrawer(){
+    private void hideDrawer() {
         main.getChildren().remove(drawer);
         App.getDecorator().showCustoms();
+
+        if(!info.getChildren().contains(contentBadges)) info.getChildren().add(contentBadges);
+//        App.getDecorator().removeCustom(userDetail);
     }
 
     private void showHamburger(){
@@ -172,9 +167,9 @@ public class Main implements Initializable, ActionView {
         hamburger.setPrefWidth(40);
         hamburger.setMinWidth(40);
         hamburger.setMinHeight(40);
-
         hamburger.setVisible(true);
     }
+
     private void showDrawer(){
         if(!main.getChildren().contains(drawer)) {
             drawer.setPrefWidth(250D);
@@ -186,6 +181,7 @@ public class Main implements Initializable, ActionView {
 
     @FXML
     private void openDrawer(){
+
         PopupCreator.INSTANCE.createDrawerLeft(drawer);
         App.getDecorator().hideCustoms();
     }
@@ -200,46 +196,6 @@ public class Main implements Initializable, ActionView {
         popup.setArrowSize(0);
         popup.setCornerRadius(0);
         popup.setAutoFix(true);
-    }
-
-    private void addEvent(Node node) {
-        popup.setDetached(false);
-        popup.setDetachable(false);
-        popup.setCloseButtonEnabled(false);
-        popup.setArrowSize(0);
-        popup.setHeaderAlwaysVisible(false);
-
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
-
-        VBox v = new VBox();
-        v.setPrefWidth(200);
-
-        TitledPane pane = (TitledPane) node;
-        VBox vbox = (VBox) pane.getContent();
-
-        for (Node btn : vbox.getChildren()) {
-            EventHandler event = ((Button) btn).getOnMouseClicked();
-            String text = ((Button) btn).getText();
-            Button button = new Button(text);
-            button.setPrefWidth(v.getPrefWidth());
-            button.setOnMouseClicked(e -> {
-////                body.setContent(ViewManager.INSTANCE.get(button.getText().toLowerCase()));
-                title.setText(button.getText());
-                popup.hide();
-            });
-            button.setMinHeight(40);
-            v.getChildren().add(button);
-        }
-
-//        Popover.ctrl.options.getChildren().clear();
-
-        node.setOnMouseEntered((Event e) -> {
-            if (drawer.getPrefWidth() == 70) {
-                Popover.ctrl.options.getChildren().setAll(v);
-                popup.show(pane, -1);
-            }
-        });
     }
 
     private void barInitial(){
@@ -306,27 +262,6 @@ public class Main implements Initializable, ActionView {
             chartsItems.add((ToggleButton) node);
             items.add((ToggleButton) node);
         }
-    }
-
-
-    private void loadContentPopup(){
-        try {
-            popContent = FXMLLoader.load(getClass().getResource("/com/gn/module/main/Config.fxml"));
-            popConfig.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
-            popConfig.setContentNode(popContent);
-            popConfig.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
-            popConfig.setArrowIndent(0);
-            popConfig.setArrowSize(0);
-            popConfig.setCornerRadius(0);
-            popConfig.setAutoFix(true);
-            popConfig.setAnimated(false);
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
     }
 
     @FXML
@@ -570,41 +505,79 @@ public class Main implements Initializable, ActionView {
     @Override
     public void enter() {
         App.getDecorator().getStage().widthProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue.doubleValue() <= 500) {
+            if(newValue.doubleValue() <= GridFx.Type.XS.getValue()) {
                 hideDrawer();
                 showHamburger();
-                barHeader.setPadding(new Insets(20,0,0,0));
+//                barHeader.setPadding(new Insets(20,0,0,0));
+                removeBadges();
+
             } else if (newValue.doubleValue() <= GridFx.Type.SM.getValue()){
                 showHamburger();
                 hideDrawer();
                 barHeader.setPadding(new Insets(0,0,0,0));
+                addBadges();
 //                PopupCreator.INSTANCE.closePopup();
             } else {
                 barHeader.setPadding(new Insets(0,0,0,0));
                 showDrawer();
                 hideHamburger();
                 PopupCreator.INSTANCE.closePopup();
+                addBadges();
             }
         });
 
         StackPane body = (StackPane) ViewManager.INSTANCE.get("login").getRoot();
         PopupCreator.INSTANCE.createPopup(body);
 
-        App.getDecorator().addCustom(
-                new UserDetail("Gleidson", "Gleidson Neves da Silveira", "Subtitlte")
-        );
+        App.getDecorator().addCustom(userDetail);
+        App.getDecorator().addCustom(badgeSettings);
 
-        App.getDecorator().addCustom(new ConfigOptions(
-                "Text", "Subtitle"
-        ));
-
-        App.getDecorator().addCustom(new BadgeMessages());
-        App.getDecorator().addCustom(new BadgeNotification());
-        App.getDecorator().addCustom(new BadgeAlerts());
+        addBadges();
     }
 
     @Override
     public void exit() {
+    }
 
+    private void addBadges(){
+        updateStyles(false);
+
+        if(!App.getDecorator().getCustoms().contains(userDetail)) App.getDecorator().addCustom(userDetail);
+
+        if(!App.getDecorator().getCustoms().contains(badgeMessages)) {
+
+            App.getDecorator().addCustom(badgeMessages);
+            App.getDecorator().addCustom(badgeNotification);
+            App.getDecorator().addCustom(badgeAlerts);
+        }
+
+    }
+
+    private void removeBadges(){
+        App.getDecorator().removeCustom(badgeMessages);
+        App.getDecorator().removeCustom(badgeNotification);
+        App.getDecorator().removeCustom(badgeAlerts);
+        contentBadges.getChildren().setAll(badgeAlerts, badgeMessages, badgeNotification);
+        updateStyles(true);
+
+    }
+
+    private void updateStyles(boolean addStyle){
+        contentBadges.getChildren().forEach(
+                e -> {
+                    if(addStyle) {
+                        if (!e.getStyleClass().contains("badge-drawer")) {
+                            e.getStyleClass().add("badge-drawer");
+                        }
+                    } else {
+                        e.getStyleClass().remove("badge-drawer");
+                    }
+                }
+        );
+    }
+
+    @FXML
+    private void openProfile(){
+        userDetail.getPopOver().show(name);
     }
 }

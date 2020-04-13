@@ -125,14 +125,14 @@ public class GridFx {
     }
 
     /**
-     *
+     * Visualize in prompt the change of size.
      */
     public static void log(boolean _log){
         log = _log;
     }
 
     /**
-     * When application resize width, add scroll pane resize.
+     * When application resize width, add a minimun size scroll pane resize.
      * @param node node for listen
      * @param num num max height.
      */

@@ -6,7 +6,7 @@
 */
 
 .root {
-/* bootstrap */
+   /* bootstrap */
   -base      : -info;
 
   -primary   : #4285f4;
@@ -18,7 +18,7 @@
   -unique    : #880E4F;
   -elegant   : #2E2E2E;
 
-  /* Theme */
+  /* Themes */
   -brown       : #795548;
   -red         : -danger;
   -grapefruit  : #ED5565;
@@ -51,29 +51,30 @@
   -light-blue  : #82B1FF;
   -gray : #8e8e8e;
 
-  /*Social color*/
+  /* Social color */
+
   -facebook  : #3b5998;
   -twitter   : #55acee;
   -google    : #dd4b39;
   -linkedin  : #0082ca;
   -instagram : #2e5e86;
   -pinterest : #c61118;
-  -youtube   : #ed302f; /* Falta */
+  -youtube   : #ed302f;
 
-  -base             : #2BBBAD;
+  -base             : #2BBBAD;     /* define a color of theme */
   -box-base         : transparent;
   -box-text-color   : -dark-gray;
   -box-fill         : -light-gray;
   -box-color        : -light-gray;
   -track-fill       : -light-gray;
-  -foreground-color : white;
+  -foreground-color : white;        /* define a color of regions */
   -highlight-text   : -medium-gray;
 
   -default-border   : -dark-gray;
   -highlight-border : -base;
-  -icon-color       : -dark-gray;
-  -text-color       : -dark-gray;
-  -inner-text       : white;
+  -icon-color       : -dark-gray;   /* define a default icon color */
+  -text-color       : -dark-gray;   /* define a default text color */
+  -inner-text       : white;        /* define a text color in a colored control */
   -separator-color  : -light-gray;
   -light-hover      : -light-gray;
 
@@ -94,6 +95,7 @@
  CHART_COLOR_6: -secondary;
  CHART_COLOR_7: -pink;
  CHART_COLOR_8: #888888;
+
  /* Chart Color Palette Semi-Transparent
   * These are used by charts that need semi transparent versions of the above colors, such as BubbleChart. They
   * are exactly the same colors as above just with alpha

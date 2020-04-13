@@ -18,8 +18,10 @@ package com.gn.global;
 
 import animatefx.animation.BounceIn;
 import animatefx.animation.Pulse;
+import com.gn.App;
 import com.gn.GNAvatarView;
 import com.gn.decorator.component.GNControl;
+import com.gn.global.exceptions.NavigationException;
 import com.gn.global.plugin.ViewManager;
 import com.gn.global.util.PopupCreator;
 import javafx.beans.property.SimpleStringProperty;
@@ -29,9 +31,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -79,6 +79,17 @@ public class UserDetail extends GNControl {
 
     @Override
     public Node icon() {
+        return null;
+    }
+
+    @Override
+    public Node status() {
+        return null;
+    }
+
+    @Override
+    public Node action() {
+
         Image image = new Image(getClass().getResource("/com/gn/media/img/avatar.png").toExternalForm());
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(30);
@@ -91,19 +102,11 @@ public class UserDetail extends GNControl {
         circle.setCenterY(imageView.getFitHeight() / 2);
         imageView.setClip(circle);
 
-        return imageView;
-    }
-
-    @Override
-    public Node status() {
-        return null;
-    }
-
-    @Override
-    public Node action() {
         Hyperlink link = new Hyperlink();
+        link.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
         link.textProperty().bind(super.textProperty());
         link.setMinHeight(30);
+        link.setGraphic(imageView);
         link.setOnMouseClicked(event -> popOver.show(link, 0));
         return link;
     }
@@ -130,8 +133,8 @@ public class UserDetail extends GNControl {
         box.setPrefWidth(387);
         box.setPrefHeight(300);
 
-        signOut.getStyleClass().addAll("outlined");
-        profile.getStyleClass().addAll("outlined");
+        signOut.getStyleClass().addAll("btn-profile");
+        profile.getStyleClass().addAll("btn-profile");
 
         signOut.setPrefWidth(100);
         profile.setPrefWidth(100);
@@ -143,6 +146,16 @@ public class UserDetail extends GNControl {
             StackPane body = (StackPane) ViewManager.INSTANCE.get("login").getRoot();
             PopupCreator.INSTANCE.createPopup(body, new BounceIn(body));
             popOver.hide();
+        });
+
+        profile.setOnAction(event -> {
+            ScrollPane scrollPane = (ScrollPane) App.getDecorator().getScene().lookup("#body");
+            try {
+                ViewManager.INSTANCE.openSubView( scrollPane,"profile");
+                popOver.hide();
+            } catch (NavigationException e) {
+                e.printStackTrace();
+            }
         });
 
         layoutContent.add(signOut, 0, 0);

@@ -48,7 +48,7 @@
 .drawer .scroll .drawer-content .drawer-item:selected .group .icon
 {
   -fx-effect : none;
-    -fx-background-color: linear-gradient(to left, #ffffff30, #ffffff50);
+    -fx-background-color: linear-gradient(to right, #ffffff30, #ffffff05);
   -fx-border-color : white;
   -fx-fill : white;
     /* -fx-padding : 2 2 2 10; */
@@ -126,13 +126,13 @@
 
 .drawer .scroll .drawer-content .drawer-menu .drawer-item:selected
 {
-    -fx-background-color: linear-gradient(to left, #ffffff30, #ffffff50);
+  -fx-background-color: linear-gradient(to left, #ffffff30, #ffffff05);
   -fx-border-color : transparent;
 }
 
 
 .drawer .scroll .drawer-content .menu-selected .title{
-    -fx-background-color: linear-gradient(to left, #ffffff30, #ffffff50);
+    -fx-background-color: linear-gradient(to right, #ffffff30, #ffffff05);
     -fx-border-width : 0;
 }
 

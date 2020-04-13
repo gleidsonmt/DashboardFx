@@ -20,7 +20,11 @@ import com.gn.decorator.GNDecorator;
 import com.gn.global.exceptions.NavigationException;
 import com.gn.global.factory.ActionView;
 import com.gn.global.factory.View;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.StackPane;
 
 import javax.swing.*;
 import java.util.HashMap;
@@ -74,12 +78,13 @@ public enum  ViewManager {
             if (get(previous).getController() instanceof ActionView)
                 ((ActionView) get(previous).getController()).exit();
 
+            System.out.println(view.getRoot());
             body.setContent(view.getRoot());
 
             if (view.getController() instanceof ActionView) {
                 ((ActionView) view.getController()).enter();
             }
-
+//
             return view.getTitle();
         } else {
             throw new NavigationException("NAVIGATION", String.format("The view '%s' was not encountered.", name));

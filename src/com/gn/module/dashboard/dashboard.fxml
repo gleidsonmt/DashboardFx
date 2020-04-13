@@ -11,26 +11,44 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane prefHeight="1500.0" prefWidth="1843.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.dashboard.Dashboard">
+<StackPane fx:id="root" prefHeight="1058.0" prefWidth="1843.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.dashboard.Dashboard">
    <children>
       <VBox spacing="20.0">
          <children>
-            <HBox alignment="CENTER" spacing="20.0">
+            <GridPane fx:id="tiles" hgap="5.0" vgap="5.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <VBox prefHeight="101.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                  <VBox prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnSpan="2">
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
@@ -64,11 +82,16 @@
                         </HBox>
                      </children>
                      <styleClass>
-                        <String fx:value="border-1" />
                         <String fx:value="border" />
+                        <String fx:value="border-1" />
+                        <String fx:value="col-sm-6" />
+                        <String fx:value="col-xl-2" />
+                        <String fx:value="col-lg-4" />
+                        <String fx:value="col-md-4" />
+                        <String fx:value="col-xs-12" />
                      </styleClass>
                   </VBox>
-                  <VBox prefHeight="101.0" prefWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                  <VBox prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.columnSpan="2">
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
@@ -104,9 +127,14 @@
                      <styleClass>
                         <String fx:value="border" />
                         <String fx:value="border-1" />
+                        <String fx:value="col-sm-6" />
+                        <String fx:value="col-xl-2" />
+                        <String fx:value="col-lg-4" />
+                        <String fx:value="col-md-4" />
+                        <String fx:value="col-xs-12" />
                      </styleClass>
                   </VBox>
-                  <VBox prefHeight="101.0" prefWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                  <VBox prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="4" GridPane.columnSpan="2">
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
@@ -142,9 +170,14 @@
                      <styleClass>
                         <String fx:value="border" />
                         <String fx:value="border-1" />
+                        <String fx:value="col-sm-6" />
+                        <String fx:value="col-xl-2" />
+                        <String fx:value="col-lg-4" />
+                        <String fx:value="col-md-4" />
+                        <String fx:value="col-xs-12" />
                      </styleClass>
                   </VBox>
-                  <VBox prefHeight="101.0" prefWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                  <VBox prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="6" GridPane.columnSpan="2">
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
@@ -180,9 +213,14 @@
                      <styleClass>
                         <String fx:value="border" />
                         <String fx:value="border-1" />
+                        <String fx:value="col-sm-6" />
+                        <String fx:value="col-xl-2" />
+                        <String fx:value="col-lg-4" />
+                        <String fx:value="col-md-4" />
+                        <String fx:value="col-xs-12" />
                      </styleClass>
                   </VBox>
-                  <VBox prefHeight="101.0" prefWidth="200.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+                  <VBox prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="8" GridPane.columnSpan="2">
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
@@ -195,7 +233,7 @@
                                     </JFXButton>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label fx:id="lbl_numberRegisters21" text="32" textFill="#219297">
+                                          <Label text="32" textFill="#219297">
                                              <font>
                                                 <Font name="System Bold" size="25.0" />
                                              </font>
@@ -218,63 +256,166 @@
                      <styleClass>
                         <String fx:value="border" />
                         <String fx:value="border-1" />
+                        <String fx:value="col-sm-6" />
+                        <String fx:value="col-xl-2" />
+                        <String fx:value="col-lg-4" />
+                        <String fx:value="col-md-4" />
+                        <String fx:value="col-xs-12" />
+                     </styleClass>
+                  </VBox>
+                  <VBox layoutX="1403.0" layoutY="10.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="10" GridPane.columnSpan="2">
+                     <children>
+                        <HBox prefHeight="93.0" prefWidth="345.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="93.0" prefWidth="271.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <JFXButton contentDisplay="GRAPHIC_ONLY" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" prefHeight="53.0" prefWidth="52.0" ripplerFill="WHITE" style="-fx-background-color: linear-gradient(to left, -info, -cyan);">
+                                       <graphic>
+                                          <SVGPath content="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z" fill="WHITE" />
+                                       </graphic>
+                                    </JFXButton>
+                                    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label text="32" textFill="#219297">
+                                             <font>
+                                                <Font name="System Bold" size="25.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="text-base" />
+                                                <String fx:value="h3" />
+                                             </styleClass>
+                                          </Label>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Schedule" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                     <styleClass>
+                        <String fx:value="border" />
+                        <String fx:value="border-1" />
+                        <String fx:value="col-sm-6" />
+                        <String fx:value="col-xl-2" />
+                        <String fx:value="col-lg-4" />
+                        <String fx:value="col-md-4" />
+                        <String fx:value="col-xs-12" />
                      </styleClass>
                   </VBox>
                </children>
-            </HBox>
-            <VBox style="-fx-background-color: white;">
+            </GridPane>
+            <GridPane fx:id="graphic" VBox.vgrow="ALWAYS">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <CurveFittedAreaChart fx:id="curve" alternativeColumnFillVisible="true" alternativeRowFillVisible="false" createSymbols="false" horizontalZeroLineVisible="false" legendVisible="false" styleClass="main-chart" title="Curve Chart" verticalGridLinesVisible="false" verticalZeroLineVisible="false" />
+                  <VBox style="-fx-background-color: white;">
+                     <children>
+                        <CurveFittedAreaChart fx:id="curve" alternativeColumnFillVisible="true" alternativeRowFillVisible="false" createSymbols="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="300.0" styleClass="main-chart" title="Curve Chart" verticalGridLinesVisible="false" verticalZeroLineVisible="false" />
+                     </children>
+                     <styleClass>
+                        <String fx:value="border" />
+                        <String fx:value="border-1" />
+                        <String fx:value="col-sm-12" />
+                        <String fx:value="col-xs-12" />
+                        <String fx:value="col-xl-12" />
+                     </styleClass>
+                  </VBox>
                </children>
-               <styleClass>
-                  <String fx:value="border" />
-                  <String fx:value="border-1" />
-               </styleClass>
-            </VBox>
+            </GridPane>
             <HBox alignment="CENTER" spacing="20.0" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox HBox.hgrow="ALWAYS">
+                  <GridPane fx:id="bodyCenter" hgap="5.0" vgap="5.0" HBox.hgrow="ALWAYS">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <HBox prefHeight="268.0" prefWidth="547.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                        <VBox spacing="10.0" GridPane.columnSpan="4">
                            <children>
-                              <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                              <DonutChart fx:id="donutChart" title="Donut Chart">
+                                 <styleClass>
+                                    <String fx:value="border" />
+                                    <String fx:value="border-1" />
+                                 </styleClass>
+                              </DonutChart>
+                              <HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="637.0">
                                  <children>
-                                    <DonutChart fx:id="donutChart" title="Donut Chart">
-                                       <styleClass>
-                                          <String fx:value="border" />
-                                          <String fx:value="border-1" />
-                                       </styleClass></DonutChart>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                    <GNAvatarView strokeWidth="0.0">
+                                       <image>
+                                          <Image url="@../media/avatar.jpg" />
+                                       </image>
+                                    </GNAvatarView>
+                                    <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <GNAvatarView strokeWidth="0.0">
-                                             <image>
-                                                <Image url="@../media/avatar.jpg" />
-                                             </image>
-                                          </GNAvatarView>
-                                          <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
-                                             <children>
-                                                <Label styleClass="h4" text="Perfil" />
-                                                <JFXProgressBar prefHeight="3.0" prefWidth="573.0" progress="0.7" />
-                                             </children>
-                                             <HBox.margin>
-                                                <Insets left="10.0" />
-                                             </HBox.margin>
-                                          </VBox>
+                                          <Label styleClass="h4" text="Perfil" />
+                                          <JFXProgressBar prefHeight="3.0" prefWidth="573.0" progress="0.7" />
                                        </children>
-                                       <styleClass>
-                                          <String fx:value="border" />
-                                          <String fx:value="border-1" />
-                                       </styleClass>
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" top="5.0" />
-                                       </padding></HBox>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </VBox>
                                  </children>
-                              </VBox>
-                              <VBox prefHeight="1058.0" prefWidth="457.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                                 <styleClass>
+                                    <String fx:value="border" />
+                                    <String fx:value="border-1" />
+                                 </styleClass>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" top="5.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                           <styleClass>
+                              <String fx:value="col-sm-12" />
+                              <String fx:value="col-xs-12" />
+                              <String fx:value="col-lg-12" />
+                              <String fx:value="col-xl-4" />
+                           </styleClass>
+                        </VBox>
+                        <VBox GridPane.columnIndex="4" GridPane.columnSpan="4">
+                           <children>
+                              <HBox spacing="10.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <HBox spacing="10.0">
+                                    <GridPane fx:id="socialTiles">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
                                        <children>
-                                          <StackPane prefHeight="326.0" prefWidth="728.0">
+                                          <StackPane prefHeight="326.0" prefWidth="728.0" GridPane.columnSpan="6">
                                              <children>
                                                 <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0">
                                                    <children>
@@ -318,9 +459,11 @@
                                              <styleClass>
                                                 <String fx:value="border" />
                                                 <String fx:value="border-1" />
+                                                <String fx:value="col-xs-12" />
+                                                <String fx:value="col-md-6" />
                                              </styleClass>
                                           </StackPane>
-                                          <StackPane layoutX="10.0" layoutY="10.0" prefHeight="326.0" prefWidth="728.0">
+                                          <StackPane prefHeight="326.0" prefWidth="728.0" GridPane.columnIndex="6" GridPane.columnSpan="6">
                                              <children>
                                                 <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0">
                                                    <children>
@@ -364,189 +507,247 @@
                                              <styleClass>
                                                 <String fx:value="border" />
                                                 <String fx:value="border-1" />
+                                                <String fx:value="col-xs-12" />
+                                                <String fx:value="col-md-6" />
                                              </styleClass>
                                           </StackPane>
                                        </children>
-                                    </HBox>
-                                    <GNCarousel fx:id="carousel" VBox.vgrow="ALWAYS" />
+                                    </GridPane>
                                  </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" prefHeight="480.0" prefWidth="177.0">
-                     <children>
-                        <VBox alignment="CENTER" prefHeight="468.0" prefWidth="283.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <Group layoutX="14.0" layoutY="15.0">
-                                 <children>
-                                    <Pane layoutX="6.0" layoutY="39.0" prefHeight="20.0" prefWidth="263.0">
-                                       <children>
-                                          <VBox alignment="CENTER" layoutX="13.0" layoutY="-34.0" prefHeight="60.0" prefWidth="104.0">
-                                             <children>
-                                                <SVGPath content="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="WHITE" scaleX="2.0" scaleY="2.0">
-                                                   <effect>
-                                                      <Glow />
-                                                   </effect>
-                                                </SVGPath>
-                                             </children>
-                                             <styleClass>
-                                                <String fx:value="scale" />
-                                                <String fx:value="success" />
-                                             </styleClass>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </VBox>
-                                          <Label layoutX="13.0" layoutY="35.0" minHeight="5.0" prefHeight="5.0" prefWidth="238.0" styleClass="success" />
-                                          <Label alignment="CENTER_RIGHT" layoutX="160.0" layoutY="-34.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h4" text="Registered" textFill="#8d8b8b">
-                                             <font>
-                                                <Font name="Roboto Black" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="TOP_RIGHT" layoutX="159.0" layoutY="2.0" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="10">
-                                             <font>
-                                                <Font name="Roboto Black" size="24.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="18.0" prefWidth="238.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total number of users" textAlignment="RIGHT">
-                                             <font>
-                                                <Font name="Roboto" size="14.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </Pane>
-                                 </children>
-                              </Group>
-                              <Group>
-                                 <children>
-                                    <Pane layoutX="6.0" layoutY="39.0" prefHeight="84.0" prefWidth="263.0">
-                                       <children>
-                                          <VBox alignment="CENTER" layoutX="13.0" layoutY="-34.0" prefHeight="60.0" prefWidth="104.0">
-                                             <children>
-                                                <SVGPath content="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" fill="WHITE" scaleX="2.0" scaleY="2.0">
-                                                   <effect>
-                                                      <Glow />
-                                                   </effect>
-                                                </SVGPath>
-                                             </children>
-                                             <styleClass>
-                                                <String fx:value="scale" />
-                                                <String fx:value="btn-info" />
-                                             </styleClass>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </VBox>
-                                          <Label layoutX="13.0" layoutY="35.0" minHeight="5.0" prefHeight="5.0" prefWidth="238.0" styleClass="btn-info" />
-                                          <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total Items in stock" textAlignment="RIGHT">
-                                             <font>
-                                                <Font name="Roboto Regular" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="CENTER_RIGHT" layoutX="160.0" layoutY="-34.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h4" text="Registered" textFill="#8d8b8b">
-                                             <font>
-                                                <Font name="Roboto Black" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="TOP_RIGHT" layoutX="159.0" layoutY="2.0" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="20">
-                                             <font>
-                                                <Font name="Roboto Black" size="24.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </Pane>
-                                 </children>
-                              </Group>
-                              <Group layoutX="14.0" layoutY="151.0">
-                                 <children>
-                                    <Pane layoutX="6.0" layoutY="39.0" prefHeight="61.0" prefWidth="263.0">
-                                       <children>
-                                          <VBox alignment="CENTER" layoutX="13.0" layoutY="-34.0" prefHeight="60.0" prefWidth="104.0">
-                                             <children>
-                                                <SVGPath content="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" fill="WHITE" scaleX="2.0" scaleY="2.0">
-                                                   <effect>
-                                                      <Glow />
-                                                   </effect>
-                                                </SVGPath>
-                                             </children>
-                                             <styleClass>
-                                                <String fx:value="scale" />
-                                                <String fx:value="secondary" />
-                                             </styleClass>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </VBox>
-                                          <Label layoutX="13.0" layoutY="35.0" minHeight="5.0" prefHeight="5.0" prefWidth="238.0" styleClass="secondary" />
-                                          <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total number of employers" textAlignment="RIGHT">
-                                             <font>
-                                                <Font name="Roboto Regular" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="CENTER_RIGHT" layoutX="160.0" layoutY="-34.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h4" text="Registered" textFill="#8d8b8b">
-                                             <font>
-                                                <Font name="Roboto Black" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="TOP_RIGHT" layoutX="159.0" layoutY="2.0" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="30">
-                                             <font>
-                                                <Font name="Roboto Black" size="24.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </Pane>
-                                 </children>
-                              </Group>
-                              <Group layoutX="14.0" layoutY="287.0">
-                                 <children>
-                                    <Pane layoutX="6.0" layoutY="39.0" prefHeight="38.0" prefWidth="263.0">
-                                       <children>
-                                          <VBox alignment="CENTER" layoutX="13.0" layoutY="-34.0" prefHeight="60.0" prefWidth="104.0">
-                                             <children>
-                                                <SVGPath content="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="WHITE" scaleX="2.0" scaleY="2.0">
-                                                   <effect>
-                                                      <Glow />
-                                                   </effect>
-                                                </SVGPath>
-                                             </children>
-                                             <styleClass>
-                                                <String fx:value="scale" />
-                                                <String fx:value="warning" />
-                                             </styleClass>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </VBox>
-                                          <Label layoutX="13.0" layoutY="35.0" minHeight="5.0" prefHeight="5.0" prefWidth="238.0" styleClass="warning" />
-                                          <Label alignment="CENTER" layoutX="17.0" layoutY="40.0" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total number of clients" textAlignment="RIGHT">
-                                             <font>
-                                                <Font name="Roboto Regular" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="CENTER_RIGHT" layoutX="160.0" layoutY="-34.0" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h4" text="Registered" textFill="#8d8b8b">
-                                             <font>
-                                                <Font name="Roboto Black" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label alignment="TOP_RIGHT" layoutX="159.0" layoutY="2.0" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="40">
-                                             <font>
-                                                <Font name="Roboto Black" size="24.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </Pane>
-                                 </children>
-                              </Group>
+                              </HBox>
+                              <GNCarousel fx:id="carousel" VBox.vgrow="ALWAYS" />
                            </children>
                            <styleClass>
-                              <String fx:value="border" />
-                              <String fx:value="border-1" />
+                              <String fx:value="col-sm-12" />
+                              <String fx:value="col-xs-12" />
+                              <String fx:value="col-lg-6" />
+                              <String fx:value="col-xl-4" />
+                           </styleClass>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="480.0" prefWidth="177.0" GridPane.columnIndex="8" GridPane.columnSpan="4">
+                           <children>
+                              <VBox alignment="TOP_CENTER" prefHeight="468.0" prefWidth="283.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox spacing="5.0">
+                                       <children>
+                                          <HBox>
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="60.0" prefWidth="104.0">
+                                                   <children>
+                                                      <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="WHITE" scaleX="2.0" scaleY="2.0">
+                                                         <effect>
+                                                            <Glow />
+                                                         </effect>
+                                                      </SVGPath>
+                                                   </children>
+                                                   <styleClass>
+                                                      <String fx:value="scale" />
+                                                      <String fx:value="success" />
+                                                   </styleClass>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </VBox>
+                                                <VBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h4" text="Registered" textFill="#8d8b8b">
+                                                         <font>
+                                                            <Font name="Roboto Black" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="TOP_RIGHT" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="38">
+                                                         <font>
+                                                            <Font name="Roboto Black" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <VBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <VBox minHeight="3.0" styleClass="success" VBox.vgrow="ALWAYS" />
+                                                <Label alignment="CENTER" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total number of users" textAlignment="RIGHT">
+                                                   <font>
+                                                      <Font name="Roboto Regular" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox layoutX="11.0" layoutY="359.0" spacing="5.0">
+                                       <children>
+                                          <HBox>
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="60.0" prefWidth="104.0">
+                                                   <children>
+                                                      <SVGPath content="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="WHITE" scaleX="2.0" scaleY="2.0">
+                                                         <effect>
+                                                            <Glow />
+                                                         </effect>
+                                                      </SVGPath>
+                                                   </children>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                   <styleClass>
+                                                      <String fx:value="scale" />
+                                                      <String fx:value="btn-mint" />
+                                                   </styleClass>
+                                                </VBox>
+                                                <VBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h4" text="Registered" textFill="#8d8b8b">
+                                                         <font>
+                                                            <Font name="Roboto Black" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="TOP_RIGHT" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="33">
+                                                         <font>
+                                                            <Font name="Roboto Black" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <VBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <VBox minHeight="3.0" styleClass="mint" VBox.vgrow="ALWAYS" />
+                                                <Label alignment="CENTER" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total items of clients" textAlignment="RIGHT">
+                                                   <font>
+                                                      <Font name="Roboto Regular" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox layoutX="11.0" layoutY="423.0" spacing="5.0">
+                                       <children>
+                                          <HBox>
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="60.0" prefWidth="104.0">
+                                                   <children>
+                                                      <SVGPath content="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" fill="WHITE" scaleX="2.0" scaleY="2.0">
+                                                         <effect>
+                                                            <Glow />
+                                                         </effect>
+                                                      </SVGPath>
+                                                   </children>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                   <styleClass>
+                                                      <String fx:value="scale" />
+                                                      <String fx:value="btn-info" />
+                                                   </styleClass>
+                                                </VBox>
+                                                <VBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h4" text="Registered" textFill="#8d8b8b">
+                                                         <font>
+                                                            <Font name="Roboto Black" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="TOP_RIGHT" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="54">
+                                                         <font>
+                                                            <Font name="Roboto Black" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <VBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <VBox minHeight="3.0" styleClass="info" VBox.vgrow="ALWAYS" />
+                                                <Label alignment="CENTER" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total items in stock" textAlignment="RIGHT">
+                                                   <font>
+                                                      <Font name="Roboto Regular" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox layoutX="11.0" layoutY="334.0" spacing="5.0">
+                                       <children>
+                                          <HBox>
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="60.0" prefWidth="104.0">
+                                                   <children>
+                                                      <SVGPath content="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" fill="WHITE" scaleX="2.0" scaleY="2.0">
+                                                         <effect>
+                                                            <Glow />
+                                                         </effect>
+                                                      </SVGPath>
+                                                   </children>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                   <styleClass>
+                                                      <String fx:value="scale" />
+                                                      <String fx:value="secondary" />
+                                                   </styleClass>
+                                                </VBox>
+                                                <VBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h4" text="Registered" textFill="#8d8b8b">
+                                                         <font>
+                                                            <Font name="Roboto Black" size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="TOP_RIGHT" prefHeight="36.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="22">
+                                                         <font>
+                                                            <Font name="Roboto Black" size="24.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <VBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <VBox minHeight="3.0" styleClass="secondary" VBox.vgrow="ALWAYS" />
+                                                <Label alignment="CENTER" prefHeight="22.0" prefWidth="229.0" style="-fx-text-fill: -text-color;" styleClass="h5" text="Total items of employers" textAlignment="RIGHT">
+                                                   <font>
+                                                      <Font name="Roboto Regular" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="border" />
+                                    <String fx:value="border-1" />
+                                 </styleClass>
+                              </VBox>
+                           </children>
+                           <styleClass>
+                              <String fx:value="col-sm-12" />
+                              <String fx:value="col-xs-12" />
+                              <String fx:value="col-lg-6" />
+                              <String fx:value="col-xl-4" />
                            </styleClass>
                         </VBox>
                      </children>
-                  </VBox>
+                  </GridPane>
                </children>
             </HBox>
          </children>

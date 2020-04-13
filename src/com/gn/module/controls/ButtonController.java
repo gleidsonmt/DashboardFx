@@ -14,34 +14,34 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.module.main;
+package com.gn.module.controls;
 
-import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  27/10/2018
- * Version 1.0
+ * Create on  12/04/2020
  */
-public class Popover implements Initializable {
+public class ButtonController implements Initializable {
 
-    @FXML
-    private JFXButton theme;
-
-    @FXML
-    public VBox options;
-
-    public static Popover ctrl;
+    @FXML private Button btn;
+    @FXML private MenuItem menuItem;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ctrl = this;
+        menuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println(btn.getStyleClass());
+            }
+        });
     }
-
 }

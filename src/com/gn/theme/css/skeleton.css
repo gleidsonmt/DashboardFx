@@ -200,6 +200,15 @@
   -fx-fill : black;
 }
 
+.button .text {
+    -fx-fill : -inner-text;
+}
+
+Text,
+.text {
+    -fx-fill : -text-color;
+}
+
 /************************************************************************************
 *
 *               @-fx-cursor
@@ -551,6 +560,10 @@
 
     -fx-border-color: -base;
     -fx-border-style: solid;
+}
+
+.context-menu .menu-item:disabled {
+    -fx-cursor : default;
 }
 
 .context-menu .menu-item {

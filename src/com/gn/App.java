@@ -19,6 +19,7 @@ package com.gn;
 
 import com.gn.global.*;
 import com.gn.global.factory.LoadViews;
+import com.gn.global.plugin.GridFx;
 import com.gn.global.plugin.SectionManager;
 import com.gn.global.plugin.UserManager;
 import com.gn.global.plugin.ViewManager;
@@ -95,6 +96,7 @@ public class App extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         decorator.getStage().setMinWidth(minWidth);
         decorator.getStage().setMinHeight(minHeight);
         decorator.setContent(root);
@@ -163,7 +165,8 @@ public class App extends Application {
 
 
         decorator.show();
-
+        GridFx.addStage(decorator.getStage());
+//        GridFx.log(true);
         LoadViews load = new LoadViews();
         load.start();
 

@@ -16,13 +16,9 @@
  */
 package com.gn.module.dashboard;
 
-import com.gn.App;
 import com.gn.GNCarousel;
-import com.gn.global.*;
 import com.gn.global.factory.ActionView;
-import com.gn.global.factory.BadgeAlerts;
-import com.gn.global.factory.BadgeMessages;
-import com.gn.global.factory.BadgeNotification;
+import com.gn.global.plugin.GridFx;
 import core.CurveFittedAreaChart;
 import core.DonutChart;
 import javafx.collections.FXCollections;
@@ -36,6 +32,8 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
@@ -48,12 +46,16 @@ import java.util.ResourceBundle;
  */
 public class Dashboard implements Initializable, ActionView {
 
-//    @FXML private Tile calendar;
+    @FXML private StackPane root;
     @FXML private AreaChart<String, Number> areaChart;
     @FXML private CurveFittedAreaChart<Number, Number> curve;
     @FXML private DonutChart donutChart;
     @FXML private GNCarousel carousel;
 
+    @FXML private GridPane tiles;
+    @FXML private GridPane bodyCenter;
+    @FXML private GridPane graphic;
+    @FXML private GridPane socialTiles;
 
     private CurveFittedAreaChart<Number, Number> curvedChart = new CurveFittedAreaChart<>();
 
@@ -76,22 +78,6 @@ public class Dashboard implements Initializable, ActionView {
 
         carousel.setItems(createItems());
 
-
-//        XYChart.Series<String, Number> series = new XYChart.Series<>();
-//        series.setName("Legend 1");
-//        series.getData().add(new XYChart.Data<>("0", 2D));
-//        series.getData().add(new XYChart.Data<>("1", 8D));
-//        series.getData().add(new XYChart.Data<>("2", 5D));
-//        series.getData().add(new XYChart.Data<>("3", 3D));
-//        series.getData().add(new XYChart.Data<>("4", 6D));
-//        series.getData().add(new XYChart.Data<>("5", 8D));
-//        series.getData().add(new XYChart.Data<>("6", 5D));
-//        series.getData().add(new XYChart.Data<>("7", 6D));
-//        series.getData().add(new XYChart.Data<>("200", 5D));
-//
-//        areaChart.getData().setAll(series);
-//        areaChart.setCreateSymbols(true);
-
         final XYChart.Series<Number, Number> series2 = new XYChart.Series<Number, Number>();
 
         series2.getData().addAll(
@@ -109,8 +95,6 @@ public class Dashboard implements Initializable, ActionView {
         );
 
         curve.getData().add(series2);
-//        curvedChart.getData().add(series2);
-//        boxCurve.getChildren().add(curvedChart);
     }
 
 
@@ -151,11 +135,18 @@ public class Dashboard implements Initializable, ActionView {
 
     @Override
     public void enter() {
-
+        GridFx.add(tiles, "tiles");
+        GridFx.add(bodyCenter, "body-center");
+        GridFx.add(graphic, "graphic");
+        GridFx.add(socialTiles, "social-tiles");
+        GridFx.defineMin(root, 2800, 2400, 2000, 1600, 1200);
     }
 
     @Override
     public void exit() {
-
+        GridFx.remove("tiles");
+        GridFx.remove("body-center");
+        GridFx.remove("graphic");
+        GridFx.remove("social-tiles");
     }
 }

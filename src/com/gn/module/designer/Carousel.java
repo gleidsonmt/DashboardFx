@@ -89,11 +89,9 @@ public class Carousel implements Initializable, ActionView {
 
     @Override
     public void enter() {
-        System.out.println("Carousel enter");
     }
 
     @Override
     public void exit() {
-        System.out.println("Carousel exited");
     }
 }

@@ -53,13 +53,16 @@
                      </VBox>
                      <VBox fx:id="info" alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="-Infinity" prefHeight="101.0" prefWidth="249.0" VBox.vgrow="ALWAYS">
                         <children>
-                           <Label alignment="CENTER" prefHeight="32.0" prefWidth="166.0" style="-fx-text-fill: white;" text="Jane Doe" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                           <Label fx:id="name" alignment="CENTER" onMouseClicked="#openProfile" prefHeight="32.0" prefWidth="166.0" style="-fx-text-fill: white;" text="Jane Doe" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                               <VBox.margin>
                                  <Insets top="10.0" />
                               </VBox.margin>
                               <font>
                                  <Font name="Roboto" size="12.0" />
                               </font>
+                              <cursor>
+                                 <Cursor fx:constant="HAND" />
+                              </cursor>
                            </Label>
                            <HBox alignment="CENTER" prefHeight="27.0" prefWidth="249.0" spacing="4.0" VBox.vgrow="ALWAYS">
                               <children>
@@ -233,7 +236,7 @@
                         </VBox>
                         <StackPane prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <ScrollPane id="body" fx:id="body" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT" />
+                              <ScrollPane id="body" fx:id="body" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="CENTER" />
                            </children>
                         </StackPane>
                      </children>

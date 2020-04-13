@@ -113,6 +113,7 @@ public class LoadViews extends Service {
             protected Object call()  {
                 Label lbl = (Label) App.getDecorator().getScene().lookup("#labelLoading");
                 for (Module module : modules) {
+                    System.out.println(module);
                     try {
                         ViewManager.INSTANCE.put(createView(module));
                     } catch (LoadViewException e) {
