@@ -20,6 +20,7 @@ import com.gn.GNAvatarView;
 import com.gn.decorator.component.GNControl;
 import com.jfoenix.controls.JFXBadge;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -67,7 +68,7 @@ public class BadgeTasks extends GNControl {
         badgeM.setPrefSize(35, 20);
         badgeM.setPosition(Pos.TOP_RIGHT);
         badgeM.getStyleClass().addAll("icon", "icon-danger");
-        badgeM.setText("12");
+        badgeM.setText("3");
 
         StackPane control = new StackPane();
         control.setAlignment(Pos.CENTER);
@@ -82,59 +83,61 @@ public class BadgeTasks extends GNControl {
 
         badgeM.setControl(control);
 
-        badgeM.setOnMouseClicked(event -> {
-            opeTasks();
-        });
-
+        badgeM.setOnMouseClicked(event -> showPopup());
+        Platform.runLater(this::configLayout);
         return badgeM;
     }
 
-    private void opeTasks() {
-        if (!pop.isShowing()) {
+    private void showPopup() {
+        if (!pop.isShowing()) pop.show(this);
+        else pop.hide();
+    }
 
-            ObservableList<BadgeCellTask> list = FXCollections.observableArrayList(
-                    new BadgeCellTask("Designed some buttons", 30, "progress-bar-danger"),
-                    new BadgeCellTask("Create tasks", 80, "progress-bar-info"),
-                    new BadgeCellTask("Create PopOvers", 60, "progress-bar-success")
-            );
+    private void configLayout() {
+        ObservableList<BadgeCellTask> list = FXCollections.observableArrayList(
+                new BadgeCellTask("Designed some buttons", 30, "progress-bar-danger"),
+                new BadgeCellTask("Create tasks", 80, "progress-bar-info"),
+                new BadgeCellTask("Create PopOvers", 60, "progress-bar-success")
+        );
 
-            list.forEach(e -> {
-                e.setOnMouseClicked( event -> pop.hide() );
-                e.setCursor(Cursor.HAND);
-            } );
+        list.forEach(e -> {
+            e.setOnMouseClicked(event -> pop.hide());
+            e.setCursor(Cursor.HAND);
+        });
 
-            Separator top = new Separator();
-            Separator bottom = new Separator();
+        Separator top = new Separator();
+        Separator bottom = new Separator();
 
-            Label message = new Label("You have " + list.size() + " tasks");
-            GridPane title = new GridPane();
-            title.setMinHeight(40D);
+        Label message = new Label("You have " + list.size() + " tasks");
+        GridPane title = new GridPane();
+        title.setMinHeight(40D);
 
-            title.setAlignment(Pos.CENTER);
-            title.add(message, 0, 0);
+        title.setAlignment(Pos.CENTER);
+        title.add(message, 0, 0);
 
-            ListView<BadgeCellTask> listView = new ListView<>();
-            int fixedCell = 50;
-            listView.setStyle("-fx-fixed-cell-size : " + fixedCell + "px;");
+        ListView<BadgeCellTask> listView = new ListView<>();
+        int fixedCell = 50;
+        listView.setStyle("-fx-fixed-cell-size : " + fixedCell + "px;");
 
-            listView.getItems().addAll(list);
-            listView.getStyleClass().add("border-0");
+        listView.getItems().addAll(list);
+        listView.getStyleClass().add("border-0");
 
-            Hyperlink btn = new Hyperlink("View all tasks");
-            btn.setAlignment(Pos.CENTER);
+        Hyperlink btn = new Hyperlink("View all tasks");
+        btn.setAlignment(Pos.CENTER);
 
-            VBox root = new VBox(title, top, listView, bottom, btn);
-            root.setAlignment(Pos.CENTER);
+        VBox root = new VBox(title, top, listView, bottom, btn);
+        root.setAlignment(Pos.CENTER);
 
-            double height = list.size() > 4 ? 300 : (list.size() * fixedCell) + title.getMinHeight() + 35; // 35 is equal min height in all app more padding
+        double height = list.size() > 4 ? 300 : (list.size() * fixedCell) + title.getMinHeight() + 35; // 35 is equal min height in all app more padding
 
-            root.setPrefSize(300, height);
-            title.setPrefWidth(root.getPrefWidth());
-            message.setPrefWidth(root.getPrefWidth());
-            title.setPadding(new Insets(0, 25, 0, 25));
-            btn.setPrefWidth(root.getPrefWidth());
+        root.setPrefSize(300, height);
+        title.setPrefWidth(root.getPrefWidth());
+        message.setPrefWidth(root.getPrefWidth());
+        title.setPadding(new Insets(0, 25, 0, 25));
+        btn.setPrefWidth(root.getPrefWidth());
 
-            listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
+        listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
+        Platform.runLater(() -> {
             pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
             pop.setContentNode(root);
             pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
@@ -145,12 +148,8 @@ public class BadgeTasks extends GNControl {
             pop.setCornerRadius(0);
 
             // tests
-//            pop.setAutoHide(false);
+    //            pop.setAutoHide(false);
             pop.setAnimated(false);
-
-            pop.show(this);
-
-        } else
-            pop.hide();
+        });
     }
 }

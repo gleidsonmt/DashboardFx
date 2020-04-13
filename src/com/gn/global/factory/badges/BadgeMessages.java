@@ -20,6 +20,7 @@ import com.gn.GNAvatarView;
 import com.gn.decorator.component.GNControl;
 import com.jfoenix.controls.JFXBadge;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -66,7 +67,7 @@ public class BadgeMessages extends GNControl {
         badgeM.setPrefSize(35, 20);
         badgeM.setPosition(Pos.TOP_RIGHT);
         badgeM.getStyleClass().addAll("icon", "icon");
-        badgeM.setText("12");
+        badgeM.setText("3");
 
         StackPane control = new StackPane();
         control.setAlignment(Pos.CENTER);
@@ -81,62 +82,71 @@ public class BadgeMessages extends GNControl {
 
         badgeM.setControl(control);
 
-        badgeM.setOnMouseClicked(event -> openMessages());
+        badgeM.setOnMouseClicked(event -> showPopup());
 
+        Platform.runLater(this::configLayout);
+//        configLayout();
         return badgeM;
     }
 
-    private void openMessages() {
+    private void showPopup() {
         if (!pop.isShowing()) {
+            pop.show(this);
+        } else
+            pop.hide();
+    }
 
-            Image img1 = new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm());
-            Image img2 = new Image(getClass().getResource("/com/gn/module/media/woman.png").toExternalForm());
-            Image img3 = new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm());
+    private void configLayout(){
+        Image img1 = new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm());
+        Image img2 = new Image(getClass().getResource("/com/gn/module/media/woman.png").toExternalForm());
+        Image img3 = new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm());
 
-            ObservableList<BadgeCellMessage> list = FXCollections.observableArrayList(
-                    new BadgeCellMessage("Will Junior", "Lorem ipsum dolor color","24 minutes ago", img1),
-                    new BadgeCellMessage("Jad Gailr", "Lorem ipsum dolor color","today", img2),
-                    new BadgeCellMessage("Bart", "Lorem ipsum dolor color","3 seconds ago", img3)
-            );
+        ObservableList<BadgeCellMessage> list = FXCollections.observableArrayList(
+                new BadgeCellMessage("Will Junior", "Lorem ipsum dolor color","24 minutes ago", img1),
+                new BadgeCellMessage("Jad Gailr", "Lorem ipsum dolor color","today", img2),
+                new BadgeCellMessage("Bart", "Lorem ipsum dolor color","3 seconds ago", img3)
+        );
 
-            list.forEach(e -> {
-                e.setOnMouseClicked( event -> pop.hide() );
-                e.setCursor(Cursor.HAND);
-            } );
+        list.forEach(e -> {
+            e.setOnMouseClicked( event -> pop.hide() );
+            e.setCursor(Cursor.HAND);
+        } );
 
-            Separator top = new Separator();
-            Separator bottom = new Separator();
+        Separator top = new Separator();
+        Separator bottom = new Separator();
 
-            Label message = new Label("You have " + list.size() + " messages");
-            GridPane title = new GridPane();
-            title.setMinHeight(40D);
+        Label message = new Label("You have " + list.size() + " messages");
+        GridPane title = new GridPane();
+        title.setMinHeight(40D);
 
-            title.setAlignment(Pos.CENTER);
-            title.add(message, 0, 0);
+        title.setAlignment(Pos.CENTER);
+        title.add(message, 0, 0);
 
-            ListView<BadgeCellMessage> listView = new ListView<>();
-            int fixedCell = 50;
-            listView.setStyle("-fx-fixed-cell-size : " + fixedCell + "px;");
+        ListView<BadgeCellMessage> listView = new ListView<>();
+        int fixedCell = 50;
+        listView.setStyle("-fx-fixed-cell-size : " + fixedCell + "px;");
 
-            listView.getItems().addAll(list);
-            listView.getStyleClass().add("border-0");
+        listView.getItems().addAll(list);
+        listView.getStyleClass().add("border-0");
 
-            Hyperlink btn = new Hyperlink("Read all messages");
-            btn.setAlignment(Pos.CENTER);
+        Hyperlink btn = new Hyperlink("Read all messages");
+        btn.setAlignment(Pos.CENTER);
 
-            VBox root = new VBox(title, top, listView, bottom, btn);
-            root.setAlignment(Pos.CENTER);
+        VBox root = new VBox(title, top, listView, bottom, btn);
+        root.setAlignment(Pos.CENTER);
 
-            double height = list.size() > 4 ? 300 : (list.size() * fixedCell) + title.getMinHeight() + 35; // 35 is equal min height in all app more padding
+        double height = list.size() > 4 ? 300 : (list.size() * fixedCell) + title.getMinHeight() + 35; // 35 is equal min height in all app more padding
 
-            root.setPrefSize(300, height);
-            title.setPrefWidth(root.getPrefWidth());
-            message.setPrefWidth(root.getPrefWidth());
-            title.setPadding(new Insets(0, 25, 0, 25));
-            btn.setPrefWidth(root.getPrefWidth());
+        root.setPrefSize(300, height);
+        title.setPrefWidth(root.getPrefWidth());
+        message.setPrefWidth(root.getPrefWidth());
+        title.setPadding(new Insets(0, 25, 0, 25));
+        btn.setPrefWidth(root.getPrefWidth());
 
-            listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
-            pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+        listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
+        pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+            Platform.runLater(() -> {
+
             pop.setContentNode(root);
             pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
             pop.setArrowIndent(0);
@@ -145,13 +155,7 @@ public class BadgeMessages extends GNControl {
             pop.setHeaderAlwaysVisible(false);
             pop.setCornerRadius(0);
 
-            // test
-//            pop.setAutoHide(false);
             pop.setAnimated(false);
-
-            pop.show(this);
-
-        } else
-            pop.hide();
+        });
     }
 }
