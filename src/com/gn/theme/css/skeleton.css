@@ -553,6 +553,10 @@
     -fx-border-style: solid;
 }
 
+.context-menu .menu-item {
+    -fx-cursor : hand;
+}
+
 .context-menu .menu-item:focused SVGPath {
     -fx-background-color : red;
     -fx-fill : -inner-text;
@@ -2543,6 +2547,24 @@
 
 .jfx-text-field .input-line {
   /* -fx-background-color : -box-fill; */
+}
+
+.tab-pane .tab-header-area .control-buttons-tab .container .tab-down-button{
+    -fx-background-color: transparent;
+    -fx-border-color : -light-gray;
+    -fx-background-radius :0px;
+    -fx-border-radius :0px;
+    -fx-cursor : hand;
+}
+
+.tab-pane .tab-header-area .control-buttons-tab .container .tab-down-button .arrow {
+    -fx-padding : 5px;
+    -fx-shape : "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z";
+}
+
+.tab-pane:top .tab-header-area .control-buttons-tab {
+    -fx-background-color: transparent;
+    -fx-pref-height : 40px;
 }
 
 .list-view,
