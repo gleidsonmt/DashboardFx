@@ -114,34 +114,32 @@ public class Main implements Initializable, ActionView {
 
 //        App.getDecorator().floatActions(barHeader);
 
-        DrawerController drawerController = new DrawerController( drawer );
-        items = drawerController.getItems();
 
-        populateItems();
-        filteredList = new FilteredList<>( items, s -> true );
-
-        search.textProperty().addListener( obs -> {
-
-            String filter = search.getText();
-            if ( filter == null || filter.length() == 0 ) {
-                barInitial();
-                clear.setMouseTransparent(true);
-                searchIcon.setContent("M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z");
-            } else {
-                barFiltered(filter);
-                clear.setMouseTransparent(false);
-                searchIcon.setContent("M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z");
-
-            }
-        });
-
-        search.setOnMouseClicked(event -> {
-            new Shake(clear).play();
-        });
-
-        name.setOnMouseEntered(event ->{
-            new Shake(name).play();
-        });
+//        populateItems();
+//        filteredList = new FilteredList<>( items, s -> true );
+//
+//        search.textProperty().addListener( obs -> {
+//
+//            String filter = search.getText();
+//            if ( filter == null || filter.length() == 0 ) {
+//                barInitial();
+//                clear.setMouseTransparent(true);
+//                searchIcon.setContent("M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z");
+//            } else {
+//                barFiltered(filter);
+//                clear.setMouseTransparent(false);
+//                searchIcon.setContent("M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z");
+//
+//            }
+//        });
+//
+//        search.setOnMouseClicked(event -> {
+//            new Shake(clear).play();
+//        });
+//
+//        name.setOnMouseEntered(event ->{
+//            new Shake(name).play();
+//        });
 
     }
 
@@ -158,7 +156,7 @@ public class Main implements Initializable, ActionView {
         main.getChildren().remove(drawer);
         App.getDecorator().showCustoms();
 
-        if(!info.getChildren().contains(contentBadges)) info.getChildren().add(contentBadges);
+//        if(!info.getChildren().contains(contentBadges)) info.getChildren().add(contentBadges);
 //        App.getDecorator().removeCustom(userDetail);
     }
 
@@ -274,233 +272,6 @@ public class Main implements Initializable, ActionView {
         }
     }
 
-    @FXML
-    private void clearText(){
-        search.clear();
-    }
-
-    private void updateViewDetails(String viewNm){
-        try {
-            title.setText(ViewManager.INSTANCE.openSubView(body, viewNm));
-        } catch (NavigationException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void goAbout(){
-        updateViewDetails("about");
-    }
-
-    @FXML
-    private void buttons() {
-        updateViewDetails("button");
-    }
-
-    @FXML
-    private void goCarousel() {
-        updateViewDetails("carousel");
-    }
-
-    @FXML
-    private void goToggle() {
-        updateViewDetails("toggle-button");
-    }
-
-    @FXML
-    private void goCards(){
-        updateViewDetails("cards");
-    }
-
-    @FXML
-    private void goBanners(){
-        updateViewDetails("banners");
-    }
-
-    @FXML
-    private void goTextField(){
-        updateViewDetails("text-field");
-    }
-
-    @FXML
-    private void goDatePicker(){
-        updateViewDetails("datepicker");
-    }
-
-    @FXML
-    private void goCheckBox(){
-        updateViewDetails("checkbox");
-    }
-
-    @FXML
-    private void goComboBox(){
-        updateViewDetails("combobox");
-    }
-
-    @FXML
-    private void goColorPicker(){
-        updateViewDetails("colorpicker");
-    }
-
-    @FXML
-    private void goChoiceBox(){
-        updateViewDetails("choicebox");
-    }
-
-    @FXML
-    private void goSplitMenuButton(){
-        updateViewDetails("splitmenubutton");
-    }
-
-    @FXML
-    private void goMenuButton(){
-        updateViewDetails("menubutton");
-    }
-
-    @FXML
-    private void goMenuBar(){
-       updateViewDetails("menubar");
-    }
-
-    @FXML
-    private void goSlider(){
-        updateViewDetails("slider");
-    }
-
-    @FXML
-    private void goMediaView(){
-        updateViewDetails("mediaview");
-    }
-
-    @FXML
-    private void goLabel(){
-        updateViewDetails("label");
-    }
-
-    @FXML
-    private void goImageView(){
-        updateViewDetails("imageview");
-    }
-
-    @FXML
-    private void goHyperlink(){
-        updateViewDetails("hyperlink");
-    }
-
-    @FXML
-    private void goSpinner(){
-        updateViewDetails("spinner");
-    }
-
-    @FXML
-    private void goListView(){
-        updateViewDetails("listview");
-    }
-
-    @FXML
-    private void goRadioButton(){
-        updateViewDetails("radiobutton");
-    }
-
-    @FXML
-    private void goProgressBar(){
-        updateViewDetails("progressbar");
-    }
-
-    @FXML
-    private void goPasswordField(){
-        updateViewDetails("passwordfield");
-    }
-
-    @FXML
-    private void goProgressIndicator(){
-        updateViewDetails("progressindicator");
-    }
-
-    @FXML
-    private void goPagination(){
-        updateViewDetails("pagination");
-    }
-
-    @FXML
-    private void goPieChart(){
-        updateViewDetails("piechart");
-    }
-
-    @FXML
-    private void goStackedBarChart(){
-        updateViewDetails("stackedbarchart");
-    }
-
-    @FXML
-    private void goStackedAreaChart(){
-        updateViewDetails("stackedareachart");
-    }
-
-    @FXML
-    private void goScatterChart(){
-        updateViewDetails("scatterchart");
-    }
-
-    @FXML
-    private void goDashboard(){
-        updateViewDetails("dashboard");
-    }
-
-    @FXML
-    private void goAreaChart(){
-        updateViewDetails("areachart");
-    }
-
-    @FXML
-    private void goBarChart(){
-        updateViewDetails("barchart");
-    }
-
-    @FXML
-    private void goBubbleChart(){
-        updateViewDetails("bubblechart");
-    }
-
-    @FXML
-    private void goLineChart(){
-        updateViewDetails("linechart");
-    }
-
-    @FXML
-    private void goTableView(){
-        updateViewDetails("tableview");
-    }
-
-    @FXML
-    private void goScrollBar(){
-        updateViewDetails("scrollbar");
-    }
-
-    @FXML
-    private void goTreeTableView(){
-        updateViewDetails("tree-table-view");
-    }
-
-    @FXML
-    private void goTextArea(){
-        updateViewDetails("text-area");
-    }
-
-    @FXML
-    private void goTreeView(){
-        updateViewDetails("tree-view");
-    }
-
-    @FXML
-    private void goAnimateButtons(){
-        updateViewDetails("animatedbutton");
-    }
-
-    @FXML
-    private void goAlerts(){
-        updateViewDetails("alerts");
-    }
 
     @Override
     public void enter() {
@@ -576,8 +347,4 @@ public class Main implements Initializable, ActionView {
         );
     }
 
-    @FXML
-    private void openProfile(){
-        userDetail.getPopOver().show(name);
-    }
 }

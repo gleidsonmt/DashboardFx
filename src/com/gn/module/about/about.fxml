@@ -52,16 +52,13 @@
                            </children>
                         </HBox>
                         <HBox alignment="BOTTOM_LEFT">
-                           <children>
-                              <Separator prefWidth="215.0" HBox.hgrow="ALWAYS" />
-                           </children>
                            <VBox.margin>
                               <Insets bottom="20.0" />
                            </VBox.margin>
                         </HBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <GridPane>
+                              <GridPane prefHeight="58.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                                     <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
@@ -73,9 +70,9 @@
                                     <Label style="-fx-font-weight: bold;" styleClass="h5" text="Intention" />
                                  </children>
                               </GridPane>
-                              <TextFlow prefHeight="56.0" prefWidth="216.0">
+                              <TextFlow prefHeight="58.0" prefWidth="216.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="DashboardFx is a project for multiples porpuses and helps others, developers, to initiate with this skeleton and theme&#10;" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="DashboardFx is a project for multiples porpuses and helps others, developers, to initiate with this skeleton and theme&#10;Contains a material design based on bootstrap, google guidelines and all most samples on the web.&#10;" />
                                  </children>
                               </TextFlow>
                               <VBox>
@@ -86,7 +83,7 @@
                                           <Separator prefWidth="215.0" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
-                                    <HBox alignment="CENTER_LEFT">
+                                    <HBox alignment="CENTER_LEFT" prefHeight="58.0">
                                        <children>
                                           <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Avatar : " />
                                           <Hyperlink onAction="#goAvatarOnPinterest" text="Jessy Hartel on Pinterest" />
@@ -107,7 +104,7 @@
                         <Insets top="50.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="329.0" prefWidth="937.0" VBox.vgrow="ALWAYS">
+                  <VBox prefHeight="329.0" prefWidth="937.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
                         <Label layoutX="10.0" layoutY="10.0" style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="UI/UX" />
                         <Label layoutX="10.0" layoutY="27.0" style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Web - Design" />

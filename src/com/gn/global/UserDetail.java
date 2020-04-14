@@ -90,7 +90,8 @@ public class UserDetail extends GNControl {
     @Override
     public Node action() {
 
-        Image image = new Image(getClass().getResource("/com/gn/media/img/avatar.png").toExternalForm());
+
+        Image image = new Image("/com/gn/module/media/jessy.png");
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(30);
         imageView.setFitWidth(30);
@@ -127,7 +128,7 @@ public class UserDetail extends GNControl {
         subTitle.setText("Member since 2018");
 
         GNAvatarView gnAvatar = new GNAvatarView();
-        gnAvatar.setImage(new Image(getClass().getResource("/com/gn/media/img/avatar.png").toExternalForm()));
+        gnAvatar.setImage(new Image("/com/gn/module/media/jessy.png"));
 
         background.setPrefHeight(500);
         box.setPrefWidth(387);

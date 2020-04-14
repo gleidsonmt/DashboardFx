@@ -84,7 +84,7 @@ getScene().getStylesheets().addAll(
 
 <h4> Direct FXml </h4>
 
-<p>Don't load the font files direct in the fxml.. can cause instability at the SceneBuilder. The fonts not installed in your system... SceneBuilder does not support load of external fonts. To view fonts in your SceneBuilder, the install fonts in your system.</p>
+<p>Don't load the font files direct in the fxml.. can cause instability at the SceneBuilder. The fonts not installed in your system... SceneBuilder does not support load of external fonts. To viewController fonts in your SceneBuilder, the install fonts in your system.</p>
   
 ```html5
  <stylesheets>

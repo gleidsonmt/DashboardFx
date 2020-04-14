@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.module.designer;
+package com.gn.module.utilities;
 
 import com.jfoenix.controls.JFXPopup;
 import eu.hansolo.colors.ColorHelper;
@@ -128,8 +128,6 @@ public class Colors implements Initializable {
                     toggle.setStyle("-fx-background-radius : 0px; -fx-background-color : " + formatHexString(color.get()) + ";");
                 }
             });
-
-
 
             Tooltip tooltip = new Tooltip(text);
             Tooltip.install(toggle, tooltip);

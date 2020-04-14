@@ -96,32 +96,32 @@ public class GridFx {
 
         stage.widthProperty().addListener(listeners.get(name));
 
-        if(log) System.out.println(ANSI_RESET + "View Manager : " + ANSI_CYAN + "View added in the map [" + name + "]");
+        if(log) System.out.println(ANSI_RESET + "ViewController Manager : " + ANSI_CYAN + "ViewController added in the map [" + name + "]");
     }
 
     private static void switchListener(GridPane grid, double newValue){
 
         if (newValue < Type.XS.getValue()) {
-            if(log) System.out.println(ANSI_RESET + "View Manager : " + ANSI_GREEN + "View changed size to [" + Type.XS + "]");
+            if(log) System.out.println(ANSI_RESET + "ViewController Manager : " + ANSI_GREEN + "ViewController changed size to [" + Type.XS + "]");
             organize(grid, Type.XS);
         } else if (newValue > Type.XS.getValue() && newValue < Type.SM.getValue()) {
-            if(log) System.out.println(ANSI_RESET + "View Manager : " + ANSI_GREEN + "View changed size to [" + Type.SM + "]");
+            if(log) System.out.println(ANSI_RESET + "ViewController Manager : " + ANSI_GREEN + "ViewController changed size to [" + Type.SM + "]");
             organize(grid, Type.SM);
         } else if (newValue > Type.SM.getValue() && newValue < Type.MD.getValue()) {
-            if(log) System.out.println(ANSI_RESET + "View Manager : " + ANSI_GREEN + "View changed size to [" + Type.MD + "]");
+            if(log) System.out.println(ANSI_RESET + "ViewController Manager : " + ANSI_GREEN + "ViewController changed size to [" + Type.MD + "]");
             organize(grid, Type.MD);
         } else if (newValue  > Type.MD.getValue() && newValue  < Type.LG.getValue()) {
-            if(log) System.out.println(ANSI_RESET + "View Manager : " + ANSI_GREEN + "View changed size to [" + Type.LG + "]");
+            if(log) System.out.println(ANSI_RESET + "ViewController Manager : " + ANSI_GREEN + "ViewController changed size to [" + Type.LG + "]");
             organize(grid, Type.LG);
         } else {
-            if(log) System.out.println(ANSI_RESET + "View Manager : " + ANSI_GREEN + "View changed size to [" + Type.XL + "]");
+            if(log) System.out.println(ANSI_RESET + "ViewController Manager : " + ANSI_GREEN + "ViewController changed size to [" + Type.XL + "]");
             organize(grid, Type.XL);
         }
     }
 
     public static void remove(String name){
         stage.widthProperty().removeListener(listeners.get(name));
-        if(log) System.out.println(ANSI_RESET + "View Manager : " + ANSI_RED + "View removed from the map [" + name + "]");
+        if(log) System.out.println(ANSI_RESET + "ViewController Manager : " + ANSI_RED + "ViewController removed from the map [" + name + "]");
     }
 
     /**

@@ -122,7 +122,7 @@ public class BadgeTasks extends GNControl {
         listView.getItems().addAll(list);
         listView.getStyleClass().add("border-0");
 
-        Hyperlink btn = new Hyperlink("View all tasks");
+        Hyperlink btn = new Hyperlink("ViewController all tasks");
         btn.setAlignment(Pos.CENTER);
 
         VBox root = new VBox(title, top, listView, bottom, btn);

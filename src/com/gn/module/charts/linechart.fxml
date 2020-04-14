@@ -33,7 +33,7 @@
                               </Label>
                               <TextFlow prefHeight="54.0" prefWidth="952.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Line Chart plots a line connecting the data points in a series. The data points themselves can be represented by symbols optionally. Line charts are usually used to view data trends over time or category." wrappingWidth="558.283203125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Line Chart plots a line connecting the data points in a series. The data points themselves can be represented by symbols optionally. Line charts are usually used to viewController data trends over time or category." wrappingWidth="558.283203125" />
                                  </children>
                               </TextFlow>
                            </children>

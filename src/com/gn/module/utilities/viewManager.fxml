@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.designer.AnimatedButton">
+   <children>
+      <TabPane style="-fx-tab-min-width: 100;">
+         <tabs>
+            <Tab closable="false" text="Introduction">
+               <content>
+                  <VBox prefHeight="433.0" prefWidth="772.0" spacing="10.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label prefHeight="38.0" prefWidth="546.0" text="Conheça a estrutura">
+                                 <styleClass>
+                                    <String fx:value="h3" />
+                                    <String fx:value="title" />
+                                 </styleClass>
+                              </Label>
+                              <TextFlow prefHeight="33.0" prefWidth="940.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Para usar esse projeto como esqueleto excluia todos os diretorios em view e exclua todos os modules no arquivo modules.yml.&#10;&#10;&#10;" wrappingWidth="558.283203125" />
+                                 </children>
+                              </TextFlow>
+                              <Hyperlink layoutX="10.0" layoutY="102.0" text="1º Yaml" />
+                              <Hyperlink layoutX="10.0" layoutY="123.0" text="3º LoadViews" />
+                              <Hyperlink text="2º ViewManager">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </Hyperlink>
+                              <Label layoutX="10.0" layoutY="184.0" prefHeight="38.0" prefWidth="281.0" style="-fx-font-weight: bold;" text="Yaml">
+                                 <styleClass>
+                                    <String fx:value="h5" />
+                                    <String fx:value="title" />
+                                 </styleClass>
+                              </Label>
+                              <TextFlow prefHeight="30.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="O arquivo modules.yml contem uma lista dos fxml a serem carregados. Cada um conta com descrição, path, name.. a classe Module é usada como modelo para cada instância e adicionada ao ViewManager." wrappingWidth="558.283203125" />
+                                 </children>
+                              </TextFlow>
+                              <Label layoutX="10.0" layoutY="102.0" prefHeight="38.0" prefWidth="281.0" style="-fx-font-weight: bold;" text="LoadViews">
+                                 <styleClass>
+                                    <String fx:value="h5" />
+                                    <String fx:value="title" />
+                                 </styleClass>
+                              </Label>
+                              <TextFlow layoutX="10.0" layoutY="140.0" prefHeight="30.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="A classe LoadViews carrega e adiciona os arquivos a ViewManager." wrappingWidth="306.38671875" />
+                                 </children>
+                              </TextFlow>
+                              <Label layoutX="10.0" layoutY="196.0" prefHeight="38.0" prefWidth="281.0" style="-fx-font-weight: bold;" text="ViewManager">
+                                 <styleClass>
+                                    <String fx:value="h5" />
+                                    <String fx:value="title" />
+                                 </styleClass>
+                              </Label>
+                              <TextFlow layoutX="10.0" layoutY="234.0" prefHeight="30.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="ViewManager controla as views e é usada para navegação na aplilcação." wrappingWidth="558.283203125" />
+                                 </children>
+                              </TextFlow>
+                              <Label layoutX="10.0" layoutY="329.0" prefHeight="38.0" prefWidth="281.0" style="-fx-font-weight: bold;" text="Structure">
+                                 <styleClass>
+                                    <String fx:value="h5" />
+                                    <String fx:value="title" />
+                                 </styleClass>
+                              </Label>
+                              <TextFlow layoutX="10.0" layoutY="367.0" prefHeight="30.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="A aplicação contem quatro principais estrutura.. primeiro a decoração, segundo o drawer, terceiro a barra de titulo e por ultimo o body." wrappingWidth="558.283203125" />
+                                 </children>
+                              </TextFlow>
+                              <Label layoutX="10.0" layoutY="397.0" prefHeight="38.0" prefWidth="281.0" style="-fx-font-weight: bold;" text="Decorator">
+                                 <styleClass>
+                                    <String fx:value="h5" />
+                                    <String fx:value="title" />
+                                 </styleClass>
+                              </Label>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Minha propria decoração feita especialmente para este projeto.&#10;" wrappingWidth="558.283203125" />
+                              <Label layoutX="10.0" layoutY="465.0" prefHeight="38.0" prefWidth="281.0" style="-fx-font-weight: bold;" text="Drawer">
+                                 <styleClass>
+                                    <String fx:value="h5" />
+                                    <String fx:value="title" />
+                                 </styleClass>
+                              </Label>
+                              <Text layoutX="10.0" layoutY="518.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Drawer customizado. Eh utilizado um controle externo para controler interno (DrawerController)&#10;&#10;" wrappingWidth="870.283203125" VBox.vgrow="ALWAYS" />
+                              <Label layoutX="10.0" layoutY="503.0" prefHeight="38.0" prefWidth="281.0" style="-fx-font-weight: bold;" text="Bar">
+                                 <styleClass>
+                                    <String fx:value="h5" />
+                                    <String fx:value="title" />
+                                 </styleClass>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="541.0" prefHeight="38.0" prefWidth="281.0" style="-fx-font-weight: bold;" text="Body">
+                                 <styleClass>
+                                    <String fx:value="h5" />
+                                    <String fx:value="title" />
+                                 </styleClass>
+                              </Label>
+                              <TextFlow prefHeight="30.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="O layout definido como #body é utilizado para alteração e navegação interna a aplicação.&#10;Pode ser usado qualquer region a usada aqui foi ScrollPane.&#10;" wrappingWidth="558.283203125" />
+                                 </children>
+                              </TextFlow>
+                           </children>
+                        </VBox>
+                        <VBox alignment="BOTTOM_LEFT" spacing="20.0">
+                           <children>
+                              <HBox alignment="BOTTOM_LEFT">
+                                 <children>
+                                    <Label style="-fx-font-size: 8pt;" styleClass="min" text="Autor" />
+                                    <Separator prefHeight="0.0" prefWidth="197.0" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" onMouseClicked="#openProject" VBox.vgrow="ALWAYS">
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                                 <children>
+                                    <Label text="Gleidson Neves da Silveira" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="30.0" right="30.0" top="30.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../theme/css/material-color.css" />
+      <URL value="@../../theme/css/skeleton.css" />
+      <URL value="@../../theme/css/light-green.css" />
+      <URL value="@../../theme/css/bootstrap.css" />
+      <URL value="@../../theme/css/shape.css" />
+      <URL value="@../../theme/css/typographic.css" />
+      <URL value="@../../theme/css/helpers.css" />
+      <URL value="@../../theme/css/master.css" />
+   </stylesheets>
+</StackPane>

@@ -32,7 +32,6 @@ import org.yaml.snakeyaml.constructor.Constructor;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Timer;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -40,17 +39,17 @@ import java.util.Timer;
  */
 public class LoadViews extends Service {
 
-    private List<Module> modules;
+    private List<View> views;
 
     public LoadViews() {
         Yaml yaml = new Yaml(new Constructor(List.class));
-        modules = yaml.load(App.class.getResourceAsStream("/com/gn/global/modules.yml"));
+        views = yaml.load(App.class.getResourceAsStream("/com/gn/global/modules.yml"));
     }
 
-    private View createView(Module module) throws LoadViewException {
+    private ViewController createView(View view) throws LoadViewException {
         FXMLLoader loader = new FXMLLoader();
-        String moduleName = module.getParentName() == null ? module.getName() : module.getParentName();
-        URL location = getClass().getResource("/com/gn/module/" + moduleName + "/" + module.getFxmlFile());
+        String moduleName = view.getParentName() == null ? view.getName() : view.getParentName();
+        URL location = getClass().getResource("/com/gn/module/" + moduleName + "/" + view.getFxmlFile());
 
         if(location != null){
             loader.setLocation(location);
@@ -59,18 +58,18 @@ public class LoadViews extends Service {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return new View(module.getTitle(), module.getName(), module, loader);
+            return new ViewController(view.getTitle(), view.getName(), view, loader);
         } else {
-            if(module.getName() == null){
-                if (module.getTitle() != null)
-                throw new LoadViewException("LOAD_VIEWS", String.format("The view with the title %s does not have a name, it's used to navigate.", module.getTitle()));
+            if(view.getName() == null){
+                if (view.getTitle() != null)
+                throw new LoadViewException("LOAD_VIEWS", String.format("The view with the title %s does not have a name, it's used to navigate.", view.getTitle()));
                 else
                 throw new LoadViewException("LOAD_VIEWS", "The view does not have a name, it's used to navigate.");
             } else {
-                if (module.getParentName() == null)
-                    throw new LoadViewException("LOAD_VIEW", String.format("No encountered fxml file for view %s.", module.getName()));
+                if (view.getParentName() == null)
+                    throw new LoadViewException("LOAD_VIEW", String.format("No encountered fxml file for view %s.", view.getName()));
                 else
-                    throw new LoadViewException("LOAD_VIEW", String.format("Package '%s' does not contains the fxml file %s", module.getParentName(), module.getFxmlFile()));
+                    throw new LoadViewException("LOAD_VIEW", String.format("Package '%s' does not contains the fxml file %s", view.getParentName(), view.getFxmlFile()));
             }
         }
     }
@@ -112,15 +111,15 @@ public class LoadViews extends Service {
             @Override
             protected Object call()  {
                 Label lbl = (Label) App.getDecorator().getScene().lookup("#labelLoading");
-                for (Module module : modules) {
-                    System.out.println(module);
+                for (View view : views) {
+                    System.out.println(view);
                     try {
-                        ViewManager.INSTANCE.put(createView(module));
+                        ViewManager.INSTANCE.put(createView(view));
                     } catch (LoadViewException e) {
                         e.printStackTrace();
                     }
                     Platform.runLater(() -> {
-                        lbl.setText("Loading... [ " + (module.getParentName()== null ? module.getName() : module.getParentName()) + " ]/[ " + module.getName() + " ]");
+                        lbl.setText("Loading... [ " + (view.getParentName()== null ? view.getName() : view.getParentName()) + " ]/[ " + view.getName() + " ]");
                     });
                 }
 
@@ -130,17 +129,17 @@ public class LoadViews extends Service {
         };
     }
 
-////        float size = modules.size(); // the difference represents the views not loaded
+////        float size = views.size(); // the difference represents the views not loaded
 ////        float increment = 100f / size;
 ////        float progress = 0f;
 //
-//        for (Module module : modules) {
+//        for (View module : views) {
 //            try {
 //                System.err.println(module.getTitle());
 ////                ActionViewComposite actionViewComposite = loadViewComposite(module);
 ////                ViewManager.INSTANCE.put(createView(module));
 ////                if (module.getSubModules() != null) {
-////                    for (Module subModule : module.getSubModules()) {
+////                    for (View subModule : module.getSubModules()) {
 ////                        viewManager.put(subModule.getName(), loadViewComposite(subModule));
 ////                    }
 ////                }

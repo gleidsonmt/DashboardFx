@@ -36,7 +36,7 @@
                               </Label>
                               <TextFlow prefHeight="54.0" prefWidth="952.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="A Node that provides a view of Media being played by a MediaPlayer." wrappingWidth="558.283203125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="A Node that provides a viewController of Media being played by a MediaPlayer." wrappingWidth="558.283203125" />
                                  </children>
                               </TextFlow>
                            </children>

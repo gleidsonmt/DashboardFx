@@ -19,14 +19,9 @@ package com.gn.global.plugin;
 import com.gn.decorator.GNDecorator;
 import com.gn.global.exceptions.NavigationException;
 import com.gn.global.factory.ActionView;
-import com.gn.global.factory.View;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.scene.Node;
+import com.gn.global.factory.ViewController;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.StackPane;
 
-import javax.swing.*;
 import java.util.HashMap;
 
 /**
@@ -40,22 +35,22 @@ public enum  ViewManager {
     private String current;
     private String previous;
 
-    private final HashMap<String, View> SCREENS = new HashMap<>();
+    private final HashMap<String, ViewController> SCREENS = new HashMap<>();
 
-    public void put(View view) {
+    public void put(ViewController viewController) {
         // testing
         previous = current;
-        current = view.getModule().getName();
-        SCREENS.put(view.getModule().getName(), view);
+        current = viewController.getView().getName();
+        SCREENS.put(viewController.getView().getName(), viewController);
     }
 
-    private View getWithUpdate(String view){
+    private ViewController getWithUpdate(String view){
         previous = current;
         current = view;
         return SCREENS.get(view);
     }
 
-    public View get(String view){
+    public ViewController get(String view){
         return SCREENS.get(view);
     }
 
@@ -72,22 +67,22 @@ public enum  ViewManager {
     }
 
     public String openSubView(ScrollPane body, String name) throws NavigationException {
-        View view = getWithUpdate(name);
-        if(view != null) {
+        ViewController viewController = getWithUpdate(name);
+        if(viewController != null) {
 
             if (get(previous).getController() instanceof ActionView)
                 ((ActionView) get(previous).getController()).exit();
 
-            System.out.println(view.getRoot());
-            body.setContent(view.getRoot());
+            System.out.println(viewController.getName());
+            body.setContent(viewController.getRoot());
 
-            if (view.getController() instanceof ActionView) {
-                ((ActionView) view.getController()).enter();
+            if (viewController.getController() instanceof ActionView) {
+                ((ActionView) viewController.getController()).enter();
             }
 //
-            return view.getTitle();
+            return viewController.getTitle();
         } else {
-            throw new NavigationException("NAVIGATION", String.format("The view '%s' was not encountered.", name));
+            throw new NavigationException("NAVIGATION", String.format("The viewController '%s' was not encountered.", name));
         }
     }
 

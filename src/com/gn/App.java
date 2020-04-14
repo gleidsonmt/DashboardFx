@@ -81,14 +81,7 @@ public class App extends Application {
 
     @Override
     public synchronized void init(){
-//        section = SectionManager.get();
-//
-//        if(section.isLogged()){
-//            user = UserManager.get(section.getUserLogged());
-            userDetail = new UserDetail("Gleidson", "Gleidson", "subtitle");
-//        } else {
-//            userDetail = new UserDetail();
-//        }
+        userDetail = new UserDetail("Gleidson", "Gleidson", "subtitle");
 
         Parent root = null;
         try {
@@ -115,32 +108,6 @@ public class App extends Application {
         decorator.setIcon(null);
         decorator.setMaximized(true);
         decorator.fullBody();
-
-
-//            userDetail.setProfileAction(event -> {
-//                Main.ctrl.title.setText("Profile");
-//                Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
-//                userDetail.getPopOver().hide();
-//            });
-//
-//            userDetail.setSignAction(event -> {
-//                App.decorator.setContent(ViewManager.getInstance().get("login"));
-//                section.setLogged(false);
-//                SectionManager.save(section);
-//                userDetail.getPopOver().hide();
-//                if(Main.popConfig.isShowing()) Main.popConfig.hide();
-//                if(Main.popup.isShowing()) Main.popup.hide();
-//                App.decorator.removeCustom(userDetail);
-//            });
-//            decorator.setContent(ViewManager.getInstance().get("main"));
-//        }
-
-//        decorator.getStage().setOnCloseRequest(event -> {
-//            App.getUserDetail().getPopOver().hide();
-//            if(Main.popConfig.isShowing()) Main.popConfig.hide();
-//            if(Main.popup.isShowing()) Main.popup.hide();
-//            Platform.exit();
-//        });
     }
 
     @Override

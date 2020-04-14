@@ -31,7 +31,7 @@
                               </Label>
                               <TextFlow prefHeight="54.0" prefWidth="952.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill : -text-color" styleClass="text-14" text="The TreeView control provides a view on to a tree root (of type TreeItem). By using a TreeView, it is possible to drill down into the children of a TreeItem, recursively until a TreeItem has no children (that is, it is a leaf node in the tree)." wrappingWidth="558.283203125" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill : -text-color" styleClass="text-14" text="The TreeView control provides a viewController on to a tree root (of type TreeItem). By using a TreeView, it is possible to drill down into the children of a TreeItem, recursively until a TreeItem has no children (that is, it is a leaf node in the tree)." wrappingWidth="558.283203125" />
                                  </children>
                               </TextFlow>
                            </children>

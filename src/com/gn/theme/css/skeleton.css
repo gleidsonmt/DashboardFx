@@ -566,6 +566,10 @@ Text,
     -fx-cursor : default;
 }
 
+.context-menu .menu-item:hover .text {
+    -fx-fill : -inner-text;
+}
+
 .context-menu .menu-item {
     -fx-cursor : hand;
 }
@@ -1535,6 +1539,10 @@ Text,
  -fx-border-color : transparent transparent -base transparent;
  -fx-background-insets : 0px 0px 2px 0px;
  -fx-border-width : 0px 0px 2px 0px;
+}
+
+.hyperlink .text {
+    -fx-fill : -base;
 }
 
 .hyperlink {

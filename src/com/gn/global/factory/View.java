@@ -16,47 +16,59 @@
  */
 package com.gn.global.factory;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-
-import java.util.List;
 import java.util.StringJoiner;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  29/03/2020
  */
+@SuppressWarnings("unused")
 public class View {
 
-    private final String      title;
-    private final String      name;
-    private final Module      module;
-    private final FXMLLoader  loader;
+    private String          title;
+    private String          name;
+    private String          fxmlFile;
+    private String          parentName;
 
-    View(String title, String name, Module module, FXMLLoader loader){
-        this.title  = title;
-        this.name   = name;
-        this.module = module;
-        this.loader = loader;
+    public String getName() {
+        return name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getFxmlFile() {
+        return fxmlFile;
+    }
+
+    public void setFxmlFile(String fxmlFile) {
+        this.fxmlFile = fxmlFile;
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
+
 
     public String getTitle() {
         return title;
     }
 
-    public String getName(){
-        return name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Module getModule() {
-        return module;
-    }
-
-    public Object getController() {
-        return loader.getController();
-    }
-
-    public Parent getRoot(){
-        return loader.getRoot();
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", View.class.getSimpleName() + "[", "]")
+                .add("title='" + title + "'")
+                .add("name='" + name + "'")
+                .add("fxmlFile='" + fxmlFile + "'")
+                .toString();
     }
 }

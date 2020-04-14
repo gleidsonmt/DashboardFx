@@ -18,6 +18,7 @@ package com.gn.module.main;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -37,6 +38,9 @@ public class DrawerController {
     private ToggleGroup group;
 
     private ObservableList<ToggleButton> items         = FXCollections.observableArrayList();
+    private ObservableList<ToggleButton> designItems   = FXCollections.observableArrayList();
+    private ObservableList<ToggleButton> controlsItems = FXCollections.observableArrayList();
+    private ObservableList<ToggleButton> chartsItems   = FXCollections.observableArrayList();
 
     public DrawerController(VBox drawer) {
 
@@ -45,6 +49,7 @@ public class DrawerController {
         this.drawerBox = (VBox) drawer.lookup("#drawer-box");
         this.scroll = (ScrollPane) drawerBox.lookup("#drawer-scroll");
         this.drawerContent = (VBox) scroll.getContent();
+
 
 
         // This function can be included in one custom control for drawer..
@@ -84,15 +89,40 @@ public class DrawerController {
                                 });
                     }
                 });
+
+        configActions();
     }
 
     public ObservableList<ToggleButton> getItems() {
         return items;
     }
 
-    public void open() {
-
+    public void configActions() {
+        items = this.getItems();
     }
+
+    private void populateItems() {
+
+//        for (Node node : this.drawerContent.getChildren()) {
+//            if (node instanceof ToggleButton) {
+//                items.add( (ToggleButton) node);
+//            }
+//        }
+//
+//        for (Node node : ((VBox) controls.getContent()).getChildren()) {
+//            controlsItems.add((ToggleButton) node);
+//            items.add((ToggleButton) node);
+//        }
+//
+//        for (Node node : ((VBox) design.getContent()).getChildren()) {
+//            designItems.add((ToggleButton) node);
+//            items.add((ToggleButton) node);
+//        }
+//
+//        for (Node node : ((VBox) charts.getContent()).getChildren()) {
+//            chartsItems.add((ToggleButton) node);
+//            items.add((ToggleButton) node);
+        }
 
     public void close() {
 

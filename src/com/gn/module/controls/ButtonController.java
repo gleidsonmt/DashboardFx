@@ -33,15 +33,10 @@ import java.util.ResourceBundle;
 public class ButtonController implements Initializable {
 
     @FXML private Button btn;
-    @FXML private MenuItem menuItem;
 
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        menuItem.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println(btn.getStyleClass());
-            }
-        });
+
     }
 }

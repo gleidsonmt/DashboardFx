@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="433.0" prefWidth="772.0" spacing="10.0">
+         <children>
+            <Label prefHeight="38.0" prefWidth="546.0" text="My Projects on GitHub">
+               <styleClass>
+                  <String fx:value="h3" />
+                  <String fx:value="title" />
+               </styleClass>
+            </Label>
+            <VBox />
+            <VBox alignment="BOTTOM_LEFT" spacing="20.0">
+               <children>
+                  <GridPane prefHeight="426.0" prefWidth="940.0" styleClass="border">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: white;">
+                           <children>
+                              <Label styleClass="h3" text="GNDecorator" />
+                              <Label layoutX="10.0" layoutY="10.0" text="Este componente é um button animado com camadas." />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: -base;" GridPane.columnIndex="1">
+                           <children>
+                              <Label style="-fx-text-fill: -inner-text;" styleClass="h3" text="GNAvatarView" />
+                              <Label layoutX="10.0" layoutY="10.0" style="-fx-text-fill: -inner-text;" text="Este componente é um button animado com camadas." />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="480.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: -base;" GridPane.rowIndex="1">
+                           <children>
+                              <Label style="-fx-text-fill: -inner-text;" styleClass="h3" text="GNButton" />
+                              <Label layoutX="10.0" layoutY="10.0" style="-fx-text-fill: -inner-text;" text="Este componente é um button animado com camadas." />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Label styleClass="h3" text="GNcarousel" />
+                              <Label layoutX="10.0" layoutY="10.0" text="Este componente é um button animado com camadas." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../../theme/css/material-color.css" />
+      <URL value="@../../theme/css/skeleton.css" />
+      <URL value="@../../theme/css/light-green.css" />
+      <URL value="@../../theme/css/bootstrap.css" />
+      <URL value="@../../theme/css/shape.css" />
+      <URL value="@../../theme/css/typographic.css" />
+      <URL value="@../../theme/css/helpers.css" />
+      <URL value="@../../theme/css/master.css" />
+   </stylesheets>
+</StackPane>
