@@ -30,15 +30,16 @@
 .drawer .scroll .drawer-content .drawer-item,
 .drawer .scroll .drawer-content .drawer-item .text
 {
-  -fx-padding : 2 2 2 22;
+  -fx-padding : 2 22 2 2;
   -fx-background-radius : 0px;
   -fx-background-color : transparent;
   -fx-min-height : 50px;
-  -fx-alignment : baseline_left;
   -fx-fill : white;
-  -fx-border-width : 0 0 0 4;
+  -fx-border-width : 0 4 0 0;
+  -fx-alignment : baseline_right;
   -fx-border-color : transparent;
   -fx-graphic-text-gap : 20;
+  -fx-content-display : right;
 }
 
 
@@ -48,7 +49,7 @@
 .drawer .scroll .drawer-content .drawer-item:selected .group .icon
 {
   -fx-effect : none;
-    -fx-background-color: linear-gradient(to right, #ffffff30, #ffffff05);
+    -fx-background-color: linear-gradient(to left, #ffffff30, #ffffff05);
   -fx-border-color : white;
   -fx-fill : white;
     /* -fx-padding : 2 2 2 10; */

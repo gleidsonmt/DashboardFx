@@ -91,22 +91,5 @@ public class Config implements Initializable {
 
         App.getUserDetail().getStylesheets().setAll(stylesheets);
 
-//        for (Node node : ViewManager.getInstance().getAll()) {
-//            ((StackPane) node).getStylesheets().clear();
-//            ((StackPane) node).getStylesheets().setAll(stylesheets);
-//        }
-
-        Main.popConfig.hide();
-
-        Platform.runLater(() -> {
-//          force pop's transition
-
-            Main.popup.getRoot().getStylesheets().remove(Main.popup.getRoot().getStylesheets().size() - 1);
-            Main.popConfig.getRoot().getStylesheets().remove(Main.popConfig.getRoot().getStylesheets().size() - 1);
-
-            Main.popup.getRoot().getStylesheets().add(path + "pop" + theme);
-            Main.popConfig.getRoot().getStylesheets().add(path + "pop" + theme);
-        });
-
     }
 }

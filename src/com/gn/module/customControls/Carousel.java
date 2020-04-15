@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.module.designer;
+package com.gn.module.customControls;
 
 import com.gn.App;
 import com.gn.GNCarousel;
@@ -28,7 +28,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 

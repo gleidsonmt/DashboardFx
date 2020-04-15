@@ -16,15 +16,18 @@
  */
 package com.gn.module.main;
 
+import animatefx.animation.Shake;
 import com.gn.App;
 import com.gn.global.exceptions.NavigationException;
 import com.gn.global.plugin.ViewManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.SVGPath;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,10 +40,21 @@ public class DrawerNavigate implements Initializable  {
 
     @FXML private VBox drawer;
     @FXML private TextField search;
+    @FXML private Button clear;
+    @FXML private Label name;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         DrawerController drawerController = new DrawerController( drawer );
+
+        search.setOnMouseClicked(event -> {
+            new Shake(clear).play();
+        });
+
+        name.setOnMouseEntered(event ->{
+            new Shake(name).play();
+        });
+
     }
 
     @FXML
@@ -52,7 +66,6 @@ public class DrawerNavigate implements Initializable  {
     private void goProjects(){
         updateViewDetails("projects");
     }
-
 
     @FXML
     private void goAbout(){
@@ -72,16 +85,6 @@ public class DrawerNavigate implements Initializable  {
     @FXML
     private void goToggle() {
         updateViewDetails("toggle-button");
-    }
-
-    @FXML
-    private void goCards(){
-        updateViewDetails("cards");
-    }
-
-    @FXML
-    private void goBanners(){
-        updateViewDetails("banners");
     }
 
     @FXML
@@ -267,6 +270,11 @@ public class DrawerNavigate implements Initializable  {
     @FXML
     private void goAlerts(){
         updateViewDetails("alerts");
+    }
+
+    @FXML
+    private void goPopupCreator(){
+        updateViewDetails("popup-creator");
     }
 
     @FXML

@@ -23,39 +23,52 @@
             <VBox />
             <VBox alignment="BOTTOM_LEFT" spacing="20.0">
                <children>
-                  <GridPane prefHeight="426.0" prefWidth="940.0" styleClass="border">
+                  <GridPane prefHeight="200.0" prefWidth="940.0" styleClass="border">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: white;">
                            <children>
                               <Label styleClass="h3" text="GNDecorator" />
-                              <Label layoutX="10.0" layoutY="10.0" text="Este componente é um button animado com camadas." />
+                              <Label layoutX="10.0" layoutY="10.0" text="Este componente é um button animado com camadas." wrapText="true" />
                            </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
                         </VBox>
-                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: -base;" GridPane.columnIndex="1">
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: -base;" GridPane.columnIndex="3">
                            <children>
                               <Label style="-fx-text-fill: -inner-text;" styleClass="h3" text="GNAvatarView" />
-                              <Label layoutX="10.0" layoutY="10.0" style="-fx-text-fill: -inner-text;" text="Este componente é um button animado com camadas." />
+                              <Label layoutX="10.0" layoutY="10.0" style="-fx-text-fill: -inner-text;" text="Este componente é um button animado com camadas." wrapText="true" />
                            </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
                         </VBox>
-                        <VBox alignment="CENTER" layoutX="480.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: -base;" GridPane.rowIndex="1">
+                        <VBox alignment="CENTER" layoutX="480.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: -base;" GridPane.columnIndex="1">
                            <children>
                               <Label style="-fx-text-fill: -inner-text;" styleClass="h3" text="GNButton" />
-                              <Label layoutX="10.0" layoutY="10.0" style="-fx-text-fill: -inner-text;" text="Este componente é um button animado com camadas." />
+                              <Label layoutX="10.0" layoutY="10.0" style="-fx-text-fill: -inner-text;" text="Este componente é um button animado com camadas." wrapText="true" />
                            </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
                         </VBox>
-                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: white;" GridPane.columnIndex="2">
                            <children>
                               <Label styleClass="h3" text="GNcarousel" />
-                              <Label layoutX="10.0" layoutY="10.0" text="Este componente é um button animado com camadas." />
+                              <Label layoutX="10.0" layoutY="10.0" text="Este componente é um button animado com camadas." wrapText="true" />
                            </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
                         </VBox>
                      </children>
                   </GridPane>

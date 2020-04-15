@@ -80,6 +80,10 @@
     -fx-border-color : -base;
 }
 
+.btn-flat .text {
+    -fx-fill : -base;
+}
+
 .btn-flat:focused
 {
   -fx-background-color : derive(-base, 90%);

@@ -277,14 +277,14 @@
 - !!com.gn.global.factory.View
   title: Animated Button
   name: animatedbutton
-  parentName: designer
+  parentName: customControls
   fxmlFile: animated-button.fxml
 
   #Alerts
 - !!com.gn.global.factory.View
   title: Alerts
   name: alerts
-  parentName: designer
+  parentName: customControls
   fxmlFile: alerts.fxml
 
 # Utilities
@@ -294,25 +294,32 @@
   parentName: utilities
   fxmlFile: colors.fxml
 
+# Utilities
+- !!com.gn.global.factory.View
+  title: Popup Creator
+  name: popup-creator
+  parentName: utilities
+  fxmlFile: popupCreator.fxml
+
   #Banners
 - !!com.gn.global.factory.View
   title: Banners
   name: banners
-  parentName: designer
+  parentName: customControls
   fxmlFile: banners.fxml
 
   #Cards
 - !!com.gn.global.factory.View
     title: Cards
     name: cards
-    parentName: designer
+    parentName: customControls
     fxmlFile: cards.fxml
 
 #Carousel
 - !!com.gn.global.factory.View
   title: Carousel
   name: carousel
-  parentName: designer
+  parentName: customControls
   fxmlFile: carousel.fxml
 
   #About

@@ -18,6 +18,7 @@ package com.gn.module.utilities;
 
 import com.gn.global.util.PopupCreator;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 /**
@@ -34,5 +35,76 @@ public class PopupCreatorController {
     @FXML
     private void openDrawerRight(){
         PopupCreator.INSTANCE.createDrawerRight(new VBox());
+    }
+
+    @FXML
+    private void createAlertInfo(){
+        Button btnInfo = new Button("OK");
+        btnInfo.getStyleClass().add("btn-info");
+        btnInfo.setPrefWidth(100);
+
+        PopupCreator.INSTANCE.createAlert(
+                PopupCreator.AlertType.INFO,
+                "Alert Info",
+                "You create a alert info.",
+                btnInfo
+        );
+    }
+
+    @FXML
+    private void createAlertError(){
+        Button btnError = new Button("OK");
+        btnError.getStyleClass().add("btn-danger");
+        btnError.setPrefWidth(100);
+
+        PopupCreator.INSTANCE.createAlert(
+                PopupCreator.AlertType.ERROR,
+                "Alert Error",
+                "You create a alert error.",
+                btnError
+        );
+    }
+
+    @FXML
+    private void createAlertWarning(){
+        Button btnWarning = new Button("OK");
+        btnWarning.getStyleClass().add("btn-warning");
+        btnWarning.setPrefWidth(100);
+
+        PopupCreator.INSTANCE.createAlert(
+                PopupCreator.AlertType.WARNING,
+                "Alert Error",
+                "You create a alert error.",
+                btnWarning
+        );
+    }
+
+    @FXML
+    private void createAlertDone(){
+        Button btnDone = new Button("OK");
+        btnDone.getStyleClass().add("btn-success");
+        btnDone.setPrefWidth(100);
+
+        PopupCreator.INSTANCE.createAlert(
+                PopupCreator.AlertType.DONE,
+                "Alert Error",
+                "You create a alert error.",
+                btnDone
+        );
+    }
+
+    @FXML
+    private void createDialog(){
+        Button btnOk = new Button("OK");
+        Button btnCancel = new Button("Cancel");
+        btnOk.getStyleClass().add("btn-flat");
+        btnCancel.getStyleClass().add("btn-flat");
+
+
+        PopupCreator.INSTANCE.createDialog(
+                "This is a simple dialog",
+                "Lorem ipsum dolor color.",
+                btnOk, btnCancel
+        );
     }
 }

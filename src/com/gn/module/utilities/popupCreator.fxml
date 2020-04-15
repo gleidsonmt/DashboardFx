@@ -68,10 +68,10 @@
                               </TextFlow>
                               <HBox layoutX="10.0" layoutY="215.0" spacing="10.0">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Alert Info" />
-                                    <Button mnemonicParsing="false" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Alert Error" />
-                                    <Button layoutX="146.0" layoutY="10.0" mnemonicParsing="false" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Alert Warning" />
-                                    <Button layoutX="282.0" layoutY="10.0" mnemonicParsing="false" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Alert Done" />
+                                    <Button mnemonicParsing="false" onAction="#createAlertInfo" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Alert Info" />
+                                    <Button mnemonicParsing="false" onAction="#createAlertError" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Alert Error" />
+                                    <Button layoutX="146.0" layoutY="10.0" mnemonicParsing="false" onAction="#createAlertWarning" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Alert Warning" />
+                                    <Button layoutX="282.0" layoutY="10.0" mnemonicParsing="false" onAction="#createAlertDone" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Alert Done" />
                                  </children>
                               </HBox>
                               <Label layoutX="10.0" layoutY="275.0" prefHeight="38.0" prefWidth="99.0" style="-fx-font-weight: bold;" text="Dialogs">
@@ -83,9 +83,44 @@
                               <TextFlow layoutX="10.0" layoutY="313.0" prefHeight="54.0" prefWidth="952.0">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Crie um alert usando isto&#10;PopupCreator.INSTANCE.createAlert(AlertType.INFO, &quot;Title&quot;, &quot;Message&quot;, eventHandler);&#10;&#10;&#10;" wrappingWidth="558.283203125" />
+                                    <Button mnemonicParsing="false" onAction="#createDialog" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Dialog" />
                                  </children>
                               </TextFlow>
                            </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                           <children>
+                              <Label styleClass="h3" text="This is a simple dialog" VBox.vgrow="ALWAYS" />
+                              <TextFlow VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <Text strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="0.0" styleClass="h4" text="Lorem ipsum dolor color." />
+                                 </children>
+                              </TextFlow>
+                              <HBox alignment="CENTER_RIGHT" spacing="5.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="OK">
+                                       <styleClass>
+                                          <String fx:value="btn-flat" />
+                                          <String fx:value="text-base" />
+                                       </styleClass></Button>
+                                    <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Cancel">
+                                       <styleClass>
+                                          <String fx:value="btn-flat" />
+                                          <String fx:value="text-base" />
+                                       </styleClass></Button>
+                                 </children>
+                              </HBox>
+
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </VBox>
                         <VBox spacing="20.0">
                            <children>

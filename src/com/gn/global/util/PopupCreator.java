@@ -19,13 +19,22 @@ package com.gn.global.util;
 import animatefx.animation.*;
 import com.gn.App;
 import com.gn.decorator.component.GNControl;
+import com.gn.global.plugin.GridFx;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
 
 /**
@@ -52,7 +61,7 @@ public enum PopupCreator {
     private final double barSize    = 40;
 
     public void createDrawerRight(VBox content){
-
+        customDialog.setStyle("-fx-background-color : -foreground-color; -fx-background-radius :  0;");
         foreground.getChildren().clear();
         foreground.getChildren().add(foreContent);
         foreContent.getChildren().clear();
@@ -96,17 +105,20 @@ public enum PopupCreator {
     }
 
     public void createDrawerLeft(VBox content){
-        foreground.getChildren().clear();
-        foreground.getChildren().add(foreContent);
-        foreContent.getChildren().clear();
-        foreContent.getChildren().add(customDialog);
+        reset();
+//        foreground.getChildren().clear();
+//        foreground.getChildren().add(foreContent);
+//        foreContent.getChildren().clear();
+//        foreContent.getChildren().add(customDialog);
 
         customDialog.setPrefWidth(minDrawerSize);
 
-        if(!customDialog.getChildren().contains(content)) {
-            customDialog.getChildren().clear();
-            customDialog.getChildren().add(content);
-        }
+        customDialog.getChildren().setAll(content);
+
+//        if(!customDialog.getChildren().contains(content)) {
+//            customDialog.getChildren().clear();
+//            customDialog.getChildren().add(content);
+//        }
 
         organizeInLeft();
 
@@ -119,8 +131,8 @@ public enum PopupCreator {
                 new KeyFrame(Duration.ZERO, new KeyValue(customDialog.translateXProperty(), 0)),
                 new KeyFrame(Duration.millis(velocity), new KeyValue(customDialog.translateXProperty(), minDrawerSize * -1) )
         );
-        foreground.toFront();
 
+        foreground.toFront();
         open.play();
 
         foreContent.setOnMouseClicked(event -> {
@@ -130,6 +142,7 @@ public enum PopupCreator {
                 }
             }
         });
+
         close.setOnFinished(event -> {
             foreground.toBack();
             App.getDecorator().showCustoms();
@@ -139,26 +152,176 @@ public enum PopupCreator {
         App.getDecorator().block();
     }
 
-    public void closePopup(){
-        App.getDecorator().unblock();
-        foreground.toBack();
+    public enum AlertType {
+        DONE, INFO, WARNING, ERROR
     }
 
-    public void closePopup(AnimationFX animationFX){
-        App.getDecorator().unblock();
-        animationFX.play();
-        animationFX.getTimeline().setOnFinished(event -> {
-            foreground.toBack();
+    public void createDialog(String title, String message, Button... actions){
+        reset();
+        VBox body = new VBox();
+        Label _title = new Label(title);
+        _title.setWrapText(true);
+        Text _message = new Text(message);
+        TextFlow textFlow = new TextFlow(_message);
+        HBox _actions = new HBox(actions);
+
+        _title.getStyleClass().add("h3");
+        _message.getStyleClass().add("h4");
+
+        body.getChildren().setAll(_title, textFlow, _actions);
+
+        body.setSpacing(5D);
+        body.setPadding(new Insets(20D, 5, 20,20));
+
+        VBox.setVgrow(textFlow, Priority.ALWAYS);
+        VBox.setMargin(textFlow, new Insets(10, 0, 0, 10));
+        _actions.setSpacing(5D);
+        _actions.setAlignment(Pos.CENTER_RIGHT);
+
+        BounceOut bounceOut = new BounceOut(customDialog);
+        bounceOut.getTimeline().setOnFinished(event1 -> foreground.toBack());
+
+        _actions.getChildren().stream().map(e -> (Button) e).forEach(c -> {
+            c.setPrefWidth(100);
+            c.addEventFilter(ActionEvent.ACTION, event -> {
+                bounceOut.play();
+            });
+        });
+
+        customDialog.getChildren().setAll(body);
+        customDialog.setPrefSize(400, 200);
+
+        organizeInCenter();
+
+        BounceIn bounceIn = new BounceIn(customDialog);
+        foreground.toFront();
+        bounceIn.play();
+
+    }
+
+    public void createAlert(AlertType alertType, String title, String message, Button... actions){
+
+        VBox content = new VBox();
+        content.setPrefSize(500,300);
+//        content.setMaxWidth(200);
+        content.setAlignment(Pos.CENTER);
+
+        content.getChildren().setAll(
+                createAlertHeader(alertType),
+                createContent(title, message),
+                createActions(actions)
+        );
+
+        customDialog.setStyle("-fx-background-color : -foreground-color; -fx-background-radius : 10 10 10 10;");
+
+        customDialog.setPrefSize(content.getPrefWidth(), content.getPrefHeight());
+//        customDialog.setMinSize(content.getPrefWidth(), content.getPrefHeight());
+//        customDialog.setMaxSize(content.getPrefWidth(), content.getPrefHeight());
+
+        customDialog.getChildren().setAll(content);
+
+        organizeInCenter();
+
+        BounceIn bounceIn = new BounceIn(customDialog);
+        foreground.toFront();
+        bounceIn.play();
+
+        foreContent.setOnMouseClicked(event -> {
+            if (event.getTarget() instanceof AnchorPane){
+                if(((AnchorPane) event.getTarget()).getId().equals("fore-content")) {
+                    BounceOut animation = new BounceOut(customDialog);
+                    animation.getTimeline().setOnFinished(event1 -> {
+                        foreground.toBack();
+                    });
+                    animation.play();
+                }
+            }
         });
     }
 
-    public void createPopup(StackPane content){
-        customDialog.getChildren().clear();
-        customDialog.getChildren().add(content);
-        organizeInCenter(content);
-        foreground.getChildren().clear();
-        foreground.getChildren().add(content);
+    private VBox createAlertHeader(AlertType type){
+        VBox header = new VBox();
+//        header.minWidthProperty().bind(customDialog.minWidthProperty());
+        header.setMinHeight(120);
+        header.setAlignment(Pos.CENTER);
+//        VBox.setVgrow(header, Priority.ALWAYS);
 
+        ImageView icon = null;
+        Color color = null;
+
+        switch (type){
+            case INFO:
+                color = Color.web("#33B5E5");
+                icon = new ImageView(new Image("/com/gn/module/media/img/info_48dp.png"));
+                break;
+            case WARNING:
+                color = Color.web("#FC6E51");
+                icon = new ImageView(new Image("/com/gn/module/media/img/warning_48dp.png"));
+                break;
+            case ERROR:
+                color = Color.web("#ED5565");
+                icon = new ImageView(new Image("/com/gn/module/media/img/error_48dp.png"));
+                break;
+            case DONE:
+                color = Color.web("#02C852");
+                icon = new ImageView(new Image("/com/gn/module/media/img/done_48dp.png"));
+                break;
+        }
+        header.setBackground(new Background(new BackgroundFill(color, new CornerRadii(
+                10,false), Insets.EMPTY)));
+
+        icon.setPreserveRatio(true);
+        icon.setSmooth(true);
+        icon.setFitWidth(151);
+        icon.setFitHeight(78);
+
+        header.getChildren().add(icon);
+        return header;
+    }
+
+    private static VBox  createContent(String title, String message){
+        VBox container = new VBox();
+        container.setAlignment(Pos.TOP_CENTER);
+        container.setSpacing(20D);
+
+        VBox.setVgrow(container, Priority.ALWAYS);
+
+        VBox.setMargin(container, new Insets(10,0,0,0));
+
+        Label lblTitle = new Label(title);
+        lblTitle.getStyleClass().add("h2");
+
+        Label text = new Label();
+        text.setWrapText(true);
+        text.setText(message);
+        text.setAlignment(Pos.CENTER);
+
+        container.getChildren().addAll(lblTitle, text);
+
+        return container;
+    }
+
+    private HBox createActions(Button... actions){
+        HBox _actions = new HBox();
+        _actions.setMinSize(50, 73);
+        _actions.setAlignment(Pos.CENTER);
+        VBox.setMargin(_actions, new Insets(10, 10, 10, 10));
+        _actions.setSpacing(5D);
+
+        _actions.getChildren().setAll(actions);
+        _actions.getChildren().forEach( e -> e.addEventFilter(ActionEvent.ACTION, event -> {
+            BounceOut bounceOut = new BounceOut(customDialog);
+            bounceOut.getTimeline().setOnFinished(ev -> foreground.toBack());
+            bounceOut.play();
+        }));
+
+        return _actions;
+    }
+
+    public void createPopup(StackPane content){
+        customDialog.getChildren().setAll(content);
+        customDialog.setPrefSize(content.getPrefWidth(), content.getPrefHeight());
+        organizeInCenter();
         foreground.toFront();
 
     }
@@ -166,25 +329,34 @@ public enum PopupCreator {
     public void createPopup(StackPane content, AnimationFX animationFX){
         customDialog.getChildren().clear();
         customDialog.getChildren().add(content);
-        organizeInCenter(content);
-        foreground.getChildren().clear();
-        foreground.getChildren().add(content);
+        organizeInCenter();
 
         foreground.toFront();
 
         animationFX.play();
     }
 
-    private void organizeInCenter(StackPane content){
-       double x = ( App.getDecorator().getScene().getWindow().getWidth() / 2) - (content.getPrefWidth() / 2);
-       double y = ( App.getDecorator().getScene().getWindow().getHeight() / 2 ) - (content.getPrefHeight() / 2);
+    private void organizeInCenter(){
 
-       AnchorPane.setTopAnchor(customDialog, y);
-       AnchorPane.setLeftAnchor(customDialog, x);
+        double width = App.getDecorator().getScene().getWidth();
+        double height = App.getDecorator().getScene().getHeight();
 
-       AnchorPane.clearConstraints(customDialog);
-       AnchorPane.setRightAnchor(customDialog, 0D);
-       AnchorPane.setBottomAnchor(customDialog, 0D);
+        if(width < GridFx.Type.XS.getValue()){
+//            customDialog.setMaxWidth(250);
+            customDialog.setPrefWidth(250);
+//            customDialog.setMinWidth(250);
+        }
+
+        double x = ( width / 2) - ( customDialog.getPrefWidth() / 2);
+        double y = ( height / 2 ) - (customDialog.getPrefHeight() / 2);
+
+        AnchorPane.clearConstraints(customDialog);
+
+        customDialog.setTranslateX(0D);
+        customDialog.setTranslateY(0D);
+
+        AnchorPane.setTopAnchor(customDialog, y);
+        AnchorPane.setLeftAnchor(customDialog, x);
     }
 
     private void organizeInRight(){
@@ -205,5 +377,38 @@ public enum PopupCreator {
         foreground = (StackPane) App.getDecorator().getScene().lookup("#foreground");
         foreContent = (AnchorPane) foreground.lookup("#fore-content");
         customDialog = (StackPane) foreground.lookup("#custom-dialog");
+    }
+
+    public void closePopup(){
+        App.getDecorator().unblock();
+        foreground.toBack();
+    }
+
+    public void closePopup(AnimationFX animationFX){
+        App.getDecorator().unblock();
+        animationFX.play();
+        animationFX.getTimeline().setOnFinished(event -> {
+            foreground.toBack();
+        });
+    }
+
+    /**
+     * Some animations change the custom dialog format.
+     */
+    private void reset(){
+
+        customDialog.setTranslateX(0D);
+        customDialog.setTranslateY(0D);
+        customDialog.setScaleX(1);
+        customDialog.setScaleY(1);
+
+        customDialog.setVisible(true);
+        customDialog.setOpacity(1);
+        customDialog.setPrefSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
+        customDialog.setMinSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
+        customDialog.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
+
+        customDialog.setStyle("-fx-background-color : -foreground-color; -fx-background-radius :  0;");
+
     }
 }

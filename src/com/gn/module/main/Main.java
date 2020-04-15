@@ -16,38 +16,28 @@
  */
 package com.gn.module.main;
 
-import animatefx.animation.Shake;
 import com.gn.App;
 import com.gn.GNAvatarView;
-import com.gn.global.factory.badges.BadgeSettings;
 import com.gn.global.UserDetail;
-import com.gn.global.exceptions.NavigationException;
-import com.gn.global.factory.*;
-import com.gn.global.factory.badges.BadgeTasks;
+import com.gn.global.factory.ActionView;
 import com.gn.global.factory.badges.BadgeMessages;
 import com.gn.global.factory.badges.BadgeNotification;
+import com.gn.global.factory.badges.BadgeSettings;
+import com.gn.global.factory.badges.BadgeTasks;
 import com.gn.global.plugin.GridFx;
 import com.gn.global.plugin.ViewManager;
 import com.gn.global.util.PopupCreator;
 import com.jfoenix.controls.JFXBadge;
 import com.jfoenix.controls.JFXButton;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.geometry.NodeOrientation;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.SVGPath;
-import org.controlsfx.control.PopOver;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -59,87 +49,24 @@ import java.util.ResourceBundle;
  */
 public class Main implements Initializable, ActionView {
 
-    @FXML private GNAvatarView avatar;
-    @FXML public  VBox sideBar;
-    @FXML private HBox searchBox;
-    @FXML private HBox boxStatus;
-    @FXML private VBox info;
-    @FXML private VBox views;
-    @FXML private Circle cStatus;
-    @FXML private Label status;
     @FXML public  ScrollPane body;
     @FXML public  Label title;
-    @FXML private TextField search;
-    @FXML private ScrollPane scroll;
-    @FXML private TitledPane design;
-    @FXML private TitledPane controls;
-    @FXML private TitledPane charts;
-    @FXML private ToggleButton home;
-    @FXML private ToggleButton  about;
     @FXML private Button hamburger;
-    @FXML private SVGPath searchIcon;
-    @FXML private StackPane root;
-    @FXML private Button clear;
-    @FXML private JFXButton config;
     @FXML private VBox drawer;
-    @FXML private JFXBadge messages;
-    @FXML private JFXBadge notifications;
-    @FXML private JFXBadge bg_info;
-    @FXML private ToggleGroup group;
     @FXML private HBox barHeader;
     @FXML private HBox main;
-    @FXML private Label name;
 
     @FXML private RadioButton available;
-
-    private FilteredList<ToggleButton> filteredList = null;
-
-    public static  final PopOver popConfig = new PopOver();
-    public static  final PopOver popup     = new PopOver();
-
-    private ObservableList<ToggleButton> items         = FXCollections.observableArrayList();
-    private ObservableList<ToggleButton> designItems   = FXCollections.observableArrayList();
-    private ObservableList<ToggleButton> controlsItems = FXCollections.observableArrayList();
-    private ObservableList<ToggleButton> chartsItems   = FXCollections.observableArrayList();
 
     private final UserDetail        userDetail          = new UserDetail("Jane Doe", "Jane", "SubTitle");
     private final BadgeMessages     badgeMessages       = new BadgeMessages();
     private final BadgeNotification badgeNotification   = new BadgeNotification();
-    private final BadgeTasks badgeAlerts         = new BadgeTasks();
+    private final BadgeTasks        badgeAlerts         = new BadgeTasks();
     private final BadgeSettings     badgeSettings       = new BadgeSettings("Text", "Subtitle");
     private final HBox              contentBadges       = new HBox();
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
-
-//        App.getDecorator().floatActions(barHeader);
-
-
-//        populateItems();
-//        filteredList = new FilteredList<>( items, s -> true );
-//
-//        search.textProperty().addListener( obs -> {
-//
-//            String filter = search.getText();
-//            if ( filter == null || filter.length() == 0 ) {
-//                barInitial();
-//                clear.setMouseTransparent(true);
-//                searchIcon.setContent("M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z");
-//            } else {
-//                barFiltered(filter);
-//                clear.setMouseTransparent(false);
-//                searchIcon.setContent("M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z");
-//
-//            }
-//        });
-//
-//        search.setOnMouseClicked(event -> {
-//            new Shake(clear).play();
-//        });
-//
-//        name.setOnMouseEntered(event ->{
-//            new Shake(name).play();
-//        });
 
     }
 
@@ -156,8 +83,9 @@ public class Main implements Initializable, ActionView {
         main.getChildren().remove(drawer);
         App.getDecorator().showCustoms();
 
-//        if(!info.getChildren().contains(contentBadges)) info.getChildren().add(contentBadges);
-//        App.getDecorator().removeCustom(userDetail);
+        VBox info = (VBox) drawer.lookup("#info");
+        if(!info.getChildren().contains(contentBadges)) info.getChildren().add(contentBadges);
+            App.getDecorator().removeCustom(userDetail);
     }
 
     private void showHamburger(){
@@ -179,99 +107,9 @@ public class Main implements Initializable, ActionView {
 
     @FXML
     private void openDrawer(){
-
         PopupCreator.INSTANCE.createDrawerLeft(drawer);
         App.getDecorator().hideCustoms();
     }
-
-    private void addSubPop() throws Exception {
-        popup.setContentNode(FXMLLoader.load(getClass().getResource("/com/gn/module/main/Popover.fxml")));
-
-//        popup.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
-
-        popup.setArrowLocation(PopOver.ArrowLocation.LEFT_CENTER);
-        popup.setArrowIndent(0);
-        popup.setArrowSize(0);
-        popup.setCornerRadius(0);
-        popup.setAutoFix(true);
-    }
-
-    private void barInitial(){
-        filteredList.setPredicate(s -> true);
-        scroll.setContent(views);
-        ( (VBox) design.getContent()).getChildren().setAll(designItems);
-        ( (VBox) controls.getContent()).getChildren().setAll(controlsItems);
-        ( (VBox) charts.getContent()).getChildren().setAll(chartsItems);
-
-        views.getChildren().removeAll(home, about);
-        views.getChildren().add(home);
-        views.getChildren().add(about);
-        home.setContentDisplay(ContentDisplay.LEFT);
-        about.setContentDisplay(ContentDisplay.LEFT);
-        home.setAlignment(Pos.CENTER_LEFT);
-        about.setAlignment(Pos.CENTER_LEFT);
-
-        home.toBack();
-        about.toFront();
-        hamburger.setMouseTransparent(false);
-    }
-
-    private void barFiltered(String filter){
-        views.getChildren().removeAll(home, about);
-        filteredList.setPredicate(s -> s.getText().toUpperCase().contains(filter.toUpperCase()));
-        scroll.setContent(filter(filteredList));
-
-        hamburger.setMouseTransparent(true);
-    }
-
-    private VBox filter(ObservableList<ToggleButton>  nodes){
-        VBox vBox = new VBox();
-        vBox.getStyleClass().add("drawer-content");
-        vBox.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-        vBox.setAlignment(Pos.TOP_RIGHT);
-        VBox.setVgrow(vBox, Priority.ALWAYS);
-        for (ToggleButton node : nodes){
-            if (node.getGraphic() != null) node.setContentDisplay(ContentDisplay.TEXT_ONLY);
-            node.setAlignment(Pos.CENTER_LEFT);
-        }
-        vBox.getChildren().setAll(nodes);
-        return vBox;
-    }
-
-    private void populateItems() {
-
-        for (Node node : views.getChildren()) {
-            if (node instanceof ToggleButton) {
-                items.add( (ToggleButton) node);
-            }
-        }
-
-        for (Node node : ((VBox) controls.getContent()).getChildren()) {
-            controlsItems.add((ToggleButton) node);
-            items.add((ToggleButton) node);
-        }
-
-        for (Node node : ((VBox) design.getContent()).getChildren()) {
-            designItems.add((ToggleButton) node);
-            items.add((ToggleButton) node);
-        }
-
-        for (Node node : ((VBox) charts.getContent()).getChildren()) {
-            chartsItems.add((ToggleButton) node);
-            items.add((ToggleButton) node);
-        }
-    }
-
-    @FXML
-    private void openConfig(){
-        if(popConfig.isShowing()){
-            popConfig.hide();
-        } else {
-            popConfig.show(config, 0);
-            popConfig.getRoot().setFocusTraversable(true);
-        }
-    }
-
 
     @Override
     public void enter() {
@@ -279,17 +117,11 @@ public class Main implements Initializable, ActionView {
             if(newValue.doubleValue() <= GridFx.Type.XS.getValue()) {
                 hideDrawer();
                 showHamburger();
-//                barHeader.setPadding(new Insets(20,0,0,0));
                 removeBadges();
-
             } else if (newValue.doubleValue() <= GridFx.Type.SM.getValue()){
                 showHamburger();
                 hideDrawer();
-                barHeader.setPadding(new Insets(0,0,0,0));
-                addBadges();
-//                PopupCreator.INSTANCE.closePopup();
             } else {
-                barHeader.setPadding(new Insets(0,0,0,0));
                 showDrawer();
                 hideHamburger();
                 PopupCreator.INSTANCE.closePopup();
@@ -313,14 +145,17 @@ public class Main implements Initializable, ActionView {
     private void addBadges(){
         updateStyles(false);
 
-        if(!App.getDecorator().getCustoms().contains(userDetail)) App.getDecorator().addCustom(userDetail);
+        App.getDecorator().removeCustom(userDetail);
+        App.getDecorator().removeCustom(badgeSettings);
+        App.getDecorator().removeCustom(badgeMessages);
+        App.getDecorator().removeCustom(badgeNotification);
+        App.getDecorator().removeCustom(badgeAlerts);
 
-        if(!App.getDecorator().getCustoms().contains(badgeMessages)) {
-
-            App.getDecorator().addCustom(badgeMessages);
-            App.getDecorator().addCustom(badgeNotification);
-            App.getDecorator().addCustom(badgeAlerts);
-        }
+        App.getDecorator().addCustom(userDetail);
+        App.getDecorator().addCustom(badgeSettings);
+        App.getDecorator().addCustom(badgeMessages);
+        App.getDecorator().addCustom(badgeNotification);
+        App.getDecorator().addCustom(badgeAlerts);
 
     }
 

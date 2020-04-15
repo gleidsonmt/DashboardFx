@@ -19,7 +19,7 @@
          <children>
             <AnchorPane id="fore-content" prefHeight="617.0" prefWidth="1115.0" StackPane.alignment="CENTER">
                <children>
-                  <StackPane id="custom-dialog" alignment="TOP_LEFT" minWidth="250.0" prefWidth="250.0" style="-fx-background-color: -foreground-color;" AnchorPane.leftAnchor="0.0" />
+                  <StackPane id="custom-dialog" alignment="TOP_LEFT" minWidth="250.0" prefHeight="101.0" prefWidth="250.0" style="-fx-background-color: -foreground-color;" AnchorPane.leftAnchor="0.0" />
                </children>
             </AnchorPane>
          </children>
