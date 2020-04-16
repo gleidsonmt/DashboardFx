@@ -183,10 +183,10 @@ public enum PopupCreator {
 
         _actions.getChildren().stream().map(e -> (Button) e).forEach(c -> {
             c.setPrefWidth(100);
-            c.addEventFilter(ActionEvent.ACTION, event -> {
-                bounceOut.play();
-            });
+            c.addEventFilter(ActionEvent.ACTION, event -> bounceOut.play());
         });
+
+        foreground.setOnMouseClicked(null);
 
         customDialog.getChildren().setAll(body);
         customDialog.setPrefSize(400, 200);
@@ -226,17 +226,7 @@ public enum PopupCreator {
         foreground.toFront();
         bounceIn.play();
 
-        foreContent.setOnMouseClicked(event -> {
-            if (event.getTarget() instanceof AnchorPane){
-                if(((AnchorPane) event.getTarget()).getId().equals("fore-content")) {
-                    BounceOut animation = new BounceOut(customDialog);
-                    animation.getTimeline().setOnFinished(event1 -> {
-                        foreground.toBack();
-                    });
-                    animation.play();
-                }
-            }
-        });
+        foreground.setOnMouseClicked(null);
     }
 
     private VBox createAlertHeader(AlertType type){
@@ -387,9 +377,7 @@ public enum PopupCreator {
     public void closePopup(AnimationFX animationFX){
         App.getDecorator().unblock();
         animationFX.play();
-        animationFX.getTimeline().setOnFinished(event -> {
-            foreground.toBack();
-        });
+        animationFX.getTimeline().setOnFinished(event -> foreground.toBack());
     }
 
     /**
