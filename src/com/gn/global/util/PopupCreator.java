@@ -26,6 +26,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -102,6 +103,16 @@ public enum PopupCreator {
             App.getDecorator().showCustoms();
         });
         App.getDecorator().hideCustoms();
+    }
+
+    public void createDrawerLeft(Node hamb, VBox content){
+        createDrawerLeft(content);
+        close.setOnFinished(event -> {
+            hamb.setVisible(true);
+            foreground.toBack();
+            App.getDecorator().showCustoms();
+            App.getDecorator().unblock();
+        });
     }
 
     public void createDrawerLeft(VBox content){
@@ -371,12 +382,13 @@ public enum PopupCreator {
 
     public void closePopup(){
         App.getDecorator().unblock();
-        foreground.toBack();
+        close.play();
     }
 
     public void closePopup(AnimationFX animationFX){
         App.getDecorator().unblock();
         animationFX.play();
+        close.play();
         animationFX.getTimeline().setOnFinished(event -> foreground.toBack());
     }
 

@@ -16,6 +16,8 @@
  */
 package com.gn.module.main;
 
+import animatefx.animation.BounceOut;
+import com.gn.global.util.PopupCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -94,11 +96,13 @@ public class DrawerController {
                 .map(e -> (ToggleButton) e)
                 .forEach(e -> {
                     e.setToggleGroup(group);
+                    e.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+                        PopupCreator.INSTANCE.closePopup();
+                    });
                     e.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
                         if (e.isSelected()) {
                             event.consume();
                         }
-
                         ToggleButton toggleButton = new ToggleButton();
                         toggleButton.setText(e.getText());
                         toggleButton.setToggleGroup(group);

@@ -29,6 +29,8 @@ import com.gn.global.plugin.ViewManager;
 import com.gn.global.util.PopupCreator;
 import com.jfoenix.controls.JFXBadge;
 import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -51,7 +53,6 @@ public class Main implements Initializable, ActionView {
 
     @FXML public  ScrollPane body;
     @FXML public  Label title;
-    @FXML private Button hamburger;
     @FXML private VBox drawer;
     @FXML private HBox barHeader;
     @FXML private HBox main;
@@ -65,19 +66,42 @@ public class Main implements Initializable, ActionView {
     private final BadgeSettings     badgeSettings       = new BadgeSettings("Text", "Subtitle");
     private final HBox              contentBadges       = new HBox();
 
+
+    private Button hamburger = new Button();
+
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
+
+        hamburger.setMaxWidth(40);
+        hamburger.setPrefWidth(40);
+        hamburger.setMinWidth(40);
+        hamburger.setMinHeight(40);
+
+        SVGPath icon = new SVGPath();
+        icon.setContent("M2 15.5v2h20v-2H2zm0-5v2h20v-2H2zm0-5v2h20v-2H2z");
+        hamburger.setGraphic(icon);
+        hamburger.getStyleClass().add("hamburger");
+
+        hamburger.setOnAction(event -> {
+            PopupCreator.INSTANCE.createDrawerLeft(hamburger, drawer);
+            hamburger.setVisible(false);
+            App.getDecorator().hideCustoms();
+        });
 
     }
 
     private void hideHamburger(){
-        hamburger.setMaxWidth(0);
-        hamburger.setPrefWidth(0);
-        hamburger.setMinWidth(0);
-        hamburger.setMinHeight(0);
-        hamburger.setVisible(false);
-        barHeader.setPadding(new Insets(0));
+        App.getDecorator().getMenus().remove(hamburger);
+        HBox.setMargin(title, new Insets(0D,5D,0,0));
     }
+
+
+    private void showHamburger(){
+        if(!App.getDecorator().getMenus().contains(hamburger)) App.getDecorator().addMenu(0, hamburger);
+        HBox.setMargin(title, new Insets(0,0,0, 50D));
+        HBox.setMargin(hamburger, new Insets(10,50,0,0));
+    }
+
 
     private void hideDrawer() {
         main.getChildren().remove(drawer);
@@ -85,15 +109,7 @@ public class Main implements Initializable, ActionView {
 
         VBox info = (VBox) drawer.lookup("#info");
         if(!info.getChildren().contains(contentBadges)) info.getChildren().add(contentBadges);
-            App.getDecorator().removeCustom(userDetail);
-    }
-
-    private void showHamburger(){
-        hamburger.setMaxWidth(40);
-        hamburger.setPrefWidth(40);
-        hamburger.setMinWidth(40);
-        hamburger.setMinHeight(40);
-        hamburger.setVisible(true);
+        App.getDecorator().removeCustom(userDetail);
     }
 
     private void showDrawer(){
@@ -102,13 +118,6 @@ public class Main implements Initializable, ActionView {
             main.getChildren().add(drawer);
             drawer.toBack();
         }
-    }
-
-
-    @FXML
-    private void openDrawer(){
-        PopupCreator.INSTANCE.createDrawerLeft(drawer);
-        App.getDecorator().hideCustoms();
     }
 
     @Override
@@ -144,19 +153,18 @@ public class Main implements Initializable, ActionView {
 
     private void addBadges(){
         updateStyles(false);
-
-        App.getDecorator().removeCustom(userDetail);
-        App.getDecorator().removeCustom(badgeSettings);
+        // Repopulate
         App.getDecorator().removeCustom(badgeMessages);
+        App.getDecorator().removeCustom(badgeSettings);
         App.getDecorator().removeCustom(badgeNotification);
         App.getDecorator().removeCustom(badgeAlerts);
+        App.getDecorator().removeCustom(userDetail);
 
         App.getDecorator().addCustom(userDetail);
         App.getDecorator().addCustom(badgeSettings);
         App.getDecorator().addCustom(badgeMessages);
         App.getDecorator().addCustom(badgeNotification);
         App.getDecorator().addCustom(badgeAlerts);
-
     }
 
     private void removeBadges(){
@@ -181,5 +189,4 @@ public class Main implements Initializable, ActionView {
                 }
         );
     }
-
 }
