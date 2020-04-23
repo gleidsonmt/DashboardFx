@@ -30,7 +30,7 @@
                         </Label>
                         <TextFlow prefHeight="54.0" prefWidth="952.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="PopupCreator é uma classe acessora para criação de dialogs, alerts e side drawers." wrappingWidth="558.283203125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="PopupCreator is an accessor class for creating dialogs, alerts and side drawers." wrappingWidth="558.283203125" />
                            </children>
                         </TextFlow>
                         <Label prefHeight="38.0" prefWidth="99.0" style="-fx-font-weight: bold;" text="Drawer">
@@ -41,7 +41,7 @@
                         </Label>
                         <TextFlow prefHeight="54.0" prefWidth="952.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Crie um drawer da esquerda ou direita utilizando isto&#10;PopupCreator.INSTANCE.createDrawerLeft(new VBox());&#10;&#10;" wrappingWidth="558.283203125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Create a left drawer or right using this.&#10;PopupCreator.INSTANCE.createDrawerLeft(new VBox());&#10;&#10;" wrappingWidth="558.283203125" />
                            </children>
                         </TextFlow>
                         <FlowPane hgap="5.0" vgap="5.0">
@@ -61,7 +61,7 @@
                         </Label>
                         <TextFlow layoutX="10.0" layoutY="140.0" prefHeight="54.0" prefWidth="952.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Crie um alert usando isto&#10;PopupCreator.INSTANCE.createAlert(AlertType.INFO, &quot;Title&quot;, &quot;Message&quot;, new Button(&quot;Ok');&#10;&#10;&#10;" wrappingWidth="558.283203125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Create multiples alerts using this.&#10;PopupCreator.INSTANCE.createAlert(AlertType.INFO, &quot;Title&quot;, &quot;Message&quot;, new Button(&quot;Ok');&#10;&#10;&#10;" wrappingWidth="558.283203125" />
                            </children>
                         </TextFlow>
                         <FlowPane columnHalignment="CENTER" hgap="5.0" vgap="5.0">
@@ -80,7 +80,7 @@
                         </Label>
                         <TextFlow layoutX="10.0" layoutY="313.0" prefHeight="54.0" prefWidth="952.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Crie um dialogo simples&#10;PopupCreator.INSTANCE.createAlert(&quot;Title&quot;, &quot;Message&quot;, new Button(&quot;OK&quot;);&#10;&#10;&#10;" wrappingWidth="558.283203125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Create a simple dialog.&#10;PopupCreator.INSTANCE.createAlert(&quot;Title&quot;, &quot;Message&quot;, new Button(&quot;OK&quot;);&#10;&#10;&#10;" wrappingWidth="558.283203125" />
                               <Button minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#createDialog" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Dialog" />
                            </children>
                         </TextFlow>
@@ -90,7 +90,7 @@
                      <children>
                         <HBox alignment="BOTTOM_LEFT">
                            <children>
-                              <Label style="-fx-font-size: 8pt;" styleClass="min" text="Autor" />
+                              <Label style="-fx-font-size: 8pt;" styleClass="min" text="Author" />
                               <Separator prefHeight="0.0" prefWidth="197.0" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
