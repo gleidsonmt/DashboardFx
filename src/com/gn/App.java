@@ -17,30 +17,19 @@
 
 package com.gn;
 
-import com.gn.global.*;
 import com.gn.global.factory.LoadViews;
+import com.gn.global.factory.UserDetail;
 import com.gn.global.plugin.GridFx;
-import com.gn.global.plugin.SectionManager;
-import com.gn.global.plugin.UserManager;
-import com.gn.global.plugin.ViewManager;
 import com.gn.decorator.GNDecorator;
-import com.gn.decorator.options.ButtonType;
-import com.gn.module.loader.Loader;
-import com.gn.module.main.Main;
-import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.application.Platform;
-import javafx.application.Preloader;
 import javafx.collections.ObservableList;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.scenicview.ScenicView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -58,8 +47,6 @@ public class App extends Application {
 
     private float  increment = 0;
     private float  progress = 0;
-    private Section section;
-    private User    user;
 
     private static final GNDecorator decorator  = new GNDecorator();
     private static final Scene       scene      = decorator.getScene();

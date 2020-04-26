@@ -19,12 +19,8 @@ package com.gn.module.login;
 import animatefx.animation.*;
 import com.gn.App;
 import com.gn.GNAvatarView;
-import com.gn.global.plugin.ViewManager;
-import com.gn.global.*;
-import com.gn.global.plugin.SectionManager;
-import com.gn.global.plugin.UserManager;
+import com.gn.global.factory.UserDetail;
 import com.gn.global.util.Mask;
-import com.gn.module.main.Main;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -124,39 +120,6 @@ public class Account implements Initializable {
     }
 
     private void setProperties(){
-
-            Section section = new Section(true, username.getText());
-            SectionManager.save(section);
-
-            User user = new User(username.getText(), fullname.getText(), email.getText(), password.getText());
-            UserManager.save(user);
-
-            UserDetail detail = App.getUserDetail();
-            detail.setText(user.getFullName());
-            detail.setHeader(user.getUserName());
-
-            App.getDecorator().addCustom(detail);
-            detail.setProfileAction(event -> {
-                App.getUserDetail().getPopOver().hide();
-//                Main.ctrl.title.setText("Profile");
-//                Main.ctrl.body.setContent(ViewManager.getInstance().get("profile"));
-
-            });
-
-            detail.setSignAction(event -> {
-                    App.getUserDetail().getPopOver().hide();
-                    SectionManager.save(new Section(false, ""));
-
-                    this.password.setText("");
-                    this.email.setText("");
-                    this.fullname.setText("");
-                    this.username.setText("");
-
-//                    App.decorator.setContent(ViewManager.getInstance().get("login"));
-
-                    App.getDecorator().removeCustom(detail);
-            });
-
 //            App.decorator.setContent(ViewManager.getInstance().get("main"));
     }
 

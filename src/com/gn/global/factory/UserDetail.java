@@ -14,10 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.global;
+package com.gn.global.factory;
 
 import animatefx.animation.BounceIn;
-import animatefx.animation.Pulse;
 import com.gn.App;
 import com.gn.GNAvatarView;
 import com.gn.decorator.component.GNControl;

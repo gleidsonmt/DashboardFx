@@ -20,14 +20,9 @@ import animatefx.animation.BounceOut;
 import animatefx.animation.Flash;
 import animatefx.animation.Pulse;
 import animatefx.animation.SlideInLeft;
-import com.gn.App;
 import com.gn.GNAvatarView;
 import com.gn.global.plugin.ViewManager;
-import com.gn.global.*;
-import com.gn.global.plugin.SectionManager;
-import com.gn.global.plugin.UserManager;
 import com.gn.global.util.PopupCreator;
-import com.gn.module.main.Main;
 import javafx.animation.RotateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -161,60 +156,6 @@ public class login implements Initializable {
 
     private void enter() {
 
-        User user = UserManager.get(username.getText());
-
-        if(user.getUserName().equals(this.username.getText()) && user.getPassword().equals(this.password.getText())){
-            Section section = new Section();
-            section.setLogged(true);
-            section.setUserLogged(this.username.getText());
-            SectionManager.save(section);
-
-//            App.decorator.setContent(ViewManager.INSTANCE.get("main"));
-
-//            UserDetail detail = App.getUserDetail();
-//            detail.setText(user.getFullName());
-//            detail.setHeader(user.getUserName());
-//
-//            App.decorator.addCustom(App.getUserDetail());
-//
-//            App.getUserDetail().setProfileAction(event -> {
-//                App.getUserDetail().getPopOver().hide();
-//                Main.ctrl.title.setText("Profile");
-//                Main.ctrl.body.setContent(ViewManager.INSTANCE.get("profile"));
-//            });
-//
-//            App.getUserDetail().setSignAction(event -> {
-//                App.getUserDetail().getPopOver().hide();
-//                App.decorator.setContent(ViewManager.INSTANCE.get("login"));
-//                this.username.setText("");
-//                this.password.setText("");
-//                if(Main.popConfig.isShowing()) Main.popConfig.hide();
-//                if(Main.popup.isShowing()) Main.popup.hide();
-//                App.decorator.removeCustom(App.getUserDetail());
-//            });
-
-            TimerTask timerTask = new TimerTask() {
-                @Override
-                public void run() {
-                    Platform.runLater(()-> {
-                        // add notification in later
-    //                                    TrayNotification tray = new TrayNotification();
-    //                                    tray.setNotificationType(NotificationType.NOTICE);
-    //                                    tray.setRectangleFill(Color.web(""));
-    //                                    tray.setTitle("Welcome!");
-    //                                    tray.setMessage("Welcome back " + username);
-    //                                    tray.showAndDismiss(Duration.millis(10000));
-                        }
-                    );
-                }
-            };
-
-            Timer timer = new Timer();
-            timer.schedule(timerTask, 300);
-
-        } else {
-            lbl_error.setVisible(true);
-        }
     }
 
     @FXML

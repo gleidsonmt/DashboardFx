@@ -17,8 +17,7 @@
 package com.gn.module.main;
 
 import com.gn.App;
-import com.gn.GNAvatarView;
-import com.gn.global.UserDetail;
+import com.gn.global.factory.UserDetail;
 import com.gn.global.factory.ActionView;
 import com.gn.global.factory.badges.BadgeMessages;
 import com.gn.global.factory.badges.BadgeNotification;
@@ -27,10 +26,6 @@ import com.gn.global.factory.badges.BadgeTasks;
 import com.gn.global.plugin.GridFx;
 import com.gn.global.plugin.ViewManager;
 import com.gn.global.util.PopupCreator;
-import com.jfoenix.controls.JFXBadge;
-import com.jfoenix.controls.JFXButton;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -38,7 +33,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.SVGPath;
 
 import java.net.URL;

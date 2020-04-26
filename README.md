@@ -101,6 +101,4 @@ getScene().getStylesheets().addAll(
 ```
           
 ## Preview
-
-![Dash](src/com/gn/media/img/firstScreen.png)
-
+[![Youtube link](src/com/gn/media/img/firstScreenYoutube.png)](https://youtu.be/9Rf-x9hRaCU)
