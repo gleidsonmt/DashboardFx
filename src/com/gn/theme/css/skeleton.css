@@ -205,8 +205,13 @@
 }
 
 Text,
+.pagination .pagination-control .control-box .number-button .text,
 .text {
     -fx-fill : -text-color;
+}
+
+.pagination .pagination-control .control-box .number-button:selected .text {
+    -fx-fill : -inner-text;
 }
 
 /************************************************************************************

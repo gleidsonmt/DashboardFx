@@ -27,7 +27,7 @@ import java.util.List;
  * Create on  26/04/2020
  */
 @SuppressWarnings("unused")
-public class Country {
+public class Country extends Model {
 
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty abv = new SimpleStringProperty();
