@@ -100,5 +100,5 @@ getScene().getStylesheets().addAll(
   </stylesheets>
 ```
           
-## Preview
+## Preview on Youtube
 [![Youtube link](src/com/gn/media/img/firstScreenYoutube.png)](https://youtu.be/9Rf-x9hRaCU)
