@@ -18,7 +18,7 @@ package com.gn.module.customControls;
 
 import com.gn.App;
 import com.gn.GNCarousel;
-import com.gn.global.factory.ActionView;
+import com.gn.global.plugin.ActionView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

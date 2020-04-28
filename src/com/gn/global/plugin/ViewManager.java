@@ -18,8 +18,6 @@ package com.gn.global.plugin;
 
 import com.gn.decorator.GNDecorator;
 import com.gn.global.exceptions.NavigationException;
-import com.gn.global.factory.ActionView;
-import com.gn.global.factory.ViewController;
 import javafx.scene.control.ScrollPane;
 
 import java.util.HashMap;

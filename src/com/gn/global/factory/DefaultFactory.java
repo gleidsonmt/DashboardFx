@@ -16,44 +16,19 @@
  */
 package com.gn.global.factory;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import com.gn.global.model.Model;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.TableColumn;
+import javafx.util.Callback;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  29/03/2020
+ * Create on  28/04/2020
  */
-public class ViewController {
-
-    private final String      title;
-    private final String      name;
-    private final View view;
-    private final FXMLLoader  loader;
-
-    ViewController(String title, String name, View view, FXMLLoader loader){
-        this.title  = title;
-        this.name   = name;
-        this.view = view;
-        this.loader = loader;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public View getView() {
-        return view;
-    }
-
-    public Object getController() {
-        return loader.getController();
-    }
-
-    public Parent getRoot(){
-        return loader.getRoot();
+public class DefaultFactory<E extends Model> implements Callback<TableColumn.CellDataFeatures<E, E>, ObservableValue<E>> {
+    @Override
+    public ObservableValue<E> call(TableColumn.CellDataFeatures<E, E> param) {
+        return new ReadOnlyObjectWrapper<>(param.getValue());
     }
 }

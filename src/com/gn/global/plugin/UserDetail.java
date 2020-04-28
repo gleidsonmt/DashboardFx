@@ -14,14 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.global.factory;
+package com.gn.global.plugin;
 
 import animatefx.animation.BounceIn;
 import com.gn.App;
 import com.gn.GNAvatarView;
 import com.gn.decorator.component.GNControl;
 import com.gn.global.exceptions.NavigationException;
-import com.gn.global.plugin.ViewManager;
 import com.gn.global.util.PopupCreator;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

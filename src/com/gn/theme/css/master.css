@@ -6,6 +6,37 @@
 */
 
 
+.btn-action
+{
+    -fx-background-color : white;
+}
+
+.btn-action:hover SVGPath,
+.btn-action:focused:hover SVGPath,
+.btn-action:focused SVGPath
+{
+    -fx-fill : white;
+    -fx-background-color : white;
+}
+
+.btn-action:hover,
+.btn-action SVGPath
+{
+    -fx-background-color : -base;
+    -fx-fill : -base;
+}
+
+.table-view .column-header-background .nested-column-header .actions:last-visible .label
+{
+    -fx-padding : 0 20 0 0;
+}
+
+.table-view .column-header-background .nested-column-header .actions:last-visible .label,
+.table-column:last-visible
+{
+    -fx-alignment : center;
+}
+
 
 .btn-hover
 {

@@ -17,7 +17,7 @@
 package com.gn.module.dashboard;
 
 import com.gn.GNCarousel;
-import com.gn.global.factory.ActionView;
+import com.gn.global.plugin.ActionView;
 import com.gn.global.plugin.GridFx;
 import core.CurveFittedAreaChart;
 import core.DonutChart;

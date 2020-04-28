@@ -17,8 +17,8 @@
 package com.gn.module.main;
 
 import com.gn.App;
-import com.gn.global.factory.UserDetail;
-import com.gn.global.factory.ActionView;
+import com.gn.global.plugin.UserDetail;
+import com.gn.global.plugin.ActionView;
 import com.gn.global.factory.badges.BadgeMessages;
 import com.gn.global.factory.badges.BadgeNotification;
 import com.gn.global.factory.badges.BadgeSettings;

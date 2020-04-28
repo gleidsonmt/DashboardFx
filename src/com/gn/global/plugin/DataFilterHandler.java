@@ -314,23 +314,23 @@ public class DataFilterHandler<E extends Model> {
     private void altLegend(int init, int end, int total){
         Platform.runLater(() -> {
 
-            if(this.bundle != null){
-                legend.setText(
-                        bundle.get().getString("DataTable.showing") + " "
-                                + init + " " + bundle.get().getString("DataTable.to") + " "
-                                + end + " " + bundle.get().getString("DataTable.of") + " " + total + " "
-                                + bundle.get().getString("DataTable.entries") + "."
-                );
-            } else {
-
-                legend.setText(
-                        "Showing "
-                                + init + " "
-                                + end + " of "
-                                + total
-                                + " entries."
-                );
-            }
+//            if(this.bundle != null){
+//                legend.setText(
+//                        bundle.get().getString("DataTable.showing") + " "
+//                                + init + " " + bundle.get().getString("DataTable.to") + " "
+//                                + end + " " + bundle.get().getString("DataTable.of") + " " + total + " "
+//                                + bundle.get().getString("DataTable.entries") + "."
+//                );
+//            } else {
+//
+//                legend.setText(
+//                        "Showing "
+//                                + init + " "
+//                                + end + " of "
+//                                + total
+//                                + " entries."
+//                );
+//            }
         });
     }
 
@@ -338,28 +338,28 @@ public class DataFilterHandler<E extends Model> {
 
     private void altLegend(int init, int end, int total, int filtered){
         Platform.runLater(() -> {
-            if(this.bundle != null){
-                legend.setText(
-                        bundle.get().getString("DataTable.showing") + " "
-                                + init + " " + bundle.get().getString("DataTable.to") + " "
-                                + end + " " + bundle.get().getString("DataTable.of") + " " + total + " "
-                                + bundle.get().getString("DataTable.entries") + ". "
-                                + "(" + bundle.get().getString("DataTable.filtered") + " "
-                                + bundle.get().getString("DataTable.from") + " "
-                                + filtered +" total " + bundle.get().getString("DataTable.entries") + ")"
-                );
-            } else {
-                legend.setText(
-                        "Showing "
-                                + init + " to "
-                                + end + " of "
-                                + total
-                                + " entries."
-                                + "(Filtered "
-                                + "from "
-                                + filtered + " total entries)"
-                );
-            }
+//            if(this.bundle != null){
+//                legend.setText(
+//                        bundle.get().getString("DataTable.showing") + " "
+//                                + init + " " + bundle.get().getString("DataTable.to") + " "
+//                                + end + " " + bundle.get().getString("DataTable.of") + " " + total + " "
+//                                + bundle.get().getString("DataTable.entries") + ". "
+//                                + "(" + bundle.get().getString("DataTable.filtered") + " "
+//                                + bundle.get().getString("DataTable.from") + " "
+//                                + filtered +" total " + bundle.get().getString("DataTable.entries") + ")"
+//                );
+//            } else {
+//                legend.setText(
+//                        "Showing "
+//                                + init + " to "
+//                                + end + " of "
+//                                + total
+//                                + " entries."
+//                                + "(Filtered "
+//                                + "from "
+//                                + filtered + " total entries)"
+//                );
+//            }
         });
     }
 

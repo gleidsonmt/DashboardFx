@@ -17,8 +17,8 @@
 
 package com.gn;
 
-import com.gn.global.factory.LoadViews;
-import com.gn.global.factory.UserDetail;
+import com.gn.global.plugin.LoadViews;
+import com.gn.global.plugin.UserDetail;
 import com.gn.global.plugin.GridFx;
 import com.gn.decorator.GNDecorator;
 import javafx.application.Application;
@@ -45,29 +45,29 @@ import java.util.Properties;
  */
 public class App extends Application {
 
-    private float  increment = 0;
-    private float  progress = 0;
+    private float increment = 0;
+    private float progress = 0;
 
-    private static final GNDecorator decorator  = new GNDecorator();
-    private static final Scene       scene      = decorator.getScene();
+    private static final GNDecorator decorator = new GNDecorator();
+    private static final Scene scene = decorator.getScene();
 
-    public static ObservableList<String>    stylesheets;
-    private static HostServices              hostServices;
+    public static ObservableList<String> stylesheets;
+    private static HostServices hostServices;
     private static UserDetail userDetail = null;
 
     private double minWidth = 350;
     private double minHeight = 500;
 
-    public static GNDecorator getDecorator(){
+    public static GNDecorator getDecorator() {
         return decorator;
     }
 
-    public static void openLink(String link){
+    public static void openLink(String link) {
         hostServices.showDocument(link);
     }
 
     @Override
-    public synchronized void init(){
+    public synchronized void init() {
         userDetail = new UserDetail("Gleidson", "Gleidson", "subtitle");
 
         Parent root = null;
@@ -85,12 +85,12 @@ public class App extends Application {
     }
 
     @Override
-    public void stop(){
+    public void stop() {
         Platform.exit();
         System.exit(0);
     }
 
-    private void initialScene(){
+    private void initialScene() {
         decorator.setTitle(null);
         decorator.setIcon(null);
         decorator.setMaximized(true);
@@ -98,7 +98,7 @@ public class App extends Application {
     }
 
     @Override
-    public  void start(Stage primary) throws Exception {
+    public void start(Stage primary) throws Exception {
 
         initialScene();
         hostServices = getHostServices();
@@ -120,7 +120,8 @@ public class App extends Application {
 
         decorator.show();
         GridFx.addStage(decorator.getStage());
-//        GridFx.log(true);
+        GridFx.log(true);
+        System.out.println("Initializing");
         LoadViews load = new LoadViews();
         load.start();
 
@@ -129,42 +130,5 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch(args);
-    }
-
-    @SuppressWarnings("ResultOfMethodCallIgnored")
-    private String logged(){
-        try {
-            File file = new File("dashboard.properties");
-            Properties properties = new Properties();
-
-            if(!file.exists()){
-                file.createNewFile();
-                return "account";
-            } else {
-                FileInputStream fileInputStream = new FileInputStream(file);
-                properties.load(fileInputStream);
-                properties.putIfAbsent("logged", "false");
-                FileOutputStream fileOutputStream = new FileOutputStream(file);
-                properties.store(fileOutputStream, "Dashboard properties");
-
-
-                File directory = new File("user/");
-                properties.load(fileInputStream);
-                if(directory.exists()){
-                    if(properties.getProperty("logged").equals("false"))
-                        return "login";
-                    else
-                        return "main";
-                } else
-                    return "account";
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public static UserDetail getUserDetail() {
-        return userDetail;
     }
 }

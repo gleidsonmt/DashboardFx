@@ -89,7 +89,6 @@ public class Config implements Initializable {
                 getClass().getResource(path + "master.css").toExternalForm()
         );
 
-        App.getUserDetail().getStylesheets().setAll(stylesheets);
 
     }
 }

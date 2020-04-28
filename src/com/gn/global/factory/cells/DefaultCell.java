@@ -14,16 +14,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.global.factory;
+package com.gn.global.factory.cells;
+
+import com.gn.global.model.Model;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  29/03/2020
+ * Create on  21/07/2019
  */
-public interface ActionView {
+public interface DefaultCell<E extends Model> {
 
-     void enter();
+    E getItem();
 
-     void exit();
-
+    void setItem(E item);
 }

@@ -1,343 +1,350 @@
 #Main
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Main
   name: main
   fxmlFile: main.fxml
 
   #Login
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Login
   name: login
   fxmlFile: loginfx.fxml
 
   #Dashboard
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Dashboard
   name: dashboard
   fxmlFile: dashboard.fxml
 
 #Projects
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Projects
   name: projects
   fxmlFile: projects.fxml
 
   #Button
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Button
   name: button
   parentName: controls
   fxmlFile: button.fxml
 
   #CheckBox
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: CheckBox
   name: checkbox
   parentName: controls
   fxmlFile: checkbox.fxml
 
   #ChoiceBox
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: ChoiceBox
   name: choicebox
   parentName: controls
   fxmlFile: choicebox.fxml
   #ColorPicker
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: ColorPicker
   name: colorpicker
   parentName: controls
   fxmlFile: colorpicker.fxml
 
   #ComboBox
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: ComboBox
   name: combobox
   parentName: controls
   fxmlFile: combobox.fxml
 
   #DatePicker
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: DatePicker
   name: datepicker
   parentName: controls
   fxmlFile: datepicker.fxml
 
   #HyperLink
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: HyperLink
   name: hyperlink
   parentName: controls
   fxmlFile: hyperlink.fxml
 
   #ImageView
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: ImageView
   name: imageview
   parentName: controls
   fxmlFile: imageview.fxml
 
   #Label
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Label
   name: label
   parentName: controls
   fxmlFile: label.fxml
 
   #ListView
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: ListView
   name: listview
   parentName: controls
   fxmlFile: listview.fxml
 
   #MediaView
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: MediaView
   name: mediaview
   parentName: controls
   fxmlFile: mediaview.fxml
 
   #MenuBar
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: MenuBar
   name: menubar
   parentName: controls
   fxmlFile: menubar.fxml
 
   #MenuButton
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: MenuButton
   name: menubutton
   parentName: controls
   fxmlFile: menubutton.fxml
 
   #Pagination
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Pagination
   name: pagination
   parentName: controls
   fxmlFile: pagination.fxml
 
   #PasswordField
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: PasswordField
   name: passwordfield
   parentName: controls
   fxmlFile: passwordfield.fxml
 
   #ProgressBar
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: ProgressBar
   name: progressbar
   parentName: controls
   fxmlFile: progressbar.fxml
 
   #ProgressIndicator
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: ProgressIndicator
   name: progressindicator
   parentName: controls
   fxmlFile: progressindicator.fxml
 
   #RadioButton
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: RadioButton
   name: radiobutton
   parentName: controls
   fxmlFile: radiobutton.fxml
 
   #ScrollBar
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: ScrollBar
   name: scrollbar
   parentName: controls
   fxmlFile: scrollbar.fxml
 
   #Slider
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Slider
   name: slider
   parentName: controls
   fxmlFile: slider.fxml
 
   #Spinner
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Spinner
   name: spinner
   parentName: controls
   fxmlFile: spinner.fxml
 
   #SplitMenuButton
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: SplitMenuButton
   name: splitmenubutton
   parentName: controls
   fxmlFile: splitmenubutton.fxml
 
   #TableView
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: TableView
   name: tableview
   parentName: controls
   fxmlFile: tableview.fxml
 
   #TextArea
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: TextArea
   name: text-area
   parentName: controls
   fxmlFile: textArea.fxml
 
   #TextField
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: TextField
   name: text-field
   parentName: controls
   fxmlFile: textField.fxml
 
   #ToggleButton
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: ToggleButton
   name: toggle-button
   parentName: controls
   fxmlFile: toggle.fxml
 
   #TreeTableView
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: TreeTableView
   name: tree-table-view
   parentName: controls
   fxmlFile: treetableview.fxml
 
   #TreeView
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: TreeView
   name: tree-view
   parentName: controls
   fxmlFile: treeview.fxml
 
   #AreaChart
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: AreaChart
   name: areachart
   parentName: charts
   fxmlFile: areachart.fxml
 
   #BarChart
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: BarChart
   name: barchart
   parentName: charts
   fxmlFile: barchart.fxml
 
   #BubbleChart
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: BubbleChart
   name: bubblechart
   parentName: charts
   fxmlFile: bubblechart.fxml
 
   #LineChart
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: LineChart
   name: linechart
   parentName: charts
   fxmlFile: linechart.fxml
 
   #PieChart
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: PieChart
   name: piechart
   parentName: charts
   fxmlFile: piechart.fxml
 
   #ScatterChart
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: ScatterChart
   name: scatterchart
   parentName: charts
   fxmlFile: scatterchart.fxml
 
   #StackedAreaChart
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: StackedAreaChart
   name: stackedareachart
   parentName: charts
   fxmlFile: stackedareachart.fxml
 
   #StackedBarChart
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: StackedBarChart
   name: stackedbarchart
   parentName: charts
   fxmlFile: stackedbarchart.fxml
 
   #AnimatedButton
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Animated Button
   name: animatedbutton
   parentName: customControls
   fxmlFile: animated-button.fxml
 
   #Alerts
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Alerts
   name: alerts
   parentName: customControls
   fxmlFile: alerts.fxml
 
 # Utilities
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Colors
   name: colors
   parentName: utilities
   fxmlFile: colors.fxml
 
 # Utilities
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Popup Creator
   name: popup-creator
   parentName: utilities
   fxmlFile: popupCreator.fxml
 
   #Banners
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Banners
   name: banners
   parentName: customControls
   fxmlFile: banners.fxml
 
-  #Cards
-- !!com.gn.global.factory.View
-    title: Cards
-    name: cards
-    parentName: customControls
-    fxmlFile: cards.fxml
+#Cards
+- !!com.gn.global.plugin.View
+  title: Cards
+  name: cards
+  parentName: customControls
+  fxmlFile: cards.fxml
 
 #Carousel
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Carousel
   name: carousel
   parentName: customControls
   fxmlFile: carousel.fxml
 
+#DataFilter
+- !!com.gn.global.plugin.View
+  title: Data Filter
+  name: data-filter
+  parentName: utilities
+  fxmlFile: dataFilter.fxml
+
   #About
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: About
   name: about
   parentName: about
   fxmlFile: about.fxml
 
   #Profile
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Profile
   name: profile
   parentName: profile
   fxmlFile: profile.fxml
 
   #Settings
-- !!com.gn.global.factory.View
+- !!com.gn.global.plugin.View
   title: Settings
   name: settings
   parentName: main

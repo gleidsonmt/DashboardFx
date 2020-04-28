@@ -22,7 +22,7 @@
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Label prefHeight="38.0" prefWidth="195.0" text="ProgressBar">
+                              <Label prefHeight="38.0" prefWidth="195.0" text="Pagination">
                                  <styleClass>
                                     <String fx:value="h3" />
                                     <String fx:value="title" />

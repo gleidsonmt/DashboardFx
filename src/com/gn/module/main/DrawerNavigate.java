@@ -278,6 +278,11 @@ public class DrawerNavigate implements Initializable  {
     }
 
     @FXML
+    private void goDataFilter(){
+        updateViewDetails("data-filter");
+    }
+
+    @FXML
     private void goColors(){
         updateViewDetails("colors");
     }

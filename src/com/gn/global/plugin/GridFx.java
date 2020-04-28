@@ -217,10 +217,9 @@ public class GridFx {
         int row = 0;
 
         for (Node node : grid.getChildren()) {
+
             for (int i = 1; i <= 12; i++) {
-
                 if (node.getStyleClass().contains("col-" + wid.toString().toLowerCase() + "-" + i)) {
-
                     if (col + i > 12) {
 //                        col = 0;
                         row += 1;
@@ -259,7 +258,10 @@ public class GridFx {
                         alignItems(Pos.CENTER_RIGHT, node);
                     } else if(node.getStyleClass().contains("align-center-left")) {
                         alignItems(Pos.CENTER_LEFT, node);
-                    } else {
+                    }
+
+                    //no alignment return top_left as a default
+                    else {
                         alignItems(Pos.TOP_LEFT, node);
                     }
                 }
