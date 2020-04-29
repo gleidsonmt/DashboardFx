@@ -18,6 +18,7 @@ package com.gn.global.plugin;
 
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
@@ -121,7 +122,14 @@ public class GridFx {
 
     public static void remove(String name){
         stage.widthProperty().removeListener(listeners.get(name));
+        listeners.remove(name);
         if(log) System.out.println(ANSI_RESET + "ViewController Manager : " + ANSI_RED + "ViewController removed from the map [" + name + "]");
+    }
+
+    public static void removeMin(String key){
+        stage.widthProperty().removeListener(listeners.get(key));
+        listeners.remove(key);
+        if(log) System.out.println(ANSI_RESET + "ViewController Manager : " + ANSI_RED + "ViewController removed min size from the map [" + key + "]");
     }
 
     /**
@@ -132,11 +140,12 @@ public class GridFx {
     }
 
     /**
-     * When application resize width, add a minimun size scroll pane resize.
+     * When application resize width, add a min size scroll pane resize.
+     * It's used for FlowPane combination with ScrollPane.
      * @param node node for listen
      * @param num num max height.
      */
-    public static void defineMin(Region node, double... num){
+    public static void defineMin(String key, Region node, double... num){
 
         final double[] minXs = new double[1];
         final double[] minSm = new double[1];
@@ -181,20 +190,21 @@ public class GridFx {
                 minLg[0] = num[0];
                 minEl[0] = num[0];
             }
-            defineMin(node, minXs[0], minSm[0], minMed[0], minLg[0], minEl[0]);
+            defineMin(key, node, minXs[0], minSm[0], minMed[0], minLg[0], minEl[0]);
         });
     }
 
-    private static void defineMin(Region node, double minXs, double minSm, double minMed, double minLg, double minEl){
+    private static void defineMin(String key, Region node, double minXs, double minSm, double minMed, double minLg, double minEl){
         double newValue = stage.getWidth();
 
         switchMin(node, minXs, minSm, minMed, minLg, minEl, newValue);
 
-        Platform.runLater(() -> {
-            stage.widthProperty().addListener((observable, oldValue, newValue1) -> {
-                switchMin(node, minXs, minSm, minMed, minLg, minEl, newValue1.doubleValue());
-            });
-        });
+        listeners.put(key, (observable, oldValue, newValue1) -> Platform.runLater(() -> {
+            switchMin(node, minXs, minSm, minMed, minLg, minEl, newValue1.doubleValue());
+        }));
+
+        stage.widthProperty().addListener(listeners.get(key));
+
     }
 
     private static void switchMin(Region node, double minXs, double minSm, double minMed, double minLg, double minEl, double newValue){

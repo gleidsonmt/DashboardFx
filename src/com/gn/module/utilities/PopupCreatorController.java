@@ -16,16 +16,39 @@
  */
 package com.gn.module.utilities;
 
+import com.gn.global.plugin.ActionView;
+import com.gn.global.plugin.GridFx;
 import com.gn.global.util.PopupCreator;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  14/04/2020
  */
-public class PopupCreatorController {
+public class PopupCreatorController implements Initializable, ActionView {
+
+    @FXML private VBox bodyContent;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+    @Override
+    public void enter() {
+        GridFx.defineMin("min-popup-controller", bodyContent, 850, 600, 600,600,600);
+    }
+
+    @Override
+    public void exit() {
+        GridFx.removeMin("min-popup-controller");
+    }
 
     @FXML
     private void openDrawerLeft(){

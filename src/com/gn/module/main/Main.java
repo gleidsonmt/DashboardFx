@@ -139,6 +139,7 @@ public class Main implements Initializable, ActionView {
         App.getDecorator().addCustom(badgeSettings);
 
         addBadges();
+        App.getDecorator().block();
     }
 
     @Override

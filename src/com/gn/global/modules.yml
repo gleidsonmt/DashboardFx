@@ -329,6 +329,13 @@
   parentName: utilities
   fxmlFile: dataFilter.fxml
 
+#Typographic
+- !!com.gn.global.plugin.View
+  title: Typography
+  name: typography
+  parentName: utilities
+  fxmlFile: typography.fxml
+
   #About
 - !!com.gn.global.plugin.View
   title: About

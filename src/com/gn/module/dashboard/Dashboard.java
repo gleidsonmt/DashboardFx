@@ -139,7 +139,7 @@ public class Dashboard implements Initializable, ActionView {
         GridFx.add(bodyCenter, "body-center");
         GridFx.add(graphic, "graphic");
         GridFx.add(socialTiles, "social-tiles");
-        GridFx.defineMin(root, 2800, 2400, 2000, 1600, 1200);
+        GridFx.defineMin("min-dashboard", root, 2800, 2400, 2000, 1600, 1200);
     }
 
     @Override

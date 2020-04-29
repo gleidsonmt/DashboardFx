@@ -211,7 +211,7 @@ public enum PopupCreator {
     }
 
     public void createAlert(AlertType alertType, String title, String message, Button... actions){
-
+        reset();
         VBox content = new VBox();
         content.setPrefSize(500,300);
 //        content.setMaxWidth(200);
@@ -241,6 +241,7 @@ public enum PopupCreator {
     }
 
     private VBox createAlertHeader(AlertType type){
+        App.getDecorator().block();
         VBox header = new VBox();
 //        header.minWidthProperty().bind(customDialog.minWidthProperty());
         header.setMinHeight(120);
@@ -396,6 +397,8 @@ public enum PopupCreator {
      * Some animations change the custom dialog format.
      */
     private void reset(){
+
+        foreground.setOnMouseClicked(null);
 
         customDialog.setTranslateX(0D);
         customDialog.setTranslateY(0D);

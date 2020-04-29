@@ -185,7 +185,7 @@
                                  <children>
                                     <ToggleButton layoutX="20.0" layoutY="308.0" onAction="#goPopupCreator" prefWidth="250" styleClass="drawer-item" text="Popup Creator" />
                                     <ToggleButton layoutX="20.0" layoutY="20.0" onAction="#goDataFilter" prefWidth="250" styleClass="drawer-item" text="DataTable" />
-                                    <ToggleButton alignment="BASELINE_LEFT" cache="true" onMouseClicked="#goAlerts" prefWidth="250" styleClass="drawer-item" text="Typographic" />
+                                    <ToggleButton alignment="BASELINE_LEFT" cache="true" onAction="#goTypographic" prefWidth="250" styleClass="drawer-item" text="Typographic" />
                                  </children>
                               </VBox>
                            </content>
