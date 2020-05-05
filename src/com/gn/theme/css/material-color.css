@@ -8,6 +8,7 @@
 .root {
    /* bootstrap */
   -base      : -info;
+  -secondary-color : -cyan;
 
   -primary   : #4285f4;
   -info      : #33B5E5;

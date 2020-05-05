@@ -1,0 +1,11 @@
+
+.drawer {
+
+    -fx-background-color :  linear-gradient(to top, #cc2b5e, #753a88);
+    -secondary-drawer : black;
+}
+
+.drawer .scroll .drawer-content .drawer-menu .content
+{
+  -fx-background-color: derive(#cc2b5e, -30%);
+}

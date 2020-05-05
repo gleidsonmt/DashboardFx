@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gn.GNAvatarView?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -11,9 +10,9 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
@@ -30,16 +29,13 @@
       <String fx:value="drawer" />
    </styleClass>
    <children>
-      <VBox>
+      <VBox alignment="TOP_CENTER">
          <children>
-            <GNAvatarView fx:id="avatar" minHeight="-Infinity" prefHeight="151.0" prefWidth="249.0" type="CIRCLE">
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../media/logo.png" />
+                  <Image url="@../media/logo2.png" />
                </image>
-               <effect>
-                  <ColorAdjust brightness="-0.05" hue="-0.03" saturation="-0.17" />
-               </effect>
-            </GNAvatarView>
+            </ImageView>
          </children>
       </VBox>
       <VBox id="info" fx:id="info" alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="-Infinity" prefHeight="101.0" prefWidth="249.0" VBox.vgrow="ALWAYS">
@@ -147,7 +143,7 @@
                               </VBox>
                            </content>
                         </TitledPane>
-                        <TitledPane fx:id="charts" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="22.0" layoutX="10.0" layoutY="130.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Charts">
+                        <TitledPane fx:id="charts" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" graphicTextGap="22.0" layoutX="10.0" layoutY="130.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Charts">
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0" styleClass="drawer-content">
                                  <children>
@@ -186,6 +182,7 @@
                                     <ToggleButton layoutX="20.0" layoutY="308.0" onAction="#goPopupCreator" prefWidth="250" styleClass="drawer-item" text="Popup Creator" />
                                     <ToggleButton layoutX="20.0" layoutY="20.0" onAction="#goDataFilter" prefWidth="250" styleClass="drawer-item" text="DataTable" />
                                     <ToggleButton alignment="BASELINE_LEFT" cache="true" onAction="#goTypographic" prefWidth="250" styleClass="drawer-item" text="Typographic" />
+                                    <ToggleButton alignment="BASELINE_LEFT" cache="true" layoutX="20.0" layoutY="120.0" onAction="#goColors" prefWidth="250" styleClass="drawer-item" text="Colors (Test)" />
                                  </children>
                               </VBox>
                            </content>

@@ -41,7 +41,7 @@ import org.controlsfx.control.PopOver;
  */
 public class BadgeTasks extends GNControl {
 
-    private PopOver pop = new PopOver();
+    private PopOver pop;
 
     public BadgeTasks(){
         this(null, null);
@@ -49,6 +49,7 @@ public class BadgeTasks extends GNControl {
 
     public BadgeTasks(String text, String subtitle) {
         super(text, subtitle);
+        pop = new PopOver();
     }
 
     @Override
@@ -137,8 +138,9 @@ public class BadgeTasks extends GNControl {
         btn.setPrefWidth(root.getPrefWidth());
 
         listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
-        Platform.runLater(() -> {
-            pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+//        Platform.runLater(() -> {
+        System.out.println("root = " + root);
+        System.out.println("popup = " + pop);
             pop.setContentNode(root);
             pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
             pop.setArrowIndent(0);
@@ -146,10 +148,11 @@ public class BadgeTasks extends GNControl {
             pop.setCloseButtonEnabled(false);
             pop.setHeaderAlwaysVisible(false);
             pop.setCornerRadius(0);
+        pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
 
             // tests
     //            pop.setAutoHide(false);
             pop.setAnimated(false);
-        });
+//        });
     }
 }

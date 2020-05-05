@@ -4,6 +4,12 @@
     Skeleton
 */
 
+/*
+
+    default-size-controls : 40px; default
+
+*/
+
 /************************************************************************************
 *
 *               @-fx-background-color
@@ -15,7 +21,6 @@
 .menu-bar .container .menu,
 .date-picker-popup > * > .today:hover,
 .date-picker-popup > * > .today.selected, .menu-item:focused, .menu-item:focused .label,
-.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:hover,
 .slider .thumb, .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:focused,
 .tree-view .virtual-flow .clipped-container .sheet .tree-cell:focused:filled,
 .progress-bar:determinate .bar, .progress-indicator:indeterminate .segment,
@@ -53,6 +58,16 @@
 .text-area
 {
   -fx-background-color : transparent;
+}
+
+.scroll-pane:fitToWidth:fitToHeight {
+    -fx-background-color : transparent;
+     -fx-border-width : 0px;
+}
+
+.scroll-pane:fitToWidth:fitToHeight .viewport {
+    -fx-border-color : transparent;
+    -fx-border-width : 0px;
 }
 
 .text-area .scroll-pane .viewport .content
@@ -220,7 +235,7 @@ Text,
 *
 *************************************************************************************/
 
-.button, .toggle-button, .check-box,
+.button, .toggle-button, .check-box, .radio-button,
 .tab-pane:top .tab-header-area .headers-region
 {
   -fx-cursor : hand;
@@ -232,7 +247,7 @@ Text,
 *
 *************************************************************************************/
 
-.button,
+.button, .date-picker, .combo-box,
 .tab-pane:top .tab-header-area .headers-region .tab:top
 {
   -fx-pref-height : 40px;
@@ -494,6 +509,9 @@ Text,
     /* -fx-font-size: 1.333333em; /* 16 */
 }
 
+
+
+
 .combo-box-base:hover {
 
     /* -fx-background-color: transparent, #909090, transparent, white; */
@@ -529,28 +547,35 @@ Text,
   -fx-background-color : transparent;
 }
 
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover {
+    -fx-background-color : -light-gray;
+}
 
-.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled
 {
     -fx-background-color : -list-fill;
     -fx-padding: 8;
 }
 
-.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:hover{
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover .text {
+    -fx-fill : -text-color;
     -fx-text-fill: white;
 }
 
-.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected{
-    -fx-background-color: -light-gray;
-    -fx-text-fill: -text-color;
-}
-
-.combo-box .list-cell:filled:selected .text
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected .text
 {
-  /* -fx-fill : -text-color; */
+    -fx-fill: -inner-text;
 }
 
-.combo-box .list-view{
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected {
+    -fx-background-color: -base;
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover .text {
+     -fx-fill: -inner-text;
+}
+
+.combo-box .list-view {
   -fx-background-color : white;
   -fx-border-color : -box-fill;
   -fx-effect : null;
@@ -571,9 +596,12 @@ Text,
     -fx-cursor : default;
 }
 
-.context-menu .menu-item:hover .text {
+.context-menu .menu-item:focused .text
+{
     -fx-fill : -inner-text;
 }
+
+
 
 .context-menu .menu-item {
     -fx-cursor : hand;
@@ -759,8 +787,11 @@ Text,
 
 .toggle-button
  {
-  -fx-text-fill : white;
   -fx-border-width : 0px;
+}
+
+.toggle-button .text {
+    -fx-fill : -inner-text;
 }
 
 .gn-buttons .gn-close, .gn-buttons .gn-minimize, .gn-buttons .gn-maximize,
@@ -911,7 +942,6 @@ Text,
 
 .date-picker-popup > * > .today:hover,
 .date-picker-popup > * > .today.selected {
-
     -fx-text-fill : white;
 }
 
@@ -921,15 +951,13 @@ Text,
     /* -fx-background-insets: 1, 2, 3; */
 }
 .date-picker-popup > * > .day-cell:hover,
+.date-picker-popup > * > .day-cell:hover .text,
 .date-picker-popup > * > .selected
  {
+    -fx-fill : -inner-text;
     -fx-background-color: white, white, -base;
     /* -fx-text-fill : -light-gray; */
 }
-
-
-
-
 
 .split-menu-button .label {
   -fx-background-color : transparent;
@@ -1001,6 +1029,10 @@ Text,
   -fx-background-insets : 0px;
   -fx-border-width : 0px;
   -fx-text-fill : white;
+}
+
+.menu-bar>*.container>*.menu-button>*.label .text {
+    -fx-fill : -inner-text;
 }
 
 .menu-bar>*.container>*.menu-button:hover  {
@@ -1370,7 +1402,7 @@ Text,
 }
 
 .scroll-pane:fitToWidth .viewport {
-  -fx-background-color : -background-color;
+  -fx-background-color : transparent;
 }
 
 .scroll-bar > .thumb{
@@ -1574,6 +1606,10 @@ Text,
     -fx-effect: null;
 }
 
+.tooltip .text {
+    -fx-fill : -inner-text;
+}
+
 /************************************************************************************
 *
 *               #Colors
@@ -1707,10 +1743,6 @@ Text,
 *
 *************************************************************************************/
 
-
-
-
-
 .elevator, .flat:focused {
   -fx-effect: dropshadow( gaussian , rgba(0,0,0,.2) , 5, 0 , 0 , 0 );
 }
@@ -1719,10 +1751,24 @@ Text,
   -fx-effect: dropshadow( gaussian , rgba(0,0,0,.2) , 20, 0 , 0 , 0 );
 }
 
-.toggle-light {
-  -fx-background-color : white;
-  -fx-text-fill : -gray;
+.toggle-light,
+.toggle-light .text
+ {
+  -fx-background-color : transparent;
+  -fx-fill : -text-color;
   -fx-border-width : 1px;
+}
+
+.toggle-light:focused:selected .text,
+.toggle-light:selected:hover .text,
+.toggle-light:selected .text
+{
+    -fx-fill : -inner-text;
+}
+
+.toggle-light:focused:selected:hover .text
+{
+    -fx-fill : -text-color;
 }
 
 .toggle-light:focused,
@@ -1730,22 +1776,19 @@ Text,
 .toggle-light:selected,
 .toggle-light:selected SVGPath
 {
-
     -fx-effect : null;
-    -fx-text-fill : white;
-    -fx-background-color : -primary;
+    -fx-text-fill : -inner-text;
+    -fx-background-color : -base;
     -fx-fill : WHITE;
 }
 
 .toggle-light:hover,
 .toggle-light:hover SVGPath
 {
-  -fx-background-color : derive(-primary, 70%);
+  -fx-background-color : derive(-base, 70%);
   -fx-text-fill : WHITE;
   -fx-fill : white;
 }
-
-
 
 .toggle-center {
   -fx-background-radius : 0;

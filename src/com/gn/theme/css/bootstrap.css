@@ -54,6 +54,14 @@
 *
 *************************************************************************************/
 
+.background-color {
+    -fx-background-color : -background-color;
+}
+
+.foreground-color {
+    -fx-background-color : -foreground-color;
+}
+
 .outlined, .outlined:hover, .btn-flat, .btn-flat:hover, .btn-transparent:focused,
 .btn-transparent, .btn-transparent:pressed, .btn-transparent:hover
 {

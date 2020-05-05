@@ -82,7 +82,6 @@
                                           <ToggleButton mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" selected="true" text="Day">
                                              <styleClass>
                                                 <String fx:value="toggle-left" />
-                                                <String fx:value="btn-primary" />
                                                 <String fx:value="toggle-inner" />
                                              </styleClass>
                                              <toggleGroup>
@@ -91,14 +90,12 @@
                                           <ToggleButton layoutX="369.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Week" toggleGroup="$t1">
                                              <styleClass>
                                                 <String fx:value="toggle-center" />
-                                                <String fx:value="btn-primary" />
                                                 <String fx:value="toggle-inner" />
                                              </styleClass>
                                           </ToggleButton>
                                           <ToggleButton layoutX="474.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Year" toggleGroup="$t1">
                                              <styleClass>
                                                 <String fx:value="toggle-right" />
-                                                <String fx:value="btn-primary" />
                                                 <String fx:value="toggle-inner" />
                                              </styleClass>
                                           </ToggleButton>
@@ -110,7 +107,7 @@
                                              <styleClass>
                                                 <String fx:value="toggle-light" />
                                                 <String fx:value="toggle-left" />
-                                                <String fx:value="border-primary" />
+                                                <String fx:value="border-base" />
                                              </styleClass>
                                              <toggleGroup>
                                                 <ToggleGroup fx:id="t2" />
@@ -118,7 +115,7 @@
                                           </ToggleButton>
                                           <ToggleButton layoutX="369.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" selected="true" text="Week" toggleGroup="$t2">
                                              <styleClass>
-                                                <String fx:value="border-primary" />
+                                                <String fx:value="border-base" />
                                                 <String fx:value="toggle-light" />
                                                 <String fx:value="toggle-center" />
                                              </styleClass>
@@ -127,17 +124,18 @@
                                              <styleClass>
                                                 <String fx:value="toggle-light" />
                                                 <String fx:value="toggle-right" />
-                                                <String fx:value="border-primary" />
+                                                <String fx:value="border-base" />
                                              </styleClass>
                                           </ToggleButton>
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" layoutX="20.0" layoutY="456.0" prefWidth="478.0">
                                        <children>
-                                          <ToggleButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" style="-fx-border-color: -primary transparent -primary -primary;" text="On">
+                                          <ToggleButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="On">
                                              <styleClass>
                                                 <String fx:value="toggle-light" />
                                                 <String fx:value="toggle-left" />
+                                                <String fx:value="border-base" />
                                              </styleClass>
                                              <graphic>
                                                 <SVGPath content="M15 15H3v2h12v-2zm0-8H3v2h12V7zM3 13h18v-2H3v2zm0 8h18v-2H3v2zM3 3v2h18V3H3z" fill="#00000067" />
@@ -146,19 +144,21 @@
                                                 <ToggleGroup fx:id="t3" />
                                              </toggleGroup>
                                           </ToggleButton>
-                                          <ToggleButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" style="-fx-border-color: -primary transparent;" text="Week" toggleGroup="$t3">
+                                          <ToggleButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Week" toggleGroup="$t3">
                                              <styleClass>
                                                 <String fx:value="toggle-light" />
                                                 <String fx:value="toggle-center" />
+                                                <String fx:value="border-base" />
                                              </styleClass>
                                              <graphic>
                                                 <SVGPath content="M3 21h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18V7H3v2zm0-6v2h18V3H3z" fill="#00000066" />
                                              </graphic>
                                           </ToggleButton>
-                                          <ToggleButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" selected="true" style="-fx-border-color: -primary -primary -primary transparent;" text="Year" toggleGroup="$t3">
+                                          <ToggleButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" selected="true" text="Year" toggleGroup="$t3">
                                              <styleClass>
                                                 <String fx:value="toggle-light" />
                                                 <String fx:value="toggle-right" />
+                                                <String fx:value="border-base" />
                                              </styleClass>
                                              <graphic>
                                                 <SVGPath content="M3 21h18v-2H3v2zm6-4h12v-2H9v2zm-6-4h18v-2H3v2zm6-4h12V7H9v2zM3 3v2h18V3H3z" fill="#00000067" />
@@ -168,19 +168,21 @@
                                     </HBox>
                                     <HBox alignment="CENTER" layoutX="20.0" layoutY="493.0" prefWidth="478.0">
                                        <children>
-                                          <ToggleButton mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" style="-fx-border-color: -primary transparent -primary -primary;" text="On">
+                                          <ToggleButton mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="On">
                                              <styleClass>
                                                 <String fx:value="toggle-light" />
                                                 <String fx:value="toggle-left" />
+                                                <String fx:value="border-base" />
                                              </styleClass>
                                              <toggleGroup>
                                                 <ToggleGroup fx:id="t4" />
                                              </toggleGroup>
                                           </ToggleButton>
-                                          <ToggleButton layoutX="474.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" selected="true" style="-fx-border-color: -primary -primary -primary transparent;" text="Off" toggleGroup="$t4">
+                                          <ToggleButton layoutX="474.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" selected="true" text="Off" toggleGroup="$t4">
                                              <styleClass>
                                                 <String fx:value="toggle-light" />
                                                 <String fx:value="toggle-right" />
+                                                <String fx:value="border-base" />
                                              </styleClass>
                                           </ToggleButton>
                                        </children>

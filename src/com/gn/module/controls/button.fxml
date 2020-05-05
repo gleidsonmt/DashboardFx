@@ -53,7 +53,7 @@
                                     <String fx:value="title" />
                                  </styleClass>
                               </Label>
-                              <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                              <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                                  <children>
                                     <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
                                        <children>
@@ -111,7 +111,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                            <children>
                               <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="10.0" prefHeight="104.0" prefWidth="940.0" vgap="10.0">
                                  <children>
@@ -158,7 +158,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                            <children>
                               <HBox alignment="CENTER" prefWidth="478.0" spacing="20.0">
                                  <children>
@@ -182,7 +182,7 @@
                      <content>
                         <VBox alignment="CENTER" prefHeight="559.0" prefWidth="937.0" spacing="10.0">
                            <children>
-                              <VBox prefHeight="239.0" prefWidth="890.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                              <VBox prefHeight="239.0" prefWidth="890.0" VBox.vgrow="ALWAYS">
                                  <children>
                                     <Label prefHeight="58.0" prefWidth="201.0" text="Size">
                                        <styleClass>
@@ -212,7 +212,7 @@
                                           <String fx:value="title" />
                                        </styleClass>
                                     </Label>
-                                    <HBox alignment="CENTER" minHeight="-Infinity" prefHeight="176.0" prefWidth="918.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                                    <HBox alignment="CENTER" minHeight="-Infinity" prefHeight="176.0" prefWidth="918.0" spacing="10.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                                        <children>
                                           <Button layoutX="406.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" styleClass="btn-small" text="Small" />
                                           <Button layoutX="461.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="100.0" text="Default" />
@@ -273,7 +273,7 @@
                                     </Label>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="239.0" prefWidth="890.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                              <VBox alignment="CENTER" prefHeight="239.0" prefWidth="890.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                                  <children>
                                     <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="5.0" vgap="5.0">
                                        <children>

@@ -31,7 +31,7 @@
                      <children>
                         <VBox>
                            <children>
-                              <HBox fx:id="barHeader" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="904.0" style="-fx-border-width: 0 0 1 0;" styleClass="border">
+                              <HBox fx:id="barHeader" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="904.0" style="-fx-border-width: 0 0 1 0;">
                                  <children>
                                     <Label fx:id="title" prefHeight="23.0" styleClass="h4" text="Dashboard" textFill="#0000008c">
                                        <font>
@@ -42,6 +42,10 @@
                                        </HBox.margin>
                                     </Label>
                                  </children>
+                                 <styleClass>
+                                    <String fx:value="border" />
+                                    <String fx:value="background-color" />
+                                 </styleClass>
                               </HBox>
                            </children>
                         </VBox>
@@ -64,7 +68,6 @@
     <stylesheets>
         <URL value="@../../theme/css/material-color.css" />
         <URL value="@../../theme/css/skeleton.css" />
-        <URL value="@../../theme/css/light-green.css" />
         <URL value="@../../theme/css/bootstrap.css" />
         <URL value="@../../theme/css/shape.css" />
         <URL value="@../../theme/css/typographic.css" />

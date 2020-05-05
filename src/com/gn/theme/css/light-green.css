@@ -3,6 +3,7 @@
 
   /* Initial themeing */
   -base    : #2BBBAD;
+  -secondary-color : #2BBBAD80;
   -hover   : -light-gray;
   -pressed : -base;
 
@@ -12,7 +13,8 @@
   -dark-text        : -elegant;
 
   /* icon and tex */
-  -background-color : #00000002;
+  -foreground-color : derive(-light-gray, 45%);
+  -background-color : white;
   -icon-color       : -dark-gray;
   -text-color       : -dark-gray;
 
@@ -32,7 +34,7 @@
 
   /* custom styles */
   -separator-color  : -light-gray;
-  -box-search-color : -separator-color;
+  -box-search-color : white;
   -box-search-fill  : -text-color;
 
   -fx-background-color : -background-color;
@@ -42,8 +44,6 @@
 .scroll-pane {
     -fx-background-color : #00000002;
 }
-
-
 
 .box-light
 {
@@ -175,18 +175,18 @@
 
 .main-chart
 {
-  -fx-background-color : transparent;
+  -fx-background-color : -background-color;
 }
 
 .main-chart .axis {}
 
 .main-chart .chart-series-area-fill  {
-  -fx-fill : linear-gradient(to left, -base, -success);
+  -fx-fill : linear-gradient(to top, -base, derive(-base, -20%));
   /* -fx-fill : linear-gradient(to bottom, white, transp); */
 }
 
 .main-chart .chart-series-area-line {
-    -fx-stroke: linear-gradient(to left, -base, -success);
+    -fx-stroke: linear-gradient(to top, -base, derive(-base, -20%));
     -fx-stroke-width: 2px;
 }
 

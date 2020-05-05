@@ -49,12 +49,7 @@
                                              <String fx:value="Item 1" />
                                              <String fx:value="Item 2" />
                                              <String fx:value="Item 3" />
-                                             <String fx:value="Item 3" />
-                                             <String fx:value="Item 3" />
-                                             <String fx:value="Item 3" />
-                                             <String fx:value="Item 3" />
-                                             <String fx:value="Item 3" />
-                                             <String fx:value="Item 3" />
+
                                           </FXCollections>
                                        </items>
                                        <contextMenu>

@@ -3,7 +3,6 @@
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
@@ -35,12 +34,12 @@
                                           <String fx:value="title" />
                                        </styleClass>
                                     </Label>
-                                    <Button mnemonicParsing="false" text="Button">
+                                    <Label layoutX="405.0" layoutY="19.0" prefHeight="29.0" prefWidth="201.0" text="Click in one toggle to copy">
                                        <styleClass>
-                                          <String fx:value="outlined" />
-                                          <String fx:value="btn-profile" />
+                                          <String fx:value="h5" />
+                                          <String fx:value="title" />
                                        </styleClass>
-                                    </Button>
+                                    </Label>
                                  </children>
                               </VBox>
                               <GridPane fx:id="grid" alignment="CENTER" VBox.vgrow="ALWAYS">
@@ -96,7 +95,7 @@
                   </ScrollPane>
                </content>
             </Tab>
-            <Tab closable="false" text="Colors">
+            <Tab closable="false" text="Css Colors">
                <content>
                   <ScrollPane fitToWidth="true">
                      <content>
@@ -104,7 +103,7 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="86.0" prefWidth="890.0">
                                  <children>
-                                    <Label prefHeight="29.0" prefWidth="201.0" text="Material Color">
+                                    <Label prefHeight="29.0" prefWidth="201.0" text="Use this classes">
                                        <styleClass>
                                           <String fx:value="h3" />
                                           <String fx:value="title" />

@@ -53,18 +53,25 @@ public class Main implements Initializable, ActionView {
 
     @FXML private RadioButton available;
 
-    private final UserDetail        userDetail          = new UserDetail("Jane Doe", "Jane", "SubTitle");
-    private final BadgeMessages     badgeMessages       = new BadgeMessages();
-    private final BadgeNotification badgeNotification   = new BadgeNotification();
-    private final BadgeTasks        badgeAlerts         = new BadgeTasks();
-    private final BadgeSettings     badgeSettings       = new BadgeSettings("Text", "Subtitle");
-    private final HBox              contentBadges       = new HBox();
+    private UserDetail        userDetail       ;
+    private BadgeMessages     badgeMessages    ;
+    private BadgeNotification badgeNotification;
+    private BadgeTasks        badgeAlerts      ;
+    private BadgeSettings     badgeSettings    ;
+    private HBox              contentBadges    ;
 
 
     private Button hamburger = new Button();
 
     @Override
     public void initialize(URL location, ResourceBundle resources)  {
+
+        userDetail          = new UserDetail("Jane Doe", "Jane", "SubTitle");
+        badgeMessages       = new BadgeMessages();
+        badgeNotification   = new BadgeNotification();
+        badgeAlerts         = new BadgeTasks();
+        badgeSettings       = new BadgeSettings("Text", "Subtitle");
+        contentBadges       = new HBox();
 
         hamburger.setMaxWidth(40);
         hamburger.setPrefWidth(40);

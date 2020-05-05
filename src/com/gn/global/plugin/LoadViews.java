@@ -76,9 +76,9 @@ public class LoadViews extends Service {
     @Override
     protected synchronized void succeeded() {
         super.succeeded();
-        System.out.println("+----------------------------------+");
-        System.out.println("|        LoadViews Succeeded       |");
-        System.out.println("+----------------------------------+");
+//        System.out.println("+----------------------------------+");
+//        System.out.println("|        LoadViews Succeeded       |");
+//        System.out.println("+----------------------------------+");
 
         try {
             ViewManager.INSTANCE.navigate(App.getDecorator(), "main");
@@ -99,9 +99,9 @@ public class LoadViews extends Service {
     @Override
     public void start() {
         super.start();
-        System.out.println("+----------------------------------+");
-        System.out.println("|        Starting Load Views       |");
-        System.out.println("+----------------------------------+");
+//        System.out.println("+----------------------------------+");
+//        System.out.println("|        Starting Load Views       |");
+//        System.out.println("+----------------------------------+");
     }
 
     @Override
@@ -112,7 +112,7 @@ public class LoadViews extends Service {
             protected Object call()  {
                 Label lbl = (Label) App.getDecorator().getScene().lookup("#labelLoading");
                 for (View view : views) {
-                    System.out.println(view);
+//                    System.out.println(view);
                     try {
                         ViewManager.INSTANCE.put(createView(view));
                     } catch (LoadViewException e) {

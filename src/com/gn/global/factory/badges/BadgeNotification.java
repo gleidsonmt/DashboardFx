@@ -146,7 +146,6 @@ public class BadgeNotification extends GNControl {
 
         listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
 
-        pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
         pop.setContentNode(root);
         pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
         pop.setArrowIndent(0);
@@ -154,6 +153,8 @@ public class BadgeNotification extends GNControl {
         pop.setCloseButtonEnabled(false);
         pop.setHeaderAlwaysVisible(false);
         pop.setCornerRadius(0);
+
+        pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
 
         // tests
 

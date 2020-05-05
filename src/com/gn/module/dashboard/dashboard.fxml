@@ -25,9 +25,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="root" prefHeight="1058.0" prefWidth="1843.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.dashboard.Dashboard">
+<StackPane fx:id="root" prefHeight="1058.0" prefWidth="1843.0" styleClass="foreground-color" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.dashboard.Dashboard">
    <children>
-      <VBox spacing="20.0">
+      <VBox spacing="20.0" styleClass="foreground-color">
          <children>
             <GridPane fx:id="tiles" hgap="5.0" vgap="5.0">
                <columnConstraints>
@@ -48,7 +48,7 @@
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <VBox prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnSpan="2">
+                  <VBox prefWidth="200.0" GridPane.columnSpan="2">
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
@@ -83,6 +83,7 @@
                      </children>
                      <styleClass>
                         <String fx:value="border" />
+                        <String fx:value="background-color" />
                         <String fx:value="border-1" />
                         <String fx:value="col-sm-6" />
                         <String fx:value="col-xl-2" />
@@ -91,7 +92,7 @@
                         <String fx:value="col-xs-12" />
                      </styleClass>
                   </VBox>
-                  <VBox prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.columnSpan="2">
+                  <VBox prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="2">
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
@@ -126,6 +127,7 @@
                      </children>
                      <styleClass>
                         <String fx:value="border" />
+                        <String fx:value="background-color" />
                         <String fx:value="border-1" />
                         <String fx:value="col-sm-6" />
                         <String fx:value="col-xl-2" />
@@ -134,7 +136,7 @@
                         <String fx:value="col-xs-12" />
                      </styleClass>
                   </VBox>
-                  <VBox prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="4" GridPane.columnSpan="2">
+                  <VBox prefWidth="200.0" GridPane.columnIndex="4" GridPane.columnSpan="2">
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
@@ -169,6 +171,7 @@
                      </children>
                      <styleClass>
                         <String fx:value="border" />
+                        <String fx:value="background-color" />
                         <String fx:value="border-1" />
                         <String fx:value="col-sm-6" />
                         <String fx:value="col-xl-2" />
@@ -177,7 +180,7 @@
                         <String fx:value="col-xs-12" />
                      </styleClass>
                   </VBox>
-                  <VBox prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="6" GridPane.columnSpan="2">
+                  <VBox prefWidth="200.0" GridPane.columnIndex="6" GridPane.columnSpan="2">
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
@@ -212,6 +215,7 @@
                      </children>
                      <styleClass>
                         <String fx:value="border" />
+                        <String fx:value="background-color" />
                         <String fx:value="border-1" />
                         <String fx:value="col-sm-6" />
                         <String fx:value="col-xl-2" />
@@ -220,7 +224,7 @@
                         <String fx:value="col-xs-12" />
                      </styleClass>
                   </VBox>
-                  <VBox prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="8" GridPane.columnSpan="2">
+                  <VBox prefWidth="200.0" GridPane.columnIndex="8" GridPane.columnSpan="2">
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
@@ -255,6 +259,7 @@
                      </children>
                      <styleClass>
                         <String fx:value="border" />
+                        <String fx:value="background-color" />
                         <String fx:value="border-1" />
                         <String fx:value="col-sm-6" />
                         <String fx:value="col-xl-2" />
@@ -263,7 +268,7 @@
                         <String fx:value="col-xs-12" />
                      </styleClass>
                   </VBox>
-                  <VBox layoutX="1403.0" layoutY="10.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="10" GridPane.columnSpan="2">
+                  <VBox layoutX="1403.0" layoutY="10.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.columnSpan="2">
                      <children>
                         <HBox prefHeight="93.0" prefWidth="345.0">
                            <children>
@@ -298,6 +303,7 @@
                      </children>
                      <styleClass>
                         <String fx:value="border" />
+                        <String fx:value="background-color" />
                         <String fx:value="border-1" />
                         <String fx:value="col-sm-6" />
                         <String fx:value="col-xl-2" />
@@ -316,9 +322,13 @@
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <VBox style="-fx-background-color: white;">
+                  <VBox>
                      <children>
-                        <CurveFittedAreaChart fx:id="curve" alternativeColumnFillVisible="true" alternativeRowFillVisible="false" createSymbols="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="300.0" styleClass="main-chart" title="Curve Chart" verticalGridLinesVisible="false" verticalZeroLineVisible="false" />
+                        <CurveFittedAreaChart fx:id="curve" alternativeRowFillVisible="false" createSymbols="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" legendVisible="false" prefHeight="300.0" title="Curve Chart" verticalGridLinesVisible="false" verticalZeroLineVisible="false" VBox.vgrow="ALWAYS">
+                           <styleClass>
+                              <String fx:value="main-chart" />
+                              <String fx:value="background-color" />
+                           </styleClass></CurveFittedAreaChart>
                      </children>
                      <styleClass>
                         <String fx:value="border" />
@@ -357,6 +367,7 @@
                                  <styleClass>
                                     <String fx:value="border" />
                                     <String fx:value="border-1" />
+                                    <String fx:value="background-color" />
                                  </styleClass>
                               </DonutChart>
                               <HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="637.0">
@@ -379,6 +390,7 @@
                                  <styleClass>
                                     <String fx:value="border" />
                                     <String fx:value="border-1" />
+                                    <String fx:value="background-color" />
                                  </styleClass>
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" top="5.0" />
@@ -430,7 +442,11 @@
                                                       </VBox>
                                                       <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS">
                                                          <children>
-                                                            <Label contentDisplay="GRAPHIC_ONLY" prefHeight="18.0" prefWidth="37.0" style="-fx-background-color: white;" styleClass="triangle" text="Label" translateY="-15.0" VBox.vgrow="ALWAYS" />
+                                                            <Label contentDisplay="GRAPHIC_ONLY" prefHeight="18.0" prefWidth="37.0" text="Label" translateY="-15.0" VBox.vgrow="ALWAYS">
+                                                               <styleClass>
+                                                                  <String fx:value="triangle" />
+                                                                  <String fx:value="background-color" />
+                                                               </styleClass></Label>
                                                             <HBox fillHeight="false" VBox.vgrow="ALWAYS">
                                                                <children>
                                                                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
@@ -439,7 +455,7 @@
                                                                         <Label layoutX="156.0" layoutY="54.0" text="Tweets" />
                                                                      </children>
                                                                   </VBox>
-                                                                  <VBox prefHeight="200.0" prefWidth="1.0" style="-fx-background-color: -light-gray;" />
+                                                                  <VBox prefHeight="200.0" prefWidth="1.0" style="-fx-background-color: -separator-color;" />
                                                                   <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                                                                      <children>
                                                                         <Label style="-fx-font-size: 30; -fx-text-fill: -twitter;" text="2,789" />
@@ -478,7 +494,11 @@
                                                       </VBox>
                                                       <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS">
                                                          <children>
-                                                            <Label contentDisplay="GRAPHIC_ONLY" prefHeight="18.0" prefWidth="37.0" style="-fx-background-color: white;" styleClass="triangle" text="Label" translateY="-15.0" VBox.vgrow="ALWAYS" />
+                                                            <Label contentDisplay="GRAPHIC_ONLY" prefHeight="18.0" prefWidth="37.0" text="Label" translateY="-15.0" VBox.vgrow="ALWAYS">
+                                                               <styleClass>
+                                                                  <String fx:value="triangle" />
+                                                                  <String fx:value="background-color" />
+                                                               </styleClass></Label>
                                                             <HBox fillHeight="false" VBox.vgrow="ALWAYS">
                                                                <children>
                                                                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
@@ -487,7 +507,7 @@
                                                                         <Label layoutX="156.0" layoutY="54.0" text="Friends" />
                                                                      </children>
                                                                   </VBox>
-                                                                  <VBox prefHeight="200.0" prefWidth="1.0" style="-fx-background-color: -light-gray;" />
+                                                                  <VBox prefHeight="200.0" prefWidth="1.0" style="-fx-background-color: -separator-color;" />
                                                                   <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                                                                      <children>
                                                                         <Label style="-fx-font-size: 30; -fx-text-fill: -facebook;" text="5,132" />
@@ -522,6 +542,7 @@
                               <String fx:value="col-xs-12" />
                               <String fx:value="col-lg-6" />
                               <String fx:value="col-xl-4" />
+                              <String fx:value="background-color" />
                            </styleClass>
                         </VBox>
                         <VBox alignment="TOP_CENTER" prefHeight="480.0" prefWidth="177.0" GridPane.columnIndex="8" GridPane.columnSpan="4">
@@ -744,6 +765,7 @@
                               <String fx:value="col-xs-12" />
                               <String fx:value="col-lg-6" />
                               <String fx:value="col-xl-4" />
+                              <String fx:value="background-color" />
                            </styleClass>
                         </VBox>
                      </children>

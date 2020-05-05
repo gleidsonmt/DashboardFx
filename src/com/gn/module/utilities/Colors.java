@@ -27,10 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.*;
@@ -53,7 +50,7 @@ public class Colors implements Initializable {
 
     private static final Pattern PATTERN    = Pattern.compile("(_[A]?[0-9]{2,3})");
     private static final Matcher MATCHER    = PATTERN.matcher("");
-    private static final int     BOX_WIDTH  = 60;
+    private static final int     BOX_WIDTH  = 100;
     private static final int     BOX_HEIGHT = 60;
 
     private ToggleGroup group = new ToggleGroup();
@@ -86,6 +83,7 @@ public class Colors implements Initializable {
             toggle.setAlignment(Pos.CENTER);
             toggle.setPrefSize(BOX_WIDTH, BOX_HEIGHT);
 
+
             boolean isBox = false;
 
             if(!color.name().contains("0")){
@@ -93,7 +91,8 @@ public class Colors implements Initializable {
                 toggle.setStyle("-fx-background-color : white; -fx-text-fill : -gray;" +
                         "-fx-border-color : transparent transparent -light-gray transparent;" +
                         "-fx-background-radius : 0");
-                toggle.setMinWidth(100D);
+//                toggle.setMinWidth(200);
+//                toggle.setPrefWidth(150D);
             } else {
                 toggle.setStyle("-fx-background-color : " +  formatHexString(color.get()) + ";" +
                         "-fx-background-radius : 0");
@@ -129,9 +128,13 @@ public class Colors implements Initializable {
                 }
             });
 
+            if(finalIsBox){
+                toggle.setToggleGroup(group);
+            }
+
             Tooltip tooltip = new Tooltip(text);
             Tooltip.install(toggle, tooltip);
-            grid.add(toggle, col, row);
+            grid.add(toggle, row, col);
             col++;
 
             if (row > 16) {
