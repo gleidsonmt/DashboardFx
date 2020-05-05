@@ -1,5 +1,7 @@
 
-
+.image-view {
+    -fx-image : url("../media/logo2.png");
+}
 
 .drawer
 {
