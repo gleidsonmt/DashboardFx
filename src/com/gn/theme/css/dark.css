@@ -6,4 +6,168 @@
 
     -text-color : white;
     -separator-color : derive(-elegant, 20%);
+    -icon-color : #ffffff99;
+    -box-fill : #ffffff90;
+
+    -fx-base : -background-color;
+}
+
+.combo-box-popup .color-palette {
+    -fx-background-color : -background-color;
+}
+
+.my-custom-color {
+    -fx-background-color: red;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ColorPicker                                                                 *
+ *                                                                             *
+ ******************************************************************************/
+
+/* the color over which the user is hovering */
+.color-palette-region > .color-square.hover-square {
+    -fx-background-color: -fx-faint-focus-color, white;
+    -fx-background-insets: -3,-1;
+    -fx-background-radius: 5,0;
+    -fx-scale-x: 1.5;
+    -fx-scale-y: 1.5;
+    -fx-border-color: -fx-focus-color;
+    -fx-border-insets: -1, -1;
+}
+
+/* ------- CUSTOM COLOR DIALOG ------- */
+
+
+
+.custom-color-dialog > .color-rect-pane {
+    -fx-spacing: 0.75em;
+    -fx-pref-height: 16.666667em;
+    -fx-alignment: top-left;
+    -fx-fill-height: true;
+}
+
+.custom-color-dialog .color-rect-pane .color-rect {
+    -fx-min-width: 16.666667em;
+    -fx-min-height: 16.666667em;
+}
+
+.custom-color-dialog .color-rect-pane .color-rect-border {
+    -fx-border-color: -background-color;
+}
+
+.custom-color-dialog > .color-rect-pane #color-rect-indicator {
+    -fx-background-color: null;
+    -fx-border-color: blue;
+    -fx-border-radius: 0.4166667em;
+    -fx-translate-x: -0.4166667em;
+    -fx-translate-y: -0.4166667em;
+    -fx-pref-width: 0.833333em;
+    -fx-pref-height: 0.833333em;
+    -fx-effect: dropshadow(three-pass-box, black, 2, 0.0, 0, 1);
+}
+
+.custom-color-dialog > .color-rect-pane > .color-bar {
+    -fx-min-width: 1.666667em;
+    -fx-min-height: 16.666667em;
+    -fx-max-width: 1.666667em;
+    -fx-border-color: derive(green, -20%);
+}
+
+.custom-color-dialog > .color-rect-pane > .color-bar > #color-bar-indicator {
+    -fx-border-radius: 0.333333em;
+    -fx-border-color: white;
+    -fx-effect: dropshadow(three-pass-box, black, 2, 0.0, 0, 1);
+    -fx-pref-width: 2em;
+    -fx-pref-height: 0.833333em;
+    -fx-translate-x: -0.1666667em;
+    -fx-translate-y: -0.4166667em;
+}
+
+.custom-color-dialog  {
+    -fx-background-color: green;
+}
+
+.custom-color-dialog .controls-pane .current-new-color-grid #current-new-color-border {
+    -fx-border-color: derive(-background-color, -20%);
+    -fx-border-width: 2px;
+}
+
+.custom-color-dialog .controls-pane .current-new-color-grid .color-rect {
+    -fx-min-width: 10.666667em;
+    -fx-min-height: 1.75em;
+    -fx-pref-width: 10.666667em;
+    -fx-pref-height: 1.75em;
+}
+
+.custom-color-dialog .controls-pane #spacer2 {
+    -fx-min-height: 1em;
+    -fx-max-height: 1em;
+    -fx-pref-height: 1em;
+}
+
+.custom-color-dialog .controls-pane #settings-pane {
+    -fx-hgap: 0.4166667em;
+    -fx-vgap: 0.3333333em;
+}
+
+.custom-color-dialog .controls-pane #settings-pane .settings-label {
+    -fx-min-width: 5.75em;
+}
+
+.custom-color-dialog .controls-pane #settings-pane .settings-unit {
+    -fx-max-width: 1.5em;
+    -fx-min-width: 1.5em;
+    -fx-pref-width: 1.5em;
+}
+
+.custom-color-dialog .controls-pane #settings-pane .slider {
+    -fx-pref-width: 8.25em;
+}
+
+.custom-color-dialog .controls-pane .color-input-field {
+    -fx-pref-column-count: 3;
+    -fx-max-width: 3.25em;
+    -fx-min-width: 3.25em;
+    -fx-pref-width: 3.25em;
+}
+
+.custom-color-dialog .controls-pane .web-field {
+    -fx-pref-column-count: 6;
+    -fx-pref-width: 8.25em;
+}
+
+.custom-color-dialog .controls-pane #spacer-side {
+    -fx-min-width: 0.5em;
+    -fx-pref-width: 0.5em;
+}
+
+.custom-color-dialog .controls-pane #spacer-bottom {
+    -fx-pref-height: 0.833333em;
+    -fx-min-height: 0.833333em;
+}
+
+.custom-color-dialog .controls-pane .customcolor-controls-background {
+    -fx-background-color: -background-color;
+    -fx-background-insets:
+        0.8333333em 0 0.4166667em 0,
+        1em 0.166667em 0.5833333em 0.166667em;
+    -fx-background-radius: 0.3333333em, 0.166667em;
+}
+
+.custom-color-dialog .controls-pane .current-new-color-grid .label {
+    -fx-padding: 0 0 0 0.4166667em;
+}
+
+.custom-color-dialog .controls-pane #buttons-hbox {
+    -fx-spacing: 0.333333em;
+    -fx-padding: 1em 0 0 0;
+    -fx-alignment: bottom-right;
+}
+
+/* The fix for RT-37494 forces the web color text's major direction to
+ * LTR. The following keeps the text right-aligned when in RTL mode. */
+.custom-color-dialog .webcolor-field:dir(rtl) > .text-field:dir(ltr) {
+    -fx-alignment: baseline-right;
 }

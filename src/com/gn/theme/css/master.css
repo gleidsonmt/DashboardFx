@@ -304,3 +304,19 @@
     -fx-background-radius : 100px;
 }
 
+.dialog-pane {
+    -fx-background-color: red;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: yellow;
+}
+
+.dialog-pane:header .header-panel {
+    -fx-background-color: blue;
+}
+
+.dialog-pane:header .header-panel .label {
+    -fx-font-style: italic;
+    -fx-font-size: 2em;
+}

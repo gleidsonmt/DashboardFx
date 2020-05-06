@@ -30,6 +30,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.scenicview.ScenicView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -103,9 +104,7 @@ public class App extends Application {
         initialScene();
         hostServices = getHostServices();
 
-        stylesheets = decorator.getScene().getStylesheets();
-//
-        stylesheets.addAll(
+        decorator.getScene().getStylesheets().addAll(
                 getClass().getResource("/com/gn/theme/css/fonts.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/material-color.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/skeleton.css").toExternalForm(),

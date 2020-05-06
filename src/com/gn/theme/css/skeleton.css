@@ -247,7 +247,7 @@ Text,
 *
 *************************************************************************************/
 
-.button, .date-picker, .combo-box,
+.button, .date-picker, .combo-box, .choice-box, .color-picker,
 .tab-pane:top .tab-header-area .headers-region .tab:top
 {
   -fx-pref-height : 40px;
@@ -492,7 +492,8 @@ Text,
 .choice-box .open-button .arrow
 {
     -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em; /* (2/3 * 4.25) 4 (2/3 * 4.25) 4 */
-    -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
+    -fx-padding: 4 7 4 7;
+    -fx-shape: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z";
     -fx-background-insets: 0 0 0 0, 0;
     -fx-background-color : -icon-color;
 }
@@ -583,7 +584,7 @@ Text,
 
 
 .context-menu {
-    -fx-background-color: white;
+    -fx-background-color: -background-color;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 0 0 0 0, 0 0 0 0, 10;
     -fx-padding: 0.5em 0em 0.5em 0em; /* 6 0 6 0 */
@@ -601,15 +602,12 @@ Text,
     -fx-fill : -inner-text;
 }
 
-
-
 .context-menu .menu-item {
     -fx-cursor : hand;
 }
 
 .context-menu .menu-item:focused SVGPath {
-    -fx-background-color : red;
-    -fx-fill : -inner-text;
+    -fx-fill : -icon-color;
 }
 
 .context-menu:show-mnemonics .mnemonic-underline {
@@ -627,11 +625,6 @@ Text,
   -fx-font-family : Roboto;
   -fx-text-fill : -text-color;
 }
-
-
-
-
-
 
 /* TODO: try to scope the menu-item style to the contextmenu */
 .menu-item {
@@ -1043,8 +1036,8 @@ Text,
 
 
 .color-picker .arrow-button .arrow {
-  -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em; /* (2/3 * 4.25) 4 (2/3 * 4.25) 4 */
-  -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
+  -fx-padding: 4 7 4 7;
+  -fx-shape: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z";
   -fx-background-color : -icon-color;
 }
 
@@ -1083,11 +1076,9 @@ Text,
     -fx-background-color: black;
 }
 /* ------- CUSTOM COLOR DIALOG ------- */
-.custom-color-dialog > .color-rect-pane {
-    -fx-spacing: 0.75em;
-    -fx-pref-height: 16.666667em;
-    -fx-alignment: top-left;
-    -fx-fill-height: true;
+
+.custom-color-dialog {
+    -fx-background-color: green;
 }
 
 .custom-color-dialog .color-rect-pane .color-rect {
@@ -1128,12 +1119,12 @@ Text,
 }
 
 .custom-color-dialog  {
-    -fx-background-color: white;
+    -fx-background-color:transparent;
     -fx-padding: 1.25em;
     -fx-spacing: 1.25em;
 }
 .custom-color-dialog .controls-pane .current-new-color-grid #current-new-color-border {
-    -fx-border-color: -medium-gray;
+    -fx-border-color: green;
     -fx-border-width: 1px;
 }
 
@@ -1192,9 +1183,8 @@ Text,
     -fx-pref-width: 0.5em;
 }
 
-.custom-color-dialog .controls-pane #spacer-bottom {
-    -fx-pref-height: 0.833333em;
-    -fx-min-height: 0.833333em;
+.custom-color-dialog .controls-pane {
+    -fx-background-color: -background-color;
 }
 
 .custom-color-dialog .controls-pane .customcolor-controls-background {

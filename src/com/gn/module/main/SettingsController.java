@@ -18,15 +18,19 @@ package com.gn.module.main;
 
 import com.gn.App;
 import com.gn.decorator.GNDecorator;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -65,6 +69,8 @@ public class SettingsController implements Initializable {
             e.setOnMouseClicked(mouseEvent -> {
                 VBox drawer = (VBox) App.getDecorator().getScene().lookup("#drawer");
 
+
+
                 if(drawer.getStylesheets().size() < 2 && !e.getText().equals("Default")){
                     drawer.getStylesheets().add(getClass().getResource("/com/gn/module/main/style/" + e.getText().toLowerCase().replaceAll(" ", "-") + ".css").toExternalForm());
                 } else if( drawer.getStylesheets().size() > 1){
@@ -83,13 +89,17 @@ public class SettingsController implements Initializable {
     }
 
     private void changeTheme(boolean light){
+
+
         if(light){
             App.getDecorator().initTheme(GNDecorator.Theme.DEFAULT);
-            App.getDecorator().getScene().getStylesheets().removeAll(getClass().getResource("/com/gn/theme/css/dark.css").toExternalForm());
+            App.getDecorator().getScene().getStylesheets().remove(getClass().getResource("/com/gn/theme/css/dark.css").toExternalForm());
         }
         else {
+            App.getDecorator().getScene().setUserAgentStylesheet(getClass().getResource("/com/gn/theme/css/dark.css").toExternalForm());
             App.getDecorator().initTheme(GNDecorator.Theme.DARKULA);
             App.getDecorator().getScene().getStylesheets().addAll(getClass().getResource("/com/gn/theme/css/dark.css").toExternalForm());
+
         }
     }
 }

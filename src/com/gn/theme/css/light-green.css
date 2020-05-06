@@ -39,10 +39,21 @@
 
   -fx-background-color : -background-color;
 
+  -fx-base : -background-color;
+
+}
+
+.dialog-pane {
+   -fx-background-color: black;
+   -fx-padding: 0;
 }
 
 .scroll-pane {
     -fx-background-color : #00000002;
+}
+
+.custom-color-dialog  {
+    -fx-background-color: -background-color;
 }
 
 .box-light
