@@ -165,6 +165,7 @@
   -fx-background-color : -base;
 }
 
+
 /************************************************************************************
 *
 *               @-fx-border-width
@@ -395,15 +396,15 @@
 *
 *************************************************************************************/
 
-.icon-warning {
+.badge-cell .icon-warning {
     -fx-fill : -warning;
 }
 
-.icon-info {
+.badge-cell .icon-info {
     -fx-fill : -info;
 }
 
-.icon-danger {
+.badge-cell .icon-danger {
     -fx-fill : -danger;
 }
 

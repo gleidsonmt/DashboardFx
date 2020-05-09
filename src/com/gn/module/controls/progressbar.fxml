@@ -47,7 +47,7 @@
                            </TextFlow>
                         </children>
                      </VBox>
-                     <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                     <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                         <children>
                            <ProgressBar prefHeight="0.0" prefWidth="200.0" progress="0.34" styleClass="progress-bar-success:" />
                         </children>
@@ -80,7 +80,7 @@
                                  </TextFlow>
                               </children>
                            </VBox>
-                           <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="239.0" prefWidth="890.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                           <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="239.0" prefWidth="890.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                               <children>
                                  <HBox alignment="CENTER" layoutX="10.0" layoutY="165.0" prefWidth="478.0" spacing="10.0">
                                     <children>

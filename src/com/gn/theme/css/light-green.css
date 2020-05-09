@@ -168,7 +168,6 @@
     -fx-spacing: 1.25em;
 }
 
-
 .table-view, .tree-table-view
 {
   -fx-background-color : white;
@@ -209,3 +208,4 @@
 .main-chart .default-color0 {
  -fx-background-color : linear-gradient(to right,   derive(#02796b, 50%) , derive(#73e57b, 50%)) ;
 }
+

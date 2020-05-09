@@ -16,6 +16,8 @@
  */
 package com.gn.module.controls;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSlider;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
@@ -28,6 +30,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Path;
+import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
 
 import java.io.File;
@@ -45,11 +48,12 @@ import java.util.ResourceBundle;
  */
 public class MediaView implements Initializable {
 
-    @FXML private Slider slider;
-    @FXML private Slider volumeSlider;
+    @FXML private JFXSlider slider;
+    @FXML private JFXSlider volumeSlider;
     @FXML private javafx.scene.media.MediaView mediaView;
     @FXML private Label playTime;
     @FXML private FontAwesomeIconView icon;
+    @FXML private JFXButton btnPlay;
 
     private Duration duration;
 //    private Media media = new Media("file:///C:/Users/gleid/Videos/Android.mp4");
@@ -59,9 +63,19 @@ public class MediaView implements Initializable {
     private boolean stopRequested = false;
     private boolean atEndOfMedia = false;
 
+
+
+    private SVGPath iconPlay = new SVGPath();
+    private SVGPath iconPause = new SVGPath();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        iconPlay.setContent("M8 5v14l11-7z");
+        iconPause.setContent("M6 6h12v12H6z");
+
+        iconPlay.getStyleClass().add("icon");
+        iconPause.getStyleClass().add("icon");
 
         media = new Media(new File("src/com/gn/module/media/Cheerleader.mp4").toURI().toString());
         mediaPlayer = new MediaPlayer(media);
@@ -81,7 +95,8 @@ public class MediaView implements Initializable {
                     mediaPlayer.pause();
                     stopRequested = false;
                 } else {
-                    icon.setGlyphName("PAUSE");
+//                    icon.setGlyphName("PAUSE");
+                    btnPlay.setGraphic(iconPause);
 //                    playButton.setGraphic(imageViewPause);
                     //playButton.setText("||");
                 }
@@ -90,7 +105,8 @@ public class MediaView implements Initializable {
         mediaPlayer.setOnPaused(new Runnable() {
             public void run() {
 
-                icon.setGlyphName("PLAY");
+                btnPlay.setGraphic(iconPlay);
+//                icon.setGlyphName("PLAY");
                 //playButton.setText("||");
             }
         });
@@ -106,7 +122,8 @@ public class MediaView implements Initializable {
         mediaPlayer.setOnEndOfMedia(new Runnable() {
             public void run() {
                 if (!repeat) {
-                    icon.setGlyphName("PAUSE");
+//                    icon.setGlyphName("PAUSE");
+                    btnPlay.setGraphic(iconPause);
 //                    playButton.setGraphic(imageViewPlay);
                     //playButton.setText(">");
                     stopRequested = true;
@@ -222,13 +239,15 @@ public class MediaView implements Initializable {
                 if (atEndOfMedia) {
                     mediaPlayer.seek(mediaPlayer.getStartTime());
                     atEndOfMedia = false;
-                    icon.setGlyphName("PLAY");
+                    btnPlay.setGraphic(iconPlay);
+//                    icon.setGlyphName("PLAY");
 //                    playButton.setGraphic(imageViewPlay);
                     //playButton.setText(">");
                     updateValues();
                 }
                 mediaPlayer.play();
-                icon.setGlyphName("PAUSE");
+                btnPlay.setGraphic(iconPause);
+//                icon.setGlyphName("PAUSE");
 //                playButton.setGraphic(imageViewPause);
                 //playButton.setText("||");
             }

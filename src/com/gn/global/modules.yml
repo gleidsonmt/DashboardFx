@@ -280,13 +280,6 @@
   parentName: customControls
   fxmlFile: animated-button.fxml
 
-  #Alerts
-- !!com.gn.global.plugin.View
-  title: Alerts
-  name: alerts
-  parentName: customControls
-  fxmlFile: alerts.fxml
-
 # Utilities
 - !!com.gn.global.plugin.View
   title: Colors

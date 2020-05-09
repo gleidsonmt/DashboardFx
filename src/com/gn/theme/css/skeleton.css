@@ -70,6 +70,10 @@
     -fx-border-width : 0px;
 }
 
+.text-area .scroll-pane:fitToWidth:fitToHeight .viewport .content  {
+    -fx-background-color : -foreground-color;
+}
+
 .text-area .scroll-pane .viewport .content
 {
   -fx-background-color : derive(-box-fill, 50%);
@@ -84,6 +88,7 @@
 
 .check-box:selected:determinate .box .mark,
 .check-box:indeterminate .box .mark
+
 {
     -fx-background-color : white;
 }
@@ -147,6 +152,8 @@
 *
 *************************************************************************************/
 
+.text-field,
+.text-area,
 .check-box,
 .radio-button,
 .spinner
@@ -205,6 +212,24 @@
 
 
 
+/* not tested */
+
+.text-area .scroll-pane:fitToWidth:fitToHeight .viewport .content {
+    -fx-background-color: -foreground-color;
+}
+
+.text-field,
+.text-area
+{
+    -fx-highlight-fill: white;
+    -fx-prompt-text-fill : -medium-gray;
+    -fx-highlight-text-fill: white;
+}
+
+.text-input:focused {
+    -fx-highlight-fill: -base;
+}
+
 .hyperlink SVGPath
 {
   -fx-fill : -icon-color;
@@ -236,7 +261,8 @@ Text,
 *************************************************************************************/
 
 .button, .toggle-button, .check-box, .radio-button,
-.tab-pane:top .tab-header-area .headers-region
+.tab-pane:top .tab-header-area .headers-region,
+.spinner .increment-arrow-button, .spinner .decrement-arrow-button
 {
   -fx-cursor : hand;
 }
@@ -247,7 +273,8 @@ Text,
 *
 *************************************************************************************/
 
-.button, .date-picker, .combo-box, .choice-box, .color-picker,
+.button, .date-picker, .combo-box, .choice-box, .color-picker, .menu-button,
+.password-field, .text-field, .split-menu-button,
 .tab-pane:top .tab-header-area .headers-region .tab:top
 {
   -fx-pref-height : 40px;
@@ -486,7 +513,7 @@ Text,
 .spinner .increment-arrow-button .increment-arrow,
 .spinner .decrement-arrow-button .decrement-arrow
 {
-  -fx-background-color : -icon-color;
+  -fx-background-color : -text-color;
 }
 
 .choice-box .open-button .arrow
@@ -495,7 +522,7 @@ Text,
     -fx-padding: 4 7 4 7;
     -fx-shape: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z";
     -fx-background-insets: 0 0 0 0, 0;
-    -fx-background-color : -icon-color;
+    -fx-background-color : -text-color;
 }
 
 
@@ -509,9 +536,6 @@ Text,
     -fx-text-fill : -box-text-color;
     /* -fx-font-size: 1.333333em; /* 16 */
 }
-
-
-
 
 .combo-box-base:hover {
 
@@ -538,10 +562,10 @@ Text,
 
 /* ARROW */
 .combo-box .arrow-button .arrow {
-    -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em;
-    -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
+    -fx-padding: 4 7 4 7;
+    -fx-shape: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z";
     -fx-background-insets: 0 0 0 0, 0;
-    -fx-background-color : -icon-color;
+    -fx-background-color : -text-color;
 }
 
 .combo-box:editable .text-field {
@@ -549,12 +573,12 @@ Text,
 }
 
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover {
-    -fx-background-color : -light-gray;
+    -fx-background-color: derive(-background-color, -10%);
 }
 
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled
 {
-    -fx-background-color : -list-fill;
+    -fx-background-color : -background-color;
     -fx-padding: 8;
 }
 
@@ -577,7 +601,7 @@ Text,
 }
 
 .combo-box .list-view {
-  -fx-background-color : white;
+  -fx-background-color : transparent;
   -fx-border-color : -box-fill;
   -fx-effect : null;
 }
@@ -607,7 +631,7 @@ Text,
 }
 
 .context-menu .menu-item:focused SVGPath {
-    -fx-fill : -icon-color;
+    -fx-fill : -text-color;
 }
 
 .context-menu:show-mnemonics .mnemonic-underline {
@@ -793,9 +817,7 @@ Text,
   -fx-background-color : transparent;
 }
 
-.text-field {
-  -fx-text-fill : -box-text-color;
-}
+
 
 .date-picker:editable .arrow-button {
   -fx-scale-x : 1.0;
@@ -972,7 +994,7 @@ Text,
 
 .split-menu-button:openvertically .arrow-button {
     -fx-border-width : 0px 0px 0px 1px;
-    -fx-border-color : -default-border;
+    -fx-border-color : -box-fill;
     -fx-background-color : transparent;
     -fx-padding: 10;
 }
@@ -980,8 +1002,9 @@ Text,
 
 .split-menu-button:openvertically > .arrow-button > .arrow {
     -fx-background-color: -icon-color;
-    -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
-    -fx-background-color : -icon-color;
+    -fx-padding: 4 7 4 7;
+    -fx-shape: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z";
+    -fx-background-color : -text-color;
 }
 
 .split-menu-button > .arrow-button > .arrow {
@@ -990,10 +1013,10 @@ Text,
 }
 
 .menu-button:openvertically > .arrow-button > .arrow {
-    -fx-background-color: -icon-color;
+    -fx-background-color: -text-color;
     /* -fx-background-insets: 0 0 -1 0, 0; */
-    -fx-padding: 0.236110875em 0.333333em 0.236110875em 0.333333em; /* (2/3 * 4.25) 4 (2/3 * 4.25) 4 */
-    -fx-shape: "M-78,640l-6-5.5v-3l6,5l0,0l6-5v3L-78,640L-78,640z";
+    -fx-padding: 4 7 4 7;
+    -fx-shape: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z";
 }
 
 .menu-button > .arrow-button > .arrow {
@@ -1076,141 +1099,6 @@ Text,
     -fx-background-color: black;
 }
 /* ------- CUSTOM COLOR DIALOG ------- */
-
-.custom-color-dialog {
-    -fx-background-color: green;
-}
-
-.custom-color-dialog .color-rect-pane .color-rect {
-    -fx-min-width: 16.666667em;
-    -fx-min-height: 16.666667em;
-}
-
-.custom-color-dialog .color-rect-pane .color-rect-border {
-    -fx-border-color: derive(-fx-base, -20%);
-}
-
-.custom-color-dialog > .color-rect-pane #color-rect-indicator {
-    -fx-background-color: null;
-    -fx-border-color: white;
-    -fx-border-radius: 0.4166667em;
-    -fx-translate-x: -0.4166667em;
-    -fx-translate-y: -0.4166667em;
-    -fx-pref-width: 0.833333em;
-    -fx-pref-height: 0.833333em;
-    -fx-effect: dropshadow(three-pass-box, black, 2, 0.0, 0, 1);
-}
-
-.custom-color-dialog > .color-rect-pane > .color-bar {
-    -fx-min-width: 1.666667em;
-    -fx-min-height: 16.666667em;
-    -fx-max-width: 1.666667em;
-    -fx-border-color: derive(-fx-base, -20%);
-}
-
-.custom-color-dialog > .color-rect-pane > .color-bar > #color-bar-indicator {
-    -fx-border-radius: 0.333333em;
-    -fx-border-color: white;
-    -fx-effect: dropshadow(three-pass-box, black, 2, 0.0, 0, 1);
-    -fx-pref-width: 2em;
-    -fx-pref-height: 0.833333em;
-    -fx-translate-x: -0.1666667em;
-    -fx-translate-y: -0.4166667em;
-}
-
-.custom-color-dialog  {
-    -fx-background-color:transparent;
-    -fx-padding: 1.25em;
-    -fx-spacing: 1.25em;
-}
-.custom-color-dialog .controls-pane .current-new-color-grid #current-new-color-border {
-    -fx-border-color: green;
-    -fx-border-width: 1px;
-}
-
-.custom-color-dialog .controls-pane .current-new-color-grid .color-rect {
-    -fx-min-width: 10.666667em;
-    -fx-min-height: 1.75em;
-    -fx-pref-width: 10.666667em;
-    -fx-pref-height: 1.75em;
-}
-
-.custom-color-dialog .controls-pane #spacer1 {
-    -fx-min-height: 0.1666667em;
-    -fx-max-height: 0.1666667em;
-    -fx-pref-height: 0.1666667em;
-
-}
-
-.custom-color-dialog .controls-pane #spacer2 {
-    -fx-min-height: 1em;
-    -fx-max-height: 1em;
-    -fx-pref-height: 1em;
-}
-
-.custom-color-dialog .controls-pane #settings-pane {
-    -fx-hgap: 0.4166667em;
-    -fx-vgap: 0.3333333em;
-}
-
-.custom-color-dialog .controls-pane #settings-pane .settings-label {
-    -fx-min-width: 5.75em;
-}
-
-.custom-color-dialog .controls-pane #settings-pane .settings-unit {
-    -fx-max-width: 1em;
-}
-
-.custom-color-dialog .controls-pane #settings-pane .slider {
-    -fx-pref-width: 8.25em;
-}
-
-.custom-color-dialog .controls-pane .color-input-field {
-    -fx-pref-column-count: 3;
-    -fx-max-width: 3.25em;
-    -fx-min-width: 3.25em;
-    -fx-pref-width: 3.25em;
-
-}
-
-.custom-color-dialog .controls-pane .web-field {
-    -fx-pref-column-count: 6;
-    -fx-pref-width: 8.25em;
-}
-
-.custom-color-dialog .controls-pane #spacer-side {
-    -fx-min-width: 0.5em;
-    -fx-pref-width: 0.5em;
-}
-
-.custom-color-dialog .controls-pane {
-    -fx-background-color: -background-color;
-}
-
-.custom-color-dialog .controls-pane .customcolor-controls-background {
-    -fx-background-color: -fx-text-box-border, -fx-control-inner-background;
-    -fx-background-insets:
-        0.8333333em 0 0.4166667em 0,
-        1em 0.166667em 0.5833333em 0.166667em;
-    -fx-background-radius: 0.3333333em, 0.166667em;
-
-}
-
-.custom-color-dialog .controls-pane .current-new-color-grid .label {
-    -fx-padding: 0 0 0 0.4166667em;
-}
-
-.custom-color-dialog .controls-pane #buttons-hbox {
-    -fx-spacing: 0.333333em;
-    -fx-padding: 1em 0 0 0;
-    -fx-alignment: bottom_right;
-}
-
-.custom-color-dialog .controls-pane #buttons-hbox > .button {
-    -fx-min-width : 65px;
-    -fx-pref-width : 65px;
-    -fx-max-width : 65px;
-}
 
 .slider .thumb {
     -fx-background-insets: 0, 1, 2;
@@ -1388,7 +1276,7 @@ Text,
 }
 
 .progress-indicator:determinate .determinate-indicator .percentage {
-  -fx-fill : -box-fill;
+  -fx-fill : -text-color;
 }
 
 .scroll-pane:fitToWidth .viewport {
@@ -1533,27 +1421,31 @@ Text,
 }
 
 .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
-    -fx-background-color: white;
+    -fx-background-color: -background-color;
     -fx-padding: 1em 2em 1em 2em;
     -fx-font-family: Roboto ;
 }
 
 .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover {
-    -fx-background-color: -light-gray;
+    -fx-background-color: derive(-background-color, -10%);
 }
 
-.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused {
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:hover:focused:selected .text
+{
+    -fx-fill : -text-color;
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:selected .text,
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused:selected .text,
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:focused .text
+{
+    -fx-fill : -inner-text;
     -fx-background-insets: 0;
 }
 
 .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:selected {
-    -fx-text-fill : white;
+    -fx-text-fill : -inner-text;
 }
-
-.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:selected:hover {
-    -fx-text-fill : -text-color;
-}
-
 
 .list-view > .text-field-list-cell .text-field
 {
@@ -1742,6 +1634,7 @@ Text,
 }
 
 .toggle-light,
+.toggle-light SVGPath,
 .toggle-light .text
  {
   -fx-background-color : transparent;
@@ -1756,7 +1649,8 @@ Text,
     -fx-fill : -inner-text;
 }
 
-.toggle-light:focused:selected:hover .text
+.toggle-light:focused:selected:hover .text,
+.toggle-light:focused SVGPath
 {
     -fx-fill : -text-color;
 }
@@ -1767,13 +1661,12 @@ Text,
 .toggle-light:selected SVGPath
 {
     -fx-effect : null;
-    -fx-text-fill : -inner-text;
+    -fx-text-fill : red;
     -fx-background-color : -base;
     -fx-fill : WHITE;
 }
 
-.toggle-light:hover,
-.toggle-light:hover SVGPath
+.toggle-light:hover
 {
   -fx-background-color : derive(-base, 70%);
   -fx-text-fill : WHITE;
@@ -2354,7 +2247,7 @@ Text,
 
 .table-row-cell
 {
-  -fx-background-color : -list-cell;
+  -fx-background-color : red;
 }
 
 .table-view {
@@ -2363,9 +2256,9 @@ Text,
 
 .table-view .column-header-background .nested-column-header .table-column,
 .table-view .column-header-background,
-.tree-table-view .column-header-background
+.tree-table-view .column-header-background,
+.table-view:constrained-resize
 {
-
   -fx-padding : 10px 2px 10px 2px;
   -fx-background-color : transparent;
 }
@@ -2467,9 +2360,14 @@ Text,
   -fx-fill : -text-color;
 }
 
-.table-row-cell:filled:hover
+.table-view .virtual-flow .clipped-container .sheet .table-row-cell:focused:hover:selected .text
 {
-    -fx-background-color : -hover;
+    -fx-fill : -text-color;
+}
+
+.table-view .virtual-flow .clipped-container .sheet .table-row-cell:hover
+{
+    -fx-background-color: derive(-background-color, -10%);
 }
 
 
@@ -2482,6 +2380,10 @@ Text,
 {
   -fx-padding : 4px;
   -fx-background-color : -icon-color;
+}
+
+.tree-table-view:row-selection:constrained-resize{
+    -fx-background-color : transparent;
 }
 
 .table-view:focused .column-header-background,
@@ -2556,11 +2458,28 @@ Text,
   -fx-background-color : transparent;
 }
 
-.tree-view .virtual-flow .clipped-container .sheet .tree-cell:focused:filled .tree-disclosure-node .arrow
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell:focused:filled .tree-disclosure-node .arrow-button .arrow,
+.tree-table-view:row-selection:constrained-resize .virtual-flow .clipped-container .sheet .tree-table-row-cell:filled .tree-disclosure-node .arrow,
+.tree-table-view:row-selection:constrained-resize .virtual-flow .clipped-container .sheet .tree-table-row-cell:filled:odd:expanded .tree-disclosure-node .arrow,
+
+
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell .tree-disclosure-node .arrow
 {
-  -fx-background-color : white;
+    -fx-padding: 0 6 18 6;
+    -fx-shape: "M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z";
+    -fx-background-color : -text-color;
+    -fx-scale-x : 0.8;
+    -fx-scale-y : 0.8;
 }
 
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell:focused:filled .text
+{
+  -fx-fill : -inner-text;
+}
+
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell:focused:filled .tree-disclosure-node .arrow {
+    -fx-background-color : -inner-text;
+}
 
 .tree-view .virtual-flow .clipped-container .sheet .tree-cell:filled
 {
@@ -2630,4 +2549,12 @@ Text,
 .combo-box > .list-view
 {
     -fx-fixed-cell-size : 40;
+}
+
+.table-view:row-selection:constrained-resize .column-header-background .nested-column-header .table-column .arrow,
+.tree-table-view .column-header-background .nested-column-header .column-header .arrow
+{
+    -fx-padding: 4 7 4 7;
+    -fx-shape: "M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z";
+    -fx-background-color : -text-color;
 }

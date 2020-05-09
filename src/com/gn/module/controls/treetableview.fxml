@@ -37,7 +37,7 @@
                               </TextFlow>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                            <children>
                               <HBox alignment="CENTER">
                                  <children>
@@ -80,5 +80,6 @@
       <URL value="@../../theme/css/typographic.css" />
       <URL value="@../../theme/css/helpers.css" />
       <URL value="@../../theme/css/master.css" />
+      <URL value="@../../theme/css/dark.css" />
    </stylesheets>
 </StackPane>

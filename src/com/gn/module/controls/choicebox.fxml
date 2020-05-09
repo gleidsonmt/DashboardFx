@@ -5,9 +5,7 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.HBox?>
@@ -45,7 +43,7 @@
                                  <children>
                                     <VBox alignment="CENTER" spacing="5.0">
                                        <children>
-                                          <ChoiceBox prefHeight="30.0" prefWidth="179.0">
+                                          <ChoiceBox prefHeight="30.0" prefWidth="179.0" value="ChoiceBox">
                                              <items>
                                                 <FXCollections fx:factory="observableArrayList">
                                                    <String fx:value="Item 1" />
@@ -53,13 +51,6 @@
                                                    <String fx:value="Item 3" />
                                                 </FXCollections>
                                              </items>
-                                             <contextMenu>
-                                                <ContextMenu>
-                                                  <items>
-                                                    <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                                                  </items>
-                                                </ContextMenu>
-                                             </contextMenu>
                                           </ChoiceBox>
                                        </children>
                                     </VBox>

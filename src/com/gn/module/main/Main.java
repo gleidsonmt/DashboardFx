@@ -93,7 +93,7 @@ public class Main implements Initializable, ActionView {
 
     private void hideHamburger(){
         App.getDecorator().getMenus().remove(hamburger);
-        HBox.setMargin(title, new Insets(0D,5D,0,0));
+        HBox.setMargin(title, new Insets(0D,0D,0,20D));
     }
 
 

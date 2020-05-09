@@ -36,7 +36,7 @@
                               </TextFlow>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                            <children>
                               <HBox alignment="CENTER" prefHeight="198.0" prefWidth="940.0" spacing="10.0">
                                  <children>

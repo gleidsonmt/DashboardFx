@@ -28,6 +28,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TreeTableView;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
@@ -115,6 +116,7 @@ public class App extends Application {
                 getClass().getResource("/com/gn/theme/css/light-green.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/master.css").toExternalForm()
         );
+
 
 
         decorator.show();

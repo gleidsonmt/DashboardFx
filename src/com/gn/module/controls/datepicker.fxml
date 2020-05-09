@@ -35,7 +35,7 @@
                               </TextFlow>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                            <children>
                               <DatePicker prefHeight="30.0" prefWidth="185.0" />
                            </children>

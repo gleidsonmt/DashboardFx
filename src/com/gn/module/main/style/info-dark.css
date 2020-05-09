@@ -1,0 +1,48 @@
+
+.drawer {
+    -fx-background-color : #2E2E2E;
+    -secondary-drawer : black;
+}
+
+.drawer .scroll .drawer-content .drawer-menu .content
+{
+    -fx-background-color: derive(#2E2E2E, 15%);
+}
+
+.drawer .scroll .drawer-content .drawer-item:selected,
+.drawer .scroll .drawer-content .drawer-item:selected .text,
+.drawer .scroll .drawer-content .drawer-item:selected .icon,
+.drawer .scroll .drawer-content .drawer-item:selected .group .icon
+{
+  -fx-effect : none;
+  -fx-background-color: linear-gradient(to left, #33B5E599, #33B5E550);
+  -fx-border-color : #33B5E5;
+  -fx-fill : white;
+    /* -fx-padding : 2 2 2 10; */
+}
+
+.drawer .scroll .drawer-content .drawer-menu .drawer-item:selected
+{
+  -fx-background-color: linear-gradient(to left, #33B5E599, #33B5E550);
+  -fx-border-color : transparent;
+}
+
+.drawer .scroll .drawer-content .menu-selected .title{
+  -fx-background-color: linear-gradient(to left, #33B5E599, #33B5E550);
+    -fx-border-width : 0;
+}
+
+.menu-selected {
+    -fx-border-color : #33B5E5;
+    -fx-border-width : 0 4 0 0;
+}
+
+.drawer .scroll .drawer-content .drawer-menu .title:hover,
+.drawer .scroll .drawer-content .drawer-item:hover
+{
+    -fx-background-color: #33B5E580;
+}
+
+.image-view {
+    -fx-image : url("../../media/logo4.png");
+}

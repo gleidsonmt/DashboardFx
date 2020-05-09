@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -41,8 +40,7 @@
                            <children>
                               <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
                                  <children>
-                                    <TextField prefHeight="30.0" prefWidth="160.0" />
-                                    <TextArea prefHeight="200.0" prefWidth="200.0" />
+                                    <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Text Area" />
                                  </children>
                               </HBox>
                            </children>
@@ -60,7 +58,7 @@
    <stylesheets>
       <URL value="@../../theme/css/material-color.css" />
       <URL value="@../../theme/css/skeleton.css" />
-      <URL value="@../../theme/css/light.css" />
+      <URL value="@../../theme/css/light-green.css" />
       <URL value="@../../theme/css/bootstrap.css" />
       <URL value="@../../theme/css/simple-green.css" />
       <URL value="@../../theme/css/shape.css" />

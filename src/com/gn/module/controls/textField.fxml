@@ -37,11 +37,11 @@
                               </TextFlow>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                            <children>
                               <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
                                  <children>
-                                    <TextField prefHeight="30.0" prefWidth="160.0" />
+                                    <TextField prefHeight="30.0" prefWidth="160.0" promptText="TextField" />
                                  </children>
                               </HBox>
                            </children>
@@ -55,7 +55,7 @@
             </Tab>
             <Tab closable="false" text="Types">
                <content>
-                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0" style="-fx-background-color: white;">
+                  <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
                      <children>
                         <VBox alignment="CENTER_LEFT">
                            <children>
@@ -72,7 +72,7 @@
                               </TextFlow>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                            <children>
                               <HBox alignment="CENTER" prefWidth="478.0" spacing="20.0">
                                  <children>
@@ -91,11 +91,11 @@
                   </VBox>
                </content>
             </Tab>
-            <Tab closable="false" disable="true" text="Bootstrap">
+            <Tab closable="false" text="Bootstrap">
                <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
-                        <VBox alignment="CENTER" prefHeight="559.0" prefWidth="937.0" spacing="10.0" style="-fx-background-color: white;">
+                        <VBox alignment="CENTER" prefHeight="559.0" prefWidth="937.0" spacing="10.0">
                            <children>
                               <VBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="890.0">
                                  <children>
@@ -152,9 +152,8 @@
    <stylesheets>
       <URL value="@../../theme/css/material-color.css" />
       <URL value="@../../theme/css/skeleton.css" />
-      <URL value="@../../theme/css/light.css" />
+      <URL value="@../../theme/css/light-green.css" />
       <URL value="@../../theme/css/bootstrap.css" />
-      <URL value="@../../theme/css/simple-green.css" />
       <URL value="@../../theme/css/shape.css" />
       <URL value="@../../theme/css/typographic.css" />
       <URL value="@../../theme/css/helpers.css" />

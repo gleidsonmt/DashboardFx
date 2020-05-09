@@ -39,7 +39,7 @@
                               </TextFlow>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                            <children>
                               <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
                                  <children>
@@ -59,7 +59,7 @@
                <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
-                        <VBox alignment="CENTER" prefHeight="559.0" prefWidth="937.0" spacing="10.0" style="-fx-background-color: white;">
+                        <VBox alignment="CENTER" prefHeight="559.0" prefWidth="937.0" spacing="10.0">
                            <children>
                               <VBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="890.0">
                                  <children>
@@ -75,7 +75,7 @@
                                        </children></TextFlow>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="239.0" prefWidth="890.0" spacing="20.0" style="-fx-background-color: -light-gray;" VBox.vgrow="ALWAYS">
+                              <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="239.0" prefWidth="890.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                                  <children>
                                     <HBox alignment="CENTER" layoutX="10.0" layoutY="165.0" prefWidth="478.0">
                                        <children>
@@ -208,7 +208,7 @@
                <content>
                   <ScrollPane fitToHeight="true" fitToWidth="true">
                      <content>
-                        <VBox alignment="CENTER" prefHeight="559.0" prefWidth="937.0" spacing="10.0" style="-fx-background-color: white;">
+                        <VBox alignment="CENTER" prefHeight="559.0" prefWidth="937.0" spacing="10.0">
                            <children>
                               <VBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="890.0">
                                  <children>
@@ -225,7 +225,7 @@
                                     </TextFlow>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="239.0" prefWidth="890.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                              <VBox alignment="CENTER" minHeight="-Infinity" prefHeight="239.0" prefWidth="890.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                                  <children>
                                     <HBox alignment="CENTER" prefWidth="478.0" spacing="10.0">
                                        <children>

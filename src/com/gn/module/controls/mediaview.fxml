@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import com.jfoenix.controls.JFXSlider?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,6 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.media.MediaView?>
+<?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
@@ -41,46 +41,38 @@
                               </TextFlow>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefWidth="952.0" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                        <VBox alignment="CENTER" prefWidth="952.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="345.0" prefWidth="940.0" spacing="10.0">
+                              <AnchorPane>
                                  <children>
-                                    <VBox prefHeight="393.0" prefWidth="800.0">
+                                    <VBox alignment="CENTER" layoutY="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                                        <children>
-                                          <AnchorPane>
+                                          <MediaView fx:id="mediaView" fitHeight="330.0" fitWidth="800.0">
+                                             <viewport>
+                                                <Rectangle2D />
+                                             </viewport>
+                                          </MediaView>
+                                          <HBox alignment="CENTER" prefHeight="40.0" prefWidth="462.0">
                                              <children>
-                                                <VBox alignment="CENTER" layoutY="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
-                                                   <children>
-                                                      <MediaView fx:id="mediaView" fitHeight="330.0" fitWidth="800.0">
-                                                         <viewport>
-                                                            <Rectangle2D />
-                                                         </viewport>
-                                                      </MediaView>
-                                                      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="462.0">
-                                                         <children>
-                                                            <JFXButton contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#play" prefHeight="30.0" prefWidth="40.0" ripplerFill="#000000c7" text="Play">
-                                                               <graphic>
-                                                                  <FontAwesomeIconView fx:id="icon" fill="#00000080" glyphName="PLAY" style="-fx-fill: -icon-color;" />
-                                                               </graphic>
-                                                               <styleClass>
-                                                                  <String fx:value="btn-transparent" />
-                                                                  <String fx:value="round" />
-                                                               </styleClass>
-                                                            </JFXButton>
-                                                            <Slider fx:id="slider" prefHeight="16.0" prefWidth="266.0" />
-                                                            <Label fx:id="playTime" prefHeight="15.0" prefWidth="95.0" style="-fx-text-fill: -text-color;" text="Label" />
-                                                            <Label prefHeight="17.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" text="Volume" />
-                                                            <Slider fx:id="volumeSlider" prefHeight="18.0" prefWidth="81.0" />
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                </VBox>
+                                                <JFXButton fx:id="btnPlay" contentDisplay="GRAPHIC_ONLY" layoutX="229.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#play" prefHeight="30.0" prefWidth="40.0" ripplerFill="#000000c7" text="Play">
+                                                   <styleClass>
+                                                      <String fx:value="btn-transparent" />
+                                                      <String fx:value="round" />
+                                                   </styleClass>
+                                                   <graphic>
+                                                      <SVGPath content="M8 5v14l11-7z" style="-fx-fill: -icon-color;" />
+                                                   </graphic>
+                                                </JFXButton>
+                                                <JFXSlider fx:id="slider" snapToTicks="true" />
+                                                <Label fx:id="playTime" prefHeight="15.0" prefWidth="95.0" style="-fx-text-fill: -text-color;" text="Label" />
+                                                <Label prefHeight="17.0" prefWidth="88.0" style="-fx-text-fill: -text-color;" text="Volume" />
+                                                <JFXSlider fx:id="volumeSlider" />
                                              </children>
-                                          </AnchorPane>
+                                          </HBox>
                                        </children>
                                     </VBox>
                                  </children>
-                              </HBox>
+                              </AnchorPane>
                            </children>
                         </VBox>
                      </children>

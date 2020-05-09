@@ -21,6 +21,7 @@ import com.gn.decorator.GNDecorator;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -90,13 +91,12 @@ public class SettingsController implements Initializable {
 
     private void changeTheme(boolean light){
 
-
         if(light){
             App.getDecorator().initTheme(GNDecorator.Theme.DEFAULT);
-            App.getDecorator().getScene().getStylesheets().remove(getClass().getResource("/com/gn/theme/css/dark.css").toExternalForm());
+            App.getDecorator().getScene().getStylesheets().removeAll(getClass().getResource("/com/gn/theme/css/dark.css").toExternalForm());
         }
         else {
-            App.getDecorator().getScene().setUserAgentStylesheet(getClass().getResource("/com/gn/theme/css/dark.css").toExternalForm());
+//            App.getDecorator().getScene().setUserAgentStylesheet(getClass().getResource("/com/gn/theme/css/dark.css").toExternalForm());
             App.getDecorator().initTheme(GNDecorator.Theme.DARKULA);
             App.getDecorator().getScene().getStylesheets().addAll(getClass().getResource("/com/gn/theme/css/dark.css").toExternalForm());
 

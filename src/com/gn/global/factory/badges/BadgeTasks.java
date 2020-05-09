@@ -29,6 +29,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -125,6 +126,7 @@ public class BadgeTasks extends GNControl {
 
         Hyperlink btn = new Hyperlink("ViewController all tasks");
         btn.setAlignment(Pos.CENTER);
+        btn.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> pop.hide());
 
         VBox root = new VBox(title, top, listView, bottom, btn);
         root.setAlignment(Pos.CENTER);

@@ -55,7 +55,7 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" spacing="20.0" styleClass="box-light" VBox.vgrow="ALWAYS">
+                  <VBox alignment="CENTER" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
                      <children>
                         <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="5.0" prefHeight="230.0" prefWidth="938.0" vgap="5.0">
                            <children>

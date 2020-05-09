@@ -7,7 +7,7 @@
 }
 
 .popover  {
-	-fx-background-color: -foreground-color;
+	-fx-background-color: -background-color;
 }
 
 .popover > .border {
@@ -38,20 +38,35 @@
     -fx-background-color : white;
 }
 
-.list-view .list-cell .badge-cell .label,
-.list-view .list-cell:selected .badge-cell .label
+.list-view .list-cell:hover .badge-cell
 {
-	  -fx-text-fill : -text-color;
+    -fx-background-color : transparent;
+}
+
+.list-view .list-cell:hover
+{
+    -fx-background-color: derive(-background-color, -10%);
+}
+
+.popover .list-view .list-cell .badge-cell .label .text,
+.popover .list-view .list-cell:selected .cell,
+.popover .list-view .list-cell:hover .badge-cell .label .text,
+.popover .list-view .list-cell:focused .badge-cell .label .text,
+.popover .list-view .list-cell:focused:selected .badge-cell .label .text,
+.popover .list-view .list-cell:focused:hover .badge-cell .label .text
+{
+      -fx-background-color : red;
+	  -fx-fill : -text-color;
 }
 
 .list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:hover {
-    -fx-background-color : derive(-light-gray, 50%);
+    -fx-background-color: derive(-background-color, 50%);
 }
 
 .list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused,
 .list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:pressed,
 .list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:selected
 {
-    -fx-background-color : -light-gray;
+    -fx-background-color: derive(-background-color, -10%);
     -fx-background-insets: 0;
 }
