@@ -150,7 +150,7 @@
                      <children>
                         <ToggleButton mnemonicParsing="false" prefHeight="56.0" prefWidth="73.0" style="-fx-background-color: linear-gradient(to top, #cc2b5e, #753a88);;" styleClass="round" text="Purple Love" GridPane.columnIndex="1" />
                         <ToggleButton mnemonicParsing="false" prefHeight="67.0" prefWidth="75.0" style="-fx-background-color: linear-gradient(to top,   derive(#02796b, 50%) , derive(#73e57b, 50%));" styleClass="round" text="Default" />
-                        <ToggleButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="75.0" style="-fx-background-color: -info;" styleClass="round" text="Info" GridPane.columnIndex="2" />
+                        <ToggleButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="75.0" style="-fx-background-color: -info;" styleClass="round" text="Info Dark" GridPane.columnIndex="2" />
                         <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: -warning;" styleClass="round" GridPane.rowIndex="1">
                            <cursor>
                               <Cursor fx:constant="HAND" />

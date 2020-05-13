@@ -841,11 +841,11 @@ Text,
   /* -fx-shape : "M 550 400 L 350 400 L 400 350 L 350 300 L 550 300 L 600 350 L 550 400"; */
    -fx-scale-x : 1.5;
    -fx-scale-y : 1.5;
-   -fx-background-color : -icon-color;
+   -fx-background-color : -text-color;
 }
 
 .date-picker-popup {
-    -fx-background-color: white;
+    -fx-background-color: -background-color;
     -fx-background-insets: 0;
     -fx-border-color : -base;
     -fx-padding : 10px;
@@ -859,7 +859,7 @@ Text,
 }
 
 .date-picker-popup > .month-year-pane {
-    -fx-background-color: white;
+    -fx-background-color: -background-color;
     -fx-background-insets: 0;
     -fx-font-size : 12px;
 
@@ -871,7 +871,7 @@ Text,
 }
 
 .date-picker-popup > .month-year-pane >* .label {
-    -fx-text-fill : -box-text-color;
+    -fx-text-fill : -text-color;
 }
 
 .date-picker-popup > * > .spinner > .button {
@@ -887,22 +887,22 @@ Text,
 }
 
 .date-picker-popup > * > .spinner {
-    -fx-background-color: white;
+    -fx-background-color: -background-color;
     -fx-background-insets: 0;
 }
 
 .date-picker-popup > * > .spinner > .button:hover {
-    -fx-background-color: -light-gray;
+    -fx-background-color: derive(-background-color, -10%);
 }
 
 .date-picker-popup > * > .spinner > .button:armed
 {
-    -fx-background-color: #606060;
+    -fx-background-color: derive(-background-color, -30%);
 }
 
 .date-picker-popup > * > .spinner > .button > .left-arrow,
 .date-picker-popup > * > .spinner > .button > .right-arrow {
-    -fx-background-color: #606060;
+    -fx-background-color: -text-color;
     -fx-background-insets: 0;
     -fx-effect: null;
 }
@@ -912,20 +912,20 @@ Text,
 .pagination .pagination-control .control-box .right-arrow-button:pressed .left-arrow ,
 .pagination .pagination-control .control-box .left-arrow-button:pressed  .right-arrow
 {
-    -fx-background-color: white;
+    -fx-background-color: -inner-text;
     -fx-background-insets: 0;
 }
 
 .date-picker-popup > .calendar-grid {
-    -fx-background-color: white;
+    -fx-background-color: -background-color;
     -fx-background-insets: 1 0 0 0;
     -fx-padding: 0;
 }
 
 .date-picker-popup > * > .previous-month,
 .date-picker-popup > * > .next-month {
-    -fx-background-color: white;
-    -fx-opacity: 0.3;
+    -fx-background-color: -background-color;
+    -fx-opacity: 0.2;
 }
 
 .date-picker-popup > * > .day-name-cell, .date-picker-popup > * > .week-number-cell:hover,
@@ -937,7 +937,7 @@ Text,
 }
 
 .date-picker-popup > * > .date-cell {
-
+    -fx-background-color : derive(-background-color, 20%);
 }
 
 .date-picker-popup > * > .hijrah-day-cell {
@@ -945,9 +945,13 @@ Text,
     -fx-cell-size: 3.75em;
 }
 
+.date-picker-popup > * > .day-cell:selected .text {
+    -fx-fill : white;
+}
+
 .date-picker-popup > * > .day-cell {
-    -fx-border-width: 1px;
-    /* -fx-text-fill: -fx-text-background-color; */
+    -fx-border-width: 0.5px;
+    -fx-text-fill: white;
 }
 
 .date-picker-popup > * > .today {
@@ -961,16 +965,20 @@ Text,
 }
 
 .date-picker-popup > * > .day-cell:focused,
+.date-picker-popup > * > .day-cell:focused .text,
 .date-picker-popup > * > .today:focused {
+    -fx-text-fill : white;
+    -fx-fill : white;
     /* -fx-background-color: white, white, -base; */
     /* -fx-background-insets: 1, 2, 3; */
 }
+
 .date-picker-popup > * > .day-cell:hover,
 .date-picker-popup > * > .day-cell:hover .text,
 .date-picker-popup > * > .selected
  {
     -fx-fill : -inner-text;
-    -fx-background-color: white, white, -base;
+    -fx-background-color: white, -base, -base;
     /* -fx-text-fill : -light-gray; */
 }
 
@@ -2365,7 +2373,7 @@ Text,
     -fx-fill : -text-color;
 }
 
-.table-view .virtual-flow .clipped-container .sheet .table-row-cell:hover
+.table-view .virtual-flow .clipped-container .sheet .table-row-cell:filled:hover
 {
     -fx-background-color: derive(-background-color, -10%);
 }
@@ -2465,11 +2473,11 @@ Text,
 
 .tree-view .virtual-flow .clipped-container .sheet .tree-cell .tree-disclosure-node .arrow
 {
-    -fx-padding: 0 6 18 6;
+    -fx-padding: 5 4 5 4;
     -fx-shape: "M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z";
     -fx-background-color : -text-color;
     -fx-scale-x : 0.8;
-    -fx-scale-y : 0.8;
+        -fx-scale-y : 0.8;
 }
 
 .tree-view .virtual-flow .clipped-container .sheet .tree-cell:focused:filled .text

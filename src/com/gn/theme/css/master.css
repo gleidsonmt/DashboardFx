@@ -304,3 +304,22 @@
     -fx-background-radius : 100px;
 }
 
+
+#block .hyperlink SVGPath {
+    -fx-fill : -icon-color;
+}
+
+#block .hyperlink, #block .hyperlink:pressed, #block .hyperlink:visited {
+  -fx-underline : false;
+  -fx-border-color : transparent;
+  -fx-border-width : 0px;
+  -fx-text-fill : -text-color;
+}
+
+#block:pressed {
+  -fx-background-color : -foreground-color;
+}
+
+#block:hover {
+  -fx-background-color : -foreground-color;
+  }

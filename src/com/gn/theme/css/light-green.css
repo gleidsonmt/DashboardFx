@@ -150,7 +150,7 @@
 }
 
 #block:pressed {
-  -fx-background-color : -medium-gray;
+  -fx-background-color : -foreground-color;
 }
 
 #block:hover {

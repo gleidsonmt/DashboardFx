@@ -15,7 +15,7 @@
 .drawer .scroll .drawer-content .drawer-item:selected .group .icon
 {
   -fx-effect : none;
-  -fx-background-color: linear-gradient(to left, #33B5E599, #33B5E550);
+  -fx-background-color:  #33B5E5;
   -fx-border-color : #33B5E5;
   -fx-fill : white;
     /* -fx-padding : 2 2 2 10; */
