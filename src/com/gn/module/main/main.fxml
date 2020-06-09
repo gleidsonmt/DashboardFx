@@ -31,7 +31,7 @@
                      <children>
                         <VBox>
                            <children>
-                              <HBox fx:id="barHeader" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="904.0" style="-fx-border-width: 0 0 1 0;">
+                              <HBox id="bar" fx:id="barHeader" alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="904.0" style="-fx-border-width: 0 0 1 0;">
                                  <children>
                                     <Label fx:id="title" prefHeight="23.0" styleClass="h4" text="Dashboard" textFill="#0000008c">
                                        <font>

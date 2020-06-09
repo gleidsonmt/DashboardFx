@@ -70,7 +70,7 @@ public class App extends Application {
 
     @Override
     public synchronized void init() {
-        userDetail = new UserDetail("Gleidson", "Gleidson", "subtitle");
+        userDetail = new UserDetail("Gleidson", "Gleidson");
 
         Parent root = null;
         try {
@@ -82,7 +82,7 @@ public class App extends Application {
         decorator.getStage().setMinWidth(minWidth);
         decorator.getStage().setMinHeight(minHeight);
         decorator.setContent(root);
-        decorator.getStage().getIcons().add(new Image("/com/gn/module/media/logo2.png"));
+        decorator.getStage().getIcons().add(new Image("/com/gn/media/icon/logo2.png"));
 
     }
 

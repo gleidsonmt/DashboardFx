@@ -16,7 +16,6 @@
  */
 package com.gn.global.factory.badges;
 
-import com.gn.GNAvatarView;
 import com.gn.decorator.component.GNControl;
 import com.jfoenix.controls.JFXBadge;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -28,46 +27,29 @@ import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextAlignment;
 import org.controlsfx.control.PopOver;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  01/04/2020
  */
-public class BadgeTasks extends GNControl {
+public class BadgeTasks extends Button {
 
     private PopOver pop;
 
-    public BadgeTasks(){
-        this(null, null);
-    }
-
-    public BadgeTasks(String text, String subtitle) {
-        super(text, subtitle);
+    public BadgeTasks() {
         pop = new PopOver();
+        config();
     }
 
-    @Override
-    public Node icon() {
-        return null;
-    }
-
-    @Override
-    public Node status() {
-        return null;
-    }
-
-    @Override
-    public Node action() {
+    public void config() {
 
         JFXBadge badgeM = new JFXBadge();
-        badgeM.setPrefSize(35, 20);
+        badgeM.setPrefSize(30, 20);
         badgeM.setPosition(Pos.TOP_RIGHT);
         badgeM.getStyleClass().addAll("icon", "icon-danger");
         badgeM.setText("3");
@@ -76,7 +58,7 @@ public class BadgeTasks extends GNControl {
         control.setAlignment(Pos.CENTER);
         control.getStyleClass().add("icon-alert");
         control.setStyle("-fx-padding : 0px;");
-        control.setPrefSize(30,20);
+        control.setPrefSize(20,20);
         FontAwesomeIconView icon = new FontAwesomeIconView();
         icon.getStyleClass().add("icon");
         icon.setGlyphName("FLAG");
@@ -85,9 +67,13 @@ public class BadgeTasks extends GNControl {
 
         badgeM.setControl(control);
 
+        this.setGraphic(badgeM);
+        this.setPadding(new Insets(0,0,2,0));
+        this.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+
         badgeM.setOnMouseClicked(event -> showPopup());
         Platform.runLater(this::configLayout);
-        return badgeM;
+
     }
 
     private void showPopup() {
@@ -111,6 +97,7 @@ public class BadgeTasks extends GNControl {
         Separator bottom = new Separator();
 
         Label message = new Label("You have " + list.size() + " tasks");
+        message.setStyle("-fx-text-fill : -text-color;");
         GridPane title = new GridPane();
         title.setMinHeight(40D);
 
@@ -124,7 +111,7 @@ public class BadgeTasks extends GNControl {
         listView.getItems().addAll(list);
         listView.getStyleClass().add("border-0");
 
-        Hyperlink btn = new Hyperlink("ViewController all tasks");
+        Hyperlink btn = new Hyperlink("View all tasks");
         btn.setAlignment(Pos.CENTER);
         btn.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> pop.hide());
 
@@ -140,21 +127,22 @@ public class BadgeTasks extends GNControl {
         btn.setPrefWidth(root.getPrefWidth());
 
         listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
-//        Platform.runLater(() -> {
-        System.out.println("root = " + root);
-        System.out.println("popup = " + pop);
-            pop.setContentNode(root);
-            pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
-            pop.setArrowIndent(0);
-            pop.setArrowSize(0);
-            pop.setCloseButtonEnabled(false);
-            pop.setHeaderAlwaysVisible(false);
-            pop.setCornerRadius(0);
-        pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+        pop.setContentNode(root);
+        pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
+        pop.setArrowIndent(0);
+        pop.setArrowSize(0);
+        pop.setCloseButtonEnabled(false);
+        pop.setHeaderAlwaysVisible(false);
+        pop.setCornerRadius(0);
+
+        Platform.runLater(() -> {
+
+            pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+
 
             // tests
     //            pop.setAutoHide(false);
             pop.setAnimated(false);
-//        });
+        });
     }
 }

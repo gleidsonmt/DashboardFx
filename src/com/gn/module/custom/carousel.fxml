@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gn.lab.GNButton?>
+<?import com.gn.GNCarousel?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import java.net.URL?>
@@ -10,22 +10,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.customControls.AnimatedButton">
+<StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.custom.Carousel">
    <children>
       <ScrollPane fitToHeight="true" fitToWidth="true">
          <content>
-            <VBox alignment="CENTER" prefHeight="433.0" prefWidth="772.0" spacing="10.0">
+            <VBox prefHeight="433.0" prefWidth="772.0" spacing="10.0">
                <children>
                   <VBox alignment="CENTER_LEFT">
                      <children>
-                        <Label prefHeight="38.0" prefWidth="195.0" text="GNButton">
+                        <Label prefHeight="38.0" prefWidth="195.0" text="Carousel">
                            <styleClass>
                               <String fx:value="h3" />
                               <String fx:value="title" />
@@ -33,39 +32,38 @@
                         </Label>
                         <TextFlow prefHeight="54.0" prefWidth="952.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="The button is animated with shapes in layers." wrappingWidth="558.283203125" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="The carousel is a control of the overlapping layer, which navigates about her, showing one for once. " wrappingWidth="558.283203125" />
                            </children>
                         </TextFlow>
-                        <Label prefHeight="38.0" prefWidth="99.0" style="-fx-font-weight: bold;" text="Usage">
-                           <styleClass>
-                              <String fx:value="h4" />
-                              <String fx:value="title" />
-                           </styleClass>
-                        </Label>
-                        <TextFlow prefHeight="54.0" prefWidth="952.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Create a new class using of type.&#10;GNButton swipe = new GNButton();&#10;For more information visit project on GitHub.&#10;&#10;&#10;" wrappingWidth="558.283203125" />
-                           </children>
-                        </TextFlow>
-                        <Label layoutX="10.0" layoutY="102.0" prefHeight="38.0" prefWidth="99.0" style="-fx-font-weight: bold;" text="View">
-                           <styleClass>
-                              <String fx:value="h4" />
-                              <String fx:value="title" />
-                           </styleClass>
-                        </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
+                  <Label prefHeight="38.0" prefWidth="99.0" style="-fx-font-weight: bold;" text="Usage">
+                     <styleClass>
+                        <String fx:value="h4" />
+                        <String fx:value="title" />
+                     </styleClass>
+                  </Label>
+                  <TextFlow prefHeight="54.0" prefWidth="952.0">
                      <children>
-                        <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="5.0" prefHeight="230.0" prefWidth="938.0" vgap="5.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Create a new class using of type.&#10;GNCarousel carousel = new GNCarousel();&#10;carousel.setItems(createItems());&#10;For more information visit project on GitHub.&#10;&#10;&#10;" wrappingWidth="558.283203125" />
+                     </children>
+                  </TextFlow>
+                  <Label prefHeight="38.0" prefWidth="99.0" style="-fx-font-weight: bold;" text="View">
+                     <styleClass>
+                        <String fx:value="h4" />
+                        <String fx:value="title" />
+                     </styleClass>
+                  </Label>
+                  <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="482.0" prefWidth="940.0" spacing="10.0">
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
                            <children>
-                              <GNButton prefHeight="100.0" prefWidth="150.0" style="-gn-transition-color: -base;" text="Swipe" />
-                              <GNButton buttonType="DIAGONAL_SWIPE" prefHeight="100.0" prefWidth="150.0" style="-gn-transition-color: -base;" text="Diagonal Swipe" />
-                              <GNButton buttonType="CENTRALIZE" prefHeight="100.0" prefWidth="150.0" style="-gn-transition-color: -base;" text="Centralize" />
-                              <GNButton buttonType="SMOOSH" prefHeight="100.0" prefWidth="150.0" style="-gn-transition-color: -base;" text="Smoosh" />
-                              <GNButton buttonType="ALTERNATE" prefHeight="100.0" prefWidth="150.0" style="-gn-transition-color: -base;" text="Alternate" />
+                              <GNCarousel fx:id="carousel" prefWidth="671.0" />
                            </children>
-                        </FlowPane>
+                        </HBox>
                      </children>
                   </VBox>
                   <VBox spacing="20.0">
@@ -86,7 +84,7 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox layoutX="40.0" layoutY="992.0" prefWidth="952.0" spacing="20.0">
+                  <VBox prefWidth="952.0" spacing="20.0">
                      <children>
                         <HBox alignment="BOTTOM_LEFT">
                            <children>
@@ -98,7 +96,7 @@
                            <children>
                               <Hyperlink style="-fx-font-weight: bold; -fx-text-fill: -text-color;" styleClass="h6" text="Project" HBox.hgrow="ALWAYS">
                                  <graphic>
-                                    <FontAwesomeIconView glyphName="GITHUB" size="25" text="" />
+                                    <FontAwesomeIconView glyphName="GITHUB" size="25" />
                                  </graphic>
                               </Hyperlink>
                            </children>
@@ -128,5 +126,6 @@
       <URL value="@../../theme/css/typographic.css" />
       <URL value="@../../theme/css/helpers.css" />
       <URL value="@../../theme/css/master.css" />
+      <URL value="@../../theme/css/dark.css" />
    </stylesheets>
 </StackPane>

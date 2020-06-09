@@ -44,6 +44,10 @@
     -fx-border-insets: -1, -1;
 }
 
+#bar {
+    -fx-background-color : -foreground-color;
+}
+
 /* ------- CUSTOM COLOR DIALOG ------- */
 
 

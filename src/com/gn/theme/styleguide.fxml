@@ -99,7 +99,7 @@
             <Label text=" TextField, PasswordField, TextArea, Spinner" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <ComboBox prefWidth="150.0" />
+                  <ComboBox prefWidth="150.0" promptText="Prompt Text" />
                   <VBox alignment="CENTER_LEFT" prefHeight="85.0" prefWidth="205.0">
                      <children>
                         <Label layoutX="10.0" layoutY="61.0" text="Background : -box-base" />

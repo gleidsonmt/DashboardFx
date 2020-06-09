@@ -43,7 +43,7 @@
                                  <children>
                                     <ImageView fitHeight="346.0" fitWidth="567.0" smooth="false">
                                        <image>
-                                          <Image url="@../media/foreground.jpg" />
+                                          <Image url="@../../media/img/profile.jpg" />
                                        </image>
                                     </ImageView>
                                  </children></HBox>

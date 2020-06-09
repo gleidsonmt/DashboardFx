@@ -14,25 +14,38 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.module.customControls;
+package com.gn.module.projects;
 
+import com.gn.GNCarousel;
+import com.gn.global.model.Project;
+import com.gn.global.model.ProjectItem;
+import com.gn.global.plugin.ProjectsAccessor;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.HBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  13/04/2020
+ * Create on  27/05/2020
  */
-public class BannerController implements Initializable {
+public class ProjectsController implements Initializable {
 
-    @FXML private HBox banner;
+    @FXML private GNCarousel carousel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        carousel.getItems().addAll(new ProjectsAccessor().getProjects());
+//        carousel.getItems().addAll(
+//
+//        );
+
+//        System.out.println(carousel.getItems().get(0).getUserData());
+    }
+
+    @FXML
+    private void openProject(){
 
     }
 }

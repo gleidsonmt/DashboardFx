@@ -16,7 +16,6 @@
  */
 package com.gn.global.factory.badges;
 
-import com.gn.GNAvatarView;
 import com.gn.decorator.component.GNControl;
 import com.jfoenix.controls.JFXBadge;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -39,33 +38,18 @@ import org.controlsfx.control.PopOver;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  01/04/2020
  */
-public class BadgeMessages extends GNControl {
+public class BadgeMessages extends Button {
 
     private PopOver pop = new PopOver();
 
     public BadgeMessages() {
-        this(null, null);
+        config();
     }
 
-    public BadgeMessages(String text, String subtitle) {
-        super(text, subtitle);
-    }
-
-    @Override
-    public Node icon() {
-        return null;
-    }
-
-    @Override
-    public Node status() {
-        return null;
-    }
-
-    @Override
-    public Node action() {
+    public Node config() {
 
         JFXBadge badgeM = new JFXBadge();
-        badgeM.setPrefSize(35, 20);
+        badgeM.setPrefSize(30, 20);
         badgeM.setPosition(Pos.TOP_RIGHT);
         badgeM.getStyleClass().addAll("icon", "icon");
         badgeM.setText("3");
@@ -74,7 +58,7 @@ public class BadgeMessages extends GNControl {
         control.setAlignment(Pos.CENTER);
         control.getStyleClass().add("icon");
         control.setStyle("-fx-padding : 0px;");
-        control.setPrefSize(30, 20);
+        control.setPrefSize(20, 20);
         FontAwesomeIconView icon = new FontAwesomeIconView();
         icon.getStyleClass().add("icon");
         icon.setGlyphName("ENVELOPE");
@@ -83,10 +67,15 @@ public class BadgeMessages extends GNControl {
 
         badgeM.setControl(control);
 
+        this.setGraphic(badgeM);
+        this.setPadding(new Insets(0,0,2,0));
+        this.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+
         badgeM.setOnMouseClicked(event -> showPopup());
 
-        Platform.runLater(this::configLayout);
-//        configLayout();
+//        Platform.runLater(this::configLayout);
+
+        configLayout();
         return badgeM;
     }
 
@@ -99,14 +88,23 @@ public class BadgeMessages extends GNControl {
 
     private void configLayout(){
 
-        Image img1 = new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm());
-        Image img2 = new Image(getClass().getResource("/com/gn/module/media/woman.png").toExternalForm());
-        Image img3 = new Image(getClass().getResource("/com/gn/module/media/man.png").toExternalForm());
+        Image img1 = new Image(getClass().
+                getResource("/com/gn/module/media/man.png").
+                toExternalForm());
+        Image img2 = new Image(getClass().
+                getResource("/com/gn/module/media/woman.png").
+                toExternalForm());
+        Image img3 = new Image(getClass().
+                getResource("/com/gn/module/media/man.png").
+                toExternalForm());
 
         ObservableList<BadgeCellMessage> list = FXCollections.observableArrayList(
-                new BadgeCellMessage("Will Junior", "Lorem ipsum dolor color","24 minutes ago", img1),
-                new BadgeCellMessage("Jad Gailr", "Lorem ipsum dolor color","today", img2),
-                new BadgeCellMessage("Bart", "Lorem ipsum dolor color","3 seconds ago", img3)
+                new BadgeCellMessage("Will Junior",
+                        "Lorem ipsum dolor color","24 minutes ago", img1),
+                new BadgeCellMessage("Jad Gailr",
+                        "Lorem ipsum dolor color","today", img2),
+                new BadgeCellMessage("Bart",
+                        "Lorem ipsum dolor color","3 seconds ago", img3)
         );
 
         list.forEach(e -> {
@@ -118,6 +116,7 @@ public class BadgeMessages extends GNControl {
         Separator bottom = new Separator();
 
         Label message = new Label("You have " + list.size() + " messages");
+        message.setStyle("-fx-text-fill : -text-color;");
         GridPane title = new GridPane();
         title.setMinHeight(40D);
 
@@ -148,16 +147,20 @@ public class BadgeMessages extends GNControl {
 
         listView.getStylesheets().add(getClass().getResource("/com/gn/theme/css/custom-scroll.css").toExternalForm());
 
-        System.out.println(root);
-            pop.setContentNode(root);
-            pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
-            pop.setArrowIndent(0);
-            pop.setArrowSize(0);
-            pop.setCloseButtonEnabled(false);
-            pop.setHeaderAlwaysVisible(false);
-            pop.setCornerRadius(0);
-                pop.getRoot().getStylesheets().add(getClass().getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+        pop.setContentNode(root);
+        pop.setArrowLocation(PopOver.ArrowLocation.TOP_RIGHT);
+        pop.setArrowIndent(0);
+        pop.setArrowSize(0);
+        pop.setCloseButtonEnabled(false);
+        pop.setHeaderAlwaysVisible(false);
+        pop.setCornerRadius(0);
 
-            pop.setAnimated(false);
+//        Platform.runLater(() ->{
+            pop.getRoot().getStylesheets().add(getClass().
+                    getResource("/com/gn/theme/css/poplight.css").toExternalForm());
+//        });
+
+
+        pop.setAnimated(false);
     }
 }

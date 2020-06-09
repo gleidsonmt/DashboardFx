@@ -1,84 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gn.GNCarousel?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.projects.ProjectsController">
    <children>
-      <VBox prefHeight="433.0" prefWidth="772.0" spacing="10.0">
-         <children>
-            <Label prefHeight="38.0" prefWidth="546.0" text="My Projects on GitHub">
-               <styleClass>
-                  <String fx:value="h3" />
-                  <String fx:value="title" />
-               </styleClass>
-            </Label>
-            <VBox />
-            <VBox alignment="BOTTOM_LEFT" spacing="20.0">
+      <ScrollPane fitToHeight="true" fitToWidth="true">
+         <content>
+            <VBox prefHeight="433.0" prefWidth="772.0" spacing="10.0">
                <children>
-                  <GridPane prefHeight="200.0" prefWidth="940.0" styleClass="border">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <VBox alignment="CENTER_LEFT">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: white;">
+                        <Label prefHeight="38.0" prefWidth="195.0" text="Carousel">
+                           <styleClass>
+                              <String fx:value="h3" />
+                              <String fx:value="title" />
+                           </styleClass>
+                        </Label>
+                        <TextFlow prefHeight="54.0" prefWidth="952.0">
                            <children>
-                              <Label styleClass="h3" text="GNDecorator" />
-                              <Label layoutX="10.0" layoutY="10.0" text="Este componente é um button animado com camadas." wrapText="true" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="My own project on github" wrappingWidth="558.283203125" />
                            </children>
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                        </VBox>
-                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: -base;" GridPane.columnIndex="3">
-                           <children>
-                              <Label style="-fx-text-fill: -inner-text;" styleClass="h3" text="GNAvatarView" />
-                              <Label layoutX="10.0" layoutY="10.0" style="-fx-text-fill: -inner-text;" text="Este componente é um button animado com camadas." wrapText="true" />
-                           </children>
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                        </VBox>
-                        <VBox alignment="CENTER" layoutX="480.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: -base;" GridPane.columnIndex="1">
-                           <children>
-                              <Label style="-fx-text-fill: -inner-text;" styleClass="h3" text="GNButton" />
-                              <Label layoutX="10.0" layoutY="10.0" style="-fx-text-fill: -inner-text;" text="Este componente é um button animado com camadas." wrapText="true" />
-                           </children>
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                        </VBox>
-                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: white;" GridPane.columnIndex="2">
-                           <children>
-                              <Label styleClass="h3" text="GNcarousel" />
-                              <Label layoutX="10.0" layoutY="10.0" text="Este componente é um button animado com camadas." wrapText="true" />
-                           </children>
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                        </VBox>
+                        </TextFlow>
                      </children>
-                  </GridPane>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="378.0" prefWidth="952.0" spacing="20.0" styleClass="background-color" VBox.vgrow="ALWAYS">
+                     <children>
+                        <GNCarousel fx:id="carousel" prefWidth="671.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="20.0">
+                     <children>
+                        <HBox alignment="BOTTOM_LEFT">
+                           <children>
+                              <Label style="-fx-font-size: 8pt;" styleClass="min" text="Author" />
+                              <Separator prefHeight="0.0" prefWidth="197.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" onMouseClicked="#openProject" VBox.vgrow="ALWAYS">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <Label text="Gleidson Neves da Silveira" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox prefWidth="952.0" spacing="20.0">
+                     <children>
+                        <HBox alignment="BOTTOM_LEFT">
+                           <children>
+                              <Label style="-fx-font-size: 8pt;" styleClass="min" text="Resources" />
+                              <Separator prefHeight="0.0" prefWidth="197.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox id="block" alignment="CENTER_LEFT" maxHeight="-Infinity" onMouseClicked="#openProject" prefHeight="42.0" prefWidth="892.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Hyperlink style="-fx-font-weight: bold; -fx-text-fill: -text-color;" styleClass="h6" text="Project" HBox.hgrow="ALWAYS">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="GITHUB" size="25" />
+                                 </graphic>
+                              </Hyperlink>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
+               <padding>
+                  <Insets bottom="10.0" left="30.0" right="30.0" top="30.0" />
+               </padding>
             </VBox>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="30.0" right="30.0" top="30.0" />
-         </padding>
-      </VBox>
+         </content>
+      </ScrollPane>
    </children>
    <stylesheets>
       <URL value="@../../theme/css/material-color.css" />

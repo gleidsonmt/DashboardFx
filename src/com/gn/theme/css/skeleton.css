@@ -1041,6 +1041,8 @@ Text,
 
 }
 
+
+
 .menu-bar .container .menu:openvertically .arrow-button .arrow {
   -fx-shape : null;
   -fx-fill : transparent;
@@ -2064,7 +2066,9 @@ Text,
 .icon {
     -fx-text-fill: #FE774D;
     -fx-cursor: hand;
+    -fx-fill : -icon-color;
 }
+
 
 .icon-rippler {
     -jfx-rippler-fill: BLUE;

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -20,7 +19,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="drawer" fx:id="drawer" alignment="TOP_CENTER" minWidth="0.0" prefHeight="736.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.main.DrawerNavigate">
+<VBox id="drawer" fx:id="drawer" alignment="TOP_CENTER" minWidth="0.0" prefHeight="736.0" prefWidth="250.0" stylesheets="@drawer.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.main.DrawerNavigate">
    <padding>
       <Insets top="10.0" />
    </padding>
@@ -97,7 +96,7 @@
                               <ToggleGroup fx:id="group1" />
                            </toggleGroup>
                         </ToggleButton>
-                        <ToggleButton fx:id="home" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="381.0" styleClass="drawer-item" text="Cards">
+                        <ToggleButton alignment="BASELINE_RIGHT" contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#goProjects" prefHeight="50.0" prefWidth="381.0" styleClass="drawer-item" text="Projects">
                            <graphic>
                               <SVGPath content="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" mouseTransparent="true" styleClass="icon" />
                            </graphic>
@@ -144,7 +143,7 @@
                               </VBox>
                            </content>
                         </TitledPane>
-                        <TitledPane fx:id="charts" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" graphicTextGap="22.0" layoutX="10.0" layoutY="130.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Charts">
+                        <TitledPane fx:id="charts" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" expanded="false" graphicTextGap="22.0" layoutX="10.0" layoutY="130.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Charts">
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0" styleClass="drawer-content">
                                  <children>
@@ -169,6 +168,7 @@
                                  <children>
                                     <ToggleButton cache="true" layoutX="20.0" layoutY="120.0" onMouseClicked="#goAnimateButtons" prefWidth="250" styleClass="drawer-item" text="Animated Button" />
                                     <ToggleButton onMouseClicked="#goCarousel" prefWidth="250" styleClass="drawer-item" text="Carousel" />
+                                    <ToggleButton fx:id="cards" layoutX="20.0" layoutY="70.0" onAction="#goCards" prefWidth="250" styleClass="drawer-item" text="Card" />
                                  </children>
                               </VBox>
                            </content>
@@ -203,8 +203,4 @@
          </children>
       </VBox>
    </children>
-   <stylesheets>
-      <URL value="@drawer.css" />
-      <URL value="@style/info-dark.css" />
-   </stylesheets>
 </VBox>

@@ -63,6 +63,11 @@ public class DrawerNavigate implements Initializable  {
     }
 
     @FXML
+    private void goCards(){
+        updateViewDetails("cards");
+    }
+
+    @FXML
     private void goProjects(){
         updateViewDetails("projects");
     }

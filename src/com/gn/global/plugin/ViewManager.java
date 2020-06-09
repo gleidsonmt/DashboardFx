@@ -71,7 +71,6 @@ public enum  ViewManager {
             if (get(previous).getController() instanceof ActionView)
                 ((ActionView) get(previous).getController()).exit();
 
-            System.out.println(viewController.getName());
             body.setContent(viewController.getRoot());
 
             if (viewController.getController() instanceof ActionView) {

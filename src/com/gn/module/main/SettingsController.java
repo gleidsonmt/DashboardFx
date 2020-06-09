@@ -97,7 +97,7 @@ public class SettingsController implements Initializable {
         }
         else {
 //            App.getDecorator().getScene().setUserAgentStylesheet(getClass().getResource("/com/gn/theme/css/dark.css").toExternalForm());
-            App.getDecorator().initTheme(GNDecorator.Theme.DARKULA);
+            App.getDecorator().initTheme(GNDecorator.Theme.DARK);
             App.getDecorator().getScene().getStylesheets().addAll(getClass().getResource("/com/gn/theme/css/dark.css").toExternalForm());
 
         }

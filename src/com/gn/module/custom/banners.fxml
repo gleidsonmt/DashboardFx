@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.customControls.BannerController">
+<StackPane prefHeight="1120.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.custom.BannerController">
    <children>
       <TabPane style="-fx-tab-min-width: 100;">
          <tabs>

@@ -58,6 +58,12 @@
   -fx-cursor : default;
 }
 
+.gn-buttons .button,
+.gn-buttons .button:focused,
+.gn-buttons .button:hover {
+    -fx-background-color : transparent;
+}
+
 
 /* menu */
 
@@ -68,9 +74,15 @@
   -fx-background-color : transparent;
 }
 
+.gn-carousel .container {
+    -fx-background-color : -foreground-color;
+}
+
 .gn-carousel .container .wrapper .indicators .toggle-button
 {
     -fx-background-color : rgba(0,0,0,.2);
+    -fx-effect : none;
+    -fx-max-height : 3px;
 }
 
 .gn-carousel .container .wrapper .indicators .toggle-button:selected
@@ -78,11 +90,16 @@
   -fx-background-color : white;
 }
 
+.gn-carousel .container .button SVGPath {
+    -fx-fill : -text-color;
+    -fx-background-color : red;
+}
+
 .gn-drawer-menu .title .arrow-button .arrow,
 .gn-drawer-menu .title .icon
 {
-  -fx-background-color : -icon-color;
-  -fx-fill : -icon-color;
+  -fx-background-color : -text-color;
+  -fx-fill : -text-color;
 }
 
 .gn-drawer-menu:selected .title
@@ -322,4 +339,42 @@
 
 #block:hover {
   -fx-background-color : -foreground-color;
-  }
+}
+
+.block-test {
+    -fx-background-image : url("../../media/img/follow.jpg'");
+    -fx-background-size : cover;
+}
+
+.gn-menu-bar .menu,
+.gn-menu-bar .menu-button
+{
+    -fx-min-height : 20.0px;
+    -fx-min-width : 20.0px;
+    -fx-cursor : hand;
+}
+
+.gn-menu-bar .container .menu:openvertically
+{
+    -fx-padding : 0px;
+}
+
+.gn-menu-bar .container .menu:openvertically,
+.gn-menu-bar .container .menu:openvertically .button
+{
+    -fx-background-color : transparent;
+    -fx-padding : 0px;
+}
+
+.gn-menu-bar .container .menu:openvertically:hover
+{
+    -fx-background-color : -light-gray;
+    -fx-border-color : transparent;
+}
+
+
+.gn-menu-bar
+{
+    -fx-padding : 0px;
+    -fx-background-color : transparent;
+}

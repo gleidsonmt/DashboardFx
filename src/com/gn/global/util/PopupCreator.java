@@ -30,6 +30,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -105,12 +106,13 @@ public enum PopupCreator {
         App.getDecorator().hideCustoms();
     }
 
-    public void createDrawerLeft(Node hamb, VBox content){
+    public void createDrawerLeft(Menu hamb, VBox content){
         createDrawerLeft(content);
+        hamb.getGraphic().setVisible(false);
         close.setOnFinished(event -> {
-            hamb.setVisible(true);
+            hamb.getGraphic().setVisible(true);
             foreground.toBack();
-            App.getDecorator().showCustoms();
+            App.getDecorator().showControls();
             App.getDecorator().unblock();
         });
     }
@@ -156,7 +158,7 @@ public enum PopupCreator {
 
         close.setOnFinished(event -> {
             foreground.toBack();
-            App.getDecorator().showCustoms();
+            App.getDecorator().showControls();
             App.getDecorator().unblock();
         });
 

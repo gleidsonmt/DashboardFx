@@ -277,8 +277,22 @@
 - !!com.gn.global.plugin.View
   title: Animated Button
   name: animatedbutton
-  parentName: customControls
+  parentName: custom
   fxmlFile: animated-button.fxml
+
+  #Carousel
+- !!com.gn.global.plugin.View
+  title: Carousel
+  name: carousel
+  parentName: custom
+  fxmlFile: carousel.fxml
+
+  #Cards
+- !!com.gn.global.plugin.View
+  title: Cards
+  name: cards
+  parentName: custom
+  fxmlFile: cards.fxml
 
 # Utilities
 - !!com.gn.global.plugin.View
@@ -298,22 +312,10 @@
 - !!com.gn.global.plugin.View
   title: Banners
   name: banners
-  parentName: customControls
+  parentName: custom
   fxmlFile: banners.fxml
 
-#Cards
-- !!com.gn.global.plugin.View
-  title: Cards
-  name: cards
-  parentName: customControls
-  fxmlFile: cards.fxml
 
-#Carousel
-- !!com.gn.global.plugin.View
-  title: Carousel
-  name: carousel
-  parentName: customControls
-  fxmlFile: carousel.fxml
 
 #DataFilter
 - !!com.gn.global.plugin.View
@@ -328,6 +330,13 @@
   name: typography
   parentName: utilities
   fxmlFile: typography.fxml
+
+#Cards
+- !!com.gn.global.plugin.View
+  title : Cards
+  name : cards
+  parentName : cards
+  fxmlFile : cards.fxml
 
   #About
 - !!com.gn.global.plugin.View
