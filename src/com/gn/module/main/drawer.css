@@ -1,12 +1,13 @@
 
 .image-view {
-    -fx-image : url("../media/logo2.png");
+    -fx-image : url("../media/logo.png");
 }
 
+.root,
 .drawer
 {
-    -drawer-color : linear-gradient(to top,   derive(#02796b, 50%) , derive(#73e57b, 50%)) ;
-    -fx-background-color: -drawer-color
+    -drawer-color : linear-gradient(to top,   derive(#00796b, 60%) , derive(#73e57b, 20%)) ;
+    -fx-background-color: -drawer-color;
 }
 
 .scroll .viewport {

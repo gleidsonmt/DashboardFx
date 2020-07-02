@@ -113,6 +113,7 @@ public class App extends Application {
                 getClass().getResource("/com/gn/theme/css/shape.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/typographic.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/helpers.css").toExternalForm(),
+                getClass().getResource("/com/gn/theme/css/media.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/light-green.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/master.css").toExternalForm()
         );

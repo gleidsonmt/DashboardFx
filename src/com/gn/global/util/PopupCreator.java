@@ -33,6 +33,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -63,18 +64,23 @@ public enum PopupCreator {
     private final double barSize    = 40;
 
     public void createDrawerRight(VBox content){
-        customDialog.setStyle("-fx-background-color : -foreground-color; -fx-background-radius :  0;");
-        foreground.getChildren().clear();
-        foreground.getChildren().add(foreContent);
-        foreContent.getChildren().clear();
-        foreContent.getChildren().add(customDialog);
+
+        reset();
+
+//        customDialog.setStyle("-fx-background-color : -foreground-color; -fx-background-radius :  0;");
+//        foreground.getChildren().clear();
+//        foreground.getChildren().add(foreContent);
+//        foreContent.getChildren().clear();
+//        foreContent.getChildren().add(customDialog);
 
         customDialog.setPrefWidth(minDrawerSize);
 
-        if(!customDialog.getChildren().contains(content)) {
-            customDialog.getChildren().clear();
-            customDialog.getChildren().add(content);
-        }
+        customDialog.getChildren().setAll(content);
+
+//        if(!customDialog.getChildren().contains(content)) {
+//            customDialog.getChildren().clear();
+//            customDialog.getChildren().add(content);
+//        }
 
         organizeInRight();
 
@@ -101,9 +107,12 @@ public enum PopupCreator {
 
         close.setOnFinished(event -> {
             foreground.toBack();
-            App.getDecorator().showCustoms();
+            App.getDecorator().showControls();
+            App.getDecorator().unblock();
         });
-        App.getDecorator().hideCustoms();
+        App.getDecorator().block();
+        App.getDecorator().hideControls();
+
     }
 
     public void createDrawerLeft(Menu hamb, VBox content){
@@ -163,6 +172,8 @@ public enum PopupCreator {
         });
 
         App.getDecorator().block();
+        App.getDecorator().hideControls();
+
     }
 
     public enum AlertType {
@@ -240,6 +251,10 @@ public enum PopupCreator {
         bounceIn.play();
 
         foreground.setOnMouseClicked(null);
+
+        foreground.addEventFilter(MouseEvent.MOUSE_CLICKED, event ->{
+            System.out.println("clicked");
+        });
     }
 
     private VBox createAlertHeader(AlertType type){
@@ -315,8 +330,12 @@ public enum PopupCreator {
         _actions.getChildren().setAll(actions);
         _actions.getChildren().forEach( e -> e.addEventFilter(ActionEvent.ACTION, event -> {
             BounceOut bounceOut = new BounceOut(customDialog);
-            bounceOut.getTimeline().setOnFinished(ev -> foreground.toBack());
+            bounceOut.getTimeline().setOnFinished(ev -> {
+                foreground.toBack();
+                App.getDecorator().unblock();
+            });
             bounceOut.play();
+
         }));
 
         return _actions;

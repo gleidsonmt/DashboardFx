@@ -1,0 +1,42 @@
+/*
+    Created on : 10/06/2020, 08:00:15
+    Author     : Gleidson Neves da Silveira
+*/
+
+.bubble-box-1 {
+    -fx-background-image : url("/com/gn/media/img/bubbleFore1.png");
+    -fx-background-size : contain;
+    -fx-background-position : center;
+    -fx-background-repeat : no-repeat;
+}
+
+.bubble-box-2 {
+    -fx-background-image : url("/com/gn/media/img/bubbleFore2.png");
+    -fx-background-size : contain;
+    -fx-background-position : center;
+    -fx-background-repeat : no-repeat;
+}
+
+.bubble-box-3 {
+    -fx-background-image : url("/com/gn/media/img/bubbleFore3.png");
+    -fx-background-size : contain;
+    -fx-background-position : center;
+    -fx-background-repeat : no-repeat;
+}
+
+.bubble-box-4 {
+    -fx-background-image : url("/com/gn/media/img/bubbleFore4.png");
+    -fx-background-size : contain;
+    -fx-background-position : center;
+    -fx-background-repeat : no-repeat;
+}
+
+.fore-1 {
+    -fx-background-image : url("/com/gn/module/media/fore1.jpg");
+    -fx-background-size : cover;
+}
+
+.fore-6 {
+    -fx-background-image : url("/com/gn//media/img/fore6.jpg");
+    -fx-background-size : cover;
+}

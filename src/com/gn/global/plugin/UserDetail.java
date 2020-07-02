@@ -18,6 +18,7 @@ package com.gn.global.plugin;
 
 import animatefx.animation.BounceIn;
 import com.gn.App;
+import com.gn.AvatarType;
 import com.gn.GNAvatarView;
 import com.gn.global.exceptions.NavigationException;
 import com.gn.global.util.PopupCreator;
@@ -71,7 +72,6 @@ public class UserDetail extends Button {
 
     public Node config() {
 
-
         Image image = new Image("/com/gn/module/media/jessy.png");
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(30);
@@ -114,6 +114,7 @@ public class UserDetail extends Button {
         subTitle.setText("Member since 2018");
 
         GNAvatarView gnAvatar = new GNAvatarView();
+//        gnAvatar.setType(AvatarType.CIRCLE);
         gnAvatar.setImage(new Image("/com/gn/module/media/jessy.png"));
 
         background.setPrefHeight(500);

@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -26,22 +27,54 @@
                      <content>
                         <VBox alignment="CENTER" maxHeight="-Infinity" spacing="10.0">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="86.0" prefWidth="890.0">
+                              <HBox VBox.vgrow="ALWAYS">
                                  <children>
-                                    <Label prefHeight="29.0" prefWidth="201.0" text="Material Color">
-                                       <styleClass>
-                                          <String fx:value="h3" />
-                                          <String fx:value="title" />
-                                       </styleClass>
-                                    </Label>
-                                    <Label layoutX="405.0" layoutY="19.0" prefHeight="29.0" prefWidth="201.0" text="Click in one toggle to copy">
-                                       <styleClass>
-                                          <String fx:value="h5" />
-                                          <String fx:value="title" />
-                                       </styleClass>
-                                    </Label>
+                                    <VBox alignment="CENTER" prefHeight="86.0" prefWidth="890.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label prefHeight="29.0" prefWidth="201.0" text="Material Color">
+                                             <styleClass>
+                                                <String fx:value="h3" />
+                                                <String fx:value="title" />
+                                             </styleClass>
+                                          </Label>
+                                          <Label layoutX="405.0" layoutY="19.0" prefHeight="29.0" prefWidth="201.0" text="Click in one toggle to copy">
+                                             <styleClass>
+                                                <String fx:value="h5" />
+                                                <String fx:value="title" />
+                                             </styleClass>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="86.0" prefWidth="890.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <GridPane>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <VBox fx:id="boxColor" alignment="CENTER" style="-fx-background-color: -danger;">
+                                                   <children>
+                                                      <Label style="-fx-text-fill: -inner-text;" text="Color" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER" GridPane.columnIndex="1">
+                                                   <children>
+                                                      <TextField fx:id="textColor" style="-fx-border-width: 0px;" text="#f3fs3df" />
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </padding>
+                                                </VBox>
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </VBox>
                                  </children>
-                              </VBox>
+                              </HBox>
                               <GridPane fx:id="grid" alignment="CENTER" VBox.vgrow="ALWAYS">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

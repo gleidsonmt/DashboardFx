@@ -27,10 +27,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.chart.AreaChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -47,7 +44,6 @@ import java.util.ResourceBundle;
 public class Dashboard implements Initializable, ActionView {
 
     @FXML private StackPane root;
-    @FXML private AreaChart<String, Number> areaChart;
     @FXML private CurveFittedAreaChart<Number, Number> curve;
     @FXML private DonutChart donutChart;
     @FXML private GNCarousel carousel;
@@ -58,6 +54,11 @@ public class Dashboard implements Initializable, ActionView {
     @FXML private GridPane socialTiles;
 
     private CurveFittedAreaChart<Number, Number> curvedChart = new CurveFittedAreaChart<>();
+
+    @FXML private BarChart<String, Number> barChart;
+    @FXML private AreaChart<String, Number> areaChart;
+    @FXML private LineChart<String, Number> lineChart;
+
 
     @FXML private PieChart pieChart;
 
@@ -95,6 +96,10 @@ public class Dashboard implements Initializable, ActionView {
         );
 
         curve.getData().add(series2);
+
+        populateBarChart();
+        populateAreaChart();
+        populateLineChart();
     }
 
 
@@ -148,5 +153,131 @@ public class Dashboard implements Initializable, ActionView {
         GridFx.remove("body-center");
         GridFx.remove("graphic");
         GridFx.remove("social-tiles");
+    }
+
+    private void populateBarChart(){
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Legend 1");
+        series.getData().add(new XYChart.Data<>("1", 8D));
+        series.getData().add(new XYChart.Data<>("2", 5D));
+        series.getData().add(new XYChart.Data<>("3", 3D));
+        series.getData().add(new XYChart.Data<>("4", 6D));
+        series.getData().add(new XYChart.Data<>("5", 8D));
+        series.getData().add(new XYChart.Data<>("6", 5D));
+        series.getData().add(new XYChart.Data<>("7", 6D));
+        series.getData().add(new XYChart.Data<>("8", 5D));
+
+
+        XYChart.Series<String, Number> secondaySeries = new XYChart.Series<>();
+        secondaySeries.setName("Legend 2");
+        secondaySeries.getData().add(new XYChart.Data<>("1", 2D));
+        secondaySeries.getData().add(new XYChart.Data<>("2", 7D));
+        secondaySeries.getData().add(new XYChart.Data<>("3", 8D));
+        secondaySeries.getData().add(new XYChart.Data<>("4", 3D));
+        secondaySeries.getData().add(new XYChart.Data<>("5", 2D));
+        secondaySeries.getData().add(new XYChart.Data<>("6", 3D));
+        secondaySeries.getData().add(new XYChart.Data<>("7", 4D));
+        secondaySeries.getData().add(new XYChart.Data<>("8", 5D));
+
+
+        XYChart.Series<String, Number> thirdSeries = new XYChart.Series<>();
+        thirdSeries.setName("Legend 3");
+        thirdSeries.getData().add(new XYChart.Data<>("1", 6D));
+        thirdSeries.getData().add(new XYChart.Data<>("2", 3D));
+        thirdSeries.getData().add(new XYChart.Data<>("3", 4D));
+        thirdSeries.getData().add(new XYChart.Data<>("4", 3D));
+        thirdSeries.getData().add(new XYChart.Data<>("5", 8D));
+        thirdSeries.getData().add(new XYChart.Data<>("6", 3D));
+        thirdSeries.getData().add(new XYChart.Data<>("7", 2D));
+        thirdSeries.getData().add(new XYChart.Data<>("8", 1D));
+
+
+        barChart.getData().setAll(series, secondaySeries, thirdSeries);
+    }
+
+    private void populateAreaChart(){
+
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Legend 1");
+        series.getData().add(new XYChart.Data<>("0", 2D));
+        series.getData().add(new XYChart.Data<>("1", 8D));
+        series.getData().add(new XYChart.Data<>("2", 5D));
+        series.getData().add(new XYChart.Data<>("3", 3D));
+        series.getData().add(new XYChart.Data<>("4", 6D));
+        series.getData().add(new XYChart.Data<>("5", 8D));
+        series.getData().add(new XYChart.Data<>("6", 5D));
+        series.getData().add(new XYChart.Data<>("7", 6D));
+        series.getData().add(new XYChart.Data<>("8", 5D));
+
+
+        XYChart.Series<String, Number> secondaySeries = new XYChart.Series<>();
+        secondaySeries.setName("Legend 2");
+        secondaySeries.getData().add(new XYChart.Data<>("0", 2D));
+        secondaySeries.getData().add(new XYChart.Data<>("1", 2D));
+        secondaySeries.getData().add(new XYChart.Data<>("2", 7D));
+        secondaySeries.getData().add(new XYChart.Data<>("3", 8D));
+        secondaySeries.getData().add(new XYChart.Data<>("4", 3D));
+        secondaySeries.getData().add(new XYChart.Data<>("5", 2D));
+        secondaySeries.getData().add(new XYChart.Data<>("6", 3D));
+        secondaySeries.getData().add(new XYChart.Data<>("7", 4D));
+        secondaySeries.getData().add(new XYChart.Data<>("8", 5D));
+
+
+        XYChart.Series<String, Number> thirdSeries = new XYChart.Series<>();
+        thirdSeries.setName("Legend 3");
+        thirdSeries.getData().add(new XYChart.Data<>("0", 0D));
+        thirdSeries.getData().add(new XYChart.Data<>("1", 6D));
+        thirdSeries.getData().add(new XYChart.Data<>("2", 3D));
+        thirdSeries.getData().add(new XYChart.Data<>("3", 4D));
+        thirdSeries.getData().add(new XYChart.Data<>("4", 3D));
+        thirdSeries.getData().add(new XYChart.Data<>("5", 8D));
+        thirdSeries.getData().add(new XYChart.Data<>("6", 3D));
+        thirdSeries.getData().add(new XYChart.Data<>("7", 2D));
+        thirdSeries.getData().add(new XYChart.Data<>("8", 1D));
+
+
+        areaChart.getData().setAll(series, secondaySeries, thirdSeries);
+        areaChart.setCreateSymbols(true);
+    }
+
+    private void populateLineChart(){
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Legend 1");
+        series.getData().add(new XYChart.Data<>("1", 8D));
+        series.getData().add(new XYChart.Data<>("2", 5D));
+        series.getData().add(new XYChart.Data<>("3", 3D));
+        series.getData().add(new XYChart.Data<>("4", 6D));
+        series.getData().add(new XYChart.Data<>("5", 8D));
+        series.getData().add(new XYChart.Data<>("6", 5D));
+        series.getData().add(new XYChart.Data<>("7", 6D));
+        series.getData().add(new XYChart.Data<>("8", 5D));
+
+
+        XYChart.Series<String, Number> secondaySeries = new XYChart.Series<>();
+        secondaySeries.setName("Legend 2");
+        secondaySeries.getData().add(new XYChart.Data<>("1", 2D));
+        secondaySeries.getData().add(new XYChart.Data<>("2", 7D));
+        secondaySeries.getData().add(new XYChart.Data<>("3", 8D));
+        secondaySeries.getData().add(new XYChart.Data<>("4", 3D));
+        secondaySeries.getData().add(new XYChart.Data<>("5", 2D));
+        secondaySeries.getData().add(new XYChart.Data<>("6", 3D));
+        secondaySeries.getData().add(new XYChart.Data<>("7", 4D));
+        secondaySeries.getData().add(new XYChart.Data<>("8", 5D));
+
+
+        XYChart.Series<String, Number> thirdSeries = new XYChart.Series<>();
+        thirdSeries.setName("Legend 3");
+        thirdSeries.getData().add(new XYChart.Data<>("1", 6D));
+        thirdSeries.getData().add(new XYChart.Data<>("2", 3D));
+        thirdSeries.getData().add(new XYChart.Data<>("3", 4D));
+        thirdSeries.getData().add(new XYChart.Data<>("4", 3D));
+        thirdSeries.getData().add(new XYChart.Data<>("5", 8D));
+        thirdSeries.getData().add(new XYChart.Data<>("6", 3D));
+        thirdSeries.getData().add(new XYChart.Data<>("7", 2D));
+        thirdSeries.getData().add(new XYChart.Data<>("8", 1D));
+
+
+        lineChart.getData().setAll(series, secondaySeries, thirdSeries);
+        lineChart.setCreateSymbols(true);
     }
 }

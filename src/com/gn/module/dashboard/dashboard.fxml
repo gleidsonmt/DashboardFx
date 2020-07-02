@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gn.GNAvatarView?>
 <?import com.gn.GNCarousel?>
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXProgressBar?>
 <?import core.CurveFittedAreaChart?>
 <?import core.DonutChart?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -24,6 +27,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
 <StackPane fx:id="root" prefHeight="1058.0" prefWidth="1843.0" styleClass="foreground-color" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.dashboard.Dashboard">
    <children>
@@ -370,32 +374,7 @@
                                     <String fx:value="background-color" />
                                  </styleClass>
                               </DonutChart>
-                              <HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="637.0">
-                                 <children>
-                                    <GNAvatarView strokeWidth="0.0">
-                                       <image>
-                                          <Image url="@../media/avatar.jpg" />
-                                       </image>
-                                    </GNAvatarView>
-                                    <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
-                                       <children>
-                                          <Label styleClass="h4" text="Perfil" />
-                                          <JFXProgressBar prefHeight="3.0" prefWidth="573.0" progress="0.7" />
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </VBox>
-                                 </children>
-                                 <styleClass>
-                                    <String fx:value="border" />
-                                    <String fx:value="border-1" />
-                                    <String fx:value="background-color" />
-                                 </styleClass>
-                                 <padding>
-                                    <Insets bottom="5.0" left="5.0" top="5.0" />
-                                 </padding>
-                              </HBox>
+                              <GNCarousel fx:id="carousel" VBox.vgrow="ALWAYS" />
                            </children>
                            <styleClass>
                               <String fx:value="col-sm-12" />
@@ -406,9 +385,9 @@
                         </VBox>
                         <VBox GridPane.columnIndex="4" GridPane.columnSpan="4">
                            <children>
-                              <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+                              <VBox VBox.vgrow="ALWAYS">
                                  <children>
-                                    <GridPane fx:id="socialTiles">
+                                    <GridPane fx:id="socialTiles" VBox.vgrow="ALWAYS">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -446,7 +425,8 @@
                                                                <styleClass>
                                                                   <String fx:value="triangle" />
                                                                   <String fx:value="background-color" />
-                                                               </styleClass></Label>
+                                                               </styleClass>
+                                                            </Label>
                                                             <HBox fillHeight="false" VBox.vgrow="ALWAYS">
                                                                <children>
                                                                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
@@ -498,7 +478,8 @@
                                                                <styleClass>
                                                                   <String fx:value="triangle" />
                                                                   <String fx:value="background-color" />
-                                                               </styleClass></Label>
+                                                               </styleClass>
+                                                            </Label>
                                                             <HBox fillHeight="false" VBox.vgrow="ALWAYS">
                                                                <children>
                                                                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
@@ -533,9 +514,86 @@
                                           </StackPane>
                                        </children>
                                     </GridPane>
+                                    <GridPane>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <StackPane GridPane.columnSpan="4">
+                                             <children>
+                                                <BarChart fx:id="barChart">
+                                                  <xAxis>
+                                                    <CategoryAxis side="BOTTOM" />
+                                                  </xAxis>
+                                                  <yAxis>
+                                                    <NumberAxis side="LEFT" />
+                                                  </yAxis>
+                                                </BarChart>
+                                             </children>
+                                             <styleClass>
+                                                <String fx:value="col-xs-12" />
+                                                <String fx:value="col-sm-4" />
+                                                <String fx:value="col-md-12" />
+                                                <String fx:value="col-lg-4" />
+                                                <String fx:value="col-xl-4" />
+                                             </styleClass>
+                                          </StackPane>
+                                          <StackPane GridPane.columnIndex="4" GridPane.columnSpan="4">
+                                             <children>
+                                                <AreaChart fx:id="areaChart">
+                                                  <xAxis>
+                                                    <CategoryAxis side="BOTTOM" />
+                                                  </xAxis>
+                                                  <yAxis>
+                                                    <NumberAxis side="LEFT" />
+                                                  </yAxis>
+                                                </AreaChart>
+                                             </children>
+                                             <styleClass>
+                                                <String fx:value="col-xs-12" />
+                                                <String fx:value="col-sm-4" />
+                                                <String fx:value="col-md-12" />
+                                                <String fx:value="col-lg-4" />
+                                                <String fx:value="col-xl-4" />
+                                             </styleClass>
+                                          </StackPane>
+                                          <StackPane GridPane.columnIndex="8" GridPane.columnSpan="4">
+                                             <children>
+                                                <LineChart fx:id="lineChart">
+                                                  <xAxis>
+                                                    <CategoryAxis side="BOTTOM" />
+                                                  </xAxis>
+                                                  <yAxis>
+                                                    <NumberAxis side="LEFT" />
+                                                  </yAxis>
+                                                </LineChart>
+                                             </children>
+                                             <styleClass>
+                                                <String fx:value="col-xs-12" />
+                                                <String fx:value="col-sm-4" />
+                                                <String fx:value="col-md-12" />
+                                                <String fx:value="col-lg-4" />
+                                                <String fx:value="col-xl-4" />
+                                             </styleClass>
+                                          </StackPane>
+                                       </children>
+                                    </GridPane>
                                  </children>
-                              </HBox>
-                              <GNCarousel fx:id="carousel" VBox.vgrow="ALWAYS" />
+                              </VBox>
                            </children>
                            <styleClass>
                               <String fx:value="col-sm-12" />
@@ -752,6 +810,71 @@
                                        <padding>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
+                                    </VBox>
+                                    <VBox prefHeight="351.0" prefWidth="356.0" style="-fx-border-color: -separator-color;" styleClass="background-color">
+                                       <children>
+                                          <VBox prefHeight="144.0" prefWidth="321.0" styleClass="fore-1" />
+                                          <Label styleClass="h3" text="Card">
+                                             <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <VBox>
+                                             <children>
+                                                <TextFlow prefHeight="104.0" prefWidth="356.0">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively." />
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </TextFlow>
+                                             </children>
+                                          </VBox>
+                                          <HBox alignment="BOTTOM_RIGHT" VBox.vgrow="ALWAYS">
+                                             <children>
+                                                <JFXButton contentDisplay="GRAPHIC_ONLY" prefWidth="50.0" ripplerFill="BLACK">
+                                                   <styleClass>
+                                                      <String fx:value="btn-transparent" />
+                                                      <String fx:value="round" />
+                                                      <String fx:value="btn-large" />
+                                                   </styleClass>
+                                                   <graphic>
+                                                      <SVGPath content="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" styleClass="icon" />
+                                                   </graphic>
+                                                </JFXButton>
+                                                <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="312.0" layoutY="56.0" prefWidth="50.0" ripplerFill="BLACK">
+                                                   <styleClass>
+                                                      <String fx:value="btn-transparent" />
+                                                      <String fx:value="round" />
+                                                      <String fx:value="btn-large" />
+                                                   </styleClass>
+                                                   <graphic>
+                                                      <MaterialDesignIconView glyphName="HEART" size="22" styleClass="icon" />
+                                                   </graphic>
+                                                </JFXButton>
+                                                <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="312.0" layoutY="56.0" prefWidth="50.0" ripplerFill="BLACK">
+                                                   <styleClass>
+                                                      <String fx:value="btn-transparent" />
+                                                      <String fx:value="round" />
+                                                      <String fx:value="btn-large" />
+                                                   </styleClass>
+                                                   <graphic>
+                                                      <SVGPath content="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="#00000080" styleClass="icon" />
+                                                   </graphic>
+                                                </JFXButton>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" right="5.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
                                     </VBox>
                                  </children>
                                  <styleClass>

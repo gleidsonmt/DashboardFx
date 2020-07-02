@@ -26,10 +26,10 @@ import javafx.beans.property.StringProperty;
 @SuppressWarnings("unused")
 public class Project extends Model {
 
-    private StringProperty name         = new SimpleStringProperty();
-    private StringProperty author       = new SimpleStringProperty();
-    private StringProperty description  = new SimpleStringProperty();
-    private StringProperty url          = new SimpleStringProperty();
+    private final StringProperty name         = new SimpleStringProperty();
+    private final StringProperty author       = new SimpleStringProperty();
+    private final StringProperty description  = new SimpleStringProperty();
+    private final StringProperty url          = new SimpleStringProperty();
 
     public Project(String name, String author, String description, String url){
         this.name.set(name);

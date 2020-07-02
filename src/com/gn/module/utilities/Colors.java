@@ -16,6 +16,7 @@
  */
 package com.gn.module.utilities;
 
+import com.gn.App;
 import com.jfoenix.controls.JFXPopup;
 import eu.hansolo.colors.ColorHelper;
 import eu.hansolo.colors.MaterialDesign;
@@ -53,9 +54,11 @@ public class Colors implements Initializable {
     private static final int     BOX_WIDTH  = 100;
     private static final int     BOX_HEIGHT = 60;
 
-    private ToggleGroup group = new ToggleGroup();
+    private final ToggleGroup group = new ToggleGroup();
 
     @FXML private GridPane grid;
+    @FXML private VBox boxColor;
+    @FXML private TextField textColor;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -90,12 +93,15 @@ public class Colors implements Initializable {
                 toggle.setMouseTransparent(true);
                 toggle.setStyle("-fx-background-color : white; -fx-text-fill : -gray;" +
                         "-fx-border-color : transparent transparent -light-gray transparent;" +
-                        "-fx-background-radius : 0");
+                        "-fx-background-radius : 0;");
 //                toggle.setMinWidth(200);
 //                toggle.setPrefWidth(150D);
             } else {
                 toggle.setStyle("-fx-background-color : " +  formatHexString(color.get()) + ";" +
-                        "-fx-background-radius : 0");
+                        "-fx-background-radius : 0;"
+
+                );
+
                 isBox = true;
             }
 
@@ -108,9 +114,38 @@ public class Colors implements Initializable {
                         ";";
 
                 Clipboard clipboard  = Clipboard.getSystemClipboard();
-                ClipboardContent content    = new ClipboardContent();
+                ClipboardContent content = new ClipboardContent();
                 content.putString(clipboardContent);
                 clipboard.setContent(content);
+
+
+//                System.out.println(color.get().getBrightness());
+
+                if(color.get().getBrightness() > 0.75){
+                    boxColor.setStyle("-fx-background-color : " + formatHexString(color.get()) + "; -inner-text : -dark-gray;");
+
+                } else {
+                    boxColor.setStyle("-fx-background-color : " + formatHexString(color.get()) + "; -inner-text : white;");
+                }
+                textColor.setText(formatHexString(color.get()));
+
+//                if(color.get().getBrightness() > 0.75){
+//                    App.getDecorator().getScene().getRoot().lookup(".drawer")
+//                            .setStyle("-drawer-color : "  +  formatHexString(color.get()) + ";" +
+//                                    "-inner-text : black;"
+//                            );
+//                } else {
+//                    App.getDecorator().getScene().getRoot().lookup(".drawer")
+//                            .setStyle("-drawer-color : "  +  formatHexString(color.get()) + ";" +
+//                                    "-inner-text : white;"
+//                            );
+//                }
+
+
+
+//                App.getDecorator().getScene().getRoot().
+////                toggle.getScene().getRoot().
+//                        setStyle("-drawer-color : "  +  formatHexString(color.get()) + ";");
             });
 
             boolean finalIsBox = isBox;

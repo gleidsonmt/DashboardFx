@@ -9,6 +9,8 @@
     -fx-background-color: derive(#cc2b5e, -30%);
 }
 
-.image-view {
+.image-view,
+.gn-avatar-view
+ {
     -fx-image : url("../../media/logo3.png");
 }

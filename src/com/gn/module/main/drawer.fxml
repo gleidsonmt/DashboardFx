@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gn.GNAvatarView?>
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -12,14 +14,15 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="drawer" fx:id="drawer" alignment="TOP_CENTER" minWidth="0.0" prefHeight="736.0" prefWidth="250.0" stylesheets="@drawer.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.main.DrawerNavigate">
+<VBox id="drawer" fx:id="drawer" alignment="TOP_CENTER" minWidth="0.0" prefHeight="736.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gn.module.main.DrawerNavigate">
    <padding>
       <Insets top="10.0" />
    </padding>
@@ -29,13 +32,30 @@
       <String fx:value="drawer" />
    </styleClass>
    <children>
+      <StackPane prefHeight="130.0" prefWidth="210.0">
+         <children>
+            <Pane prefHeight="165.0" prefWidth="244.0" style="-fx-background-color: white;" styleClass="img-semi">
+               <StackPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </StackPane.margin>
+            </Pane>
+            <GNAvatarView minHeight="-Infinity" prefHeight="170.0" prefWidth="230.0" strokeWidth="10.0" type="CIRCLE">
+                              <image>
+                  <Image url="@../media/logo.png" />
+                              </image>
+            </GNAvatarView>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </StackPane>
       <VBox alignment="TOP_CENTER">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../media/logo4.png" />
-               </image>
-            </ImageView>
+<!--            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">-->
+<!--               <image>-->
+<!--                  <Image url="@../media/logo4.png" />-->
+<!--               </image>-->
+<!--            </ImageView>-->
          </children>
       </VBox>
       <VBox id="info" fx:id="info" alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="-Infinity" prefHeight="101.0" prefWidth="249.0" VBox.vgrow="ALWAYS">
@@ -203,4 +223,8 @@
          </children>
       </VBox>
    </children>
+   <stylesheets>
+      <URL value="@drawer.css" />
+      <URL value="@../../theme/css/shape.css" />
+   </stylesheets>
 </VBox>

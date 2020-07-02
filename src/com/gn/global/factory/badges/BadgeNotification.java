@@ -133,7 +133,7 @@ public class BadgeNotification extends Button {
         VBox root = new VBox(title, top, listView, bottom, btn);
         root.setAlignment(Pos.CENTER);
 
-        double height = list.size() > 4 ? 300 : (list.size() * fixedCell) + title.getMinHeight() + 35; // 35 is equal min height in all app more padding
+        double height = list.size() > 4 ? 300 : (list.size() * fixedCell) + title.getMinHeight() + 30; // 35 is equal min height in all app more padding
 
         root.setPrefSize(300, height);
         title.setPrefWidth(root.getPrefWidth());
