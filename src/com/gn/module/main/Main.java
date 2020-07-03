@@ -136,7 +136,7 @@ public class Main implements Initializable, ActionView {
             } else if (newValue.doubleValue() <= GridFx.Type.SM.getValue()){
                 showHamburger();
                 hideDrawer();
-            } else {
+            } else if (newValue.doubleValue() > GridFx.Type.SM.getValue() ){
                 showDrawer();
                 hideHamburger();
                 PopupCreator.INSTANCE.closePopup();

@@ -379,6 +379,7 @@
                            <styleClass>
                               <String fx:value="col-sm-12" />
                               <String fx:value="col-xs-12" />
+                              <String fx:value="col-md-12" />
                               <String fx:value="col-lg-12" />
                               <String fx:value="col-xl-4" />
                            </styleClass>
@@ -456,7 +457,10 @@
                                                 <String fx:value="border" />
                                                 <String fx:value="border-1" />
                                                 <String fx:value="col-xs-12" />
+                                                <String fx:value="col-sm-12" />
                                                 <String fx:value="col-md-6" />
+                                                <String fx:value="col-lg-12" />
+                                                <String fx:value="col-xl-6" />
                                              </styleClass>
                                           </StackPane>
                                           <StackPane prefHeight="326.0" prefWidth="728.0" GridPane.columnIndex="6" GridPane.columnSpan="6">
@@ -509,12 +513,15 @@
                                                 <String fx:value="border" />
                                                 <String fx:value="border-1" />
                                                 <String fx:value="col-xs-12" />
+                                                <String fx:value="col-sm-12" />
                                                 <String fx:value="col-md-6" />
+                                                <String fx:value="col-lg-12" />
+                                                <String fx:value="col-xl-6" />
                                              </styleClass>
                                           </StackPane>
                                        </children>
                                     </GridPane>
-                                    <GridPane>
+                                    <GridPane fx:id="charts">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -533,7 +540,7 @@
                                           <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <StackPane GridPane.columnSpan="4">
+                                          <StackPane maxHeight="370.0" GridPane.columnSpan="4">
                                              <children>
                                                 <BarChart fx:id="barChart">
                                                   <xAxis>
@@ -546,13 +553,13 @@
                                              </children>
                                              <styleClass>
                                                 <String fx:value="col-xs-12" />
-                                                <String fx:value="col-sm-4" />
+                                                <String fx:value="col-sm-12" />
                                                 <String fx:value="col-md-12" />
-                                                <String fx:value="col-lg-4" />
+                                                <String fx:value="col-lg-12" />
                                                 <String fx:value="col-xl-4" />
                                              </styleClass>
                                           </StackPane>
-                                          <StackPane GridPane.columnIndex="4" GridPane.columnSpan="4">
+                                          <StackPane maxHeight="370.0" GridPane.columnIndex="4" GridPane.columnSpan="4">
                                              <children>
                                                 <AreaChart fx:id="areaChart">
                                                   <xAxis>
@@ -565,13 +572,13 @@
                                              </children>
                                              <styleClass>
                                                 <String fx:value="col-xs-12" />
-                                                <String fx:value="col-sm-4" />
+                                                <String fx:value="col-sm-12" />
                                                 <String fx:value="col-md-12" />
-                                                <String fx:value="col-lg-4" />
+                                                <String fx:value="col-lg-12" />
                                                 <String fx:value="col-xl-4" />
                                              </styleClass>
                                           </StackPane>
-                                          <StackPane GridPane.columnIndex="8" GridPane.columnSpan="4">
+                                          <StackPane maxHeight="370.0" GridPane.columnIndex="8" GridPane.columnSpan="4">
                                              <children>
                                                 <LineChart fx:id="lineChart">
                                                   <xAxis>
@@ -584,9 +591,9 @@
                                              </children>
                                              <styleClass>
                                                 <String fx:value="col-xs-12" />
-                                                <String fx:value="col-sm-4" />
+                                                <String fx:value="col-sm-12" />
                                                 <String fx:value="col-md-12" />
-                                                <String fx:value="col-lg-4" />
+                                                <String fx:value="col-lg-12" />
                                                 <String fx:value="col-xl-4" />
                                              </styleClass>
                                           </StackPane>
@@ -598,7 +605,8 @@
                            <styleClass>
                               <String fx:value="col-sm-12" />
                               <String fx:value="col-xs-12" />
-                              <String fx:value="col-lg-6" />
+                              <String fx:value="col-md-12" />
+                              <String fx:value="col-lg-12" />
                               <String fx:value="col-xl-4" />
                               <String fx:value="background-color" />
                            </styleClass>
@@ -813,7 +821,7 @@
                                     </VBox>
                                     <VBox prefHeight="351.0" prefWidth="356.0" style="-fx-border-color: -separator-color;" styleClass="background-color">
                                        <children>
-                                          <VBox prefHeight="144.0" prefWidth="321.0" styleClass="fore-1" />
+                                          <VBox minHeight="-Infinity" prefHeight="144.0" prefWidth="321.0" styleClass="fore-1" />
                                           <Label styleClass="h3" text="Card">
                                              <padding>
                                                 <Insets left="10.0" top="10.0" />
@@ -886,7 +894,8 @@
                            <styleClass>
                               <String fx:value="col-sm-12" />
                               <String fx:value="col-xs-12" />
-                              <String fx:value="col-lg-6" />
+                              <String fx:value="col-md-12" />
+                              <String fx:value="col-lg-12" />
                               <String fx:value="col-xl-4" />
                               <String fx:value="background-color" />
                            </styleClass>

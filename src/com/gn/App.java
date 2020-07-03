@@ -122,7 +122,7 @@ public class App extends Application {
 
         decorator.show();
         GridFx.addStage(decorator.getStage());
-//        GridFx.log(true);
+        GridFx.log(true);
         LoadViews load = new LoadViews();
         load.start();
 
