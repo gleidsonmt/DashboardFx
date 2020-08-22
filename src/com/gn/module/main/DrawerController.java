@@ -126,7 +126,7 @@ public class DrawerController {
                                 .map(c -> (ToggleButton) c)
                                 .forEach(c -> {
                                     c.addEventFilter(MouseEvent.MOUSE_CLICKED, ev ->{
-                                        PopupCreator.INSTANCE.closePopup();
+//                                        PopupCreator.INSTANCE.closePopup();
                                     });
                                     c.setToggleGroup(group);
                                     this.group.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {

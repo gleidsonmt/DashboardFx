@@ -18,7 +18,7 @@ package com.gn.module.dashboard;
 
 import com.gn.GNCarousel;
 import com.gn.global.plugin.ActionView;
-import com.gn.global.plugin.GridFx;
+import com.gn.global.plugin.GridFX;
 import core.CurveFittedAreaChart;
 import core.DonutChart;
 import javafx.collections.FXCollections;
@@ -141,21 +141,21 @@ public class Dashboard implements Initializable, ActionView {
 
     @Override
     public void enter() {
-        GridFx.add(tiles, "tiles");
-        GridFx.add(bodyCenter, "body-center");
-        GridFx.add(graphic, "graphic");
-        GridFx.add(socialTiles, "social-tiles");
-        GridFx.add(charts, "dash-charts");
-        GridFx.defineMin("min-dashboard", root, 4200, 3800, 3800, 3800, 1200);
+        GridFX.addGrid(tiles, "tiles");
+        GridFX.addGrid(bodyCenter, "body-center");
+        GridFX.addGrid(graphic, "graphic");
+        GridFX.addGrid(socialTiles, "social-tiles");
+        GridFX.addGrid(charts, "dash-charts");
+        GridFX.defineMin("min-dashboard", root, 4200, 3800, 3800, 3800, 1200);
     }
 
     @Override
     public void exit() {
-        GridFx.remove("tiles");
-        GridFx.remove("body-center");
-        GridFx.remove("graphic");
-        GridFx.remove("social-tiles");
-        GridFx.remove("dash-charts");
+        GridFX.remove("tiles");
+        GridFX.remove("body-center");
+        GridFX.remove("graphic");
+        GridFX.remove("social-tiles");
+        GridFX.remove("dash-charts");
     }
 
     private void populateBarChart(){

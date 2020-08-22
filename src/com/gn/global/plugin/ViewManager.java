@@ -16,8 +16,8 @@
  */
 package com.gn.global.plugin;
 
-import com.gn.decorator.GNDecorator;
 import com.gn.global.exceptions.NavigationException;
+import io.github.gleidson28.test.components.GNDecoratorT;
 import javafx.scene.control.ScrollPane;
 
 import java.util.HashMap;
@@ -37,12 +37,19 @@ public enum  ViewManager {
 
     public void put(ViewController viewController) {
         // testing
-        previous = current;
-        current = viewController.getView().getName();
-        SCREENS.put(viewController.getView().getName(), viewController);
+
+        if(viewController != null) {
+            previous = current;
+            current = viewController.getName();
+            SCREENS.put(viewController.getName(), viewController);
+        }
     }
 
     private ViewController getWithUpdate(String view){
+
+//        System.out.println("view = " + view);
+//        System.out.println("getting = " + SCREENS.get(view));
+
         previous = current;
         current = view;
         return SCREENS.get(view);
@@ -52,7 +59,9 @@ public enum  ViewManager {
         return SCREENS.get(view);
     }
 
-    public void navigate(GNDecorator decorator, String name) throws NavigationException {
+    public void navigate(GNDecoratorT decorator, String name) throws NavigationException {
+
+
         if(get(name) == null)
             throw new NavigationException("NAVIGATION", String.format("The view '%s' was not encountered.", name));
         else {
@@ -61,11 +70,16 @@ public enum  ViewManager {
                 ( (ActionView) get(name).getController()).enter();
             }
         }
-
     }
 
     public String openSubView(ScrollPane body, String name) throws NavigationException {
+
+
         ViewController viewController = getWithUpdate(name);
+
+//        System.out.println();
+//        System.out.println("viewController = " + viewController);
+
         if(viewController != null) {
 
             if (get(previous).getController() instanceof ActionView)

@@ -17,27 +17,19 @@
 
 package com.gn;
 
+import com.gn.global.plugin.GridFxOld;
 import com.gn.global.plugin.LoadViews;
 import com.gn.global.plugin.UserDetail;
-import com.gn.global.plugin.GridFx;
-import com.gn.decorator.GNDecorator;
+import io.github.gleidson28.test.components.GNDecoratorT;
 import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TreeTableView;
-import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import org.scenicview.ScenicView;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Properties;
 
 /**
  * Init the app class.
@@ -50,8 +42,8 @@ public class App extends Application {
     private float increment = 0;
     private float progress = 0;
 
-    private static final GNDecorator decorator = new GNDecorator();
-    private static final Scene scene = decorator.getScene();
+    private static final GNDecoratorT decorator = new GNDecoratorT();
+//    private static final Scene scene = decorator.getScene();
 
     public static ObservableList<String> stylesheets;
     private static HostServices hostServices;
@@ -60,7 +52,7 @@ public class App extends Application {
     private double minWidth = 350;
     private double minHeight = 500;
 
-    public static GNDecorator getDecorator() {
+    public static GNDecoratorT getDecorator() {
         return decorator;
     }
 
@@ -72,17 +64,19 @@ public class App extends Application {
     public synchronized void init() {
         userDetail = new UserDetail("Gleidson", "Gleidson");
 
-        Parent root = null;
+        StackPane root = null;
+
         try {
             root = FXMLLoader.load(getClass().getResource("/com/gn/module/loader/loader.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        decorator.getStage().setMinWidth(minWidth);
-        decorator.getStage().setMinHeight(minHeight);
+//        decorator.getStage().setMinWidth(minWidth);
+//        decorator.getStage().setMinHeight(minHeight);
         decorator.setContent(root);
-        decorator.getStage().getIcons().add(new Image("/com/gn/media/icon/logo2.png"));
+        decorator.setFullBody(true);
+//        decorator.getStage().getIcons().add(new Image("/com/gn/media/icon/logo2.png"));
 
     }
 
@@ -93,10 +87,10 @@ public class App extends Application {
     }
 
     private void initialScene() {
-        decorator.setTitle(null);
-        decorator.setIcon(null);
-        decorator.setMaximized(true);
-        decorator.fullBody();
+//        decorator.setTitle(null);
+//        decorator.setIcon(null);
+//        decorator.setMaximized(true);
+//        decorator.fullBody();
     }
 
     @Override
@@ -105,7 +99,7 @@ public class App extends Application {
         initialScene();
         hostServices = getHostServices();
 
-        decorator.getScene().getStylesheets().addAll(
+        decorator.addStylesheets(
                 getClass().getResource("/com/gn/theme/css/fonts.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/material-color.css").toExternalForm(),
                 getClass().getResource("/com/gn/theme/css/skeleton.css").toExternalForm(),
@@ -121,8 +115,8 @@ public class App extends Application {
 
 
         decorator.show();
-        GridFx.addStage(decorator.getStage());
-        GridFx.log(true);
+//        GridFx.addStage(decorator.getStage());
+        GridFxOld.log(true);
         LoadViews load = new LoadViews();
         load.start();
 

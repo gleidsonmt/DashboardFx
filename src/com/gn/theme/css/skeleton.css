@@ -1051,7 +1051,7 @@ Text,
 }
 
 .menu-bar>*.container>*.menu-button>*.label  {
-  -fx-padding : 10px;
+  -fx-padding : 0px;
   -fx-background-insets : 0px;
   -fx-border-width : 0px;
   -fx-text-fill : white;

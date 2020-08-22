@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gn.GNAvatarView?>
+<?import io.github.gleidson28.GNAvatarView?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -49,15 +49,6 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
       </StackPane>
-      <VBox alignment="TOP_CENTER">
-         <children>
-<!--            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">-->
-<!--               <image>-->
-<!--                  <Image url="@../media/logo4.png" />-->
-<!--               </image>-->
-<!--            </ImageView>-->
-         </children>
-      </VBox>
       <VBox id="info" fx:id="info" alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="-Infinity" prefHeight="101.0" prefWidth="249.0" VBox.vgrow="ALWAYS">
          <children>
             <Label fx:id="name" alignment="CENTER" prefHeight="32.0" prefWidth="166.0" style="-fx-text-fill: white;" text="Jane Doe" textAlignment="CENTER" VBox.vgrow="ALWAYS">
@@ -83,6 +74,7 @@
             </HBox>
          </children>
       </VBox>
+      <VBox id="box" alignment="CENTER" prefWidth="250.0" />
       <HBox id="searchBox" fx:id="searchBox" alignment="CENTER" focusTraversable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="38.0" prefWidth="239.0" styleClass="box-search">
          <children>
             <TextField id="search" fx:id="search" minHeight="-Infinity" prefHeight="38.0" prefWidth="358.0" promptText="Search.." style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: white; -fx-prompt-text-fill: white;" />

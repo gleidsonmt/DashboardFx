@@ -16,6 +16,7 @@
  */
 package com.gn.global.plugin;
 
+import java.util.List;
 import java.util.StringJoiner;
 
 /**
@@ -27,8 +28,17 @@ public class View {
 
     private String          title;
     private String          name;
+    private String          moduleName;
     private String          fxmlFile;
-    private String          parentName;
+    private List<View>     views;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getName() {
         return name;
@@ -36,6 +46,14 @@ public class View {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getModuleName() {
+        return moduleName;
+    }
+
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
     }
 
     public String getFxmlFile() {
@@ -46,21 +64,12 @@ public class View {
         this.fxmlFile = fxmlFile;
     }
 
-    public String getParentName() {
-        return parentName;
+    public List<View> getViews() {
+        return views;
     }
 
-    public void setParentName(String parentName) {
-        this.parentName = parentName;
-    }
-
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
+    public void setViews(List<View> views) {
+        this.views = views;
     }
 
     @Override
@@ -69,6 +78,7 @@ public class View {
                 .add("title='" + title + "'")
                 .add("name='" + name + "'")
                 .add("fxmlFile='" + fxmlFile + "'")
+                .add("moduleName='" + moduleName + "'")
                 .toString();
     }
 }

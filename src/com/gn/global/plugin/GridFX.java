@@ -16,9 +16,9 @@
  */
 package com.gn.global.plugin;
 
+import io.github.gleidson28.test.components.GNDecoratorT;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
@@ -29,7 +29,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.util.HashMap;
 
@@ -38,14 +37,14 @@ import java.util.HashMap;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  27/08/2019
  */
-public class GridFx {
+public class GridFX {
 
     // Map of the views
     private static HashMap<String, ChangeListener<Number>> listeners = new HashMap<>();
     // Simple log
     private static boolean log = false;
-    // The stage for listen
-    private static Stage stage;
+
+    private static GNDecoratorT decorator;
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -57,8 +56,8 @@ public class GridFx {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
-    public static void addStage(Stage stage){
-        GridFx.stage = stage;
+    public static void addDecorator(GNDecoratorT decorator){
+        GridFX.decorator = decorator;
     }
 
     /**
@@ -84,9 +83,9 @@ public class GridFx {
      * @param grid grid for change.
      * @param name name of grid.
      */
-    public static void add(GridPane grid, String name){
+    public static void addGrid(GridPane grid, String name){
 
-        double value = stage.getWidth();
+        double value = decorator.getWidth();
         switchListener(grid, value);
 
         ChangeListener<Number> listener = (observable, oldValue, newValue) -> {
@@ -95,7 +94,7 @@ public class GridFx {
 
         listeners.put(name, listener);
 
-        stage.widthProperty().addListener(listeners.get(name));
+        decorator.widthProperty().addListener(listeners.get(name));
 
         if(log) System.out.println(ANSI_RESET + "ViewController Manager : " + ANSI_CYAN + "ViewController added in the map [" + name + "]");
     }
@@ -121,13 +120,13 @@ public class GridFx {
     }
 
     public static void remove(String name){
-        stage.widthProperty().removeListener(listeners.get(name));
+        decorator.widthProperty().removeListener(listeners.get(name));
         listeners.remove(name);
         if(log) System.out.println(ANSI_RESET + "ViewController Manager : " + ANSI_RED + "ViewController removed from the map [" + name + "]");
     }
 
     public static void removeMin(String key){
-        stage.widthProperty().removeListener(listeners.get(key));
+        decorator.widthProperty().removeListener(listeners.get(key));
         listeners.remove(key);
         if(log) System.out.println(ANSI_RESET + "ViewController Manager : " + ANSI_RED + "ViewController removed min size from the map [" + key + "]");
     }
@@ -195,7 +194,7 @@ public class GridFx {
     }
 
     private static void defineMin(String key, Region node, double minXs, double minSm, double minMed, double minLg, double minEl){
-        double newValue = stage.getWidth();
+        double newValue = decorator.getWidth();
 
         switchMin(node, minXs, minSm, minMed, minLg, minEl, newValue);
 
@@ -203,7 +202,7 @@ public class GridFx {
             switchMin(node, minXs, minSm, minMed, minLg, minEl, newValue1.doubleValue());
         }));
 
-        stage.widthProperty().addListener(listeners.get(key));
+        decorator.widthProperty().addListener(listeners.get(key));
 
     }
 

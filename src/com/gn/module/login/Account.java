@@ -17,7 +17,7 @@
 package com.gn.module.login;
 
 import animatefx.animation.*;
-import com.gn.GNAvatarView;
+import io.github.gleidson28.GNAvatarView;
 import com.gn.global.util.Mask;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;

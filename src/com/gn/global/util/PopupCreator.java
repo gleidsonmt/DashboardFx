@@ -16,18 +16,17 @@
  */
 package com.gn.global.util;
 
-import animatefx.animation.*;
-import com.gn.App;
-import com.gn.decorator.component.GNControl;
-import com.gn.global.plugin.GridFx;
+import animatefx.animation.AnimationFX;
+import animatefx.animation.BounceIn;
+import animatefx.animation.BounceOut;
+import com.gn.DashApp;
+import com.gn.global.plugin.GridFxOld;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -107,11 +106,11 @@ public enum PopupCreator {
 
         close.setOnFinished(event -> {
             foreground.toBack();
-            App.getDecorator().showControls();
-            App.getDecorator().unblock();
+            DashApp.decorator.showCustomControls();
+            DashApp.decorator.unblockControls();
         });
-        App.getDecorator().block();
-        App.getDecorator().hideControls();
+        DashApp.decorator.blockControls();
+        DashApp.decorator.hideCustomControls();
 
     }
 
@@ -121,8 +120,8 @@ public enum PopupCreator {
         close.setOnFinished(event -> {
             hamb.getGraphic().setVisible(true);
             foreground.toBack();
-            App.getDecorator().showControls();
-            App.getDecorator().unblock();
+            DashApp.decorator.showCustomControls();
+            DashApp.decorator.unblockControls();
         });
     }
 
@@ -167,12 +166,12 @@ public enum PopupCreator {
 
         close.setOnFinished(event -> {
             foreground.toBack();
-            App.getDecorator().showControls();
-            App.getDecorator().unblock();
+            DashApp.decorator.showCustomControls();
+            DashApp.decorator.unblockControls();
         });
-
-        App.getDecorator().block();
-        App.getDecorator().hideControls();
+//
+        DashApp.decorator.unblockControls();
+        DashApp.decorator.hideCustomControls();
 
     }
 
@@ -258,7 +257,7 @@ public enum PopupCreator {
     }
 
     private VBox createAlertHeader(AlertType type){
-        App.getDecorator().block();
+//        App.getDecorator().block();
         VBox header = new VBox();
 //        header.minWidthProperty().bind(customDialog.minWidthProperty());
         header.setMinHeight(120);
@@ -332,7 +331,7 @@ public enum PopupCreator {
             BounceOut bounceOut = new BounceOut(customDialog);
             bounceOut.getTimeline().setOnFinished(ev -> {
                 foreground.toBack();
-                App.getDecorator().unblock();
+                DashApp.decorator.unblockControls();
             });
             bounceOut.play();
 
@@ -361,10 +360,10 @@ public enum PopupCreator {
 
     private void organizeInCenter(){
 
-        double width = App.getDecorator().getScene().getWidth();
-        double height = App.getDecorator().getScene().getHeight();
+        double width = DashApp.decorator.getWidth();
+        double height = DashApp.decorator.getHeight();
 
-        if(width < GridFx.Type.XS.getValue()){
+        if(width < GridFxOld.Type.XS.getValue()){
 //            customDialog.setMaxWidth(250);
             customDialog.setPrefWidth(250);
 //            customDialog.setMinWidth(250);
@@ -397,18 +396,18 @@ public enum PopupCreator {
     }
 
     private void defineContents(){
-        foreground = (StackPane) App.getDecorator().getScene().lookup("#foreground");
+        foreground = (StackPane) DashApp.decorator.lookup("#foreground");
         foreContent = (AnchorPane) foreground.lookup("#fore-content");
         customDialog = (StackPane) foreground.lookup("#custom-dialog");
     }
 
     public void closePopup(){
-        App.getDecorator().unblock();
+        DashApp.decorator.unblockControls();
         close.play();
     }
 
     public void closePopup(AnimationFX animationFX){
-        App.getDecorator().unblock();
+        DashApp.decorator.unblockControls();
         animationFX.play();
         close.play();
         animationFX.getTimeline().setOnFinished(event -> foreground.toBack());

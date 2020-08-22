@@ -18,6 +18,7 @@ package com.gn.module.main;
 
 import animatefx.animation.Shake;
 import com.gn.App;
+import com.gn.DashApp;
 import com.gn.global.exceptions.NavigationException;
 import com.gn.global.plugin.ViewManager;
 import javafx.fxml.FXML;
@@ -300,8 +301,9 @@ public class DrawerNavigate implements Initializable  {
 
     private void updateViewDetails(String viewNm){
         try {
-            ScrollPane body = (ScrollPane) App.getDecorator().getScene().lookup("#body");
-            Label title = (Label) App.getDecorator().getScene().lookup("#title");
+            ScrollPane body = (ScrollPane) DashApp.decorator.lookup("#body");
+            Label title = (Label)  DashApp.decorator.lookup("#title");
+
             title.setText(ViewManager.INSTANCE.openSubView(body, viewNm));
         } catch (NavigationException e) {
             e.printStackTrace();

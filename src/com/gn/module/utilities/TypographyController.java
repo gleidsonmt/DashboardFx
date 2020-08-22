@@ -17,7 +17,7 @@
 package com.gn.module.utilities;
 
 import com.gn.global.plugin.ActionView;
-import com.gn.global.plugin.GridFx;
+import com.gn.global.plugin.GridFxOld;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 
@@ -31,11 +31,11 @@ public class TypographyController implements ActionView {
 
     @Override
     public void enter() {
-        GridFx.defineMin("min-typography-controller", bodyContent, 850, 600, 600,600,600);
+        GridFxOld.defineMin("min-typography-controller", bodyContent, 850, 600, 600,600,600);
     }
 
     @Override
     public void exit() {
-        GridFx.removeMin("min-typography-controller");
+        GridFxOld.removeMin("min-typography-controller");
     }
 }

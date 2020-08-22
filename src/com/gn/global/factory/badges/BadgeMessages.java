@@ -16,10 +16,8 @@
  */
 package com.gn.global.factory.badges;
 
-import com.gn.decorator.component.GNControl;
 import com.jfoenix.controls.JFXBadge;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;

@@ -14,42 +14,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.global.plugin;
+package com.gn.module.controls.button;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import com.gn.global.plugin.ViewManager;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  29/03/2020
+ * Create on  12/04/2020
  */
-public class ViewController {
+public class ButtonController implements Initializable {
 
-    private final View        view;
-    private final FXMLLoader  loader;
+    @FXML private Button btn;
 
-    ViewController(View view, FXMLLoader loader){
-        this.view = view;
-        this.loader = loader;
-    }
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
-    public String getTitle() {
-        return view.getTitle();
-    }
-
-    public String getName(){
-        return view.getName();
-    }
-
-    public View getView() {
-        return view;
-    }
-
-    public Object getController() {
-        return loader.getController();
-    }
-
-    public Parent getRoot(){
-        return loader.getRoot();
     }
 }

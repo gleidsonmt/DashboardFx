@@ -174,7 +174,7 @@ class Dialog {
 
     private static void show(Region region){
 
-        dialog.setDialogContainer(App.getDecorator().getBackground());
+//        dialog.setDialogContainer(App.getDecorator().getBackground());
         dialog.setContent(region);
         dialog.setTransitionType(JFXDialog.DialogTransition.TOP);
 

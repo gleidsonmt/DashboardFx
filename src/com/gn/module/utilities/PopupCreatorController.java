@@ -17,7 +17,6 @@
 package com.gn.module.utilities;
 
 import com.gn.global.plugin.ActionView;
-import com.gn.global.plugin.GridFx;
 import com.gn.global.util.PopupCreator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,12 +41,12 @@ public class PopupCreatorController implements Initializable, ActionView {
 
     @Override
     public void enter() {
-        GridFx.defineMin("min-popup-controller", bodyContent, 850, 600, 600,600,600);
+//        GridFx.defineMin("min-popup-controller", bodyContent, 850, 600, 600,600,600);
     }
 
     @Override
     public void exit() {
-        GridFx.removeMin("min-popup-controller");
+//        GridFx.removeMin("min-popup-controller");
     }
 
     @FXML

@@ -17,19 +17,19 @@
 package com.gn.global.plugin;
 
 import animatefx.animation.BounceIn;
-import com.gn.App;
-import com.gn.AvatarType;
-import com.gn.GNAvatarView;
-import com.gn.global.exceptions.NavigationException;
 import com.gn.global.util.PopupCreator;
+import io.github.gleidson28.GNAvatarView;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
-import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -43,17 +43,14 @@ import org.controlsfx.control.PopOver;
  * Create on  19/10/2018
  * Version 2.0
  */
+@SuppressWarnings("unused")
 public class UserDetail extends Button {
 
-//    private         String  name;
-    public static   PopOver root;
-
-    private Button signOut  = new Button("Sign Out");
-    private Button profile  = new Button("Profile");
-    private PopOver popOver = new PopOver();
-
-    private StringProperty header = new SimpleStringProperty();
-    private StringProperty name   = new SimpleStringProperty();
+    private final Button            signOut     = new Button("Sign Out");
+    private final Button            profile     = new Button("Profile");
+    private final PopOver           popOver     = new PopOver();
+    private final StringProperty    header      = new SimpleStringProperty();
+    private final StringProperty    name        = new SimpleStringProperty();
 
     public UserDetail(String name, String header){
 
@@ -62,7 +59,6 @@ public class UserDetail extends Button {
         this.header.set(header);
         this.name.set(name);
 
-        UserDetail.root = popOver;
         popOver.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
         popOver.setArrowIndent(0);
         popOver.setArrowSize(0);
@@ -70,7 +66,7 @@ public class UserDetail extends Button {
         popOver.setContentNode(configLayout());
     }
 
-    public Node config() {
+    public void config() {
 
         Image image = new Image("/com/gn/module/media/jessy.png");
         ImageView imageView = new ImageView(image);
@@ -95,7 +91,9 @@ public class UserDetail extends Button {
         this.setGraphic(link);
         this.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
 
-        return link;
+        this.setPrefHeight(30D);
+        this.setMaxHeight(30D);
+        this.setPadding(new Insets(0D));
     }
 
     private VBox configLayout() {
@@ -137,13 +135,13 @@ public class UserDetail extends Button {
         });
 
         profile.setOnAction(event -> {
-            ScrollPane scrollPane = (ScrollPane) App.getDecorator().getScene().lookup("#body");
-            try {
-                ViewManager.INSTANCE.openSubView( scrollPane,"profile");
-                popOver.hide();
-            } catch (NavigationException e) {
-                e.printStackTrace();
-            }
+//            ScrollPane scrollPane = (ScrollPane) App.getDecorator().getScene().lookup("#body");
+//            try {
+//                ViewManager.INSTANCE.openSubView( scrollPane,"profile");
+//                popOver.hide();
+//            } catch (NavigationException e) {
+//                e.printStackTrace();
+//            }
         });
 
         layoutContent.add(signOut, 0, 0);

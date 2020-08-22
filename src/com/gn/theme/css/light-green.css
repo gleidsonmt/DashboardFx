@@ -63,10 +63,10 @@
 
 .hamburger
 {
-  -fx-background-radius : 100px;
+  -fx-background-radius : 4px;
   -fx-background-color : transparent;
   -fx-padding : 0px;
-  -fx-min-height : 30px;
+  -fx-min-height : 40px;
 }
 
 .hamburger:hover

@@ -21,7 +21,7 @@ import com.gn.global.factory.cellFactory.ActionCellFactory;
 import com.gn.global.plugin.ActionView;
 import com.gn.global.model.Country;
 import com.gn.global.plugin.DataFilterHandler;
-import com.gn.global.plugin.GridFx;
+import com.gn.global.plugin.GridFxOld;
 import javafx.collections.FXCollections;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
@@ -91,13 +91,13 @@ public class DataFilterController implements Initializable, ActionView {
 
     @Override
     public void enter() {
-        GridFx.add(gridTitle, "grid-table-title");
-        GridFx.add(gridLegend, "grid-table-legend");
+        GridFxOld.add(gridTitle, "grid-table-title");
+        GridFxOld.add(gridLegend, "grid-table-legend");
     }
 
     @Override
     public void exit() {
-        GridFx.remove("grid-table-title");
-        GridFx.remove("grid-table-legend");
+        GridFxOld.remove("grid-table-title");
+        GridFxOld.remove("grid-table-legend");
     }
 }

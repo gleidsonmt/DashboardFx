@@ -261,14 +261,14 @@
       </TabPane>
    </children>
    <stylesheets>
-      <URL value="@../../theme/css/material-color.css" />
-      <URL value="@../../theme/css/skeleton.css" />
-      <URL value="@../../theme/css/light-green.css" />
-      <URL value="@../../theme/css/bootstrap.css" />
-      <URL value="@../../theme/css/simple-green.css" />
-      <URL value="@../../theme/css/shape.css" />
-      <URL value="@../../theme/css/typographic.css" />
-      <URL value="@../../theme/css/helpers.css" />
-      <URL value="@../../theme/css/master.css" />
+      <URL value="@../../../theme/css/material-color.css" />
+      <URL value="@../../../theme/css/skeleton.css" />
+      <URL value="@../../../theme/css/light-green.css" />
+      <URL value="@../../../theme/css/bootstrap.css" />
+      <URL value="@../../../theme/css/simple-green.css" />
+      <URL value="@../../../theme/css/shape.css" />
+      <URL value="@../../../theme/css/typographic.css" />
+      <URL value="@../../../theme/css/helpers.css" />
+      <URL value="@../../../theme/css/master.css" />
    </stylesheets>
 </StackPane>

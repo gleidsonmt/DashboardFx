@@ -16,16 +16,14 @@
  */
 package com.gn.module.main;
 
-import com.gn.App;
+import com.gn.DashApp;
 import com.gn.global.factory.badges.*;
 import com.gn.global.plugin.*;
 import com.gn.global.util.PopupCreator;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -69,7 +67,10 @@ public class Main implements Initializable, ActionView {
         badgeSettings       = new BadgeSettings();
         contentBadges       = new HBox();
 
-//        hamburger.setStyle("-fx-background-color : transparent;");
+        hamburger.setStyle("-fx-background-color : transparent; " +
+                "-fx-border-width : 0px;" +
+                "-fx-padding : 8px; -fx-max-height : 30px; -fx-min-height : 30px; ");
+
 
         SVGPath icon = new SVGPath();
         icon.setContent("M2 15.5v2h20v-2H2zm0-5v2h20v-2H2zm0-5v2h20v-2H2z");
@@ -77,45 +78,47 @@ public class Main implements Initializable, ActionView {
         hamburger.getStyleClass().add("hamburger");
 
         Button btnHamb = new Button();
+        btnHamb.setPadding(new Insets(0));
+        btnHamb.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
         btnHamb.setGraphic(icon);
-        btnHamb.setMaxWidth(20D);
-        btnHamb.setMinWidth(25D);
+        btnHamb.setMaxWidth(30D);
+        btnHamb.setMinWidth(30D);
+        btnHamb.getStyleClass().add("hamburger");
+
+//        btnHamb.setMaxHeight(25);
+
         hamburger.setGraphic(btnHamb);
 
         btnHamb.setOnAction(event -> {
             PopupCreator.INSTANCE.createDrawerLeft(hamburger, drawer);
-            hamburger.setVisible(false);
-            App.getDecorator().hideControls();
-        });
-//        hamburger.addEve(ActionEvent.ACTION, event ->{
-//            PopupCreator.INSTANCE.createDrawerLeft(hamburger, drawer);
 //            hamburger.setVisible(false);
 //            App.getDecorator().hideControls();
-//        });
+        });
 
     }
 
     private void hideHamburger(){
-        App.getDecorator().getMenus().remove(hamburger);
-        HBox.setMargin(title, new Insets(0D,0D,10,20D));
+        DashApp.decorator.getMenus().remove(hamburger);
+        HBox.setMargin(title, new Insets(0D,0D,0,20D));
     }
 
     private void showHamburger(){
-        if(!App.getDecorator().getMenus().contains(hamburger)) {
-            App.getDecorator().addMenu(0, hamburger);
+        if(!DashApp.decorator.getMenus().contains(hamburger)) {
+            DashApp.decorator.addMenu(0, hamburger);
         }
 
-        HBox.setMargin(title, new Insets(0,0,10, 60D));
+        HBox.setMargin(title, new Insets(0,0,0, 60D));
     }
 
 
     private void hideDrawer() {
         main.getChildren().remove(drawer);
-//        App.getDecorator().showCustoms();
+        DashApp.decorator.showCustomControls();
 
         VBox info = (VBox) drawer.lookup("#info");
+//        VBox info = (VBox) drawer.lookup("#box");
         if(!info.getChildren().contains(contentBadges)) info.getChildren().add(contentBadges);
-        App.getDecorator().removeControl(userDetail);
+        DashApp.decorator.removeControl(userDetail);
     }
 
     private void showDrawer(){
@@ -128,33 +131,42 @@ public class Main implements Initializable, ActionView {
 
     @Override
     public void enter() {
-        App.getDecorator().getStage().widthProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue.doubleValue() <= GridFx.Type.XS.getValue()) {
+        DashApp.decorator.widthProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue.doubleValue() <= GridFxOld.Type.XS.getValue()) {
                 hideDrawer();
                 showHamburger();
                 removeBadges();
-            } else if (newValue.doubleValue() <= GridFx.Type.SM.getValue()){
+            } else if (newValue.doubleValue() <= GridFxOld.Type.SM.getValue()){
                 showHamburger();
                 hideDrawer();
-            } else if (newValue.doubleValue() > GridFx.Type.SM.getValue() ){
+
+
+            } else if (newValue.doubleValue() > GridFxOld.Type.SM.getValue() ){
                 showDrawer();
                 hideHamburger();
                 PopupCreator.INSTANCE.closePopup();
                 addBadges();
+
             }
         });
 
         StackPane body = (StackPane) ViewManager.INSTANCE.get("login").getRoot();
         PopupCreator.INSTANCE.createPopup(body);
 
-        App.getDecorator().addControl(3, userDetail);
-        App.getDecorator().addControl(4, badgeSettings);
-        App.getDecorator().addControl(5, badgeNotification);
-        App.getDecorator().addControl(6, badgeTasks);
-        App.getDecorator().addControl(7, badgeMessages);
+        DashApp.decorator.addControl(userDetail);
+        DashApp.decorator.addControl(badgeSettings);
+        DashApp.decorator.addControl(badgeNotification);
+        DashApp.decorator.addControl(badgeTasks);
+        DashApp.decorator.addControl(badgeMessages);
 
-        addBadges();
-        App.getDecorator().block();
+        userDetail.getStyleClass().add("badge-drawer");
+        badgeSettings.getStyleClass().add("badge-drawer");
+        badgeNotification.getStyleClass().add("badge-drawer");
+        badgeTasks.getStyleClass().add("badge-drawer");
+        badgeMessages.getStyleClass().add("badge-drawer");
+
+//        addBadges();
+        DashApp.decorator.blockControls();
     }
 
     @Override
@@ -162,36 +174,39 @@ public class Main implements Initializable, ActionView {
     }
 
     private void addBadges(){
-        updateStyles(false);
-        // Repopulate
-        App.getDecorator().removeControl(badgeMessages);
-        App.getDecorator().removeControl(badgeSettings);
-        App.getDecorator().removeControl(badgeNotification);
-        App.getDecorator().removeControl(badgeTasks);
-        App.getDecorator().removeControl(userDetail);
-//
-        App.getDecorator().addControl(3, userDetail);
-        App.getDecorator().addControl(4, badgeSettings);
-        App.getDecorator().addControl(5, badgeNotification);
-        App.getDecorator().addControl(6, badgeTasks);
-        App.getDecorator().addControl(7, badgeMessages);
+        updateStyles(true);
+
+        DashApp.decorator.getCustomControls().clear();
+
+        DashApp.decorator.addControl(0, userDetail);
+        DashApp.decorator.addControl(1, badgeSettings);
+        DashApp.decorator.addControl(2, badgeNotification);
+        DashApp.decorator.addControl(3, badgeTasks);
+        DashApp.decorator.addControl(4, badgeMessages);
+
     }
 
     private void removeBadges(){
 
-        App.getDecorator().removeControl(badgeMessages);
-        App.getDecorator().removeControl(badgeNotification);
-        App.getDecorator().removeControl(badgeTasks);
-//
-//        contentBadges.getChildren().setAll(badgeAlerts, badgeMessages, badgeNotification);
-        updateStyles(true);
+        DashApp.decorator.removeControl(badgeMessages);
+        DashApp.decorator.removeControl(badgeNotification);
+        DashApp.decorator.removeControl(badgeTasks);
+
+        contentBadges.getChildren().setAll(badgeTasks, badgeMessages, badgeNotification);
+//        updateStyles(false);
 
     }
 
-    private void updateStyles(boolean addStyle){
+    private void updateStyles(boolean value){
+
+
+        System.out.println("values = " + value);
+
         contentBadges.getChildren().forEach(
                 e -> {
-                    if(addStyle) {
+                    if(value) {
+                        System.out.println("style =  " + true);
+
                         if (!e.getStyleClass().contains("badge-drawer")) {
                             e.getStyleClass().add("badge-drawer");
                         }

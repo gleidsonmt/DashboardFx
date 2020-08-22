@@ -20,7 +20,7 @@ import animatefx.animation.BounceOut;
 import animatefx.animation.Flash;
 import animatefx.animation.Pulse;
 import animatefx.animation.SlideInLeft;
-import com.gn.GNAvatarView;
+import io.github.gleidson28.GNAvatarView;
 import com.gn.global.plugin.ViewManager;
 import com.gn.global.util.PopupCreator;
 import javafx.animation.RotateTransition;
@@ -65,13 +65,13 @@ public class login implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        rotateTransition.setNode(avatar);
-        rotateTransition.setByAngle(360);
-        rotateTransition.setDuration(Duration.seconds(1));
-        rotateTransition.setAutoReverse(true);
-
-        addEffect(password);
-        addEffect(username);
+//        rotateTransition.setNode(avatar);
+//        rotateTransition.setByAngle(360);
+//        rotateTransition.setDuration(Duration.seconds(1));
+//        rotateTransition.setAutoReverse(true);
+//
+//        addEffect(password);
+//        addEffect(username);
 
 //        setupListeners();
 

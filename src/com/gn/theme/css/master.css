@@ -310,6 +310,18 @@
     -fx-shape : "M 150 200 L 200 150 L 600 150 L 600 350 L 550 400 L 150 400 L 150 200 ";
 }
 
+.badge-drawer,
+.badge-drawer:pressed
+{
+    -fx-background-color : transparent, transparent;
+    -fx-max-height : 30px;
+}
+
+.badge-drawer:hover
+{
+    -fx-background-color : #00000030;
+}
+
 .badge-drawer:focused,
 .badge-drawer:hover .icon
 {
@@ -317,8 +329,8 @@
 }
 
 .badge-drawer .icon {
-    -fx-fill : white;
-    -fx-background-radius : 100px;
+    -fx-fill : -icon-color;
+    -fx-background-radius : 0px;
 }
 
 
@@ -379,3 +391,22 @@
     -fx-background-color : transparent;
 }
 
+.gn-bar .menuBar .menu,
+.gn-bar .menuBar .menu:showing,
+.gn-bar .menuBar .menu-button,
+.gn-bar .menuBar,
+.menuBar {
+    -fx-padding : 6px 2px 4px 2px;
+    -fx-min-height : 30px;
+    -fx-pref-height : 30px;
+    -fx-max-height : 30px;
+}
+
+.menuBar*.container>*.menu-button>*.label:hover  {
+    -fx-border-color : transparent;
+    -fx-background-color : transparent;
+}
+
+.gn-bar .menuBar .container .menu .label:hover {
+    -fx-background-color : red;
+}

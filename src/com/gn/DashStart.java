@@ -14,29 +14,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.gn.module.controls;
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-
-import java.net.URL;
-import java.util.ResourceBundle;
+package com.gn;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  12/04/2020
+ * Create on  26/07/2020
  */
-public class ButtonController implements Initializable {
+public class DashStart extends DashApp {
 
-    @FXML private Button btn;
-
-    
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
+    public static void main(String[] args) {
+        launch(args);
     }
 }
