@@ -22,4 +22,7 @@ package io.github.gleidsonmt.dashboardfx.core.app;
  * Create on  02/10/2022
  */
 public interface Context {
+
+    IContext context = new App();
+
 }

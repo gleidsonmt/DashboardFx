@@ -21,21 +21,75 @@ import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.FileHandler;
+import java.util.logging.Formatter;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  02/10/2022
  */
 public class Main extends Application implements IApp {
 
-//    private final Logger logger = Logger.getLogger("app");
+    private final Logger logger = Logger.getLogger("app");
+
+    private FileHandler fileHandler;
+
+    {
+        try {
+            fileHandler = new FileHandler("speed.txt");
+            fileHandler.setFormatter(new Formatter() {
+                @Override
+                public String format(LogRecord record) {
+
+                    String _logger = record.getLoggerName();
+                    String level = record.getLevel().getLocalizedName();
+                    String message = record.getMessage();
+                    String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd, HH:mm"));
+
+                    String _class = record.getSourceClassName();
+
+                    String _method = record.getSourceMethodName();
+
+                    return "\n" + "Logger { " + _logger + " }\n" +
+                            "Date and Time " + date + " => Class [" + _class + "]\n" +
+                            "Method -> " + _method + "\n" +
+                            "["+ level +"] Message -> \"" + message +"\"\n";
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
-    public void runApp(HostServices hostServices) {
+    public void stop() {
+
+        fileHandler.flush();
+        fileHandler.close();
+
+        context.getProperties().stringPropertyNames().forEach(f -> context.getProperties().setProperty(f, context.getProperties().getProperty(f)));
+
+//        try {
+//            context.getProperties().store(new FileOutputStream("src/main/resources/"+ context.getPaths().getFromCore("app.properties")  ), "Updating properties");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void runApp(HostServices hostServices) {
+//        context.startApp(hostServices);
+    }
 
+    @Override
+    public void start(Stage stage) throws Exception {
+        logger.addHandler(fileHandler);
+        runApp(getHostServices());
     }
 }

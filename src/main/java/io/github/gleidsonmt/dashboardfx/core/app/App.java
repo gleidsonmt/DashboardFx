@@ -19,18 +19,27 @@ package io.github.gleidsonmt.dashboardfx.core.app;
 
 import javafx.application.HostServices;
 
+import java.util.Properties;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  03/10/2022
  */
-public class App implements IApp {
+public class App implements IApp, IContext {
 
     private HostServices    hostServices;
     private WindowDecorator window;
 
+    private final Properties properties  = new Properties();
+
     @Override
     public void runApp(HostServices hostServices) {
 
+    }
+
+    @Override
+    public Properties getProperties() {
+        return properties;
     }
 
 }

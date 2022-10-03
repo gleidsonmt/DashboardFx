@@ -31,6 +31,7 @@ javafx {
 
 dependencies {
 
+    implementation 'org.jetbrains:annotations:23.0.0'
     implementation files('vendor/GNDecorator-1.0.5.jar')
 
 }

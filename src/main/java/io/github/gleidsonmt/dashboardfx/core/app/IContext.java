@@ -17,10 +17,14 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
+import java.util.Properties;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  02/10/2022
  */
-public class IContext {
+public interface IContext {
+
+    Properties getProperties();
 
 }
