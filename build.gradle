@@ -11,6 +11,9 @@ version '1.0'
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://jitpack.io'
+    }
 }
 
 sourceCompatibility = '17'
@@ -27,6 +30,9 @@ javafx {
 }
 
 dependencies {
+
+    implementation files('vendor/GNDecorator-1.0.5.jar')
+
 }
 
 test {

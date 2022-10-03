@@ -27,6 +27,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application implements IApp {
 
+//    private final Logger logger = Logger.getLogger("app");
 
     @Override
     public void runApp(HostServices hostServices) {

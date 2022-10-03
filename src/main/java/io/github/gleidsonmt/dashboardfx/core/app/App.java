@@ -21,10 +21,16 @@ import javafx.application.HostServices;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  02/10/2022
+ * Create on  03/10/2022
  */
-public interface IApp extends Context {
+public class App implements IApp {
 
-    void runApp(HostServices hostServices);
+    private HostServices    hostServices;
+//    private WindowDecorator window;
+
+    @Override
+    public void runApp(HostServices hostServices) {
+
+    }
 
 }
