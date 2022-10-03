@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+}
+
+group 'io.github.gleidsonmt.dashboardfx'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}

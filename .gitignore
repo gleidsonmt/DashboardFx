@@ -6,3 +6,8 @@ annotation.txt
 scenicView.properties
 dashboard.properties
 DashboardFx.iml
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
