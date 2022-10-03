@@ -15,11 +15,27 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.dashboardfx.core;
+package io.github.gleidsonmt.dashboardfx.core.app;
+
+import javafx.application.Application;
+import javafx.application.HostServices;
+import javafx.stage.Stage;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  02/10/2022
  */
-public class Main {
+public class Main extends Application implements IApp {
+
+//    private final Logger logger = Logger.getLogger("app");
+
+    @Override
+    public void runApp(HostServices hostServices) {
+
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+
+    }
 }

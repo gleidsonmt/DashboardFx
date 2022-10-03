@@ -17,14 +17,16 @@
 
 package io.github.gleidsonmt.dashboardfx;
 
+import io.github.gleidsonmt.dashboardfx.core.app.Main;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  02/10/2022
  */
-public class Start {
+public class Start extends Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        launch(args);
     }
 
 }
