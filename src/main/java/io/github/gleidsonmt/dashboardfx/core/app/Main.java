@@ -17,6 +17,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IApp;
 import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.stage.Stage;

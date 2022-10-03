@@ -17,7 +17,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
-import io.github.gleidsonmt.dashboardfx.core.app.test.IDecorator;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IDecorator;
 import io.github.gleidsonmt.gndecorator.GNDecorator;
 import javafx.application.HostServices;
 

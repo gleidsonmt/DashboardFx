@@ -15,16 +15,25 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.dashboardfx.core.app;
+package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
+
+import javafx.application.HostServices;
+
+import java.util.Properties;
+import java.util.logging.Logger;
 
 /**
- * The Context for whole application;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  02/10/2022
  */
-public interface Context {
+public interface IContext {
 
-    // Implementing context pattern.
-    IContext context = new App();
+    Properties getProperties();
+
+    Logger getLogger();
+
+    IDecorator getDecorator();
+
+    void startApp(HostServices hostServices);
 
 }

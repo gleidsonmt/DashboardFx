@@ -20,7 +20,8 @@ module io.github.gleidsonmt.dashboardfx {
 
     exports io.github.gleidsonmt.dashboardfx;
     exports io.github.gleidsonmt.dashboardfx.core.app;
-
+    exports io.github.gleidsonmt.dashboardfx.core.app.interfaces;
+    opens io.github.gleidsonmt.dashboardfx.core.app.interfaces to javafx.base, javafx.fxml, javafx.graphics;
 
 
 //    requires io.github.gleidsonmt.dashboardfx.core;

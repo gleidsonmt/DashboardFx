@@ -15,16 +15,11 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.dashboardfx.core.app.test;
-
-import javafx.application.HostServices;
+package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  03/10/2022
  */
-public interface IDecorator {
-
-    void show(HostServices hostServices);
-
+public interface PathView {
 }

@@ -15,11 +15,16 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.dashboardfx.core.app;
+package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
+
+import javafx.application.HostServices;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  03/10/2022
+ * Create on  02/10/2022
  */
-public interface PathView {
+public interface IApp extends Context {
+
+    void runApp(HostServices hostServices);
+
 }
