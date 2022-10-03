@@ -18,11 +18,13 @@
 package io.github.gleidsonmt.dashboardfx.core.app;
 
 /**
+ * The Context for whole application;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  02/10/2022
  */
 public interface Context {
 
+    // Implementing context pattern.
     IContext context = new App();
 
 }

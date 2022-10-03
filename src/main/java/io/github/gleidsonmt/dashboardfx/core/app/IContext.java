@@ -17,7 +17,11 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
+import io.github.gleidsonmt.dashboardfx.core.app.test.IDecorator;
+import javafx.application.HostServices;
+
 import java.util.Properties;
+import java.util.logging.Logger;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -26,5 +30,11 @@ import java.util.Properties;
 public interface IContext {
 
     Properties getProperties();
+
+    Logger getLogger();
+
+    IDecorator getDecorator();
+
+    void startApp(HostServices hostServices);
 
 }

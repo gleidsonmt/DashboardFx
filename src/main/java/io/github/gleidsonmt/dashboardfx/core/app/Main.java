@@ -30,6 +30,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 /**
+ * Class that provides logger and states.
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  02/10/2022
  */
@@ -41,7 +42,7 @@ public class Main extends Application implements IApp {
 
     {
         try {
-            fileHandler = new FileHandler("speed.txt");
+            fileHandler = new FileHandler("dash_logger.txt");
             fileHandler.setFormatter(new Formatter() {
                 @Override
                 public String format(LogRecord record) {
@@ -52,7 +53,6 @@ public class Main extends Application implements IApp {
                     String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd, HH:mm"));
 
                     String _class = record.getSourceClassName();
-
                     String _method = record.getSourceMethodName();
 
                     return "\n" + "Logger { " + _logger + " }\n" +
@@ -84,7 +84,7 @@ public class Main extends Application implements IApp {
 
     @Override
     public void runApp(HostServices hostServices) {
-//        context.startApp(hostServices);
+        context.startApp(hostServices);
     }
 
     @Override

@@ -17,11 +17,20 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
+import io.github.gleidsonmt.dashboardfx.core.app.test.IDecorator;
 import io.github.gleidsonmt.gndecorator.GNDecorator;
+import javafx.application.HostServices;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  03/10/2022
  */
-public class WindowDecorator extends GNDecorator {
+public class WindowDecorator extends GNDecorator implements IDecorator {
+
+
+    @Override
+    public void show(HostServices hostServices) {
+        show();
+    }
+
 }

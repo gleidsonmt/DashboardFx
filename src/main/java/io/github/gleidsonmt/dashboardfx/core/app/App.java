@@ -17,29 +17,57 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
+import io.github.gleidsonmt.dashboardfx.core.app.test.IDecorator;
 import javafx.application.HostServices;
 
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
+ * Implementation app under the context approach.
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  03/10/2022
  */
-public class App implements IApp, IContext {
+public class App implements IContext {
 
-    private HostServices    hostServices;
-    private WindowDecorator window;
+    private HostServices    hostServices;   // Web Servieces too..
+    private WindowDecorator window;        // Objects refer to window in application
+
+    private final Logger logger = Logger.getLogger("app");
 
     private final Properties properties  = new Properties();
 
-    @Override
-    public void runApp(HostServices hostServices) {
-
+    public App() {
+        logger.setLevel(Level.ALL);
+        loadProperties();
+        logger.log(Level.INFO, "Initializing App Class Context.");
     }
 
     @Override
     public Properties getProperties() {
         return properties;
+    }
+
+    @Override
+    public Logger getLogger() {
+        return logger;
+    }
+
+    @Override
+    public void startApp(HostServices _hostServices) {
+        logger.info("Starting Main Core -- DashboardFx");
+        this.hostServices = _hostServices;
+
+    }
+
+    @Override
+    public IDecorator getDecorator() {
+        return window;
+    }
+
+    private void loadProperties() {
+
     }
 
 }
