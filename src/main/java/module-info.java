@@ -6,5 +6,6 @@
 
 module io.github.gleidsonmt.speedcut {
 
+    requires javafx.controls;
 
 }

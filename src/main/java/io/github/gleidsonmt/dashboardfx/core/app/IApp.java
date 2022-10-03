@@ -17,12 +17,14 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
+import javafx.application.HostServices;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  02/10/2022
  */
 public interface IApp {
 
-//    void runApp(HostServices hostServices);
+    void runApp(HostServices hostServices);
 
 }
