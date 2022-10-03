@@ -8,4 +8,6 @@ module io.github.gleidsonmt.speedcut {
 
     requires javafx.controls;
 
+    requires io.github.gleidsonmt.gndecorator;
+
 }
