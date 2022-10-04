@@ -62,8 +62,6 @@ public class App implements IContext, PathView {
             e.printStackTrace();
         }
 
-        System.out.println("this.module = " + this.module);
-        System.out.println("this.core = " + this.core);
     }
 
     @Override

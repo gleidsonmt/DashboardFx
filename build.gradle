@@ -31,6 +31,7 @@ javafx {
 
 dependencies {
 
+    implementation 'org.yaml:snakeyaml:1.32'
     implementation 'org.jetbrains:annotations:23.0.0'
     implementation 'fr.brouillard.oss:cssfx:11.5.1'
 

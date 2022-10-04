@@ -17,11 +17,46 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.services;
 
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.PathView;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.Constructor;
+
+import java.util.List;
+import java.util.logging.Logger;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public class LoadView {
+public class LoadView extends Service<ViewComposer>  {
+
+    private final   StringBuilder       builder = new StringBuilder();
+    private List<ViewComposer> yamlViews = null;
+
+    public LoadView(PathView pathView) {
+
+        Yaml yaml = new Yaml(new Constructor(List.class));
+
+        yamlViews = yaml.load(getClass().getResourceAsStream(
+                "/views.yml"));
+    }
 
 
+    @Override
+    protected void succeeded() {
+        Logger.getLogger("app").info("All pre views are loaded..");
+    }
+
+    @Override
+    protected Task<ViewComposer> createTask() {
+        return new Task<ViewComposer>() {
+            @Override
+            protected ViewComposer call() throws Exception {
+                return null;
+            }
+        };
+    }
 }
+

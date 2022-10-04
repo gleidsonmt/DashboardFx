@@ -19,6 +19,7 @@ package io.github.gleidsonmt.dashboardfx.core.app;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IDecorator;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.PathView;
+import io.github.gleidsonmt.dashboardfx.core.app.services.LoadView;
 import io.github.gleidsonmt.gncontrols.Material;
 import io.github.gleidsonmt.gncontrols.Theme;
 import io.github.gleidsonmt.gndecorator.GNDecorator;
@@ -67,6 +68,7 @@ public class WindowDecorator extends GNDecorator implements IDecorator {
     @Override
     public void show(HostServices hostServices) {
         initPreLoader();
+        new LoadView(pathView).start();
         show();
     }
 

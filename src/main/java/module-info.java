@@ -18,6 +18,7 @@ module io.github.gleidsonmt.dashboardfx {
     requires fr.brouillard.oss.cssfx;
 
     requires scenicView;
+    requires org.yaml.snakeyaml;
 
     opens io.github.gleidsonmt.dashboardfx to javafx.base, javafx.fxml, javafx.graphics;
     opens io.github.gleidsonmt.dashboardfx.core.app to javafx.base, javafx.fxml, javafx.graphics;
