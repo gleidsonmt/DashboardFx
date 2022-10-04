@@ -19,8 +19,11 @@ package io.github.gleidsonmt.dashboardfx.core.app;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IContext;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IDecorator;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.PathView;
 import javafx.application.HostServices;
+import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +33,12 @@ import java.util.logging.Logger;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  03/10/2022
  */
-public class App implements IContext {
+public class App implements IContext, PathView {
+
+    private String module;
+    private String core = module + ".core.app";
+    private String views = module + ".view";
+
 
     private HostServices    hostServices;   // Web Servieces too..
     private WindowDecorator window;        // Objects refer to window in application
@@ -43,6 +51,11 @@ public class App implements IContext {
         logger.setLevel(Level.ALL);
         loadProperties();
         logger.log(Level.INFO, "Initializing App Class Context.");
+
+        this.module = "/" + App.class.getModule().toString().replaceAll("module ", "") + "/";
+        this.core   = "/" + App.class.getPackage().toString().replaceAll("package ", "") + "/";
+
+        System.out.println("App.class.getModule() = " + this.module );
     }
 
     @Override
@@ -59,7 +72,6 @@ public class App implements IContext {
     public void startApp(HostServices _hostServices) {
         logger.info("Starting Main Core -- DashboardFx");
         this.hostServices = _hostServices;
-
     }
 
     @Override
@@ -69,6 +81,30 @@ public class App implements IContext {
 
     private void loadProperties() {
 
+        try {
+            properties.load(getClass().getResourceAsStream("/app.properties"));
+        } catch (IOException e) {
+            logger.severe(e.getMessage() );
+            e.printStackTrace();
+        }
+
     }
 
+    @Override
+    public String getFromCore(String fileOrPath) {
+        return core.concat(formatFile(fileOrPath));
+    }
+
+    private @NotNull String formatFile(@NotNull String value) {
+
+        if (value.contains("/")) {
+
+            if (value.indexOf('/') == 0) {
+                return value.replaceAll("/", "");
+            } else return "/" + value;
+        } else {
+            return "/" + value;
+        }
+
+    }
 }

@@ -22,4 +22,7 @@ package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
  * Create on  03/10/2022
  */
 public interface PathView {
+
+    String getFromCore(String fileOrPath);
+
 }
