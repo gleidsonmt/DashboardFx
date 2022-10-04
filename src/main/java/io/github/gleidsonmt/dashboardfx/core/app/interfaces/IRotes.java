@@ -15,24 +15,33 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.dashboardfx.core.layout;
+package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IRoot;
-import javafx.scene.Node;
-import javafx.scene.layout.StackPane;
+import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  04/10/2022
+ * Create on  20/08/2022
  */
-public final class Root extends StackPane implements IRoot {
+public interface IRotes {
 
-    public Root(Node node) {
-        getChildren().setAll(node);
-    }
+    void setContent(String view) throws NavigationException;
 
-    @Override
-    public void setTitle(String title) {
+    void setView(String view) throws NavigationException;
 
-    }
+    void addView(IView iView);
+
+    void goHome();
+
+    IView getView(String view);
+
+    IView getCurrent();
+
+    IView getPrevious();
+
+    IView load(String folder, String title, String name);
+
+
+    // void loadView(String path) // para implementar se quiser q a view seja carregad na hora
+
 }

@@ -43,10 +43,10 @@
                 <Circle fx:id="three" fill="#1f93ff00" layoutX="581.0" layoutY="110.0" radius="85.0"
                         stroke="#33b5e5" strokeMiterLimit="20.0" strokeType="INSIDE" strokeWidth="2.0"
                         style="-fx-stroke-dash-array: 20; -fx-stroke: -aqua;"/>
-                <Label prefHeight="36.0" style="-fx-font-size: 20; -fx-text-fill: -dark-gray;"
+                <Label  prefHeight="36.0" style="-fx-font-size: 20; -fx-text-fill: -dark-gray;"
                        text="Loading..." textFill="#ffffff82"/>
             </StackPane>
-            <Label id="labelLoading" prefHeight="36.0" style="-fx-font-size: 14;" text="Starting.."
+            <Label fx:id="info" id="labelLoading" prefHeight="36.0" style="-fx-font-size: 14;" text="Starting.."
                    textFill="#00000081"/>
         </VBox>
     </AnchorPane>

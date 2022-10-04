@@ -25,6 +25,8 @@ import javafx.application.HostServices;
  */
 public interface IDecorator {
 
+    IRoot getRoot();
+
     void show(HostServices hostServices);
 
 }

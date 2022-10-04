@@ -17,19 +17,20 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IDecorator;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.PathView;
+import io.github.gleidsonmt.dashboardfx.core.app.controllers.LoaderController;
+import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
 import io.github.gleidsonmt.dashboardfx.core.app.services.LoadView;
+import io.github.gleidsonmt.dashboardfx.core.layout.Layout;
+import io.github.gleidsonmt.dashboardfx.core.layout.Root;
 import io.github.gleidsonmt.gncontrols.Material;
 import io.github.gleidsonmt.gncontrols.Theme;
 import io.github.gleidsonmt.gndecorator.GNDecorator;
 import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.util.Objects;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -39,21 +40,19 @@ import java.util.logging.Logger;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  03/10/2022
  */
-public class WindowDecorator extends GNDecorator implements IDecorator {
+public class WindowDecorator extends GNDecorator implements IDecorator, Context {
 
-    private PathView pathView;
+    private final PathView pathView;
+    private LoaderController loaderController;
+
+    private IRotes routes;
 
     public WindowDecorator(@NotNull Properties _properties, @NotNull PathView _path) throws IOException {
         // setTheme and logo here
-
+        this.pathView = _path;
 
         // Theming by controls lib
-        new Material(
-                this.getWindow().getScene(),
-                Theme.SIMPLE_INFO
-        );
-
-        this.pathView = _path;
+        new Material(this.getWindow().getScene(), Theme.SIMPLE_INFO);
 
         fullBody();
 
@@ -66,9 +65,45 @@ public class WindowDecorator extends GNDecorator implements IDecorator {
     }
 
     @Override
+    public IRoot getRoot() {
+        return null;
+    }
+
+    @Override
     public void show(HostServices hostServices) {
         initPreLoader();
-        new LoadView(pathView).start();
+
+        LoadView loadView = new LoadView();
+
+        loadView.setOnReady(event -> {
+            loaderController.info("Reading application..");
+        });
+
+        loadView.setOnFailed(event -> {
+            Logger.getLogger("app").severe("Error on loading preloader");
+        });
+
+        loadView.setOnCancelled(event -> {
+            Logger.getLogger("app").severe("Error on loading preloader");
+        });
+
+        loadView.setOnRunning(event -> {
+            loaderController.info("Reading application..");
+        });
+
+        loadView.setOnSucceeded(event -> {
+            initLayout();
+
+            try {
+                context.getRoutes().setView("dash");
+            } catch (NavigationException e) {
+                e.printStackTrace();
+            }
+//            getRoutes().setView("login");
+
+        });
+
+        loadView.start();
         show();
     }
 
@@ -76,13 +111,20 @@ public class WindowDecorator extends GNDecorator implements IDecorator {
     private void initPreLoader() {
         try {
             Logger.getLogger("app").info("Intializing Pre Loader Application");
-            Parent loader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(pathView.getFromCore("/loader.fxml"))));
-            setContent(loader);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(pathView.getFromCore("/loader.fxml")));
+            loader.load();
+            loaderController = loader.getController();
+            setContent(loader.getRoot());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-
+    private void initLayout() {
+        Layout layout = new Layout();
+        Root root = new Root(layout);
+        setContent(root);
+    }
 }

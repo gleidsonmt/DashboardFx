@@ -20,6 +20,7 @@ package io.github.gleidsonmt.dashboardfx.core.app.controllers;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
@@ -35,6 +36,8 @@ public class LoaderController implements Initializable {
     @FXML private Circle one;
     @FXML private Circle two;
     @FXML private Circle three;
+
+    @FXML private Label info;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,5 +57,10 @@ public class LoaderController implements Initializable {
         rotate.setCycleCount(-1);
         rotate.play();
 
+    }
+
+    public void info(String message) {
+        System.out.println("info");
+        info.setText(message);
     }
 }

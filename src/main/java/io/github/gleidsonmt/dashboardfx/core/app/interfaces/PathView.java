@@ -25,4 +25,6 @@ public interface PathView {
 
     String getFromCore(String fileOrPath);
 
+    String getViews();
+
 }

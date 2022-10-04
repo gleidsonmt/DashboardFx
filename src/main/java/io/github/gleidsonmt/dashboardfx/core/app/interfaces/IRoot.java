@@ -15,24 +15,32 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.dashboardfx.core.layout;
-
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IRoot;
-import javafx.scene.Node;
-import javafx.scene.layout.StackPane;
+package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  04/10/2022
+ * Create on  20/08/2022
  */
-public final class Root extends StackPane implements IRoot {
 
-    public Root(Node node) {
-        getChildren().setAll(node);
-    }
+@SuppressWarnings("all")
+public interface IRoot {
 
-    @Override
-    public void setTitle(String title) {
-
-    }
+    void setTitle(String title);
+//
+//    SnackBar createSnackBar();
+//
+//    IWrapper getWrapper();
+//
+//    ILayout getLayout();
+//
+//    void setContent(Parent content);
+//
+//    double getWidth();
+//
+//    double getHeight();
+//
+//    ReadOnlyDoubleProperty widthProperty();
+//
+//    ReadOnlyDoubleProperty heightProperty();
+//
 }

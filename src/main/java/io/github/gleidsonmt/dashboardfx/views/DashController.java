@@ -15,24 +15,30 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.dashboardfx.core.layout;
+package io.github.gleidsonmt.dashboardfx.views;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IRoot;
-import javafx.scene.Node;
-import javafx.scene.layout.StackPane;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ActionView;
+import javafx.fxml.FXML;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public final class Root extends StackPane implements IRoot {
+public class DashController implements ActionView {
 
-    public Root(Node node) {
-        getChildren().setAll(node);
+
+    @FXML
+    private void bottonClick() {
+        System.out.println("button clicked");
     }
 
     @Override
-    public void setTitle(String title) {
+    public void onEnter() {
+
+    }
+
+    @Override
+    public void onExit() {
 
     }
 }

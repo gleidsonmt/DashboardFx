@@ -34,6 +34,10 @@ public interface IContext {
 
     IDecorator getDecorator();
 
+    IRotes getRoutes();
+
+    PathView getPaths();
+
     void startApp(HostServices hostServices);
 
 }

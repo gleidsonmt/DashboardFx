@@ -19,13 +19,14 @@ package io.github.gleidsonmt.dashboardfx.core.app;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IContext;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IDecorator;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IRotes;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.PathView;
+import io.github.gleidsonmt.dashboardfx.core.app.services.Routes;
 import javafx.application.HostServices;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.Properties;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -35,14 +36,13 @@ import java.util.logging.Logger;
  */
 public class App implements IContext, PathView {
 
-    private String module;
-    private String core;
-
-    private Level level;
-    private String views = module + ".view";
+    private final String module;
+    private final String core;
+    private String views;
 
     private HostServices    hostServices;   // Web Servieces too..
     private WindowDecorator window;        // Objects refer to window in application
+    private IRotes          routes;
 
     private final Logger        logger      = Logger.getLogger("app");
     private final Properties    properties  = new Properties();
@@ -54,6 +54,7 @@ public class App implements IContext, PathView {
 
         this.module = "/" + App.class.getModule().toString().replaceAll("module ", "");
         this.core = module.concat("/core.app");
+        this.views = module.concat(".views");
 
         try {
             window = new WindowDecorator(properties, this);
@@ -62,6 +63,7 @@ public class App implements IContext, PathView {
             e.printStackTrace();
         }
 
+        routes = new Routes(window, this);
     }
 
     @Override
@@ -86,6 +88,16 @@ public class App implements IContext, PathView {
         return window;
     }
 
+    @Override
+    public IRotes getRoutes() {
+        return routes;
+    }
+
+    @Override
+    public PathView getPaths() {
+        return this;
+    }
+
     private void loadProperties() {
 
         try {
@@ -108,6 +120,11 @@ public class App implements IContext, PathView {
     @Override
     public String getFromCore(String fileOrPath) {
         return core.concat(formatFile(fileOrPath));
+    }
+
+    @Override
+    public String getViews() {
+        return views;
     }
 
     private @NotNull String formatFile(@NotNull String value) {

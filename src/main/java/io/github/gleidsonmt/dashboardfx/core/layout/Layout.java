@@ -17,22 +17,45 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IRoot;
-import javafx.scene.Node;
-import javafx.scene.layout.StackPane;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ILayout;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IView;
+import javafx.scene.layout.BorderPane;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public final class Root extends StackPane implements IRoot {
+public final class Layout extends BorderPane implements ILayout {
 
-    public Root(Node node) {
-        getChildren().setAll(node);
+    public Layout() {
+
+        setId("#layout");
+        getStyleClass().add("layout");
+
     }
 
     @Override
-    public void setTitle(String title) {
+    public void setDrawer(IView iView) {
+
+    }
+
+    @Override
+    public void setAside(IView iView) {
+
+    }
+
+    @Override
+    public void setNav(IView iView) {
+
+    }
+
+    @Override
+    public void setFooter(IView iView) {
+
+    }
+
+    @Override
+    public void setBody(IView iView) {
 
     }
 }

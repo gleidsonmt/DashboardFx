@@ -17,46 +17,118 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.services;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.PathView;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Context;
+import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
+import javafx.fxml.FXMLLoader;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public class LoadView extends Service<ViewComposer>  {
+public class LoadView extends Service<ViewComposer> implements Context {
 
     private final   StringBuilder       builder = new StringBuilder();
     private List<ViewComposer> yamlViews = null;
 
-    public LoadView(PathView pathView) {
+    public LoadView() {
 
         Yaml yaml = new Yaml(new Constructor(List.class));
 
         yamlViews = yaml.load(getClass().getResourceAsStream(
                 "/views.yml"));
-    }
 
-
-    @Override
-    protected void succeeded() {
-        Logger.getLogger("app").info("All pre views are loaded..");
     }
 
     @Override
     protected Task<ViewComposer> createTask() {
-        return new Task<ViewComposer>() {
+
+        return new Task<>() {
+
             @Override
-            protected ViewComposer call() throws Exception {
+            protected ViewComposer call()  {
+
+                for(ViewComposer view : yamlViews) {
+                    Platform.runLater( () -> loadView(view));
+                }
+
                 return null;
             }
+
         };
+    }
+
+    private void loadView(ViewComposer view) {
+        loadView(view, null);
+    }
+
+    private void loadView(ViewComposer view, String path) {
+
+        FXMLLoader loader = new FXMLLoader();
+        URL location = null;
+
+        if (path == null) {
+            path = context.getPaths().getViews();
+        }
+
+        if(view.getDirectory() != null ) {
+            builder.append("/").append(view.getDirectory());
+        }
+
+        if(view.getViews() != null) {
+            for (ViewComposer v : view.getViews()) {
+                if (v.getFxml() != null) {
+
+                    location = getClass().getResource(path + builder + "/"
+                            + v.getFxml());
+                }
+                v.setRoot(view);
+                loadView(v);
+            }
+        }
+
+        if(view.getDirectory() == null ) {
+            location = LoadView.class.getResource(path + builder + "/"
+                    + view.getFxml());
+
+        } else if(view.getFxml() != null && view.getDirectory() != null){
+            location = getClass().getResource(path + builder + "/"
+                    + view.getFxml());
+        }
+
+        if(view.getDirectory() != null) {
+            String act = builder.substring(builder.lastIndexOf("/") + 1 , builder.length());
+            if (act.equals(view.getDirectory())) {
+                builder.delete(builder.lastIndexOf("/"), builder.length());
+            }
+        }
+
+        if ( location != null && view.getFxml() != null) {
+
+            loader.setLocation(location);
+//            loader.setCharset(StandardCharsets.UTF_8);
+//            loader.setResources(App.INSTANCE.getResourceBundle());
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            context.getRoutes().addView(new View(view, loader));
+
+        } else if(view.getFxml() != null) {
+            IOException io = new IOException("The fxml with ["
+                    + view.getName()  + "]" + " doesn't correspond.");
+            io.printStackTrace();
+        }
     }
 }
 
