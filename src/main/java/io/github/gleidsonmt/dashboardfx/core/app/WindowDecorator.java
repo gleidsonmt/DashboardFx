@@ -18,8 +18,18 @@
 package io.github.gleidsonmt.dashboardfx.core.app;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IDecorator;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.PathView;
+import io.github.gleidsonmt.gncontrols.Material;
+import io.github.gleidsonmt.gncontrols.Theme;
 import io.github.gleidsonmt.gndecorator.GNDecorator;
 import javafx.application.HostServices;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+import java.util.Objects;
+import java.util.Properties;
 
 /**
  * This class represents the whole window that appear in application.
@@ -29,9 +39,42 @@ import javafx.application.HostServices;
  */
 public class WindowDecorator extends GNDecorator implements IDecorator {
 
+
+    public WindowDecorator(@NotNull Properties _properties, @NotNull PathView _path) throws IOException {
+        // setTheme and logo here
+
+        // Theming by controls lib
+        new Material(
+                this.getWindow().getScene(),
+                Theme.SIMPLE_INFO
+        );
+
+        fullBody();
+
+        // Getting default parameters for window
+        setWidth(Integer.parseInt(_properties.getProperty("app.width")));
+        setHeight(Integer.parseInt(_properties.getProperty("app.height")));
+
+        setMinWidth(Integer.parseInt(_properties.getProperty("app.min.width")));
+        setMinHeight(Integer.parseInt(_properties.getProperty("app.min.height")));
+    }
+
     @Override
     public void show(HostServices hostServices) {
+        initPreLoader();
         show();
     }
+
+
+    private void initPreLoader() {
+        try {
+            Parent loader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/io.github.gleidsonmt.dashboardfx/core.app/loader.fxml")));
+            setContent(loader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 }

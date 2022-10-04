@@ -10,9 +10,14 @@ module io.github.gleidsonmt.dashboardfx {
     requires javafx.fxml;
     requires javafx.web;
     requires org.jetbrains.annotations;
-    requires io.github.gleidsonmt.gndecorator;
     requires java.logging;
 
+    requires io.github.gleidsonmt.gndecorator;
+    requires io.github.gleidsonmt.gncontrols;
+
+    requires fr.brouillard.oss.cssfx;
+
+    requires scenicView;
 
     opens io.github.gleidsonmt.dashboardfx to javafx.base, javafx.fxml, javafx.graphics;
     opens io.github.gleidsonmt.dashboardfx.core.app to javafx.base, javafx.fxml, javafx.graphics;
@@ -22,7 +27,7 @@ module io.github.gleidsonmt.dashboardfx {
     exports io.github.gleidsonmt.dashboardfx.core.app;
     exports io.github.gleidsonmt.dashboardfx.core.app.interfaces;
     opens io.github.gleidsonmt.dashboardfx.core.app.interfaces to javafx.base, javafx.fxml, javafx.graphics;
-
+    opens io.github.gleidsonmt.dashboardfx.core.app.controllers to javafx.fxml, javafx.graphics;
 
 //    requires io.github.gleidsonmt.dashboardfx.core;
 

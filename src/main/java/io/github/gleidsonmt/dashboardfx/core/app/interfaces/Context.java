@@ -29,4 +29,5 @@ public interface Context {
     // Implementing context pattern.
     IContext context = new App();
 
+
 }

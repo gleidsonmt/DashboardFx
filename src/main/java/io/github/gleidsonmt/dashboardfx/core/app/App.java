@@ -36,26 +36,32 @@ import java.util.logging.Logger;
 public class App implements IContext, PathView {
 
     private String module;
-    private String core = module + ".core.app";
-    private String views = module + ".view";
+    private String core;
 
+    private Level level;
+    private String views = module + ".view";
 
     private HostServices    hostServices;   // Web Servieces too..
     private WindowDecorator window;        // Objects refer to window in application
 
-    private final Logger logger = Logger.getLogger("app");
-
-    private final Properties properties  = new Properties();
+    private final Logger        logger      = Logger.getLogger("app");
+    private final Properties    properties  = new Properties();
 
     public App() {
-        logger.setLevel(Level.ALL);
+
         loadProperties();
-        logger.log(Level.INFO, "Initializing App Class Context.");
+        logger.info("Initializing App Class Context.");
 
         this.module = "/" + App.class.getModule().toString().replaceAll("module ", "") + "/";
         this.core   = "/" + App.class.getPackage().toString().replaceAll("package ", "") + "/";
 
-        System.out.println("App.class.getModule() = " + this.module );
+        try {
+            window = new WindowDecorator(properties, this);
+        } catch (IOException e) {
+            logger.severe(e.getMessage());
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -72,6 +78,7 @@ public class App implements IContext, PathView {
     public void startApp(HostServices _hostServices) {
         logger.info("Starting Main Core -- DashboardFx");
         this.hostServices = _hostServices;
+        getDecorator().show(_hostServices);
     }
 
     @Override
@@ -88,10 +95,21 @@ public class App implements IContext, PathView {
             e.printStackTrace();
         }
 
+        properties.putIfAbsent("app.name", "DashboardFx");
+        properties.putIfAbsent("app.width", "1280");
+        properties.putIfAbsent("app.height", "800");
+        properties.putIfAbsent("app.min.width", "450");
+        properties.putIfAbsent("app.min.height", "720");
+        properties.putIfAbsent("user.logged", "false");
+        properties.putIfAbsent("user.registered", "false");
+
     }
 
     @Override
     public String getFromCore(String fileOrPath) {
+
+        System.out.println("fileOrPath = " + core.concat(formatFile(fileOrPath)));
+
         return core.concat(formatFile(fileOrPath));
     }
 
@@ -107,4 +125,6 @@ public class App implements IContext, PathView {
         }
 
     }
+
+
 }

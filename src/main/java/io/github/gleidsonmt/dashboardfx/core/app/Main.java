@@ -22,13 +22,11 @@ import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.stage.Stage;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.logging.FileHandler;
-import java.util.logging.Formatter;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 /**
  * Class that provides logger and states.
@@ -70,21 +68,24 @@ public class Main extends Application implements IApp {
     @Override
     public void stop() {
 
+        logger.info("Stopping Application");
+
         fileHandler.flush();
         fileHandler.close();
 
         context.getProperties().stringPropertyNames().forEach(f -> context.getProperties().setProperty(f, context.getProperties().getProperty(f)));
 
-//        try {
-//            context.getProperties().store(new FileOutputStream("src/main/resources/"+ context.getPaths().getFromCore("app.properties")  ), "Updating properties");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            context.getProperties().store(new FileOutputStream("/app.properties" ), "Updating properties");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Override
     public void runApp(HostServices hostServices) {
+        logger.setLevel(Level.FINEST);
         context.startApp(hostServices);
     }
 
