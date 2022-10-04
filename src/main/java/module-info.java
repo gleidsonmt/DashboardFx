@@ -19,6 +19,7 @@ module io.github.gleidsonmt.dashboardfx {
 
     requires scenicView;
     requires org.yaml.snakeyaml;
+    requires animatefx;
 
     opens io.github.gleidsonmt.dashboardfx to javafx.base, javafx.fxml, javafx.graphics;
     opens io.github.gleidsonmt.dashboardfx.core.app to javafx.base, javafx.fxml, javafx.graphics;
