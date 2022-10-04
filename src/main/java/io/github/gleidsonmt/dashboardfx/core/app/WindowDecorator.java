@@ -30,6 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 /**
  * This class represents the whole window that appear in application.
@@ -39,15 +40,19 @@ import java.util.Properties;
  */
 public class WindowDecorator extends GNDecorator implements IDecorator {
 
+    private PathView pathView;
 
     public WindowDecorator(@NotNull Properties _properties, @NotNull PathView _path) throws IOException {
         // setTheme and logo here
+
 
         // Theming by controls lib
         new Material(
                 this.getWindow().getScene(),
                 Theme.SIMPLE_INFO
         );
+
+        this.pathView = _path;
 
         fullBody();
 
@@ -68,7 +73,8 @@ public class WindowDecorator extends GNDecorator implements IDecorator {
 
     private void initPreLoader() {
         try {
-            Parent loader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/io.github.gleidsonmt.dashboardfx/core.app/loader.fxml")));
+            Logger.getLogger("app").info("Intializing Pre Loader Application");
+            Parent loader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(pathView.getFromCore("/loader.fxml"))));
             setContent(loader);
         } catch (IOException e) {
             e.printStackTrace();

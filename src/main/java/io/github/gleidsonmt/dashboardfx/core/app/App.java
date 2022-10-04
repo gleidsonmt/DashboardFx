@@ -52,8 +52,8 @@ public class App implements IContext, PathView {
         loadProperties();
         logger.info("Initializing App Class Context.");
 
-        this.module = "/" + App.class.getModule().toString().replaceAll("module ", "") + "/";
-        this.core   = "/" + App.class.getPackage().toString().replaceAll("package ", "") + "/";
+        this.module = "/" + App.class.getModule().toString().replaceAll("module ", "");
+        this.core = module.concat("/core.app");
 
         try {
             window = new WindowDecorator(properties, this);
@@ -62,6 +62,8 @@ public class App implements IContext, PathView {
             e.printStackTrace();
         }
 
+        System.out.println("this.module = " + this.module);
+        System.out.println("this.core = " + this.core);
     }
 
     @Override
@@ -107,19 +109,13 @@ public class App implements IContext, PathView {
 
     @Override
     public String getFromCore(String fileOrPath) {
-
-        System.out.println("fileOrPath = " + core.concat(formatFile(fileOrPath)));
-
         return core.concat(formatFile(fileOrPath));
     }
 
     private @NotNull String formatFile(@NotNull String value) {
 
         if (value.contains("/")) {
-
-            if (value.indexOf('/') == 0) {
-                return value.replaceAll("/", "");
-            } else return "/" + value;
+            return value.indexOf('/') == 0 ? value : "/" + value;
         } else {
             return "/" + value;
         }
