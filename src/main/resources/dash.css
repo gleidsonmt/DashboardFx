@@ -2,6 +2,17 @@
 
 .snack-bar .label-action {
     -fx-padding : 2px;
+    -fx-border-width : 1px;
+    -fx-background-color : white;
+    -fx-border-color : white;
+    -fx-background-radius : 3px;
+    -fx-border-radius : 3px;
+    -fx-text-fill : -snack-color;
+}
+
+.snack-bar .label-action:pressed   {
+    -fx-background-color : transparent;
+    -fx-text-fill : white;
 }
 
 .snack-bar .info-text {

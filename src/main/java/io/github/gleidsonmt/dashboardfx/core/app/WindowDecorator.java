@@ -17,6 +17,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
+import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.gleidsonmt.dashboardfx.core.app.controllers.LoaderController;
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
@@ -30,6 +31,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import org.jetbrains.annotations.NotNull;
+import org.scenicview.ScenicView;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -118,7 +120,8 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
         loadViews.start();
         show();
 
-//        ScenicView.show(this.getWindow().getScene());
+        ScenicView.show(this.getWindow().getScene());
+        CSSFX.start(this.getWindow());
 
     }
 

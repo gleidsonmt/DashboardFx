@@ -156,11 +156,8 @@ public class SnackBar {
 
             labelAction.getStyleClass().add("label-action");
 
-            labelAction.setStyle("-fx-border-width : 1px; " +
-                    "-fx-text-fill : " + color.getColor() + ";" +
-                    "-fx-border-radius : 3; -fx-border-color : white;" +
-                    "-fx-background-color : white;" +
-                    "-fx-background-radius : 3;"
+            labelAction.setStyle(
+                    "-snack-color : " + color.getColor() + ";"
             );
 
             labelAction.addEventFilter(MouseEvent.MOUSE_RELEASED, event -> undoEvent.handle(new ActionEvent()));
