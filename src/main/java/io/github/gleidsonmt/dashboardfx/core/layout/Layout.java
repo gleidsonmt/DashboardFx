@@ -19,6 +19,7 @@ package io.github.gleidsonmt.dashboardfx.core.layout;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ILayout;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IView;
+import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -29,8 +30,8 @@ public final class Layout extends BorderPane implements ILayout {
 
     public Layout() {
 
-        setId("#layout");
-        getStyleClass().add("layout");
+        setId("layout");
+
 
     }
 
@@ -55,7 +56,7 @@ public final class Layout extends BorderPane implements ILayout {
     }
 
     @Override
-    public void setBody(IView iView) {
-
+    public void setBody(Node iView) {
+        setCenter(iView);
     }
 }

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -23,8 +20,6 @@
   ~    along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<StackPane xmlns:fx="http://javafx.com/fxml"
-           xmlns="http://javafx.com/javafx"
-           prefHeight="400.0" prefWidth="600.0" fx:controller="io.github.gleidsonmt.dashboardfx.views.DashController">
-    <Button text="My Button Action" onAction="#bottonClick"/>
+<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.views.DashController">
+    <Button onAction="#bottonClick" text="My Button Action" />
 </StackPane>

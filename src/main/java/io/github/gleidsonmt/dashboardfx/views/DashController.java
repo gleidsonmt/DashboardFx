@@ -18,18 +18,29 @@
 package io.github.gleidsonmt.dashboardfx.views;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Context;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
 import javafx.fxml.FXML;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public class DashController implements ActionView {
+public final class DashController implements ActionView, Context {
 
 
     @FXML
     private void bottonClick() {
+
+        context.getDecorator()
+                .getRoot()
+                .createSnackBar()
+                .message("My Message")
+                .color(SnackBar.Colors.SUCCESS)
+                .show();
+
         System.out.println("button clicked");
+
     }
 
     @Override

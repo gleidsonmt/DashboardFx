@@ -17,6 +17,8 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
+import javafx.scene.Node;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
@@ -31,6 +33,6 @@ public interface ILayout {
 
     void setFooter(IView iView);
 
-    void setBody(IView iView);
+    void setBody(Node iView);
 
 }

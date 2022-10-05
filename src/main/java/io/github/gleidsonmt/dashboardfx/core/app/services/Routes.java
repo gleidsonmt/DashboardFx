@@ -88,9 +88,7 @@ public final class Routes implements IRotes {
         }
 
         IView iView = manager.get(view);
-
         ActionView controller = iView.getController();
-
         IView previous = manager.getCurrent(); // Pega a view atual
 
         if (previous != null) { // Se view diferente de nulo
@@ -152,7 +150,7 @@ public final class Routes implements IRotes {
     }
 
     private void setContent(@NotNull IView iView) {
-//        decorator.getRoot().setContent(iView.getRoot()); // Configura o layout center
+        decorator.getRoot().setContent(iView.getRoot()); // Configura o layout center
 //        decorator.setModule(iView.getComposer().getTitle());
     }
 

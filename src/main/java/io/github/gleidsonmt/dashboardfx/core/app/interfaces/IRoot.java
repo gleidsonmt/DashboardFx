@@ -17,6 +17,9 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
+import javafx.scene.Parent;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  20/08/2022
@@ -26,14 +29,16 @@ package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 public interface IRoot {
 
     void setTitle(String title);
-//
-//    SnackBar createSnackBar();
-//
+
+    SnackBar createSnackBar();
+
+    void setContent(Parent content);
+
+
 //    IWrapper getWrapper();
 //
 //    ILayout getLayout();
 //
-//    void setContent(Parent content);
 //
 //    double getWidth();
 //

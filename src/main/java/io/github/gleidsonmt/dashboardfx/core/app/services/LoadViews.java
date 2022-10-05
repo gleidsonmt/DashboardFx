@@ -33,12 +33,12 @@ import java.util.List;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public class LoadView extends Service<ViewComposer> implements Context {
+public class LoadViews extends Service<ViewComposer> implements Context {
 
-    private final   StringBuilder       builder = new StringBuilder();
-    private List<ViewComposer> yamlViews = null;
+    private final StringBuilder       builder = new StringBuilder();
+    private final List<ViewComposer>  yamlViews;
 
-    public LoadView() {
+    public LoadViews() {
 
         Yaml yaml = new Yaml(new Constructor(List.class));
 
@@ -95,7 +95,7 @@ public class LoadView extends Service<ViewComposer> implements Context {
         }
 
         if(view.getDirectory() == null ) {
-            location = LoadView.class.getResource(path + builder + "/"
+            location = LoadViews.class.getResource(path + builder + "/"
                     + view.getFxml());
 
         } else if(view.getFxml() != null && view.getDirectory() != null){

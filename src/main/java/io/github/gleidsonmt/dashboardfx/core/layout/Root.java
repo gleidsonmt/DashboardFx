@@ -18,7 +18,8 @@
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IRoot;
-import javafx.scene.Node;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
+import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -27,12 +28,34 @@ import javafx.scene.layout.StackPane;
  */
 public final class Root extends StackPane implements IRoot {
 
-    public Root(Node node) {
-        getChildren().setAll(node);
+    private SnackBar snackBar;
+    private final Layout layout;
+
+    public Root() {
+
+        layout = new Layout();
+        getChildren().setAll(layout);
+
+        setId("root");
+
     }
 
     @Override
     public void setTitle(String title) {
 
     }
+
+    @Override
+    public SnackBar createSnackBar() {
+        if (snackBar == null) snackBar = new SnackBar(this);
+        return snackBar;
+    }
+
+    @Override
+    public void setContent(Parent content) {
+
+        layout.setBody(content);
+    }
+
+
 }

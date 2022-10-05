@@ -85,7 +85,7 @@ public class Main extends Application implements IApp {
 
     @Override
     public void runApp(HostServices hostServices) {
-        logger.setLevel(Level.FINEST);
+        logger.setLevel(Level.OFF);
         context.startApp(hostServices);
     }
 
