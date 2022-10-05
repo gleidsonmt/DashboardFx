@@ -1,0 +1,10 @@
+
+
+.snack-bar .label-action {
+    -fx-padding : 2px;
+}
+
+.snack-bar .info-text {
+    -fx-text-fill : white;
+}
+

@@ -20,79 +20,40 @@ package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 import animatefx.animation.RollIn;
 import animatefx.animation.RollOut;
 import io.github.gleidsonmt.dashboardfx.core.layout.Root;
-import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.ContentDisplay;
+import javafx.scene.Cursor;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
-
-import java.util.Timer;
-import java.util.TimerTask;
+import org.jetbrains.annotations.NotNull;
+import org.kordamp.ikonli.javafx.FontIcon;
+import org.kordamp.ikonli.material.Material;
 
 /**
+ * Class to create a snack bar.
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
 public class SnackBar {
 
+    // Root to get background
     private final Root root;
 
-    private Colors color = Colors.GRAY;
-
-    private final IconContainer iconContainer = new IconContainer();
-    private final VBox box = new VBox(iconContainer);
-
-    // Event handlers
+    // Events to set
     private EventHandler<ActionEvent> undoEvent;
 
+    // Options to set
     private String message;
-
-    public enum Colors {
-        GRAY("-dark-gray"),
-        GRAPEFRUIT("-grapefruit"),
-        INFO("-info"),
-        WARNING("-warning"),
-        SUCCESS("-mint");
-
-        private final String color;
-
-        Colors(String color) {
-            this.color = color;
-        }
-
-        public String getColor() {
-            return color;
-        }
-    }
+    private FontIcon icon;
+    private SnackColors color = SnackColors.GRAY;
 
     public SnackBar(Root root) {
         this.root = root;
-
-//        snack.getStyleClass().add("depth-2");
-
-        box.setPadding(new Insets(5));
-        box.setMinSize(25,25);
-        box.setMaxSize(25,25);
-        box.setAlignment(Pos.CENTER);
-
-//        labelAction.setButtonType(GNButtonType.SEMI_ROUNDED);
-//
-//        labelAction.setPrefSize(80,20);
-//        labelAction.setMaxHeight(30);
-//        labelAction.setCursor(Cursor.HAND);
-//        labelAction.setAlignment(Pos.CENTER);
-//
-//        labelAction.getStyleClass().add("snack-button");
-
-//        labelAction.getStyleClass().add("depth-1");
-
-
-
     }
 
     public SnackBar message(String message) {
@@ -100,8 +61,20 @@ public class SnackBar {
         return this;
     }
 
-    public SnackBar color(Colors color) {
+    public SnackBar color(SnackColors color) {
         this.color = color;
+        return this;
+    }
+
+    public SnackBar icon(Material ikon) {
+
+        FontIcon icon = new FontIcon();
+        icon.setIconSize(18);
+        icon.setIconCode(ikon);
+        icon.getStyleClass().add("ikon");
+        icon.setIconColor(Color.WHITE);
+        this.icon = icon;
+
         return this;
     }
 
@@ -111,50 +84,39 @@ public class SnackBar {
     }
 
     public void show() {
-        show(false);
+        try {
+            _show(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    private Label createSnack() {
-
-        Label snack = new Label();
-        snack.setPrefHeight(30);
-        snack.setMaxHeight(30);
-        snack.setGraphicTextGap(10D);
-        snack.getStyleClass().add("snack-bar");
-        snack.setContentDisplay(ContentDisplay.RIGHT);
-
-
-        return snack;
+    public void showOnTop() {
+        try {
+            _show(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    private void show(boolean top) {
+    private void _show(boolean top) throws Exception {
 
-        Label snack = createSnack();
-        snack.setText(this.message);
+        if (message == null || message.isEmpty()) {
+            throw new Exception("Error snacks can't be empty.");
+        }
 
-        if (top)
+        GridPane snack = createSnack();
+
+        if (top) {
             root.setAlignment(Pos.TOP_CENTER);
-        else
+            snack.setTranslateY(10);
+        } else {
+            snack.setTranslateY(-10);
             root.setAlignment(Pos.BOTTOM_CENTER);
+        }
 
         root.getChildren().add(snack);
 
-
-        snack.setTranslateY(-10);
-//        box.setStyle("-fx-background-color : " + color.getColor() + "; -fx-background-radius : 100;");
-//        setGraphic(box);
-
-        snack.setStyle(
-                "-fx-background-color : " + color.getColor() + ";" +
-                        "-fx-padding : 10; -fx-background-radius : 5; " +
-                        "-fx-text-fill : white; -fx-font-weight : bold;" );
-
-//        labelAction.setStyle("-fx-border-width : 1px; " +
-//                "-fx-text-fill : white;" +
-//                "-fx-border-radius : 5; -fx-border-color : white;" +
-//                "-fx-background-color : " + color.getColor() + ";" +
-//                "-fx-background-radius : 5;"
-//        );
 
         RollIn animation = new RollIn(snack);
         animation.setSpeed(1.5);
@@ -168,41 +130,54 @@ public class SnackBar {
 
     }
 
-    public SnackBar onHide(EventHandler<ActionEvent> event) {
 
-        Timer timer = new Timer();
+    private @NotNull GridPane createSnack() {
 
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
+        GridPane snack = new GridPane();
+        snack.setPrefHeight(30);
+        snack.setMaxHeight(30);
+        snack.getStyleClass().add("snack-bar");
+        snack.setHgap(5);
 
-                Platform.runLater( () -> {
+        Label infoText = new Label();
+        infoText.getStyleClass().add("info-text");
 
-                    event.handle(new ActionEvent());
-//                    RollOut out = new RollOut(snack);
-//                    out.getTimeline().setOnFinished(e -> root.getChildren().remove(snack));
-//                    out.play();
+        snack.setMaxWidth(Region.USE_PREF_SIZE);
+        snack.getChildren().add(infoText);
+        snack.maxWidthProperty().add(infoText.prefWidthProperty());
 
-                });
 
-            }
-        }, 3000);
-        return this;
-    }
+        if (undoEvent != null){
+            Label labelAction = new Label("Desfazer");
+            labelAction.setCursor(Cursor.HAND);
 
-    public SnackBar action(EventHandler<ActionEvent> eventHandler) {
-//        snack.setGraphic(labelAction);
+            snack.getChildren().add(labelAction);
+            GridPane.setConstraints(labelAction, 1,0);
 
-        eventHandler.handle(new ActionEvent());
+            labelAction.getStyleClass().add("label-action");
 
-//        labelAction.addEventFilter(ActionEvent.ACTION, event -> {
-//            Tada animation = new Tada(snack);
-//            animation.play();
-//            animation.getTimeline().setOnFinished(e -> root.getChildren().remove(snack));
-//            undoEvent.handle(new ActionEvent());
-//        });
+            labelAction.setStyle("-fx-border-width : 1px; " +
+                    "-fx-text-fill : " + color.getColor() + ";" +
+                    "-fx-border-radius : 3; -fx-border-color : white;" +
+                    "-fx-background-color : white;" +
+                    "-fx-background-radius : 3;"
+            );
 
-        return this;
+            labelAction.addEventFilter(MouseEvent.MOUSE_RELEASED, event -> undoEvent.handle(new ActionEvent()));
+        }
 
+
+        if (icon != null) {
+            infoText.setGraphic(icon);
+        }
+
+        infoText.setText(this.message);
+
+        snack.setStyle(
+                "-fx-background-color : " + color.getColor() + ";" +
+                        "-fx-padding : 10; -fx-background-radius : 5; " +
+                        "-fx-text-fill : white; -fx-font-weight : bold;" );
+
+        return snack;
     }
 }

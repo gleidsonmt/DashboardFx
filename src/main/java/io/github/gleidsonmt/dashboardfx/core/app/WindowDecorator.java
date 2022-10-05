@@ -28,6 +28,7 @@ import io.github.gleidsonmt.gndecorator.GNDecorator;
 import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -54,8 +55,11 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
 
         root = new Root();
 
+        Scene scene = this.getWindow().getScene();
         // Theming by controls lib
-        new Material(this.getWindow().getScene(), Theme.SIMPLE_INFO);
+        new Material(scene, Theme.SIMPLE_INFO);
+
+        scene.getStylesheets().add("/dash.css");
 
 //        fullBody();
 

@@ -35,6 +35,10 @@ dependencies {
     implementation 'org.jetbrains:annotations:23.0.0'
     implementation 'fr.brouillard.oss:cssfx:11.5.1'
 
+    implementation 'org.kordamp.ikonli:ikonli-material-pack:12.3.1'
+    implementation 'org.kordamp.ikonli:ikonli-core:12.3.1'
+    implementation 'org.kordamp.ikonli:ikonli-javafx:12.3.1'
+
     implementation files('vendor/GNDecorator-1.0.5.jar')     // Decorator lib for custom windows
     implementation files('vendor/GNControls-1.2.1.jar')     // My own controls lib
     implementation files('vendor/scenicView.jar')          // thta's scenic view using jfx 8.. i need to updgrade.. this is essential for view all nodes in process

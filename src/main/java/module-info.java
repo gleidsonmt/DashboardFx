@@ -21,9 +21,12 @@ module io.github.gleidsonmt.dashboardfx {
     requires org.yaml.snakeyaml;
     requires animatefx;
 
+    requires org.kordamp.ikonli.core;
+    requires org.kordamp.ikonli.material;
+    requires org.kordamp.ikonli.javafx;
+
     opens io.github.gleidsonmt.dashboardfx to javafx.base, javafx.fxml, javafx.graphics;
     opens io.github.gleidsonmt.dashboardfx.core.app to javafx.base, javafx.fxml, javafx.graphics;
-
 
     exports io.github.gleidsonmt.dashboardfx;
     exports io.github.gleidsonmt.dashboardfx.core.app;

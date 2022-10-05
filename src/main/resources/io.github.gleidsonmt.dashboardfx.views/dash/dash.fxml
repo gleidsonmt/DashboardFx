@@ -20,6 +20,13 @@
   ~    along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.views.DashController">
-    <Button onAction="#bottonClick" text="My Button Action" />
+<StackPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="io.github.gleidsonmt.dashboardfx.views.DashController">
+    <HBox alignment="CENTER" spacing="50">
+        <VBox alignment="CENTER">
+            <Button onAction="#createSnackSuccess" text="Create Snack Info"/>
+            <Button onAction="#createSnackDanger" text="Create Snack Danger"/>
+        </VBox>
+        <Label fx:id="lblCustom" text="My Custom Text"/>
+    </HBox>
 </StackPane>

@@ -19,27 +19,28 @@ package io.github.gleidsonmt.dashboardfx.views;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Context;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackColors;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import org.kordamp.ikonli.material.Material;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public final class DashController implements ActionView, Context {
+public final class DashController implements ActionView, Context, Initializable {
 
+    public Label lblCustom;
 
-    @FXML
-    private void bottonClick() {
+    private String text;
 
-        context.getDecorator()
-                .getRoot()
-                .createSnackBar()
-                .message("My Message")
-                .color(SnackBar.Colors.SUCCESS)
-                .show();
-
-        System.out.println("button clicked");
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        text = lblCustom.getText();
 
     }
 
@@ -51,5 +52,35 @@ public final class DashController implements ActionView, Context {
     @Override
     public void onExit() {
 
+    }
+
+    @FXML
+    private void createSnackSuccess() {
+
+        context.getDecorator()
+                .getRoot()
+                .createSnackBar()
+                .message("My Snack Succes")
+                .undo(event -> {
+                    lblCustom.setText(text);
+                })
+                .icon(Material.PERSON_ADD)
+                .color(SnackColors.SUCCESS)
+                .show();
+    }
+
+    @FXML
+    private  void createSnackDanger() {
+        lblCustom.setText("Created by danger");
+        context.getDecorator()
+                .getRoot()
+                .createSnackBar()
+                .message("My Dangerous Succes")
+                .undo(event -> {
+                    System.out.println("Event from snack");
+                })
+                .icon(Material.INFO)
+                .color(SnackColors.INFO)
+                .showOnTop();
     }
 }
