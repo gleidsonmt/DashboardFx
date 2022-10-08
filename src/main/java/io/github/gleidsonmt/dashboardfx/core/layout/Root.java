@@ -59,7 +59,6 @@ public final class Root extends StackPane implements IRoot {
 
     @Override
     public void setContent(Parent content) {
-
         layout.setBody(content);
     }
 
@@ -68,5 +67,8 @@ public final class Root extends StackPane implements IRoot {
         return wrapper;
     }
 
-
+    @Override
+    public Layout getLayout() {
+        return layout;
+    }
 }

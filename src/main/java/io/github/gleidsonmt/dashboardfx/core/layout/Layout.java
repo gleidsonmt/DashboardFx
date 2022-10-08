@@ -29,15 +29,12 @@ import javafx.scene.layout.BorderPane;
 public final class Layout extends BorderPane implements ILayout {
 
     public Layout() {
-
         setId("layout");
-
-
     }
 
     @Override
     public void setDrawer(IView iView) {
-
+        setLeft(iView.getRoot());
     }
 
     @Override

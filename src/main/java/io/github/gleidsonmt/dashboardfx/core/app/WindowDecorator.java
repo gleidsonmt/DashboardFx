@@ -22,6 +22,8 @@ import io.github.gleidsonmt.dashboardfx.core.app.controllers.LoaderController;
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
 import io.github.gleidsonmt.dashboardfx.core.app.services.LoadViews;
+import io.github.gleidsonmt.dashboardfx.core.app.services.View;
+import io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer;
 import io.github.gleidsonmt.dashboardfx.core.layout.Root;
 import io.github.gleidsonmt.gncontrols.Material;
 import io.github.gleidsonmt.gncontrols.Theme;
@@ -30,6 +32,7 @@ import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import org.jetbrains.annotations.NotNull;
 import org.scenicview.ScenicView;
 
@@ -55,6 +58,8 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
     public WindowDecorator(@NotNull Properties _properties, @NotNull PathView _path) throws IOException {
         // setTheme and logo here
         this.pathView = _path;
+
+        this.getIcons().add(new Image("/logo.png"));
 
         root = new Root();
 
@@ -147,6 +152,24 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
 
     private void initLayout() {
         setContent((Parent) root);
+
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("/views/drawer.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ViewComposer viewComposer = new ViewComposer();
+        viewComposer.setName("dash");
+        viewComposer.setFxml("dash.fxml");
+
+        View view = new View(viewComposer, loader);
+        getRoot().getLayout().setDrawer(
+                view
+        );
     }
 
 }

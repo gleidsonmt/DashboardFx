@@ -35,10 +35,10 @@ public interface IRoot {
     void setContent(Parent content);
 
     IWrapper getWrapper();
-//
-//    ILayout getLayout();
-//
-//
+
+    ILayout getLayout();
+
+
 //    double getWidth();
 //
 //    double getHeight();

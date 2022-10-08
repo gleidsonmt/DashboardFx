@@ -160,6 +160,7 @@ public final class Routes implements IRotes {
         FXMLLoader loader = new FXMLLoader();
 
 //        loader.setLocation(getClass().getResource(paths.getFromView(folder)));
+        loader.setLocation(getClass().getResource("/views" + folder + name ));
 
         try {
             loader.load();

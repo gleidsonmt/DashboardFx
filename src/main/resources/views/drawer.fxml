@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import io.github.gleidsonmt.gncontrols.controls.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
 <!--
   ~    Copyright (C) Gleidson Neves da Silveira
@@ -23,8 +23,142 @@
   ~    along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<StackPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
-    <Button text="Hello World! "/>
+<StackPane prefHeight="600.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <VBox prefHeight="200.0" prefWidth="100.0">
+      <children>
+         <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+               <VBox alignment="CENTER" style="-fx-border-color: -text-color; -fx-border-width: 2px; -fx-border-radius: 10;">
+                  <children>
+                     <SVGPath content="M16 42v-8h16v8ZM6 32.5v-9.15q0-.65.25-1.25t.75-1L22 7.8q.4-.4.925-.575Q23.45 7.05 24 7.05q.55 0 1.075.175.525.175.925.575l4 3.55ZM9 42q-1.25 0-2.125-.875T6 39v-3.8l8-7.1V42Zm25 0V25.6L25.45 18l6.05-5.35L41 21.1q.5.45.75 1.025T42 23.35V39q0 1.25-.875 2.125T39 42Z" style="-fx-fill: -text-color;" />
+                  </children>
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </padding>
+               </VBox>
+               <VBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="135.0" HBox.hgrow="ALWAYS">
+                  <children>
+                     <Label styleClass="h3" text="DashboradFx" />
+                     <Label text="gleidsonmt, Inc." />
+                  </children>
+               </VBox>
+            </children>
+            <VBox.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </VBox.margin>
+         </HBox>
+         <ScrollPane id="drawer-scroll" fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
+            <content>
+               <VBox id="drawer-box" prefHeight="412.0" prefWidth="300.0">
+                  <children>
+                     <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="My Drawer Menu" textAlignment="JUSTIFY">
+                        <content>
+                           <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" prefHeight="97.0" prefWidth="292.0" spacing="5.0">
+                              <children>
+                                 <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Profile">
+                                    <graphic>
+                                       <GNIconLabel icon="FACE_FILLED" styleClass="lead-icon" />
+                                    </graphic>
+                                    <toggleGroup>
+                                       <ToggleGroup />
+                                    </toggleGroup>
+                                 </ToggleButton>
+                                 <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Profile">
+                                    <graphic>
+                                       <GNIconLabel icon="FACE_FILLED" styleClass="lead-icon" />
+                                    </graphic>
+                                    <toggleGroup>
+                                       <ToggleGroup />
+                                    </toggleGroup>
+                                 </ToggleButton>
+                                 <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="73.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Profile">
+                                    <graphic>
+                                       <GNIconLabel icon="FACE_FILLED" styleClass="lead-icon" />
+                                    </graphic>
+                                    <toggleGroup>
+                                       <ToggleGroup />
+                                    </toggleGroup>
+                                 </ToggleButton>
+                              </children>
+                           </VBox>
+                        </content>
+                        <graphic>
+                           <SVGPath content="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" nodeOrientation="LEFT_TO_RIGHT" />
+                        </graphic>
+                     </TitledPane>
+                     <TitledPane id="drawer-menu-selected" alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" layoutX="10.0" layoutY="70.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="My Drawer Menu" textAlignment="JUSTIFY">
+                        <content>
+                           <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" prefHeight="97.0" prefWidth="292.0" spacing="5.0">
+                              <children>
+                                 <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Profile">
+                                    <graphic>
+                                       <GNIconLabel icon="FACE_FILLED" styleClass="lead-icon" />
+                                    </graphic>
+                                    <toggleGroup>
+                                       <ToggleGroup />
+                                    </toggleGroup>
+                                 </ToggleButton>
+                              </children>
+                           </VBox>
+                        </content>
+                        <graphic>
+                           <SVGPath content="M16 6V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H2v13c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6h-6zm-6-2h4v2h-4V4zm10 15H4V8h16v11zM9 18l7.5-5L9 9z" nodeOrientation="LEFT_TO_RIGHT" />
+                        </graphic>
+                     </TitledPane>
+                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Profile">
+                        <graphic>
+                           <GNIconLabel icon="FACE_FILLED" styleClass="lead-icon" />
+                        </graphic>
+                        <toggleGroup>
+                           <ToggleGroup />
+                        </toggleGroup>
+                     </ToggleButton>
+                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Feed">
+                        <graphic>
+                           <GNIconLabel icon="FEED_FILLED" styleClass="lead-icon" />
+                        </graphic>
+                        <toggleGroup>
+                           <ToggleGroup />
+                        </toggleGroup>
+                     </ToggleButton>
+                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Analytics">
+                        <graphic>
+                           <GNIconLabel icon="ANALYTICS_FILLED" styleClass="lead-icon" />
+                        </graphic>
+                        <toggleGroup>
+                           <ToggleGroup />
+                        </toggleGroup>
+                     </ToggleButton>
+                     <Separator prefWidth="200.0" />
+                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Dark Mode">
+                        <graphic>
+                           <GNIconLabel icon="DARK_MODE_FILLED" styleClass="lead-icon" />
+                        </graphic>
+                        <toggleGroup>
+                           <ToggleGroup />
+                        </toggleGroup>
+                     </ToggleButton>
+                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Settings">
+                        <graphic>
+                           <GNIconLabel icon="SETTINGS_FILLED" styleClass="lead-icon" />
+                        </graphic>
+                        <toggleGroup>
+                           <ToggleGroup />
+                        </toggleGroup>
+                     </ToggleButton>
+                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Support">
+                        <graphic>
+                           <GNIconLabel icon="SUPPORT_FILLED" styleClass="lead-icon" />
+                        </graphic>
+                        <toggleGroup>
+                           <ToggleGroup />
+                        </toggleGroup>
+                     </ToggleButton>
+                     <Separator prefWidth="200.0" />
+                  </children>
+               </VBox>
+            </content>
+         </ScrollPane>
+      </children>
+   </VBox>
 </StackPane>
