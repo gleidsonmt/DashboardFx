@@ -53,14 +53,12 @@ Text, .text, .label {
     -fx-background-radius : 10;
 }
 
-#wrapper .sunflower,
 #wrapper .btn-sunflower {
     -fx-background-color : linear-gradient(to left, -sunflower, -amber);
     -fx-background-color : -amber;
 }
 
 .ikon-sunflower {
-    -fx-font-weight : bold;
     -fx-fill : linear-gradient(to left, -sunflower, -amber);
 }
 

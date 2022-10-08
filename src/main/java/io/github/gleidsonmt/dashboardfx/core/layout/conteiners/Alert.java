@@ -57,7 +57,7 @@ public class Alert {
         this.body = new VBox();
         this.body.setAlignment(Pos.TOP_CENTER);
 
-        this.container.setPrefSize(300, 300);
+        this.container.setPrefSize(350, 300);
         this.container.setMaxWidth(Region.USE_PREF_SIZE);
         this.container.setMaxHeight(Region.USE_PREF_SIZE);
         container.getStyleClass().add("alert-container");
@@ -100,34 +100,35 @@ public class Alert {
         switch (alertType) {
             case WARNING -> {
                 body.getChildren().addAll(
-                        createHeader("-sunflower", Material.WARNING, title),
+                        createHeader(
+                                "-sunflower", "-amber", "-amber",
+                                Material.WARNING, title),
                         createContent(text),
-                        createFooter("-sunflower")
+                        createFooter("amber")
                 );
 
             }
-            case INFO -> {
-                body.getChildren().addAll(
-                        createHeader("-info", Material.INFO, title),
-                        createContent(text)
-                );
-            }
-            case ERROR -> {
-                body.getChildren().addAll(
-                        createHeader("-grapefruit", Material.ERROR, title),
-                        createContent(text)
-                );
-            }
+//            case INFO -> {
+//                body.getChildren().addAll(
+//                        createHeader("-info", Material.INFO, title),
+//                        createContent(text)
+//                );
+//            }
+//            case ERROR -> {
+//                body.getChildren().addAll(
+//                        createHeader("-grapefruit", Material.ERROR, title),
+//                        createContent(text)
+//                );
+//            }
+//
+//            case SUCCESS -> {
+//                body.getChildren().addAll(
+//                        createHeader("-mint", Material.DONE, title),
+//                        createContent(text)
+//                );
 
-            case SUCCESS -> {
-                body.getChildren().addAll(
-                        createHeader("-mint", Material.DONE, title),
-                        createContent(text)
-                );
-
-            }
+//            }
         }
-
 
 
         this.wrapper.getChildren().setAll(container);
@@ -152,23 +153,33 @@ public class Alert {
 
         text.setTextAlignment(TextAlignment.CENTER);
 
+        VBox.setVgrow(content, Priority.ALWAYS);
+
+
 
         return content;
     }
 
-    private VBox createHeader(String color, Material material, String _title) {
+    private VBox createHeader(String linear1, String linear2, String buttonColor, Material material, String _title) {
 
         VBox header = new VBox();
-        header.setSpacing(20);
-        header.getStyleClass().add("alert-header");
+        header.setMinHeight(150);
+        header.setSpacing(10);
+
+        container.setStyle("-fx-background-color : linear-gradient(to left, "
+            + linear1 +", " + linear2 + ");"
+        );
 
         header.setAlignment(Pos.CENTER);
 
         FontIcon fontIcon = new FontIcon(material);
         fontIcon.setIconSize(58);
 
-        fontIcon.getStyleClass().add("ikon" + color);
-        container.getStyleClass().add( color.replace("-", ""));
+
+        fontIcon.getStyleClass().add("ikon" + linear1);
+
+//        fontIcon.getStyleClass().add("ikon" + color);
+//        container.getStyleClass().add(color.replace("-", ""));
 
         Label title = new Label(_title);
         title.getStyleClass().addAll("h2", "sub");
@@ -176,34 +187,37 @@ public class Alert {
 
         header.getChildren().addAll(fontIcon, title);
 
-        VBox.setVgrow(header, Priority.ALWAYS);
         return header;
     }
 
-    private ButtonBar createFooter(String _color) {
+    private ButtonBar createFooter(String color) {
 
 
         ButtonBar buttonBar = new ButtonBar();
-        buttonBar.setPadding(new Insets(10));
+        buttonBar.setPadding(new Insets(10, 60, 10, 10));
 
         // Create the ButtonBar instance
 
         // Create the buttons to go into the ButtonBar
         GNButton yesButton = new GNButton("Yes");
         ButtonBar.setButtonData(yesButton, ButtonBar.ButtonData.YES);
-        yesButton.getStyleClass().add("btn-sunflower");
+
+
+
+        yesButton.getStyleClass().add(color);
 
         GNButton noButton = new GNButton("No");
         ButtonBar.setButtonData(noButton, ButtonBar.ButtonData.NO);
         noButton.setCancelButton(true);
+        noButton.getStyleClass().add(color);
 
+        buttonBar.setButtonOrder("+YN");
         // Add buttons to the ButtonBar
         buttonBar.getButtons().addAll(yesButton, noButton);
 
 
         return buttonBar;
     }
-
 
 
 }

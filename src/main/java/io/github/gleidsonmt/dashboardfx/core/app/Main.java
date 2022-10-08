@@ -91,7 +91,7 @@ public class Main extends Application implements IApp {
 
     @Override
     public void start(Stage stage) throws Exception {
-        logger.addHandler(fileHandler);
+//        logger.addHandler(fileHandler);
         runApp(getHostServices());
     }
 }
