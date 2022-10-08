@@ -45,8 +45,8 @@ dependencies {
 
 //    implementation files('vendor/GNControls-1.2.3.jar')     // My own controls lib
 
-//    implementation files('E:/Projetos/Atual/GNControls/build/libs/GNControls-1.2.3.jar')
-    implementation files('C:/Users/Gleidson/IdeaProjects/GNControls/build/libs/GNControls-1.2.3.jar')
+    implementation files('E:/Projetos/Atual/GNControls/build/libs/GNControls-1.2.3.jar')
+//    implementation files('C:/Users/Gleidson/IdeaProjects/GNControls/build/libs/GNControls-1.2.3.jar')
 
     implementation files('vendor/scenicView.jar')          // thta's scenic view using jfx 8.. i need to updgrade.. this is essential for view all nodes in process
     implementation files('vendor/controlsfx-8.40.17.jar') // My favorite lib.. has a lot of functionality
