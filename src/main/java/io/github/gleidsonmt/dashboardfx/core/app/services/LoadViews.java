@@ -22,6 +22,7 @@ import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
+import org.jetbrains.annotations.NotNull;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
@@ -35,8 +36,8 @@ import java.util.List;
  */
 public class LoadViews extends Service<ViewComposer> implements Context {
 
-    private final StringBuilder       builder = new StringBuilder();
-    private final List<ViewComposer>  yamlViews;
+    private final StringBuilder builder = new StringBuilder();
+    private final List<ViewComposer> yamlViews;
 
     public LoadViews() {
 
@@ -53,11 +54,9 @@ public class LoadViews extends Service<ViewComposer> implements Context {
         return new Task<>() {
 
             @Override
-            protected ViewComposer call()  {
+            protected ViewComposer call() {
 
-                for(ViewComposer view : yamlViews) {
-                    Platform.runLater( () -> loadView(view));
-                }
+                for (ViewComposer view : yamlViews) Platform.runLater(() -> loadView(view));
 
                 return null;
             }
@@ -65,24 +64,19 @@ public class LoadViews extends Service<ViewComposer> implements Context {
         };
     }
 
-    private void loadView(ViewComposer view) {
-        loadView(view, null);
-    }
 
-    private void loadView(ViewComposer view, String path) {
+    private void loadView(@NotNull ViewComposer view) {
 
         FXMLLoader loader = new FXMLLoader();
         URL location = null;
 
-        if (path == null) {
-            path = context.getPaths().getViews();
-        }
+        String path = "/views";
 
-        if(view.getDirectory() != null ) {
+        if (view.getDirectory() != null) {
             builder.append("/").append(view.getDirectory());
         }
 
-        if(view.getViews() != null) {
+        if (view.getViews() != null) {
             for (ViewComposer v : view.getViews()) {
                 if (v.getFxml() != null) {
 
@@ -94,23 +88,19 @@ public class LoadViews extends Service<ViewComposer> implements Context {
             }
         }
 
-        if(view.getDirectory() == null ) {
-            location = LoadViews.class.getResource(path + builder + "/"
-                    + view.getFxml());
-
-        } else if(view.getFxml() != null && view.getDirectory() != null){
+        if (view.getDirectory() == null) location = LoadViews.class.getResource(path + builder + "/"
+                + view.getFxml());
+        else if (view.getFxml() != null && view.getDirectory() != null)
             location = getClass().getResource(path + builder + "/"
                     + view.getFxml());
+
+        if (view.getDirectory() != null) {
+            String act = builder.substring(builder.lastIndexOf("/") + 1, builder.length());
+            if (act.equals(view.getDirectory())) builder.delete(builder.lastIndexOf("/"), builder.length());
         }
 
-        if(view.getDirectory() != null) {
-            String act = builder.substring(builder.lastIndexOf("/") + 1 , builder.length());
-            if (act.equals(view.getDirectory())) {
-                builder.delete(builder.lastIndexOf("/"), builder.length());
-            }
-        }
+        if (location != null && view.getFxml() != null) {
 
-        if ( location != null && view.getFxml() != null) {
 
             loader.setLocation(location);
 //            loader.setCharset(StandardCharsets.UTF_8);
@@ -124,9 +114,9 @@ public class LoadViews extends Service<ViewComposer> implements Context {
 
             context.getRoutes().addView(new View(view, loader));
 
-        } else if(view.getFxml() != null) {
+        } else if (view.getFxml() != null) {
             IOException io = new IOException("The fxml with ["
-                    + view.getName()  + "]" + " doesn't correspond.");
+                    + view.getName() + "]" + " doesn't correspond.");
             io.printStackTrace();
         }
     }

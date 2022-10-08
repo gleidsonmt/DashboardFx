@@ -2,5 +2,4 @@
 - !!io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer
   title : Dash
   name : dash
-  directory : dash
   fxml : dash.fxml

@@ -15,13 +15,16 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.dashboardfx.views;
+package io.github.gleidsonmt.dashboardfx.controllers;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Context;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.AlertType;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackColors;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import org.kordamp.ikonli.material.Material;
 
@@ -35,13 +38,11 @@ import java.util.ResourceBundle;
 public final class DashController implements ActionView, Context, Initializable {
 
     public Label lblCustom;
-
     private String text;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         text = lblCustom.getText();
-
     }
 
     @Override
@@ -82,5 +83,19 @@ public final class DashController implements ActionView, Context, Initializable 
                 .icon(Material.INFO)
                 .color(SnackColors.INFO)
                 .showOnTop();
+    }
+
+    @FXML
+    private void createAlert(){
+        context.getDecorator().getRoot()
+                .getWrapper()
+                .getAlert()
+                .type(AlertType.WARNING)
+                .text("There's no tomorrow rock balboa.")
+                .title("Test in title")
+                .show();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.getButtonTypes().add(ButtonType.APPLY);
     }
 }

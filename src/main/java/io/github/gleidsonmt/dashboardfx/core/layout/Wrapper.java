@@ -17,55 +17,43 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IRoot;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IWrapper;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
-import javafx.scene.Parent;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Alert;
+import javafx.geometry.Insets;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  04/10/2022
+ * Create on  05/10/2022
  */
-public final class Root extends StackPane implements IRoot {
+public class Wrapper extends StackPane implements IWrapper {
 
-    private SnackBar snackBar;
-    private final Layout layout;
-    private final Wrapper wrapper;
+    public Wrapper() {
 
-    public Root() {
+        setBackground(
+                new Background(
+                        new BackgroundFill(
+                                Color.gray(0.5, 0.3),
+//                                Color.RED,
+                                CornerRadii.EMPTY,
+                                Insets.EMPTY)
+                )
+        );
 
-        layout = new Layout();
-        wrapper = new Wrapper();
-
-        getChildren().setAll(wrapper, layout);
-
-        setId("root");
-
-    }
-
-    @Override
-    public void setTitle(String title) {
+        setId("wrapper");
 
     }
 
-    @Override
-    public SnackBar createSnackBar() {
-        if (snackBar == null) snackBar = new SnackBar(this);
-        return snackBar;
-    }
-
-
+    private Alert alert;
 
     @Override
-    public void setContent(Parent content) {
-
-        layout.setBody(content);
-    }
-
-    @Override
-    public IWrapper getWrapper() {
-        return wrapper;
+    public Alert getAlert() {
+        if (alert == null) alert = new Alert(this);
+        return alert;
     }
 
 

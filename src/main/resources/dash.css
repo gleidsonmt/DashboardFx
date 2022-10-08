@@ -1,5 +1,28 @@
 
 
+/*******
+
+        @Skeleton
+
+******/
+
+.root {
+
+}
+
+.label {
+}
+
+Text, .text, .label {
+    -fx-font-family : Roboto Regular;
+}
+
+/*******
+
+        @Dashboard
+
+******/
+
 .snack-bar .label-action {
     -fx-padding : 2px;
     -fx-border-width : 1px;
@@ -17,5 +40,60 @@
 
 .snack-bar .info-text {
     -fx-text-fill : white;
+}
+
+#wrapper .alert-container {
+    -fx-background-radius : 50;
+    -fx-padding : 10 0 0 0;
+}
+
+#wrapper .alert-body {
+    -fx-background-color : white;
+    -fx-padding : 0px;
+    -fx-background-radius : 10;
+}
+
+#wrapper .sunflower,
+#wrapper .btn-sunflower {
+    -fx-background-color : linear-gradient(to left, -sunflower, -amber);
+    -fx-background-color : -amber;
+}
+
+.ikon-sunflower {
+    -fx-font-weight : bold;
+    -fx-fill : linear-gradient(to left, -sunflower, -amber);
+}
+
+#wrapper .mint,
+#wrapper .btn-mint {
+    -fx-background-color : linear-gradient(to left, -mint, -aqua);
+    -fx-background-color : -mint;
+}
+
+.ikon-mint {
+    -fx-font-weight : bold;
+    -fx-fill : linear-gradient(to left, -mint, -aqua);
+}
+
+#wrapper .info,
+#wrapper .btn-info {
+    -fx-background-color : linear-gradient(to left, -info, -aqua);
+    -fx-background-color : -info;
+}
+
+.ikon-info {
+    -fx-font-weight : bold;
+    -fx-fill : linear-gradient(to left, -info, -aqua);
+}
+
+#wrapper .grapefruit,
+#wrapper .btn-grapefruit {
+    -fx-background-color : linear-gradient(to left, -grapefruit, -aqua);
+    -fx-background-color : -grapefruit;
+}
+
+.ikon-grapefruit {
+    -fx-font-weight : bold;
+    -fx-fill : linear-gradient(to right, -grapefruit, -danger);
 }
 

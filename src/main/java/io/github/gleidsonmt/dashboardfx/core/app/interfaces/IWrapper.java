@@ -17,34 +17,21 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
-import javafx.scene.Parent;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Alert;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  20/08/2022
+ * Create on  04/09/2022
  */
+public interface IWrapper {
 
-@SuppressWarnings("all")
-public interface IRoot {
+//    PopupOver getPopOver();
+//
+//    Popup getPopup();
 
-    void setTitle(String title);
+    Alert getAlert();
 
-    SnackBar createSnackBar();
 
-    void setContent(Parent content);
+//    Drawer getDrawer();
 
-    IWrapper getWrapper();
-//
-//    ILayout getLayout();
-//
-//
-//    double getWidth();
-//
-//    double getHeight();
-//
-//    ReadOnlyDoubleProperty widthProperty();
-//
-//    ReadOnlyDoubleProperty heightProperty();
-//
 }

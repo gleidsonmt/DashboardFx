@@ -15,36 +15,14 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
-
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
-import javafx.scene.Parent;
+package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  20/08/2022
+ * Create on  06/10/2022
  */
+public enum AlertType {
 
-@SuppressWarnings("all")
-public interface IRoot {
+    INFO, WARNING, ERROR, SUCCESS;
 
-    void setTitle(String title);
-
-    SnackBar createSnackBar();
-
-    void setContent(Parent content);
-
-    IWrapper getWrapper();
-//
-//    ILayout getLayout();
-//
-//
-//    double getWidth();
-//
-//    double getHeight();
-//
-//    ReadOnlyDoubleProperty widthProperty();
-//
-//    ReadOnlyDoubleProperty heightProperty();
-//
 }

@@ -49,6 +49,7 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
     private LoaderController loaderController;
 
     private IRotes routes;
+
     private final IRoot root;
 
     public WindowDecorator(@NotNull Properties _properties, @NotNull PathView _path) throws IOException {
@@ -58,12 +59,15 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
         root = new Root();
 
         Scene scene = this.getWindow().getScene();
+
         // Theming by controls lib
+
         new Material(scene, Theme.SIMPLE_INFO);
 
+//        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/fonts/fonts.css")).toExternalForm());
         scene.getStylesheets().add("/dash.css");
 
-//        fullBody();
+        fullBody();
 
         // Getting default parameters for window
         setWidth(Integer.parseInt(_properties.getProperty("app.width")));
@@ -87,15 +91,11 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
         LoadViews loadViews = new LoadViews();
 
         loadViews.setOnReady(event -> {
-
             loaderController.info("Reading application..");
-
         });
 
         loadViews.setOnFailed(event -> {
-
             Logger.getLogger("app").severe("Error on loading preloader");
-
         });
 
         loadViews.setOnCancelled(event -> {
@@ -125,7 +125,6 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
 
     }
 
-
     private void initPreLoader() {
 
         try {
@@ -133,7 +132,7 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
             Logger.getLogger("app").info("Intializing Pre Loader Application");
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(pathView.getFromCore("/loader.fxml")));
+            loader.setLocation(getClass().getResource("/core.app/loader.fxml"));
             loader.load();
 
             loaderController = loader.getController();
@@ -147,9 +146,7 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
     }
 
     private void initLayout() {
-
         setContent((Parent) root);
-
     }
 
 }
