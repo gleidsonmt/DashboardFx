@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.gleidsonmt.gncontrols.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
+<?import io.github.gleidsonmt.gncontrols.controls.GNIconLabel?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
 
 <!--
   ~    Copyright (C) Gleidson Neves da Silveira
@@ -23,7 +30,7 @@
   ~    along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<StackPane prefHeight="600.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: -light-gray; -fx-border-width: 0 1 0 0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <VBox prefHeight="200.0" prefWidth="100.0">
       <children>
          <HBox alignment="CENTER_LEFT" spacing="10.0">

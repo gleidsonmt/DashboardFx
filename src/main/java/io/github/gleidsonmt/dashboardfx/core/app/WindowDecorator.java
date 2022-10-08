@@ -81,6 +81,9 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
         setMinWidth(Integer.parseInt(_properties.getProperty("app.min.width")));
         setMinHeight(Integer.parseInt(_properties.getProperty("app.min.height")));
 
+
+        setMaximized(true);
+
     }
 
     @Override
