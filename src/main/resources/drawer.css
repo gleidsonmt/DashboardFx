@@ -1,0 +1,104 @@
+
+#drawer-root {
+    -fx-background-color : red;
+    -fx-accent : -aqua;
+}
+
+
+.toggle-button {
+    -fx-background-color : transparent;
+}
+
+.drawer-menu:collapsed {
+    -fx-background-color : red;
+}
+
+#drawer-box .drawer-menu  {
+    -fx-background-color : transparent;
+    -fx-border-color : transparent;
+    -fx-graphic-text-gap : 12px;
+    -fx-node-orientation : left_to_right;
+    -fx-label-padding : 2px;
+
+}
+
+#drawer-box .drawer-menu .title .text {
+    -fx-fill : -text-color;
+}
+
+#drawer-box .drawer-menu .title {
+    -fx-font-size : 9pt;
+    -fx-padding : 10px;
+    -fx-border-color : transparent;
+    -fx-background-color : transparent;
+    -fx-font-family : Roboto;
+}
+
+.drawer-menu .title .arrow-button  {
+}
+
+#drawer-box .drawer-menu .title .arrow-button .arrow {
+    -fx-shape : "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z";
+    -fx-min-width : 12px;
+    -fx-min-height : 12px;
+}
+
+#drawer-box .drawer-menu:expanded .title  .arrow-button .arrow {
+  -fx-shape : "M5 13v-2h14v2Z";
+  -fx-max-height : 2px;
+  -fx-min-height : 2px;
+}
+
+#drawer-box .drawer-menu:expanded #drawer-content {
+    -fx-background-color : -fx-foreground;
+}
+
+#drawer-box #drawer-menu-selected .title {
+
+}
+
+#drawer-box #drawer-menu-selected {
+    -fx-border-color : -fx-accent;
+    -fx-border-width : 0px 2px 0px 0px;
+}
+
+.drawer-item,
+#drawer-box .drawer-item {
+    -fx-background-color : transparent;
+    -fx-text-fill : -text-color;
+    -fx-cursor : hand;
+    -fx-padding : 15px;
+    -fx-graphic-text-gap : 12px;
+}
+
+.drawer-item:selected,
+#drawer-box .drawer-item:selected {
+    -fx-text-fill : -fx-accent;
+    -fx-border-color : -mint-2 ;
+    -fx-border-width : 0 0 0 2.5;
+    -fx-background-color : derive(-fx-accent, 95%);
+    -fx-font-weight : bold;
+}
+
+#drawer-box .drawer-item:selected SVGPath {
+     -fx-fill :  linear-gradient(to left, -mint, -aqua-2  );
+}
+
+.drawer-item:hover,
+#drawer-box .drawer-item:hover {
+     -fx-text-fill : -hover-color;
+}
+
+#drawer-box .drawer-item:hover .lead-icon .icon {
+    -fx-fill : -hover-color;
+}
+
+#drawer-box .drawer-item:selected .lead-icon .icon {
+    -fx-fill : -fx-accent;
+}
+
+#drawer-box .drawer-item .lead-icon .icon {
+    -fx-fill : -text-color;
+    -fx-scale-x : 1.0;
+    -fx-scale-y : 1.0;
+}

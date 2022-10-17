@@ -19,8 +19,14 @@ package io.github.gleidsonmt.dashboardfx.core.layout;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ILayout;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IView;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.CenterLayout;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -28,9 +34,42 @@ import javafx.scene.layout.BorderPane;
  */
 public final class Layout extends BorderPane implements ILayout {
 
+    private final CenterLayout centerLayout = new CenterLayout();
+//    private final GridPane bar = new GridPane();
+    private final FlowPane bar          = new FlowPane();
+    private final Text title        = new Text("SpeedCut");
+
     public Layout() {
         setId("layout");
+
+//        leftProperty().addListener((observable, oldValue, newValue) -> {
+//            if (newValue != null) oldLeftNode = newValue;
+//        });
+
+//        hasDrawer.bind(leftProperty().isNull());
+
+        getStyleClass().add("layout");
+
+        //        getChildren().add(0, bar);
+        centerLayout.setPadding(new Insets(0, 0, 0,0));
+
+        bar.setPrefHeight(40);
+        bar.setMinHeight(40);
+
+        bar.getStyleClass().addAll("border", "border-b-1");
+
+        VBox.setMargin(bar, new Insets(0, 10, 0, 10));
+
+        title.setStyle("-fx-font-size : 18pt; -fx-fill : -info;");
+
+        title.setMouseTransparent(true);
+        bar.getChildren().add(title);
+
+        setCenter(centerLayout);
+//        setLeft(drawerBody);
     }
+
+
 
     @Override
     public void setDrawer(IView iView) {
@@ -54,6 +93,6 @@ public final class Layout extends BorderPane implements ILayout {
 
     @Override
     public void setBody(Node iView) {
-        setCenter(iView);
+        centerLayout.setBody((Parent) iView);
     }
 }

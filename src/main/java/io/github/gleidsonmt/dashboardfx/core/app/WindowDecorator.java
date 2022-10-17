@@ -61,7 +61,7 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
 
         this.getIcons().add(new Image("/logo.png"));
 
-        root = new Root();
+        root = new Root(this);
 
         Scene scene = this.getWindow().getScene();
 
@@ -73,6 +73,8 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
         scene.getStylesheets().add("/dash.css");
 
         fullBody();
+        switchTheme(io.github.gleidsonmt.gndecorator.Theme.MAC_YOSEMITE);
+
 
         // Getting default parameters for window
         setWidth(Integer.parseInt(_properties.getProperty("app.width")));
