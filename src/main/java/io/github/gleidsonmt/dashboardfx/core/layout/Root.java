@@ -44,7 +44,6 @@ public final class Root extends StackPane implements IRoot {
 
         setId("root");
 
-        window.addControl(new GNButton("Welcome"));
 
         window.widthProperty().addListener((observable, oldValue, newValue) -> {
             double drawerWidth = 250;

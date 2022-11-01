@@ -36,7 +36,6 @@ import java.util.logging.*;
 public class Main extends Application implements IApp {
 
     private final Logger logger = Logger.getLogger("app");
-
     private FileHandler fileHandler;
 
     {

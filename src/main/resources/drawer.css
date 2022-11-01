@@ -49,17 +49,21 @@
   -fx-min-height : 2px;
 }
 
-#drawer-box .drawer-menu:expanded #drawer-content {
+#drawer-box .drawer-menu:expanded #drawer-content SVGPath {
     -fx-background-color : -fx-foreground;
 }
 
-#drawer-box #drawer-menu-selected .title {
-
+#drawer-box .drawer-menu .title SVGPath {
+    -fx-fill : -text-color;
 }
 
 #drawer-box #drawer-menu-selected {
     -fx-border-color : -fx-accent;
     -fx-border-width : 0px 2px 0px 0px;
+}
+
+#drawer-box #drawer-menu-selected SVGPath {
+    -fx-fill : -text-color;
 }
 
 .drawer-item,
@@ -76,7 +80,7 @@
     -fx-text-fill : -fx-accent;
     -fx-border-color : -mint-2 ;
     -fx-border-width : 0 0 0 2.5;
-    -fx-background-color : derive(-fx-accent, 95%);
+    -fx-background-color : linear-gradient(to left, derive(-fx-accent, 95%), derive(-fx-accent, 90%));
     -fx-font-weight : bold;
 }
 
@@ -87,6 +91,10 @@
 .drawer-item:hover,
 #drawer-box .drawer-item:hover {
      -fx-text-fill : -hover-color;
+}
+
+#drawer-box .drawer-item SVGPath  {
+    -fx-fill : -text-color;
 }
 
 #drawer-box .drawer-item:hover .lead-icon .icon {

@@ -17,6 +17,11 @@ Text, .text, .label {
     -fx-font-family : Roboto Regular;
 }
 
+.scroll-pane .viewport {
+    -fx-border-color : transparent;
+    -fx-background-color : transparent;
+}
+
 /*******
 
         @Dashboard

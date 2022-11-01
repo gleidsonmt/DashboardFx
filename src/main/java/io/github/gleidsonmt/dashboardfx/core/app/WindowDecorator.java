@@ -27,7 +27,7 @@ import io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer;
 import io.github.gleidsonmt.dashboardfx.core.layout.Root;
 import io.github.gleidsonmt.gncontrols.Material;
 import io.github.gleidsonmt.gncontrols.Theme;
-import io.github.gleidsonmt.gndecorator.GNDecorator;
+import io.github.gleidsonmt.gndecorator.core.GNDecorator;
 import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -73,8 +73,9 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
         scene.getStylesheets().add("/dash.css");
 
         fullBody();
-        switchTheme(io.github.gleidsonmt.gndecorator.Theme.MAC_YOSEMITE);
+        switchTheme(io.github.gleidsonmt.gndecorator.core.DecoratorTheme.MAC_YOSEMITE);
 
+        setTitle("JavaFx Dash");
 
         // Getting default parameters for window
         setWidth(Integer.parseInt(_properties.getProperty("app.width")));
@@ -139,7 +140,7 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
 
         try {
 
-            Logger.getLogger("app").info("Intializing Pre Loader Application");
+            Logger.getLogger("app").info("Initializing Pre Loader Application");
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/core.app/loader.fxml"));
