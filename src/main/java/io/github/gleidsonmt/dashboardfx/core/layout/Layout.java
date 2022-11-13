@@ -20,6 +20,8 @@ package io.github.gleidsonmt.dashboardfx.core.layout;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ILayout;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IView;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.CenterLayout;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -67,6 +69,17 @@ public final class Layout extends BorderPane implements ILayout {
 
         setCenter(centerLayout);
 //        setLeft(drawerBody);
+
+        widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                System.out.println(newValue);
+
+                Number n = 10;
+
+
+            }
+        });
     }
 
 

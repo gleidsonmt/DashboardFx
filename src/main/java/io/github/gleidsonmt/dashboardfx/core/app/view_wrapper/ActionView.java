@@ -15,7 +15,9 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
+package io.github.gleidsonmt.dashboardfx.core.app.view_wrapper;
+
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Context;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

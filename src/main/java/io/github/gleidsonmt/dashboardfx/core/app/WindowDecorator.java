@@ -73,9 +73,6 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
         scene.getStylesheets().add("/dash.css");
 
         fullBody();
-        switchTheme(io.github.gleidsonmt.gndecorator.core.DecoratorTheme.MAC_YOSEMITE);
-
-        setTitle("JavaFx Dash");
 
         // Getting default parameters for window
         setWidth(Integer.parseInt(_properties.getProperty("app.width")));
@@ -96,6 +93,7 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
 
     @Override
     public void show(HostServices hostServices) {
+
 
         initPreLoader();
 

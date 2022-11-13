@@ -17,8 +17,9 @@
 
 package io.github.gleidsonmt.dashboardfx.controllers;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Context;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ResponsiveView;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.AlertType;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackColors;
 import javafx.fxml.FXML;
@@ -35,7 +36,7 @@ import java.util.ResourceBundle;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public final class DashController implements ActionView, Context, Initializable {
+public final class DashController extends ResponsiveView implements Context, Initializable {
 
     public Label lblCustom;
     private String text;

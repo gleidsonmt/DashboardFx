@@ -18,6 +18,7 @@
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
 import io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import javafx.scene.Parent;
 
 import java.net.URL;

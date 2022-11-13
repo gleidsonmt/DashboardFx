@@ -17,7 +17,7 @@
 package io.github.gleidsonmt.dashboardfx.core.app.services;
 
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.ControllerCastException;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

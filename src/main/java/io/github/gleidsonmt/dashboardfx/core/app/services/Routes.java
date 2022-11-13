@@ -21,7 +21,7 @@ import animatefx.animation.FadeIn;
 import animatefx.animation.FadeOut;
 import io.github.gleidsonmt.dashboardfx.core.app.WindowDecorator;
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IRotes;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IView;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.PathView;
