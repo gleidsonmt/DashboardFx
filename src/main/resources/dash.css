@@ -28,6 +28,18 @@ Text, .text, .label {
 
 ******/
 
+.hamburger {
+    -fx-background-color : transparent;
+    -fx-min-height : 20px;
+    -fx-max-height : 20px;
+    -fx-pref-height : 20px;
+    -fx-padding : 10 0 0 0;
+}
+
+.hamburger .icon {
+    -fx-fill : -text-color;
+}
+
 .snack-bar .label-action {
     -fx-padding : 2px;
     -fx-border-width : 1px;

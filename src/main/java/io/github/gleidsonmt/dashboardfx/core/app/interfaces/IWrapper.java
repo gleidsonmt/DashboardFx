@@ -17,21 +17,27 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
+import io.github.gleidsonmt.dashboardfx.core.layout.Drawer;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Alert;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.CustomDialog;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Dialog;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.IAlert;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/09/2022
  */
+@SuppressWarnings("ClassEscapesDefinedScope")
 public interface IWrapper {
 
 //    PopupOver getPopOver();
 //
 //    Popup getPopup();
 
-    Alert getAlert();
+    Dialog getDialog();
 
+    IAlert getAlert();
 
-//    Drawer getDrawer();
+    Drawer getDrawer();
 
 }

@@ -17,6 +17,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
+import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
 import javafx.application.HostServices;
 
 import java.util.Properties;
@@ -33,6 +34,8 @@ public interface IContext {
     Logger getLogger();
 
     IDecorator getDecorator();
+
+    IWrapper getWrapper();
 
     IRotes getRoutes();
 

@@ -18,6 +18,10 @@
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
 import javafx.application.HostServices;
+import javafx.beans.Observable;
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
+import javafx.scene.control.Control;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -26,7 +30,7 @@ import javafx.application.HostServices;
 public interface IDecorator {
 
     IRoot getRoot();
-
+    ObservableList<Node> controls();
     void show(HostServices hostServices);
 
 }

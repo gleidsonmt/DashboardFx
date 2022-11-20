@@ -24,14 +24,19 @@ import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
 import io.github.gleidsonmt.dashboardfx.core.app.services.LoadViews;
 import io.github.gleidsonmt.dashboardfx.core.app.services.View;
 import io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer;
+import io.github.gleidsonmt.dashboardfx.core.layout.Drawer;
 import io.github.gleidsonmt.dashboardfx.core.layout.Root;
 import io.github.gleidsonmt.gncontrols.Material;
 import io.github.gleidsonmt.gncontrols.Theme;
 import io.github.gleidsonmt.gndecorator.core.GNDecorator;
 import javafx.application.HostServices;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.image.Image;
 import org.jetbrains.annotations.NotNull;
 import org.scenicview.ScenicView;
@@ -92,6 +97,11 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
     }
 
     @Override
+    public ObservableList<Node> controls() {
+        return this.getCustomControls();
+    }
+
+    @Override
     public void show(HostServices hostServices) {
 
 
@@ -125,6 +135,7 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
             }
 
         });
+
 
         loadViews.start();
         show();
@@ -160,6 +171,10 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
         FXMLLoader loader = new FXMLLoader();
 
         loader.setLocation(getClass().getResource("/views/drawer.fxml"));
+
+        Drawer drawer = context.getDecorator().getRoot().getWrapper().getDrawer();
+        loader.setController(drawer);
+
         try {
             loader.load();
         } catch (IOException e) {
@@ -167,10 +182,11 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
         }
 
         ViewComposer viewComposer = new ViewComposer();
-        viewComposer.setName("dash");
-        viewComposer.setFxml("dash.fxml");
+        viewComposer.setName("drawer");
+        viewComposer.setFxml("drawer.fxml");
 
         View view = new View(viewComposer, loader);
+
         getRoot().getLayout().setDrawer(
                 view
         );

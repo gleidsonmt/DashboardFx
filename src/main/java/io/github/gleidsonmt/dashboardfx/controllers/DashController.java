@@ -91,8 +91,8 @@ public final class DashController extends ResponsiveView implements Context, Ini
         context.getDecorator().getRoot()
                 .getWrapper()
                 .getAlert()
-                .type(AlertType.WARNING)
-                .text("There's no tomorrow rock balboa.")
+//                .type(AlertType.WARNING)
+//                .text("There's no tomorrow rock balboa.")
                 .title("Test in title")
                 .show();
 

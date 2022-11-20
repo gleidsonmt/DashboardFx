@@ -17,11 +17,9 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IContext;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IDecorator;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IRotes;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.PathView;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Routes;
+import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
 import javafx.application.HostServices;
 import org.jetbrains.annotations.NotNull;
 
@@ -86,6 +84,11 @@ public class App implements IContext, PathView {
     @Override
     public IDecorator getDecorator() {
         return window;
+    }
+
+    @Override
+    public IWrapper getWrapper() {
+        return window.getRoot().getWrapper();
     }
 
     @Override

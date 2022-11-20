@@ -39,7 +39,7 @@ import org.kordamp.ikonli.material.Material;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public class SnackBar {
+public class SnackBar implements WrapperContainer {
 
     // Root to get background
     private final Root root;
@@ -83,6 +83,7 @@ public class SnackBar {
         return this;
     }
 
+    @Override
     public void show() {
         try {
             _show(false);

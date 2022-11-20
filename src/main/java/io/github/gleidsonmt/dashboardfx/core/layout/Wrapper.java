@@ -19,6 +19,8 @@ package io.github.gleidsonmt.dashboardfx.core.layout;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Alert;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Alert2;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Dialog;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -38,7 +40,6 @@ public class Wrapper extends StackPane implements IWrapper {
                 new Background(
                         new BackgroundFill(
                                 Color.gray(0.5, 0.3),
-//                                Color.RED,
                                 CornerRadii.EMPTY,
                                 Insets.EMPTY)
                 )
@@ -46,6 +47,13 @@ public class Wrapper extends StackPane implements IWrapper {
 
         setId("wrapper");
 
+    }
+
+    private Dialog dialog;
+    @Override
+    public Dialog getDialog() {
+        if (dialog == null) dialog = new Dialog(this);
+        return dialog;
     }
 
     private Alert alert;
@@ -56,5 +64,12 @@ public class Wrapper extends StackPane implements IWrapper {
         return alert;
     }
 
+    private Drawer drawer;
+
+    @Override
+    public Drawer getDrawer() {
+        if (drawer == null) drawer = new Drawer(this);
+        return drawer;
+    }
 
 }
