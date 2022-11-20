@@ -1,0 +1,36 @@
+/*
+    Created on : 25/10/2018, 08:00:15
+    Author     : Gleidson Neves da Silveira
+
+    All Fonts used in project.
+    (The file needs to load after the other).
+*/
+
+@font-face {
+    -fx-font-family : Roboto Regular;
+    src: url('Roboto-Regular.ttf');
+}
+
+@font-face {
+    -fx-font-family : 'Roboto Thin';
+    src: url('Roboto-Thin.ttf');
+}
+
+@font-face {
+    -fx-font-family : 'Roboto Bold';
+    src: url('Roboto-Bold.ttf');
+}
+
+@font-face {
+    -fx-font-family : 'Roboto Black';
+    src: url('Roboto-Black.ttf');
+}
+
+@font-face {
+    -fx-font-family : 'Roboto Medium';
+    src: url('Roboto-Medium.ttf');
+}
+
+
+
+

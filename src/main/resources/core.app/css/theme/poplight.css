@@ -1,0 +1,57 @@
+.root
+{
+    -elegant    : #2E2E2E;
+    -dark-gray  : #656D78;
+    -light-gray : #E6E9ED;
+    -fx-background-color : transparent;
+
+}
+
+.popover  {
+    -fx-background-color: white;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,.05) , 18, 0 , 0 , 10 );
+    -fx-stroke: linear-gradient(to top, -primary-color, -aqua);
+
+    -fx-border-width : 0 0 0 4;
+    -fx-border-width : 1;
+    -fx-background-radius : 2px;
+    -fx-border-radius : 2px;
+    -base : -info;
+
+    -fx-border-color: -light-gray-2;
+}
+
+.popover > .border {
+	-fx-stroke-width: 0.0;
+	-fx-fill: transparent;
+	-fx-effect: null;
+	-fx-stroke-type : inside;
+}
+
+.popover > .content {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-width : 0px;
+
+	-fx-padding: 0;
+}
+
+.popover > .detached {
+	-fx-background-color: white;
+}
+
+.popover > .content > .title > .text  {
+	-fx-padding: 0 6.0 12.0 6.0;
+	-fx-text-fill: rgba(120, 120, 120, .8);
+	-fx-font-weight: bold;
+}
+
+.popover > .content .scroll-pane .viewport
+{
+    -fx-background-color : white;
+}
+
+.popover .list-view {
+    -fx-background-color : transparent;
+    -fx-border-color : transparent;
+}

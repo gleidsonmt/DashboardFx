@@ -1,0 +1,65 @@
+/*
+    Created on : 25/10/2022, 08:00:15
+    Author     : Gleidson Neves da Silveira
+    Colors for productivity
+*/
+
+.root {
+
+       /* Bootstrap */
+      -primary   : #4285f4;
+      -info      : #33B5E5;
+      -success   : #02C852;
+      -warning   : #FF8800;
+      -danger    : #FF3547;
+      -secondary : #AA66CC;
+      -unique    : #880E4F;
+      -elegant   : #2E2E2E;
+
+      /* Colors For themes */
+      -brown         : #795548;
+      -red           : -danger;
+      -grapefruit    : #ED5565;
+      -grapefruit-2  : #DA4453;
+      -bittersweet   : #FC6E51;
+      -bittersweet-2 : #F6BB42;
+      -deep-orange   : #FF7043;
+      -orange        : -warning;
+      -amber         : #FFA000;
+      -sunflower     : #FFCE54;
+      -yellow        : #ffeb3b;
+      -lime          : #cddc39;
+      -grass         : #A0D468;
+      -grass-2       : #8CC152;
+      -green         : -success;
+      -mint          : #48CFAD;
+      -mint-2        : #37BC98;
+      -teal          : -info;
+      -cyan          : #00BCD4;
+      -aqua          : #4FC1E9;
+      -aqua-2        : #3BAFDA;
+      -blue-jeans    : #5D9CEC;
+      -blue-jeans-2  : #4A89DC;
+      -blue          : -primary;
+      -indigo        : #3F51B5;
+      -purple        : #AA66CC;
+      -deep-purple   : #512DA8;
+      -lavander      : #AC92EC;
+      -lavander-2    : #967ADC;
+      -pink          : #EC407A;
+      -pink-rose     : #EC87C0;
+      -pink-rose-2   : #D770AD;
+      -light-gray    : #F5F7FA;
+      -light-gray-2  : #E6E9ED;
+      -medium-gray   : #CCD1D9;
+      -medium-gray-2 : #AAB2BD;
+      -dark-gray     : #656D78;
+      -dark-gray-2   : #434A54;
+      -blue-gray     : #78909C;
+      -light-green   : #8BC34A;
+      -light-blue    : #82B1FF;
+      -gray          : #8e8e8e;
+
+}
+
+

@@ -1,0 +1,34 @@
+/*
+    Created on : 25/10/2022, 08:00:15
+    Author     : Gleidson Neves da Silveira
+    Colors for productivity
+
+    Type ctrl + F to search and type @ + properties to navigate.
+
+*/
+
+/* @Color - Linear */
+
+.danger {
+    -fx-accent : -danger;
+}
+
+.grapefruit {
+    -fx-accent : -grapefruit;
+}
+
+.sunflower {
+    -fx-accent : -sunflower;
+}
+
+.amber {
+    -fx-accent : -amber;
+}
+
+
+
+/* @Color - Linear Gradinent */
+
+.linear-l-amber-sunflower {
+    -fx-accent : linear-gradient(to left, -amber, -sunflower);
+}

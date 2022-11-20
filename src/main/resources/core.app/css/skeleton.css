@@ -1,0 +1,98 @@
+
+
+/*
+    Created on : 25/10/2022, 08:00:15
+    Author     : Gleidson Neves da Silveira
+    This file define what color, what font in default skeleton of controls.
+    Type ctrl + F to search and type @ + properties to navigate.
+*/
+
+
+.root {
+
+    /* Layouts */
+    -fx-background : white;
+    -fx-foreground : -light-gray;
+    /* Effect colors */
+    -hover-color : -mint;
+
+    /* Text */
+
+    -text-color : -dark-gray;
+    -inner-color : white;
+
+    /* Borders */
+    -box-color : -medium-gray;
+    -box-hover-color : -dark-gray;
+    -box-focus-color : -info;
+
+    -error-color : -grapefruit;
+    -warning-color : -sunflower;
+    -info-color : -info;
+    -success-color : -mint;
+
+
+}
+
+.region,
+Region,
+Pane {
+    -fx-background-color : white;
+}
+
+.center-body .viewport,
+.scroll-pane:fitToHeight {
+    -fx-background-color : -fx-background;
+    -fx-border-color : red;
+    -fx-border-width : 0px;
+}
+
+Text {
+    -fx-fill : -text-color;
+    -fx-font-family : Roboto;
+}
+
+SVGPath {
+    -fx-fill : -text-color;
+}
+
+/* @Color */
+
+.button {
+    -fx-background-color : -fx-accent;
+    -fx-text-fill : -inner-color;
+}
+
+.button:cancel {
+    -fx-background-color : transparent;
+    -fx-border-color : -fx-accent;
+    -fx-text-fill : -fx-accent;
+}
+
+.label {
+    -fx-text-fill : -text-color;
+}
+
+
+
+/* @Cursor */
+
+.button {
+    -fx-cursor : hand;
+}
+
+/* @Font */
+
+.button {
+    -fx-font-weight : bold;
+}
+
+/* @Border */
+
+.button:cancel {
+    -fx-border-width : 2px;
+}
+
+.button:cancel {
+    -fx-border-radius : 2px;
+}

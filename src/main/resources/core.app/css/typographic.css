@@ -1,0 +1,44 @@
+
+/*
+    Created on : 25/10/2022, 08:00:15
+    Author     : Gleidson Neves da Silveira
+    Style for typographic
+*/
+
+.h1, .h2, .h3, .h4, .h5, .h6, .title, .subtitle
+{
+  -fx-text-fill : -text-color;
+}
+
+.text-10, .btn-small, .text-small {
+  -fx-font-size : 10px;
+}
+
+.text-12, .h6 {
+    -fx-font-size : 12px;
+}
+
+.text-14, .h5 {
+  -fx-font-size : 14px;
+}
+
+.text-18, .h4, .subtitle {
+  -fx-font-size : 18px;
+}
+
+.text-24, .h3, .title {
+  -fx-font-size : 24px;
+}
+
+.text-30, .h2 {
+  -fx-font-size : 30px;
+}
+
+.text-36, .h1 {
+  -fx-font-size : 36px;
+}
+
+.title {
+    -fx-font-family : 'Roboto Bold';
+}
+

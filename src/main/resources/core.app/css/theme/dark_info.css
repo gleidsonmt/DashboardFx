@@ -1,0 +1,281 @@
+/*
+    Created on : 11/09/2022, 08:00:15
+    Author     : Gleidson Neves da Silveira
+*/
+
+/*
+   @Color System
+
+*/
+
+.root {
+
+    /* Layouts */
+    -fx-background : -elegant;
+    -fx-foreground : derive(-elegant, -50%);
+
+    /* Effect colors */
+    -hover-color : -medium-gray;
+
+    /* Text */
+
+    -text-color : -medium-gray;
+
+    /* Borders */
+    -box-color : -dark-gray;
+    -box-hover-color : white;
+    -box-focus-color : -info;
+
+}
+
+/* @Text */
+
+.text {
+    -fx-fill : -text-color;
+}
+
+/* @TextBox */
+
+.gn-text-box .gn-text-box-base .editor
+{
+    -fx-text-fill : -text-color;
+}
+
+.gn-text-box .gn-text-box-base
+{
+    -fx-border-color : -box-color;
+    -fx-background-color : -fx-foreground;
+    -fx-border-width : 0.8px;
+}
+
+.gn-text-box .gn-text-box-base:filled
+{
+    -fx-border-width : 0 0 1 0;
+    -fx-background-color : -fx-foreground;
+}
+
+.gn-text-box:hover .gn-text-box-base:filled
+{
+    -fx-border-width : 0 0 1 0;
+    -fx-background-color : -fx-foreground;
+}
+
+.gn-text-box:hover .gn-text-box-base:filled
+{
+    -fx-border-width : 0 0 1 0;
+    -fx-border-color : -box-focus-color;
+}
+
+.gn-text-box:hover .gn-text-box-base
+{
+    -fx-border-color : white;
+    -fx-border-width : 0.5px;
+}
+
+.gn-text-box .gn-text-box-base:focused,
+.gn-text-box .gn-text-box-base:focused .icon
+{
+    -fx-border-color : -box-focus-color;
+    -fx-fill : -box-focus-color;
+}
+
+.gn-text-box .gn-text-box-base:focused .label-prompt .text
+{
+    -fx-fill : -box-focus-color;
+}
+
+.gn-text-box .editor,
+.gn-text-box:focused .editor
+{
+    -fx-background-color : transparent;
+    -fx-border-color : transparent;
+}
+
+.gn-text-box .gn-float-editor .label-prompt
+{
+    -fx-background-color : -fx-foreground;
+    -fx-background-insets : 8 0 6 0;
+}
+
+.gn-text-box .icon {
+    -fx-fill : -box-color;
+}
+
+.gn-text-box .action-button {
+   -fx-cursor : hand;
+   -fx-background-color : transparent;
+   -fx-background-radius : 100px;
+   -fx-border-radius : 100px;
+
+   -fx-pref-height : 33px;
+   -fx-pref-width : 30px;
+
+   -fx-border-color : transparent;
+   -fx-border-width :  1px;
+}
+
+
+
+.gn-text-box .action-button:hover {
+    -fx-border-color : -box-focus-color;
+}
+
+.gn-text-box .action-button:pressed {
+    -fx-background-color : -fx-foreground;
+    -fx-border-color : -fx-foreground;
+    -fx-border-width :  2px;
+}
+
+.gn-text-box .action-button .icon {
+    -fx-scale-x : 0.8;
+    -fx-scale-y : 0.8;
+}
+
+.gn-password-box .action-button {
+    -fx-padding : 5px;
+}
+
+
+/* @ContextMenu */
+
+.context-menu {
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,.1) , 18, 0 , 0 , 5 );
+    -fx-border-color : -focused-border;
+    -fx-border-radius : 5px;
+    -fx-background-radius : 5px;
+    -fx-border-width : 1px;
+    -fx-font-family : Roboto;
+}
+
+.context-menu .menu .text,
+.context-menu .menu-item .text
+{
+    -fx-font-size : 10pt;
+}
+
+.context-menu .menu-item:disabled:hover .label .text,
+.context-menu .menu-item:disabled:hover .label {
+    -fx-background-color : transparent;
+    -fx-text-fill : -text-color;
+    -fx-fill : -text-color;
+}
+
+.context-menu .menu-item:disabled:hover,
+.context-menu .menu-item:disabled {
+    -fx-background-color : transparent;
+}
+
+.context-menu
+{
+    -fx-background-color: -fx-foreground;
+
+    -fx-border-color: -box-color;
+    -fx-border-style: solid;
+}
+
+.context-menu .separator
+{
+    -fx-padding: 2 4 2 4;  /*7 16 7 16 */
+}
+
+.context-menu .separator .line
+{
+}
+
+.context-menu .menu-item .icon
+{
+    -fx-fill : -text-color;
+}
+
+.context-menu .menu-item:hover,
+.context-menu .menu-item:hover .label
+{
+    -fx-background-color : -primary-color;
+}
+
+
+.context-menu .menu-item:hover .icon ,
+.context-menu .menu-item:hover SVGPath
+{
+    -fx-fill : white;
+}
+
+.context-menu .menu-item .label
+{
+    -fx-padding : 5px;
+}
+
+.context-menu .menu-item .label .text,
+.context-menu .menu-item .icon
+{
+    -fx-padding : 2px;
+}
+
+.context-menu .menu-item .label .text,
+.context-menu .menu-item:selected .left-container .radio,
+.context-menu .radio-menu-item:hover:checked .left-container .radio
+{
+    -fx-background-color : white;
+    -fx-fill : -text-color;
+}
+
+.radio-menu-item:checked > .left-container > .radio
+{
+    -fx-shape: "M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z";
+}
+
+.context-menu .menu-item:focused .label .text
+{
+    -fx-fill : -text-color;
+}
+
+.context-menu .menu-item:hover:focused .icon,
+.context-menu .menu-item:focused .icon,
+.context-menu .menu-item:selected .icon,
+.context-menu .menu-item:selected .stack-pane,
+.context-menu .menu-item:selected StackPane,
+.context-menu .menu-item:focused .label .text
+{
+    -fx-fill : white;
+}
+
+.context-menu .menu-item .left-container .radio SVGPath
+{
+    -fx-shape : "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z";
+}
+
+.context-menu .menu-item:hover .label .text
+{
+    -fx-fill : white;
+}
+
+.context-menu .menu-item:selected .left-container .radio
+{
+    -fx-fill : white;
+}
+
+.context-menu:focused:hover .menu-item:selected .left-container .radio,
+.context-menu:hover .menu-item:selected .left-container .radio
+{
+    -fx-fill : white;
+}
+
+
+.context-menu .menu-item:pressed,
+.context-menu .menu-item:pressed .label
+{
+    -fx-background-color : -dark-gray;
+}
+
+.context-menu .menu-item:focused,
+.context-menu .menu-item:focused .label
+{
+        -fx-background-color : -fx-accent;
+}
+
+/* @SplitPane */
+
+.split-pane:horizontal .split-pane-divider {
+    -fx-background-color : -medium-gray;
+    -fx-pref-width : 2px;
+}
