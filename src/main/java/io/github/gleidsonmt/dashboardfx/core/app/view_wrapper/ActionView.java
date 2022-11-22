@@ -29,9 +29,4 @@ public interface ActionView extends Context {
 
     void onExit();
 
-    default void pass(boolean exe) {
-
-    }
-
-
 }

@@ -19,19 +19,21 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
+import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Context;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.WrapperContainer;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.EventHandler;
-import javafx.geometry.HPos;
+import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
-public class Drawer implements WrapperContainer {
+public class Drawer implements ActionView, WrapperContainer, Context {
     private final Wrapper wrapper;
     private StackPane content;
     private final Timeline timeline = new Timeline();
@@ -48,6 +50,7 @@ public class Drawer implements WrapperContainer {
     }
 
     public void show() {
+
         content.setTranslateX(-content.getMaxWidth());
         this.wrapper.setAlignment(Pos.CENTER_LEFT);
 
@@ -85,5 +88,25 @@ public class Drawer implements WrapperContainer {
 
         timeline.play();
     }
+
+    @FXML
+    private void goWrapper() {
+        try {
+            context.getRoutes().setContent("wrapper");
+        } catch (NavigationException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void onEnter() {
+
+    }
+
+    @Override
+    public void onExit() {
+
+    }
+
 
 }

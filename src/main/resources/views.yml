@@ -4,3 +4,8 @@
   title : Dash
   name : dash
   fxml : dash.fxml
+
+- !!io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer
+  title : Wrapper
+  name : wrapper
+  fxml : wrapper.fxml

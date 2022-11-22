@@ -88,6 +88,10 @@ public final class Routes implements IRotes {
         }
 
         IView iView = manager.get(view);
+
+        System.out.println("iView.getController() = " + iView.getName());
+        System.out.println("iView.getController() = " + iView.getController());
+
         ActionView controller = iView.getController();
         IView previous = manager.getCurrent(); // Pega a view atual
 

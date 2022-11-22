@@ -1,48 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.web.WebView?>
 
-<!--
-  ~    Copyright (C) Gleidson Neves da Silveira
-  ~
-  ~    This program is free software: you can redistribute it and/or modify
-  ~    it under the terms of the GNU General Public License as published by
-  ~    the Free Software Foundation, either version 3 of the License, or
-  ~    (at your option) any later version.
-  ~
-  ~    This program is distributed in the hope that it will be useful,
-  ~    but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~    GNU General Public License for more details.
-  ~
-  ~    You should have received a copy of the GNU General Public License
-  ~    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  -->
-
-<StackPane prefHeight="431.0" prefWidth="494.0" style="-fx-border-color : transparent; -fx-background-color : white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.DashController">
-   <children>
-      <VBox prefHeight="200.0" prefWidth="100.0">
-         <StackPane.margin>
-            <Insets />
-         </StackPane.margin>
-         <padding>
-            <Insets left="10.0" top="20.0" />
-         </padding>
-         <children>
-            <Label text="Label" />
-            <TextFlow />
-         </children>
-      </VBox>
-   </children>
+<StackPane prefHeight="834.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.WrapperController">
    <stylesheets>
       <URL value="@../core.app/css/colors.css" />
       <URL value="@../core.app/css/skeleton.css" />
       <URL value="@../core.app/css/typographic.css" />
       <URL value="@../core.app/css/bootstrap.css" />
    </stylesheets>
+   <ScrollPane fitToHeight="true" fitToWidth="true" pannable="true">
+      <HBox>
+         <VBox fx:id="bodyContent" alignment="CENTER" minHeight="850.0" spacing="10.0">
+            <padding>
+               <Insets bottom="10.0" left="30.0" right="30.0" top="30.0" />
+            </padding>
+            <VBox VBox.vgrow="ALWAYS">
+               <children>
+                  <Label prefHeight="38.0" prefWidth="195.0" text="PopupCreator">
+                     <styleClass>
+                        <String fx:value="h3" />
+                        <String fx:value="title" />
+                     </styleClass>
+                  </Label>
+                  <TextFlow prefHeight="107.0" prefWidth="938.0">
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="PopupCreator is an accessor class for creating dialogs, alerts and side drawers." wrappingWidth="558.283203125" />
+                  </TextFlow>
+                  <Label style="-fx-font-weight: bold;" text="Drawer">
+                     <styleClass>
+                        <String fx:value="h4" />
+                        <String fx:value="title" />
+                     </styleClass>
+                  </Label>
+                  <TextFlow>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Create a left drawer or right using this.&#10;PopupCreator.INSTANCE.createDrawerLeft(new VBox());&#10;&#10;" wrappingWidth="558.283203125" />
+                     </children>
+                  </TextFlow>
+                  <HBox>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <Button minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#openDrawerLeft" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Drawer Left" />
+                        <Button minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#openDrawerRight" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Drawer Right" />
+                     </children>
+                  </HBox>
+                  <Label layoutX="10.0" layoutY="102.0" style="-fx-font-weight: bold;" text="Alert">
+                     <styleClass>
+                        <String fx:value="h4" />
+                        <String fx:value="title" />
+                     </styleClass>
+                  </Label>
+                  <TextFlow layoutX="10.0" layoutY="140.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Create multiples alerts using this.&#10;PopupCreator.INSTANCE.createAlert(AlertType.INFO, &quot;Title&quot;, &quot;Message&quot;, new Button(&quot;Ok');&#10;&#10;&#10;" wrappingWidth="558.283203125" />
+                     </children>
+                  </TextFlow>
+                  <TilePane>
+                     <children>
+                        <Button minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#createAlertInfo" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Alert Info" />
+                        <Button minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#createAlertError" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Alert Error" />
+                        <Button minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#createAlertWarning" prefHeight="40.0" prefWidth="128.0" styleClass="btn-outlined" text="Create Alert Warning" />
+                        <Button minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#createAlertDone" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Alert Done" />
+                     </children>
+                  </TilePane>
+                  <Label layoutX="10.0" layoutY="275.0" prefWidth="99.0" style="-fx-font-weight: bold;" text="Dialogs">
+                     <styleClass>
+                        <String fx:value="h4" />
+                        <String fx:value="title" />
+                     </styleClass>
+                  </Label>
+                  <TextFlow layoutX="10.0" layoutY="313.0">
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" styleClass="text-14" text="Create a simple dialog.&#10;PopupCreator.INSTANCE.createAlert(&quot;Title&quot;, &quot;Message&quot;, new Button(&quot;OK&quot;);&#10;&#10;&#10;" wrappingWidth="558.283203125" />
+                     <Button minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#createDialog" prefHeight="12.0" prefWidth="126.0" styleClass="btn-outlined" text="Create Dialog" />
+                  </TextFlow>
+               </children>
+            </VBox>
+            <VBox prefWidth="726.0" spacing="20.0">
+               <HBox alignment="BOTTOM_LEFT">
+                  <Label style="-fx-font-size: 8pt;" styleClass="min" text="Author" />
+                  <Separator prefHeight="0.0" prefWidth="197.0" HBox.hgrow="ALWAYS" />
+               </HBox>
+               <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" VBox.vgrow="ALWAYS">
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </padding>
+                  <Label text="Gleidson Neves da Silveira" />
+               </HBox>
+            </VBox>
+         </VBox>
+         <VBox>
+            <children>
+               <WebView fx:id="webView" minWidth="350.0" prefHeight="850.0" prefWidth="144.0" />
+            </children>
+            <padding>
+               <Insets top="40.0" />
+            </padding>
+         </VBox>
+      </HBox>
+   </ScrollPane>
 </StackPane>

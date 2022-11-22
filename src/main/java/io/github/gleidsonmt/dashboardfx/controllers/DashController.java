@@ -27,6 +27,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.web.WebView;
+import org.commonmark.node.Node;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
 import org.kordamp.ikonli.material.Material;
 
 import java.net.URL;
@@ -36,14 +40,17 @@ import java.util.ResourceBundle;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public final class DashController extends ResponsiveView implements Context, Initializable {
+public final class DashController extends ResponsiveView implements Context, ActionView, Initializable {
 
     public Label lblCustom;
     private String text;
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         text = lblCustom.getText();
+
     }
 
     @Override

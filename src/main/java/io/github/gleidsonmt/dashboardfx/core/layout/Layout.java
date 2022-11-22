@@ -89,18 +89,6 @@ public final class Layout extends BorderPane implements ILayout, Context {
                     .content(odlDrawer)
                     .show();
 
-            context.getWrapper()
-                    .getDialog()
-                    .content(new StackPane(new Button("Fuck UP")))
-                    .show();
-
-            context.getWrapper()
-                    .getAlert()
-                    .title("Title")
-                    .text("My Custom Text")
-                    .show();
-
-
 //            setCenter(new Button("Welcome"));
 
         });
@@ -112,6 +100,7 @@ public final class Layout extends BorderPane implements ILayout, Context {
 
 
                 if (newValue.intValue() < BreakPoints.X_SMALL) {
+
                     setLeft(null);
                     odlDrawer.setTranslateX(0);
 

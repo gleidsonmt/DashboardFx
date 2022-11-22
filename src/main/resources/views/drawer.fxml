@@ -31,105 +31,84 @@
   ~    along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<StackPane maxWidth="250" id="drawer-root" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: -light-gray-2; -fx-border-width: 0 1 0 0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane id="drawer-root" maxWidth="250" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: -light-gray-2; -fx-border-width: 0 1 0 0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <VBox id="drawer-content" prefHeight="200.0" prefWidth="100.0">
-      <HBox alignment="CENTER_LEFT" prefWidth="229.0" spacing="10.0"
-            style="-fx-border-color: -light-gray-2; -fx-border-width: 0 0 1 0;">
+      <HBox alignment="CENTER_LEFT" prefWidth="229.0" spacing="10.0" style="-fx-border-color: -light-gray-2; -fx-border-width: 0 0 1 0;">
          <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
          <padding>
-            <Insets bottom="10.0"/>
+            <Insets bottom="10.0" />
          </padding>
-         <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0"
-               style="-fx-border-color: linear-gradient(to left, -mint, -aqua); -fx-border-width: 2px; -fx-border-radius: 10;">
+         <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" style="-fx-border-color: linear-gradient(to left, -mint, -aqua); -fx-border-width: 2px; -fx-border-radius: 10;">
             <padding>
-               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </padding>
             <ImageView fitHeight="48.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../logo_64.png"/>
+                  <Image url="@../logo_64.png" />
                </image>
             </ImageView>
          </VBox>
          <VBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="135.0" HBox.hgrow="ALWAYS">
             <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="h4" text="DashboradFx">
                <graphic>
-                  <SVGPath content="m12 15-5-5h10Z"/>
+                  <SVGPath content="m12 15-5-5h10Z" />
                </graphic>
             </Label>
-            <Label text="gleidsonmt, Inc."/>
+            <Label text="gleidsonmt, Inc." />
          </VBox>
       </HBox>
       <ScrollPane id="drawer-scroll" fitToWidth="true" VBox.vgrow="ALWAYS">
          <VBox id="drawer-box">
             <padding>
-               <Insets top="20.0"/>
+               <Insets top="20.0" />
             </padding>
-            <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="112.0" maxWidth="1.7976931348623157E308"
-                          mnemonicParsing="false" prefHeight="40.0" selected="true" styleClass="drawer-item"
-                          text="Dashboard">
+            <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="112.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" selected="true" styleClass="drawer-item" text="Dashboard">
                <graphic>
-                  <SVGPath
-                          content="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z"/>
+                  <SVGPath content="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
                </graphic>
                <toggleGroup>
-                  <ToggleGroup fx:id="group"/>
+                  <ToggleGroup fx:id="group" />
                </toggleGroup>
             </ToggleButton>
             <Label style="-fx-font-weight: bold;" text="Main Menu">
                <padding>
-                  <Insets left="10.0"/>
+                  <Insets left="10.0" />
                </padding>
                <VBox.margin>
-                  <Insets bottom="10.0" top="10.0"/>
+                  <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" layoutX="10.0"
-                        layoutY="58.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Controls"
-                        textAlignment="JUSTIFY">
+            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" layoutX="10.0" layoutY="58.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Controls" textAlignment="JUSTIFY">
                <graphic>
-                  <SVGPath
-                          content="M12 11q-1.65 0-2.825-1.175Q8 8.65 8 7q0-1.65 1.175-2.825Q10.35 3 12 3q1.65 0 2.825 1.175Q16 5.35 16 7q0 1.65-1.175 2.825Q13.65 11 12 11Zm0-2q.825 0 1.413-.588Q14 7.825 14 7t-.587-1.412Q12.825 5 12 5q-.825 0-1.412.588Q10 6.175 10 7t.588 1.412Q11.175 9 12 9ZM7 21q-1.65 0-2.825-1.175Q3 18.65 3 17q0-1.65 1.175-2.825Q5.35 13 7 13q1.65 0 2.825 1.175Q11 15.35 11 17q0 1.65-1.175 2.825Q8.65 21 7 21Zm0-2q.825 0 1.412-.587Q9 17.825 9 17q0-.825-.588-1.412Q7.825 15 7 15t-1.412.588Q5 16.175 5 17t.588 1.413Q6.175 19 7 19Zm10 2q-1.65 0-2.825-1.175Q13 18.65 13 17q0-1.65 1.175-2.825Q15.35 13 17 13q1.65 0 2.825 1.175Q21 15.35 21 17q0 1.65-1.175 2.825Q18.65 21 17 21Zm0-2q.825 0 1.413-.587Q19 17.825 19 17q0-.825-.587-1.412Q17.825 15 17 15q-.825 0-1.412.588Q15 16.175 15 17t.588 1.413Q16.175 19 17 19ZM12 7ZM7 17Zm10 0Z"
-                          nodeOrientation="LEFT_TO_RIGHT"/>
+                  <SVGPath content="M12 11q-1.65 0-2.825-1.175Q8 8.65 8 7q0-1.65 1.175-2.825Q10.35 3 12 3q1.65 0 2.825 1.175Q16 5.35 16 7q0 1.65-1.175 2.825Q13.65 11 12 11Zm0-2q.825 0 1.413-.588Q14 7.825 14 7t-.587-1.412Q12.825 5 12 5q-.825 0-1.412.588Q10 6.175 10 7t.588 1.412Q11.175 9 12 9ZM7 21q-1.65 0-2.825-1.175Q3 18.65 3 17q0-1.65 1.175-2.825Q5.35 13 7 13q1.65 0 2.825 1.175Q11 15.35 11 17q0 1.65-1.175 2.825Q8.65 21 7 21Zm0-2q.825 0 1.412-.587Q9 17.825 9 17q0-.825-.588-1.412Q7.825 15 7 15t-1.412.588Q5 16.175 5 17t.588 1.413Q6.175 19 7 19Zm10 2q-1.65 0-2.825-1.175Q13 18.65 13 17q0-1.65 1.175-2.825Q15.35 13 17 13q1.65 0 2.825 1.175Q21 15.35 21 17q0 1.65-1.175 2.825Q18.65 21 17 21Zm0-2q.825 0 1.413-.587Q19 17.825 19 17q0-.825-.587-1.412Q17.825 15 17 15q-.825 0-1.412.588Q15 16.175 15 17t.588 1.413Q16.175 19 17 19ZM12 7ZM7 17Zm10 0Z" nodeOrientation="LEFT_TO_RIGHT" />
                </graphic>
-               <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT"
-                     prefWidth="292.0" spacing="5.0">
+               <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="292.0" spacing="5.0">
                   <children>
-                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308"
-                                   mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item"
-                                   text="Profile">
+                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Profile">
                         <toggleGroup>
-                           <ToggleGroup fx:id="group12"/>
+                           <ToggleGroup fx:id="group12" />
                         </toggleGroup>
                         <graphic>
-                           <SVGPath
-                                   content="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z"/>
+                           <SVGPath content="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
                         </graphic>
                      </ToggleButton>
                   </children>
                </VBox>
             </TitledPane>
-            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" layoutX="10.0"
-                        layoutY="115.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Containers"
-                        textAlignment="JUSTIFY">
+            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" layoutX="10.0" layoutY="115.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Containers" textAlignment="JUSTIFY">
                <graphic>
-                  <SVGPath
-                          content="M5 21q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3h14q.825 0 1.413.587Q21 4.175 21 5v14q0 .825-.587 1.413Q19.825 21 19 21Zm0-2h6V5H5v14Zm8 0h6v-7h-6Zm0-9h6V5h-6Z"
-                          nodeOrientation="LEFT_TO_RIGHT"/>
+                  <SVGPath content="M5 21q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3h14q.825 0 1.413.587Q21 4.175 21 5v14q0 .825-.587 1.413Q19.825 21 19 21Zm0-2h6V5H5v14Zm8 0h6v-7h-6Zm0-9h6V5h-6Z" nodeOrientation="LEFT_TO_RIGHT" />
                </graphic>
-               <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT"
-                     prefWidth="292.0" spacing="5.0">
+               <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="292.0" spacing="5.0">
                   <children>
-                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308"
-                                   mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item"
-                                   text="Profile">
+                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Profile">
                         <toggleGroup>
-                           <ToggleGroup fx:id="group121"/>
+                           <ToggleGroup fx:id="group121" />
                         </toggleGroup>
                         <graphic>
-                           <SVGPath
-                                   content="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z"/>
+                           <SVGPath content="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
                         </graphic>
                      </ToggleButton>
                   </children>
@@ -137,46 +116,33 @@
             </TitledPane>
             <Label layoutX="10.0" layoutY="189.0" style="-fx-font-weight: bold;" text="Utils">
                <padding>
-                  <Insets left="10.0"/>
+                  <Insets left="10.0" />
                </padding>
                <VBox.margin>
-                  <Insets bottom="10.0" top="10.0"/>
+                  <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="326.0" maxWidth="1.7976931348623157E308"
-                          mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Notifications"
-                          toggleGroup="$group">
+            <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="326.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goWrapper" prefHeight="40.0" styleClass="drawer-item" text="Wrappers" toggleGroup="$group">
                <graphic>
-                  <SVGPath
-                          content="M12 18.5q.625 0 1.062-.438.438-.437.438-1.062h-3q0 .625.438 1.062.437.438 1.062.438ZM7 16h10v-2h-1v-2.6q0-1.525-.787-2.788Q14.425 7.35 13 7v-.5q0-.425-.287-.713Q12.425 5.5 12 5.5t-.712.287Q11 6.075 11 6.5V7q-1.425.35-2.212 1.612Q8 9.875 8 11.4V14H7Zm5 6q-2.075 0-3.9-.788-1.825-.787-3.175-2.137-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175 1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138 1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175-1.35 1.35-3.175 2.137Q14.075 22 12 22Zm0-2q3.325 0 5.663-2.337Q20 15.325 20 12t-2.337-5.663Q15.325 4 12 4T6.338 6.337Q4 8.675 4 12t2.338 5.663Q8.675 20 12 20Zm-2-6v-3q0-.825.588-1.413Q11.175 9 12 9t1.413.587Q14 10.175 14 11v3Zm2-2Z"/>
+                  <SVGPath content="M12 18.5q.625 0 1.062-.438.438-.437.438-1.062h-3q0 .625.438 1.062.437.438 1.062.438ZM7 16h10v-2h-1v-2.6q0-1.525-.787-2.788Q14.425 7.35 13 7v-.5q0-.425-.287-.713Q12.425 5.5 12 5.5t-.712.287Q11 6.075 11 6.5V7q-1.425.35-2.212 1.612Q8 9.875 8 11.4V14H7Zm5 6q-2.075 0-3.9-.788-1.825-.787-3.175-2.137-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175 1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138 1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175-1.35 1.35-3.175 2.137Q14.075 22 12 22Zm0-2q3.325 0 5.663-2.337Q20 15.325 20 12t-2.337-5.663Q15.325 4 12 4T6.338 6.337Q4 8.675 4 12t2.338 5.663Q8.675 20 12 20Zm-2-6v-3q0-.825.588-1.413Q11.175 9 12 9t1.413.587Q14 10.175 14 11v3Zm2-2Z" />
                </graphic>
             </ToggleButton>
-            <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="326.0" maxWidth="1.7976931348623157E308"
-                          mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Developers"
-                          toggleGroup="$group">
+            <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="326.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Developers" toggleGroup="$group">
                <graphic>
-                  <SVGPath
-                          content="m8 18-6-6 6-6 1.425 1.425-4.6 4.6L9.4 16.6Zm8 0-1.425-1.425 4.6-4.6L14.6 7.4 16 6l6 6Z"/>
+                  <SVGPath content="m8 18-6-6 6-6 1.425 1.425-4.6 4.6L9.4 16.6Zm8 0-1.425-1.425 4.6-4.6L14.6 7.4 16 6l6 6Z" />
                </graphic>
             </ToggleButton>
-            <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="206.0" maxWidth="1.7976931348623157E308"
-                          mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Settings"
-                          toggleGroup="$group">
+            <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="206.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Settings" toggleGroup="$group">
                <graphic>
-                  <SVGPath
-                          content="m9.25 22-.4-3.2q-.325-.125-.612-.3-.288-.175-.563-.375L4.7 19.375l-2.75-4.75 2.575-1.95Q4.5 12.5 4.5 12.337v-.675q0-.162.025-.337L1.95 9.375l2.75-4.75 2.975 1.25q.275-.2.575-.375.3-.175.6-.3l.4-3.2h5.5l.4 3.2q.325.125.613.3.287.175.562.375l2.975-1.25 2.75 4.75-2.575 1.95q.025.175.025.337v.675q0 .163-.05.338l2.575 1.95-2.75 4.75-2.95-1.25q-.275.2-.575.375-.3.175-.6.3l-.4 3.2Zm2.8-6.5q1.45 0 2.475-1.025Q15.55 13.45 15.55 12q0-1.45-1.025-2.475Q13.5 8.5 12.05 8.5q-1.475 0-2.488 1.025Q8.55 10.55 8.55 12q0 1.45 1.012 2.475Q10.575 15.5 12.05 15.5Zm0-2q-.625 0-1.062-.438-.438-.437-.438-1.062t.438-1.062q.437-.438 1.062-.438t1.063.438q.437.437.437 1.062t-.437 1.062q-.438.438-1.063.438ZM12 12Zm-1 8h1.975l.35-2.65q.775-.2 1.438-.588.662-.387 1.212-.937l2.475 1.025.975-1.7-2.15-1.625q.125-.35.175-.738.05-.387.05-.787t-.05-.788q-.05-.387-.175-.737l2.15-1.625-.975-1.7-2.475 1.05q-.55-.575-1.212-.963-.663-.387-1.438-.587L13 4h-1.975l-.35 2.65q-.775.2-1.437.587-.663.388-1.213.938L5.55 7.15l-.975 1.7 2.15 1.6q-.125.375-.175.75-.05.375-.05.8 0 .4.05.775t.175.75l-2.15 1.625.975 1.7 2.475-1.05q.55.575 1.213.962.662.388 1.437.588Z"/>
+                  <SVGPath content="m9.25 22-.4-3.2q-.325-.125-.612-.3-.288-.175-.563-.375L4.7 19.375l-2.75-4.75 2.575-1.95Q4.5 12.5 4.5 12.337v-.675q0-.162.025-.337L1.95 9.375l2.75-4.75 2.975 1.25q.275-.2.575-.375.3-.175.6-.3l.4-3.2h5.5l.4 3.2q.325.125.613.3.287.175.562.375l2.975-1.25 2.75 4.75-2.575 1.95q.025.175.025.337v.675q0 .163-.05.338l2.575 1.95-2.75 4.75-2.95-1.25q-.275.2-.575.375-.3.175-.6.3l-.4 3.2Zm2.8-6.5q1.45 0 2.475-1.025Q15.55 13.45 15.55 12q0-1.45-1.025-2.475Q13.5 8.5 12.05 8.5q-1.475 0-2.488 1.025Q8.55 10.55 8.55 12q0 1.45 1.012 2.475Q10.575 15.5 12.05 15.5Zm0-2q-.625 0-1.062-.438-.438-.437-.438-1.062t.438-1.062q.437-.438 1.062-.438t1.063.438q.437.437.437 1.062t-.437 1.062q-.438.438-1.063.438ZM12 12Zm-1 8h1.975l.35-2.65q.775-.2 1.438-.588.662-.387 1.212-.937l2.475 1.025.975-1.7-2.15-1.625q.125-.35.175-.738.05-.387.05-.787t-.05-.788q-.05-.387-.175-.737l2.15-1.625-.975-1.7-2.475 1.05q-.55-.575-1.212-.963-.663-.387-1.438-.587L13 4h-1.975l-.35 2.65q-.775.2-1.437.587-.663.388-1.213.938L5.55 7.15l-.975 1.7 2.15 1.6q-.125.375-.175.75-.05.375-.05.8 0 .4.05.775t.175.75l-2.15 1.625.975 1.7 2.475-1.05q.55.575 1.213.962.662.388 1.437.588Z" />
                </graphic>
             </ToggleButton>
          </VBox>
       </ScrollPane>
       <VBox minHeight="40.0">
-         <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                       prefHeight="40.0" style="-fx-text-fill: linear-gradient(to left, -mint, -aqua);"
-                       styleClass="drawer-item" text="Logout">
+         <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" style="-fx-text-fill: linear-gradient(to left, -mint, -aqua);" styleClass="drawer-item" text="Logout">
             <graphic>
-               <SVGPath
-                       content="M11 13V3h2v10Zm1 8q-1.85 0-3.488-.712-1.637-.713-2.862-1.938t-1.938-2.862Q3 13.85 3 12q0-2 .825-3.775T6.15 5.15l1.4 1.4q-1.2 1-1.875 2.425Q5 10.4 5 12q0 2.9 2.05 4.95Q9.1 19 12 19q2.925 0 4.962-2.05Q19 14.9 19 12q0-1.6-.663-3.025-.662-1.425-1.887-2.425l1.4-1.4q1.5 1.3 2.325 3.075Q21 10 21 12q0 1.85-.712 3.488-.713 1.637-1.925 2.862-1.213 1.225-2.85 1.938Q13.875 21 12 21Z"
-                       style="-fx-fill: linear-gradient(to left, -mint, -aqua);"/>
+               <SVGPath content="M11 13V3h2v10Zm1 8q-1.85 0-3.488-.712-1.637-.713-2.862-1.938t-1.938-2.862Q3 13.85 3 12q0-2 .825-3.775T6.15 5.15l1.4 1.4q-1.2 1-1.875 2.425Q5 10.4 5 12q0 2.9 2.05 4.95Q9.1 19 12 19q2.925 0 4.962-2.05Q19 14.9 19 12q0-1.6-.663-3.025-.662-1.425-1.887-2.425l1.4-1.4q1.5 1.3 2.325 3.075Q21 10 21 12q0 1.85-.712 3.488-.713 1.637-1.925 2.862-1.213 1.225-2.85 1.938Q13.875 21 12 21Z" style="-fx-fill: linear-gradient(to left, -mint, -aqua);" />
             </graphic>
          </ToggleButton>
       </VBox>

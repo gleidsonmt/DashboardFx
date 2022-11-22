@@ -38,6 +38,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.image.Image;
+import javafx.scene.web.HTMLEditor;
+import javafx.scene.web.WebView;
 import org.jetbrains.annotations.NotNull;
 import org.scenicview.ScenicView;
 
@@ -140,7 +142,7 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
         loadViews.start();
         show();
 
-        ScenicView.show(this.getWindow().getScene());
+//        ScenicView.show(this.getWindow().getScene());
         CSSFX.start(this.getWindow());
 
     }
