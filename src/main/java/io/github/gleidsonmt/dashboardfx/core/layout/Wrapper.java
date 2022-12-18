@@ -19,7 +19,6 @@ package io.github.gleidsonmt.dashboardfx.core.layout;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Alert;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Alert2;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Dialog;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;

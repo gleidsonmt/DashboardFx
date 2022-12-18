@@ -17,7 +17,7 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
+package io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces;
 
 import javafx.geometry.HPos;
 import javafx.scene.Node;
@@ -25,5 +25,7 @@ import javafx.scene.layout.StackPane;
 
 public interface WrapperContainer {
     void show();
+
+    default void close() {};
 
 }

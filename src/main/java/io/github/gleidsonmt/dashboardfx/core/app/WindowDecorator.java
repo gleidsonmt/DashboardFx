@@ -19,15 +19,13 @@ package io.github.gleidsonmt.dashboardfx.core.app;
 
 import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.gleidsonmt.dashboardfx.core.app.controllers.LoaderController;
-import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
-import io.github.gleidsonmt.dashboardfx.core.app.services.LoadViews;
-import io.github.gleidsonmt.dashboardfx.core.app.services.View;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IDecorator;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IRoot;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.PathView;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Routes;
+import io.github.gleidsonmt.dashboardfx.core.app.services.LoadViews1;
+import io.github.gleidsonmt.dashboardfx.core.app.services.IView;
 import io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer;
-import io.github.gleidsonmt.dashboardfx.core.layout.Drawer;
-import io.github.gleidsonmt.dashboardfx.core.layout.Root;
-import io.github.gleidsonmt.gncontrols.Material;
-import io.github.gleidsonmt.gncontrols.Theme;
 import io.github.gleidsonmt.gndecorator.core.GNDecorator;
 import javafx.application.HostServices;
 import javafx.collections.ObservableList;
@@ -35,15 +33,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Control;
 import javafx.scene.image.Image;
-import javafx.scene.web.HTMLEditor;
-import javafx.scene.web.WebView;
 import org.jetbrains.annotations.NotNull;
-import org.scenicview.ScenicView;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -53,30 +47,48 @@ import java.util.logging.Logger;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  03/10/2022
  */
-public final class WindowDecorator extends GNDecorator implements IDecorator, Context {
+
+@Deprecated(since = "1.0", forRemoval = true)
+public final class WindowDecorator extends GNDecorator implements IDecorator {
 
     private final PathView pathView;
     private LoaderController loaderController;
 
-    private IRotes routes;
+    private Routes routes;
 
-    private final IRoot root;
+    private final IRoot root = null;
 
     public WindowDecorator(@NotNull Properties _properties, @NotNull PathView _path) throws IOException {
         // setTheme and logo here
         this.pathView = _path;
 
-        this.getIcons().add(new Image("/logo.png"));
+        this.getIcons().add(new Image(getClass().getResource("/core.app/logo/logo_32.png").toExternalForm()));
 
-        root = new Root(this);
+//        root = new Root(this);
 
         Scene scene = this.getWindow().getScene();
 
         // Theming by controls lib
 
-        new Material(scene, Theme.SIMPLE_INFO);
-
 //        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/fonts/fonts.css")).toExternalForm());
+//        scene.getStylesheets().add("/fonts/fonts.css");
+//        scene.getStylesheets().addAll("/core.app/css/colors.css");
+//        scene.getStylesheets().addAll("/core.app/css/skeleton.css");
+//        scene.getStylesheets().addAll("/core.app/css/bootstrap.css");
+//        scene.getStylesheets().addAll("/core.app/css/imersive_scroll.css");
+//        scene.getStylesheets().addAll("/core.app/css/typographic.css");
+//        scene.getStylesheets().addAll("/core.app/css/theme/simple_info.css");
+
+        scene.getStylesheets().addAll(
+                Objects.requireNonNull(getClass().getResource("/core.app/css/colors.css")).toExternalForm(),
+                Objects.requireNonNull(getClass().getResource("/core.app/css/skeleton.css")).toExternalForm(),
+                Objects.requireNonNull(getClass().getResource("/core.app/css/bootstrap.css")).toExternalForm(),
+                Objects.requireNonNull(getClass().getResource("/core.app/css/imersive_scroll.css")).toExternalForm(),
+                Objects.requireNonNull(getClass().getResource("/core.app/css/typographic.css")).toExternalForm(),
+                Objects.requireNonNull(getClass().getResource("/core.app/css/helpers.css")).toExternalForm(),
+                Objects.requireNonNull(getClass().getResource("/core.app/css/theme/simple_info.css")).toExternalForm()
+        );
+
         scene.getStylesheets().add("/dash.css");
 
         fullBody();
@@ -106,40 +118,39 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
     @Override
     public void show(HostServices hostServices) {
 
-
         initPreLoader();
 
-        LoadViews loadViews = new LoadViews();
+        LoadViews1 loadViews1 = new LoadViews1();
 
-        loadViews.setOnReady(event -> {
-            loaderController.info("Reading application..");
+        loadViews1.setOnReady(event -> {
+//            loaderController.info("Reading application..");
         });
 
-        loadViews.setOnFailed(event -> {
+        loadViews1.setOnFailed(event -> {
             Logger.getLogger("app").severe("Error on loading preloader");
         });
 
-        loadViews.setOnCancelled(event -> {
+        loadViews1.setOnCancelled(event -> {
             Logger.getLogger("app").severe("Error on loading preloader");
         });
 
-        loadViews.setOnRunning(event -> {
-            loaderController.info("Reading application..");
+        loadViews1.setOnRunning(event -> {
+//            loaderController.info("Reading application..");
         });
 
-        loadViews.setOnSucceeded(event -> {
+        loadViews1.setOnSucceeded(event -> {
             initLayout();
 
-            try {
-                context.getRoutes().setContent("dash");
-            } catch (NavigationException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                context.getRoutes().setContent("dash");
+//            } catch (NavigationException e) {
+//                e.printStackTrace();
+//            }
 
         });
 
 
-        loadViews.start();
+        loadViews1.start();
         show();
 
 //        ScenicView.show(this.getWindow().getScene());
@@ -174,8 +185,8 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
 
         loader.setLocation(getClass().getResource("/views/drawer.fxml"));
 
-        Drawer drawer = context.getDecorator().getRoot().getWrapper().getDrawer();
-        loader.setController(drawer);
+//        Drawer drawer = context.getDecorator().getRoot().getWrapper().getDrawer();
+//        loader.setController(drawer);
 
         try {
             loader.load();
@@ -187,10 +198,10 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
         viewComposer.setName("drawer");
         viewComposer.setFxml("drawer.fxml");
 
-        View view = new View(viewComposer, loader);
+        IView IView = new IView(viewComposer, loader);
 
         getRoot().getLayout().setDrawer(
-                view
+                IView
         );
     }
 

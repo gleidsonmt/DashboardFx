@@ -19,10 +19,10 @@
 
 package io.github.gleidsonmt.dashboardfx.controllers;
 
+import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.web.WebView;
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
@@ -31,40 +31,53 @@ import org.commonmark.renderer.html.HtmlRenderer;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class WrapperController implements ActionView, Initializable {
+public class WrapperController implements ActionView {
 
     @FXML
     private WebView webView;
-    
+
+    @Override
+    public void onEnter(Context context) {
+
+    }
+
+    @Override
+    public void onExit(Context context) {
+
+    }
+
+    @Override
+    public void onInit(Context context) {
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Parser parser = Parser.builder().build();
 
-        Node document = parser.parse("```java\n" +
-                "  GNDecorator decorator = new GNDecorator();\n" +
-                "  decorator.setTitle(\"JavaFx Application\");\n" +
-                "  decorator.setContent(content);\n" +
-                "  decorator.fullBody() // the content occupies all of size\n" +
-                "    \n" +
-                "  Menu menu = new Menu(\"File\");\n" +
-                "  menu.getItems().add(new MenuItem(\"Open\"));\n" +
-                "  menu.getItems().add(new MenuItem(\"Close\"));\n" +
-                "  decorator.addMenu(menu);\n" +
-                "  decorator.addMenu(1, menu);// add with a index\n" +
-                "  \n" +
-                "  ButtonTest a1 = new ButtonTest(\"Button 1\");\n" +
-                "  decorator.addControl(a1);\n" +
-                "  decorator.addControl(index, a1); // add with a index\n" +
-                "  ```\n");
+        Node document = parser.parse("" +
+                "<code>Random <code style='color: red'>r</code> = new Random();<code/> ");
 
         HtmlRenderer renderer = HtmlRenderer.builder().build();
         renderer.render(document);
 
 
-        String content =
-                "Hello World!";
+        String _code = """
+                context.getDecorator()
+                \t.getRoot()
+                \t.createSnackBar()
+                \t.message("My Snack")
+                \t.undo(event -> {
+                \t.show();""";
 
-        webView.getEngine().loadContent(renderer.render(document));
+        String random =
+                new BlockHtmlParser().javaStringToHtml("Random r = new Random(12);" +
+                        "\nr.setTitle(\"Welcome\");");
+//
+
+        String content = new BlockHtmlParser().javaStringToHtml(_code);
+
+        webView.getEngine().loadContent(content);
 
     }
 
@@ -90,13 +103,4 @@ public class WrapperController implements ActionView, Initializable {
     public void createDialog(ActionEvent actionEvent) {
     }
 
-    @Override
-    public void onEnter() {
-
-    }
-
-    @Override
-    public void onExit() {
-
-    }
 }

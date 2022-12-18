@@ -17,9 +17,13 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.services;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IView;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IViewManager;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
+import javafx.scene.Parent;
 
+import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 
 /**
@@ -28,39 +32,67 @@ import java.util.HashMap;
  */
 public class ViewManager implements IViewManager {
 
-    private final HashMap<String, IView> views = new HashMap<>();
+    private final HashMap<String, View> views = new HashMap<>();
 
-    private IView current;
-    private IView previous;
+    private View current;
+    private View previous;
+
+    ViewManager() {
+
+    }
 
     @Override
-    public void add(IView view) {
+    public void add(View view) {
         views.put(view.getName(), view);
     }
 
     @Override
-    public IView get(String name)  {
+    public View get(String name)  {
         return views.get(name);
     }
 
-    public IView getCurrent() {
+    public View getCur() {
         return current;
     }
 
-    public IView getPrevious() {
+    public View getPre() {
         return previous;
     }
 
-    public void setCurrent(IView view) {
+    public void setCurrent(View view) {
         this.previous = current;
         this.current = view;
     }
 
-    public void setPrevious(IView previous) {
+    public void setPrevious(View previous) {
         this.previous = previous;
     }
 
+    @Deprecated
     public boolean contains(String nameView) {
         return views.containsKey(nameView);
     }
+
+    // Pointer methods
+
+    public ActionView controllerOf(String nameView) {
+        return get(nameView).getController();
+    }
+
+    public ViewComposer composerOf(String name) {
+        return get(name).getComposer();
+    }
+
+    public URL locationOf(String name) {
+        return get(name).getLocation();
+    }
+
+    public Charset charsetOf(String name) {
+        return get(name).getCharset();
+    }
+
+    public Parent rootOf(String name) {
+        return get(name).getRoot();
+    }
+
 }
