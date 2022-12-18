@@ -1,9 +1,6 @@
 <h1 align="center">GNDashboardFx</h1>
-<h6 align="center"> This project is part of the set of custom components created for JavaFx. </h6>
+<h6 align="center"> New Dashboard for JavaFx. </h6>
 <h1></h1>
-
-[![Veresion](https://img.shields.io/badge/Release-v2.2.25-green.svg?style=for-the-badge)](https://github.com/gleidsonmt/GNDecorator/releases/tag/2.1.25)
-[![License](https://img.shields.io/github/license/Gleidson28/GNDecorator.svg?style=for-the-badge)](https://github.com/gleidsonmt/GNDecorator/blob/master/LICENSE)
 
 <p align="center">
   <img src="./src/main/resources/logo/logo_flier.png"  />
@@ -11,17 +8,47 @@
 
 # 🛠 Enhancements
 
-Next steps:
+Next:
 
-- [x] Add Yosemite Theme
-- [ ] Add Windows Theme
-- [ ] The decoratorTheme in blank to customize
-- [ ] Public methods to update window icons with css.
-- [X] Better pratices for one class receives state scope event (Clean Code)
-- [ ] Default Property to change bar height
-- [ ] Float options (css too)
+- [ ] Block code com button
+- [ ] alerts podem mudar icone
+- [ ] alerts podem alterar a transição [usando fxanimations]
+- [ ] remover dependencias de bibliotecas [enxugar]
+- [ ] passar style class para os buttons
 
-# 😄 Be a contritubutor<br>
+To Do:
+
+ ##### Add Search Bar {SearchBar, SearchItem[type])
+ ##### Add Badges
+ ##### Add Actions in top
+ ###### Criar um author no presentation creator
+    
+
+Bugs:
+
+- [ ] Non block in decorator
+- [ ] Barra de rolagem não para na barar da decoração
+
+Doing:
+
+Done:
+- [X] Put color in block strings (block code)
+- [X] Presentation class creator (Presentation class)
+- [X] Put color in Upper letter (block code)
+- [X] Implementing model for simple dialogs, alerts..
+
+
+Fixed:
+
+
+```java
+    Random r = new Random(12);
+    r.setNext(12);
+    r.setColor(Color.web("#f8384"));
+
+```
+
+# 😄 Be a contributor<br>
 
 🤖I really need more friends.. Send me a  <a href='mailto:gleidisonmt@gmail.com?subject=Hi, I see you need my help!.. I am here.'> email <a/>.
 

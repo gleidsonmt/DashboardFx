@@ -17,28 +17,43 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
-import io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer;
-import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-
-import java.net.URL;
-import java.nio.charset.Charset;
+import javafx.scene.layout.Pane;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  05/02/2022
+ * Create on  20/08/2022
  */
-public interface IView {
+public interface Routes {
 
-    String getName();
+    void setContent(String view) throws NavigationException;
 
-    ViewComposer getComposer();
+    void setView(String view) throws NavigationException;
 
-    ActionView getController() ;
+    void addView(View view);
 
-    Parent getRoot();
+    void goHome();
 
-    Charset getCharset();
+    View getView(String view);
 
-    URL getLocation();
+    View getCurrent();
+
+    View getPrevious();
+
+    View load(String folder, String title, String name);
+
+    View load(Pane root, String title, String name);
+
+    Routes navigate(String key, FXMLLoader node);
+
+    Routes navigate(String key);
+
+    Routes registry(String key, Parent parent);
+
+    Routes registry(String key, FXMLLoader parent);
+
+    // void loadView(String path) // para implementar se quiser q a view seja carregad na hora
+
 }

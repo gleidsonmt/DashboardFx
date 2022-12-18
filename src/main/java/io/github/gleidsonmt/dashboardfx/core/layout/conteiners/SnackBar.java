@@ -20,15 +20,19 @@ package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 import animatefx.animation.RollIn;
 import animatefx.animation.RollOut;
 import io.github.gleidsonmt.dashboardfx.core.layout.Root;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.WrapperContainer;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.SnackColors;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
 import org.jetbrains.annotations.NotNull;
 import org.kordamp.ikonli.javafx.FontIcon;
@@ -47,9 +51,9 @@ public class SnackBar implements WrapperContainer {
     // Events to set
     private EventHandler<ActionEvent> undoEvent;
 
-    // Options to set
+    // ActionOptions to set
     private String message;
-    private FontIcon icon;
+    private Node icon;
     private SnackColors color = SnackColors.GRAY;
 
     public SnackBar(Root root) {
@@ -75,6 +79,12 @@ public class SnackBar implements WrapperContainer {
         icon.setIconColor(Color.WHITE);
         this.icon = icon;
 
+        return this;
+    }
+
+    public SnackBar icon(SVGPath _icon) {
+        this.icon = _icon;
+        _icon.setFill(Color.WHITE);
         return this;
     }
 
@@ -117,7 +127,6 @@ public class SnackBar implements WrapperContainer {
         }
 
         root.getChildren().add(snack);
-
 
         RollIn animation = new RollIn(snack);
         animation.setSpeed(1.5);

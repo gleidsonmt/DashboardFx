@@ -17,11 +17,10 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
-import io.github.gleidsonmt.dashboardfx.core.app.WindowDecorator;
+import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IRoot;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
-import io.github.gleidsonmt.gncontrols.controls.GNButton;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 
@@ -35,19 +34,22 @@ public final class Root extends StackPane implements IRoot {
     private final Layout layout;
     private final Wrapper wrapper;
 
-    public Root(WindowDecorator window) {
+    public Root(Context context) {
 
-        layout = new Layout();
+        layout = new Layout(context);
         wrapper = new Wrapper();
 
+        layout.setMinSize(400, 400);
+
         getChildren().setAll(wrapper, layout);
+
 
         setId("root");
 
 
-        window.widthProperty().addListener((observable, oldValue, newValue) -> {
-            double drawerWidth = 250;
-            double _new = newValue.doubleValue();
+//        window.widthProperty().addListener((observable, oldValue, newValue) -> {
+//            double drawerWidth = 250;
+//            double _new = newValue.doubleValue();
 
 //            needsBar.set(window.getContent().equals(this));
 //
@@ -63,8 +65,8 @@ public final class Root extends StackPane implements IRoot {
 //                    layout.getBar().setPadding(new Insets(0));
 //                }
 //            }
-
-        });
+//
+//        });
 
     }
 

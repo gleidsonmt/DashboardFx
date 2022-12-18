@@ -17,31 +17,29 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
-import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
+import io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
+import javafx.scene.Parent;
+
+import java.net.URL;
+import java.nio.charset.Charset;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  20/08/2022
+ * Create on  05/02/2022
  */
-public interface IRotes {
+public interface View {
+    String getName();
 
-    void setContent(String view) throws NavigationException;
+    ViewComposer getComposer();
 
-    void setView(String view) throws NavigationException;
-
-    void addView(IView iView);
-
-    void goHome();
-
-    IView getView(String view);
-
-    IView getCurrent();
-
-    IView getPrevious();
-
-    IView load(String folder, String title, String name);
+    ActionView getController() ;
 
 
-    // void loadView(String path) // para implementar se quiser q a view seja carregad na hora
 
+    Parent getRoot();
+
+    Charset getCharset();
+
+    URL getLocation();
 }
