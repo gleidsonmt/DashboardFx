@@ -17,16 +17,26 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.view_wrapper;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Context;
+import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  05/02/2022
  */
-public interface ActionView extends Context {
+public interface ActionView extends Initializable {
 
-    void onEnter() ;
+    void onEnter(Context context) ;
 
-    void onExit();
+    void onExit(Context context);
 
+    void onInit(Context context);
+
+    @Override
+    default void initialize(URL location, ResourceBundle resources) {
+
+    }
 }

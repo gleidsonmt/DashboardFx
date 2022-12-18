@@ -17,15 +17,25 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
+package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 
-import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
-public class CustomDialog extends Dialog {
+public class Box extends VBox {
 
+    private String title;
+    private Node content;
 
-    public CustomDialog(Wrapper wrapper) {
-        super(wrapper);
+    public Box(String title, Pane content) {
+        this.title = title;
+        this.content = content;
+
+        Label lbl = new Label(title);
+        lbl.getStyleClass().addAll("h4");
+        this.getChildren().setAll(lbl, content);
     }
 
 }

@@ -17,12 +17,17 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
+package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 
-import javafx.geometry.Pos;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.ToggleButton;
 
-public interface AbsoluteWrapperContainer extends WrapperContainer {
+public class BubbleItem extends ToggleButton {
 
-    AbsoluteWrapperContainer pos(Pos _pos);
+    public BubbleItem(String _color) {
+        this.getStyleClass().add("bubble-item");
+        this.setStyle("-fx-accent: -" + _color);
 
+    }
 }

@@ -17,13 +17,13 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
+package io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces;
 
-public interface IAlert {
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 
-    Alert title(String title);
+public interface NestedWrapperContainer extends WrapperContainer {
 
-    Alert text(String text);
-
+    NestedWrapperContainer side(HPos side);
 
 }

@@ -25,6 +25,10 @@
     -fx-accent : -amber;
 }
 
+.mint {
+    -fx-accent : -mint;
+}
+
 
 
 /* @Color - Linear Gradinent */
