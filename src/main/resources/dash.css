@@ -70,45 +70,32 @@ Text, .text, .label {
     -fx-background-radius : 10;
 }
 
-#wrapper .btn-sunflower {
-    -fx-background-color : linear-gradient(to left, -sunflower, -amber);
-    -fx-background-color : -amber;
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-padding : 30px 0px 0px 0px;
 }
 
-.ikon-sunflower {
-    -fx-fill : linear-gradient(to left, -sunflower, -amber);
+
+.bubble-item {
+    -fx-pref-width : 30px;
+    -fx-min-width : 30px;
+    -fx-max-width : 30px;
+
+    -fx-pref-height : 30px;
+    -fx-min-height : 30px;
+    -fx-max-height : 30px;
+
+    -fx-border-color : -cyan;
+
+    -fx-border-radius : 100px;
+    -fx-background-radius : 100px;
+
+    -fx-background-color : -fx-accent;
+    -fx-border-color : -fx-accent;
+    -fx-border-width : 4px;
+    -fx-cursor : hand;
 }
 
-#wrapper .mint,
-#wrapper .btn-mint {
-    -fx-background-color : linear-gradient(to left, -mint, -aqua);
-    -fx-background-color : -mint;
+.bubble-item:selected {
+    -fx-background-color : transparent;
 }
-
-.ikon-mint {
-    -fx-font-weight : bold;
-    -fx-fill : linear-gradient(to left, -mint, -aqua);
-}
-
-#wrapper .info,
-#wrapper .btn-info {
-    -fx-background-color : linear-gradient(to left, -info, -aqua);
-    -fx-background-color : -info;
-}
-
-.ikon-info {
-    -fx-font-weight : bold;
-    -fx-fill : linear-gradient(to left, -info, -aqua);
-}
-
-#wrapper .grapefruit,
-#wrapper .btn-grapefruit {
-    -fx-background-color : linear-gradient(to left, -grapefruit, -aqua);
-    -fx-background-color : -grapefruit;
-}
-
-.ikon-grapefruit {
-    -fx-font-weight : bold;
-    -fx-fill : linear-gradient(to right, -grapefruit, -danger);
-}
-

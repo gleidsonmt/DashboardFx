@@ -17,13 +17,21 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.controllers;
 
+import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
+import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
+import io.github.gleidsonmt.dashboardfx.core.app.services.LoadViews;
+import io.github.gleidsonmt.dashboardfx.core.layout.Drawer;
+import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
 import javafx.animation.RotateTransition;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -36,14 +44,51 @@ public class LoaderController implements Initializable {
     @FXML private Circle one;
     @FXML private Circle two;
     @FXML private Circle three;
+    @FXML private Label lblInfo;
+    @FXML private Label lblTitle;
 
-    @FXML private Label info;
+    private Context context;
+    public LoaderController(Context context) {
+        this.context = context;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         rotate(one, 360, 10);
         rotate(two, 180, 18);
         rotate(three, 60, 22);
+
+        Task<String> loadViews = new LoadViews(context, lblInfo);
+
+        loadViews.setOnSucceeded(event -> {
+            lblTitle.setText("Done!");
+            context.routes().navigate("layout");
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/views/drawer.fxml"));
+            loader.setController(new Drawer((Wrapper) context.getWrapper()));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            context.routes().registry("drawer", loader);
+
+            try {
+                context.routes().setView("dash");
+            } catch (NavigationException e) {
+                throw new RuntimeException(e);
+            }
+
+            context.layout().setDrawer(
+                    context.routes().getView("drawer")
+            );
+        });
+
+        Thread tLoadViews = new Thread(loadViews);
+        tLoadViews.setDaemon(true);
+        tLoadViews.start();
     }
 
     private void rotate(Circle circle, int angle, int duration) {
@@ -57,10 +102,5 @@ public class LoaderController implements Initializable {
         rotate.setCycleCount(-1);
         rotate.play();
 
-    }
-
-    public void info(String message) {
-        System.out.println("info");
-        info.setText(message);
     }
 }

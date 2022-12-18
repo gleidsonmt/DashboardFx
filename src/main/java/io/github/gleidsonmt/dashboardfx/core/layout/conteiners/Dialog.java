@@ -20,10 +20,12 @@
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
 import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.AbsoluteWrapperContainer;
 import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
 
-public class Dialog implements AbsoluteWrapperContainer {
+public class Dialog extends DeclarativeComponent<Dialog> implements AbsoluteWrapperContainer {
 
     private StackPane content;
     private Pos pos;
@@ -35,10 +37,13 @@ public class Dialog implements AbsoluteWrapperContainer {
 
     public Dialog(Wrapper wrapper) {
         this.wrapper = wrapper;
+
     }
 
     public Dialog content(StackPane content) {
         this.content = content;
+        this.content.setStyle("-fx-background-color : -fx-foreground;");
+        wrapper.getChildren().setAll(content);
         return this;
     }
 
@@ -55,7 +60,18 @@ public class Dialog implements AbsoluteWrapperContainer {
             wrapper.setAlignment(pos);
         }
 
-//        wrapper.getChildren().setAll(content);
+        if (this.content != null)
+            this.content.setMaxSize(width, height);
+
         wrapper.toFront();
+        wrapper.setOnMouseClicked(event -> close());
+    }
+
+    @Override
+    public void close() {
+        wrapper.toBack();
+        wrapper.setAlignment(Pos.CENTER);
+        wrapper.getChildren().clear();
+        wrapper.setOnMouseClicked(null);
     }
 }

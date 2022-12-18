@@ -17,21 +17,12 @@
 
 package io.github.gleidsonmt.dashboardfx.controllers;
 
+import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ResponsiveView;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.AlertType;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackColors;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.web.WebView;
-import org.commonmark.node.Node;
-import org.commonmark.parser.Parser;
-import org.commonmark.renderer.html.HtmlRenderer;
-import org.kordamp.ikonli.material.Material;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,70 +31,72 @@ import java.util.ResourceBundle;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public final class DashController extends ResponsiveView implements Context, ActionView, Initializable {
+public final class DashController extends ResponsiveView implements ActionView, Initializable {
 
     public Label lblCustom;
     private String text;
 
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         text = lblCustom.getText();
+    }
+
+    @Override
+    public void onEnter(Context context) {
+        System.out.println("context = " + context);
+    }
+
+    @Override
+    public void onExit(Context context) {
 
     }
 
     @Override
-    public void onEnter() {
-
-    }
-
-    @Override
-    public void onExit() {
+    public void onInit(Context context) {
 
     }
 
     @FXML
     private void createSnackSuccess() {
-
-        context.getDecorator()
-                .getRoot()
-                .createSnackBar()
-                .message("My Snack Succes")
-                .undo(event -> {
-                    lblCustom.setText(text);
-                })
-                .icon(Material.PERSON_ADD)
-                .color(SnackColors.SUCCESS)
-                .show();
+//
+//        context.getDecorator()
+//                .getRoot()
+//                .createSnackBar()
+//                .message("My Snack Succes")
+//                .undo(event -> {
+//                    lblCustom.setText(text);
+//                })
+//                .icon(Material.PERSON_ADD)
+//                .color(SnackColors.SUCCESS)
+//                .show();
     }
 
     @FXML
     private  void createSnackDanger() {
         lblCustom.setText("Created by danger");
-        context.getDecorator()
-                .getRoot()
-                .createSnackBar()
-                .message("My Dangerous Succes")
-                .undo(event -> {
-                    System.out.println("Event from snack");
-                })
-                .icon(Material.INFO)
-                .color(SnackColors.INFO)
-                .showOnTop();
+//        context.getDecorator()
+//                .getRoot()
+//                .createSnackBar()
+//                .message("My Dangerous Succes")
+//                .undo(event -> {
+//                    System.out.println("Event from snack");
+//                })
+//                .icon(Material.INFO)
+//                .color(SnackColors.INFO)
+//                .showOnTop();
     }
 
     @FXML
     private void createAlert(){
-        context.getDecorator().getRoot()
-                .getWrapper()
-                .getAlert()
-//                .type(AlertType.WARNING)
-//                .text("There's no tomorrow rock balboa.")
-                .title("Test in title")
-                .show();
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.getButtonTypes().add(ButtonType.APPLY);
+//        context.getDecorator().getRoot()
+//                .getWrapper()
+//                .getAlert()
+////                .type(AlertType.WARNING)
+////                .text("There's no tomorrow rock balboa.")
+//                .title("Test in title")
+//                .show();
+//
+//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//        alert.getButtonTypes().add(ButtonType.APPLY);
     }
 }

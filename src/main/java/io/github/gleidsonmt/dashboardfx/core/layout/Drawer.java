@@ -19,25 +19,32 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
+import io.github.gleidsonmt.dashboardfx.core.app.PresentationCreator;
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Context;
+import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.WrapperContainer;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.NestedWrapperContainer;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
-public class Drawer implements ActionView, WrapperContainer, Context {
+public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, NestedWrapperContainer {
     private final Wrapper wrapper;
     private StackPane content;
     private final Timeline timeline = new Timeline();
 
+    private double maxSize = 250;
+    private HPos side;
+    private Context context;
     private final EventHandler<MouseEvent> closeEvent = event -> hide();
 
     public Drawer(Wrapper _wrapper) {
@@ -46,22 +53,35 @@ public class Drawer implements ActionView, WrapperContainer, Context {
 
     public Drawer content(StackPane _content) {
         this.content = _content;
+        _content.setMaxWidth(maxSize);
+        return this;
+    }
+
+    @Override
+    public Drawer style(String style) {
+        this.content.setStyle(style);
         return this;
     }
 
     public void show() {
+        this.wrapper.setAlignment(
+                side == HPos.LEFT ?
+                        Pos.CENTER_LEFT : Pos.CENTER_RIGHT
+        );
 
-        content.setTranslateX(-content.getMaxWidth());
-        this.wrapper.setAlignment(Pos.CENTER_LEFT);
+        final double tx = side == HPos.LEFT ?
+                -content.getMaxWidth() :
+                250;
+
 
         if (!this.wrapper.getChildren().contains(content))
-            this.wrapper.getChildren().add(content);
+            this.wrapper.getChildren().setAll(content);
 
         timeline.getKeyFrames().setAll(
                 new KeyFrame(Duration.ZERO, new KeyValue(
-                    content.translateXProperty(), -250
+                    content.translateXProperty(), tx
                 )),
-                new KeyFrame(Duration.millis(200), new KeyValue(
+                new KeyFrame(Duration.millis(100), new KeyValue(
                         content.translateXProperty(), 0
                 ))
         );
@@ -73,16 +93,23 @@ public class Drawer implements ActionView, WrapperContainer, Context {
     }
 
     public void hide() {
+
+        final double tx = side == HPos.LEFT ?
+                -content.getMaxWidth() :
+                250;
+
         timeline.getKeyFrames().setAll(
                 new KeyFrame(Duration.ZERO, new KeyValue(
                         content.translateXProperty(), 0
                 )),
                 new KeyFrame(Duration.millis(200), new KeyValue(
-                        content.translateXProperty(), -250
+                        content.translateXProperty(), tx
                 ))
         );
 
         timeline.setOnFinished(event -> {
+            wrapper.getChildren().clear();
+            content.setTranslateX(0);
             wrapper.toBack();
         });
 
@@ -92,21 +119,53 @@ public class Drawer implements ActionView, WrapperContainer, Context {
     @FXML
     private void goWrapper() {
         try {
-            context.getRoutes().setContent("wrapper");
+            context.routes().setContent("wrapper");
+        } catch (NavigationException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private View presentation;
+    @FXML
+    private void goDevelopers() {
+        System.out.println("go developers" + context);
+        if(presentation == null) presentation = new PresentationCreator("presentation", context).build();
+        System.out.println(presentation.getName());
+        try {
+            context.routes().registry("presentation", presentation.getRoot());
+            context.routes().setContent(presentation.getName());
+        } catch (NavigationException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    private void goTextField() {
+        try {
+            context.routes().setContent("control_view_pane");
         } catch (NavigationException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public void onEnter() {
+    public Drawer side(HPos _side) {
+        this.side = _side;
+        return this;
+    }
+
+    @Override
+    public void onEnter(Context context) {
+        this.context = context;
+    }
+
+    @Override
+    public void onExit(Context context) {
 
     }
 
     @Override
-    public void onExit() {
-
+    public void onInit(Context context) {
+        this.context = context;
     }
-
-
 }

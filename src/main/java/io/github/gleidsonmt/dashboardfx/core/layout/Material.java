@@ -17,7 +17,20 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
+package io.github.gleidsonmt.dashboardfx.core.layout;
 
-public class NestedContainer {
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+public class Material {
+
+    public static ObservableList<String> stylesheets() {
+        return FXCollections.observableArrayList(
+                "/core.app/css/colors.css",
+                "/core.app/css/skeleton.css",
+                "/core.app/css/typographic.css",
+                "/core.app/css/bootstrap.css",
+                "/core.app/css/imersive_scroll.css"
+        );
+    }
 }

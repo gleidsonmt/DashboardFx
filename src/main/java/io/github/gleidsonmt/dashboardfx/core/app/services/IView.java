@@ -17,8 +17,8 @@
 package io.github.gleidsonmt.dashboardfx.core.app.services;
 
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.ControllerCastException;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
@@ -30,16 +30,18 @@ import java.nio.charset.Charset;
  * Create on  29/03/2020
  */
 @SuppressWarnings("unused")
-public class View implements IView {
+public class IView implements View {
 
-    private final ViewComposer  composer;
+    private ViewComposer  composer = null;
     private final FXMLLoader    loader;
+    private String id;
 
-    View(ViewComposer composer) {
-        this(composer, null);
+    IView(String id, FXMLLoader loader) {
+        this.id = id;
+        this.loader = loader;
     }
 
-    public View(ViewComposer composer, FXMLLoader loader) {
+    public IView(ViewComposer composer, FXMLLoader loader) {
         this.composer = composer;
         this.loader = loader;
     }
@@ -52,18 +54,18 @@ public class View implements IView {
     @Override
     public ActionView getController() {
 
-        if (loader.getController() != null) {
-
-            if (!(loader.getController() instanceof ActionView)) {
-
-                try {
-                    throw new ControllerCastException("CAST", "Error on controller " + loader.getController() + " does not extends action view.");
-                } catch (ControllerCastException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }
+//        if (loader.getController() != null) {
+//
+//            if (!(loader.getController() instanceof ActionView)) {
+//
+////                try {
+////                    throw new ControllerCastException("CAST", "Error on controller " + loader.getController() + " does not extends action view.");
+////                } catch (ControllerCastException e) {
+////                    e.printStackTrace();
+////                }
+//
+//            }
+//        }
 
         return loader.getController();
     }
@@ -85,7 +87,7 @@ public class View implements IView {
 
     @Override
     public String getName() {
-        return composer.getName();
+        return composer == null ? id : composer.getName() ;
     }
 
     @Override

@@ -20,9 +20,13 @@
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators;
 
 import io.github.gleidsonmt.dashboardfx.controllers.BlockHtmlParser;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.BuildCreator;
 import io.github.gleidsonmt.dashboardfx.core.app.material.icon.IconContainer;
 import io.github.gleidsonmt.dashboardfx.core.app.material.icon.Icons;
+import io.github.gleidsonmt.dashboardfx.core.app.services.IView;
+import io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.ActionOptions;
 import io.github.gleidsonmt.gncontrols.controls.GNButton;
 import javafx.collections.FXCollections;
@@ -33,6 +37,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
@@ -44,9 +49,11 @@ import javafx.scene.web.WebView;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.List;
 
-public class PresentationBuild extends StackPane implements BuildCreator {
+public class PresentationBuild extends Container implements BuildCreator {
 
     private final ScrollPane scroll = new ScrollPane();
     private final VBox body = new VBox();
@@ -57,6 +64,7 @@ public class PresentationBuild extends StackPane implements BuildCreator {
     private ObservableList<Node> items = FXCollections.observableArrayList();
 
     public PresentationBuild(String _name) {
+        super.setName(_name);
         this.name = _name;
 
         this.getChildren().setAll(scroll);
@@ -65,7 +73,7 @@ public class PresentationBuild extends StackPane implements BuildCreator {
         scroll.setFitToHeight(true);
         scroll.setFitToWidth(true);
 
-        body.setPadding(new Insets(30));
+        body.setPadding(new Insets(0,30,30,30));
         body.setSpacing(10);
     }
 
@@ -211,15 +219,20 @@ public class PresentationBuild extends StackPane implements BuildCreator {
 
 
     @Override
-    public void build() {
+    public View build() {
+        System.out.println("items = " + items);
         body.getChildren().setAll(
                 items
         );
-        registerRoute(this, "Presentation", name);
+
+//        registerRoute(this, "Presentation", name);
+        return this;
     }
 
 
     private void registerRoute(StackPane root, String title, String name) {
+//        context.routes().registry("presentation")
+//        context.routes().addView()
 //        context.getRoutes().addView(
 //                context.getRoutes().load(root, title, name)
 //        );

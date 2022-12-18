@@ -18,10 +18,8 @@
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
 import io.github.gleidsonmt.dashboardfx.core.layout.Drawer;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Alert;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.CustomDialog;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Dialog;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.IAlert;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.IAlert;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

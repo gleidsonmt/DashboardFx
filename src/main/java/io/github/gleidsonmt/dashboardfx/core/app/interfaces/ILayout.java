@@ -25,13 +25,13 @@ import javafx.scene.Node;
  */
 public interface ILayout {
 
-    void setDrawer(IView iView);
+    void setDrawer(View view);
 
-    void setAside(IView iView);
+    void setAside(View view);
 
-    void setNav(IView iView);
+    void setNav(View view);
 
-    void setFooter(IView iView);
+    void setFooter(View view);
 
     void setBody(Node iView);
 

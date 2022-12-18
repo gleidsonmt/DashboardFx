@@ -17,22 +17,18 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Context;
+import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ILayout;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IView;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.BreakPoints;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.CenterLayout;
 import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
@@ -43,14 +39,15 @@ import javafx.scene.text.Text;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public final class Layout extends BorderPane implements ILayout, Context {
+public final class Layout extends BorderPane implements ILayout {
 
     private final CenterLayout centerLayout = new CenterLayout();
 //    private final GridPane bar = new GridPane();
     private final FlowPane bar          = new FlowPane();
     private final Text title        = new Text("SpeedCut");
 
-    public Layout() {
+    public Layout(Context context) {
+
         setId("layout");
 
 //        leftProperty().addListener((observable, oldValue, newValue) -> {
@@ -86,57 +83,57 @@ public final class Layout extends BorderPane implements ILayout, Context {
 
             context.getWrapper()
                     .getDrawer()
-                    .content(odlDrawer)
+                    .content(oldDrawer)
                     .show();
-
-//            setCenter(new Button("Welcome"));
+//
+            setCenter(new Button("Welcome"));
 
         });
 
         widthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                System.out.println(newValue);
 
 
                 if (newValue.intValue() < BreakPoints.X_SMALL) {
 
-                    setLeft(null);
-                    odlDrawer.setTranslateX(0);
+//                    setLeft(null);
+//                    oldDrawer.setTranslateX(0);
 
-                    if (!context.getDecorator().controls().contains(iconButton)) {
-                        context.getDecorator().controls().add(iconButton);
-                    }
+//                    if (!context.getDecorator().controls().contains(iconButton)) {
+//                        context.getDecorator().controls().add(iconButton);
+//                    }
 
                 } else {
-                    setLeft(odlDrawer);
-                    context.getDecorator().controls().remove(iconButton);
+
+//                    setLeft(oldDrawer);
+//                    context.getDecorator().controls().remove(iconButton);
+
                 }
 
             }
         });
     }
 
-    private StackPane odlDrawer = null;
+    private StackPane oldDrawer = null;
 
     @Override
-    public void setDrawer(IView iView) {
-        odlDrawer = (StackPane) iView.getRoot();
-        setLeft(iView.getRoot());
+    public void setDrawer(View view) {
+        setLeft(view.getRoot());
     }
 
     @Override
-    public void setAside(IView iView) {
-
-    }
-
-    @Override
-    public void setNav(IView iView) {
+    public void setAside(View view) {
 
     }
 
     @Override
-    public void setFooter(IView iView) {
+    public void setNav(View view) {
+
+    }
+
+    @Override
+    public void setFooter(View view) {
 
     }
 

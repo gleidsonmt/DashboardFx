@@ -17,14 +17,18 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
+import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import javafx.application.HostServices;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  02/10/2022
  */
+
+@Deprecated(since = "test", forRemoval = true)
 public interface IApp extends Context {
 
     void runApp(HostServices hostServices);
 
+    void buildViews();
 }

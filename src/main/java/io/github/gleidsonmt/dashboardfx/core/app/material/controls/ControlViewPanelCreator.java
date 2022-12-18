@@ -17,26 +17,26 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
+package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 
-import javafx.geometry.Pos;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 
-public class FloatContainer implements AbsoluteWrapperContainer {
+public class ControlViewPanelCreator implements BuildCreator {
+    private ControlViewPanel body;
 
-    private Pos pos;
-
-    @Override
-    public FloatContainer pos(Pos _pos) {
-        this.pos = _pos;
-        return this;
+    public ControlViewPanelCreator() {
+        this.body = new ControlViewPanel();
     }
 
     @Override
-    public void show() {
+    public View build() {
+        registerRoute(body, "Control IView", "control_view_pane");
+        return null;
+    }
 
-        if (pos == null) {
-            pos = Pos.CENTER;
-        }
-
+    private void registerRoute(ControlViewPanel root, String title, String name) {
+//        context.getRoutes().addView(
+//                context.getRoutes().load(root, title, name)
+//        );
     }
 }

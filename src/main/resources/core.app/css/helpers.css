@@ -1,0 +1,21 @@
+
+
+.border-0 {
+    -fx-border-width : 0px;
+}
+
+.border-1 {
+    -fx-border-width : 1px;
+}
+
+.border-l-1 {
+    -fx-border-width : 0px 0px 0px 1px;
+}
+
+.border-r-1 {
+    -fx-border-width : 0px 1px 0px 0px;
+}
+
+.border-box {
+    -fx-border-color : -light-gray-2;
+}

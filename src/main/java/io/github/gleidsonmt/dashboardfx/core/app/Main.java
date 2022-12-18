@@ -17,80 +17,42 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IApp;
-import javafx.application.Application;
-import javafx.application.HostServices;
-import javafx.stage.Stage;
+import io.github.gleidsonmt.dashboardfx.core.app.controllers.LoaderController;
+import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
+import javafx.fxml.FXMLLoader;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.logging.*;
 
 /**
  * Class that provides logger and states.
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  02/10/2022
  */
-public class Main extends Application implements IApp {
-
-    private final Logger logger = Logger.getLogger("app");
-    private FileHandler fileHandler;
-
-    {
-        try {
-            fileHandler = new FileHandler("dash_logger.txt");
-            fileHandler.setFormatter(new Formatter() {
-                @Override
-                public String format(LogRecord record) {
-
-                    String _logger = record.getLoggerName();
-                    String level = record.getLevel().getLocalizedName();
-                    String message = record.getMessage();
-                    String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd, HH:mm"));
-
-                    String _class = record.getSourceClassName();
-                    String _method = record.getSourceMethodName();
-
-                    return "\n" + "Logger { " + _logger + " }\n" +
-                            "Date and Time " + date + " => Class [" + _class + "]\n" +
-                            "Method -> " + _method + "\n" +
-                            "["+ level +"] Message -> \"" + message +"\"\n";
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+public class Main extends App {
 
     @Override
-    public void stop() {
-
-        logger.info("Stopping Application");
-
-        fileHandler.flush();
-        fileHandler.close();
-
-        context.getProperties().stringPropertyNames().forEach(f -> context.getProperties().setProperty(f, context.getProperties().getProperty(f)));
-
+    public void build(Context context) {
+        // Loader view
+        FXMLLoader loader = new FXMLLoader();
         try {
-            context.getProperties().store(new FileOutputStream("/app.properties" ), "Updating properties");
+            loader.setController(new LoaderController(context));
+            loader.setLocation(getClass().getResource("/core.app/loader.fxml"));
+            loader.load();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
-    }
+        // Setting scene
+//        Scene scene = new Scene(loader.getRoot(), 600, 600);
 
-    @Override
-    public void runApp(HostServices hostServices) {
-        logger.setLevel(Level.OFF);
-        context.startApp(hostServices);
-    }
+        context.routes().navigate("loader", loader);
 
-    @Override
-    public void start(Stage stage) throws Exception {
-//        logger.addHandler(fileHandler);
-        runApp(getHostServices());
+        // Drawer creator
+
+
+
+        // registring views
+//        context.routes().registry("loader", scene);
+//        context.routes().navigate("loader");
     }
 }
