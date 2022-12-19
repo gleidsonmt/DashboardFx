@@ -19,7 +19,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
-import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
+import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.AbsoluteWrapperContainer;
 import javafx.geometry.Pos;
@@ -33,17 +33,17 @@ public class Dialog extends DeclarativeComponent<Dialog> implements AbsoluteWrap
     private int width = 350;
     private int height = 300;
 
-    private final Wrapper wrapper;
+    private final IWrapper IWrapper2;
 
-    public Dialog(Wrapper wrapper) {
-        this.wrapper = wrapper;
+    public Dialog(IWrapper IWrapper2) {
+        this.IWrapper2 = IWrapper2;
 
     }
 
     public Dialog content(StackPane content) {
         this.content = content;
         this.content.setStyle("-fx-background-color : -fx-foreground;");
-        wrapper.getChildren().setAll(content);
+        IWrapper2.getChildren().setAll(content);
         return this;
     }
 
@@ -57,21 +57,21 @@ public class Dialog extends DeclarativeComponent<Dialog> implements AbsoluteWrap
     public void show() {
         if (pos == null) {
             pos = Pos.CENTER;
-            wrapper.setAlignment(pos);
+            IWrapper2.setAlignment(pos);
         }
 
         if (this.content != null)
             this.content.setMaxSize(width, height);
 
-        wrapper.toFront();
-        wrapper.setOnMouseClicked(event -> close());
+        IWrapper2.toFront();
+        IWrapper2.setOnMouseClicked(event -> close());
     }
 
     @Override
     public void close() {
-        wrapper.toBack();
-        wrapper.setAlignment(Pos.CENTER);
-        wrapper.getChildren().clear();
-        wrapper.setOnMouseClicked(null);
+        IWrapper2.toBack();
+        IWrapper2.setAlignment(Pos.CENTER);
+        IWrapper2.getChildren().clear();
+        IWrapper2.setOnMouseClicked(null);
     }
 }

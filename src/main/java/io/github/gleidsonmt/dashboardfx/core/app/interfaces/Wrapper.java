@@ -26,7 +26,7 @@ import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.IAlert
  * Create on  04/09/2022
  */
 @SuppressWarnings("ClassEscapesDefinedScope")
-public interface IWrapper {
+public interface Wrapper {
 
 //    PopupOver getPopOver();
 //

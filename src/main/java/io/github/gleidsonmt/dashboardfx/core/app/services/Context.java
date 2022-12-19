@@ -43,7 +43,7 @@ public interface Context {
     @Deprecated(since = "tets", forRemoval = true)
     IDecorator getDecorator();
 
-    IWrapper getWrapper();
+    Wrapper getWrapper();
 
     ILayout getLayout();
 

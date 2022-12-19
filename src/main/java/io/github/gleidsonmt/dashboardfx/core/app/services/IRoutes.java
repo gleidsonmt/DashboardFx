@@ -26,7 +26,7 @@ public class IRoutes implements Routes {
 
     // navigate
     public Routes navigate(String id) {
-        this.root.getChildren().setAll(manager.get(id).getRoot());
+        this.root.getChildren().setAll(root.getWrapper(), manager.get(id).getRoot());
         return this;
     }
 
@@ -74,7 +74,7 @@ public class IRoutes implements Routes {
 
         IView view = new IView(id, loader);
 //        this.addView(view);
-        this.root.getChildren().setAll((Node) loader.getRoot());
+        this.root.getLayout().setBody(loader.getRoot());
 
         return this;
     }

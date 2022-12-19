@@ -24,9 +24,6 @@ import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.BuildCreator;
 import io.github.gleidsonmt.dashboardfx.core.app.material.icon.IconContainer;
 import io.github.gleidsonmt.dashboardfx.core.app.material.icon.Icons;
-import io.github.gleidsonmt.dashboardfx.core.app.services.IView;
-import io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer;
-import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.ActionOptions;
 import io.github.gleidsonmt.gncontrols.controls.GNButton;
 import javafx.collections.FXCollections;
@@ -37,7 +34,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
@@ -49,8 +45,6 @@ import javafx.scene.web.WebView;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.List;
 
 public class PresentationBuild extends Container implements BuildCreator {

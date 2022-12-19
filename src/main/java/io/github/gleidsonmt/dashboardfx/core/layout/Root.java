@@ -19,8 +19,9 @@ package io.github.gleidsonmt.dashboardfx.core.layout;
 
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IRoot;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
+import javafx.collections.ListChangeListener;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 
@@ -32,12 +33,12 @@ public final class Root extends StackPane implements IRoot {
 
     private SnackBar snackBar;
     private final Layout layout;
-    private final Wrapper wrapper;
+    private final IWrapper wrapper;
 
     public Root(Context context) {
 
         layout = new Layout(context);
-        wrapper = new Wrapper();
+        wrapper = new IWrapper();
 
         layout.setMinSize(400, 400);
 
@@ -46,6 +47,14 @@ public final class Root extends StackPane implements IRoot {
 
         setId("root");
 
+        getChildren().addListener(new ListChangeListener<Node>() {
+            @Override
+            public void onChanged(Change<? extends Node> c) {
+                if(c.next()) {
+                    System.out.println(c.getList());
+                }
+            }
+        });
 
 //        window.widthProperty().addListener((observable, oldValue, newValue) -> {
 //            double drawerWidth = 250;

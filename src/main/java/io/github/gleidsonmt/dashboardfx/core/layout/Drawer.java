@@ -21,6 +21,7 @@ package io.github.gleidsonmt.dashboardfx.core.layout;
 
 import io.github.gleidsonmt.dashboardfx.core.app.PresentationCreator;
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
@@ -38,7 +39,8 @@ import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, NestedWrapperContainer {
-    private final Wrapper wrapper;
+
+    private final IWrapper wrapper;
     private StackPane content;
     private final Timeline timeline = new Timeline();
 
@@ -47,7 +49,7 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
     private Context context;
     private final EventHandler<MouseEvent> closeEvent = event -> hide();
 
-    public Drawer(Wrapper _wrapper) {
+    public Drawer(IWrapper _wrapper) {
         this.wrapper = _wrapper;
     }
 
@@ -119,7 +121,7 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
     @FXML
     private void goWrapper() {
         try {
-            context.routes().setContent("wrapper");
+            context.routes().setContent("wrapper2");
         } catch (NavigationException e) {
             throw new RuntimeException(e);
         }

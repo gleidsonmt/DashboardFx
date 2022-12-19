@@ -17,7 +17,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IWrapper;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Alert;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Dialog;
 import javafx.geometry.Insets;
@@ -31,9 +31,9 @@ import javafx.scene.paint.Color;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  05/10/2022
  */
-public class Wrapper extends StackPane implements IWrapper {
+public class IWrapper extends StackPane implements Wrapper {
 
-    public Wrapper() {
+    public IWrapper() {
 
         setBackground(
                 new Background(

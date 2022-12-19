@@ -21,7 +21,7 @@ import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.services.LoadViews;
 import io.github.gleidsonmt.dashboardfx.core.layout.Drawer;
-import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
+import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
 import javafx.animation.RotateTransition;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -66,7 +66,7 @@ public class LoaderController implements Initializable {
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/views/drawer.fxml"));
-            loader.setController(new Drawer((Wrapper) context.getWrapper()));
+            loader.setController(new Drawer((IWrapper) context.getWrapper()));
             try {
                 loader.load();
             } catch (IOException e) {

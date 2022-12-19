@@ -21,7 +21,7 @@ package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
 import animatefx.animation.AnimationFX;
 import animatefx.animation.Pulse;
-import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
+import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.IAlert;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.AlertType;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.DialogAction;
@@ -55,8 +55,8 @@ public class Alert extends Dialog implements IAlert {
 
     private ObservableList<DialogAction> dialogActions = FXCollections.observableArrayList();
 
-    public Alert(Wrapper _wrapper) {
-        super(_wrapper);
+    public Alert(IWrapper _I_wrapper2) {
+        super(_I_wrapper2);
         this.container = new StackPane();
         this.body = new VBox();
         this.body.setAlignment(Pos.TOP_CENTER);

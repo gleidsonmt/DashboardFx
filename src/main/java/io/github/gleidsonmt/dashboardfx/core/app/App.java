@@ -27,6 +27,7 @@ import io.github.gleidsonmt.dashboardfx.core.layout.Root;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.scenicview.ScenicView;
 
 import java.util.Objects;
 
@@ -56,7 +57,7 @@ public abstract class App extends Application {
 
         stage.setScene(scene);
         stage.show();
-//        ScenicView.show(scene);
+        ScenicView.show(scene);
     }
 
     public abstract void build(Context context);

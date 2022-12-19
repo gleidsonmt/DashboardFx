@@ -67,13 +67,13 @@ public class IContext implements Context {
     }
 
     @Override
-    public IWrapper getWrapper() {
-        return null;
+    public Wrapper getWrapper() {
+        return root.getWrapper();
     }
 
     @Override
     public ILayout getLayout() {
-        return null;
+        return root.getLayout();
     }
 
     @Override

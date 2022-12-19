@@ -19,12 +19,17 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
+import io.github.gleidsonmt.dashboardfx.core.app.material.icon.IconContainer;
+import io.github.gleidsonmt.dashboardfx.core.app.material.icon.Icons;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.Author;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.PresentationBuild;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.ActionOptions;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.AlertType;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.DialogAction;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.SnackColors;
 import javafx.geometry.HPos;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
@@ -141,6 +146,7 @@ public class PresentationCreator extends PresentationBuild {
 
 
     private void createDrawer(HPos side) {
+
         context.getWrapper()
                 .getDrawer()
                 .side(side)
@@ -150,45 +156,44 @@ public class PresentationCreator extends PresentationBuild {
     }
 
     public void createDialogPopup() {
-//        context.getWrapper()
-//                .getDialog()
-//                .content(
-//                    new StackPane(
-//                        new Label("Custom Dialog Wrapper"))
-//                    )
-//                .show();
+        context.getWrapper()
+                .getDialog()
+                .content(
+                    new StackPane(
+                        new Label("Custom Dialog Wrapper"))
+                    )
+                .show();
     }
 
     private void createSnack() {
-//        context.getDecorator()
-//                .getRoot()
-//                .createSnackBar()
-//                .color(SnackColors.SUCCESS)
-//                .icon(new IconContainer(Icons.DONE))
-//                .message("Your message")
-//                .show();
+        context.getRoot()
+                .createSnackBar()
+                .color(SnackColors.SUCCESS)
+                .icon(new IconContainer(Icons.DONE))
+                .message("Your message")
+                .show();
     }
 
     private void createDialog(AlertType _type) {
-//        context.getWrapper()
-//                .getAlert()
-//                .title("Info Alert")
-//                .text("""
-//                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-//                        Mauris volutpat mauris sit amet rhoncus tempor. Morbi in ex mattis,
-//                        sagittis tellus et, accumsan magna.
-//                        In quis purus sit amet odio fringilla commodo nec ut massa.
-//                    """
-//                )
-//                .actions(
-//                    new DialogAction(
-//                            "Ok", ButtonType.OK, event -> System.out.println("Button ok pressed!")
-//                    ),
-//                    new DialogAction(
-//                        "Cancel", ButtonType.CANCEL, event -> System.out.println("Button cancel pressed!")
-//                    )
-//                ).type(_type)
-//                .show();
+        context.getWrapper()
+                .getAlert()
+                .title("Info Alert")
+                .text("""
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Mauris volutpat mauris sit amet rhoncus tempor. Morbi in ex mattis,
+                        sagittis tellus et, accumsan magna.
+                        In quis purus sit amet odio fringilla commodo nec ut massa.
+                    """
+                )
+                .actions(
+                    new DialogAction(
+                            "Ok", ButtonType.OK, event -> System.out.println("Button ok pressed!")
+                    ),
+                    new DialogAction(
+                        "Cancel", ButtonType.CANCEL, event -> System.out.println("Button cancel pressed!")
+                    )
+                ).type(_type)
+                .show();
     }
 
 }

@@ -34,7 +34,7 @@ public interface IRoot {
 
     void setContent(Parent content);
 
-    IWrapper getWrapper();
+    Wrapper getWrapper();
 
     ILayout getLayout();
 
