@@ -6,15 +6,23 @@
   <img src="./src/main/resources/logo/logo_flier.png"  />
 </p>
 
+# Build Context
+
+# Declarative Style
+
+# Yaml
+
+# Libs
+
 # 🛠 Enhancements
 
 Next:
 
-- [ ] Block code com button
+- [X] Block code com button
 - [ ] alerts podem mudar icone
 - [ ] alerts podem alterar a transição [usando fxanimations]
 - [ ] remover dependencias de bibliotecas [enxugar]
-- [ ] passar style class para os buttons
+- [X] passar style class para os buttons
 
 To Do:
 

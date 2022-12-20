@@ -130,9 +130,7 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
     private View presentation;
     @FXML
     private void goDevelopers() {
-        System.out.println("go developers" + context);
         if(presentation == null) presentation = new PresentationCreator("presentation", context).build();
-        System.out.println(presentation.getName());
         try {
             context.routes().registry("presentation", presentation.getRoot());
             context.routes().setContent(presentation.getName());

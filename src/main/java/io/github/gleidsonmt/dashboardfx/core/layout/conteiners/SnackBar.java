@@ -19,7 +19,7 @@ package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
 import animatefx.animation.RollIn;
 import animatefx.animation.RollOut;
-import io.github.gleidsonmt.dashboardfx.core.layout.Root;
+import io.github.gleidsonmt.dashboardfx.core.layout.IRoot;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.WrapperContainer;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.SnackColors;
 import javafx.event.ActionEvent;
@@ -45,8 +45,8 @@ import org.kordamp.ikonli.material.Material;
  */
 public class SnackBar implements WrapperContainer {
 
-    // Root to get background
-    private final Root root;
+    // IRoot to get background
+    private final IRoot IRoot;
 
     // Events to set
     private EventHandler<ActionEvent> undoEvent;
@@ -56,8 +56,8 @@ public class SnackBar implements WrapperContainer {
     private Node icon;
     private SnackColors color = SnackColors.GRAY;
 
-    public SnackBar(Root root) {
-        this.root = root;
+    public SnackBar(IRoot IRoot) {
+        this.IRoot = IRoot;
     }
 
     public SnackBar message(String message) {
@@ -119,14 +119,14 @@ public class SnackBar implements WrapperContainer {
         GridPane snack = createSnack();
 
         if (top) {
-            root.setAlignment(Pos.TOP_CENTER);
+            IRoot.setAlignment(Pos.TOP_CENTER);
             snack.setTranslateY(10);
         } else {
             snack.setTranslateY(-10);
-            root.setAlignment(Pos.BOTTOM_CENTER);
+            IRoot.setAlignment(Pos.BOTTOM_CENTER);
         }
 
-        root.getChildren().add(snack);
+        IRoot.getChildren().add(snack);
 
         RollIn animation = new RollIn(snack);
         animation.setSpeed(1.5);

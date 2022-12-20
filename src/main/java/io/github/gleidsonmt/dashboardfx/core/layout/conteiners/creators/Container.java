@@ -32,23 +32,24 @@ import java.nio.charset.Charset;
 public class Container extends StackPane implements ActionView, View {
 
     private String name;
+//    Context context;
 
     public void setName(String name) {
         this.name = name;
     }
+
     @Override
     public void onEnter(Context context) {
-
+        System.out.println("context1 = " + context);
     }
 
     @Override
     public void onExit(Context context) {
-
+        System.out.println("context2 = " + context);
     }
 
     @Override
     public void onInit(Context context) {
-
     }
 
     @Override
@@ -63,7 +64,7 @@ public class Container extends StackPane implements ActionView, View {
 
     @Override
     public ActionView getController() {
-        return null;
+        return this;
     }
 
     @Override

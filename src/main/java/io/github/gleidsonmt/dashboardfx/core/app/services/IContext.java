@@ -20,14 +20,21 @@
 package io.github.gleidsonmt.dashboardfx.core.app.services;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
-import io.github.gleidsonmt.dashboardfx.core.layout.Root;
+import io.github.gleidsonmt.dashboardfx.core.layout.IRoot;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 import java.util.Properties;
 import java.util.logging.Logger;
 
 public class IContext implements Context {
+
     private Routes routes;
-    private Root root;
+    private IRoot root;
+
+    private ObservableList<Image> icons;
 
     public IContext() {
 
@@ -37,7 +44,7 @@ public class IContext implements Context {
         this.routes = _routes;
     }
 
-    public void setRoot(Root root) {
+    public void setRoot(IRoot root) {
         this.root = root;
     }
 
@@ -91,7 +98,23 @@ public class IContext implements Context {
 
     }
 
-    public Root getRoot() {
+    @Override
+    public Stage getStage() {
+        return null;
+    }
+
+    @Override
+    public void icons(Image... _icons) {
+        if (icons == null) icons = FXCollections.observableArrayList(_icons);
+    }
+
+    public ObservableList<Image> getIcons() {
+        return icons;
+    }
+
+    @Deprecated(forRemoval = true)
+    public IRoot getRoot() {
         return root;
     }
+
 }

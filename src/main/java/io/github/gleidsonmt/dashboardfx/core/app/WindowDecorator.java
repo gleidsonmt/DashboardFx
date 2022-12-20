@@ -20,7 +20,7 @@ package io.github.gleidsonmt.dashboardfx.core.app;
 import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.gleidsonmt.dashboardfx.core.app.controllers.LoaderController;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IDecorator;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IRoot;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Root;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.PathView;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Routes;
 import io.github.gleidsonmt.dashboardfx.core.app.services.LoadViews1;
@@ -56,7 +56,7 @@ public final class WindowDecorator extends GNDecorator implements IDecorator {
 
     private Routes routes;
 
-    private final IRoot root = null;
+    private final Root root = null;
 
     public WindowDecorator(@NotNull Properties _properties, @NotNull PathView _path) throws IOException {
         // setTheme and logo here
@@ -64,7 +64,7 @@ public final class WindowDecorator extends GNDecorator implements IDecorator {
 
         this.getIcons().add(new Image(getClass().getResource("/core.app/logo/logo_32.png").toExternalForm()));
 
-//        root = new Root(this);
+//        root = new IRoot(this);
 
         Scene scene = this.getWindow().getScene();
 
@@ -106,7 +106,7 @@ public final class WindowDecorator extends GNDecorator implements IDecorator {
     }
 
     @Override
-    public IRoot getRoot() {
+    public Root getRoot() {
         return root;
     }
 

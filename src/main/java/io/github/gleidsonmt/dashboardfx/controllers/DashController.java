@@ -43,7 +43,6 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
     @Override
     public void onEnter(Context context) {
-        System.out.println("context = " + context);
     }
 
     @Override

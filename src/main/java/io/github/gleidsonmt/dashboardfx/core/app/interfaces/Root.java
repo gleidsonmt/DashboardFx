@@ -26,7 +26,7 @@ import javafx.scene.Parent;
  */
 
 @SuppressWarnings("all")
-public interface IRoot {
+public interface Root {
 
     void setTitle(String title);
 

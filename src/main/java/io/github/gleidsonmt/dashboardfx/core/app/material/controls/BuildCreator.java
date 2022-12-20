@@ -24,8 +24,6 @@ import io.github.gleidsonmt.dashboardfx.core.app.services.IView;
 
 public interface BuildCreator {
 
-//    void build();
-
     View build();
 
 }

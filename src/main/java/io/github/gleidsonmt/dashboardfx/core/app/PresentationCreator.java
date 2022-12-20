@@ -38,7 +38,7 @@ public class PresentationCreator extends PresentationBuild {
     private Context context;
 
     public PresentationCreator(String _name, Context context) {
-        super(_name);
+        super(_name, context);
         this.context = context;
 
         this

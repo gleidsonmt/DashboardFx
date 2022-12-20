@@ -22,23 +22,23 @@ package io.github.gleidsonmt.dashboardfx.core.app;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.services.IContext;
 import io.github.gleidsonmt.dashboardfx.core.app.services.IRoutes;
+import io.github.gleidsonmt.dashboardfx.core.layout.IRoot;
 import io.github.gleidsonmt.dashboardfx.core.layout.Material;
-import io.github.gleidsonmt.dashboardfx.core.layout.Root;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.scenicview.ScenicView;
 
 import java.util.Objects;
 
 public abstract class App extends Application {
 
     private final IContext context;
-    private final Root root;
+    private final IRoot root;
 
     public App() {
         context = new IContext();
-        root = new Root(context);
+        root = new IRoot(context);
         context.setRoutes(new IRoutes(root, context));
         context.routes().registry("layout", root.getLayout() );
         context.setRoot(root);
@@ -55,9 +55,9 @@ public abstract class App extends Application {
 
 //        context.routes().registry("dash", new Layout(context));
 
+        stage.getIcons().setAll(context.getIcons());
         stage.setScene(scene);
         stage.show();
-        ScenicView.show(scene);
     }
 
     public abstract void build(Context context);

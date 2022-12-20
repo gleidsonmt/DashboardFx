@@ -4,9 +4,8 @@ import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Routes;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
-import io.github.gleidsonmt.dashboardfx.core.layout.Root;
+import io.github.gleidsonmt.dashboardfx.core.layout.IRoot;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 
@@ -16,17 +15,17 @@ import java.nio.charset.Charset;
 public class IRoutes implements Routes {
 
     private final ViewManager manager = new ViewManager();
-    private final Root root;
+    private final IRoot IRoot;
     private final Context context;
 
-    public IRoutes(Root _root, Context _context) {
-        this.root = _root;
+    public IRoutes(IRoot _I_root, Context _context) {
+        this.IRoot = _I_root;
         this.context = _context;
     }
 
     // navigate
     public Routes navigate(String id) {
-        this.root.getChildren().setAll(root.getWrapper(), manager.get(id).getRoot());
+        this.IRoot.getChildren().setAll(IRoot.getWrapper(), manager.get(id).getRoot());
         return this;
     }
 
@@ -74,7 +73,7 @@ public class IRoutes implements Routes {
 
         IView view = new IView(id, loader);
 //        this.addView(view);
-        this.root.getLayout().setBody(loader.getRoot());
+        this.IRoot.getLayout().setBody(loader.getRoot());
 
         return this;
     }
@@ -96,16 +95,15 @@ public class IRoutes implements Routes {
     @Override
     public void setContent(String _view) throws NavigationException {
         View view = doActions(manager.get(_view));
-        System.out.println("view = " + view.getRoot());
         doActions(view);
-        root.getLayout().setBody(view.getRoot());
+        IRoot.getLayout().setBody(view.getRoot());
     }
 
     @Override
     public void setView(String _view) throws NavigationException {
         View view = getView(_view);
         doActions(view);
-        this.root.getLayout().setBody(view.getRoot());
+        this.IRoot.getLayout().setBody(view.getRoot());
     }
 
     private View doActions(View view) {

@@ -24,7 +24,9 @@ import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.BuildCreator;
 import io.github.gleidsonmt.dashboardfx.core.app.material.icon.IconContainer;
 import io.github.gleidsonmt.dashboardfx.core.app.material.icon.Icons;
+import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.ActionOptions;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.SnackColors;
 import io.github.gleidsonmt.gncontrols.controls.GNButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,9 +59,12 @@ public class PresentationBuild extends Container implements BuildCreator {
     private final List<Label> titles = List.of();
     private ObservableList<Node> items = FXCollections.observableArrayList();
 
-    public PresentationBuild(String _name) {
+    private Context context;
+
+    public PresentationBuild(String _name, Context _context) {
         super.setName(_name);
         this.name = _name;
+        this.context = _context;
 
         this.getChildren().setAll(scroll);
         scroll.setContent(body);
@@ -157,6 +162,14 @@ public class PresentationBuild extends Container implements BuildCreator {
         webView.getEngine().loadContent(
                 new BlockHtmlParser().javaStringToHtml(text)
         );
+        webView.setOnScroll(event -> {
+//            System.out.println(event.getDeltaY());
+//            System.out.println("event.getTotalDeltaY() = " + event.getTotalDeltaY());
+//            System.out.println("event.getTextDeltaY() = " + event.getTextDeltaY());
+//            if (event.getDeltaY() > 0) {
+//                event.getTarget();
+//            }
+        });
         root.getChildren().addAll(webView, btn);
 
         btn.setOnAction(event -> {
@@ -165,13 +178,13 @@ public class PresentationBuild extends Container implements BuildCreator {
             content.putHtml("<b>Bold</b> text");
             Clipboard.getSystemClipboard().setContent(content);
 
-//            context.getDecorator()
-//                    .getRoot()
-//                    .createSnackBar()
-//                    .icon(new IconContainer(Icons.DONE))
-//                    .color(SnackColors.SUCCESS)
-//                    .message("Copied!")
-//                    .show();
+            context.getRoot()
+                    .createSnackBar()
+                    .icon(new IconContainer(Icons.DONE))
+                    .color(SnackColors.SUCCESS)
+                    .message("Copied!")
+                    .show();
+
         });
         return root;
     }
@@ -214,7 +227,6 @@ public class PresentationBuild extends Container implements BuildCreator {
 
     @Override
     public View build() {
-        System.out.println("items = " + items);
         body.getChildren().setAll(
                 items
         );

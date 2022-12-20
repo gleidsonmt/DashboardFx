@@ -28,9 +28,13 @@ public class Material {
         return FXCollections.observableArrayList(
                 "/core.app/css/colors.css",
                 "/core.app/css/skeleton.css",
-                "/core.app/css/typographic.css",
+                "/core.app/css/theme/simple_info.css",
                 "/core.app/css/bootstrap.css",
-                "/core.app/css/imersive_scroll.css"
+                "/core.app/css/typographic.css",
+                "/core.app/css/imersive_scroll.css",
+                "/core.app/css/shapes.css",
+                "/core.app/css/helpers.css",
+                "/dash.css"
         );
     }
 }

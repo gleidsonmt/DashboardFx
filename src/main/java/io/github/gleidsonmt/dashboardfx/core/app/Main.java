@@ -20,6 +20,7 @@ package io.github.gleidsonmt.dashboardfx.core.app;
 import io.github.gleidsonmt.dashboardfx.core.app.controllers.LoaderController;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 
 import java.io.IOException;
 
@@ -45,6 +46,12 @@ public class Main extends App {
         // Setting scene
 //        Scene scene = new Scene(loader.getRoot(), 600, 600);
 
+        context.icons(
+                new Image("logo_64.png"),
+                new Image("logo_32.png"),
+                new Image("logo_48.png"),
+                new Image("logo_16.png")
+        );
         context.routes().navigate("loader", loader);
 
         // Drawer creator

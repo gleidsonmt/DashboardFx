@@ -20,6 +20,8 @@
 package io.github.gleidsonmt.dashboardfx.core.app.services;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -47,13 +49,20 @@ public interface Context {
 
     ILayout getLayout();
 
-    IRoot getRoot();
+    Root getRoot();
 
     @Deprecated(since = "1", forRemoval = true)
     Routes getRoutes();
-    @Deprecated
+
+    @Deprecated(since = "1", forRemoval = true)
     PathView getPaths();
 
     void openLink(String url);
+
+    @Deprecated(forRemoval = true)
+    Stage getStage();
+
+    void icons(Image... icons);
+
 
 }
