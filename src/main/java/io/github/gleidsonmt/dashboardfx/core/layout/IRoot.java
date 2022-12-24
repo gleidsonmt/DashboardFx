@@ -19,7 +19,9 @@ package io.github.gleidsonmt.dashboardfx.core.layout;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Root;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.BreakPoints;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 
@@ -41,10 +43,21 @@ public final class IRoot extends StackPane implements Root {
         layout.setMinSize(400, 400);
 
         getChildren().setAll(wrapper, layout);
-
-
         setId("root");
+        setPadding(new Insets(2));
+        setStyle("-fx-border-color : -light-gray-2; -fx-border-width : 1px;");
 
+        widthProperty().addListener((obs, oldValue, newValue) -> {
+            System.out.println("here");
+            double drawerWidth = 250;
+            if (newValue.doubleValue() < BreakPoints.MEDIUM) {
+                if (layout.getLeft() == null) return;
+                layout.setLeft(null);
+            } else {
+                if (layout.getLeft() == layout.getOldLeftNode()) return;
+                layout.setLeft(layout.getOldLeftNode());
+            }
+        });
 
 //        window.widthProperty().addListener((observable, oldValue, newValue) -> {
 //            double drawerWidth = 250;

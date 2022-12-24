@@ -31,7 +31,7 @@
     -fx-padding : 10px;
     -fx-border-color : transparent;
     -fx-background-color : transparent;
-    -fx-font-family : Roboto;
+    -fx-font-weight : normal;
 }
 
 .drawer-menu .title .arrow-button  {
@@ -59,11 +59,19 @@
 
 #drawer-box #drawer-menu-selected {
     -fx-border-color : -fx-accent;
-    -fx-border-width : 0px 2px 0px 0px;
+    -fx-border-width : 0px 3px 0px 0px;
+    -fx-border-radius : 0px;
+    -fx-border-insets : 0px;
+    -fx-background-insets : 0px;
+    -fx-padding : 0px;
 }
 
-#drawer-box #drawer-menu-selected SVGPath {
-    -fx-fill : -text-color;
+#drawer-box #drawer-menu-selected .drawer-item {
+    -fx-border-width : 0px;
+}
+
+#drawer-box #drawer-menu-selected .drawer-item:selected SVGPath {
+    -fx-fill : -fx-accent;
 }
 
 .drawer-item,
@@ -78,14 +86,18 @@
 .drawer-item:selected,
 #drawer-box .drawer-item:selected {
     -fx-text-fill : -fx-accent;
-    -fx-border-color : -mint-2 ;
+    -fx-border-color : -fx-accent ;
     -fx-border-width : 0 0 0 2.5;
-    -fx-background-color : linear-gradient(to left, derive(-fx-accent, 95%), derive(-fx-accent, 90%));
+    -fx-background-color : linear-gradient(to left, derive(-aqua, 95%), derive(-aqua, 95%));
     -fx-font-weight : bold;
 }
 
+#drawer-box .drawer-item:selected:hover {
+    -fx-background-color : transparent;
+}
+
 #drawer-box .drawer-item:selected SVGPath {
-     -fx-fill :  linear-gradient(to left, -mint, -aqua-2  );
+     -fx-fill :  -aqua;
 }
 
 .drawer-item:hover,
@@ -93,16 +105,28 @@
      -fx-text-fill : -hover-color;
 }
 
+
+
 #drawer-box .drawer-item SVGPath  {
     -fx-fill : -text-color;
 }
 
-#drawer-box .drawer-item:hover .lead-icon .icon {
-    -fx-fill : -hover-color;
+#drawer-box .drawer-item:hover .lead-icon,
+#drawer-box .drawer-item:hover SVGPath
+{
+    -fx-fill : -mint;
 }
 
-#drawer-box .drawer-item:selected .lead-icon .icon {
+#drawer-box .drawer-item:selected .lead-icon,
+#drawer-box .drawer-item:selected:hover .lead-icon,
+#drawer-box .drawer-item:selected:hover SVGPath
+
+{
     -fx-fill : -fx-accent;
+}
+
+#drawer-box .drawer-item:hover:selected {
+    -fx-text-fill : -fx-accent;
 }
 
 #drawer-box .drawer-item .lead-icon .icon {

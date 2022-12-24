@@ -19,6 +19,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.view_wrapper;
 
+@Deprecated(forRemoval = true)
 public enum BreakPoints2 {
 
     X_SMALL(576),

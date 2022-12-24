@@ -46,19 +46,23 @@ public final class Layout extends BorderPane implements ILayout {
     private final FlowPane bar          = new FlowPane();
     private final Text title        = new Text("SpeedCut");
 
+    private Node oldLeftNode;
+
     public Layout(Context context) {
 
         setId("layout");
 
-//        leftProperty().addListener((observable, oldValue, newValue) -> {
-//            if (newValue != null) oldLeftNode = newValue;
-//        });
+        leftProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) oldLeftNode = newValue;
+        });
 
 //        hasDrawer.bind(leftProperty().isNull());
 
         getStyleClass().add("layout");
 
-        //        getChildren().add(0, bar);
+//        getChildren().add(0, bar);
+//        setTop(bar);
+//        bar.toBack();
         centerLayout.setPadding(new Insets(0, 0, 0,0));
 
         bar.setPrefHeight(40);
@@ -140,5 +144,9 @@ public final class Layout extends BorderPane implements ILayout {
     @Override
     public void setBody(Node iView) {
         centerLayout.setBody((Parent) iView);
+    }
+
+    public Node getOldLeftNode() {
+        return oldLeftNode;
     }
 }

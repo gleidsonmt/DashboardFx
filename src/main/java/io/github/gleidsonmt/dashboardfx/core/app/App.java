@@ -19,6 +19,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
+import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.services.IContext;
 import io.github.gleidsonmt.dashboardfx.core.app.services.IRoutes;
@@ -28,6 +29,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.scenicview.ScenicView;
 
 import java.util.Objects;
 
@@ -55,9 +57,12 @@ public abstract class App extends Application {
 
 //        context.routes().registry("dash", new Layout(context));
 
+        CSSFX.start(scene);
         stage.getIcons().setAll(context.getIcons());
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
+//        ScenicView.show(scene);
     }
 
     public abstract void build(Context context);

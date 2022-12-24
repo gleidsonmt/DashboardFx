@@ -52,6 +52,7 @@ public class Main extends App {
                 new Image("logo_48.png"),
                 new Image("logo_16.png")
         );
+
         context.routes().navigate("loader", loader);
 
         // Drawer creator

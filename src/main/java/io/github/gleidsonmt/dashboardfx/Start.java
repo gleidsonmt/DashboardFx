@@ -22,6 +22,7 @@ import io.github.gleidsonmt.dashboardfx.core.app.Main;
 /**
  * The main class ta start structure.
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @Version 2.1.1
  * Create on  02/10/2022
  */
 public class Start extends Main {

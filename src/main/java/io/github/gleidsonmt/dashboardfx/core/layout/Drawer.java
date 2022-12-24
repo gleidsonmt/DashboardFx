@@ -34,12 +34,18 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, NestedWrapperContainer {
 
+    @FXML private ToggleGroup group;
+    @FXML private StackPane root;
     private final IWrapper wrapper;
     private StackPane content;
     private final Timeline timeline = new Timeline();
@@ -121,7 +127,7 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
     @FXML
     private void goWrapper() {
         try {
-            context.routes().setContent("wrapper2");
+            context.routes().setContent("wrapper");
         } catch (NavigationException e) {
             throw new RuntimeException(e);
         }
@@ -167,5 +173,10 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
     @Override
     public void onInit(Context context) {
         this.context = context;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        new DrawerBehavior(root, group);
     }
 }
