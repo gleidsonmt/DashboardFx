@@ -24,6 +24,10 @@ public class Author {
     private String name;
     private String gitUrl;
 
+    public Author(String name) {
+        this(name, null);
+    }
+
     public Author(String name, String gitUrl) {
         this.name = name;
         this.gitUrl = gitUrl;

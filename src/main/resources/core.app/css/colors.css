@@ -63,13 +63,18 @@
     CHART_COLOR_1: -info;
     CHART_COLOR_2: -mint;
     CHART_COLOR_3: -amber;
+    CHART_COLOR_4: -grapefruit;
+    CHART_COLOR_5: -teal;
 
     CHART_COLOR_1_TRANS_20: derive(-info, 20%);
     CHART_COLOR_2_TRANS_20: derive(-mint, 20%);
     CHART_COLOR_3_TRANS_20: derive(-amber, 20%);
+    CHART_COLOR_4_TRANS_20: derive(-grapefruit, 20%);
     /* 70% opacity */
     CHART_COLOR_1_TRANS_70: derive(-info, 70%);
     CHART_COLOR_2_TRANS_70: derive(-mint, 70%);
+    CHART_COLOR_3_TRANS_70: derive(-amber, 70%);
+    CHART_COLOR_4_TRANS_70: derive(-grapefruit, 70%);
 
 }
 
