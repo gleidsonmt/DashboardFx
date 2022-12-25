@@ -21,6 +21,7 @@ To Do:
  ##### Add Search Bar {SearchBar, SearchItem[type])
  ##### Add Badges
  ##### Add Actions in top
+ ##### adicionar animação nas tiles de dashboard
 
 Doing:
 - [ ] alerts podem mudar icone
