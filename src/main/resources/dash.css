@@ -99,3 +99,19 @@ Text, .text, .label {
 .bubble-item:selected {
     -fx-background-color : transparent;
 }
+
+
+.schedule-item .icon {
+    -fx-border-width : 2px;
+    -fx-border-radius : 100px;
+    -fx-font-weight : bold;
+}
+
+.schedule-item .title {
+    -fx-font-weight : bold;
+    -fx-font-size : 10pt;
+}
+
+.donut-chart {
+    -fx-border-color : -light-gray-2;
+}
