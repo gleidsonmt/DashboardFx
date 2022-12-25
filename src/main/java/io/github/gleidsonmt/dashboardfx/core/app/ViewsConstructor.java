@@ -19,20 +19,10 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
-import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlViewPanelCreator;
-import io.github.gleidsonmt.dashboardfx.core.app.material.icon.IconContainer;
-import io.github.gleidsonmt.dashboardfx.core.app.material.icon.Icons;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.Author;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.PresentationBuild;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.ActionOptions;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.AlertType;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.DialogAction;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.SnackColors;
 import javafx.geometry.HPos;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 
+@Deprecated(forRemoval = true)
 public class ViewsConstructor {
 
     public void create() {

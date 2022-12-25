@@ -17,10 +17,13 @@
 
 package io.github.gleidsonmt.dashboardfx.controllers;
 
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ResponsiveView;
 import io.github.gleidsonmt.dashboardfx.core.controls.DonutChart;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListCreator;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -34,6 +37,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
@@ -41,69 +45,69 @@ import java.util.ResourceBundle;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
+@SuppressWarnings("unchecked")
 public final class DashController extends ResponsiveView implements ActionView, Initializable {
 
     public Label lblCustom;
-    @FXML private StackedAreaChart<String, Number> graphic;
-    @FXML private VBox body;
-    @FXML private GridPane footer;
+    @FXML
+    private StackedAreaChart<Number, Number> graphic;
+    @FXML
+    private VBox body;
+    @FXML
+    private GridPane footer;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CategoryAxis xAxis = new CategoryAxis();
-        xAxis.setCategories(FXCollections.observableArrayList(
-                Arrays.asList("1750", "1800", "1850", "1900", "1950", "1999", "2050" )));
-
-        NumberAxis yAxis = new NumberAxis(0, 10000, 2500);
-        yAxis.setLabel("Population in Millions");
 
         //Creating the Area chart
         graphic.setTitle("Sales by Region");
 
         //Prepare XYChart.Series objects by setting data
-        XYChart.Series series1 = new XYChart.Series();
+        XYChart.Series<Number, Number> series1 = new XYChart.Series<>();
         series1.setName("North");
 
-        series1.getData().add(new XYChart.Data(10.5, 100));
-        series1.getData().add(new XYChart.Data(18, 70));
-        series1.getData().add(new XYChart.Data(10, 21));
-        series1.getData().add(new XYChart.Data(42, 90));
-        series1.getData().add(new XYChart.Data(45, 110));
-        series1.getData().add(new XYChart.Data(57, 90));
-        series1.getData().add(new XYChart.Data(59, 86));
-        series1.getData().add(new XYChart.Data(86, 20));
-        series1.getData().add(new XYChart.Data(97, 30));
-        series1.getData().add(new XYChart.Data(99, 110));
+        series1.getData().add(new XYChart.Data<>(10.5, 100.0));
+        series1.getData().add(new XYChart.Data<>(18d, 70d));
+        series1.getData().add(new XYChart.Data<>(10d, 21d));
+        series1.getData().add(new XYChart.Data<>(42d, 90d));
+        series1.getData().add(new XYChart.Data<>(45d, 110d));
+        series1.getData().add(new XYChart.Data<>(57d, 90d));
+        series1.getData().add(new XYChart.Data<>(59d, 86d));
+        series1.getData().add(new XYChart.Data<>(86d, 20d));
+        series1.getData().add(new XYChart.Data<>(97d, 30d));
+        series1.getData().add(new XYChart.Data<>(99d, 110d));
 
-        XYChart.Series series2 = new XYChart.Series();
+        XYChart.Series<Number, Number> series2 = new XYChart.Series();
         series2.setName("East");
 
-        series2.getData().add(new XYChart.Data(11, 110));
-        series2.getData().add(new XYChart.Data(11.5, 120));
-        series2.getData().add(new XYChart.Data(19, 110));
-        series2.getData().add(new XYChart.Data(32, 90));
-        series2.getData().add(new XYChart.Data(48, 140));
-        series2.getData().add(new XYChart.Data(49, 104));
-        series2.getData().add(new XYChart.Data(77, 50));
-        series2.getData().add(new XYChart.Data(79, 140));
-        series2.getData().add(new XYChart.Data(90, 120));
-        series2.getData().add(new XYChart.Data(100, 90));
+        series2.getData().add(new XYChart.Data<>(11d, 110d));
+        series2.getData().add(new XYChart.Data<>(11.5d, 120d));
+        series2.getData().add(new XYChart.Data<>(19d, 110d));
+        series2.getData().add(new XYChart.Data<>(32d, 90d));
+        series2.getData().add(new XYChart.Data<>(48d, 140d));
+        series2.getData().add(new XYChart.Data<>(49d, 104d));
+        series2.getData().add(new XYChart.Data<>(77d, 50d));
+        series2.getData().add(new XYChart.Data<>(79d, 140d));
+        series2.getData().add(new XYChart.Data<>(90d, 120d));
+        series2.getData().add(new XYChart.Data<>(100d, 90d));
 
-        XYChart.Series series3 = new XYChart.Series();
+        XYChart.Series<Number, Number> series3 = new XYChart.Series<>();
         series3.setName("South");
 
-        series3.getData().add(new XYChart.Data(5, 15));
-        series3.getData().add(new XYChart.Data(20, 110));
-        series3.getData().add(new XYChart.Data(13, 230));
-        series3.getData().add(new XYChart.Data(27, 180));
-        series3.getData().add(new XYChart.Data(42, 160));
-        series3.getData().add(new XYChart.Data(49, 100));
-        series3.getData().add(new XYChart.Data(53, 150));
-        series3.getData().add(new XYChart.Data(58, 200));
-        series3.getData().add(new XYChart.Data(70, 190));
-        series3.getData().add(new XYChart.Data(94, 160));
+        series3.getData().add(new XYChart.Data<>(5d, 15d));
+        series3.getData().add(new XYChart.Data<>(20d, 110d));
+        series3.getData().add(new XYChart.Data<>(13d, 230d));
+        series3.getData().add(new XYChart.Data<>(27d, 180d));
+        series3.getData().add(new XYChart.Data<>(42d, 160d));
+        series3.getData().add(new XYChart.Data<>(49d, 100d));
+        series3.getData().add(new XYChart.Data<>(53d, 150d));
+        series3.getData().add(new XYChart.Data<>(58d, 200d));
+        series3.getData().add(new XYChart.Data<>(70d, 190d));
+        series3.getData().add(new XYChart.Data<>(94d, 160d));
 
         //Setting the data to area chart
+
+//        graphic.getData().
         graphic.getData().addAll(series1, series2, series3);
 
 
@@ -121,9 +125,73 @@ public final class DashController extends ResponsiveView implements ActionView, 
         donutChart.setMinHeight(400);
         donutChart.setData(data);
 
-        footer.setGridLinesVisible(true);
-        footer.getChildren().add(donutChart);
-        GridPane.setConstraints(donutChart, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.NEVER, Priority.NEVER);
+        View scheduleList = new ScheduleListCreator()
+                .title("Schedule")
+                .items(
+                        new ScheduleListItem(
+                                4,
+                                "UI/UX Shopping",
+                                "10 of 45 chapters",
+                                "Gleidson",
+                                LocalTime.of(12, 45)
+                        ),
+                        new ScheduleListItem(
+                                20,
+                                "UI/UX Shopping",
+                                "10 of 45 chapters",
+                                "Gleidson",
+                                LocalTime.of(12, 45)
+                        ),
+                        new ScheduleListItem(
+                                35,
+                                "UI/UX Shopping",
+                                "10 of 45 chapters",
+                                "Gleidson",
+                                LocalTime.of(12, 45),
+                                event -> System.out.println("Click action trigged!")
+
+                        )
+                )
+                .build();
+
+        CategoryAxis xAxis = new CategoryAxis();
+        xAxis.setCategories(FXCollections.observableArrayList(
+                Arrays.asList("10", "20", "30", "40", "50", "60", "70" )));
+//
+//        NumberAxis xAxis = new NumberAxis(0, 10000, 2500);
+//        xAxis.setLabel("Population in Millions");
+
+        NumberAxis yAxis = new NumberAxis(0, 1000, 100);
+        yAxis.setLabel("Population in Millions");
+
+        BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+        XYChart.Series<String, Number> s = new XYChart.Series<>();
+        s.getData().add(new XYChart.Data<>("20", 40));
+        s.getData().add(new XYChart.Data<>("30", 300));
+        s.getData().add(new XYChart.Data<>("40", 500));
+        s.getData().add(new XYChart.Data<>("50", 798));
+        s.setName("North");
+
+        XYChart.Series<String, Number> b = new XYChart.Series<>();
+        b.getData().add(new XYChart.Data<>("20", 146));
+        b.getData().add(new XYChart.Data<>("30", 456));
+        b.getData().add(new XYChart.Data<>("40", 234));
+        b.getData().add(new XYChart.Data<>("50", 609));
+        b.setName("South");
+
+        XYChart.Series<String, Number> c = new XYChart.Series<>();
+        c.getData().add(new XYChart.Data<>("40", 200));
+        c.getData().add(new XYChart.Data<>("60", 280));
+        c.getData().add(new XYChart.Data<>("40", 900));
+        c.getData().add(new XYChart.Data<>("40", 700));
+        c.setName("East");
+        barChart.getData().addAll(s, b, c);
+
+        footer.getChildren().addAll(donutChart, barChart,  scheduleList.getRoot());
+        GridPane.setConstraints(donutChart, 0, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES);
+        GridPane.setConstraints(barChart, 1, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(scheduleList.getRoot(), 0, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+
     }
 
     @Override
@@ -138,49 +206,5 @@ public final class DashController extends ResponsiveView implements ActionView, 
     @Override
     public void onInit(Context context) {
 
-    }
-
-    @FXML
-    private void createSnackSuccess() {
-//
-//        context.getDecorator()
-//                .getRoot()
-//                .createSnackBar()
-//                .message("My Snack Succes")
-//                .undo(event -> {
-//                    lblCustom.setText(text);
-//                })
-//                .icon(Material.PERSON_ADD)
-//                .color(SnackColors.SUCCESS)
-//                .show();
-    }
-
-    @FXML
-    private  void createSnackDanger() {
-        lblCustom.setText("Created by danger");
-//        context.getDecorator()
-//                .getRoot()
-//                .createSnackBar()
-//                .message("My Dangerous Succes")
-//                .undo(event -> {
-//                    System.out.println("Event from snack");
-//                })
-//                .icon(Material.INFO)
-//                .color(SnackColors.INFO)
-//                .showOnTop();
-    }
-
-    @FXML
-    private void createAlert(){
-//        context.getDecorator().getRoot()
-//                .getWrapper()
-//                .getAlert()
-////                .type(AlertType.WARNING)
-////                .text("There's no tomorrow rock balboa.")
-//                .title("Test in title")
-//                .show();
-//
-//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//        alert.getButtonTypes().add(ButtonType.APPLY);
     }
 }
