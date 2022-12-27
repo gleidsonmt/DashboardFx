@@ -22,6 +22,7 @@ import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ResponsiveView;
 import io.github.gleidsonmt.dashboardfx.core.controls.DonutChart;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.CardCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListItem;
 import javafx.collections.FXCollections;
@@ -32,6 +33,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -157,9 +159,6 @@ public final class DashController extends ResponsiveView implements ActionView, 
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setCategories(FXCollections.observableArrayList(
                 Arrays.asList("10", "20", "30", "40", "50", "60", "70" )));
-//
-//        NumberAxis xAxis = new NumberAxis(0, 10000, 2500);
-//        xAxis.setLabel("Population in Millions");
 
         NumberAxis yAxis = new NumberAxis(0, 1000, 100);
         yAxis.setLabel("Population in Millions");
@@ -187,10 +186,20 @@ public final class DashController extends ResponsiveView implements ActionView, 
         c.setName("East");
         barChart.getData().addAll(s, b, c);
 
-        footer.getChildren().addAll(donutChart, barChart,  scheduleList.getRoot());
+        Image image = new Image("logo_flier.png");
+        CardCreator card = new CardCreator(
+                image, "Title", """
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Sed non convallis lorem. Nulla et sapien pulvinar, 
+                vestibulum ex id, laoreet lectus. 
+                """
+        );
+
+        footer.getChildren().addAll(donutChart, barChart,  scheduleList.getRoot(), card);
         GridPane.setConstraints(donutChart, 0, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES);
         GridPane.setConstraints(barChart, 1, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(scheduleList.getRoot(), 0, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(card, 1, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
 
     }
 

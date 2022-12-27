@@ -125,6 +125,15 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
     }
 
     @FXML
+    private void goDash() {
+        try {
+            context.routes().setContent("dash");
+        } catch (NavigationException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     private void goWrapper() {
         try {
             context.routes().setContent("wrapper");

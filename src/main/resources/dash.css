@@ -28,6 +28,13 @@ Text, .text, .label {
 
 ******/
 
+.center-layout .bar {
+    -fx-background-color : -fx-background;
+    -fx-min-height : 40px;
+    -fx-border-color : -light-gray-2;
+    -fx-border-width : 0 0 1 0;
+}
+
 .hamburger {
     -fx-background-color : transparent;
     -fx-min-height : 20px;

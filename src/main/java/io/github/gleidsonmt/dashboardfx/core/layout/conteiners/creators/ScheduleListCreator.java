@@ -20,7 +20,6 @@
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
-import io.github.gleidsonmt.dashboardfx.core.app.material.controls.BubbleItem;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.BuildCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,11 +33,12 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
-import javafx.scene.text.Text;
 
+/**
+ * Precisa refatorar
+ */
 public class ScheduleListCreator
         extends Container
         implements BuildCreator

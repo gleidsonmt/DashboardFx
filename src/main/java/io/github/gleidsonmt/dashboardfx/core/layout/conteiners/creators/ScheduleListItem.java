@@ -70,12 +70,11 @@ public class ScheduleListItem extends GridPane {
         GridPane.setConstraints(this.time, 2,0,1,2, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         this.getChildren().setAll(num, title, legend, this.time);
 
-        if (event != null) {
-            GNIconButton iconButton = new GNIconButton();
-            iconButton.setIcon(Icons.CHEVRON_RIGHT);
-            this.getChildren().add(iconButton);
-            GridPane.setConstraints(iconButton, 3,0,1,2, HPos.RIGHT, VPos.CENTER, Priority.NEVER, Priority.NEVER);
-        }
+        GNIconButton iconButton = new GNIconButton();
+        iconButton.setIcon(Icons.CHEVRON_RIGHT);
+        this.getChildren().add(iconButton);
+        GridPane.setConstraints(iconButton, 3,0,1,2, HPos.RIGHT, VPos.CENTER, Priority.NEVER, Priority.NEVER);
+
         this.setVgap(5);
         this.setHgap(5);
     }
