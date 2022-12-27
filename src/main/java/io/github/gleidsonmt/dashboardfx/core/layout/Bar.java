@@ -17,9 +17,72 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
+import javafx.scene.Node;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
+import org.jetbrains.annotations.ApiStatus;
+
+import java.util.List;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  08/10/2022
  */
-public class Bar {
+
+@ApiStatus.Internal
+@ApiStatus.AvailableSince("0.1")
+@SuppressWarnings("unused")
+public class Bar extends GridPane {
+    private final HBox left = new HBox();
+    private final HBox right = new HBox();
+
+    public Bar() {
+        left.setId("bar-left");
+        right.setId("bar-right");
+        left.setSpacing(2);
+        right.setSpacing(2);
+        left.setAlignment(Pos.CENTER_LEFT);
+        right.setAlignment(Pos.CENTER_RIGHT);
+        this.getChildren().setAll(left, right);
+        GridPane.setConstraints(left, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(right, 1,0,1,1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+    }
+
+    public void addInLeft(Node node) {
+        addInLeft(0, node);
+    }
+
+    public void addInRight(Node node) {
+        addInRight(0, node);
+    }
+
+    public void addInLeft(Node... nodes) {
+        addInLeft(0, nodes);
+    }
+
+    public void addInRight(Node... nodes) {
+        addInRight(0, nodes);
+    }
+
+    public void addInLeft(int index, Node node) {
+        this.left.getChildren().add(index,node);
+    }
+
+    public void addInRight(int index, Node node) {
+        this.right.getChildren().add(index, node);
+    }
+
+    public void addInLeft(int start, Node... nodes) {
+        this.left.getChildren().addAll(start, List.of(nodes));
+    }
+
+    public void addInRight(int start, Node... nodes) {
+        this.right.getChildren().addAll(start, List.of(nodes));
+    }
+
 }

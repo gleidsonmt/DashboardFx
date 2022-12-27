@@ -7,6 +7,19 @@
 
 */
 
+/* @btn */
+.btn-flat {
+    -fx-border-width : 1px;
+    -fx-border-color : -light-gray;
+    -fx-background-color : transparent;
+}
+
+.btn-flat .icon,
+.btn-flat .icon-container .icon,
+.btn-flat SVGPath {
+    -fx-fill : -text-color;
+}
+
 /* @Color - Linear */
 
 .danger {

@@ -1,6 +1,6 @@
 
 
-.border-0 {
+.border-0, .no-border {
     -fx-border-width : 0px;
 }
 

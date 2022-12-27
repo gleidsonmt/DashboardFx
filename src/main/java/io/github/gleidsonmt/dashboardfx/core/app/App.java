@@ -62,7 +62,7 @@ public abstract class App extends Application {
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
-//        ScenicView.show(scene);
+        ScenicView.show(scene);
     }
 
     public abstract void build(Context context);
