@@ -14,6 +14,11 @@
     -fx-background-color : transparent;
 }
 
+.transparent {
+    -fx-background-color : transparent;
+    -fx-border-color : transparent;
+}
+
 .btn-flat .icon,
 .btn-flat .icon-container .icon,
 .btn-flat SVGPath {
