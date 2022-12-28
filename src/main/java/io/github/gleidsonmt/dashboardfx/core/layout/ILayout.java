@@ -18,7 +18,7 @@
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ILayout;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Layout;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.BreakPoints;
 import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
@@ -39,16 +39,15 @@ import javafx.scene.text.Text;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public final class Layout extends BorderPane implements ILayout {
+public final class ILayout extends BorderPane implements Layout {
 
     private final CenterLayout centerLayout = new CenterLayout();
 //    private final GridPane bar = new GridPane();
-    private final FlowPane bar          = new FlowPane();
     private final Text title        = new Text("SpeedCut");
 
     private Node oldLeftNode;
 
-    public Layout(Context context) {
+    public ILayout(Context context) {
 
         setId("layout");
 
@@ -64,18 +63,6 @@ public final class Layout extends BorderPane implements ILayout {
 //        setTop(bar);
 //        bar.toBack();
         centerLayout.setPadding(new Insets(0, 0, 0,0));
-
-        bar.setPrefHeight(40);
-        bar.setMinHeight(40);
-
-        bar.getStyleClass().addAll("border", "border-b-1");
-
-        VBox.setMargin(bar, new Insets(0, 10, 0, 10));
-
-        title.setStyle("-fx-font-size : 18pt; -fx-fill : -info;");
-
-        title.setMouseTransparent(true);
-        bar.getChildren().add(title);
 
         setCenter(centerLayout);
 
@@ -148,5 +135,9 @@ public final class Layout extends BorderPane implements ILayout {
 
     public Node getOldLeftNode() {
         return oldLeftNode;
+    }
+
+    public Bar getBar() {
+        return centerLayout.getBar();
     }
 }

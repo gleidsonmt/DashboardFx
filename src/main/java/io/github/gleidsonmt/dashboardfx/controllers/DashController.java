@@ -18,25 +18,32 @@
 package io.github.gleidsonmt.dashboardfx.controllers;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
+import io.github.gleidsonmt.dashboardfx.core.app.material.color.Colors;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ResponsiveView;
 import io.github.gleidsonmt.dashboardfx.core.controls.DonutChart;
+import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.CardCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListItem;
+import io.github.gleidsonmt.gncontrols.controls.GNAvatarStatus;
+import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
+import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.time.LocalTime;
@@ -113,19 +120,9 @@ public final class DashController extends ResponsiveView implements ActionView, 
         graphic.getData().addAll(series1, series2, series3);
 
 
-        ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
-        data.add(new PieChart.Data("left", 30));
-        data.add(new PieChart.Data("top", 20));
-        data.add(new PieChart.Data("bottom", 10));
-        data.add(new PieChart.Data("right", 40));
 
-        DonutChart donutChart = new DonutChart();
-        donutChart.setTitle("Processors");
-        donutChart.setAnimated(true);
-        donutChart.setLabelsVisible(true);
-        donutChart.setLabelLineLength(10);
-        donutChart.setMinHeight(400);
-        donutChart.setData(data);
+
+
 
         View scheduleList = new ScheduleListCreator()
                 .title("Schedule")
@@ -195,16 +192,68 @@ public final class DashController extends ResponsiveView implements ActionView, 
                 """
         );
 
-        footer.getChildren().addAll(donutChart, barChart,  scheduleList.getRoot(), card);
-        GridPane.setConstraints(donutChart, 0, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES);
+        footer.getChildren().addAll(createDonut(), barChart,  scheduleList.getRoot(), card);
+        GridPane.setConstraints(footer.getChildren().get(0), 0, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES);
         GridPane.setConstraints(barChart, 1, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(scheduleList.getRoot(), 0, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(card, 1, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
 
     }
 
+    private DonutChart createDonut() {
+        DonutChart donutChart = new DonutChart();
+
+        ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
+        data.add(new PieChart.Data("left", 30));
+        data.add(new PieChart.Data("top", 20));
+        data.add(new PieChart.Data("bottom", 10));
+        data.add(new PieChart.Data("right", 40));
+
+        donutChart.setTitle("Processors");
+        donutChart.setAnimated(true);
+        donutChart.setLabelsVisible(true);
+        donutChart.setLabelLineLength(10);
+        donutChart.setMinHeight(400);
+        donutChart.setData(data);
+        return donutChart;
+    }
+
+    boolean load = false;
+
     @Override
     public void onEnter(Context context) {
+        if (!load) {
+
+            Label title = new Label("Dashboard");
+            title.textProperty().bindBidirectional(context.routes().title());
+            title.setPadding(new Insets(0,0,0,5));
+            title.getStyleClass().addAll("title", "text-14");
+
+            context.bar().addInLeft(title);
+
+            GNBadge notification = new GNBadge(Icons.NOTIFICATIONS);
+            notification.setColorCircle(Color.web(Colors.AQUA.toString()));
+            GNBadge sms = new GNBadge(Icons.SMS);
+//            sms.setColorCircle(Color.web(Colors.GRAPEFRUIT.toString()));
+
+            Pane space = new Pane();
+            space.setMinWidth(10);
+
+            HBox options = new HBox();
+            options.setAlignment(Pos.CENTER);
+            GNAvatarStatus avatarStatus = new GNAvatarStatus();
+            avatarStatus.setImage(new Image("avatar.jpg"));
+
+            GNIconButton btnArrow = new GNIconButton(Icons.ARROW_DROP_DOWN);
+            btnArrow.getStyleClass().addAll("btn-flat", "no-border");
+            options.getChildren().setAll(avatarStatus, new Text("Gleidson Neves"), btnArrow);
+            avatarStatus.setPadding(new Insets(2));
+            avatarStatus.setRadius(15);
+            context.root().bar().addInRight(sms, notification, space, options);
+
+
+            load = true;
+        }
     }
 
     @Override
@@ -214,6 +263,5 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
     @Override
     public void onInit(Context context) {
-
     }
 }

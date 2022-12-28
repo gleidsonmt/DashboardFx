@@ -17,14 +17,16 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
+import io.github.gleidsonmt.dashboardfx.core.layout.Bar;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
 import javafx.scene.Parent;
+import org.jetbrains.annotations.ApiStatus;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  20/08/2022
  */
-
+@ApiStatus.Experimental
 @SuppressWarnings("all")
 public interface Root {
 
@@ -36,7 +38,9 @@ public interface Root {
 
     Wrapper getWrapper();
 
-    ILayout getLayout();
+    Layout getLayout();
+
+    Bar bar();
 
 
 //    double getWidth();

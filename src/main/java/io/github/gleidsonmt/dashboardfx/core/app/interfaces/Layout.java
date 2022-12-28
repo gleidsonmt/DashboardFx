@@ -23,7 +23,7 @@ import javafx.scene.Node;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public interface ILayout {
+public interface Layout {
 
     void setDrawer(View view);
 

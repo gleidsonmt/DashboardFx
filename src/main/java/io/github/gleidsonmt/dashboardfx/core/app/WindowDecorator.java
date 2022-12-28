@@ -120,37 +120,6 @@ public final class WindowDecorator extends GNDecorator implements IDecorator {
 
         initPreLoader();
 
-        LoadViews1 loadViews1 = new LoadViews1();
-
-        loadViews1.setOnReady(event -> {
-//            loaderController.info("Reading application..");
-        });
-
-        loadViews1.setOnFailed(event -> {
-            Logger.getLogger("app").severe("Error on loading preloader");
-        });
-
-        loadViews1.setOnCancelled(event -> {
-            Logger.getLogger("app").severe("Error on loading preloader");
-        });
-
-        loadViews1.setOnRunning(event -> {
-//            loaderController.info("Reading application..");
-        });
-
-        loadViews1.setOnSucceeded(event -> {
-            initLayout();
-
-//            try {
-//                context.getRoutes().setContent("dash");
-//            } catch (NavigationException e) {
-//                e.printStackTrace();
-//            }
-
-        });
-
-
-        loadViews1.start();
         show();
 
 //        ScenicView.show(this.getWindow().getScene());

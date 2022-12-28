@@ -166,7 +166,7 @@ public class PresentationCreator extends PresentationBuild {
     }
 
     private void createSnack() {
-        context.getRoot()
+        context.root()
                 .createSnackBar()
                 .color(SnackColors.SUCCESS)
                 .icon(new IconContainer(Icons.DONE))

@@ -22,15 +22,20 @@ To Do:
  ##### Add Badges
  ##### Add Actions in top
  ##### adicionar animação nas tiles de dashboard
+ ##### GNBadge tem que virar um component customizavel
+ ##### GNBadge deve ir pra gncontrols
+ 
+
 
 Doing:
 - [ ] alerts podem mudar icone
 - [ ] alerts podem alterar a transição [usando fxanimations]
 - [ ] remover dependencias de bibliotecas [enxugar]
 - [ ] Metodo dos cards que ficam bunitinhos
+- [ ] Criando barr utilizando declarative style
 
-
-Done
+  Done
+- [X] Create a bar with icons
 - [X] Criar um author no presentation creator
 - [X] passar style class para os buttons
 - [X] Put color in block strings (block code)

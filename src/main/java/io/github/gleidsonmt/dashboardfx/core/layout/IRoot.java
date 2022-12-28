@@ -17,6 +17,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Layout;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Root;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.BreakPoints;
@@ -24,20 +25,22 @@ import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
+import org.jetbrains.annotations.ApiStatus;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
+@ApiStatus.Internal
 public final class IRoot extends StackPane implements Root {
 
     private SnackBar snackBar;
-    private final Layout layout;
+    private final ILayout layout;
     private final IWrapper wrapper;
 
     public IRoot(Context context) {
 
-        layout = new Layout(context);
+        layout = new ILayout(context);
         wrapper = new IWrapper();
 
         layout.setMinSize(400, 400);
@@ -48,7 +51,6 @@ public final class IRoot extends StackPane implements Root {
         setStyle("-fx-border-color : -light-gray-2; -fx-border-width : 1px;");
 
         widthProperty().addListener((obs, oldValue, newValue) -> {
-            System.out.println("here");
             double drawerWidth = 250;
             if (newValue.doubleValue() < BreakPoints.MEDIUM) {
                 if (layout.getLeft() == null) return;
@@ -67,14 +69,14 @@ public final class IRoot extends StackPane implements Root {
 //
 //            if (needsBar.get()) {
 //                if (_new < BreakPoints.X_LARGE) {
-//                    layout.setLeft(null);
+//                    ILayout.setLeft(null);
 //                    window.addControl(0, hamburger);
-//                    layout.getBar().setPadding(new Insets(0,0,0,40));
+//                    ILayout.getBar().setPadding(new Insets(0,0,0,40));
 //
 //                } else {
 //                    window.removeControl(hamburger);
-//                    layout.setLeft(layout.getOldLeft());
-//                    layout.getBar().setPadding(new Insets(0));
+//                    ILayout.setLeft(ILayout.getOldLeft());
+//                    ILayout.getBar().setPadding(new Insets(0));
 //                }
 //            }
 //
@@ -106,5 +108,10 @@ public final class IRoot extends StackPane implements Root {
     @Override
     public Layout getLayout() {
         return layout;
+    }
+
+    @Override
+    public Bar bar() {
+        return layout.getBar();
     }
 }

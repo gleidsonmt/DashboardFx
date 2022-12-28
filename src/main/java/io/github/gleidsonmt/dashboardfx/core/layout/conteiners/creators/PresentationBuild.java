@@ -178,7 +178,7 @@ public class PresentationBuild extends Container implements BuildCreator {
             content.putHtml("<b>Bold</b> text");
             Clipboard.getSystemClipboard().setContent(content);
 
-            context.getRoot()
+            context.root()
                     .createSnackBar()
                     .icon(new IconContainer(Icons.DONE))
                     .color(SnackColors.SUCCESS)

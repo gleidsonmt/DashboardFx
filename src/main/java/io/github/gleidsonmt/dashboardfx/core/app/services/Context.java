@@ -20,10 +20,9 @@
 package io.github.gleidsonmt.dashboardfx.core.app.services;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
+import io.github.gleidsonmt.dashboardfx.core.layout.Bar;
 import javafx.scene.image.Image;
-import javafx.stage.Stage;
 
-import java.util.Properties;
 import java.util.logging.Logger;
 
 /**
@@ -32,35 +31,20 @@ import java.util.logging.Logger;
  */
 public interface Context {
 
+    Root root();
+
+    Bar bar();
+
     Routes routes();
 
-    ILayout layout();
-
-    @Deprecated
-    Properties getProperties();
+    Layout layout();
 
     @Deprecated
     Logger getLogger();
 
-    @Deprecated(since = "tets", forRemoval = true)
-    IDecorator getDecorator();
-
     Wrapper getWrapper();
 
-    ILayout getLayout();
-
-    Root getRoot();
-
-    @Deprecated(since = "1", forRemoval = true)
-    Routes getRoutes();
-
-    @Deprecated(since = "1", forRemoval = true)
-    PathView getPaths();
-
     void openLink(String url);
-
-    @Deprecated(forRemoval = true)
-    Stage getStage();
 
     void icons(Image... icons);
 

@@ -94,3 +94,10 @@ SVGPath {
 .button:cancel {
     -fx-border-radius : 2px;
 }
+
+/* @GNControls */
+
+.gn-badge .box {
+    -fx-text-fill : white;
+}
+

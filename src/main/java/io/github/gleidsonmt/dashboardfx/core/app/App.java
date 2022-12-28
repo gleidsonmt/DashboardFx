@@ -26,6 +26,7 @@ import io.github.gleidsonmt.dashboardfx.core.app.services.IRoutes;
 import io.github.gleidsonmt.dashboardfx.core.layout.IRoot;
 import io.github.gleidsonmt.dashboardfx.core.layout.Material;
 import javafx.application.Application;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -42,7 +43,7 @@ public abstract class App extends Application {
         context = new IContext();
         root = new IRoot(context);
         context.setRoutes(new IRoutes(root, context));
-        context.routes().registry("layout", root.getLayout() );
+        context.routes().registry("layout", (Parent) root.getLayout());
         context.setRoot(root);
     }
 
@@ -55,14 +56,14 @@ public abstract class App extends Application {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(s)).toExternalForm());
         }
 
-//        context.routes().registry("dash", new Layout(context));
+//        context.routes().registry("dash", new ILayout(context));
 
         CSSFX.start(scene);
         stage.getIcons().setAll(context.getIcons());
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
-        ScenicView.show(scene);
+//        ScenicView.show(scene);
     }
 
     public abstract void build(Context context);

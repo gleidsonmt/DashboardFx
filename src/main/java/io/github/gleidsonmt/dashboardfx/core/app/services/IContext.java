@@ -20,15 +20,16 @@
 package io.github.gleidsonmt.dashboardfx.core.app.services;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
+import io.github.gleidsonmt.dashboardfx.core.layout.Bar;
 import io.github.gleidsonmt.dashboardfx.core.layout.IRoot;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
-import javafx.stage.Stage;
+import org.jetbrains.annotations.ApiStatus;
 
-import java.util.Properties;
 import java.util.logging.Logger;
 
+@ApiStatus.Internal
 public class IContext implements Context {
 
     private Routes routes;
@@ -44,8 +45,18 @@ public class IContext implements Context {
         this.routes = _routes;
     }
 
-    public void setRoot(IRoot root) {
-        this.root = root;
+    public void setRoot(Root root) {
+        this.root = (IRoot) root;
+    }
+
+    @Override
+    public Root root() {
+        return root;
+    }
+
+    @Override
+    public Bar bar() {
+        return root.bar();
     }
 
     @Override
@@ -54,13 +65,8 @@ public class IContext implements Context {
     }
 
     @Override
-    public ILayout layout() {
+    public Layout layout() {
         return root.getLayout();
-    }
-
-    @Override
-    public Properties getProperties() {
-        return null;
     }
 
     @Override
@@ -69,38 +75,14 @@ public class IContext implements Context {
     }
 
     @Override
-    public IDecorator getDecorator() {
-        return null;
-    }
-
-    @Override
     public Wrapper getWrapper() {
         return root.getWrapper();
     }
 
-    @Override
-    public ILayout getLayout() {
-        return root.getLayout();
-    }
-
-    @Override
-    public Routes getRoutes() {
-        return null;
-    }
-
-    @Override
-    public PathView getPaths() {
-        return null;
-    }
 
     @Override
     public void openLink(String url) {
 
-    }
-
-    @Override
-    public Stage getStage() {
-        return null;
     }
 
     @Override
@@ -112,9 +94,5 @@ public class IContext implements Context {
         return icons;
     }
 
-    @Deprecated(forRemoval = true)
-    public IRoot getRoot() {
-        return root;
-    }
 
 }

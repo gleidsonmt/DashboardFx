@@ -17,6 +17,13 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
+import javafx.beans.binding.IntegerBinding;
+import javafx.beans.property.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
@@ -28,6 +35,7 @@ import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -41,6 +49,8 @@ public class Bar extends GridPane {
     private final HBox left = new HBox();
     private final HBox right = new HBox();
 
+    BooleanProperty hasChild = new SimpleBooleanProperty();
+
     public Bar() {
         left.setId("bar-left");
         right.setId("bar-right");
@@ -51,6 +61,22 @@ public class Bar extends GridPane {
         this.getChildren().setAll(left, right);
         GridPane.setConstraints(left, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(right, 1,0,1,1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+
+
+        IntegerBinding totalBinding = new IntegerBinding() {
+
+            {
+                super.bind(left.getChildren(), right.getChildren());
+            }
+
+            @Override
+            protected int computeValue() {
+                return left.getChildren().size() + right.getChildren().size();
+            }
+        };
+
+        hasChild.bind(totalBinding.greaterThan(0));
+
     }
 
     public void addInLeft(Node node) {
@@ -58,7 +84,7 @@ public class Bar extends GridPane {
     }
 
     public void addInRight(Node node) {
-        addInRight(0, node);
+        addInRight(right.getChildren().size() , node);
     }
 
     public void addInLeft(Node... nodes) {
@@ -85,4 +111,31 @@ public class Bar extends GridPane {
         this.right.getChildren().addAll(start, List.of(nodes));
     }
 
+    public void removeInRight(Node node) {
+        this.right.getChildren().remove(node);
+    }
+
+    public void removeInRight(int index) {
+        this.right.getChildren().remove(index);
+    }
+
+    public void removeInRight(Node... nodes) {
+        this.right.getChildren().removeAll(nodes);
+    }
+
+    public void removeInLeft(Node node) {
+        this.left.getChildren().remove(node);
+    }
+
+    public void removeInLeft(int index) {
+        this.left.getChildren().remove(index);
+    }
+
+    public void removeInLeft(Node... nodes) {
+        this.left.getChildren().removeAll(nodes);
+    }
+
+    public boolean hasChildren() {
+        return left.getChildren().size() > 0 || right.getChildren().size() > 0;
+    }
 }

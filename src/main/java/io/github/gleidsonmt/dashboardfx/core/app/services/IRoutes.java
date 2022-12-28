@@ -1,10 +1,13 @@
 package io.github.gleidsonmt.dashboardfx.core.app.services;
 
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Root;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Routes;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.layout.IRoot;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
@@ -15,17 +18,19 @@ import java.nio.charset.Charset;
 public class IRoutes implements Routes {
 
     private final ViewManager manager = new ViewManager();
-    private final IRoot IRoot;
+    private final IRoot root;
     private final Context context;
 
-    public IRoutes(IRoot _I_root, Context _context) {
-        this.IRoot = _I_root;
+    private StringProperty title = new SimpleStringProperty();
+
+    public IRoutes(Root _root, Context _context) {
+        this.root = (IRoot) _root;
         this.context = _context;
     }
 
     // navigate
     public Routes navigate(String id) {
-        this.IRoot.getChildren().setAll(IRoot.getWrapper(), manager.get(id).getRoot());
+        this.root.getChildren().setAll(root.getWrapper(), manager.get(id).getRoot());
         return this;
     }
 
@@ -40,7 +45,14 @@ public class IRoutes implements Routes {
 
                     @Override
                     public ViewComposer getComposer() {
-                        return null;
+                        ViewComposer viewComposer = new ViewComposer();
+                        viewComposer.setName(key);
+                        viewComposer.setTitle(
+                                key.substring(0,1).toUpperCase() +
+                                        key.substring(1)
+
+                        );
+                        return viewComposer;
                     }
 
                     @Override
@@ -73,7 +85,7 @@ public class IRoutes implements Routes {
 
         IView view = new IView(id, loader);
 //        this.addView(view);
-        this.IRoot.getLayout().setBody(loader.getRoot());
+        this.root.getLayout().setBody(loader.getRoot());
 
         return this;
     }
@@ -93,20 +105,27 @@ public class IRoutes implements Routes {
     }
 
     @Override
+    public StringProperty title() {
+        return title;
+    }
+
+    @Override
     public void setContent(String _view) throws NavigationException {
         View view = doActions(manager.get(_view));
         doActions(view);
-        IRoot.getLayout().setBody(view.getRoot());
+        root.getLayout().setBody(view.getRoot());
     }
 
     @Override
     public void setView(String _view) throws NavigationException {
         View view = getView(_view);
         doActions(view);
-        this.IRoot.getLayout().setBody(view.getRoot());
+        this.root.getLayout().setBody(view.getRoot());
     }
 
     private View doActions(View view) {
+
+        context.routes().title().setValue(view.getComposer().getTitle());
 
         if (view.getController() != null) {
             Object controller = view.getController();
@@ -134,7 +153,7 @@ public class IRoutes implements Routes {
         manager.add(view);
     }
 
-    @Deprecated
+    @Deprecated(forRemoval = true)
     @Override
     public void goHome() {
 
@@ -156,13 +175,13 @@ public class IRoutes implements Routes {
     }
 
     @Override
-    @Deprecated
+    @Deprecated(forRemoval = true)
     public View load(String folder, String title, String name) {
         return null;
     }
 
     @Override
-    @Deprecated
+    @Deprecated(forRemoval = true)
     public View load(Pane root, String title, String name) {
         return null;
     }

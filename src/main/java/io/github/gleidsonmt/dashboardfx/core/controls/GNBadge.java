@@ -20,27 +20,67 @@
 package io.github.gleidsonmt.dashboardfx.core.controls;
 
 import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
+import io.github.gleidsonmt.gncontrols.controls.GNTextBox;
+import io.github.gleidsonmt.gncontrols.controls.skin.GNTextBoxBase;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.css.*;
 import javafx.geometry.Pos;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.control.Skin;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import org.jetbrains.annotations.ApiStatus;
 
-public class GNBadge extends StackPane {
+import java.util.List;
+
+public class GNBadge extends Control {
+
+    private static final StyleablePropertyFactory<GNBadge> FACTORY =
+            new StyleablePropertyFactory<>(Control.getClassCssMetaData());
+
+    private final StyleableObjectProperty<Color> colorCircle =
+            new SimpleStyleableObjectProperty<>(COLOR_CIRCLE, this, "colorCircle", Color.WHITE);
+
+    private static final CssMetaData<GNBadge, Color> COLOR_CIRCLE =
+            FACTORY.createColorCssMetaData("-gn-color-circle", f -> f.colorCircle);
+
+    private Icons icon;
 
     public GNBadge(Icons _icon) {
+        this.icon = _icon;
+        getStyleClass().add("gn-badge");
 
-        GNIconButton icon = new GNIconButton(_icon);
-        icon.getStyleClass().addAll("btn-flat");
-        Label lblInfo = new Label();
-        lblInfo.setAlignment(Pos.CENTER);
-        lblInfo.setText("4");
-        lblInfo.setMinSize(20,20);
-        lblInfo.setPrefSize(10,10);
-        lblInfo.setMaxSize(10,10);
-        lblInfo.setStyle("-fx-background-color : -grapefruit; -fx-background-radius : 100px; -fx-text-fill: white;");
-        this.getChildren().setAll(icon, lblInfo);
-        this.setAlignment(Pos.TOP_RIGHT);
+        this.colorCircle.addListener((observable, oldValue, newValue) -> System.out.println("newValue = " + newValue));
+    }
+
+    @Override
+    protected Skin<?> createDefaultSkin() {
+        return new GNBadgeSkin(icon, this);
+    }
+
+    public static List<CssMetaData<? extends Styleable, ?>> getClassCssMetaData() {
+        return FACTORY.getCssMetaData();
+    }
+
+    @Override
+    public List<CssMetaData<? extends Styleable, ?>> getControlCssMetaData() {
+        return FACTORY.getCssMetaData();
+    }
+
+    public Color getCircleColor() {
+        return colorCircle.get();
+    }
+
+    public void setColorCircle(Color color) {
+        this.colorCircle.setValue(color);
+    }
+
+    public StyleableObjectProperty<Color> colorCircleProperty() {
+        return this.colorCircle;
     }
 }

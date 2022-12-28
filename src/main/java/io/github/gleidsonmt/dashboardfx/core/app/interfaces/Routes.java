@@ -18,6 +18,7 @@
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
@@ -53,6 +54,8 @@ public interface Routes {
     Routes registry(String key, Parent parent);
 
     Routes registry(String key, FXMLLoader parent);
+
+    StringProperty title();
 
     // void loadView(String path) // para implementar se quiser q a view seja carregad na hora
 
