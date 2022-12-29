@@ -27,6 +27,7 @@ import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.CardCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListItem;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
 import io.github.gleidsonmt.gncontrols.controls.GNAvatarStatus;
 import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
@@ -34,10 +35,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
+import javafx.geometry.*;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -57,7 +55,7 @@ import java.util.ResourceBundle;
 @SuppressWarnings("unchecked")
 public final class DashController extends ResponsiveView implements ActionView, Initializable {
 
-    public Label lblCustom;
+    public Label experimental;
     @FXML
     private StackedAreaChart<Number, Number> graphic;
     @FXML
@@ -234,7 +232,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
             GNBadge notification = new GNBadge(Icons.NOTIFICATIONS);
             notification.setColorCircle(Color.web(Colors.AQUA.toString()));
             GNBadge sms = new GNBadge(Icons.SMS);
-//            sms.setColorCircle(Color.web(Colors.GRAPEFRUIT.toString()));
+            sms.setColorCircle(Color.web(Colors.GRAPEFRUIT.toString()));
 
             Pane space = new Pane();
             space.setMinWidth(10);
@@ -243,14 +241,42 @@ public final class DashController extends ResponsiveView implements ActionView, 
             options.setAlignment(Pos.CENTER);
             GNAvatarStatus avatarStatus = new GNAvatarStatus();
             avatarStatus.setImage(new Image("avatar.jpg"));
-
+            Text user = new Text("Gleidson Neves");
+            user.getStyleClass().addAll( "text-14");
             GNIconButton btnArrow = new GNIconButton(Icons.ARROW_DROP_DOWN);
+            btnArrow.setMaxWidth(20);
+            btnArrow.setMinWidth(20);
             btnArrow.getStyleClass().addAll("btn-flat", "no-border");
-            options.getChildren().setAll(avatarStatus, new Text("Gleidson Neves"), btnArrow);
+            options.getChildren().setAll( avatarStatus, user,btnArrow);
             avatarStatus.setPadding(new Insets(2));
             avatarStatus.setRadius(15);
             context.root().bar().addInRight(sms, notification, space, options);
 
+            avatarStatus.setOnMouseClicked(event -> {
+
+                context.getWrapper()
+                        .getDialog()
+                        .content(
+                                new StackPane(
+                                        new Label("Custom Dialog Wrapper"))
+                        )
+                        .style("-fx-background-radius : 100px; -fx-background-color : white;")
+                        .show(avatarStatus);
+
+            });
+
+            StackPane b = new StackPane(new Label("Custom Dialog 2"));
+//            b.setMinSize(200, 300);
+            b.setStyle("-fx-background-color: red");
+
+            context.getWrapper()
+                    .getDialog()
+                    .size(100, 50)
+                    .content(b)
+                    .contextDialog(
+                            Direction.RIGHT_CENTER, b,
+                            experimental
+                    );
 
             load = true;
         }

@@ -28,6 +28,10 @@ public class ActionOptions extends DeclarativeComponent<ActionOptions> {
     private String name;
     private EventHandler<ActionEvent> action;
 
+    public ActionOptions() {
+        this(null, null);
+    }
+
     public ActionOptions(String name, EventHandler<ActionEvent> action) {
         this.name = name;
         this.action = action;
@@ -47,5 +51,10 @@ public class ActionOptions extends DeclarativeComponent<ActionOptions> {
 
     public void setAction(EventHandler<ActionEvent> action) {
         this.action = action;
+    }
+
+    @Override
+    public ActionOptions size(double width, double height) {
+        return null;
     }
 }
