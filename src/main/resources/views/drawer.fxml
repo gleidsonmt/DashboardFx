@@ -88,20 +88,21 @@
                </graphic>
                <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="292.0" spacing="5.0">
                   <children>
-                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Profile" toggleGroup="$group">
-                        <graphic>
-                           <SVGPath content="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
-                        </graphic>
-                     </ToggleButton>
-                     <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Profile" toggleGroup="$group">
-                        <graphic>
-                           <SVGPath content="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
-                        </graphic>
-                     </ToggleButton>
-                     <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="73.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Profile" toggleGroup="$group">
-                        <graphic>
-                           <SVGPath content="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
-                        </graphic>
+                     <Label style="-fx-font-weight: bold;" text="JavaFx">
+                        <padding>
+                           <Insets left="10.0" />
+                        </padding>
+                     </Label>
+                     <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="73.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goLabel" prefHeight="40.0" styleClass="drawer-item" text="Label" toggleGroup="$group" />
+                     <Label layoutX="20.0" layoutY="20.0" style="-fx-font-weight: bold;" text="Dash Controsl">
+                        <padding>
+                           <Insets left="10.0" />
+                        </padding>
+                     </Label>
+                     <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="42.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goLabel" prefHeight="40.0" styleClass="drawer-item" text="GNLabel">
+                        <toggleGroup>
+                           <ToggleGroup fx:id="group2" />
+                        </toggleGroup>
                      </ToggleButton>
                   </children>
                </VBox>
@@ -122,6 +123,25 @@
                      </ToggleButton>
                   </children>
                </VBox>
+            </TitledPane>
+            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" layoutX="10.0" layoutY="186.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Builders" textAlignment="JUSTIFY">
+               <graphic>
+                  <SVGPath content="M18.475 20.475 13.15 15.15l1.575-1.575L20.05 18.9Zm-13.45 0-1.6-1.575 6.75-6.75-2.1-2.1-.625.625-1.1-1.125v1.925l-.625.625L2.9 9.275l.625-.6H5.45l-1.125-1.1L7.2 4.7q.425-.425.913-.613Q8.6 3.9 9.125 3.9q.55 0 1.038.187.487.188.912.613L9.1 6.675l1.175 1.175-.625.625 2.1 2.1 2.5-2.5q-.15-.325-.225-.65-.075-.325-.075-.675 0-1.35.925-2.275.925-.925 2.275-.925.325 0 .613.05.287.05.587.175L16.075 6.05l1.775 1.8 2.275-2.275q.15.275.187.562.038.288.038.613 0 1.35-.925 2.287-.925.938-2.275.938-.35 0-.675-.075-.325-.075-.625-.25Z" nodeOrientation="LEFT_TO_RIGHT" />
+               </graphic>
+               <content>
+                  <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="292.0" spacing="5.0">
+                     <children>
+                        <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" styleClass="drawer-item" text="Profile">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group1211" />
+                           </toggleGroup>
+                           <graphic>
+                              <SVGPath content="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
+                           </graphic>
+                        </ToggleButton>
+                     </children>
+                  </VBox>
+               </content>
             </TitledPane>
             <Label layoutX="10.0" layoutY="189.0" style="-fx-font-weight: bold;" text="Creators">
                <padding>

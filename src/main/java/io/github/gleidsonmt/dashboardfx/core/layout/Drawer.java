@@ -22,6 +22,7 @@ package io.github.gleidsonmt.dashboardfx.core.layout;
 import io.github.gleidsonmt.dashboardfx.core.app.PresentationCreator;
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
+import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlViewPanel;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
@@ -34,6 +35,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.scene.control.Control;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -135,6 +138,21 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
             context.routes().setContent("dash");
         } catch (NavigationException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void goLabel(){
+        goPanel(new Label("My Label"));
+    }
+    private ControlViewPanel controlViewPanel;
+    private void goPanel(Control control) {
+        if (controlViewPanel == null) controlViewPanel = new ControlViewPanel();
+        try {
+            context.routes().registry("Label", controlViewPanel);
+            context.routes().setContent("Label");
+        } catch (NavigationException e) {
+            throw new RuntimeException(e);
         }
     }
 

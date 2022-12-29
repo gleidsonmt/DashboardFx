@@ -167,6 +167,7 @@ public class PresentationCreator extends PresentationBuild {
     public void createDialogPopup() {
         context.getWrapper()
                 .getDialog()
+                .size(350, 300)
                 .content(
                     new StackPane(
                         new Label("Custom Dialog Wrapper"))

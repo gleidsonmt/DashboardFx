@@ -17,27 +17,14 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
+package io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
+import javafx.scene.Node;
 
-@Deprecated(forRemoval = true)
-public class ControlViewPanelCreator implements BuildCreator {
-    private ControlViewPanel body;
+public class WrapperUtils {
 
-    public ControlViewPanelCreator() {
-        this.body = new ControlViewPanel();
+    public static void menuDialog(Node node) {
+
     }
 
-    @Override
-    public View build() {
-        registerRoute(body, "Control IView", "control_view_pane");
-        return null;
-    }
-
-    private void registerRoute(ControlViewPanel root, String title, String name) {
-//        context.getRoutes().addView(
-//                context.getRoutes().load(root, title, name)
-//        );
-    }
 }

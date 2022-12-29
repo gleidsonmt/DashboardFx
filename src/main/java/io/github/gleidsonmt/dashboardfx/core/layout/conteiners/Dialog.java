@@ -29,6 +29,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import org.jetbrains.annotations.TestOnly;
 
 public class Dialog extends DeclarativeComponent<Dialog> implements AbsoluteWrapperContainer {
 
@@ -39,6 +40,9 @@ public class Dialog extends DeclarativeComponent<Dialog> implements AbsoluteWrap
     private double height = 300;
 
     private final IWrapper wrapper;
+
+    private double paddingX = 0;
+    private double paddingY = 0;
 
     public Dialog(IWrapper wrapper) {
         this.wrapper = wrapper;
@@ -62,6 +66,12 @@ public class Dialog extends DeclarativeComponent<Dialog> implements AbsoluteWrap
     public Dialog size(double width, double height) {
         this.width = width;
         this.height = height;
+        return this;
+    }
+
+    @TestOnly
+    public Dialog moveX(double x) {
+        this.paddingX = x;
         return this;
     }
 
@@ -118,9 +128,14 @@ public class Dialog extends DeclarativeComponent<Dialog> implements AbsoluteWrap
         wrapper.setOnMouseClicked(event -> close());
     }
 
-    public void contextDialog(Direction direction, StackPane content, Control node) {
-        this.content = content;
+    @Override
+    public Dialog style(String style) {
+        return super.style(style);
+    }
 
+    public void contextDialog(Direction direction, Node node) {
+//        this.content = content;
+//
 //        if (!this.wrapper.getChildren().contains(this.content)) {
 //            this.wrapper.getChildren().add(this.content);
 //        }
@@ -129,10 +144,12 @@ public class Dialog extends DeclarativeComponent<Dialog> implements AbsoluteWrap
 
 
         node.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            Bounds bounds = node.localToScene(content.getBoundsInLocal());
+
+            Bounds bounds = node.localToScene(node.getLayoutBounds());
+//            Bounds contentBound = content.localToScene(content.getLayoutBounds());
 
             wrapper.toFront();
-            this.content.toFront();
+//            this.content.toFront();
 
 
             if (this.content != null) {
@@ -141,40 +158,82 @@ public class Dialog extends DeclarativeComponent<Dialog> implements AbsoluteWrap
                 this.content.setMaxSize(width, height);
             }
 
-            System.out.println(this.wrapper.getLayoutBounds());
+            System.out.println("bounds = " + bounds);
 
     //        else return;
 
             switch (direction) {
                 case TOP_LEFT -> {
-                    this.content.setTranslateX(bounds.getMinX() - content.getMaxWidth() );
-                    this.content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
+                    this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth() ) );
+                    this.content.setTranslateY(clamp(bounds.getMinY(), content.getMaxHeight()));
                 }
                 case TOP_CENTER -> {
 
                     this.content.setTranslateX(
-                            bounds.getMinX() +
-                            ((node.getWidth() - content.getMaxWidth()) /2)
+                            bounds.getMinX() -
+                            (center(bounds.getWidth() , content.getMaxWidth()))
                     );
                     this.content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
                 }
 
                 case TOP_RIGHT -> {
-                    this.content.setTranslateX(bounds.getMinX() + node.getWidth());
+                    this.content.setTranslateX(bounds.getMinX() + bounds.getWidth());
                     this.content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
                 }
 
                 case RIGHT_CENTER -> {
-                    this.content.setTranslateX(bounds.getMinX() + node.getWidth());
+                    this.content.setTranslateX(bounds.getMinX() + bounds.getWidth());
+
+                    this.content.setTranslateY( (bounds.getMinY() ) +
+                            (center(bounds.getWidth(), content.getMaxHeight())/2));
+                }
+
+                case RIGHT_TOP -> {
+                    this.content.setTranslateX(bounds.getMinX() + bounds.getWidth());
+                    this.content.setTranslateY(bounds.getMinY());
+                }
+
+                case BOTTOM_RIGHT -> {
+                    this.content.setTranslateX((bounds.getMinX() + bounds.getWidth()) + paddingX);
+                    this.content.setTranslateY(bounds.getMinY() + bounds.getHeight());
+                }
+
+                case BOTTOM_CENTER -> {
+                    this.content.setTranslateX(bounds.getMinX() -
+                            (center(bounds.getWidth(), content.getMaxWidth())));
+                    this.content.setTranslateY(bounds.getMaxY());
+                }
+
+                case BOTTOM_LEFT -> {
+                    this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
+                    this.content.setTranslateY(bounds.getMaxY());
+                }
+
+                case LEFT_CENTER -> {
+                    this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
                     this.content.setTranslateY(bounds.getMinY() + (
-                            (content.getMaxHeight() - node.getHeight()) / 2
+                            center(bounds.getWidth(), content.getMaxWidth())
                             ));
                 }
+
+                case LEFT_TOP -> {
+                    this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
+                    this.content.setTranslateY(bounds.getMinY());
+                }
+
             }
 
             wrapper.setOnMouseClicked(e -> close());
         });
 
+    }
+
+    private double clamp(double one, double two) {
+        return Math.max(one, two) - Math.min(one, two);
+    }
+
+    private double center(double one, double two) {
+        return (clamp(one, two) / 2);
     }
 
     @Override

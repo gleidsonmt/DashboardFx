@@ -33,7 +33,7 @@ public class LeftSide extends VBox {
         getStyleClass().addAll("border-r-1", "border-box");
         this.setSpacing(10);
 
-        Label title = new Label("Creator Panel");
+        Label title = new Label("Desinger Panel");
         title.getStyleClass().addAll("title");
         Separator separator = new Separator();
         getChildren().setAll(title, separator, new ColorBox());

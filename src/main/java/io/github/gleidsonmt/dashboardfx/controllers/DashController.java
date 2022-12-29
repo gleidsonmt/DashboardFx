@@ -22,6 +22,7 @@ import io.github.gleidsonmt.dashboardfx.core.app.material.color.Colors;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ResponsiveView;
+import io.github.gleidsonmt.dashboardfx.core.controls.BoxUser;
 import io.github.gleidsonmt.dashboardfx.core.controls.DonutChart;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.CardCreator;
@@ -235,35 +236,23 @@ public final class DashController extends ResponsiveView implements ActionView, 
             sms.setColorCircle(Color.web(Colors.GRAPEFRUIT.toString()));
 
             Pane space = new Pane();
-            space.setMinWidth(10);
+            space.setMinWidth(20);
 
-            HBox options = new HBox();
-            options.setAlignment(Pos.CENTER);
-            GNAvatarStatus avatarStatus = new GNAvatarStatus();
-            avatarStatus.setImage(new Image("avatar.jpg"));
-            Text user = new Text("Gleidson Neves");
-            user.getStyleClass().addAll( "text-14");
-            GNIconButton btnArrow = new GNIconButton(Icons.ARROW_DROP_DOWN);
-            btnArrow.setMaxWidth(20);
-            btnArrow.setMinWidth(20);
-            btnArrow.getStyleClass().addAll("btn-flat", "no-border");
-            options.getChildren().setAll( avatarStatus, user,btnArrow);
-            avatarStatus.setPadding(new Insets(2));
-            avatarStatus.setRadius(15);
-            context.root().bar().addInRight(sms, notification, space, options);
+            BoxUser boxUser = new BoxUser("Gleidson Neves");
 
-            avatarStatus.setOnMouseClicked(event -> {
+            context.getWrapper()
+                    .getDialog()
+                    .size(100, 40)
+                    .moveX(-100)
+                    .content(
+                            new StackPane(
+                                    new Label("Custom Dialog Wrapper"))
+                    )
+                    .style("-fx-background-radius : 100px; -fx-background-color : white;")
+                    .contextDialog(Direction.BOTTOM_RIGHT, notification);
 
-                context.getWrapper()
-                        .getDialog()
-                        .content(
-                                new StackPane(
-                                        new Label("Custom Dialog Wrapper"))
-                        )
-                        .style("-fx-background-radius : 100px; -fx-background-color : white;")
-                        .show(avatarStatus);
+            context.root().bar().addInRight(sms, notification, space, boxUser);
 
-            });
 
             StackPane b = new StackPane(new Label("Custom Dialog 2"));
 //            b.setMinSize(200, 300);
@@ -271,10 +260,11 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
             context.getWrapper()
                     .getDialog()
-                    .size(100, 50)
+                    .size(100, 40)
+                    .moveX(-100)
                     .content(b)
                     .contextDialog(
-                            Direction.RIGHT_CENTER, b,
+                            Direction.BOTTOM_RIGHT,
                             experimental
                     );
 

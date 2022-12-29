@@ -19,8 +19,20 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout;
 
+import org.jetbrains.annotations.ApiStatus;
+
+@ApiStatus.Experimental
 public enum Direction {
 
-    TOP_LEFT, TOP_CENTER, TOP_RIGHT, RIGHT_CENTER,
-    BOTTOM_RIGHT, BOTTOM_CENTER, BOTTOM_LEFT, LEFT_CENTER;
+    TOP_LEFT,
+    TOP_CENTER,
+    TOP_RIGHT,
+    RIGHT_TOP,
+    RIGHT_CENTER,
+    BOTTOM_RIGHT,
+    BOTTOM_CENTER,
+    BOTTOM_LEFT,
+    LEFT_CENTER,
+    LEFT_TOP;
+
 }

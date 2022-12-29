@@ -22,6 +22,7 @@ package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 import io.github.gleidsonmt.gncontrols.controls.GNTextBox;
 import javafx.geometry.Insets;
 import javafx.scene.control.Control;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
@@ -39,7 +40,10 @@ public class ControlViewPanel extends BorderPane {
         textBox.setMaxHeight(Region.USE_PREF_SIZE);
         textBox.setMaxWidth(Region.USE_PREF_SIZE);
 
-        center = new StackPane(textBox);
+        Label label = new Label("Label");
+        label.setPrefSize(100, 40);
+
+        center = new StackPane(label);
         right = new RightSide();
         left = new LeftSide();
 
