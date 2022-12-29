@@ -71,6 +71,11 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
         return this;
     }
 
+    @Override
+    public Drawer size(double width, double height) {
+        return null;
+    }
+
     public void show() {
         this.wrapper.setAlignment(
                 side == HPos.LEFT ?
@@ -133,18 +138,10 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
         }
     }
 
-    @FXML
-    private void goWrapper() {
-        try {
-            context.routes().setContent("wrapper");
-        } catch (NavigationException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     private View presentation;
     @FXML
-    private void goDevelopers() {
+    private void goWrappers() {
         if(presentation == null) presentation = new PresentationCreator("presentation", context).build();
         try {
             context.routes().registry("presentation", presentation.getRoot());

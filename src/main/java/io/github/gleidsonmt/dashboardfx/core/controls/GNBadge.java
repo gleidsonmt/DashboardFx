@@ -44,7 +44,7 @@ public class GNBadge extends Control {
             new StyleablePropertyFactory<>(Control.getClassCssMetaData());
 
     private final StyleableObjectProperty<Color> colorCircle =
-            new SimpleStyleableObjectProperty<>(COLOR_CIRCLE, this, "colorCircle", Color.WHITE);
+            new SimpleStyleableObjectProperty<>(COLOR_CIRCLE, this, "colorCircle", Color.RED);
 
     private static final CssMetaData<GNBadge, Color> COLOR_CIRCLE =
             FACTORY.createColorCssMetaData("-gn-color-circle", f -> f.colorCircle);
@@ -55,7 +55,6 @@ public class GNBadge extends Control {
         this.icon = _icon;
         getStyleClass().add("gn-badge");
 
-        this.colorCircle.addListener((observable, oldValue, newValue) -> System.out.println("newValue = " + newValue));
     }
 
     @Override

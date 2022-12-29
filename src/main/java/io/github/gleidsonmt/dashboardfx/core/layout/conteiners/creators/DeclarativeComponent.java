@@ -20,11 +20,15 @@
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators;
 
 import javafx.scene.Node;
+import javafx.scene.control.Control;
+import javafx.scene.layout.Region;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.util.List;
 
+@ApiStatus.Internal
 @SuppressWarnings("unchecked")
-public class DeclarativeComponent<T> extends Node {
+public abstract class DeclarativeComponent<T> extends Node {
 
     private String style;
     private List<String> stylesheets;
@@ -38,5 +42,6 @@ public class DeclarativeComponent<T> extends Node {
         return (T) this;
     }
 
+    public abstract T size(double width, double height);
 
 }

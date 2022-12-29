@@ -53,13 +53,10 @@ public class GNBadgeSkin extends SkinBase<GNBadge> {
         lblInfo.setMinSize(20,20);
         lblInfo.setPrefSize(10,10);
         lblInfo.setMaxSize(10,10);
-//        lblInfo.setStyle("-fx-background-color : -grapefruit; -fx-background-radius : 100px; -fx-text-fill: white;");
-//        lblInfo.getStyleClass().addAll("box-num");
 
         this.getChildren().setAll(icon, lblInfo);
 
         registerChangeListener(getSkinnable().colorCircleProperty(), c -> {
-            System.out.println("c = " + c);
             updateBoxColor((Color) c.getValue());
         });
 
