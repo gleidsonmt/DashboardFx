@@ -71,6 +71,7 @@ public class ScheduleListItem extends GridPane {
         this.getChildren().setAll(num, title, legend, this.time);
 
         GNIconButton iconButton = new GNIconButton();
+        iconButton.getStyleClass().addAll("btn-flat");
         iconButton.setIcon(Icons.CHEVRON_RIGHT);
         this.getChildren().add(iconButton);
         GridPane.setConstraints(iconButton, 3,0,1,2, HPos.RIGHT, VPos.CENTER, Priority.NEVER, Priority.NEVER);
@@ -83,7 +84,7 @@ public class ScheduleListItem extends GridPane {
         Label lbl = new Label(String.valueOf(num));
 
         String color = colors.get(random.nextInt(4));
-        lbl.setStyle("-fx-border-color :" + color +"; -fx-text-fill:" + color + ";");
+        lbl.setStyle("-fx-border-color :" + color + ";" );
         lbl.setMinSize(30, 30);
         lbl.getStyleClass().add("icon");
         lbl.setContentDisplay(ContentDisplay.CENTER);

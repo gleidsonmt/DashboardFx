@@ -29,6 +29,7 @@ import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.SnackColo
 import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import javafx.geometry.HPos;
+import javafx.scene.Node;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
@@ -40,6 +41,12 @@ public class PresentationCreator extends PresentationBuild {
     public PresentationCreator(String _name, Context context) {
         super(_name, context);
         this.context = context;
+
+        final ActionOptions customDialog = new ActionOptions();
+        customDialog.setName("Around");
+        customDialog.setAction(event -> {
+            createAroundDilog(customDialog);
+        });
 
         this
         .title("Popups and wrappers.")
@@ -64,9 +71,11 @@ public class PresentationCreator extends PresentationBuild {
                 """)
         .separator()
         .title("Dialog")
-        .options(new ActionOptions(
-                "Open", event -> createDialogPopup()
-        ))
+        .options(
+            new ActionOptions(
+            "Open", event -> createDialogPopup()
+            )
+        )
         .blockCode("""
                 context.getWrapper()
                     .getDialog()
@@ -163,6 +172,16 @@ public class PresentationCreator extends PresentationBuild {
                         new Label("Custom Dialog Wrapper"))
                     )
                 .show();
+    }
+
+    public void createAroundDilog(Node node) {
+        context.getWrapper()
+                .getDialog()
+                .content(
+                        new StackPane(
+                                new Label("Custom Dialog Wrapper"))
+                )
+                .show(node);
     }
 
     private void createSnack() {

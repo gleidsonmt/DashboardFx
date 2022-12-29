@@ -22,7 +22,12 @@ package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.AbsoluteWrapperContainer;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
+import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Control;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
 public class Dialog extends DeclarativeComponent<Dialog> implements AbsoluteWrapperContainer {
@@ -30,20 +35,20 @@ public class Dialog extends DeclarativeComponent<Dialog> implements AbsoluteWrap
     private StackPane content;
     private Pos pos;
 
-    private int width = 350;
-    private int height = 300;
+    private double width = 350;
+    private double height = 300;
 
-    private final IWrapper IWrapper2;
+    private final IWrapper wrapper;
 
-    public Dialog(IWrapper IWrapper2) {
-        this.IWrapper2 = IWrapper2;
+    public Dialog(IWrapper wrapper) {
+        this.wrapper = wrapper;
 
     }
 
     public Dialog content(StackPane content) {
         this.content = content;
         this.content.setStyle("-fx-background-color : -fx-foreground;");
-        IWrapper2.getChildren().setAll(content);
+        wrapper.getChildren().setAll(content);
         return this;
     }
 
@@ -54,24 +59,129 @@ public class Dialog extends DeclarativeComponent<Dialog> implements AbsoluteWrap
     }
 
     @Override
+    public Dialog size(double width, double height) {
+        this.width = width;
+        this.height = height;
+        return this;
+    }
+
+    @Override
     public void show() {
         if (pos == null) {
             pos = Pos.CENTER;
-            IWrapper2.setAlignment(pos);
+            wrapper.setAlignment(pos);
         }
 
         if (this.content != null)
             this.content.setMaxSize(width, height);
 
-        IWrapper2.toFront();
-        IWrapper2.setOnMouseClicked(event -> close());
+        wrapper.toFront();
+        wrapper.setOnMouseClicked(event -> close());
+    }
+
+    public void show(double x, double y) {
+
+        this.wrapper.setAlignment(Pos.TOP_LEFT);
+
+        if (this.content != null)
+            this.content.setMaxSize(width, height);
+        else return;
+
+        this.content.setTranslateX(x);
+        this.content.setTranslateY(y);
+
+
+        wrapper.toFront();
+        this.content.toFront();
+        wrapper.setOnMouseClicked(event -> close());
+    }
+
+    public void show(Node node) {
+
+        Bounds bounds = node.localToScene(node.getLayoutBounds());
+
+        this.wrapper.setAlignment(Pos.TOP_LEFT);
+
+        if (this.content != null) {
+            this.content.setMinSize(width, height);
+            this.content.setPrefSize(width, height);
+            this.content.setMaxSize(width, height);
+        }
+
+        else return;
+
+        this.content.setTranslateX(bounds.getMaxX() - content.getMaxWidth());
+        this.content.setTranslateY(bounds.getMaxY());
+
+        wrapper.toFront();
+        this.content.toFront();
+        wrapper.setOnMouseClicked(event -> close());
+    }
+
+    public void contextDialog(Direction direction, StackPane content, Control node) {
+        this.content = content;
+
+//        if (!this.wrapper.getChildren().contains(this.content)) {
+//            this.wrapper.getChildren().add(this.content);
+//        }
+
+        this.wrapper.setAlignment(Pos.TOP_LEFT);
+
+
+        node.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            Bounds bounds = node.localToScene(content.getBoundsInLocal());
+
+            wrapper.toFront();
+            this.content.toFront();
+
+
+            if (this.content != null) {
+                this.content.setMinSize(width, height);
+                this.content.setPrefSize(width, height);
+                this.content.setMaxSize(width, height);
+            }
+
+            System.out.println(this.wrapper.getLayoutBounds());
+
+    //        else return;
+
+            switch (direction) {
+                case TOP_LEFT -> {
+                    this.content.setTranslateX(bounds.getMinX() - content.getMaxWidth() );
+                    this.content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
+                }
+                case TOP_CENTER -> {
+
+                    this.content.setTranslateX(
+                            bounds.getMinX() +
+                            ((node.getWidth() - content.getMaxWidth()) /2)
+                    );
+                    this.content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
+                }
+
+                case TOP_RIGHT -> {
+                    this.content.setTranslateX(bounds.getMinX() + node.getWidth());
+                    this.content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
+                }
+
+                case RIGHT_CENTER -> {
+                    this.content.setTranslateX(bounds.getMinX() + node.getWidth());
+                    this.content.setTranslateY(bounds.getMinY() + (
+                            (content.getMaxHeight() - node.getHeight()) / 2
+                            ));
+                }
+            }
+
+            wrapper.setOnMouseClicked(e -> close());
+        });
+
     }
 
     @Override
     public void close() {
-        IWrapper2.toBack();
-        IWrapper2.setAlignment(Pos.CENTER);
-        IWrapper2.getChildren().clear();
-        IWrapper2.setOnMouseClicked(null);
+        wrapper.toBack();
+//        wrapper.setAlignment(Pos.CENTER);
+//        wrapper.getChildren().clear();
+//        wrapper.setOnMouseClicked(null);
     }
 }
