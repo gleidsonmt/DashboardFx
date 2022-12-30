@@ -23,6 +23,8 @@ module io.github.gleidsonmt.dashboardfx {
     requires org.yaml.snakeyaml;
     requires animatefx;
 
+//    requires CurvedFittedAreaChart;
+
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.material;
     requires org.kordamp.ikonli.javafx;

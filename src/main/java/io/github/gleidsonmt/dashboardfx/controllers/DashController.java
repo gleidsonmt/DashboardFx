@@ -23,6 +23,7 @@ import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ResponsiveView;
 import io.github.gleidsonmt.dashboardfx.core.controls.BoxUser;
+import io.github.gleidsonmt.dashboardfx.core.controls.CurvedChart;
 import io.github.gleidsonmt.dashboardfx.core.controls.DonutChart;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.CardCreator;
@@ -43,6 +44,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.net.URL;
 import java.time.LocalTime;
@@ -53,6 +55,7 @@ import java.util.ResourceBundle;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
+@ApiStatus.Internal
 @SuppressWarnings("unchecked")
 public final class DashController extends ResponsiveView implements ActionView, Initializable {
 
@@ -128,8 +131,8 @@ public final class DashController extends ResponsiveView implements ActionView, 
                 .items(
                         new ScheduleListItem(
                                 4,
-                                "UI/UX Shopping",
-                                "10 of 45 chapters",
+                                "Software Enginer",
+                                "10000 steps",
                                 "Gleidson",
                                 LocalTime.of(12, 45)
                         ),
@@ -142,8 +145,8 @@ public final class DashController extends ResponsiveView implements ActionView, 
                         ),
                         new ScheduleListItem(
                                 35,
-                                "UI/UX Shopping",
-                                "10 of 45 chapters",
+                                "Mobile Analytics",
+                                "10 of 23 chapters",
                                 "Gleidson",
                                 LocalTime.of(12, 45),
                                 event -> System.out.println("Click action trigged!")
@@ -191,11 +194,30 @@ public final class DashController extends ResponsiveView implements ActionView, 
                 """
         );
 
-        footer.getChildren().addAll(createDonut(), barChart,  scheduleList.getRoot(), card);
+        CurvedChart<Number, Number> curvedChart = new CurvedChart<>(
+                new NumberAxis(),
+                new NumberAxis()
+        );
+
+        final XYChart.Series<Number, Number> series22 = new XYChart.Series<Number, Number>();
+
+        series22.getData().addAll(
+                new XYChart.Data<Number, Number>(0, 20D),
+                new XYChart.Data<Number, Number>(1, 40D),
+                new XYChart.Data<Number, Number>(2, 50D),
+                new XYChart.Data<Number, Number>(3, 30D),
+                new XYChart.Data<Number, Number>(4, 80D),
+                new XYChart.Data<Number, Number>(5, 10D),
+                new XYChart.Data<Number, Number>(6, 50D));
+
+        curvedChart.getData().add(series22);
+
+
+        footer.getChildren().addAll(createDonut(), barChart,  scheduleList.getRoot(), curvedChart);
         GridPane.setConstraints(footer.getChildren().get(0), 0, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES);
         GridPane.setConstraints(barChart, 1, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(scheduleList.getRoot(), 0, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-        GridPane.setConstraints(card, 1, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(curvedChart, 1, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
 
     }
 

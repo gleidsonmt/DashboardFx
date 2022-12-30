@@ -19,12 +19,13 @@
 
 package io.github.gleidsonmt.dashboardfx.controllers;
 
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+@ApiStatus.Internal
 public class BlockHtmlParser {
 
     private final String keyColor = "#CC7832";

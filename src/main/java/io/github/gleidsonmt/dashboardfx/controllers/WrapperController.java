@@ -27,10 +27,12 @@ import javafx.scene.web.WebView;
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+@ApiStatus.Experimental
 public class WrapperController implements ActionView {
 
     @FXML
