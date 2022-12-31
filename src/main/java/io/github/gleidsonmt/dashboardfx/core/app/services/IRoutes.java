@@ -153,12 +153,6 @@ public class IRoutes implements Routes {
         manager.add(view);
     }
 
-    @Deprecated(forRemoval = true)
-    @Override
-    public void goHome() {
-
-    }
-
     @Override
     public View getView(String view) {
         return manager.get(view);

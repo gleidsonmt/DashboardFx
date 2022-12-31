@@ -35,8 +35,6 @@ public interface Routes {
 
     void addView(View view);
 
-    void goHome();
-
     View getView(String view);
 
     View getCurrent();

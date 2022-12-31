@@ -291,7 +291,6 @@ public final class DashController extends ResponsiveView implements ActionView, 
                         .style(
                             """
                             -fx-background-radius : 5px; -fx-background-color : white;
-                            -fx-border-color : white; -fx-border-width: 2px;
                             """
                         )
                         .show(Direction.BOTTOM_RIGHT, boxUser);

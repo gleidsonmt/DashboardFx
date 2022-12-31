@@ -26,12 +26,7 @@ import javafx.scene.layout.VBox;
 
 public class Box extends VBox {
 
-    private String title;
-    private Node content;
-
     public Box(String title, Pane content) {
-        this.title = title;
-        this.content = content;
 
         Label lbl = new Label(title);
         lbl.getStyleClass().addAll("h4");

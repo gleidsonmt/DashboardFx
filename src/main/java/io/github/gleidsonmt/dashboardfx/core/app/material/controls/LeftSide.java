@@ -22,6 +22,7 @@ package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class LeftSide extends VBox {
@@ -33,10 +34,12 @@ public class LeftSide extends VBox {
         getStyleClass().addAll("border-r-1", "border-box");
         this.setSpacing(10);
 
-        Label title = new Label("Desinger Panel");
+        Label title = new Label("Designer Panel");
         title.getStyleClass().addAll("title");
         Separator separator = new Separator();
-        getChildren().setAll(title, separator, new ColorBox());
+        getChildren().setAll(title, separator, new ColorBox(), new FillBox(
+                "Fill", new StackPane(new Label("Welcome"))
+        ));
 
 
 

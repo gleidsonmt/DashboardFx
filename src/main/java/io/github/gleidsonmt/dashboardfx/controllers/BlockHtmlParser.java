@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 @ApiStatus.Internal
+@ApiStatus.Experimental
 public class BlockHtmlParser {
 
     private final String keyColor = "#CC7832";
@@ -43,7 +44,7 @@ public class BlockHtmlParser {
                 pre + normalColor + ';' + end + text
                 .replaceAll("([^a-z0-9]\\d+)", "<code style='color:" + numberColor +  "'>$1</code>" )
                 .replaceAll("([\".][a-zA-Z0-9 ]+[\".])", "<code style='color:" + stringColor + "'>$1</code>" )
-                .replaceAll("([A-Z.][A-Z]+[A-Z.])", "<code style='color:" + constantColor + "'>$1</code>" )
+//                .replaceAll("([A-Z.][A-Z]+[A-Z.])", "<code style='color:" + constantColor + "'>$1</code>" )
                 .replaceAll("([\"\"\" .].[a-zA-Z0-9., ]+[\"\"\". ])", "<code style='color:" + stringColor + "'>$1</code>" )
                 // key chars
                 .replaceAll(";", pre + keyColor + end + ";" + suffix)

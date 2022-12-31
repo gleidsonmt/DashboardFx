@@ -215,8 +215,6 @@ public class PresentationBuild extends Container implements BuildCreator {
         return label;
     }
 
-
-
     @Contract("_ -> new")
     private @NotNull TextFlow createText(String _text) {
         Text text = new Text(_text);
@@ -224,18 +222,13 @@ public class PresentationBuild extends Container implements BuildCreator {
         return new TextFlow(text);
     }
 
-
     @Override
     public View build() {
-        body.getChildren().setAll(
-                items
-        );
-
-//        registerRoute(this, "Presentation", name);
+        body.getChildren().setAll(items);
         return this;
     }
 
-
+    @Deprecated(forRemoval = true)
     private void registerRoute(StackPane root, String title, String name) {
 //        context.routes().registry("presentation")
 //        context.routes().addView()

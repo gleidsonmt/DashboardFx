@@ -28,6 +28,7 @@ import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.NestedWrapperContainer;
+import io.github.gleidsonmt.dashboardfx.views.AreaChartView;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -173,6 +174,16 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
     private void goTextField() {
         try {
             context.routes().setContent("control_view_pane");
+        } catch (NavigationException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    private void goAreaChart() {
+        try {
+            context.routes().registry("area-chart", new AreaChartView(context));
+            context.routes().setContent("area-chart");
         } catch (NavigationException e) {
             throw new RuntimeException(e);
         }

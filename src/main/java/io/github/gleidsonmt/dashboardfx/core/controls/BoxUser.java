@@ -24,6 +24,7 @@ import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -47,7 +48,7 @@ public class BoxUser extends HBox {
         this.getChildren().setAll(user, avatarStatus);
         avatarStatus.setPadding(new Insets(2, 5, 2, 2));
         avatarStatus.setRadius(15);
-
+        this.setCursor(Cursor.HAND);
 
     }
 }
