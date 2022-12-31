@@ -30,7 +30,7 @@ import java.util.List;
 @SuppressWarnings("unchecked")
 public abstract class DeclarativeComponent<T> extends Node {
 
-    private String style;
+    protected String style;
     private List<String> stylesheets;
 
     public T style(String style) {

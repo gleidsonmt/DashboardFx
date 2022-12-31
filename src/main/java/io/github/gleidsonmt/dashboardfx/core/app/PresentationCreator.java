@@ -182,7 +182,7 @@ public class PresentationCreator extends PresentationBuild {
                         new StackPane(
                                 new Label("Custom Dialog Wrapper"))
                 )
-                .show(node);
+                .show();
     }
 
     private void createSnack() {

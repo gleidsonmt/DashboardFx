@@ -17,6 +17,7 @@
 
 package io.github.gleidsonmt.dashboardfx.controllers;
 
+import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.material.color.Colors;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
@@ -35,11 +36,15 @@ import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.*;
 import javafx.scene.chart.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -163,6 +168,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
         yAxis.setLabel("Population in Millions");
 
         BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+        barChart.getStyleClass().addAll("border-box", "border-1");
         XYChart.Series<String, Number> s = new XYChart.Series<>();
         s.getData().add(new XYChart.Data<>("20", 40));
         s.getData().add(new XYChart.Data<>("30", 300));
@@ -260,37 +266,73 @@ public final class DashController extends ResponsiveView implements ActionView, 
             Pane space = new Pane();
             space.setMinWidth(20);
 
-            BoxUser boxUser = new BoxUser("Gleidson Neves");
+            BoxUser boxUser = new BoxUser("Jane Doe");
 
-            context.getWrapper()
-                    .getDialog()
-                    .size(100, 40)
-                    .moveX(-100)
-                    .content(
-                            new StackPane(
-                                    new Label("Custom Dialog Wrapper"))
-                    )
-                    .style("-fx-background-radius : 100px; -fx-background-color : white;")
-                    .contextDialog(Direction.BOTTOM_RIGHT, notification);
+            VBox boxUserDialog = new VBox();
+            Button btnProfile = createBtn("Profile", event -> {
+               upadteContent(context, "profile");
+            });
+            Button btnSettings = createBtn("Settings", event -> {
+//                upadteContent(context, "profile");
+            });
+            Button btnLogout = createBtn("Logout", event -> {
+//                upadteContent(context, "profile");
+            });
+
+
+            boxUserDialog.getChildren().setAll(btnProfile, btnSettings, new Separator(), btnLogout);
+
+            boxUser.setOnMouseClicked(event -> {
+                context.getWrapper()
+                        .getDialog()
+                        .size(300, 120)
+                        .moveX(-200)
+                        .content(boxUserDialog)
+                        .style(
+                            """
+                            -fx-background-radius : 5px; -fx-background-color : white;
+                            -fx-border-color : white; -fx-border-width: 2px;
+                            """
+                        )
+                        .show(Direction.BOTTOM_RIGHT, boxUser);
+            });
 
             context.root().bar().addInRight(sms, notification, space, boxUser);
 
 
             StackPane b = new StackPane(new Label("Custom Dialog 2"));
 //            b.setMinSize(200, 300);
-            b.setStyle("-fx-background-color: red");
 
-            context.getWrapper()
-                    .getDialog()
-                    .size(100, 40)
-                    .moveX(-100)
-                    .content(b)
-                    .contextDialog(
-                            Direction.BOTTOM_RIGHT,
-                            experimental
-                    );
+//            context.getWrapper()
+//                    .getDialog()
+//                    .size(100, 40)
+//                    .moveX(-100)
+//                    .content(b)
+//                    .contextDialog(
+//                            Direction.BOTTOM_RIGHT,
+//                            experimental
+//                    );
 
             load = true;
+        }
+    }
+
+    private Button createBtn(String text, EventHandler<ActionEvent> event) {
+        Button btnProfile = new Button(text);
+        btnProfile.setMaxWidth(Double.MAX_VALUE);
+        btnProfile.getStyleClass().addAll("btn-flat", "no-border");
+        btnProfile.setAlignment(Pos.CENTER_LEFT);
+        btnProfile.setPadding(new Insets(10));
+        btnProfile.setOnAction(event);
+        return btnProfile;
+    }
+
+    private void upadteContent(Context context, String content) {
+        try {
+            context.routes().setContent(content);
+            context.getWrapper().getDialog().close();
+        } catch (NavigationException e) {
+            throw new RuntimeException(e);
         }
     }
 

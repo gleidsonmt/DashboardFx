@@ -24,18 +24,18 @@ import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+
+import java.util.Objects;
 
 public class BoxUser extends HBox {
     public BoxUser(String username) {
 
         this.setAlignment(Pos.CENTER);
         GNAvatarStatus avatarStatus = new GNAvatarStatus();
-        avatarStatus.setImage(new Image("avatar.jpg"));
+        avatarStatus.setImage(new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/avatar.png")).toExternalForm()));
         Text user = new Text(username);
         avatarStatus.setMouseTransparent(true);
         user.getStyleClass().addAll( "text-14");

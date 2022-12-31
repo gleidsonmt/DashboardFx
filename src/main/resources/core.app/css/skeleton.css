@@ -20,6 +20,7 @@
 
     -text-color : -dark-gray;
     -inner-color : white;
+    -icon-color : -text-color;
 
     /* Borders */
     -box-color : -medium-gray;

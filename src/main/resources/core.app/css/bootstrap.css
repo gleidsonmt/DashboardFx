@@ -14,6 +14,10 @@
     -fx-background-color : transparent;
 }
 
+.btn-flat .text {
+    -fx-fill : -text-color;
+}
+
 .transparent {
     -fx-background-color : transparent;
     -fx-border-color : transparent;

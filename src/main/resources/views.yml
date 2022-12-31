@@ -8,9 +8,13 @@
   name : dash
   fxml : dash.fxml
 
-
-
 - !!io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer
   title : Wrapper
   name : wrapper
   fxml : wrapper.fxml
+
+- !!io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer
+  title : Profile
+  name: profile
+  directory : app
+  fxml : profile.fxml
