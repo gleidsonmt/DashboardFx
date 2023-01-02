@@ -59,7 +59,16 @@ SVGPath {
 
 /* @Color */
 
-.button {
+.toggle-button {
+    -fx-border-width : 2px;
+}
+
+.toggle-button:selected {
+    -fx-border-color : -fx-accent;
+    -fx-text-fill : -fx-accent;
+}
+
+.button, .toggle-button {
     -fx-background-color : -fx-accent;
     -fx-text-fill : -inner-color;
 }
@@ -74,26 +83,52 @@ SVGPath {
     -fx-text-fill : -text-color;
 }
 
+/* @Radius */
+
+.toggle-button {
+    -fx-border-radius : 0px;
+    -fx-background-radius : 0px;
+}
+
 /* @Cursor */
 
-.button {
+.button, .toggle-button {
     -fx-cursor : hand;
 }
 
 /* @Font */
 
-.button {
+.button, .toggle-button {
     -fx-font-weight : bold;
 }
 
 /* @Border */
 
-.button:cancel {
+.button:cancel, .toggle-button {
     -fx-border-width : 2px;
 }
 
 .button:cancel {
     -fx-border-radius : 2px;
+}
+
+/* @Size */
+
+.button, .toggle-button {
+    -fx-min-height : 35px;
+}
+
+/* @Effect */
+
+.toggle-button {
+    -fx-effect : none;
+    -fx-background-insets: 0px;
+}
+
+/* @Alignment */
+
+.label {
+    -fx-alignment : center;
 }
 
 /* @GNControls */

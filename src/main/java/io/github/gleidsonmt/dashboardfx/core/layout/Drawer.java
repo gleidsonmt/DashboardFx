@@ -148,7 +148,7 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
     }
     private ControlViewPanel controlViewPanel;
     private void goPanel(Control control) {
-        if (controlViewPanel == null) controlViewPanel = new ControlViewPanel();
+        if (controlViewPanel == null) controlViewPanel = new ControlViewPanel(context);
         try {
             context.routes().registry("Label", controlViewPanel);
             context.routes().setContent("Label");

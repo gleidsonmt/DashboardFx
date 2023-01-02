@@ -62,7 +62,6 @@ public class GNBadgeSkin extends SkinBase<GNBadge> {
 
 //        control.setStyle("-gn-color-circle: blue;");
 
-        System.out.println("control.getStyleClass() = " + control.getStyleClass());
 //        this.setAlignment(Pos.TOP_RIGHT);
     }
 

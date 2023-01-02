@@ -122,3 +122,13 @@ Text, .text, .label {
 .donut-chart {
     -fx-border-color : -light-gray-2;
 }
+
+.toggle-box {
+    -fx-border-width : 2px;
+    -fx-border-color : -light-gray-2;
+    -fx-background-color : transparent;
+}
+
+.toggle-box:selected .icon {
+    -fx-fill : -fx-accent;
+}

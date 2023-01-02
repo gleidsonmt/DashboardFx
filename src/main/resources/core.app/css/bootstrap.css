@@ -7,6 +7,22 @@
 
 */
 
+/* @toggle-left */
+
+.toggle-left {
+    -fx-border-radius : 5 0 0 5;
+    -fx-background-radius : 5 0 0 5;
+}
+
+.toggle-right {
+     -fx-background-radius : 0 5 5 0;
+     -fx-border-radius : 0 5 5 0;
+}
+
+.toggle-button:selected {
+    -fx-background-color : transparent;
+}
+
 /* @btn */
 .btn-flat {
     -fx-border-width : 1px;
@@ -16,6 +32,23 @@
 
 .btn-flat .text {
     -fx-fill : -text-color;
+}
+
+/* @lbl */
+
+.lbl-outlined {
+    -fx-border-color : -box-color;
+    -fx-border-width : 2px;
+}
+
+.lbl-round {
+    -fx-border-radius : 100px;
+    -fx-background-radius : 100px;
+}
+
+.lbl-rounded {
+    -fx-border-radius : 5px;
+    -fx-background-radius : 5px;
 }
 
 .transparent {
@@ -50,8 +83,6 @@
 .mint {
     -fx-accent : -mint;
 }
-
-
 
 /* @Color - Linear Gradinent */
 

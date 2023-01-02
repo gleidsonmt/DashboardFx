@@ -19,11 +19,14 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
+import javafx.scene.Node;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
@@ -37,7 +40,8 @@ public class BubbleBox extends GridPane {
       "info", "success", "danger", "warning", "cyan", "grapefruit"
     );
 
-    public BubbleBox() {
+    public BubbleBox(Node control) {
+
         this.setVgap(10);
         this.setHgap(10);
         this.setPadding(new Insets(5));
@@ -49,6 +53,14 @@ public class BubbleBox extends GridPane {
 
             BubbleItem item = createBubbleItem(colors.get(count));
             this.getChildren().add(item);
+
+            int finalCount = count;
+
+            item.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue) {
+                    control.setStyle("-box-color : -" + colors.get(finalCount));
+                }
+            });
 
             if (cols > 4) {
                 cols = 0;

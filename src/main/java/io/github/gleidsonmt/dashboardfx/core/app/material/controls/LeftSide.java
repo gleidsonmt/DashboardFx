@@ -19,7 +19,9 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 
+import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import javafx.geometry.Insets;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.StackPane;
@@ -27,7 +29,7 @@ import javafx.scene.layout.VBox;
 
 public class LeftSide extends VBox {
 
-    public LeftSide() {
+    public LeftSide(Control control) {
         setPadding( new Insets(20));
         setPrefWidth(250);
 
@@ -36,20 +38,31 @@ public class LeftSide extends VBox {
 
         Label title = new Label("Designer Panel");
         title.getStyleClass().addAll("title");
+
         Separator separator = new Separator();
-        getChildren().setAll(title, separator, new ColorBox(), new FillBox(
-                "Fill", new StackPane(new Label("Welcome"))
-        ));
+        getChildren().setAll(
+                title,
+                separator,
+                new ColorBox(control),
+                new FillBox(
+                "Fill", new ToggleOptions(
+                        control,
+                        "Filled", "Outlined"
+                    )
+                ),
+                new FillBox("Shape", new ToggleOptions(
+                        control,
+                        "Rect", "Rounded", "Round"
+                )),
+                new IconBox(
+                        "Icon Selector",
+                        new IconOptions(
+                                control, Icons.FAVORITE, Icons.DONE,
+                                Icons.ACCOUNT_CIRCLE
+                        )
+                )
 
+        );
 
-
-    }
-
-    private void sum(int[][] accounts) {
-        for(int[] costumer : accounts) {
-            for (int bank : costumer) {
-                
-            }
-        }
     }
 }

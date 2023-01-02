@@ -26,7 +26,6 @@ public class ControlViewPanelCreator implements BuildCreator {
     private ControlViewPanel body;
 
     public ControlViewPanelCreator() {
-        this.body = new ControlViewPanel();
     }
 
     @Override

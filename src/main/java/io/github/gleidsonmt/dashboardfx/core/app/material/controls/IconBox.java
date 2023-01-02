@@ -19,11 +19,12 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 
-import javafx.scene.Node;
+import javafx.scene.layout.Pane;
 
-public class ColorBox extends Box {
+public class IconBox extends Box {
 
-    public ColorBox(Node control) {
-        super("Color Box", new BubbleBox(control));
+    public IconBox(String title, Pane content) {
+        super(title, content);
     }
+
 }

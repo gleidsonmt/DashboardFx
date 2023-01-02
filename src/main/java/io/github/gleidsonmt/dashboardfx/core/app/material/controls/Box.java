@@ -31,6 +31,7 @@ public class Box extends VBox {
         Label lbl = new Label(title);
         lbl.getStyleClass().addAll("h4");
         this.getChildren().setAll(lbl, content);
+
     }
 
 }

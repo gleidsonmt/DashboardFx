@@ -25,6 +25,5 @@ public class FillBox extends Box {
 
     public FillBox(String title, Pane content) {
         super(title, content);
-
     }
 }

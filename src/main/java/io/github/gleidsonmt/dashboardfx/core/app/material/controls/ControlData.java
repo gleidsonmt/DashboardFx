@@ -19,11 +19,6 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 
-import javafx.scene.Node;
+public record ControlData(String prefix) {
 
-public class ColorBox extends Box {
-
-    public ColorBox(Node control) {
-        super("Color Box", new BubbleBox(control));
-    }
 }
