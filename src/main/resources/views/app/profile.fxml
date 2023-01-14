@@ -19,26 +19,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
-
-<!--
-  ~
-  ~    Copyright (C) Gleidson Neves da Silveira
-  ~
-  ~    This program is free software: you can redistribute it and/or modify
-  ~    it under the terms of the GNU General Public License as published by
-  ~    the Free Software Foundation, either version 3 of the License, or
-  ~   (at your option) any later version.
-  ~
-  ~    This program is distributed in the hope that it will be useful,
-  ~    but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~    GNU General Public License for more details.
-  ~
-  ~     You should have received a copy of the GNU General Public License
-  ~     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-  ~
-  -->
-<!--<?import org.controlsfx.control.Rating?>-->
+<?import java.net.URL?>
 
 <StackPane prefHeight="762.0" prefWidth="977.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <children>
@@ -265,6 +246,11 @@
             </children></VBox>
     </children>
     <stylesheets>
+            <URL value="@../../core.app/css/colors.css" />
+            <URL value="@../../core.app/css/skeleton.css" />
+            <URL value="@../../core.app/css/bootstrap.css" />
+            <URL value="@../../drawer.css" />
+            <URL value="@../../dash.css" />
 <!--        <URL value="@../../theme/css/material-color.css" />-->
 <!--        <URL value="@../../theme/css/skeleton.css" />-->
 <!--        <URL value="@../../theme/css/light-green.css" />-->

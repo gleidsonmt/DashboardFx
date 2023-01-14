@@ -19,24 +19,12 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
+import javafx.scene.layout.Pane;
 
-@Deprecated(forRemoval = true)
-public class ControlViewPanelCreator implements BuildCreator {
-    private ControlViewPanel body;
+public class ShapeBox extends Box {
 
-    public ControlViewPanelCreator() {
+    public ShapeBox(String title, Pane content) {
+        super(title, content);
     }
 
-    @Override
-    public View build() {
-        registerRoute(body, "Control IView", "control_view_pane");
-        return null;
-    }
-
-    private void registerRoute(ControlViewPanel root, String title, String name) {
-//        context.getRoutes().addView(
-//                context.getRoutes().load(root, title, name)
-//        );
-    }
 }

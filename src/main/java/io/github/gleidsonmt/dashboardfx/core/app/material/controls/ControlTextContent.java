@@ -19,22 +19,11 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 
-import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-
-public class Box extends VBox {
-
-    public Box(String title, Pane content) {
-
-        Label lbl = createTitle(title);
-        this.getChildren().setAll(lbl, content);
-
-    }
-
-    private Label createTitle(String text) {
-        Label label = new Label(text);
-        label.getStyleClass().addAll("h4");
-        return label;
-    }
+/**
+ * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * Version 0.0.1
+ * Create on  13/01/2023
+ */
+@Deprecated(forRemoval = true)
+public record ControlTextContent(String header, String content) {
 }

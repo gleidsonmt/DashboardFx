@@ -21,19 +21,21 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Circle ?>
+
 <StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane prefHeight="400.0" prefWidth="600.0">
         <VBox alignment="CENTER" prefHeight="397.0" prefWidth="474.0" spacing="30.0" AnchorPane.bottomAnchor="0.0"
               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <StackPane prefHeight="297.0" prefWidth="600.0">
                 <Circle fx:id="one" fill="TRANSPARENT" radius="120.0" stroke="#2bbbad" strokeType="INSIDE"
-                        strokeWidth="2.0"
+                        strokeWidth ="2.0"
                         style="-fx-stroke-dash-offset: 30; -fx-stroke-dash-array: 200; -fx-stroke: derive(-aqua, 50%);"/>
                 <Circle fx:id="two" fill="#1f93ff00" layoutX="581.0" layoutY="110.0" radius="105.0"
                         stroke="#33b5e5" strokeType="INSIDE" strokeWidth="2.0"
                         style="-fx-stroke-dash-array: 150; -fx-stroke: derive(-aqua, 30%);">
                     <effect>
-                        <DropShadow color="#00000014"/>
+                        <DropShadow fx:id="" color="#00000014"/>
                     </effect>
                 </Circle>
                 <Circle fx:id="three" fill="#1f93ff00" layoutX="581.0" layoutY="110.0" radius="85.0"

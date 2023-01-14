@@ -13,3 +13,9 @@
   name: profile
   directory : app
   fxml : profile.fxml
+
+- !!io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer
+  title : About
+  name: about
+  directory : app
+  fxml : about.fxml

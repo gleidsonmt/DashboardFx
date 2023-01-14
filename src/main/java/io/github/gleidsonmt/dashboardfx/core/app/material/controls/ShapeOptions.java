@@ -19,47 +19,50 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 
-import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
-import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
-public class IconOptions extends GridPane {
+public class ShapeOptions extends GridPane {
 
-    public IconOptions(Node node, Icons... options) {
-
+    public ShapeOptions(Node node, String... options) {
         ToggleGroup group = new ToggleGroup();
+        this.setVgap(20);
+        this.setHgap(30);
+        this.setPadding(new Insets(10, 10, 0, 10));
 
         for (int i = 0; i < options.length; i++) {
 
             ToggleButton toggleButton = new ToggleButton();
             toggleButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-            toggleButton.setGraphic(new IconContainer(options[i]));
+            toggleButton.getStyleClass().add(options[i].toLowerCase());
+            toggleButton.setMaxSize(100, 100);
 
             group.getToggles().add(toggleButton);
             toggleButton.setUserData(options[i]);
 
-            toggleButton.getStyleClass().addAll("toggle-box");
+            toggleButton.getStyleClass().addAll("info");
             this.getChildren().add(toggleButton);
-            GridPane.setConstraints(toggleButton, i,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+            GridPane.setConstraints(toggleButton, i, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
             toggleButton.setMaxWidth(Double.MAX_VALUE);
+
+            int finalI = i;
+            toggleButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                if (node.getUserData() instanceof ControlData controlData) {
+                    if (newValue) {
+                        node.getStyleClass().add(options[finalI].toLowerCase());
+                    } else
+                        node.getStyleClass().remove(options[finalI].toLowerCase());
+                }
+            });
         }
-
-        group.selectedToggleProperty().addListener((olbservale, oldValue, newValue) -> {
-            if (node instanceof Label control) {
-                if (newValue != null) {
-                    control.setGraphic(new IconContainer(
-                            (Icons) newValue.getUserData()
-                    ));
-                } else control.setGraphic(null);
-            }
-        });
-
-//            group.selectToggle(toggleButton);
 
     }
 

@@ -123,8 +123,11 @@ public class IRoutes implements Routes {
         this.root.getLayout().setBody(view.getRoot());
     }
 
-    private View doActions(View view) {
+    private View doActions(View view) throws NavigationException {
 
+        if (view == null) {
+            throw new NavigationException("", "");
+        }
         context.routes().title().setValue(view.getComposer().getTitle());
 
         if (view.getController() != null) {

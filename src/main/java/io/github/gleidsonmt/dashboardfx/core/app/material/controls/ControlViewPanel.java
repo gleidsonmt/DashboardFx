@@ -22,8 +22,10 @@ package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.views.BlockCode;
 import io.github.gleidsonmt.gncontrols.controls.GNTextBox;
+import javafx.collections.ListChangeListener;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -31,32 +33,49 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+import java.util.Objects;
+
 public class ControlViewPanel extends BorderPane {
 
     private RightSide right;
     private LeftSide left;
     private VBox center;
 
-    public ControlViewPanel(Context context) {
-        GNTextBox textBox = new GNTextBox();
-//        textBox.setPrefHeight();
-        textBox.setMaxHeight(Region.USE_PREF_SIZE);
-        textBox.setMaxWidth(Region.USE_PREF_SIZE);
+    private Node node;
+    private Context context;
 
-        Label label = new Label("Label");
-        label.setPrefSize(100, 40);
-        label.setUserData(new ControlData("lbl"));
+    private BlockCopyControl blockCopyControl;
 
+    public ControlViewPanel(Context context, Node node) {
+        this.context = context;
 
-        center = new CenterView(context, label, """
-                 Label label = new Label("Label");
-                """);
+        blockCopyControl = new BlockCopyControl(context, node);
 
-        right = new RightSide();
-        left = new LeftSide(label);
+        center = new CenterView(
+                context,
+                node,
+                blockCopyControl.getJavaBlock(),
+                blockCopyControl.getFxmlBlock());
+
+        right = new RightSide(context);
+        left = new LeftSide(context, node);
 
         this.setCenter(center);
         this.setLeft(left);
         this.setRight(right);
+    }
+
+    public void setNode(Node _node) {
+        this.node = _node;
+        blockCopyControl = new BlockCopyControl(context, node);
+        left = new LeftSide(context, node);
+        center = new CenterView(
+                context,
+                node,
+                blockCopyControl.getJavaBlock(),
+                blockCopyControl.getFxmlBlock());
+
+        setCenter(center);
+        setLeft(left);
     }
 }

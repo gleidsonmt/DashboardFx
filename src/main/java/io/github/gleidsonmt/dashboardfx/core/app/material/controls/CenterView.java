@@ -33,9 +33,9 @@ public class CenterView extends VBox {
     private VBox title = new VBox();
     private VBox body  = new VBox();
 
-    public CenterView(Context context, Node node, String code) {
-        BlockCode blockCode = new BlockCode(context, code );
-        blockCode.setMaxHeight(100);
+    public CenterView(Context context, Node node, BlockCode java, BlockCode fxml) {
+        java.setMaxHeight(100);
+        fxml.setMaxHeight(100);
         title.setAlignment(Pos.CENTER);
         VBox.setVgrow(title, Priority.ALWAYS);
         title.getChildren().addAll(node);
@@ -43,10 +43,12 @@ public class CenterView extends VBox {
         this.setAlignment(Pos.BOTTOM_CENTER);
 
         TabPane tabPane = new TabPane();
+        tabPane.getStyleClass().addAll("border-t-1", "border-light-gray-2");
         Tab javaCode = new Tab("Java Code");
-        javaCode.setContent(blockCode);
-        Tab fxml = new Tab("FXML Markup");
-        tabPane.getTabs().setAll(javaCode, fxml);
+        javaCode.setContent(java);
+        Tab tabFxml = new Tab("FXML Markup");
+        tabFxml.setContent(fxml);
+        tabPane.getTabs().setAll(javaCode, tabFxml);
         body.getChildren().setAll(tabPane);
     }
 }

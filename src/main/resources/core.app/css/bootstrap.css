@@ -36,9 +36,24 @@
 
 /* @lbl */
 
+.lbl-filled {
+    -fx-text-fill : -inner-color;
+}
+
+.lbl-filled .icon,
+.lbl-filled SVGPath {
+    -fx-fill : -inner-color;
+}
+
 .lbl-outlined {
     -fx-border-color : -box-color;
     -fx-border-width : 2px;
+    -fx-background-color : transparent;
+}
+
+.lbl-outlined .icon,
+.lbl-outlined SVGPath {
+    -fx-fill : -box-color;
 }
 
 .lbl-round {
@@ -64,24 +79,59 @@
 
 /* @Color - Linear */
 
-.danger {
+.border-light-gray-2 {
+    -box-color : -light-gray-2;
+    -fx-border-color : -box-color;
+}
+
+.info, .lbl-info, .bd-info .box {
+    -fx-accent : -info;
+    -box-color : -info;
+}
+
+.aqua, .lbl-aqua {
+    -fx-accent : -aqua;
+    -box-color : -aqua;
+}
+
+.cyan, .lbl-cyan {
+    -fx-accent : -cyan;
+    -box-color : -aqua;
+}
+
+.danger, .lbl-danger, .bd-danger .box {
     -fx-accent : -danger;
+    -box-color : -danger;
 }
 
-.grapefruit {
+.grapefruit, .lbl-grapefruit {
     -fx-accent : -grapefruit;
+    -box-color : -grapefruit;
 }
 
-.sunflower {
+.sunflower, .lbl-sunflower {
     -fx-accent : -sunflower;
+    -box-color : -sunflower;
 }
 
-.amber {
+.amber, .lbl-amber {
     -fx-accent : -amber;
+    -box-color : -amber;
 }
 
-.mint {
+.mint, .lbl-mint {
     -fx-accent : -mint;
+    -box-color : -mint;
+}
+
+.success, .lbl-success {
+    -fx-accent : -success;
+    -box-color : -success;
+}
+
+.warning, .lbl-warning {
+    -fx-accent : -warning;
+    -box-color : -warning;
 }
 
 /* @Color - Linear Gradinent */

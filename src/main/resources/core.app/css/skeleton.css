@@ -1,12 +1,10 @@
 
-
 /*
     Created on : 25/10/2022, 08:00:15
     Author     : Gleidson Neves da Silveira
     This file define what color, what font in default skeleton of controls.
     Type ctrl + F to search and type @ + properties to navigate.
 */
-
 
 .root {
 
@@ -32,11 +30,9 @@
     -info-color : -info;
     -success-color : -mint;
 
-
 }
 
 .region,
-Region,
 Pane {
     -fx-background-color : white;
 }
@@ -80,7 +76,10 @@ SVGPath {
 }
 
 .label {
+    -fx-accent : transparent;
+    -fx-background-color : -fx-accent;
     -fx-text-fill : -text-color;
+    -fx-padding : 5px;
 }
 
 /* @Radius */
@@ -131,9 +130,76 @@ SVGPath {
     -fx-alignment : center;
 }
 
-/* @GNControls */
+/* @Controls */
 
 .gn-badge .box {
     -fx-text-fill : white;
+    -fx-background-color : -fx-accent;
+    -fx-background-radius : 100px;
+    -fx-padding : 0px;
 }
 
+.gn-badge .box .text {
+    -fx-fill : white;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label
+{
+    -fx-pref-width : 100px;
+}
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top
+{
+  -fx-focus-color : transparent;
+}
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top
+{
+  -fx-faint-focus-color : transparent;
+}
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label
+{
+  -fx-font-weight : bold;
+}
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label
+{
+  -fx-alignment: CENTER;
+}
+
+.tab-pane:top .tab-header-area .tab-header-background
+{
+  -fx-border-width : 0px 0px 1px 0px;
+}
+
+.tab-pane:top .tab-header-area .headers-region .tab:top
+{
+  -fx-border-width : 0px 0px 2px 0px;
+}
+
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top
+{
+  -fx-border-width : 2px 0px 2px 0px;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label
+{
+  -fx-text-fill : -text-color;
+}
+.tab-pane:top .tab-header-area .headers-region .tab:top
+{
+  -fx-pref-height : 30px;
+}
+
+.tab-pane:top .tab-header-area .tab-header-background {
+    -fx-background-color : transparent;
+}
+
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top {
+    -fx-border-color : -fx-accent;
+    -fx-border-width : 0px 0px 2px 0px;
+}
+.tab-pane:top .tab-header-area .headers-region .tab:top {
+    -fx-border-color : transparent;
+    -fx-background-color : transparent;
+    -fx-border-width : 0px 0px 2px 0px;
+    -fx-border-radius : 2px;
+    -fx-cursor : hand;
+}

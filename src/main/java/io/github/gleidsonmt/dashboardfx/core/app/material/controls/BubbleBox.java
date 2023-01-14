@@ -19,10 +19,6 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
@@ -57,8 +53,27 @@ public class BubbleBox extends GridPane {
             int finalCount = count;
 
             item.selectedProperty().addListener((observable, oldValue, newValue) -> {
-                if (newValue) {
-                    control.setStyle("-box-color : -" + colors.get(finalCount));
+                if (control.getUserData() != null) {
+                    if (control.getUserData() instanceof ControlData controlData) {
+                        if (newValue) {
+                            if (!control.getStyleClass().contains(controlData.prefix() + "-outlined")
+                                    || !control.getStyleClass().contains("outlined")) {
+                                control.getStyleClass().addAll(controlData.prefix()
+                                        + "-" + item.getColor());
+//                                control.setStyle("-fx-border-color : -" + colors.get(finalCount));
+                            } else {
+                                control.getStyleClass().removeAll(controlData.prefix()
+                                        + "-" + item.getColor());
+//                                control.setStyle("-fx-background-color : -" + colors.get(finalCount));
+                            }
+                    } else {
+                        control.getStyleClass().removeAll(controlData.prefix()
+                                + "-" + item.getColor());
+                    }
+                }
+
+
+//                    control.setStyle("-box-color : -" + colors.get(finalCount));
                 }
             });
 

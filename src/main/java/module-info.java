@@ -12,6 +12,8 @@ module io.github.gleidsonmt.dashboardfx {
     requires org.jetbrains.annotations;
     requires java.logging;
 
+    requires controlsfx;
+
     requires io.github.gleidsonmt.gndecorator;
     requires io.github.gleidsonmt.gncontrols;
 

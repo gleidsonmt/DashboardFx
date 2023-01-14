@@ -19,6 +19,6 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 
-public record ControlData(String prefix) {
+public record ControlData(String prefix, String name) {
 
 }

@@ -25,6 +25,10 @@ import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.SnackColo
 import io.github.gleidsonmt.gncontrols.controls.GNButton;
 import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.input.Clipboard;
@@ -35,8 +39,14 @@ import javafx.scene.web.WebView;
 
 public class BlockCode extends StackPane {
 
-    public BlockCode(Context context, String text) {
+    private StringProperty content = new SimpleStringProperty();
 
+    public BlockCode(Context context, String text) {
+        this(context, text, false);
+    }
+
+    public BlockCode(Context context, String text, boolean fxml) {
+        content.setValue(text);
         this.setMinHeight(150);
         this.setAlignment(Pos.TOP_RIGHT);
         GNButton btn = new GNButton();
@@ -54,23 +64,41 @@ public class BlockCode extends StackPane {
         this.setStyle("-fx-border-color : -light-gray-2;");
         WebView webView = new WebView();
         webView.setContextMenuEnabled(false);
+
 //        webView.setMouseTransparent(true);
-        webView.getEngine().loadContent(
-                new BlockHtmlParser().javaStringToHtml(text)
-        );
-        webView.setOnScroll(event -> {
-//            System.out.println(event.getDeltaY());
-//            System.out.println("event.getTotalDeltaY() = " + event.getTotalDeltaY());
-//            System.out.println("event.getTextDeltaY() = " + event.getTextDeltaY());
-//            if (event.getDeltaY() > 0) {
-//                event.getTarget();
-//            }
+        BlockHtmlParser parser = new BlockHtmlParser();
+
+        if (fxml) {
+            webView.getEngine().loadContent(
+                    parser.javaStringToFxml(text)
+            );
+        } else {
+            webView.getEngine().loadContent(
+                    parser.javaStringToHtml(text)
+            );
+
+        }
+
+        content.addListener((observable, oldValue, newValue) -> {
+            if (fxml) {
+                webView.getEngine().loadContent(
+                        parser.javaStringToFxml(newValue)
+                );
+            } else {
+                webView.getEngine().loadContent(
+                        parser.javaStringToHtml(newValue)
+                );
+            }
         });
+
+        webView.setOnScroll(event -> {
+        });
+
         this.getChildren().addAll(webView, btn);
 
         btn.setOnAction(event -> {
             ClipboardContent content = new ClipboardContent();
-            content.putString(text);
+            content.putString(this.content.get());
             content.putHtml("<b>Bold</b> text");
             Clipboard.getSystemClipboard().setContent(content);
 
@@ -82,5 +110,17 @@ public class BlockCode extends StackPane {
                     .show();
 
         });
+    }
+
+    public String getContent() {
+        return content.get();
+    }
+
+    public StringProperty contentProperty() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content.set(content);
     }
 }

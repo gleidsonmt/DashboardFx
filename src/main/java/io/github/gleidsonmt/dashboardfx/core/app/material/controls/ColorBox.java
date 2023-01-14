@@ -20,10 +20,16 @@
 package io.github.gleidsonmt.dashboardfx.core.app.material.controls;
 
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
 
 public class ColorBox extends Box {
 
-    public ColorBox(Node control) {
+    public ColorBox(Node header, Node control) {
         super("Color Box", new BubbleBox(control));
     }
+
+
+
+
 }

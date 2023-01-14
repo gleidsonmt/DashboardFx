@@ -259,9 +259,11 @@ public final class DashController extends ResponsiveView implements ActionView, 
             context.bar().addInLeft(title);
 
             GNBadge notification = new GNBadge(Icons.NOTIFICATIONS);
-            notification.setColorCircle(Color.web(Colors.AQUA.toString()));
+            notification.getStyleClass().add("bd-danger");
+//            notification.setColorCircle(Color.web(Colors.AQUA.toString()));
             GNBadge sms = new GNBadge(Icons.SMS);
-            sms.setColorCircle(Color.web(Colors.GRAPEFRUIT.toString()));
+            sms.getStyleClass().add("bd-info");
+//            sms.setColorCircle(Color.web(Colors.GRAPEFRUIT.toString()));
 
             Pane space = new Pane();
             space.setMinWidth(20);

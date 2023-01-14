@@ -31,11 +31,9 @@ import java.nio.charset.Charset;
 public interface View {
     String getName();
 
-    ViewComposer getComposer();
+    ViewComposer getComposer() throws NullPointerException;
 
     ActionView getController() ;
-
-
 
     Parent getRoot();
 

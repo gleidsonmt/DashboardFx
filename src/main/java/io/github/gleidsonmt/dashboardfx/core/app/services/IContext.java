@@ -22,6 +22,7 @@ package io.github.gleidsonmt.dashboardfx.core.app.services;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
 import io.github.gleidsonmt.dashboardfx.core.layout.Bar;
 import io.github.gleidsonmt.dashboardfx.core.layout.IRoot;
+import javafx.application.HostServices;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -33,12 +34,13 @@ import java.util.logging.Logger;
 public class IContext implements Context {
 
     private Routes routes;
+    private HostServices hostServices;
     private IRoot root;
 
     private ObservableList<Image> icons;
 
-    public IContext() {
-
+    public IContext(HostServices hostServices) {
+        this.hostServices = hostServices;
     }
 
     public void setRoutes(Routes _routes) {
@@ -81,8 +83,8 @@ public class IContext implements Context {
 
 
     @Override
-    public void openLink(String url) {
-
+    public void openLink(String uri) {
+        this.hostServices.showDocument(uri);
     }
 
     @Override

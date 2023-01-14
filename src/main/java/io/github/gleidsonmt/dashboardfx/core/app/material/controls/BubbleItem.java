@@ -25,9 +25,15 @@ import javafx.scene.control.ToggleButton;
 
 public class BubbleItem extends ToggleButton {
 
+    private String color;
+
     public BubbleItem(String _color) {
+        this.color = _color;
         this.getStyleClass().add("bubble-item");
         this.setStyle("-fx-accent: -" + _color);
+    }
 
+    public String getColor() {
+        return color;
     }
 }

@@ -1,6 +1,18 @@
 
+.padding-1 {
+    -fx-padding : 1px;
+}
 
-.border-0, .no-border {
+.padding-5 {
+    -fx-padding : 5px;
+}
+
+.padding-10 {
+    -fx-padding : 10px;
+}
+
+.border-0,
+.no-border {
     -fx-border-width : 0px;
 }
 
@@ -12,6 +24,10 @@
     -fx-border-width : 0px 0px 0px 1px;
 }
 
+.border-t-1 {
+    -fx-border-width : 1px 0px 0px 0px;
+}
+
 .border-r-1 {
     -fx-border-width : 0px 1px 0px 0px;
 }
@@ -20,7 +36,8 @@
     -fx-border-color : -light-gray-2;
 }
 
-.raised:pressed, .raised:focused{
+.raised:pressed, .raised:focused
+{
   -fx-effect: dropshadow( gaussian , rgba(0,0,0,.2) , 18, 0 , 0 , 10 );
 }
 

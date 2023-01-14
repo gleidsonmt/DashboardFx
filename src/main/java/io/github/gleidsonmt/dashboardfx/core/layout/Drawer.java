@@ -22,7 +22,9 @@ package io.github.gleidsonmt.dashboardfx.core.layout;
 import io.github.gleidsonmt.dashboardfx.core.app.PresentationCreator;
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
+import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlData;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlViewPanel;
+import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ToggleOptions;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
@@ -36,8 +38,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -144,11 +148,31 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
 
     @FXML
     private void goLabel(){
-        goPanel(new Label("My Label"));
+        Label node = new Label("Label");
+        node.setUserData(new ControlData("lbl", "Label"));
+        goPanel(node);
     }
+
+    @FXML
+    private void goAbout()  {
+        try {
+            context.routes().setContent("about");
+        } catch (NavigationException e) {
+            e.getRouteNotFound(context, "view 'aboout' not found");
+        }
+    }
+
+    @FXML
+    private void goToggleButton() {
+        ToggleButton node = new ToggleButton("ToggleButton");
+        node.setUserData(new ControlData("tg", "Toggle Button"));
+        goPanel(node);
+    }
+
     private ControlViewPanel controlViewPanel;
-    private void goPanel(Control control) {
-        if (controlViewPanel == null) controlViewPanel = new ControlViewPanel(context);
+    private void goPanel(Node node) {
+        if (controlViewPanel == null) controlViewPanel = new ControlViewPanel(context, node);
+        else controlViewPanel.setNode(node);
         try {
             context.routes().registry("Label", controlViewPanel);
             context.routes().setContent("Label");

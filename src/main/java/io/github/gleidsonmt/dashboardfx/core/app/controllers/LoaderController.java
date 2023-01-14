@@ -67,6 +67,7 @@ public class LoaderController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/views/drawer.fxml"));
             loader.setController(new Drawer((IWrapper) context.getWrapper()));
+
             try {
                 loader.load();
             } catch (IOException e) {

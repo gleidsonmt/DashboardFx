@@ -17,36 +17,31 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.app.services;
-
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
-import io.github.gleidsonmt.dashboardfx.core.layout.Bar;
-import javafx.scene.image.Image;
-
-import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  02/10/2022
+ * Version 0.0.1
+ * Create on  12/01/2023
  */
-public interface Context {
+public class ParseMin {
+    public static void main(String[] args) {
+        String test = ".raised:pressed, " +
+                ".zaised adf -fx-border : 0px; .border-1 " +
+                ".border-r-1";
+        String[] array = test.split(" ");
+//        Pattern pattern = Pattern.compile("([^:]+\\w)");
+        Pattern pattern = Pattern.compile("(^\\.+\\w+[^:]+\\w)");
+        for (String t : array) {
+            Matcher matcher = pattern.matcher(t);
 
-    Root root();
+//            System.out.println(t);
 
-    Bar bar();
+            if (matcher.find()) {
+                System.out.println("matcher = " + matcher.group());
+            }
+        }
 
-    Routes routes();
-
-    Layout layout();
-
-    @Deprecated
-    Logger getLogger();
-
-    Wrapper getWrapper();
-
-    void openLink(String uri);
-
-    void icons(Image... icons);
-
-
+    }
 }

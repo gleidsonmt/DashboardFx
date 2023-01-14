@@ -48,7 +48,7 @@ public class GNBadgeSkin extends SkinBase<GNBadge> {
         icon.getStyleClass().addAll("btn-flat", "badge-icon", "no-border", "transparent");
 
         lblInfo.setAlignment(Pos.CENTER);
-        lblInfo.setText("22");
+        lblInfo.setText("2");
         lblInfo.getStyleClass().add("box");
         lblInfo.setMinSize(20,20);
         lblInfo.setPrefSize(10,10);
@@ -60,15 +60,17 @@ public class GNBadgeSkin extends SkinBase<GNBadge> {
             updateBoxColor((Color) c.getValue());
         });
 
+        lblInfo.setStyle("-fx-text-fill : white;");
+
 //        control.setStyle("-gn-color-circle: blue;");
 
 //        this.setAlignment(Pos.TOP_RIGHT);
     }
 
     private void updateBoxColor(Color color) {
-        lblInfo.setBackground(new Background(new BackgroundFill(
-               color, new CornerRadii(100), Insets.EMPTY
-        )));
+//        lblInfo.setBackground(new Background(new BackgroundFill(
+//               color, new CornerRadii(100), Insets.EMPTY
+//        )));
     }
 
     @Override

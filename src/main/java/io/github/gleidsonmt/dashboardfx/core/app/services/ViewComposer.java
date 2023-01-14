@@ -16,6 +16,8 @@
  */
 package io.github.gleidsonmt.dashboardfx.core.app.services;
 
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
+
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -31,6 +33,15 @@ public class ViewComposer {
     private String                  fxml;
     private List<ViewComposer>      views;
     private ViewComposer            root;
+
+    public ViewComposer() {
+
+    }
+
+    public ViewComposer(String title, String name) {
+        this.title = title;
+        this.name = name;
+    }
 
     public String getTitle() {
         return title;

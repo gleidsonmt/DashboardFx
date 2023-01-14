@@ -39,8 +39,8 @@ public abstract class App extends Application {
     private final IContext context;
     private final IRoot root;
 
-    public App() {
-        context = new IContext();
+    public App() {// before stage creating
+        context = new IContext(getHostServices());
         root = new IRoot(context);
         context.setRoutes(new IRoutes(root, context));
         context.routes().registry("layout", (Parent) root.getLayout());
