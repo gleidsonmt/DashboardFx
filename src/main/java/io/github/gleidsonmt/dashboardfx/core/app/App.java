@@ -64,6 +64,7 @@ public abstract class App extends Application {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(s)).toExternalForm());
         }
 
+        stage.setFullScreen(true);
         stage.getIcons().setAll(context.getIcons());
         stage.setScene(scene);
         stage.setMaximized(true);

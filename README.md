@@ -13,6 +13,12 @@
   <img src="./src/main/resources/logo_flier.png"  />
 </p>
 
+## Preview
+
+<p align="center">
+  <img src="./src/main/resources/screen.png"  />
+</p>
+
 [//]: # (# Build Context)
 
 [//]: # ()
