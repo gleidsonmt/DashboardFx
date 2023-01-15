@@ -10,5 +10,6 @@ DashboardFx.iml
 .gradle
 
 # Ignore Gradle build output directory
-build
+/build/
 /gradle/
+/.gradle/

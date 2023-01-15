@@ -100,25 +100,6 @@ Now you have many ways to get that!
 
 👌In code blocks find the copy button... is cooler, it automatically knows if your target is a pom.xml or gradle.build
 
-For installing decorator, you have this options:
-
-* For Pros - Click on the badge release or click badge nexus on the top of this document, and you're going to redirect to hosted sources.
-* For Github Users - On the right side, you can see the packages and releases, click on them and download it, in case you are in packages just copy them into your build file.
-* For Faster users - Just copy and paste the code bellow
-
-If you use maven add in pom.xml:
-```xml
-<dependency>
-  <groupId>io.github.gleidsonmt</groupId>
-  <artifactId>gndecorator</artifactId>
-  <version>2.2.25</version>
-</dependency>
-```
-
-.. or in gradle.build:
-```groovy
-    implementation 'io.github.gleidsonmt:replaceVersionInREADME:2.2.25'
-```
 
 # ☕ Using Decorator
 
@@ -133,14 +114,6 @@ Short Presentation
 
 Next steps:
 
-- [x] Add Yosemite Theme
-- [ ] Add Windows Theme
-- [ ] The decoratorTheme in blank to customize
-- [ ] Public methods to update window icons with css.
-- [X] Better pratices for one class receives state scope event (Clean Code)
-- [ ] Default Property to change bar height
-- [ ] Float options (css too)
-
 # 📫 Contributing to Project
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
 To contributing to project, follow these steps:
@@ -148,7 +121,7 @@ To contributing to project, follow these steps:
 1. Fork this repository.
 2. Creates a branch: `git checkout -b <branch_name>`.
 3. Do your changes and commit: `git commit -m '<commit_message>'`
-4. Send a branch to origin: `git push origin GNDecorator / <local>`
+4. Send a branch to origin: `git push origin DashboardFx / <local>`
 5. Creates pull request.
 
 However, if you don't know [How to create a pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
