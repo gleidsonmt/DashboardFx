@@ -120,7 +120,8 @@ public final class NavigationException extends Exception {
         ));
 
         StackPane root = new StackPane(blank);
-        blank.getChildren().add(this.message);
+        if (!blank.getChildren().contains(this.message))
+            blank.getChildren().add(this.message);
 
         root.setPadding(new Insets(100));
 

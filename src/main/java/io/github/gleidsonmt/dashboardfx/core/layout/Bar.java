@@ -25,6 +25,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
@@ -56,11 +57,13 @@ public class Bar extends GridPane {
         right.setId("bar-right");
         left.setSpacing(2);
         right.setSpacing(2);
+//        right.setPadding(new Insets(0,100, 0, 0));
         left.setAlignment(Pos.CENTER_LEFT);
-        right.setAlignment(Pos.CENTER_RIGHT);
+        right.setAlignment(Pos.TOP_RIGHT);
         this.getChildren().setAll(left, right);
         GridPane.setConstraints(left, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(right, 1,0,1,1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+
 
 
         IntegerBinding totalBinding = new IntegerBinding() {

@@ -25,11 +25,13 @@ import io.github.gleidsonmt.dashboardfx.core.app.services.IContext;
 import io.github.gleidsonmt.dashboardfx.core.app.services.IRoutes;
 import io.github.gleidsonmt.dashboardfx.core.layout.IRoot;
 import io.github.gleidsonmt.dashboardfx.core.layout.Material;
+import io.github.gleidsonmt.gndecorator.core.GNDecorator;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.scenicview.ScenicView;
 
 import java.util.Objects;
@@ -50,20 +52,36 @@ public abstract class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         build(context);
+//
+//        buildFull(stage);
+        buildDefault(stage);
+    }
+
+    private void buildDefault(Stage stage) {
         Scene scene = new Scene(root);
 
         for (String s : Material.stylesheets()) {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(s)).toExternalForm());
         }
 
-//        context.routes().registry("dash", new ILayout(context));
-
-        CSSFX.start(scene);
         stage.getIcons().setAll(context.getIcons());
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
-//        ScenicView.show(scene);
+    }
+
+    private void buildDecorator(Stage stage) {
+        GNDecorator decorator = new GNDecorator();
+        decorator.setContent(root);
+        decorator.fullBody();
+//        Scene scene = new Scene(root);
+
+        for (String s : Material.stylesheets()) {
+            decorator.getStylesheets().add(Objects.requireNonNull(getClass().getResource(s)).toExternalForm());
+        }
+
+        decorator.getIcons().setAll(context.getIcons());
+        decorator.show();
     }
 
     public abstract void build(Context context);

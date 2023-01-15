@@ -137,6 +137,34 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
         timeline.play();
     }
 
+
+
+    @Override
+    public Drawer side(HPos _side) {
+        this.side = _side;
+        return this;
+    }
+
+    @Override
+    public void onEnter(Context context) {
+        this.context = context;
+    }
+
+    @Override
+    public void onExit(Context context) {
+
+    }
+
+    @Override
+    public void onInit(Context context) {
+        this.context = context;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        new DrawerBehavior(root, group);
+    }
+
     @FXML
     private void goDash() {
         try {
@@ -153,14 +181,7 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
         goPanel(node);
     }
 
-    @FXML
-    private void goAbout()  {
-        try {
-            context.routes().setContent("about");
-        } catch (NavigationException e) {
-            e.getRouteNotFound(context, "view 'aboout' not found");
-        }
-    }
+
 
     @FXML
     private void goToggleButton() {
@@ -213,29 +234,21 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
         }
     }
 
-    @Override
-    public Drawer side(HPos _side) {
-        this.side = _side;
-        return this;
+    @FXML
+    private void goBuild() {
+        try {
+            context.routes().setContent("developers");
+        } catch (NavigationException e) {
+            e.getRouteNotFound(context, "view 'developers' not found");
+        }
     }
 
-    @Override
-    public void onEnter(Context context) {
-        this.context = context;
-    }
-
-    @Override
-    public void onExit(Context context) {
-
-    }
-
-    @Override
-    public void onInit(Context context) {
-        this.context = context;
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        new DrawerBehavior(root, group);
+    @FXML
+    private void goAbout()  {
+        try {
+            context.routes().setContent("about");
+        } catch (NavigationException e) {
+            e.getRouteNotFound(context, "view 'aboout' not found");
+        }
     }
 }

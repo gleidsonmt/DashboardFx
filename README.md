@@ -1,18 +1,28 @@
-<h1 align="center">GNDashboardFx</h1>
-<h6 align="center"> New Dashboard for JavaFx. </h6>
+<h1 align="center">DashboardFx</h1>
+<h6 align="center"> This project is part of the set of custom components created for JavaFx. </h6>
 <h1></h1>
 
+[![News](https://img.shields.io/badge/News-1-brightgreen.svg?style=for-the-badge)](http://gleidson28.blogspot.com)
+![Version](https://img.shields.io/badge/Version-0.3.22-green.svg?style=for-the-badge)
+![Build](https://img.shields.io/badge/Build-2.2.31+253-gold.svg?style=for-the-badge)
+[![Release](https://img.shields.io/badge/Release-v2.2.25-green.svg?style=for-the-badge)](https://github.com/gleidsonmt/GNDecorator/releases/tag/2.1.25)
+[![License](https://img.shields.io/github/license/Gleidson28/GNDecorator.svg?style=for-the-badge)](https://github.com/gleidsonmt/GNDecorator/blob/master/LICENSE)
+
+
 <p align="center">
-  <img src="./src/main/resources/logo/logo_flier.png"  />
+  <img src="./src/main/resources/logo_flier.png"  />
 </p>
 
-# Build Context
+[//]: # (# Build Context)
 
-# Declarative Style
+[//]: # ()
+[//]: # (# Declarative Style)
 
-# Yaml
+[//]: # ()
+[//]: # (# Yaml)
 
-# Libs
+[//]: # ()
+[//]: # (# Libs)
 
 # 🛠 Enhancements
 
@@ -50,14 +60,100 @@ To fixed:
 - [ ] Filtrar melhor metodos para fazer em routes tipo, metodos q são feitos inicializados uma boa ideia é utilizar uma strea e mapear
 - [ ] Scroll Pane com seu view port some com as bordas
 
-```java
-    Random r = new Random(12);
-    r.setNext(12);
-    r.setColor(Color.web("#f8384"));
+# 📑 Contents
 
+<!-- TOC -->
+* [Build Context](#build-context)
+* [Declarative Style](#declarative-style)
+* [Yaml](#yaml)
+* [Libs](#libs)
+* [🛠 Enhancements](#-enhancements)
+        * [Add Search Bar {SearchBar, SearchItem[type])](#add-search-bar-searchbar-searchitem-type-)
+        * [Add Badges](#add-badges)
+        * [Add Actions in top](#add-actions-in-top)
+        * [adicionar animação nas tiles de dashboard](#adicionar-animao-nas-tiles-de-dashboard)
+        * [GNBadge tem que virar um component customizavel](#gnbadge-tem-que-virar-um-component-customizavel)
+        * [GNBadge deve ir pra gncontrols](#gnbadge-deve-ir-pra-gncontrols)
+* [📑 Contents](#-contents)
+* [💻 Environment](#-environment)
+* [🚀 Installing Decorator](#-installing-decorator)
+* [☕ Using Decorator](#-using-decorator)
+* [🧬  Basic Structure](#-basic-structure)
+* [📺 On Youtube](#-on-youtube)
+* [🛠 Enhancements](#-enhancements)
+* [📫 Contributing to Project](#-contributing-to-project)
+* [😄 Be a contritubutor<br>](#-be-a-contritubutor-br)
+* [📝 License](#-license)
+<!-- TOC -->
+
+# 💻 Environment
+
+
+This lib is a compnent for JavaFx:   Get in the offical website [JavaFx](https://openjfx.io/), Tutorial [Getting Started](https://openjfx.io/openjfx-docs/)
+
+I have a great workstation here, then I've using a gradle 7.2 and Java and JavaFx +16 on Windows. (I really want to test in other systems in future).
+
+# 🚀 Installing Decorator
+
+Now you have many ways to get that!
+!🗒️Note ** The release has the first changes I made and releases in nexus are more stable 🥸***
+
+👌In code blocks find the copy button... is cooler, it automatically knows if your target is a pom.xml or gradle.build
+
+For installing decorator, you have this options:
+
+* For Pros - Click on the badge release or click badge nexus on the top of this document, and you're going to redirect to hosted sources.
+* For Github Users - On the right side, you can see the packages and releases, click on them and download it, in case you are in packages just copy them into your build file.
+* For Faster users - Just copy and paste the code bellow
+
+If you use maven add in pom.xml:
+```xml
+<dependency>
+  <groupId>io.github.gleidsonmt</groupId>
+  <artifactId>gndecorator</artifactId>
+  <version>2.2.25</version>
+</dependency>
 ```
 
-# 😄 Be a contributor<br>
+.. or in gradle.build:
+```groovy
+    implementation 'io.github.gleidsonmt:replaceVersionInREADME:2.2.25'
+```
+
+# ☕ Using Decorator
+
+# 🧬  Basic Structure
+ 
+
+# 📺 On Youtube
+Short Presentation
+[here](https://youtu.be/hZsYU7UbWmU)
+
+# 🛠 Enhancements
+
+Next steps:
+
+- [x] Add Yosemite Theme
+- [ ] Add Windows Theme
+- [ ] The decoratorTheme in blank to customize
+- [ ] Public methods to update window icons with css.
+- [X] Better pratices for one class receives state scope event (Clean Code)
+- [ ] Default Property to change bar height
+- [ ] Float options (css too)
+
+# 📫 Contributing to Project
+<!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
+To contributing to project, follow these steps:
+
+1. Fork this repository.
+2. Creates a branch: `git checkout -b <branch_name>`.
+3. Do your changes and commit: `git commit -m '<commit_message>'`
+4. Send a branch to origin: `git push origin GNDecorator / <local>`
+5. Creates pull request.
+
+However, if you don't know [How to create a pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+
+# 😄 Be a contritubutor<br>
 
 🤖I really need more friends.. Send me a  <a href='mailto:gleidisonmt@gmail.com?subject=Hi, I see you need my help!.. I am here.'> email <a/>.
 
