@@ -17,7 +17,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
-import io.github.gleidsonmt.dashboardfx.core.layout.Drawer;
+import io.github.gleidsonmt.dashboardfx.controllers.Drawer;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Dialog;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.IAlert;
 

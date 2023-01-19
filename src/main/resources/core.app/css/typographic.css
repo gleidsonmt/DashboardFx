@@ -42,7 +42,7 @@
     -fx-font-family : 'Roboto Bold';
 }
 
-.title {
+.title, .text-bold {
     -fx-font-weight : bold;
 }
 

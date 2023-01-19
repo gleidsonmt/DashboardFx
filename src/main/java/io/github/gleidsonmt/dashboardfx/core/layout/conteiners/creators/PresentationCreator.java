@@ -86,7 +86,6 @@ public class PresentationCreator extends Container implements BuildCreator {
         items.add(createSubTitle(title));
         return this;
     }
-
     public PresentationCreator image(Image image) {
         items.add(createImage(image));
         return this;
@@ -94,6 +93,11 @@ public class PresentationCreator extends Container implements BuildCreator {
 
     public PresentationCreator text(String text) {
         items.add(createText(text));
+        return this;
+    }
+
+    public PresentationCreator text(String text, String... style) {
+        items.add(createText(text, style));
         return this;
     }
 
@@ -224,8 +228,12 @@ public class PresentationCreator extends Container implements BuildCreator {
         return createLabel(title, "title", "h4");
     }
 
+    private @NotNull Label createText(String title, String... styles) {
+        return createLabel(title, styles);
+    }
+
     private @NotNull Label createSubTitle(String title) {
-        return createLabel(title, "title", "h5");
+        return createLabel(title, "title", "h6");
     }
 
     private @NotNull Label createLabel(String text, String... clazz) {

@@ -200,5 +200,6 @@
       <URL value="@../core.app/css/bootstrap.css" />
       <URL value="@../drawer.css" />
       <URL value="@../dash.css" />
+      <URL value="@../core.app/css/imersive_scroll.css" />
    </stylesheets>
 </StackPane>

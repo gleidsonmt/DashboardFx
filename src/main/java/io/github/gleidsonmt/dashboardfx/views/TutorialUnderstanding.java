@@ -57,13 +57,34 @@ public class TutorialUnderstanding extends TutorialCreator {
                 .title("""
                         Hello World View!
                         """)
-                .subTitle("Look at this tree.")
-                .image(new Image(
-                        Objects.requireNonNull(getClass().getResource(
-                                "/core.app/img/light_tree.jpg"))
-                                .toExternalForm()
-                ))
-                .text("")
+                .text("In views package create a file named HelloView.java ", "text-12", "text-bold")
+                .blockCode("""
+                        public class HelloView extends Container {
+                           \s
+                            public HelloView(String name) {
+                                super(name);
+                                getChildren().setAll(new Label("Hello View");
+                            }
+                           \s
+                        }
+                        """)
+                .text("In DrawerController create one action..", "text-12", "text-bold")
+                .blockCode("""
+                        public class DrawerController {
+                        \s
+                            public DrawerController(IWrapper _wrapper) {
+                                super(_wrapper);
+                            }
+                                                
+                            @FXML
+                            private void goHello() {
+                                context.routes().registryAndGo(new HelloView("hello_view"));
+                            }
+                        \s
+                        }
+                        """)
+
+                .text("Now in your drawer.fxml set the one toggle button the action and you go to the HelloView!", "text-12", "text-bold")
                 ;
 
         setAlignment(Pos.CENTER);

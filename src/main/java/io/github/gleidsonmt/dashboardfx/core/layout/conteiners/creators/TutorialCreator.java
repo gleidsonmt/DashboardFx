@@ -32,6 +32,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebView;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -85,6 +86,15 @@ public class TutorialCreator extends PresentationCreator {
         center.getChildren().setAll(items);
 
         center.setAlignment(Pos.TOP_LEFT);
+
+//        WebView webView = new WebView();
+//        webView.getEngine().setJavaScriptEnabled(true);
+//        webView.getEngine().loadContent("""
+//                <iframe width="400" height="480" src="https://www.youtube.com/embed/hZsYU7UbWmU" title="Decorator JavaFx 8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+//                """);
+//        aside.getChildren().add(
+//                webView
+//        );
 
         return this;
     }
