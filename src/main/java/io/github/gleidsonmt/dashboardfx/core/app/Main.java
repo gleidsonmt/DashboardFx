@@ -23,6 +23,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Class that provides logger and states.
@@ -43,26 +44,14 @@ public class Main extends App {
             throw new RuntimeException(e);
         }
 
-        // Setting scene
-//        Scene scene = new Scene(loader.getRoot(), 600, 600);
-
         context.icons(
-                new Image("logo_64.png"),
-                new Image("logo_32.png"),
-                new Image("logo_48.png"),
-                new Image("logo_16.png")
+                new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_64.png")).toExternalForm()),
+                new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_32.png")).toExternalForm()),
+                new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_48.png")).toExternalForm()),
+                new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_16.png")).toExternalForm())
         );
 
         context.routes().navigate("loader", loader);
 
-
-
-        // Drawer creator
-
-
-
-        // registring views
-//        context.routes().registry("loader", scene);
-//        context.routes().navigate("loader");
     }
 }

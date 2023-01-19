@@ -80,6 +80,23 @@ public class IRoutes implements Routes {
         return this;
     }
 
+    @Override
+    public Routes registry(View view) {
+        doOnInit(view);
+        this.addView(view);
+        return this;
+    }
+
+    public Routes registryAndGo(View view) {
+        registry(view);
+        try {
+            setContent(view.getName());
+        } catch (NavigationException e) {
+            throw new RuntimeException(e);
+        }
+        return this;
+    }
+
     // Navigates and load
     public Routes navigate(String id, FXMLLoader loader) {
 

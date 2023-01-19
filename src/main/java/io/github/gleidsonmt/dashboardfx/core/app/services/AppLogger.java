@@ -28,6 +28,7 @@ import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
+@Deprecated(forRemoval = true)
 public class AppLogger {
 
     private final Logger logger = Logger.getLogger("app");

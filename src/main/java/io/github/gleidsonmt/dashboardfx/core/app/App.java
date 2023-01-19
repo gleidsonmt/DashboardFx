@@ -25,6 +25,7 @@ import io.github.gleidsonmt.dashboardfx.core.app.services.IContext;
 import io.github.gleidsonmt.dashboardfx.core.app.services.IRoutes;
 import io.github.gleidsonmt.dashboardfx.core.layout.IRoot;
 import io.github.gleidsonmt.dashboardfx.core.layout.Material;
+import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import io.github.gleidsonmt.gndecorator.core.GNDecorator;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -64,11 +65,13 @@ public abstract class App extends Application {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(s)).toExternalForm());
         }
 
-        stage.setFullScreen(true);
+//        stage.setFullScreen(true);
         stage.getIcons().setAll(context.getIcons());
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
+
+//        ScenicView.show(scene);
     }
 
     private void buildDecorator(Stage stage) {

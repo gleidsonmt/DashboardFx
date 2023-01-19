@@ -11,6 +11,23 @@
     -fx-padding : 10px;
 }
 
+.border-light-gray {
+    -fx-border-color : -light-gray;
+}
+
+.border-light-gray-2 {
+    -fx-border-color : -light-gray-2;
+}
+
+.border-medium-gray {
+    -fx-border-color : -medium-gray;
+}
+
+.border-medium-gray-2 {
+    -fx-border-color : -medium-gray-2;
+}
+
+
 .border-0,
 .no-border {
     -fx-border-width : 0px;

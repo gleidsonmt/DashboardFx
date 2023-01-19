@@ -19,7 +19,6 @@ package io.github.gleidsonmt.dashboardfx.controllers;
 
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
-import io.github.gleidsonmt.dashboardfx.core.app.material.color.Colors;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ResponsiveView;
@@ -31,8 +30,6 @@ import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.CardCrea
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListItem;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
-import io.github.gleidsonmt.gncontrols.controls.GNAvatarStatus;
-import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,8 +44,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.net.URL;
@@ -131,7 +126,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
 
 
-        View scheduleList = new ScheduleListCreator()
+        View scheduleList = new ScheduleListCreator("schedule-01")
                 .title("Schedule")
                 .items(
                         new ScheduleListItem(
@@ -191,7 +186,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
         c.setName("East");
         barChart.getData().addAll(s, b, c);
 
-        Image image = new Image("logo_flier.png");
+        Image image = new Image(getClass().getResource("/core.app/img/logo_flier.png").toExternalForm());
         CardCreator card = new CardCreator(
                 image, "Title", """
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. 

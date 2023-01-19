@@ -46,6 +46,8 @@ module io.github.gleidsonmt.dashboardfx {
     opens io.github.gleidsonmt.dashboardfx.core.app.view_wrapper to javafx.base, javafx.fxml, javafx.graphics;
     exports io.github.gleidsonmt.dashboardfx.core.app.services;
     opens io.github.gleidsonmt.dashboardfx.core.app.services to javafx.base, javafx.fxml, javafx.graphics, org.yaml.snakeyaml;
+    exports io.github.gleidsonmt.dashboardfx.views;
+    opens io.github.gleidsonmt.dashboardfx.views to javafx.base, javafx.fxml, javafx.graphics;
 
 //    requires io.github.gleidsonmt.dashboardfx.core;
 //    exports io.github.gleidsonmt.dashboardfx.core.app to javafx.fxml, javafx.graphics;

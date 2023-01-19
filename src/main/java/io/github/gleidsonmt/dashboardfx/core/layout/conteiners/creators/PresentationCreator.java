@@ -37,6 +37,7 @@ import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.*;
@@ -49,7 +50,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class PresentationBuild extends Container implements BuildCreator {
+public class PresentationCreator extends Container implements BuildCreator {
 
     private final ScrollPane scroll = new ScrollPane();
     private final VBox body = new VBox();
@@ -57,12 +58,12 @@ public class PresentationBuild extends Container implements BuildCreator {
     private String name;
     private List<String> sections = List.of();
     private final List<Label> titles = List.of();
-    private ObservableList<Node> items = FXCollections.observableArrayList();
+    protected ObservableList<Node> items = FXCollections.observableArrayList();
 
     private Context context;
 
-    public PresentationBuild(String _name, Context _context) {
-        super.setName(_name);
+    public PresentationCreator(String _name, Context _context) {
+        super(_name);
         this.name = _name;
         this.context = _context;
 
@@ -76,22 +77,32 @@ public class PresentationBuild extends Container implements BuildCreator {
         body.setSpacing(10);
     }
 
-    public PresentationBuild title(String title) {
+    public PresentationCreator title(String title) {
         items.add(createTitle(title));
         return this;
     }
 
-    public PresentationBuild text(String text) {
+    public PresentationCreator subTitle(String title) {
+        items.add(createSubTitle(title));
+        return this;
+    }
+
+    public PresentationCreator image(Image image) {
+        items.add(createImage(image));
+        return this;
+    }
+
+    public PresentationCreator text(String text) {
         items.add(createText(text));
         return this;
     }
 
-    public PresentationBuild options(ActionOptions... options) {
+    public PresentationCreator options(ActionOptions... options) {
         items.add(createOptions(options));
         return this;
     }
 
-    public PresentationBuild footer(Author... authors) {
+    public PresentationCreator footer(Author... authors) {
         items.add(createFooter(authors));
         return this;
     }
@@ -129,12 +140,12 @@ public class PresentationBuild extends Container implements BuildCreator {
         return root;
     }
 
-    public PresentationBuild separator() {
+    public PresentationCreator separator() {
         items.add(new Separator());
         return this;
     }
 
-    public PresentationBuild blockCode(String text) {
+    public PresentationCreator blockCode(String text) {
         items.add(createBlockCode(text));
         return this;
     }
@@ -210,9 +221,35 @@ public class PresentationBuild extends Container implements BuildCreator {
     }
 
     private @NotNull Label createTitle(String title) {
-        Label label = new Label(title);
-        label.getStyleClass().addAll("title", "h4");
+        return createLabel(title, "title", "h4");
+    }
+
+    private @NotNull Label createSubTitle(String title) {
+        return createLabel(title, "title", "h5");
+    }
+
+    private @NotNull Label createLabel(String text, String... clazz) {
+        Label label = new Label(text);
+        label.getStyleClass().addAll(clazz);
         return label;
+    }
+
+    private @NotNull Node createImage(Image image) {
+        Region region = new Region();
+        region.setMinSize(image.getWidth(), image.getHeight());
+        region.setBackground(
+                new Background(
+                        new BackgroundImage(
+                                image,
+                                BackgroundRepeat.NO_REPEAT,
+                                BackgroundRepeat.NO_REPEAT,
+                                BackgroundPosition.DEFAULT,
+                                BackgroundSize.DEFAULT
+//                                new BackgroundSize(100, 100, true, true, true, true)
+                        )
+                )
+        );
+        return region;
     }
 
     @Contract("_ -> new")
@@ -228,14 +265,7 @@ public class PresentationBuild extends Container implements BuildCreator {
         return this;
     }
 
-    @Deprecated(forRemoval = true)
-    private void registerRoute(StackPane root, String title, String name) {
-//        context.routes().registry("presentation")
-//        context.routes().addView()
-//        context.getRoutes().addView(
-//                context.getRoutes().load(root, title, name)
-//        );
-    }
+
 
 }
 

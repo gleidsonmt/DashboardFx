@@ -42,3 +42,7 @@
     -fx-font-family : 'Roboto Bold';
 }
 
+.title {
+    -fx-font-weight : bold;
+}
+

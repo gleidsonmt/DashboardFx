@@ -22,11 +22,13 @@ import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
+import org.jetbrains.annotations.ApiStatus;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  20/08/2022
  */
+@ApiStatus.Experimental
 public interface Routes {
 
     void setContent(String view) throws NavigationException;
@@ -50,6 +52,10 @@ public interface Routes {
     Routes navigate(String key);
 
     Routes registry(String key, Parent parent);
+
+    Routes registry(View view);
+
+    Routes registryAndGo(View view);
 
     Routes registry(String key, FXMLLoader parent);
 

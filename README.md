@@ -16,7 +16,7 @@
 ## Preview
 
 <p align="center">
-  <img src="./src/main/resources/screen.png"  />
+  <img src="./src/main/resources/core.app/img/screen.png"  />
 </p>
 
 # 🛠 Enhancements

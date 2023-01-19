@@ -54,6 +54,10 @@ public class ScheduleListCreator
     private ObservableList<ScheduleListItem> items;
     private EventHandler<MouseEvent> onSeeMore;
 
+    public ScheduleListCreator(String name) {
+        super(name);
+    }
+
     public ScheduleListCreator title(String _title) {
         this.title = _title;
         return this;

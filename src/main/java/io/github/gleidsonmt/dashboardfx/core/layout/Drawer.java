@@ -19,15 +19,16 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
-import io.github.gleidsonmt.dashboardfx.core.app.PresentationCreator;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.TutorialCreator;
+import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
+import io.github.gleidsonmt.dashboardfx.views.WrappersView;
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlData;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlViewPanel;
-import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ToggleOptions;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.TutorialCreator1;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.NestedWrapperContainer;
 import io.github.gleidsonmt.dashboardfx.views.AreaChartView;
@@ -39,7 +40,6 @@ import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
@@ -175,6 +175,53 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
     }
 
     @FXML
+    private void goTutorial() {
+
+        View builder = new TutorialCreator("Inicializando", context)
+                .title("Exclusive selection vs. multiple selection")
+                .text("""
+                        By default, mat-button-toggle-group acts like a radio-button group- only one item can be selected. 
+                        In this mode, the value of the mat-button-toggle-group will reflect the value of the selected button and ngModel is supported.
+                        """)
+                .text("""
+                        Adding the multiple attribute allows multiple items to be selected (checkbox behavior). In this mode the values of the toggles are not used, the mat-button-toggle-group does not have a value, and ngModel is not supported.
+                        """)
+                .title("Appearance")
+                .text("""
+                        By default, the appearance of mat-button-toggle-group and mat-button-toggle will follow the latest Material Design guidelines. If you want to, you can switch back to the appearance that was following the previous Material Design spec by using the appearance input. The appearance can be configured globally using the MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS injection token.
+                        """)
+                .title("Use with @angular/forms")
+                .text("""
+                        <mat-button-toggle-group> is compatible with @angular/forms and supports both FormsModule and ReactiveFormsModule.
+                        """)
+                .title("Orientation")
+                .text("""
+                        The button-toggles can be rendered in a vertical orientation by adding the vertical attribute.
+                        """)
+
+                .blockCode("""
+                    context.getWrapper()
+                        .getDialog()
+                        .content(
+                            new StackPane(
+                                new Label("Custom Dialog Wrapper"))
+                            )
+                        .show();
+                """)
+                .build();
+
+        context.routes().registryAndGo(builder);
+
+
+    }
+
+    @FXML
+    private void goUnderstanding() {
+        context.routes().registryAndGo(
+                new TutorialUnderstanding("Understanding", context));
+    }
+
+    @FXML
     private void goLabel(){
         Label node = new Label("Label");
         node.setUserData(new ControlData("lbl", "Label"));
@@ -206,7 +253,7 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
     private View presentation;
     @FXML
     private void goWrappers() {
-        if(presentation == null) presentation = new PresentationCreator("presentation", context).build();
+        if(presentation == null) presentation = new WrappersView("presentation", context);
         try {
             context.routes().registry("presentation", presentation.getRoot());
             context.routes().setContent(presentation.getName());

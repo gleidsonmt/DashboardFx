@@ -46,7 +46,7 @@
             </padding>
             <ImageView fitHeight="48.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../logo_64.png" />
+                  <Image url="@../core.app/img/logo_64.png" />
                </image>
             </ImageView>
          </VBox>
@@ -64,7 +64,7 @@
             <padding>
                <Insets top="10.0" />
             </padding>
-            <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="112.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goDash" selected="true" styleClass="drawer-item" text="Dashboard">
+            <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goDash" selected="true" styleClass="drawer-item" text="Dashboard">
                <graphic>
                   <SVGPath content="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
                </graphic>
@@ -72,6 +72,27 @@
                   <ToggleGroup fx:id="group" />
                </toggleGroup>
             </ToggleButton>
+            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" layoutX="10.0" layoutY="254.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Tutorials" textAlignment="JUSTIFY">
+               <graphic>
+                  <SVGPath content="m12 21-7-3.8v-6L1 9l11-6 11 6v8h-2v-6.9l-2 1.1v6Zm0-8.3L18.85 9 12 5.3 5.15 9Zm0 6.025 5-2.7V12.25L12 15l-5-2.75v3.775Zm0-6.025Zm0 2.25Zm0 0Z" nodeOrientation="LEFT_TO_RIGHT" />
+               </graphic>
+               <content>
+                  <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="292.0" spacing="5.0">
+                     <children>
+                        <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goUnderstanding" styleClass="drawer-item" text="Understanding">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group1211" />
+                           </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Starting">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group12121" />
+                           </toggleGroup>
+                        </ToggleButton>
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
             <Label style="-fx-font-weight: bold;" text="Main Menu">
                <padding>
                   <Insets left="10.0" />
@@ -118,7 +139,7 @@
                   </VBox>
                </content>
             </TitledPane>
-            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" layoutX="10.0" layoutY="115.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Containers" textAlignment="JUSTIFY">
+            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" layoutX="10.0" layoutY="115.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Pages" textAlignment="JUSTIFY">
                <graphic>
                   <SVGPath content="M5 21q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3h14q.825 0 1.413.587Q21 4.175 21 5v14q0 .825-.587 1.413Q19.825 21 19 21Zm0-2h6V5H5v14Zm8 0h6v-7h-6Zm0-9h6V5h-6Z" nodeOrientation="LEFT_TO_RIGHT" />
                </graphic>
@@ -137,22 +158,6 @@
                   </children>
                </VBox>
             </TitledPane>
-            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" layoutX="10.0" layoutY="186.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Builders" textAlignment="JUSTIFY">
-               <graphic>
-                  <SVGPath content="M18.475 20.475 13.15 15.15l1.575-1.575L20.05 18.9Zm-13.45 0-1.6-1.575 6.75-6.75-2.1-2.1-.625.625-1.1-1.125v1.925l-.625.625L2.9 9.275l.625-.6H5.45l-1.125-1.1L7.2 4.7q.425-.425.913-.613Q8.6 3.9 9.125 3.9q.55 0 1.038.187.487.188.912.613L9.1 6.675l1.175 1.175-.625.625 2.1 2.1 2.5-2.5q-.15-.325-.225-.65-.075-.325-.075-.675 0-1.35.925-2.275.925-.925 2.275-.925.325 0 .613.05.287.05.587.175L16.075 6.05l1.775 1.8 2.275-2.275q.15.275.187.562.038.288.038.613 0 1.35-.925 2.287-.925.938-2.275.938-.35 0-.675-.075-.325-.075-.625-.25Z" nodeOrientation="LEFT_TO_RIGHT" />
-               </graphic>
-               <content>
-                  <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="292.0" spacing="5.0">
-                     <children>
-                        <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Cards">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="group1211" />
-                           </toggleGroup>
-                        </ToggleButton>
-                     </children>
-                  </VBox>
-               </content>
-            </TitledPane>
             <Label layoutX="10.0" layoutY="189.0" style="-fx-font-weight: bold;" text="Creators">
                <padding>
                   <Insets left="10.0" />
@@ -161,6 +166,11 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Label>
+            <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="395.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goWrappers" styleClass="drawer-item" text="Control Style" toggleGroup="$group">
+               <graphic>
+                  <SVGPath content="M12 22q-2.05 0-3.875-.788-1.825-.787-3.187-2.15-1.363-1.362-2.15-3.187Q2 14.05 2 12q0-2.075.812-3.9.813-1.825 2.201-3.175Q6.4 3.575 8.25 2.787 10.1 2 12.2 2q2 0 3.775.688 1.775.687 3.112 1.9 1.338 1.212 2.125 2.875Q22 9.125 22 11.05q0 2.875-1.75 4.412Q18.5 17 16 17h-1.85q-.225 0-.312.125-.088.125-.088.275 0 .3.375.862.375.563.375 1.288 0 1.25-.688 1.85-.687.6-1.812.6Zm0-10Zm-5.5 1q.65 0 1.075-.425Q8 12.15 8 11.5q0-.65-.425-1.075Q7.15 10 6.5 10q-.65 0-1.075.425Q5 10.85 5 11.5q0 .65.425 1.075Q5.85 13 6.5 13Zm3-4q.65 0 1.075-.425Q11 8.15 11 7.5q0-.65-.425-1.075Q10.15 6 9.5 6q-.65 0-1.075.425Q8 6.85 8 7.5q0 .65.425 1.075Q8.85 9 9.5 9Zm5 0q.65 0 1.075-.425Q16 8.15 16 7.5q0-.65-.425-1.075Q15.15 6 14.5 6q-.65 0-1.075.425Q13 6.85 13 7.5q0 .65.425 1.075Q13.85 9 14.5 9Zm3 4q.65 0 1.075-.425Q19 12.15 19 11.5q0-.65-.425-1.075Q18.15 10 17.5 10q-.65 0-1.075.425Q16 10.85 16 11.5q0 .65.425 1.075Q16.85 13 17.5 13ZM12 20q.225 0 .363-.125.137-.125.137-.325 0-.35-.375-.825T11.75 17.3q0-1.05.725-1.675T14.25 15H16q1.65 0 2.825-.963Q20 13.075 20 11.05q0-3.025-2.312-5.038Q15.375 4 12.2 4 8.8 4 6.4 6.325T4 12q0 3.325 2.338 5.663Q8.675 20 12 20Z" styleClass="lead-icon" />
+               </graphic>
+            </ToggleButton>
             <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="326.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goWrappers" styleClass="drawer-item" text="Wrappers" toggleGroup="$group">
                <graphic>
                   <SVGPath content="M12 18.5q.625 0 1.062-.438.438-.437.438-1.062h-3q0 .625.438 1.062.437.438 1.062.438ZM7 16h10v-2h-1v-2.6q0-1.525-.787-2.788Q14.425 7.35 13 7v-.5q0-.425-.287-.713Q12.425 5.5 12 5.5t-.712.287Q11 6.075 11 6.5V7q-1.425.35-2.212 1.612Q8 9.875 8 11.4V14H7Zm5 6q-2.075 0-3.9-.788-1.825-.787-3.175-2.137-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175 1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138 1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175-1.35 1.35-3.175 2.137Q14.075 22 12 22Zm0-2q3.325 0 5.663-2.337Q20 15.325 20 12t-2.337-5.663Q15.325 4 12 4T6.338 6.337Q4 8.675 4 12t2.338 5.663Q8.675 20 12 20Zm-2-6v-3q0-.825.588-1.413Q11.175 9 12 9t1.413.587Q14 10.175 14 11v3Zm2-2Z" styleClass="lead-icon" />

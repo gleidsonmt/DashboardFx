@@ -44,6 +44,7 @@ import java.util.ResourceBundle;
 public class AreaChartView extends Container {
 
     public AreaChartView(Context context) {
+        super("name");
         VBox body = new VBox();
         body.setAlignment(Pos.CENTER);
 

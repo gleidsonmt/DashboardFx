@@ -17,11 +17,12 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.app;
+package io.github.gleidsonmt.dashboardfx.views;
 
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.Author;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.PresentationBuild;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.Container;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.PresentationCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.ActionOptions;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.AlertType;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.DialogAction;
@@ -34,12 +35,12 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
-public class PresentationCreator extends PresentationBuild {
+public class WrappersView extends Container {
 
     private Context context;
 
-    public PresentationCreator(String _name, Context context) {
-        super(_name, context);
+    public WrappersView(String _name, Context context) {
+        super(_name);
         this.context = context;
 
         final ActionOptions customDialog = new ActionOptions();
@@ -48,7 +49,7 @@ public class PresentationCreator extends PresentationBuild {
             createAroundDilog(customDialog);
         });
 
-        this
+        PresentationCreator creator = new PresentationCreator("wrappers_creator", context)
         .title("Popups and wrappers.")
         .text("""
             App ecosystem needs a way to create modals, alerts to talk his users. Getting the context to use an accessor class for creating dialogs, 
@@ -148,8 +149,8 @@ public class PresentationCreator extends PresentationBuild {
         .footer(new Author("Gleidson Neves da Silveira",
                 "https://github.com/gleidsonmt")
         );
-
-
+        creator.build();
+        this.getChildren().setAll(creator);
     }
 
 
