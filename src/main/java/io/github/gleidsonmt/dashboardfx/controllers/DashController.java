@@ -26,6 +26,7 @@ import io.github.gleidsonmt.dashboardfx.core.controls.BoxUser;
 import io.github.gleidsonmt.dashboardfx.core.controls.CurvedChart;
 import io.github.gleidsonmt.dashboardfx.core.controls.DonutChart;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;
+import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.CardCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListItem;
@@ -280,7 +281,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
             boxUserDialog.getChildren().setAll(btnProfile, btnSettings, new Separator(), btnLogout);
 
             boxUser.setOnMouseClicked(event -> {
-                context.getWrapper()
+                context.wrapper()
                         .getDialog()
                         .size(300, 120)
                         .moveX(-200)
@@ -295,8 +296,20 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
             context.root().bar().addInRight(sms, notification, space, boxUser);
 
-
             StackPane b = new StackPane(new Label("Custom Dialog 2"));
+            b.setStyle("-fx-background-color : red;");
+
+            notification.setOnMouseClicked(event -> {
+                context.wrapper()
+                        .getDialog()
+                        .size(200, 400)
+                        .content(b)
+                        .style("-fx-padding: 20;-fx-background-color : white; -fx-border-color : -light-gray-2;")
+                        .styleClass("depth-2")
+                        .background(IWrapper.WrapperBackgroundType.GRAY)
+                        .show(Direction.BOTTOM_CENTER, notification);
+            });
+
 //            b.setMinSize(200, 300);
 
 //            context.getWrapper()
@@ -326,7 +339,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
     private void upadteContent(Context context, String content) {
         try {
             context.routes().setContent(content);
-            context.getWrapper().getDialog().close();
+            context.wrapper().getDialog().close();
         } catch (NavigationException e) {
             throw new RuntimeException(e);
         }

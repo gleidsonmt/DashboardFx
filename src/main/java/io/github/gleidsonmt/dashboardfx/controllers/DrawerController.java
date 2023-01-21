@@ -19,19 +19,15 @@
 
 package io.github.gleidsonmt.dashboardfx.controllers;
 
+import io.github.gleidsonmt.dashboardfx.core.app.controllers.Drawer;
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlData;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlViewPanel;
-import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
-import io.github.gleidsonmt.dashboardfx.core.layout.DrawerBehavior;
 import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.TutorialCreator;
-import io.github.gleidsonmt.dashboardfx.views.AreaChartView;
-import io.github.gleidsonmt.dashboardfx.views.HelloView;
-import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
-import io.github.gleidsonmt.dashboardfx.views.WrappersView;
+import io.github.gleidsonmt.dashboardfx.views.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -47,8 +43,8 @@ import java.util.ResourceBundle;
  */
 public class DrawerController extends Drawer {
 
-    public DrawerController(IWrapper _wrapper) {
-        super(_wrapper);
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
     }
 
@@ -59,6 +55,15 @@ public class DrawerController extends Drawer {
         } catch (NavigationException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void goNews() {
+//        WebView webView = new WebView();
+//        webView.getEngine().load("https://gleidsonmt.github.io");
+//        Container container = new Container("newsletter");
+//        container.getChildren().setAll(webView);
+//        context.routes().registryAndGo(container);
     }
 
     @FXML
@@ -86,7 +91,7 @@ public class DrawerController extends Drawer {
                         The button-toggles can be rendered in a vertical orientation by adding the vertical attribute.
                         """)
 
-                .blockCode("""
+                .code("""
                     context.getWrapper()
                         .getDialog()
                         .content(
@@ -109,12 +114,20 @@ public class DrawerController extends Drawer {
 
     @FXML
     private void goLabel(){
+        context.routes().registryAndGo(new LabelPresentationCreator("Label", context));
+    }
+
+    @FXML
+    private void goButton() {
+        context.routes().registryAndGo(new ButtonPresCreator("Label", context));
+    }
+
+    @FXML
+    private void goControlStyle() {
         Label node = new Label("Label");
         node.setUserData(new ControlData("lbl", "Label"));
         goPanel(node);
     }
-
-
 
     @FXML
     private void goToggleButton() {
@@ -184,4 +197,6 @@ public class DrawerController extends Drawer {
             e.getRouteNotFound(context, "view 'aboout' not found");
         }
     }
+
+
 }
