@@ -28,17 +28,18 @@ import java.util.List;
 
 @ApiStatus.Internal
 @SuppressWarnings("unchecked")
-public abstract class DeclarativeComponent<T> extends Node {
+public abstract class DeclarativeComponent<T>  extends Node {
 
     protected String style;
-    private List<String> stylesheets;
+    protected List<String> styleClass;
 
     public T style(String style) {
-        this.setStyle(style);
+        this.style = style;
         return (T) this;
     }
 
-    public T styleClass(String... style) {
+    public T styleClass(String... styleClass) {
+        this.styleClass = List.of(styleClass);
         return (T) this;
     }
 

@@ -42,9 +42,11 @@ import javafx.geometry.*;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.net.URL;
@@ -296,16 +298,17 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
             context.root().bar().addInRight(sms, notification, space, boxUser);
 
-            StackPane b = new StackPane(new Label("Custom Dialog 2"));
+            VBox b = createDialogNotification();
             b.setStyle("-fx-background-color : red;");
 
             notification.setOnMouseClicked(event -> {
                 context.wrapper()
                         .getDialog()
-                        .size(200, 400)
+                        .size(400, 400)
                         .content(b)
-                        .style("-fx-padding: 20;-fx-background-color : white; -fx-border-color : -light-gray-2;")
-                        .styleClass("depth-2")
+                        .style("-fx-padding: 20;-fx-background-color : white; " +
+                                "-fx-background-radius : 5px; -fx-border-radius : 5px;")
+                        .styleClass("depth-1")
                         .background(IWrapper.WrapperBackgroundType.GRAY)
                         .show(Direction.BOTTOM_CENTER, notification);
             });
@@ -324,6 +327,34 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
             load = true;
         }
+    }
+
+    private VBox createDialogNotification() {
+        VBox root = new VBox();
+        root.setAlignment(Pos.TOP_CENTER);
+
+        Text title = new Text("Notifications");
+        title.getStyleClass().addAll("h5", "text-bold");
+        Button btn = new Button("Mark as read");
+        btn.getStyleClass().addAll("btn-flat", "text-info", "no-border");
+
+        GridPane header = new GridPane();
+        header.getChildren().addAll(title, btn);
+        GridPane.setConstraints(title, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(btn, 1,0,1,1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+
+        ListView<String> listView = new ListView<>();
+        listView.getItems().setAll(
+                "First", "Second",
+                "Third"
+        );
+        listView.setPrefHeight(200);
+
+        Button btnAll = new Button("View All Notifications");
+        btnAll.getStyleClass().addAll("btn-flat", "no-border", "text-info");
+
+        root.getChildren().setAll(header, listView, new Separator(), btnAll);
+        return root;
     }
 
     private Button createBtn(String text, EventHandler<ActionEvent> event) {

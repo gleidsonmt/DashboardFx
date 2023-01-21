@@ -173,6 +173,7 @@ public class PresentationCreator extends Container implements BuildCreator {
         javaTab.setContent(createBlockCode(java, false));
         fxmlTab.setContent(createBlockCode(fxml, true));
         HBox root = new HBox();
+        root.setSpacing(20);
         root.setAlignment(Pos.CENTER);
         root.getChildren().setAll(list);
         root.setAlignment(Pos.CENTER);

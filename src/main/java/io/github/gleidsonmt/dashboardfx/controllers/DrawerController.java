@@ -24,10 +24,8 @@ import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlData;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlViewPanel;
-import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.TutorialCreator;
 import io.github.gleidsonmt.dashboardfx.views.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -114,7 +112,7 @@ public class DrawerController extends Drawer {
 
     @FXML
     private void goLabel(){
-        context.routes().registryAndGo(new LabelPresentationCreator("Label", context));
+        context.routes().registryAndGo(new LabelPresCreator("Label", context));
     }
 
     @FXML

@@ -28,10 +28,12 @@ import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Control;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import org.jetbrains.annotations.TestOnly;
 
 public class Dialog
@@ -109,6 +111,9 @@ public class Dialog
         if (this.content != null)
             this.content.setMaxSize(width, height);
 
+        this.content.setStyle(super.style);
+        this.content.getStyleClass().addAll(super.styleClass);
+
         wrapper.toFront();
         wrapper.setOnMouseClicked(event -> close());
     }
@@ -121,6 +126,9 @@ public class Dialog
             this.content.setMaxSize(width, height);
         else return;
 
+        this.content.setStyle(super.style);
+        this.content.getStyleClass().addAll(super.styleClass);
+
         this.content.setTranslateX(x);
         this.content.setTranslateY(y);
 
@@ -130,13 +138,14 @@ public class Dialog
         wrapper.setOnMouseClicked(event -> close());
     }
 
-    @Override
-    public Dialog style(String style) {
-        super.style = style;
-        return this;
-    }
+//    @Override
+//    public Dialog style(String style) {
+////        super.style = style;
+//        return this;
+//    }
 
     public void show(Direction direction, Node node) {
+        Screen screen = Screen.getPrimary();
         if (this.content == null) return;
 
         this.wrapper.setAlignment(Pos.TOP_LEFT);
@@ -145,11 +154,13 @@ public class Dialog
         this.content.setMaxSize(width, height);
 
 //        node.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            content.setStyle(super.style);
+        this.content.setStyle(super.style);
+        this.content.getStyleClass().addAll(super.styleClass);
+
             Bounds bounds = node.localToScene(node.getLayoutBounds());
             wrapper.toFront();
 
-            System.out.println("width = " + height);
+            System.out.println("width = " + bounds.getMinX());
 
 
             switch (direction) {
@@ -205,7 +216,20 @@ public class Dialog
                     this.content.setTranslateY(bounds.getMinY());
                 }
 
+
+
             }
+
+        // se sair pelo canto esquerdo...
+        double i = bounds.getMaxX() - (width / 2);
+        double max = wrapper.getWidth() - width;
+
+        double mx = content.localToScene(content.getLayoutBounds()).getMaxX(); // 1095
+        double md = screen.getVisualBounds().getMaxX() - width; // 1366 - 400 = 966,
+
+        if (i > max) {
+            this.content.setTranslateX(this.content.getTranslateX() - ((i - max)));
+        }
 
             wrapper.setOnMouseClicked(e -> close());
 //        });

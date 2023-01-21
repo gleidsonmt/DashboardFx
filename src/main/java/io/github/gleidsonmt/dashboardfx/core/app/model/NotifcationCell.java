@@ -17,19 +17,17 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.views;
+package io.github.gleidsonmt.dashboardfx.core.app.model;
 
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.Container;
+import io.github.gleidsonmt.gncontrols.material.icon.Icons;
+
+import java.time.LocalDateTime;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Version 0.0.1
- * Create on  19/01/2023
+ * Create on  21/01/2023
  */
-public class HelloView extends Container {
-
-    public HelloView(String name) {
-        super(name);
-    }
+public record NotifcationCell(String text, Icons icon, LocalDateTime time) {
 
 }
