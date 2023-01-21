@@ -132,8 +132,10 @@ SVGPath {
 
 /* @Controls */
 
+
 .gn-badge .box {
     -fx-text-fill : white;
+    -fx-accent : -grapefruit;
     -fx-background-color : -fx-accent;
     -fx-background-radius : 100px;
     -fx-padding : 0px;

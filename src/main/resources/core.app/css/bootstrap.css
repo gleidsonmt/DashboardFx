@@ -86,6 +86,7 @@
     -fx-border-color : -box-color;
 }
 
+
 .info, .lbl-info, .bd-info .box {
     -fx-accent : -info;
     -box-color : -info;

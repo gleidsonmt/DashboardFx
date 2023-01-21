@@ -41,11 +41,9 @@ public class GNBadgeSkin extends SkinBase<GNBadge> {
 
     public GNBadgeSkin(Icons _icon, GNBadge control) {
         super(control);
-        if (control.getCircleColor() == null ) control.setColorCircle(Color.GRAY);
-        updateBoxColor(control.getCircleColor());
 
         GNIconButton icon = new GNIconButton(_icon);
-        icon.getStyleClass().addAll("btn-flat", "badge-icon", "no-border", "transparent");
+        icon.getStyleClass().addAll("btn-flat", "no-border", "transparent");
 
         lblInfo.setAlignment(Pos.CENTER);
         lblInfo.getStyleClass().add("box");
@@ -58,22 +56,16 @@ public class GNBadgeSkin extends SkinBase<GNBadge> {
         lblInfo.textProperty().bind(Bindings.convert(control.numberOfNotificationsProperty()));
 
         this.getChildren().setAll(icon, lblInfo);
-
-        registerChangeListener(getSkinnable().colorCircleProperty(), c -> {
-            updateBoxColor((Color) c.getValue());
-        });
-
-        lblInfo.setStyle("-fx-text-fill : white;");
+        updateBoxColor(Color.GRAY);
 
 //        control.setStyle("-gn-color-circle: blue;");
-
 //        this.setAlignment(Pos.TOP_RIGHT);
     }
 
     private void updateBoxColor(Color color) {
-//        lblInfo.setBackground(new Background(new BackgroundFill(
-//               color, new CornerRadii(100), Insets.EMPTY
-//        )));
+        lblInfo.setBackground(new Background(new BackgroundFill(
+               color, new CornerRadii(100), Insets.EMPTY
+        )));
     }
 
     @Override
@@ -82,11 +74,11 @@ public class GNBadgeSkin extends SkinBase<GNBadge> {
         layoutInArea(lblInfo, x,y,w,h, 0, HPos.RIGHT, VPos.TOP);
     }
 
-//    @Override
-//    protected double computeMaxHeight(double width, double topInset, double rightInset, double bottomInset, double leftInset) {
-//        return computePrefHeight(width, topInset, rightInset, bottomInset, leftInset);
-//    }
-//
+    @Override
+    protected double computeMaxHeight(double width, double topInset, double rightInset, double bottomInset, double leftInset) {
+        return 40;
+    }
+
 //    @Override
 //    protected double computeMaxWidth(double height, double topInset, double rightInset, double bottomInset, double leftInset) {
 //        return computePrefWidth(height, topInset, rightInset, bottomInset, leftInset);

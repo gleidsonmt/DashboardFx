@@ -44,17 +44,7 @@ import java.util.List;
 
 public class GNBadge extends Control {
 
-    private static final StyleablePropertyFactory<GNBadge> FACTORY =
-            new StyleablePropertyFactory<>(Control.getClassCssMetaData());
-
-    private final StyleableObjectProperty<Color> colorCircle =
-            new SimpleStyleableObjectProperty<>(COLOR_CIRCLE, this, "colorCircle", Color.RED);
-
-    private static final CssMetaData<GNBadge, Color> COLOR_CIRCLE =
-            FACTORY.createColorCssMetaData("-gn-color-circle", f -> f.colorCircle);
-
-    private Icons icon;
-
+    private final Icons icon;
     private IntegerProperty numberOfNotifications = new SimpleIntegerProperty(this, "numberOfNotification",0);
 
     public GNBadge() {
@@ -65,35 +55,11 @@ public class GNBadge extends Control {
         this.icon = _icon;
         getStyleClass().add("gn-badge");
         setCursor(Cursor.HAND);
-        addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            System.out.println("event trigged");
-        });
     }
 
     @Override
     protected Skin<?> createDefaultSkin() {
         return new GNBadgeSkin(icon, this);
-    }
-
-    public static List<CssMetaData<? extends Styleable, ?>> getClassCssMetaData() {
-        return FACTORY.getCssMetaData();
-    }
-
-    @Override
-    public List<CssMetaData<? extends Styleable, ?>> getControlCssMetaData() {
-        return FACTORY.getCssMetaData();
-    }
-
-    public Color getCircleColor() {
-        return colorCircle.get();
-    }
-
-    public void setColorCircle(Color color) {
-        this.colorCircle.setValue(color);
-    }
-
-    public StyleableObjectProperty<Color> colorCircleProperty() {
-        return this.colorCircle;
     }
 
     public int getNumberOfNotifications() {
