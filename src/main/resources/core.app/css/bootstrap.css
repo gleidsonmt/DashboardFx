@@ -25,13 +25,13 @@
 
 /* @btn */
 .btn-flat {
-    -fx-border-width : 1px;
+    -fx-border-width : 0px;
     -fx-border-color : -light-gray;
     -fx-background-color : transparent;
 }
 
 .btn-flat .text {
-    -fx-fill : -text-color;
+    -fx-fill : -fx-accent;
 }
 
 /* @lbl */
@@ -45,12 +45,14 @@
     -fx-fill : -inner-color;
 }
 
+.button:cancel,
 .lbl-outlined {
     -fx-border-color : -box-color;
     -fx-border-width : 2px;
     -fx-background-color : transparent;
 }
 
+.button:cancel,
 .lbl-outlined .icon,
 .lbl-outlined SVGPath {
     -fx-fill : -box-color;

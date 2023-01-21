@@ -45,7 +45,7 @@ public class DrawerController extends Drawer {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        super.initialize(location, resources);
     }
 
     @FXML

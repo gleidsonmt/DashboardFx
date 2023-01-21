@@ -84,16 +84,8 @@
                <content>
                   <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="292.0" spacing="5.0">
                      <children>
-                        <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goUnderstanding" styleClass="drawer-item" text="Understanding">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="group1211" />
-                           </toggleGroup>
-                        </ToggleButton>
-                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Starting">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="group12121" />
-                           </toggleGroup>
-                        </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goUnderstanding" styleClass="drawer-item" text="Understanding" toggleGroup="$group" />
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Starting" toggleGroup="$group" />
                      </children>
                   </VBox>
                </content>
@@ -138,16 +130,8 @@
                </graphic>
                <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="292.0" spacing="5.0">
                   <children>
-                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Carousel">
-                        <toggleGroup>
-                           <ToggleGroup fx:id="group121" />
-                        </toggleGroup>
-                     </ToggleButton>
-                     <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Navigator">
-                        <toggleGroup>
-                           <ToggleGroup fx:id="group1212" />
-                        </toggleGroup>
-                     </ToggleButton>
+                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Carousel" toggleGroup="$group" />
+                     <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Navigator" toggleGroup="$group" />
                   </children>
                </VBox>
             </TitledPane>

@@ -71,7 +71,8 @@ public abstract class App extends Application {
         stage.setMaximized(true);
         stage.show();
 
-        ScenicView.show(scene);
+//        ScenicView.show(scene);
+        CSSFX.start(scene);
 
     }
 

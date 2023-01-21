@@ -38,11 +38,10 @@
   -fx-font-size : 36px;
 }
 
-.title {
-    -fx-font-family : 'Roboto Bold';
-}
-
 .title, .text-bold {
     -fx-font-weight : bold;
 }
 
+.text-info {
+    -text-color : -info;
+}
