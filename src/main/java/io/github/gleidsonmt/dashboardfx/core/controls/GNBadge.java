@@ -51,10 +51,13 @@ public class GNBadge extends Control {
 
     private Icons icon;
 
+    public GNBadge() {
+        this(Icons.BADGE);
+    }
+
     public GNBadge(Icons _icon) {
         this.icon = _icon;
         getStyleClass().add("gn-badge");
-
     }
 
     @Override

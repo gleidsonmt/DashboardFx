@@ -149,12 +149,44 @@ public class PresentationCreator extends Container implements BuildCreator {
         return this;
     }
 
-    public PresentationCreator blockCode(String text) {
-        items.add(createBlockCode(text));
+    public PresentationCreator code(String text) {
+        items.add(createBlockCode(text, false));
         return this;
     }
 
-    private StackPane createBlockCode(String text) {
+    public PresentationCreator multCode(Node node, String java, String fxml) {
+        items.add(createMultBlock(node, java, fxml));
+        return this;
+    }
+
+    public PresentationCreator multCode(List<Node> nodes, String java, String fxml) {
+        items.add(createMultBlock(nodes, java, fxml));
+        return this;
+    }
+
+    private Node createMultBlock(List<Node> list, String java, String fxml) {
+        TabPane tabPane = new TabPane();
+        Tab javaTab = new Tab("Java");
+        Tab fxmlTab = new Tab("FXML");
+        Tab nodeTab = new Tab("Node");
+        tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
+        javaTab.setContent(createBlockCode(java, false));
+        fxmlTab.setContent(createBlockCode(fxml, true));
+        HBox root = new HBox();
+        root.setAlignment(Pos.CENTER);
+        root.getChildren().setAll(list);
+        root.setAlignment(Pos.CENTER);
+        nodeTab.setContent(root);
+        tabPane.getTabs().setAll(nodeTab, javaTab, fxmlTab);
+        root.getStyleClass().addAll("border-light-gray-2", "border-1");
+        return tabPane;
+    }
+
+    private Node createMultBlock(Node node, String java, String fxml) {
+        return createMultBlock(List.of(node), java, fxml);
+    }
+
+    private StackPane createBlockCode(String text, boolean fxml) {
         StackPane root = new StackPane();
         root.setMinHeight(150);
         root.setAlignment(Pos.TOP_RIGHT);
@@ -174,9 +206,15 @@ public class PresentationCreator extends Container implements BuildCreator {
         WebView webView = new WebView();
         webView.setContextMenuEnabled(false);
 //        webView.setMouseTransparent(true);
-        webView.getEngine().loadContent(
-                new BlockHtmlParser().javaStringToHtml(text)
-        );
+        if (fxml) {
+            webView.getEngine().loadContent(
+                    new BlockHtmlParser().javaStringToFxml(text)
+            );
+        } else {
+            webView.getEngine().loadContent(
+                    new BlockHtmlParser().javaStringToHtml(text)
+            );
+        }
         webView.setOnScroll(event -> {
 //            System.out.println(event.getDeltaY());
 //            System.out.println("event.getTotalDeltaY() = " + event.getTotalDeltaY());

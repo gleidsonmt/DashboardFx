@@ -19,22 +19,23 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.AbsoluteWrapperContainer;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
 import javafx.geometry.Bounds;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import org.jetbrains.annotations.TestOnly;
 
-public class Dialog<T extends Region>
-       extends DeclarativeComponent<Dialog<T>>
+public class Dialog
+       extends DeclarativeComponent<Dialog>
        implements AbsoluteWrapperContainer {
 
     private Region content;
@@ -50,28 +51,51 @@ public class Dialog<T extends Region>
         Region r = new Region();
     }
 
-    public Dialog<T> content(Region content) {
+    public Dialog content(Region content) {
         this.content = content;
         wrapper.getChildren().setAll(content);
         return this;
     }
 
     @Override
-    public Dialog<T> pos(Pos _pos) {
+    public Dialog pos(Pos _pos) {
         this.pos = _pos;
         return this;
     }
 
     @Override
-    public Dialog<T> size(double width, double height) {
+    public Dialog size(double width, double height) {
         this.width = width;
         this.height = height;
         return this;
     }
 
     @TestOnly
-    public Dialog<T> moveX(double x) {
+    public Dialog moveX(double x) {
         this.paddingX = x;
+        return this;
+    }
+
+    public Dialog background(IWrapper.WrapperBackgroundType type) {
+        switch (type) {
+            case NONE -> this.wrapper.setBackground(
+                    new Background(
+                            new BackgroundFill(
+                                    Color.gray(0.5, 0.3),
+                                    CornerRadii.EMPTY,
+                                    Insets.EMPTY)
+                    )
+            );
+            case GRAY -> this.wrapper.setBackground(
+                    new Background(
+                            new BackgroundFill(
+                                    Color.TRANSPARENT,
+                                    CornerRadii.EMPTY,
+                                    Insets.EMPTY)
+                    )
+            );
+
+        }
         return this;
     }
 
@@ -107,7 +131,7 @@ public class Dialog<T extends Region>
     }
 
     @Override
-    public Dialog<T> style(String style) {
+    public Dialog style(String style) {
         super.style = style;
         return this;
     }
@@ -116,8 +140,6 @@ public class Dialog<T extends Region>
         if (this.content == null) return;
 
         this.wrapper.setAlignment(Pos.TOP_LEFT);
-
-
         this.content.setMinSize(width, height);
         this.content.setPrefSize(width, height);
         this.content.setMaxSize(width, height);

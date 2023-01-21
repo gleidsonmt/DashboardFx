@@ -17,7 +17,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
-import io.github.gleidsonmt.dashboardfx.controllers.Drawer;
+import io.github.gleidsonmt.dashboardfx.core.app.controllers.Drawer;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Alert;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Dialog;
@@ -68,8 +68,11 @@ public class IWrapper extends StackPane implements Wrapper {
 
     @Override
     public Drawer getDrawer() {
-        if (drawer == null) drawer = new Drawer(this);
+        if (drawer == null) drawer = new Drawer();
         return drawer;
     }
 
+    public enum WrapperBackgroundType {
+        NONE, GRAY, BLUR;
+    }
 }

@@ -75,7 +75,7 @@ public class TutorialCreator extends PresentationCreator {
         scroll.setContent(center);
 
         aside.setMinWidth(250);
-
+        body.setSpacing(10);
         aside.getStyleClass().addAll("border-1", "border-l-1", "border-medium-gray");
 
         scroll.setFitToHeight(true);

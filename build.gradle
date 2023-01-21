@@ -40,7 +40,6 @@ dependencies {
 
     implementation 'org.commonmark:commonmark:0.20.0'
 
-
     implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to vizualize css when app is running.. so amazing!
 
     implementation files('vendor/gndecorator-2.2.31.jar')     // Decorator lib for custom windows

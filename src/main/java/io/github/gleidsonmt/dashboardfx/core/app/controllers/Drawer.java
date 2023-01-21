@@ -17,22 +17,14 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.controllers;
+package io.github.gleidsonmt.dashboardfx.core.app.controllers;
 
 import io.github.gleidsonmt.dashboardfx.core.layout.DrawerBehavior;
 import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.TutorialCreator;
-import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
-import io.github.gleidsonmt.dashboardfx.views.WrappersView;
-import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
-import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlData;
-import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlViewPanel;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.NestedWrapperContainer;
-import io.github.gleidsonmt.dashboardfx.views.AreaChartView;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -40,9 +32,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -55,7 +44,7 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
 
     @FXML private ToggleGroup group;
     @FXML private StackPane root;
-    private final IWrapper wrapper;
+    private IWrapper wrapper;
     private StackPane content;
     private final Timeline timeline = new Timeline();
 
@@ -64,11 +53,6 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
     protected Context context;
     private final EventHandler<MouseEvent> closeEvent = event -> hide();
 
-//    public Drawer() {};
-
-    public Drawer(IWrapper _wrapper) {
-        this.wrapper = _wrapper;
-    }
 
     public Drawer content(StackPane _content) {
         this.content = _content;
@@ -149,6 +133,7 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
     @Override
     public void onEnter(Context context) {
         this.context = context;
+        this.wrapper = (IWrapper) context.wrapper();
     }
 
     @Override

@@ -61,7 +61,7 @@ public class WrappersView extends Container {
             Creating a snack! I think that snack is more helpful in most cases. You can get the code in block to your clip content.  
             Create a snack using the button on the top right of the code box
             """)
-        .blockCode("""
+        .code("""
                 context.getDecorator()
                         .getRoot()
                         .createSnackBar()
@@ -77,7 +77,7 @@ public class WrappersView extends Container {
             "Open", event -> createDialogPopup()
             )
         )
-        .blockCode("""
+        .code("""
                 context.getWrapper()
                     .getDialog()
                     .content(
@@ -104,7 +104,7 @@ public class WrappersView extends Container {
                 new ActionOptions(
                         "Danger", event -> createDialog(AlertType.ERROR)
                 ).style("-fx-accent : -grapefruit;"))
-        .blockCode(
+        .code(
                 """
                       context.getWrapper()
                             .getAlert()
@@ -138,7 +138,7 @@ public class WrappersView extends Container {
                         "Right", event -> createDrawer(HPos.RIGHT)
                 )
         )
-        .blockCode("""
+        .code("""
                 context.getWrapper()
                         .getDrawer()
                         .side(side)

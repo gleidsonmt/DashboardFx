@@ -34,8 +34,8 @@ import java.util.logging.Logger;
 public class IContext implements Context {
 
     private Routes routes;
-    private HostServices hostServices;
     private IRoot root;
+    private final HostServices hostServices;
 
     private ObservableList<Image> icons;
 
@@ -78,6 +78,11 @@ public class IContext implements Context {
 
     @Override
     public Wrapper getWrapper() {
+        return root.getWrapper();
+    }
+
+    @Override
+    public Wrapper wrapper() {
         return root.getWrapper();
     }
 

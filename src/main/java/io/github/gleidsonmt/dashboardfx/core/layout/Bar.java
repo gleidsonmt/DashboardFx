@@ -47,11 +47,11 @@ import java.util.concurrent.Callable;
 @ApiStatus.AvailableSince("0.1")
 @SuppressWarnings("unused")
 public class Bar extends GridPane {
+
     private final HBox left = new HBox();
     private final HBox right = new HBox();
 
     BooleanProperty hasChild = new SimpleBooleanProperty();
-
     public Bar() {
         left.setId("bar-left");
         right.setId("bar-right");
@@ -63,8 +63,6 @@ public class Bar extends GridPane {
         this.getChildren().setAll(left, right);
         GridPane.setConstraints(left, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(right, 1,0,1,1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-
-
 
         IntegerBinding totalBinding = new IntegerBinding() {
 

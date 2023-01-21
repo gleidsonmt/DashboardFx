@@ -58,7 +58,7 @@ public class TutorialUnderstanding extends TutorialCreator {
                         Hello World View!
                         """)
                 .text("In views package create a file named HelloView.java ", "text-12", "text-bold")
-                .blockCode("""
+                .code("""
                         public class HelloView extends Container {
                            \s
                             public HelloView(String name) {
@@ -69,7 +69,7 @@ public class TutorialUnderstanding extends TutorialCreator {
                         }
                         """)
                 .text("In DrawerController create one action..", "text-12", "text-bold")
-                .blockCode("""
+                .code("""
                         public class DrawerController {
                         \s
                             public DrawerController(IWrapper _wrapper) {

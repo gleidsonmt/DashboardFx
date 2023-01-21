@@ -72,7 +72,7 @@ public final class ILayout extends BorderPane implements Layout {
 
         iconButton.setOnMouseClicked(event -> {
 
-            context.getWrapper()
+            context.wrapper()
                     .getDrawer()
                     .content(oldDrawer)
                     .show();

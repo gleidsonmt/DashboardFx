@@ -39,12 +39,16 @@ public interface Context {
 
     Layout layout();
 
+    Wrapper wrapper();
+
+
     @Deprecated(forRemoval = true)
     Logger getLogger();
 
 
     @Deprecated
     Wrapper getWrapper();
+
 
     void openLink(String uri);
 
