@@ -23,13 +23,17 @@ import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
 import io.github.gleidsonmt.gncontrols.controls.GNTextBox;
 import io.github.gleidsonmt.gncontrols.controls.skin.GNTextBoxBase;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.css.*;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.Skin;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -51,6 +55,8 @@ public class GNBadge extends Control {
 
     private Icons icon;
 
+    private IntegerProperty numberOfNotifications = new SimpleIntegerProperty(this, "numberOfNotification",0);
+
     public GNBadge() {
         this(Icons.BADGE);
     }
@@ -58,6 +64,10 @@ public class GNBadge extends Control {
     public GNBadge(Icons _icon) {
         this.icon = _icon;
         getStyleClass().add("gn-badge");
+        setCursor(Cursor.HAND);
+        addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+            System.out.println("event trigged");
+        });
     }
 
     @Override
@@ -84,5 +94,17 @@ public class GNBadge extends Control {
 
     public StyleableObjectProperty<Color> colorCircleProperty() {
         return this.colorCircle;
+    }
+
+    public int getNumberOfNotifications() {
+        return numberOfNotifications.get();
+    }
+
+    public IntegerProperty numberOfNotificationsProperty() {
+        return numberOfNotifications;
+    }
+
+    public void setNumberOfNotifications(int numberOfNotifications) {
+        this.numberOfNotifications.set(numberOfNotifications);
     }
 }

@@ -23,6 +23,7 @@ import io.github.gleidsonmt.dashboardfx.controllers.BlockHtmlParser;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.BuildCreator;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
+import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.ActionOptions;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.SnackColors;
 import io.github.gleidsonmt.gncontrols.controls.GNButton;

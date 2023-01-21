@@ -86,6 +86,8 @@
                      <children>
                         <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goUnderstanding" styleClass="drawer-item" text="Understanding" toggleGroup="$group" />
                         <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Starting" toggleGroup="$group" />
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="60.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Declarative + Imperative" toggleGroup="$group" />
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="100.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Routes" toggleGroup="$group" />
                      </children>
                   </VBox>
                </content>
@@ -108,6 +110,7 @@
                         <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goLabel" styleClass="drawer-item" text="Label" toggleGroup="$group" />
                         <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="67.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goButton" styleClass="drawer-item" text="Button" toggleGroup="$group" />
                         <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goToggleButton" styleClass="drawer-item" text="ToggleButton" toggleGroup="$group" />
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="114.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goToggleButton" styleClass="drawer-item" text="Hyperlink" toggleGroup="$group" />
                      </children>
                   </VBox>
                </content>

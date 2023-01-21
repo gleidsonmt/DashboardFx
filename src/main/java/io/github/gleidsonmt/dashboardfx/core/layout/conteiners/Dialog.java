@@ -157,68 +157,65 @@ public class Dialog
         this.content.setStyle(super.style);
         this.content.getStyleClass().addAll(super.styleClass);
 
-            Bounds bounds = node.localToScene(node.getLayoutBounds());
-            wrapper.toFront();
-
-            System.out.println("width = " + bounds.getMinX());
-
-
-            switch (direction) {
-                case TOP_LEFT -> {
-                    this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth() ) );
-                    this.content.setTranslateY(clamp(bounds.getMinY(), content.getMaxHeight()));
-                }
-                case TOP_CENTER -> {
-                    this.content.setTranslateX(
-                            bounds.getMinX() -
-                            (center(bounds.getWidth() , content.getMaxWidth()))
-                    );
-                    this.content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
-                }
-                case TOP_RIGHT -> {
-                    this.content.setTranslateX(bounds.getMinX() + bounds.getWidth());
-                    this.content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
-                }
-                case RIGHT_CENTER -> {
-                    this.content.setTranslateX(bounds.getMinX() + bounds.getWidth());
-                    this.content.setTranslateY( (bounds.getMinY() ) +
-                            (center(bounds.getWidth(), content.getMaxHeight())/2));
-                }
-                case RIGHT_TOP -> {
-                    this.content.setTranslateX(bounds.getMinX() + bounds.getWidth());
-                    this.content.setTranslateY(bounds.getMinY());
-                }
-                case BOTTOM_RIGHT -> {
-                    this.content.setTranslateX((bounds.getMinX() + bounds.getWidth()) + paddingX);
-                    this.content.setTranslateY(bounds.getMinY() + bounds.getHeight());
-                }
-
-                case BOTTOM_CENTER -> {
-                    this.content.setTranslateX(bounds.getMinX() -
-                            (center(bounds.getWidth(), content.getMaxWidth())));
-                    this.content.setTranslateY(bounds.getMaxY());
-                }
-
-                case BOTTOM_LEFT -> {
-                    this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
-                    this.content.setTranslateY(bounds.getMaxY());
-                }
-
-                case LEFT_CENTER -> {
-                    this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
-                    this.content.setTranslateY(bounds.getMinY() + (
-                            center(bounds.getWidth(), content.getMaxWidth())
-                            ));
-                }
-
-                case LEFT_TOP -> {
-                    this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
-                    this.content.setTranslateY(bounds.getMinY());
-                }
+        Bounds bounds = node.localToScene(node.getLayoutBounds());
+        wrapper.toFront();
 
 
 
+        switch (direction) {
+            case TOP_LEFT -> {
+                this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth() ) );
+                this.content.setTranslateY(clamp(bounds.getMinY(), content.getMaxHeight()));
             }
+            case TOP_CENTER -> {
+                this.content.setTranslateX(
+                        bounds.getMinX() -
+                        (center(bounds.getWidth() , content.getMaxWidth()))
+                );
+                this.content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
+            }
+            case TOP_RIGHT -> {
+                this.content.setTranslateX(bounds.getMinX() + bounds.getWidth());
+                this.content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
+            }
+            case RIGHT_CENTER -> {
+                this.content.setTranslateX(bounds.getMinX() + bounds.getWidth());
+                this.content.setTranslateY( (bounds.getMinY() ) +
+                        (center(bounds.getWidth(), content.getMaxHeight())/2));
+            }
+            case RIGHT_TOP -> {
+                this.content.setTranslateX(bounds.getMinX() + bounds.getWidth());
+                this.content.setTranslateY(bounds.getMinY());
+            }
+            case BOTTOM_RIGHT -> {
+                this.content.setTranslateX((bounds.getMinX() + bounds.getWidth()) + paddingX);
+                this.content.setTranslateY(bounds.getMinY() + bounds.getHeight());
+            }
+
+            case BOTTOM_CENTER -> {
+                this.content.setTranslateX(bounds.getMinX() -
+                        (center(bounds.getWidth(), content.getMaxWidth())));
+                this.content.setTranslateY(bounds.getMaxY());
+            }
+
+            case BOTTOM_LEFT -> {
+                this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
+                this.content.setTranslateY(bounds.getMaxY());
+            }
+
+            case LEFT_CENTER -> {
+                this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
+                this.content.setTranslateY(bounds.getMinY() + (
+                        center(bounds.getWidth(), content.getMaxWidth())
+                        ));
+            }
+
+            case LEFT_TOP -> {
+                this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
+                this.content.setTranslateY(bounds.getMinY());
+            }
+
+        }
 
         // se sair pelo canto esquerdo...
         double i = bounds.getMaxX() - (width / 2);

@@ -31,6 +31,7 @@ import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.CardCrea
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListItem;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
+import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -257,9 +258,11 @@ public final class DashController extends ResponsiveView implements ActionView, 
             context.bar().addInLeft(title);
 
             GNBadge notification = new GNBadge(Icons.NOTIFICATIONS);
+            notification.setNumberOfNotifications(2);
             notification.getStyleClass().add("bd-danger");
 //            notification.setColorCircle(Color.web(Colors.AQUA.toString()));
             GNBadge sms = new GNBadge(Icons.SMS);
+            sms.setNumberOfNotifications(39);
             sms.getStyleClass().add("bd-info");
 //            sms.setColorCircle(Color.web(Colors.GRAPEFRUIT.toString()));
 
@@ -336,6 +339,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
         Text title = new Text("Notifications");
         title.getStyleClass().addAll("h5", "text-bold");
         Button btn = new Button("Mark as read");
+        btn.setGraphic(new IconContainer(Icons.DONE_ALL));
         btn.getStyleClass().addAll("btn-flat", "text-info", "no-border");
 
         GridPane header = new GridPane();

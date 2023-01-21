@@ -21,6 +21,7 @@ package io.github.gleidsonmt.dashboardfx.core.controls;
 
 import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
+import javafx.beans.binding.Bindings;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -38,7 +39,6 @@ public class GNBadgeSkin extends SkinBase<GNBadge> {
 
     private final Label lblInfo = new Label();
 
-
     public GNBadgeSkin(Icons _icon, GNBadge control) {
         super(control);
         if (control.getCircleColor() == null ) control.setColorCircle(Color.GRAY);
@@ -48,11 +48,14 @@ public class GNBadgeSkin extends SkinBase<GNBadge> {
         icon.getStyleClass().addAll("btn-flat", "badge-icon", "no-border", "transparent");
 
         lblInfo.setAlignment(Pos.CENTER);
-        lblInfo.setText("2");
         lblInfo.getStyleClass().add("box");
         lblInfo.setMinSize(20,20);
         lblInfo.setPrefSize(10,10);
         lblInfo.setMaxSize(10,10);
+        lblInfo.setMouseTransparent(true);
+        icon.setMouseTransparent(true);
+
+        lblInfo.textProperty().bind(Bindings.convert(control.numberOfNotificationsProperty()));
 
         this.getChildren().setAll(icon, lblInfo);
 
