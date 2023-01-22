@@ -41,10 +41,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.*;
 import javafx.scene.chart.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Separator;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -308,7 +305,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
             notification.setOnMouseClicked(event -> {
                 context.wrapper()
                         .getDialog()
-                        .size(400, 400)
+                        .size(400, b.getPrefHeight())
                         .content(b)
                         .style("-fx-padding: 20;-fx-background-color : white; " +
                                 "-fx-background-radius : 5px; -fx-border-radius : 5px;")
@@ -339,9 +336,10 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
         Text title = new Text("Notifications");
         title.getStyleClass().addAll("h5", "text-bold");
-        Button btn = new Button("Mark as read");
+        Hyperlink btn = new Hyperlink("Mark as read");
         btn.setGraphic(new IconContainer(Icons.DONE_ALL));
-        btn.getStyleClass().addAll("btn-flat", "text-info", "no-border");
+        btn.setPadding(new Insets(10));
+        btn.getStyleClass().addAll("text-bold","btn-flat", "text-info", "no-border");
 
         GridPane header = new GridPane();
         header.getChildren().addAll(title, btn);
@@ -353,10 +351,13 @@ public final class DashController extends ResponsiveView implements ActionView, 
                 "First", "Second",
                 "Third"
         );
-        listView.setPrefHeight(200);
+        listView.setPrefHeight(3 * 45);
 
-        Button btnAll = new Button("View All Notifications");
-        btnAll.getStyleClass().addAll("btn-flat", "no-border", "text-info");
+        root.setPrefHeight(listView.getPrefHeight() + 110);
+
+        Hyperlink btnAll = new Hyperlink("View All Notifications");
+        btnAll.setPadding(new Insets(10));
+        btnAll.getStyleClass().addAll("text-bold", "btn-flat", "no-border", "text-info");
 
         root.getChildren().setAll(header, listView, new Separator(), btnAll);
         return root;

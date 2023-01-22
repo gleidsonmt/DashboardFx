@@ -117,6 +117,54 @@ SVGPath {
     -fx-min-height : 35px;
 }
 
+/* @ListView */
+
+.list-view,
+.list-view:vertical,
+.list-view:focused:vertical,
+.list-view:hover,
+.list-view:focused
+{
+    -fx-background-color : -fx-foreground;
+    -fx-border-color : -box-color;
+    -fx-border-width : 0px;
+    -fx-effect : none;
+    -fx-faint-focus-color : transparent;
+    -fx-focus-color : transparent;
+    -fx-border-radius : 5px;
+    -fx-background-radius : 5px;
+    -fx-padding : 0px;
+    -fx-fixed-cell-size : 40px;
+}
+
+.list-view .virtual-flow {
+    -fx-background-color : transparent;
+    -fx-padding : 0px;
+}
+
+.list-view:vertical .virtual-flow .clipped-container .sheet .list-cell
+{
+    -fx-background-color : white;
+}
+
+.border-list .virtual-flow .clipped-container .sheet .list-cell {
+    -fx-border-width : 0 0 0 2.5;
+}
+
+.list-view .virtual-flow .clipped-container .sheet .list-cell:hover .text {
+    -fx-fill : -hover-color;
+}
+
+.list-view .virtual-flow .clipped-container .sheet .list-cell .icon,
+.list-view .virtual-flow .clipped-container .sheet .list-cell .text
+{
+    -fx-fill : -text-color;
+}
+
+.list-view .virtual-flow .clipped-container .sheet .list-cell:selected {
+    -fx-background-color : derive(-fx-accent, 122%);
+}
+
 /* @Effect */
 
 .toggle-button {

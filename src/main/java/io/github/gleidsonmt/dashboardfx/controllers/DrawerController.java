@@ -26,6 +26,10 @@ import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlData;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlViewPanel;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.TutorialCreator;
 import io.github.gleidsonmt.dashboardfx.views.*;
+import io.github.gleidsonmt.dashboardfx.views.controls.ButtonPresCreator;
+import io.github.gleidsonmt.dashboardfx.views.controls.HyperlinkPresCreator;
+import io.github.gleidsonmt.dashboardfx.views.controls.LabelPresCreator;
+import io.github.gleidsonmt.dashboardfx.views.controls.ListViewCreator;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -118,6 +122,16 @@ public class DrawerController extends Drawer {
     @FXML
     private void goButton() {
         context.routes().registryAndGo(new ButtonPresCreator("Label", context));
+    }
+
+    @FXML
+    private void goHyperlink() {
+        context.routes().registryAndGo(new HyperlinkPresCreator("Hyperlink", context));
+    }
+
+    @FXML
+    private void goListView() {
+        context.routes().registryAndGo(new ListViewCreator("ListView", context));
     }
 
     @FXML

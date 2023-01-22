@@ -31,7 +31,7 @@ import java.util.List;
 public abstract class DeclarativeComponent<T>  extends Node {
 
     protected String style;
-    protected List<String> styleClass;
+    protected List<String> styleClass = List.of();
 
     public T style(String style) {
         this.style = style;

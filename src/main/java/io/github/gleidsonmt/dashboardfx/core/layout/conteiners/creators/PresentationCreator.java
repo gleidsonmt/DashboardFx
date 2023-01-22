@@ -166,7 +166,9 @@ public class PresentationCreator extends Container implements BuildCreator {
     }
 
     private Node createMultBlock(List<Node> list, String java, String fxml) {
+
         TabPane tabPane = new TabPane();
+        tabPane.setMinHeight(400);
         Tab javaTab = new Tab("Java");
         Tab fxmlTab = new Tab("FXML");
         Tab nodeTab = new Tab("Node");
@@ -174,6 +176,7 @@ public class PresentationCreator extends Container implements BuildCreator {
         javaTab.setContent(createBlockCode(java, false));
         fxmlTab.setContent(createBlockCode(fxml, true));
         HBox root = new HBox();
+        root.setPadding(new Insets(20));
         root.setSpacing(20);
         root.setAlignment(Pos.CENTER);
         root.getChildren().setAll(list);

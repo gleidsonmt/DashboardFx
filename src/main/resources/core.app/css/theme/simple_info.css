@@ -256,61 +256,17 @@ Text {
 }
 
 
-/* @ListView */
 
-.list-view,
-.list-view:vertical,
-.list-view:focused:vertical,
-.list-view:hover,
-.list-view:focused
-{
-    -fx-background-color : -fx-foreground;
-    -fx-border-color : -box-color;
-    -fx-border-width : 2px;
-    -fx-effect : none;
-    -fx-faint-focus-color : transparent;
-    -fx-focus-color : transparent;
-    -fx-border-radius : 5px;
-    -fx-background-radius : 5px;
-      -fx-padding : 0px;
-}
 
-.list-view .virtual-flow {
-    -fx-background-color : transparent;
-    -fx-padding : 0px;
-}
-
-.list-view:vertical .virtual-flow .clipped-container .sheet .list-cell
-{
-    -fx-background-color : white;
-}
-
-.list-view .virtual-flow .clipped-container .sheet .list-cell {
-    -fx-border-width : 0 0 0 2.5;
-}
-
-.list-view .virtual-flow .clipped-container .sheet .list-cell:selected,
-.list-view .virtual-flow .clipped-container .sheet .list-cell:selected .icon,
-.list-view .virtual-flow .clipped-container .sheet .list-cell:selected .text
+.border-list .virtual-flow .clipped-container .sheet .list-cell:selected,
+.border-list .virtual-flow .clipped-container .sheet .list-cell:selected .icon,
+.border-list .virtual-flow .clipped-container .sheet .list-cell:selected .text
 {
     -fx-border-color : -fx-accent;
     -fx-fill : -fx-accent;
 
 }
 
-.list-view .virtual-flow .clipped-container .sheet .list-cell:hover .text {
-    -fx-fill : -hover-color;
-}
-
-.list-view .virtual-flow .clipped-container .sheet .list-cell .icon,
-.list-view .virtual-flow .clipped-container .sheet .list-cell .text
-{
-    -fx-fill : -text-color;
-}
-
-.list-view .virtual-flow .clipped-container .sheet .list-cell:selected {
-    -fx-background-color : derive(-fx-accent, 122%);
-}
 
 /* @ContextMenu */
 
