@@ -19,15 +19,11 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.model;
 
-import io.github.gleidsonmt.gncontrols.material.icon.Icons;
-
-import java.time.LocalDateTime;
-
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Version 0.0.1
- * Create on  21/01/2023
+ * Create on  22/01/2023
  */
-public record NotifcationCell(Status status, String text, Icons icon, LocalDateTime time) {
-
+public enum Status {
+    AVAILABLE, BUSY, UNAVAILABLE
 }
