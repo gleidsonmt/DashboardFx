@@ -258,14 +258,7 @@ Text {
 
 
 
-.border-list .virtual-flow .clipped-container .sheet .list-cell:selected,
-.border-list .virtual-flow .clipped-container .sheet .list-cell:selected .icon,
-.border-list .virtual-flow .clipped-container .sheet .list-cell:selected .text
-{
-    -fx-border-color : -fx-accent;
-    -fx-fill : -fx-accent;
 
-}
 
 
 /* @ContextMenu */

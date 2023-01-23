@@ -125,8 +125,8 @@ SVGPath {
 .list-view:hover,
 .list-view:focused
 {
-    -fx-background-color : -fx-foreground;
-    -fx-border-color : -box-color;
+    -fx-background-color : transparent;
+    -fx-border-color : transparent;
     -fx-border-width : 0px;
     -fx-effect : none;
     -fx-faint-focus-color : transparent;
@@ -144,6 +144,7 @@ SVGPath {
 
 .list-view:vertical .virtual-flow .clipped-container .sheet .list-cell
 {
+    -fx-cursor : hand;
     -fx-background-color : white;
 }
 

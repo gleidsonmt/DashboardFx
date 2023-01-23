@@ -142,3 +142,23 @@
 .linear-l-amber-sunflower {
     -fx-accent : linear-gradient(to left, -amber, -sunflower);
 }
+
+
+.border-list .virtual-flow .clipped-container .sheet .list-cell:selected,
+.border-list .virtual-flow .clipped-container .sheet .list-cell:selected .icon,
+.border-list .virtual-flow .clipped-container .sheet .list-cell:selected .text
+{
+    -fx-border-color : -fx-accent;
+    -fx-fill : -fx-accent;
+
+}
+
+.rect-list,
+.rect-list:vertical,
+.rect-list:focused:vertical,
+.rect-list:hover,
+.rect-list:focused{
+    -fx-border-color : -box-color;
+    -fx-border-width : 2px;
+    -fx-border-radius : 5px;
+}
