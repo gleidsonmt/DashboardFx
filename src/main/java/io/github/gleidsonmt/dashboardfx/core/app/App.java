@@ -55,6 +55,7 @@ public abstract class App extends Application {
         build(context);
 //
 //        buildFull(stage);
+        // in main
         buildDefault(stage);
     }
 
