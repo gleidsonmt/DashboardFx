@@ -64,9 +64,15 @@ SVGPath {
     -fx-text-fill : -fx-accent;
 }
 
-.button, .toggle-button {
+.button, .toggle-button,
+.gn-icon-button
+{
     -fx-background-color : -fx-accent;
     -fx-text-fill : -inner-color;
+}
+
+.gn-icon-button .icon {
+    -fx-fill : white;
 }
 
 .button:cancel {

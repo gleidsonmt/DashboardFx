@@ -44,12 +44,15 @@ public final class ILayout extends BorderPane implements Layout {
     private final CenterLayout centerLayout = new CenterLayout();
 //    private final GridPane bar = new GridPane();
     private final Text title        = new Text("SpeedCut");
+    private final GNIconButton hamburger = new GNIconButton(Icons.HAMBURGER);
 
     private Node oldLeftNode;
 
     public ILayout(Context context) {
 
         setId("layout");
+
+        hamburger.getStyleClass().addAll("btn-flat");
 
         leftProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) oldLeftNode = newValue;
@@ -66,28 +69,14 @@ public final class ILayout extends BorderPane implements Layout {
 
         setCenter(centerLayout);
 
-        GNIconButton iconButton = new GNIconButton();
-        iconButton.getStyleClass().add("hamburger");
-        iconButton.setIcon(Icons.HAMBURGER);
-
-        iconButton.setOnMouseClicked(event -> {
-
-            context.wrapper()
-                    .getDrawer()
-                    .content(oldDrawer)
-                    .show();
-//
-            setCenter(new Button("Welcome"));
-
-        });
-
-        widthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+        widthProperty().addListener((observable, oldValue, newValue) -> {
 
 
-                if (newValue.intValue() < BreakPoints.X_SMALL) {
+            if (newValue.intValue() < BreakPoints.MEDIUM) {
 
+                if (!getBar().containsInLeft(hamburger)){
+                    getBar().addInLeft(0, hamburger);
+                }
 //                    setLeft(null);
 //                    oldDrawer.setTranslateX(0);
 
@@ -95,14 +84,21 @@ public final class ILayout extends BorderPane implements Layout {
 //                        context.getDecorator().controls().add(iconButton);
 //                    }
 
-                } else {
-
+            } else {
+                getBar().removeInLeft(hamburger);
 //                    setLeft(oldDrawer);
 //                    context.getDecorator().controls().remove(iconButton);
 
-                }
-
             }
+
+
+        });
+
+        hamburger.setOnMouseClicked(event -> {
+            context.wrapper()
+                    .getDrawer()
+                    .content(oldDrawer)
+                    .show();
         });
     }
 
@@ -110,7 +106,8 @@ public final class ILayout extends BorderPane implements Layout {
 
     @Override
     public void setDrawer(View view) {
-        setLeft(view.getRoot());
+        oldDrawer = (StackPane) view.getRoot();
+        setLeft(oldDrawer);
     }
 
     @Override

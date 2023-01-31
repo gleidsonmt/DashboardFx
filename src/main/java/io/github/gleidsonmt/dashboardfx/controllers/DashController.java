@@ -19,6 +19,7 @@ package io.github.gleidsonmt.dashboardfx.controllers;
 
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
+import io.github.gleidsonmt.dashboardfx.core.app.model.NotifcationCell;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ResponsiveView;
@@ -31,8 +32,12 @@ import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.CardCrea
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListItem;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
+import io.github.gleidsonmt.gncontrols.controls.GNAvatar;
+import io.github.gleidsonmt.gncontrols.controls.GNAvatarStatus;
+import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
 import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
+import io.github.gleidsonmt.gncontrols.options.model.Avatar;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -40,18 +45,26 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.*;
+import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+import javafx.util.Callback;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Arrays;
-import java.util.ResourceBundle;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.FormatStyle;
+import java.util.*;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -122,11 +135,6 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
 //        graphic.getData().
         graphic.getData().addAll(series1, series2, series3);
-
-
-
-
-
 
         View scheduleList = new ScheduleListCreator("schedule-01")
                 .title("Schedule")
@@ -283,36 +291,24 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
             boxUserDialog.getChildren().setAll(btnProfile, btnSettings, new Separator(), btnLogout);
 
-            boxUser.setOnMouseClicked(event -> {
-                context.wrapper()
-                        .getDialog()
-                        .size(300, 120)
-                        .moveX(-200)
-                        .content(boxUserDialog)
-                        .style(
-                            """
-                            -fx-background-radius : 5px; -fx-background-color : white;
-                            """
-                        )
-                        .show(Direction.BOTTOM_RIGHT, boxUser);
-            });
+            boxUser.setOnMouseClicked(event ->
+                    context.wrapper()
+                    .getPopup()
+                    .size(300, 150)
+                    .moveX(200)
+                    .content(boxUserDialog)
+                    .show(Direction.BOTTOM_LEFT, boxUser));
 
             context.root().bar().addInRight(sms, notification, space, boxUser);
 
             VBox b = createDialogNotification();
-            b.setStyle("-fx-background-color : red;");
 
-            notification.setOnMouseClicked(event -> {
-                context.wrapper()
-                        .getDialog()
-                        .size(400, b.getPrefHeight())
-                        .content(b)
-                        .style("-fx-padding: 20;-fx-background-color : white; " +
-                                "-fx-background-radius : 5px; -fx-border-radius : 5px;")
-                        .styleClass("depth-1")
-                        .background(IWrapper.WrapperBackgroundType.GRAY)
-                        .show(Direction.BOTTOM_CENTER, notification);
-            });
+            notification.setOnMouseClicked(event -> context.wrapper()
+                    .getPopup()
+                    .size(400,300)
+                    .content(b)
+                    .background(IWrapper.WrapperBackgroundType.GRAY)
+                    .show(Direction.BOTTOM_LEFT, notification));
 
 //            b.setMinSize(200, 300);
 
@@ -339,27 +335,47 @@ public final class DashController extends ResponsiveView implements ActionView, 
         Hyperlink btn = new Hyperlink("Mark as read");
         btn.setGraphic(new IconContainer(Icons.DONE_ALL));
         btn.setPadding(new Insets(10));
-        btn.getStyleClass().addAll("text-bold","btn-flat", "text-info", "no-border");
+        btn.getStyleClass().addAll("text-bold","transparent", "text-info", "no-border");
 
         GridPane header = new GridPane();
         header.getChildren().addAll(title, btn);
         GridPane.setConstraints(title, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(btn, 1,0,1,1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
 
-        ListView<String> listView = new ListView<>();
-        listView.getItems().setAll(
-                "First", "Second",
-                "Third"
-        );
-        listView.setPrefHeight(3 * 45);
+//        ListView<NotifcationCell> listView = new ListView<>();
+//        listView.setCellFactory(new NotificationListFactory());
 
-        root.setPrefHeight(listView.getPrefHeight() + 110);
+        VBox vBox = createNotifications(
+                new NotifcationCell(
+                        true,
+                        "Your Password has been changed succesfully.",
+                        new GNIconButton(Icons.BADGE),
+                        LocalDateTime.now()
+                ),
+                new NotifcationCell(
+                        false,
+                        "Thank you for booking a meeting with us.",
+                        new GNAvatar(new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/avatar.jpg")).toExternalForm()), 20),
+                        LocalDateTime.now()
+                ),
+                new NotifcationCell(
+                        false,
+                        "Great News! We are lauching our 5th fund: DLE Senior Living.",
+                        new GNAvatar(new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/avatar.png")).toExternalForm()), 20),
+                        LocalDateTime.now()
+                )
+        );
+
+
+//        listView.setPrefHeight(3 * 45);
+//        listView.setStyle("-fx-fixed-cell-size : 100px;");
+//
 
         Hyperlink btnAll = new Hyperlink("View All Notifications");
         btnAll.setPadding(new Insets(10));
-        btnAll.getStyleClass().addAll("text-bold", "btn-flat", "no-border", "text-info");
+        btnAll.getStyleClass().addAll("text-bold", "transparent", "no-border", "text-info");
 
-        root.getChildren().setAll(header, listView, new Separator(), btnAll);
+        root.getChildren().setAll(header, vBox, btnAll);
         return root;
     }
 
@@ -389,5 +405,42 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
     @Override
     public void onInit(Context context) {
+    }
+
+    private VBox createNotifications(NotifcationCell... cells) {
+        VBox box = new VBox();
+        for (NotifcationCell item : cells) {
+
+            ToggleButton toggleButton = new ToggleButton();
+            toggleButton.setMaxWidth(Double.MAX_VALUE);
+            toggleButton.getStyleClass().addAll("btn-flat", "transparent");
+
+            Text text = new Text(item.text());
+            TextFlow textFlow = new TextFlow(text);
+            text.getStyleClass().addAll("text-12", "text-bold");
+            String pattern = "dd MMM yyyy HH:mm:ss";
+            Text time = new Text(item.time().format(DateTimeFormatter.ofPattern(pattern, Locale.US)));
+            GridPane grid = new GridPane();
+            Node icon = item.icon();
+            icon.setStyle("-fx-fill : white; -fx-text-fill: white; -text-color : white;");
+            Circle circle = new Circle();
+            circle.setRadius(5);
+            if (item.read()) {
+                circle.setStyle("-fx-fill : -info;");
+            } else {
+                circle.setStyle("-fx-fill : white;");
+            }
+            grid.getChildren().setAll(circle, textFlow, time, icon);
+//            grid.setGridLinesVisible(true);
+            GridPane.setConstraints(circle, 0,0,1,2, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+            GridPane.setConstraints(textFlow, 1,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+            GridPane.setConstraints(time, 1,1,1,1, HPos.LEFT, VPos.TOP, Priority.ALWAYS, Priority.ALWAYS);
+            GridPane.setConstraints(icon, 2,0,1,2, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+            grid.setHgap(10);
+            toggleButton.setGraphic(grid);
+            box.getChildren().addAll(toggleButton, new Separator());
+        }
+
+        return box;
     }
 }

@@ -19,6 +19,7 @@ package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
 import io.github.gleidsonmt.dashboardfx.core.app.controllers.Drawer;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Dialog;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Popup;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.IAlert;
 
 /**
@@ -29,8 +30,7 @@ import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.IAlert
 public interface Wrapper {
 
 //    PopupOver getPopOver();
-//
-//    Popup getPopup();
+    Popup getPopup();
 
     Dialog getDialog();
 

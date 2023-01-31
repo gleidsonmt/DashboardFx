@@ -17,31 +17,24 @@
  *
  */
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Version 0.0.1
- * Create on  12/01/2023
+ * Create on  22/01/2023
  */
-public class ParseMin {
+public class TestDate {
     public static void main(String[] args) {
-        String test = ".raised:pressed, " +
-                ".zaised adf -fx-border : 0px; .border-1 " +
-                ".border-r-1";
-        String[] array = test.split(" ");
-//        Pattern pattern = Pattern.compile("([^:]+\\w)");
-        Pattern pattern = Pattern.compile("(^\\.+\\w+[^:]+\\w)");
-        for (String t : array) {
-            Matcher matcher = pattern.matcher(t);
+        LocalDateTime time = LocalDateTime.now();
 
-//            System.out.println(t);
+        String pattern = "dd MMM yyyy HH:mm:ss";
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+//        String date = simpleDateFormat.format(time);
 
-            if (matcher.find()) {
-                System.out.println("matcher = " + matcher.group());
-            }
-        }
-
+        System.out.println("date = " + time.format(DateTimeFormatter.ofPattern(pattern)));
     }
 }

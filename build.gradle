@@ -19,6 +19,10 @@ repositories {
 sourceCompatibility = '17'
 targetCompatibility = '17'
 
+ext {
+    junitVersion = '5.8.2'
+}
+
 application {
     mainModule = 'io.github.gleidsonmt.dashboardfx'
     mainClass = 'io.github.gleidsonmt.dashboardfx.Start'
@@ -56,6 +60,8 @@ dependencies {
     implementation files('vendor/controlsfx-8.40.17.jar') // My favorite lib.. has a lot of functionality
     implementation files('vendor/animatefx-1.2.0.jar')
 
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
 test {

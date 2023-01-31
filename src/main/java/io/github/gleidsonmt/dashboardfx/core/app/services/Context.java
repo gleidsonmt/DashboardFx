@@ -41,7 +41,6 @@ public interface Context {
 
     Wrapper wrapper();
 
-
     @Deprecated(forRemoval = true)
     Logger getLogger();
 

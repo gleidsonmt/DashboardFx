@@ -20,6 +20,7 @@
 package io.github.gleidsonmt.dashboardfx.core.app.model;
 
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
+import javafx.scene.Node;
 
 import java.time.LocalDateTime;
 
@@ -28,6 +29,6 @@ import java.time.LocalDateTime;
  * Version 0.0.1
  * Create on  21/01/2023
  */
-public record NotifcationCell(Status status, String text, Icons icon, LocalDateTime time) {
+public record NotifcationCell(boolean read, String text, Node icon, LocalDateTime time) {
 
 }

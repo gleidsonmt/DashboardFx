@@ -23,7 +23,7 @@ import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import javafx.fxml.FXML;
 
-public class AboutController implements ActionView {
+public final class AboutController implements ActionView {
 
     private Context context;
 

@@ -139,4 +139,12 @@ public class Bar extends GridPane {
     public boolean hasChildren() {
         return left.getChildren().size() > 0 || right.getChildren().size() > 0;
     }
+
+    public boolean containsInLeft(Node node) {
+        return this.left.getChildren().contains(node);
+    }
+
+    public boolean containsInRight(Node node) {
+        return this.right.getChildren().contains(node);
+    }
 }

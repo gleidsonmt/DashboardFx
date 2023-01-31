@@ -19,6 +19,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.controllers;
 
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.DrawerBehavior;
 import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
@@ -44,15 +45,16 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
 
     @FXML private ToggleGroup group;
     @FXML private StackPane root;
-    private IWrapper wrapper;
+
     private StackPane content;
     private final Timeline timeline = new Timeline();
 
-    private double maxSize = 250;
+    protected IWrapper wrapper;
+
+    private final double maxSize = 250;
     private HPos side;
     protected Context context;
     private final EventHandler<MouseEvent> closeEvent = event -> hide();
-
 
     public Drawer content(StackPane _content) {
         this.content = _content;
@@ -72,32 +74,34 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
     }
 
     public void show() {
-        this.wrapper.setAlignment(
-                side == HPos.LEFT ?
-                        Pos.CENTER_LEFT : Pos.CENTER_RIGHT
-        );
-
-        final double tx = side == HPos.LEFT ?
-                -content.getMaxWidth() :
-                250;
-
-
-        if (!this.wrapper.getChildren().contains(content))
-            this.wrapper.getChildren().setAll(content);
-
-        timeline.getKeyFrames().setAll(
-                new KeyFrame(Duration.ZERO, new KeyValue(
-                    content.translateXProperty(), tx
-                )),
-                new KeyFrame(Duration.millis(100), new KeyValue(
-                        content.translateXProperty(), 0
-                ))
-        );
-
-        this.timeline.setOnFinished(null);
-        this.wrapper.setOnMouseClicked(closeEvent);
-        this.wrapper.toFront();
-        timeline.play();
+        System.out.println("this.wrapper = " + this.wrapper);
+        System.out.println("this.context = " + this.context);
+//        wrapper.setAlignment(
+//                side == HPos.LEFT ?
+//                        Pos.CENTER_LEFT : Pos.CENTER_RIGHT
+//        );
+//
+//        final double tx = side == HPos.LEFT ?
+//                -content.getMaxWidth() :
+//                250;
+//
+//
+//        if (!this.wrapper.getChildren().contains(content))
+//            this.wrapper.getChildren().setAll(content);
+//
+//        timeline.getKeyFrames().setAll(
+//                new KeyFrame(Duration.ZERO, new KeyValue(
+//                    content.translateXProperty(), tx
+//                )),
+//                new KeyFrame(Duration.millis(100), new KeyValue(
+//                        content.translateXProperty(), 0
+//                ))
+//        );
+//
+//        this.timeline.setOnFinished(null);
+//        this.wrapper.setOnMouseClicked(closeEvent);
+//        this.wrapper.toFront();
+//        timeline.play();
     }
 
     public void hide() {
@@ -132,8 +136,7 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
 
     @Override
     public void onEnter(Context context) {
-        this.context = context;
-        this.wrapper = (IWrapper) context.wrapper();
+//        this.context = context;
     }
 
     @Override
@@ -143,6 +146,7 @@ public class Drawer extends DeclarativeComponent<Drawer> implements ActionView, 
 
     @Override
     public void onInit(Context context) {
+        this.wrapper = (IWrapper) context.wrapper();
         this.context = context;
     }
 

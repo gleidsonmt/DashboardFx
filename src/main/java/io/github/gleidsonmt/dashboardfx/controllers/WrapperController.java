@@ -33,7 +33,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 @ApiStatus.Experimental
-public class WrapperController implements ActionView {
+public final class WrapperController implements ActionView {
 
     @FXML
     private WebView webView;
@@ -50,7 +50,6 @@ public class WrapperController implements ActionView {
 
     @Override
     public void onInit(Context context) {
-
     }
 
     @Override

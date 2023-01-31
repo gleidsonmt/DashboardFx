@@ -30,6 +30,20 @@
     -fx-background-color : transparent;
 }
 
+.button:cancel:hover,
+.btn-flat:hover
+ {
+    -fx-background-color : derive(-fx-accent, 110%);
+}
+
+.button:cancel:focused,
+.button:cancel:hover:focused,
+.btn-flat:focused,
+.btn-flat:hover:focused
+ {
+    -fx-background-color : derive(-fx-accent, 90%);
+}
+
 .btn-flat .text {
     -fx-fill : -fx-accent;
 }

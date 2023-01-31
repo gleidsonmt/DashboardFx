@@ -19,6 +19,8 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators;
 
+import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
 import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.layout.Region;

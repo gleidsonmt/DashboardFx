@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 
 @ApiStatus.Internal
 @ApiStatus.Experimental
-public class BlockHtmlParser {
+public final class BlockHtmlParser {
 
     private final String keyColor = "#0033B3;";
     private final String numberColor = "#9876AA";

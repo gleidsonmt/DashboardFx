@@ -35,6 +35,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.scenicview.ScenicView;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public abstract class App extends Application {
@@ -65,6 +66,7 @@ public abstract class App extends Application {
         for (String s : Material.stylesheets()) {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(s)).toExternalForm());
         }
+
 
 //        stage.setFullScreen(true);
         stage.getIcons().setAll(context.getIcons());

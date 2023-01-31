@@ -40,12 +40,12 @@ public class Dialog
        extends DeclarativeComponent<Dialog>
        implements AbsoluteWrapperContainer {
 
-    private Region content;
+    protected Region content;
     private Pos pos;
-    private double width = 350;
-    private double height = 300;
+    protected double width = 350;
+    protected double height = 300;
     private final IWrapper wrapper;
-    private double paddingX = 0;
+    protected double paddingX = 0;
     private double paddingY = 0;
 
     public Dialog(IWrapper wrapper) {
@@ -78,28 +78,6 @@ public class Dialog
         return this;
     }
 
-    public Dialog background(IWrapper.WrapperBackgroundType type) {
-        switch (type) {
-            case NONE -> this.wrapper.setBackground(
-                    new Background(
-                            new BackgroundFill(
-                                    Color.gray(0.5, 0.3),
-                                    CornerRadii.EMPTY,
-                                    Insets.EMPTY)
-                    )
-            );
-            case GRAY -> this.wrapper.setBackground(
-                    new Background(
-                            new BackgroundFill(
-                                    Color.TRANSPARENT,
-                                    CornerRadii.EMPTY,
-                                    Insets.EMPTY)
-                    )
-            );
-
-        }
-        return this;
-    }
 
     @Override
     public void show() {
@@ -108,6 +86,7 @@ public class Dialog
             wrapper.setAlignment(pos);
         }
 
+
         if (this.content != null)
             this.content.setMaxSize(width, height);
 
@@ -118,126 +97,11 @@ public class Dialog
         wrapper.setOnMouseClicked(event -> close());
     }
 
-    public void show(double x, double y) {
-
-        this.wrapper.setAlignment(Pos.TOP_LEFT);
-
-        if (this.content != null)
-            this.content.setMaxSize(width, height);
-        else return;
-
-        this.content.setStyle(super.style);
-        this.content.getStyleClass().addAll(super.styleClass);
-
-        this.content.setTranslateX(x);
-        this.content.setTranslateY(y);
-
-
-        wrapper.toFront();
-        this.content.toFront();
-        wrapper.setOnMouseClicked(event -> close());
-    }
-
-//    @Override
-//    public Dialog style(String style) {
-////        super.style = style;
-//        return this;
-//    }
-
-    public void show(Direction direction, Node node) {
-        Screen screen = Screen.getPrimary();
-        if (this.content == null) return;
-
-        this.wrapper.setAlignment(Pos.TOP_LEFT);
-        this.content.setMinSize(width, height);
-        this.content.setPrefSize(width, height);
-        this.content.setMaxSize(width, height);
-
-//        node.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-        this.content.setStyle(super.style);
-        this.content.getStyleClass().addAll(super.styleClass);
-
-        Bounds bounds = node.localToScene(node.getLayoutBounds());
-        wrapper.toFront();
-
-
-
-        switch (direction) {
-            case TOP_LEFT -> {
-                this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth() ) );
-                this.content.setTranslateY(clamp(bounds.getMinY(), content.getMaxHeight()));
-            }
-            case TOP_CENTER -> {
-                this.content.setTranslateX(
-                        bounds.getMinX() -
-                        (center(bounds.getWidth() , content.getMaxWidth()))
-                );
-                this.content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
-            }
-            case TOP_RIGHT -> {
-                this.content.setTranslateX(bounds.getMinX() + bounds.getWidth());
-                this.content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
-            }
-            case RIGHT_CENTER -> {
-                this.content.setTranslateX(bounds.getMinX() + bounds.getWidth());
-                this.content.setTranslateY( (bounds.getMinY() ) +
-                        (center(bounds.getWidth(), content.getMaxHeight())/2));
-            }
-            case RIGHT_TOP -> {
-                this.content.setTranslateX(bounds.getMinX() + bounds.getWidth());
-                this.content.setTranslateY(bounds.getMinY());
-            }
-            case BOTTOM_RIGHT -> {
-                this.content.setTranslateX((bounds.getMinX() + bounds.getWidth()) + paddingX);
-                this.content.setTranslateY(bounds.getMinY() + bounds.getHeight());
-            }
-
-            case BOTTOM_CENTER -> {
-                this.content.setTranslateX(bounds.getMinX() -
-                        (center(bounds.getWidth(), content.getMaxWidth())));
-                this.content.setTranslateY(bounds.getMaxY());
-            }
-
-            case BOTTOM_LEFT -> {
-                this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
-                this.content.setTranslateY(bounds.getMaxY());
-            }
-
-            case LEFT_CENTER -> {
-                this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
-                this.content.setTranslateY(bounds.getMinY() + (
-                        center(bounds.getWidth(), content.getMaxWidth())
-                        ));
-            }
-
-            case LEFT_TOP -> {
-                this.content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
-                this.content.setTranslateY(bounds.getMinY());
-            }
-
-        }
-
-        // se sair pelo canto esquerdo...
-        double i = bounds.getMaxX() - (width / 2);
-        double max = wrapper.getWidth() - width;
-
-        double mx = content.localToScene(content.getLayoutBounds()).getMaxX(); // 1095
-        double md = screen.getVisualBounds().getMaxX() - width; // 1366 - 400 = 966,
-
-        if (i > max) {
-            this.content.setTranslateX(this.content.getTranslateX() - ((i - max)));
-        }
-
-            wrapper.setOnMouseClicked(e -> close());
-//        });
-
-    }
-
-    private double clamp(double one, double two) {
+    protected double clamp(double one, double two) {
         return Math.max(one, two) - Math.min(one, two);
     }
 
-    private double center(double one, double two) {
+    protected double center(double one, double two) {
         return (clamp(one, two) / 2);
     }
 

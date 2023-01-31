@@ -21,6 +21,7 @@ import io.github.gleidsonmt.dashboardfx.core.app.controllers.Drawer;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Alert;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Dialog;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Popup;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -35,7 +36,11 @@ import javafx.scene.paint.Color;
 public class IWrapper extends StackPane implements Wrapper {
 
     public IWrapper() {
+        reset();
+        setId("wrapper");
+    }
 
+    public void reset() {
         setBackground(
                 new Background(
                         new BackgroundFill(
@@ -44,9 +49,14 @@ public class IWrapper extends StackPane implements Wrapper {
                                 Insets.EMPTY)
                 )
         );
+    }
 
-        setId("wrapper");
+    private Popup popup;
 
+    @Override
+    public Popup getPopup() {
+        if (dialog == null) popup = new Popup(this);
+        return popup;
     }
 
     private Dialog dialog;

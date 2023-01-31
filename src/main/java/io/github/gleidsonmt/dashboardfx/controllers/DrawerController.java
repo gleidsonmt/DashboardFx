@@ -22,8 +22,11 @@ package io.github.gleidsonmt.dashboardfx.controllers;
 import io.github.gleidsonmt.dashboardfx.core.app.controllers.Drawer;
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlData;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlViewPanel;
+import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
+import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.TutorialCreator;
 import io.github.gleidsonmt.dashboardfx.views.*;
 import io.github.gleidsonmt.dashboardfx.views.controls.ButtonPresCreator;
@@ -43,11 +46,13 @@ import java.util.ResourceBundle;
  * Version 0.0.1
  * Create on  19/01/2023
  */
-public class DrawerController extends Drawer {
+public final class DrawerController extends Drawer {
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        super.initialize(location, resources);
+    public void onInit(Context context) {
+        super.onInit(context);
+//        super.wrapper = (IWrapper) context.wrapper();
+        super.show();
     }
 
     @FXML
@@ -159,7 +164,6 @@ public class DrawerController extends Drawer {
             throw new RuntimeException(e);
         }
     }
-
 
     private View presentation;
     @FXML
