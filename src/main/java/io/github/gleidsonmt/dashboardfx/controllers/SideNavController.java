@@ -19,16 +19,15 @@
 
 package io.github.gleidsonmt.dashboardfx.controllers;
 
-import io.github.gleidsonmt.dashboardfx.core.app.controllers.Drawer;
+import io.github.gleidsonmt.dashboardfx.core.app.controllers.SideNav;
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlData;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.ControlViewPanel;
-import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
-import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.TutorialCreator;
-import io.github.gleidsonmt.dashboardfx.views.*;
+import io.github.gleidsonmt.dashboardfx.views.AreaChartView;
+import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
+import io.github.gleidsonmt.dashboardfx.views.WrappersView;
 import io.github.gleidsonmt.dashboardfx.views.controls.ButtonPresCreator;
 import io.github.gleidsonmt.dashboardfx.views.controls.HyperlinkPresCreator;
 import io.github.gleidsonmt.dashboardfx.views.controls.LabelPresCreator;
@@ -38,22 +37,12 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Version 0.0.1
  * Create on  19/01/2023
  */
-public final class DrawerController extends Drawer {
-
-    @Override
-    public void onInit(Context context) {
-        super.onInit(context);
-//        super.wrapper = (IWrapper) context.wrapper();
-        super.show();
-    }
+public final class SideNavController extends SideNav {
 
     @FXML
     private void goDash() {

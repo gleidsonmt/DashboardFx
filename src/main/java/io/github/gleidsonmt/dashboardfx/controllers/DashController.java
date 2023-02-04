@@ -22,6 +22,7 @@ import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.model.NotifcationCell;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.BreakPoints;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ResponsiveView;
 import io.github.gleidsonmt.dashboardfx.core.controls.BoxUser;
 import io.github.gleidsonmt.dashboardfx.core.controls.CurvedChart;
@@ -31,6 +32,7 @@ import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.CardCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListItem;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.grid.Grid;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
 import io.github.gleidsonmt.gncontrols.controls.GNAvatar;
 import io.github.gleidsonmt.gncontrols.controls.GNAvatarStatus;
@@ -38,6 +40,8 @@ import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
 import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import io.github.gleidsonmt.gncontrols.options.model.Avatar;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -74,6 +78,8 @@ import java.util.*;
 @SuppressWarnings("unchecked")
 public final class DashController extends ResponsiveView implements ActionView, Initializable {
 
+    @FXML
+    private StackPane root;
     public Label experimental;
     @FXML
     private StackedAreaChart<Number, Number> graphic;
@@ -81,6 +87,8 @@ public final class DashController extends ResponsiveView implements ActionView, 
     private VBox body;
     @FXML
     private GridPane footer;
+    @FXML
+    private GridPane gridTiles;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -103,7 +111,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
         series1.getData().add(new XYChart.Data<>(97d, 30d));
         series1.getData().add(new XYChart.Data<>(99d, 110d));
 
-        XYChart.Series<Number, Number> series2 = new XYChart.Series();
+        XYChart.Series<Number, Number> series2 = new XYChart.Series<>();
         series2.setName("East");
 
         series2.getData().add(new XYChart.Data<>(11d, 110d));
@@ -196,7 +204,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
         c.setName("East");
         barChart.getData().addAll(s, b, c);
 
-        Image image = new Image(getClass().getResource("/core.app/img/logo_flier.png").toExternalForm());
+        Image image = new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_flier.png")).toExternalForm());
         CardCreator card = new CardCreator(
                 image, "Title", """
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -225,7 +233,8 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
 
         footer.getChildren().addAll(createDonut(), barChart,  scheduleList.getRoot(), curvedChart);
-        GridPane.setConstraints(footer.getChildren().get(0), 0, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.SOMETIMES, Priority.SOMETIMES);
+//        footer.getChildren().addAll(createDonut());
+        GridPane.setConstraints(footer.getChildren().get(0), 0, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(barChart, 1, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(scheduleList.getRoot(), 0, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(curvedChart, 1, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
@@ -254,6 +263,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
     @Override
     public void onEnter(Context context) {
+
         if (!load) {
 
             Label title = new Label("Dashboard");
@@ -405,6 +415,30 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
     @Override
     public void onInit(Context context) {
+//        gridTiles.setGridLinesVisible(true);
+
+        root.widthProperty()
+            .addListener((observable, oldValue, newValue) -> {
+
+                gridTiles.getColumnConstraints().clear();
+                gridTiles.getRowConstraints().clear();
+//                gridTiles.setHgap(10);
+
+                System.out.println("newValue = " + newValue);
+
+                if (newValue.doubleValue() < 537) {
+                    GridUtils.update(gridTiles, 1);
+                } else if (newValue.doubleValue() < 810) {
+                    GridUtils.update(gridTiles, 2);
+                    GridUtils.update(footer, 1);
+                } else if (newValue.doubleValue() < 1400){
+                    GridUtils.inLine(gridTiles);
+                    GridUtils.update(footer, 2);
+                } else {
+                    GridUtils.inLine(gridTiles);
+                    GridUtils.inLine(footer);
+                }
+            });
     }
 
     private VBox createNotifications(NotifcationCell... cells) {

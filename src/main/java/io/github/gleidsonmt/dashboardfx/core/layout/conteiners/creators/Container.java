@@ -34,7 +34,6 @@ public class Container extends StackPane implements ActionView, View {
     private String name;
 //    Context context;
 
-
     public Container(String name) {
         this.name = name;
     }

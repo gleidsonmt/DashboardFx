@@ -22,9 +22,14 @@ import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Root;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.BreakPoints;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ReadOnlyDoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -37,6 +42,8 @@ public final class IRoot extends StackPane implements Root {
     private SnackBar snackBar;
     private final ILayout layout;
     private final IWrapper wrapper;
+
+    private DoubleProperty width = new SimpleDoubleProperty();
 
     public IRoot(Context context) {
 
@@ -84,6 +91,10 @@ public final class IRoot extends StackPane implements Root {
 
     }
 
+    public DoubleProperty width() {
+        return this.width;
+    }
+
     @Override
     public void setTitle(String title) {
 
@@ -114,4 +125,7 @@ public final class IRoot extends StackPane implements Root {
     public Bar bar() {
         return layout.getBar();
     }
+
+
+
 }

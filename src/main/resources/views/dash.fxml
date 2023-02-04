@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.StackedAreaChart?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.SVGPath?>
-<?import javafx.scene.text.Text?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <!--
   ~    Copyright (C) Gleidson Neves da Silveira
@@ -33,7 +26,7 @@
   ~    along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<StackPane style="-fx-border-color : transparent; -fx-background-color : white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.DashController">
+<StackPane fx:id="root" style="-fx-border-color : transparent; -fx-background-color : white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.DashController">
    <children>
       <ScrollPane fitToWidth="true">
          <StackPane.margin>
@@ -42,18 +35,18 @@
          <content>
             <VBox fx:id="body" spacing="10.0">
                <children>
-                  <GridPane hgap="20.0" minHeight="-Infinity" prefHeight="126.0" prefWidth="734.0" vgap="20.0">
+                  <GridPane fx:id="gridTiles" alignment="CENTER_LEFT" hgap="20.0" prefHeight="126.0" prefWidth="734.0" vgap="20.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: -light-gray-2;">
+                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: -light-gray-2;">
                            <children>
                               <Label alignment="CENTER" contentDisplay="GRAPHIC_ONLY" style="-fx-background-color: -info; -fx-padding: 20; -fx-background-radius: 10;" text="Label">
                                  <graphic>
@@ -78,10 +71,13 @@
                            <padding>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </padding>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="199.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: -light-gray-2;" GridPane.columnIndex="3">
+                        <HBox alignment="CENTER_LEFT" layoutX="199.0" layoutY="10.0" minHeight="-Infinity" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: -light-gray-2;" GridPane.columnIndex="3">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="55.0" prefWidth="2.0" style="-fx-background-color: -grapefruit; -fx-padding: 20; -fx-background-radius: 10;" text="Label">
+                              <Label alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="55.0" prefWidth="2.0" style="-fx-background-color: -grapefruit; -fx-padding: 20; -fx-background-radius: 10;" styleClass="buy" text="Label">
                                  <graphic>
                                     <SVGPath content="M11.875 36.625q-1.292 0-2.208-.917-.917-.916-.917-2.166 0-1.292.917-2.209.916-.916 2.208-.916 1.292 0 2.187.916.896.917.896 2.209 0 1.291-.916 2.187-.917.896-2.167.896Zm16.667 0q-1.292 0-2.209-.917-.916-.916-.916-2.166 0-1.292.916-2.209.917-.916 2.209-.916 1.291 0 2.187.916.896.917.896 2.209 0 1.291-.917 2.187-.916.896-2.166.896ZM9.958 9.417l4.375 9.125h11.875l5-9.125ZM8.583 6.625h24.542q.958 0 1.458.875t.042 1.75l-5.75 10.292q-.458.833-1.187 1.291-.73.459-1.646.459H13.5l-2.167 4h20.292v2.791H11.583q-1.791 0-2.625-1.333-.833-1.333 0-2.833l2.5-4.625L5.25 6.125H1.958V3.333h5.084Zm5.75 11.917h11.875Z" style="-fx-fill: white;" />
                                  </graphic>
@@ -105,7 +101,7 @@
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="388.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: -light-gray-2;" GridPane.columnIndex="2">
+                        <HBox alignment="CENTER_LEFT" layoutX="388.0" layoutY="10.0" minHeight="-Infinity" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: -light-gray-2;" GridPane.columnIndex="2">
                            <children>
                               <Label alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minWidth="74.0" style="-fx-background-color: -amber; -fx-padding: 20; -fx-background-radius: 10;" text="Label">
                                  <graphic>
@@ -131,7 +127,7 @@
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" layoutX="388.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: -light-gray-2;" GridPane.columnIndex="1">
+                        <HBox alignment="CENTER_LEFT" layoutX="388.0" layoutY="10.0" minHeight="-Infinity" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: -light-gray-2;" GridPane.columnIndex="1">
                            <children>
                               <Label fx:id="experimental" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minWidth="74.0" style="-fx-background-color: -mint; -fx-padding: 20; -fx-background-radius: 10;" text="Label">
                                  <graphic>
@@ -159,9 +155,9 @@
                         </HBox>
                      </children>
                   </GridPane>
-                  <StackedAreaChart fx:id="graphic" alternativeColumnFillVisible="true" minHeight="200.0" prefHeight="226.0" prefWidth="734.0" style="-fx-border-color: -light-gray-2;" title="Sales by Region" VBox.vgrow="ALWAYS">
+                  <StackedAreaChart fx:id="graphic" alternativeColumnFillVisible="true" minHeight="200.0" style="-fx-border-color: -light-gray-2;" title="Sales by Region" VBox.vgrow="ALWAYS">
                     <xAxis>
-                      <NumberAxis prefHeight="22.0" prefWidth="677.0" side="BOTTOM" />
+                      <NumberAxis side="BOTTOM" />
                     </xAxis>
                     <yAxis>
                       <NumberAxis side="LEFT" />

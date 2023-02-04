@@ -156,13 +156,13 @@ public class WrappersView extends Container {
 
 
     private void createDrawer(HPos side) {
-
-        context.getWrapper()
-                .getDrawer()
-                .side(side)
-                .content(new StackPane(new Label("My Custom Drawer.")))
-                .style("-fx-background-color : white;")
-                .show();
+//
+//        context.getWrapper()
+//                .getDrawer()
+//                .side(side)
+//                .content(new StackPane(new Label("My Custom Drawer.")))
+//                .style("-fx-background-color : white;")
+//                .show();
     }
 
     public void createDialogPopup() {

@@ -17,11 +17,9 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.controllers;
 
-import io.github.gleidsonmt.dashboardfx.controllers.DrawerController;
 import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.services.LoadViews;
-import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
 import javafx.animation.RotateTransition;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;

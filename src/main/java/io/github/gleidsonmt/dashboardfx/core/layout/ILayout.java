@@ -23,16 +23,12 @@ import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.BreakPoints;
 import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 /**
@@ -97,6 +93,7 @@ public final class ILayout extends BorderPane implements Layout {
         hamburger.setOnMouseClicked(event -> {
             context.wrapper()
                     .getDrawer()
+                    .side(HPos.LEFT)
                     .content(oldDrawer)
                     .show();
         });
