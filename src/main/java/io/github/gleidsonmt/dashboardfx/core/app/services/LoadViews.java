@@ -19,6 +19,8 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.services;
 
+import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.Loader;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
@@ -35,17 +37,46 @@ public class LoadViews extends Task<String> {
 
     private final StringBuilder builder = new StringBuilder();
     private final List<ViewComposer> yamlViews;
-    private final Label lblInfo;
+//    private final Label lblInfo;
     private final Context context;
 
-    public LoadViews(Context context, Label lblInfo) {
+    private final Loader loader;
+    public LoadViews(Context context, Loader loader) {
         this.context = context;
-        this.lblInfo = lblInfo;
+//        this.lblInfo = lblInfo;
+        this.loader = loader;
         Yaml yaml = new Yaml(new Constructor(List.class));
         yamlViews = yaml.load(getClass().getResourceAsStream(
                 "/views.yml"));
     }
 
+    @Override
+    protected void succeeded() {
+            loader.updateTitle("Done!");
+            context.routes().navigate("layout");
+//
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/views/drawer.fxml"));
+//            loader.setController(new DrawerController((IWrapper) context.getWrapper()));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            context.routes().registry("drawer", loader);
+
+            try {
+                context.routes().setView("dash");
+            } catch (NavigationException e) {
+                throw new RuntimeException(e);
+            }
+
+            context.layout().setDrawer(
+                    context.routes().getView("drawer")
+            );
+    }
 
     @Override
     protected String call() throws Exception {
@@ -54,7 +85,7 @@ public class LoadViews extends Task<String> {
             Thread.sleep(1000);
 
             Platform.runLater(() -> {
-                lblInfo.setText("Loading view.. " + viewComposer.getName());
+                loader.updateLegend("Loading view... " + viewComposer.getName());
                 loadView(viewComposer);
             });
 

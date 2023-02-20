@@ -18,11 +18,24 @@
 package io.github.gleidsonmt.dashboardfx.core.app;
 
 import io.github.gleidsonmt.dashboardfx.core.app.controllers.LoaderController;
+import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
+import io.github.gleidsonmt.dashboardfx.core.app.services.LoadViews;
+import io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.Loader;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.SimpleView;
+import io.github.gleidsonmt.dashboardfx.views.LoadCircle;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
+import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.Objects;
 
 /**
@@ -34,15 +47,13 @@ public class Main extends App {
 
     @Override
     public void build(Context context) {
-        // Loader view
-        FXMLLoader loader = new FXMLLoader();
-        try {
-            loader.setController(new LoaderController(context));
-            loader.setLocation(getClass().getResource("/core.app/loader.fxml"));
-            loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        Loader loadCircle = new LoadCircle("Starting..", "");
+
+        Task<String> loadViews = new LoadViews(context, loadCircle); // Load View task
+
+        Thread tLoadViews = new Thread(loadViews);
+        tLoadViews.setDaemon(true);
+        tLoadViews.start();
 
         context.icons(
                 new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_64.png")).toExternalForm()),
@@ -51,7 +62,7 @@ public class Main extends App {
                 new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_16.png")).toExternalForm())
         );
 
-        context.routes().navigate("loader", loader);
+        context.routes().registryAndGo(new SimpleView((Node) loadCircle, "loadCircle"));
 
     }
 }

@@ -14,8 +14,8 @@ import java.nio.charset.Charset;
  */
 public class SimpleView implements View {
 
-    private String name;
-    private Parent node;
+    private final String name;
+    private final Parent node;
 
     public SimpleView(Node node, String name) {
         this.name = name;
