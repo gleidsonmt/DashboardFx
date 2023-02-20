@@ -19,18 +19,18 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators;
 
-import io.github.gleidsonmt.dashboardfx.controllers.BlockHtmlParser;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.BuildCreator;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
-import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.ActionOptions;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.SnackColors;
+import io.github.gleidsonmt.dashboardfx.views.BlockCode;
 import io.github.gleidsonmt.gncontrols.controls.GNButton;
 import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -48,8 +48,12 @@ import javafx.scene.text.TextFlow;
 import javafx.scene.web.WebView;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
+import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 
 public class PresentationCreator extends Container implements BuildCreator {
 
@@ -192,59 +196,62 @@ public class PresentationCreator extends Container implements BuildCreator {
     }
 
     private StackPane createBlockCode(String text, boolean fxml) {
-        StackPane root = new StackPane();
-        root.setMinHeight(150);
-        root.setAlignment(Pos.TOP_RIGHT);
-        GNButton btn = new GNButton();
-        btn.setPrefSize(37, 30);
-        SVGPath path = new SVGPath();
-        btn.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-        path.setContent("M5 22q-.825 0-1.413-.587Q3 20.825 3 20V6h2v14h11v2Zm4-4q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.413Q8.175 2 9 2h9q.825 0 1.413.587Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm0-2h9V4H9v12Zm0 0V4v12Z");
-        btn.getStyleClass().add("btn-flat");
-        btn.setStyle("" +
-                "-fx-background-color : white;" +
-                "-fx-border-color :  -medium-gray;" +
-                "-fx-border-width :  1;"
-        );
-        btn.setGraphic(path);
-        root.setStyle("-fx-border-color : -light-gray-2;");
-        WebView webView = new WebView();
-        webView.setContextMenuEnabled(false);
-//        webView.setMouseTransparent(true);
-        if (fxml) {
-            webView.getEngine().loadContent(
-                    new BlockHtmlParser().javaStringToFxml(text)
-            );
-        } else {
-            webView.getEngine().loadContent(
-                    new BlockHtmlParser().javaStringToHtml(text)
-            );
-        }
-        webView.setOnScroll(event -> {
-//            System.out.println(event.getDeltaY());
-//            System.out.println("event.getTotalDeltaY() = " + event.getTotalDeltaY());
-//            System.out.println("event.getTextDeltaY() = " + event.getTextDeltaY());
-//            if (event.getDeltaY() > 0) {
-//                event.getTarget();
-//            }
-        });
-        root.getChildren().addAll(webView, btn);
-
-        btn.setOnAction(event -> {
-            ClipboardContent content = new ClipboardContent();
-            content.putString(text);
-            content.putHtml("<b>Bold</b> text");
-            Clipboard.getSystemClipboard().setContent(content);
-
-            context.root()
-                    .createSnackBar()
-                    .icon(new IconContainer(Icons.DONE))
-                    .color(SnackColors.SUCCESS)
-                    .message("Copied!")
-                    .show();
-
-        });
-        return root;
+//
+////        webView.getEngine().load(
+////                Objects.requireNonNull(getClass().getResource("index.html"))
+////                        .toExternalForm());
+////        URL url = getClass().getResource("/web/index.html");
+////        webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());
+//
+//        URL url = getClass().getResource("/web/index.html");
+//        webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());
+//
+//        webView.getEngine().getLoadWorker().stateProperty()
+//                .addListener((obs, oldValue, newValue) -> {
+//                    if (newValue == Worker.State.SUCCEEDED) {
+//                        System.out.println("finished loading");
+//                        Document doc  = webView.getEngine().getDocument();
+//                        Element el = doc.getElementById("block");
+//////                            el.setTextContent("my block");
+//                        System.out.println(el);
+//                    }
+//                }); // addListener()
+//
+////        webView.setMouseTransparent(true);
+////        if (fxml) {
+////            webView.getEngine().loadContent(
+////                    new BlockHtmlParser().javaStringToFxml(text)
+////            );
+////        } else {
+////            webView.getEngine().loadContent(
+////                    new BlockHtmlParser().javaStringToHtml(text)
+////            );
+////        }
+//        webView.setOnScroll(event -> {
+////            System.out.println(event.getDeltaY());
+////            System.out.println("event.getTotalDeltaY() = " + event.getTotalDeltaY());
+////            System.out.println("event.getTextDeltaY() = " + event.getTextDeltaY());
+////            if (event.getDeltaY() > 0) {
+////                event.getTarget();
+////            }
+//        });
+//        root.getChildren().addAll(webView, btn);
+//
+//        btn.setOnAction(event -> {
+//            ClipboardContent content = new ClipboardContent();
+//            content.putString(text);
+//            content.putHtml("<b>Bold</b> text");
+//            Clipboard.getSystemClipboard().setContent(content);
+//
+//            context.root()
+//                    .createSnackBar()
+//                    .icon(new IconContainer(Icons.DONE))
+//                    .color(SnackColors.SUCCESS)
+//                    .message("Copied!")
+//                    .show();
+//
+//        });
+        return new BlockCode(context, text);
     }
 
     private TilePane createOptions(ActionOptions... options) {

@@ -35,8 +35,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.scenicview.ScenicView;
 
+import java.text.*;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Scanner;
 
 public abstract class App extends Application {
 
@@ -74,9 +78,6 @@ public abstract class App extends Application {
         stage.setMinWidth(500);
         stage.setMaximized(true);
         stage.show();
-
-        ScenicView.show(scene);
-        CSSFX.start(scene);
 
 
     }

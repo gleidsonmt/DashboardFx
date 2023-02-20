@@ -111,7 +111,6 @@ public class BlockCopyControl {
 
     private void update() {
         //string final
-
         fxmlBlock.setContent(fxmlHeader + fxmlStyleClass);
         javaBlock.setContent(javaHeader + javaStyleClass);
 

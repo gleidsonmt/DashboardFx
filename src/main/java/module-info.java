@@ -51,6 +51,7 @@ module io.github.gleidsonmt.dashboardfx {
     exports io.github.gleidsonmt.dashboardfx.views.controls;
     opens io.github.gleidsonmt.dashboardfx.views.controls to javafx.base, javafx.fxml, javafx.graphics;
 
+
 //    requires io.github.gleidsonmt.dashboardfx.core;
 //    exports io.github.gleidsonmt.dashboardfx.core.app to javafx.fxml, javafx.graphics;
 

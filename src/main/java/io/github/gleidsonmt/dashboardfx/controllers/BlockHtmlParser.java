@@ -19,6 +19,7 @@
 
 package io.github.gleidsonmt.dashboardfx.controllers;
 
+import javafx.scene.control.Button;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
@@ -68,6 +69,7 @@ public final class BlockHtmlParser {
 
         String pBetween = "([a-zA-Z0-9#:\\-;.()%&, ]+)";
 
+
         text = text
                 .replaceAll("(&nbsp;.+\\.[a-zA-Z]+|'" + pBetween + "'|\"" + pBetween + "\"|=)", styleString + "$1" + styleEnd)
                 .replaceAll("(&lt;&sol;.+\\w.+&gt;|&lt;+\\w+|&lt;\\?|\\?&gt;|&sol;&gt;|&gt;|&lt;)", styleBlock + "$1" + styleEnd)
@@ -109,24 +111,41 @@ public final class BlockHtmlParser {
 
     public String javaStringToHtml(String text) {
 
+        System.out.println("here = " + text);
+
 //        text = text.replaceAll("\n", "</br>");
 //#F5F7FA
-        return "<body style='background-color:#F5F7FA;'>" +
+//        return "<body style='background-color:#F5F7FA;'>" +
+//                pre + normalColor + ';' + end + text
+//                .replaceAll("([^a-z0-9]\\d+)", "<code style='color:" + numberColor +  "'>$1</code>" )
+//                .replaceAll("([\".][a-zA-Z0-9 ]+[\".])", "<code style='color:" + stringColor + "'>$1</code>" )
+////                .replaceAll("([A-Z.][A-Z]+[A-Z.])", "<code style='color:" + constantColor + "'>$1</code>" )
+//                .replaceAll("([\"\"\" .].[a-zA-Z0-9., ]+[\"\"\". ])", "<code style='color:" + stringColor + "'>$1</code>" )
+//                // key chars
+//                .replaceAll(";", pre + keyColor + end + ";" + suffix)
+//                .replaceAll("new", pre + keyColor + end + "new" + suffix)
+//                // Escapes chars
+//                .replaceAll("\n", "</br>")
+//                .replaceAll("( ) ", "&nbsp;")
+//                .replaceAll("context", "<code style='color: " + constantColor + ";'><i>" + "$0" + "</i></code>")
+////                .replaceAll("\t", "&emsp;")
+//                + suffix + "</body>";
+
+        double z = 29d;
+
+        return  "<body style='background-color:#F5F7FA;'>" +
                 pre + normalColor + ';' + end + text
-                .replaceAll("([^a-z0-9]\\d+)", "<code style='color:" + numberColor +  "'>$1</code>" )
-                .replaceAll("([\".][a-zA-Z0-9 ]+[\".])", "<code style='color:" + stringColor + "'>$1</code>" )
-//                .replaceAll("([A-Z.][A-Z]+[A-Z.])", "<code style='color:" + constantColor + "'>$1</code>" )
-                .replaceAll("([\"\"\" .].[a-zA-Z0-9., ]+[\"\"\". ])", "<code style='color:" + stringColor + "'>$1</code>" )
-                // key chars
-                .replaceAll(";", pre + keyColor + end + ";" + suffix)
-                .replaceAll("new", pre + keyColor + end + "new" + suffix)
-                // Escapes chars
-                .replaceAll("\n", "</br>")
-                .replaceAll("( ) ", "&nbsp;")
-                .replaceAll("context", "<code style='color: " + constantColor + ";'><i>" + "$0" + "</i></code>")
-//                .replaceAll("\t", "&emsp;")
+                .replaceAll("\n", "</br>") // tudo que for quebra de linha..
+                .replaceAll("^ [0-9] $", code(keyColor) + "$0" + codeEnd())
                 + suffix + "</body>";
     }
 
+    private String code(String color) {
+        return "<code style='" + color + ";'>";
+    }
+
+    private String codeEnd() {
+        return "</code>";
+    }
 }
 

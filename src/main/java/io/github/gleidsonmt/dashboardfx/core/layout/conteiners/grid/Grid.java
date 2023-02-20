@@ -14,7 +14,7 @@ public class Grid {
 
     public static void add(GridPane gridPane) {
         gridPane.widthProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("newValue = " + newValue);
+//            System.out.println("newValue = " + newValue);
         });
     }
 

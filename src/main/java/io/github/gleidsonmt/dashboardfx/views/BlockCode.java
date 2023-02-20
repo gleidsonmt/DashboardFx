@@ -34,6 +34,7 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.web.WebView;
 
@@ -94,7 +95,10 @@ public class BlockCode extends StackPane {
         webView.setOnScroll(event -> {
         });
 
-        this.getChildren().addAll(webView, btn);
+//        this.getChildren().addAll(webView, btn);
+        this.getChildren().addAll(
+                new LoadCircle("Main", "Legend")
+        );
 
         btn.setOnAction(event -> {
             ClipboardContent content = new ClipboardContent();

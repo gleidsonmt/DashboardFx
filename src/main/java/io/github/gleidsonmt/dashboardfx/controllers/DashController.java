@@ -424,7 +424,6 @@ public final class DashController extends ResponsiveView implements ActionView, 
                 gridTiles.getRowConstraints().clear();
 //                gridTiles.setHgap(10);
 
-                System.out.println("newValue = " + newValue);
 
                 if (newValue.doubleValue() < 537) {
                     GridUtils.update(gridTiles, 1);
