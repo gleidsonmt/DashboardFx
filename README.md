@@ -10,10 +10,6 @@
 [![License](https://img.shields.io/github/license/Gleidson28/GNDecorator.svg?style=for-the-badge)](https://github.com/gleidsonmt/GNDecorator/blob/master/LICENSE)
 
 
-<p align="center">
-  <img src="./src/main/resources/logo_flier.png"  />
-</p>
-
 ## Preview
 
 <p align="center">
