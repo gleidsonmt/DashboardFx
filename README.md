@@ -2,10 +2,11 @@
 <h6 align="center"> This project is part of the set of custom components created for JavaFx. </h6>
 <h1></h1>
 
-[![News](https://img.shields.io/badge/News-1-brightgreen.svg?style=for-the-badge)](http://gleidson28.blogspot.com)
-![Version](https://img.shields.io/badge/Version-0.3.22-green.svg?style=for-the-badge)
-![Build](https://img.shields.io/badge/Build-2.2.31+253-gold.svg?style=for-the-badge)
-[![Release](https://img.shields.io/badge/Release-v2.2.25-green.svg?style=for-the-badge)](https://github.com/gleidsonmt/GNDecorator/releases/tag/2.1.25)
+
+[//]: # ([![News]&#40;https://img.shields.io/badge/News-1-brightgreen.svg?style=for-the-badge&#41;]&#40;http://gleidson28.blogspot.com&#41;)
+[//]: # (![Version]&#40;https://img.shields.io/badge/Version-0.3.22-green.svg?style=for-the-badge&#41;)
+[//]: # (![Build]&#40;https://img.shields.io/badge/Build-2.2.31+253-gold.svg?style=for-the-badge&#41;)
+[//]: # ([![Release]&#40;https://img.shields.io/badge/Release-v2.2.25-green.svg?style=for-the-badge&#41;]&#40;https://github.com/gleidsonmt/GNDecorator/releases/tag/2.1.25&#41;)
 [![License](https://img.shields.io/github/license/Gleidson28/GNDecorator.svg?style=for-the-badge)](https://github.com/gleidsonmt/GNDecorator/blob/master/LICENSE)
 
 
