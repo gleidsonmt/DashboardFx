@@ -2,7 +2,6 @@ package io.github.gleidsonmt.dashboardfx.views;
 
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.Loader;
 import javafx.animation.RotateTransition;
-import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -17,11 +16,8 @@ import javafx.util.Duration;
  * Create on  20/02/2023
  */
 public class LoadCircle extends StackPane implements Loader {
-    private VBox root = new VBox();
-    private StackPane body = new StackPane();
-    private final Circle one = new Circle();
-    private final Circle two = new Circle();
-    private final Circle three = new Circle();
+    private final VBox root = new VBox();
+    private final StackPane body = new StackPane();
     private final Label title = new Label();
     private final Label legend = new Label();
 
@@ -29,13 +25,12 @@ public class LoadCircle extends StackPane implements Loader {
         this(null, null);
     }
 
-    public LoadCircle(String legend) {
-        this(null, legend);
-    }
-
     public LoadCircle(String _title, String _legend) {
+        Circle one = new Circle();
         rotate(one, 360, 10);
+        Circle two = new Circle();
         rotate(two, 180, 18);
+        Circle three = new Circle();
         rotate(three, 60, 22);
 
         one.setRadius(120);
@@ -102,14 +97,6 @@ public class LoadCircle extends StackPane implements Loader {
         } else {
             body.getChildren().remove(title);
         }
-    }
-
-    public StringProperty legendProperty() {
-        return legend.textProperty();
-    }
-
-    public StringProperty titleProperty() {
-        return title.textProperty();
     }
 
     @Override

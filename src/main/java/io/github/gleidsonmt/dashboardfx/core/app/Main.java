@@ -17,25 +17,15 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
-import io.github.gleidsonmt.dashboardfx.core.app.controllers.LoaderController;
-import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.services.LoadViews;
-import io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer;
-import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.Loader;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.SimpleView;
 import io.github.gleidsonmt.dashboardfx.views.LoadCircle;
 import javafx.concurrent.Task;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.image.Image;
 
-import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.Objects;
 
 /**

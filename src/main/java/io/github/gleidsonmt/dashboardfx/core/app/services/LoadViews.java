@@ -34,12 +34,9 @@ import java.net.URL;
 import java.util.List;
 
 public class LoadViews extends Task<String> {
-
     private final StringBuilder builder = new StringBuilder();
     private final List<ViewComposer> yamlViews;
-//    private final Label lblInfo;
     private final Context context;
-
     private final Loader loader;
     public LoadViews(Context context, Loader loader) {
         this.context = context;

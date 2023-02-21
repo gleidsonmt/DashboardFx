@@ -35,7 +35,6 @@ import java.util.Objects;
 public class BlockCopyControl {
 
     private final Node node;
-    
     private final BlockCode javaBlock;
     private final BlockCode fxmlBlock;
     // cabeçalho

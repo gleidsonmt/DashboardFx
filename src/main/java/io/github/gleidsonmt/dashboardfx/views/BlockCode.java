@@ -19,7 +19,6 @@
 
 package io.github.gleidsonmt.dashboardfx.views;
 
-import io.github.gleidsonmt.dashboardfx.controllers.BlockHtmlParser;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.SnackColors;
 import io.github.gleidsonmt.gncontrols.controls.GNButton;
@@ -27,16 +26,19 @@ import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Worker;
 import javafx.geometry.Pos;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.web.WebView;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import java.net.URL;
+import java.util.Objects;
 
 public class BlockCode extends StackPane {
 
@@ -62,42 +64,47 @@ public class BlockCode extends StackPane {
                 "-fx-border-width :  1;"
         );
         btn.setGraphic(path);
-        this.setStyle("-fx-border-color : -light-gray-2;");
+        this.setStyle("-fx-border-color : -light-gray-2; -fx-background-color : -light-gray;");
         WebView webView = new WebView();
         webView.setContextMenuEnabled(false);
+        webView.getEngine().setJavaScriptEnabled(true);
 
-//        webView.setMouseTransparent(true);
-        BlockHtmlParser parser = new BlockHtmlParser();
-
-        if (fxml) {
-            webView.getEngine().loadContent(
-                    parser.javaStringToFxml(text)
-            );
-        } else {
-            webView.getEngine().loadContent(
-                    parser.javaStringToHtml(text)
-            );
-
-        }
+        URL url = getClass().getResource("/web/index.html");
+        webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());
 
         content.addListener((observable, oldValue, newValue) -> {
-            if (fxml) {
-                webView.getEngine().loadContent(
-                        parser.javaStringToFxml(newValue)
-                );
-            } else {
-                webView.getEngine().loadContent(
-                        parser.javaStringToHtml(newValue)
-                );
-            }
+            System.out.println("newValue = " + newValue);
+//            if (fxml) {
+//                webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());
+//
+//            } else {
+//                webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());
+//            }
         });
+
+        webView.getEngine().getLoadWorker().stateProperty()
+                .addListener((obs, oldValue, newValue) -> {
+                    if (newValue == Worker.State.SUCCEEDED) {
+                        Document doc  = webView.getEngine().getDocument();
+                        Element el = doc.getElementById("block");
+//                        el.removeAttribute("class");
+//                        System.out.println("fxml = " + fxml);
+                        if (fxml)
+                            el.setAttribute("class", "language-html");
+
+                        el.setTextContent(text);
+
+                        webView.getEngine().executeScript("hljs.highlightAll();");
+                        this.getChildren().setAll(webView, btn);
+                    }
+                }); // addListener()
+
 
         webView.setOnScroll(event -> {
         });
 
-//        this.getChildren().addAll(webView, btn);
         this.getChildren().addAll(
-                new LoadCircle("Main", "Legend")
+               new SimpleLoadCircle()
         );
 
         btn.setOnAction(event -> {
@@ -112,7 +119,6 @@ public class BlockCode extends StackPane {
                     .color(SnackColors.SUCCESS)
                     .message("Copied!")
                     .show();
-
         });
     }
 

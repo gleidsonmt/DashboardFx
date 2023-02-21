@@ -71,14 +71,14 @@ public final class WrapperController implements ActionView {
                 \t.undo(event -> {
                 \t.show();""";
 
-        String random =
-                new BlockHtmlParser().javaStringToHtml("Random r = new Random(12);" +
-                        "\nr.setTitle(\"Welcome\");");
+//        String random =
+//                new BlockHtmlParser().javaStringToHtml("Random r = new Random(12);" +
+//                        "\nr.setTitle(\"Welcome\");");
+
 //
-
-        String content = new BlockHtmlParser().javaStringToHtml(_code);
-
-        webView.getEngine().loadContent(content);
+//        String content = new BlockHtmlParser().javaStringToHtml(_code);
+//
+//        webView.getEngine().loadContent(content);
 
     }
 

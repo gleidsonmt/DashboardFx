@@ -196,62 +196,7 @@ public class PresentationCreator extends Container implements BuildCreator {
     }
 
     private StackPane createBlockCode(String text, boolean fxml) {
-//
-////        webView.getEngine().load(
-////                Objects.requireNonNull(getClass().getResource("index.html"))
-////                        .toExternalForm());
-////        URL url = getClass().getResource("/web/index.html");
-////        webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());
-//
-//        URL url = getClass().getResource("/web/index.html");
-//        webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());
-//
-//        webView.getEngine().getLoadWorker().stateProperty()
-//                .addListener((obs, oldValue, newValue) -> {
-//                    if (newValue == Worker.State.SUCCEEDED) {
-//                        System.out.println("finished loading");
-//                        Document doc  = webView.getEngine().getDocument();
-//                        Element el = doc.getElementById("block");
-//////                            el.setTextContent("my block");
-//                        System.out.println(el);
-//                    }
-//                }); // addListener()
-//
-////        webView.setMouseTransparent(true);
-////        if (fxml) {
-////            webView.getEngine().loadContent(
-////                    new BlockHtmlParser().javaStringToFxml(text)
-////            );
-////        } else {
-////            webView.getEngine().loadContent(
-////                    new BlockHtmlParser().javaStringToHtml(text)
-////            );
-////        }
-//        webView.setOnScroll(event -> {
-////            System.out.println(event.getDeltaY());
-////            System.out.println("event.getTotalDeltaY() = " + event.getTotalDeltaY());
-////            System.out.println("event.getTextDeltaY() = " + event.getTextDeltaY());
-////            if (event.getDeltaY() > 0) {
-////                event.getTarget();
-////            }
-//        });
-//        root.getChildren().addAll(webView, btn);
-//
-//        btn.setOnAction(event -> {
-//            ClipboardContent content = new ClipboardContent();
-//            content.putString(text);
-//            content.putHtml("<b>Bold</b> text");
-//            Clipboard.getSystemClipboard().setContent(content);
-//
-//            context.root()
-//                    .createSnackBar()
-//                    .icon(new IconContainer(Icons.DONE))
-//                    .color(SnackColors.SUCCESS)
-//                    .message("Copied!")
-//                    .show();
-//
-//        });
-        return new BlockCode(context, text);
+        return new BlockCode(context, text, fxml);
     }
 
     private TilePane createOptions(ActionOptions... options) {
