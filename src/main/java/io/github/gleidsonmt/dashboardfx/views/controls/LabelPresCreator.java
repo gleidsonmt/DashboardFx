@@ -43,9 +43,14 @@ public class LabelPresCreator extends TutorialCreator {
                 .multCode(
                         new Label("Label"),
                         """
+                        // importing label
                         import javafx.scene.control.Label;
-                        //...
+                        // importing GNBadge
+                        import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;
+                        // Constructing label
                         Label label = new Label("Label");
+                        // Constructing GNBadge
+                        GNBadge badge = new GNBadge();
                         """,
                         """
                         <?import javafx.scene.control.Label?>

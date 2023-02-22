@@ -20,10 +20,17 @@
 package io.github.gleidsonmt.dashboardfx.views.controls;
 
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.Author;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.PresentationCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.TutorialCreator;
 import io.github.gleidsonmt.gncontrols.controls.GNButton;
+import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
+import io.github.gleidsonmt.gncontrols.material.icon.Icons;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.shape.SVGPath;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -31,7 +38,7 @@ import java.util.List;
  * Version 0.0.1
  * Create on  21/01/2023
  */
-public class ButtonPresCreator extends TutorialCreator {
+public class ButtonPresCreator extends PresentationCreator {
     public ButtonPresCreator(String name, Context context) {
         super(name, context);
         this.title("Button")
@@ -49,9 +56,10 @@ public class ButtonPresCreator extends TutorialCreator {
                         MnemonicParsing is enabled by default for Button.
                         """)
                 .multCode(List.of(
-                            createButton("Button"),
+                            createButton("Default"),
                             createCancel("Cancel"),
                             createBtnFlat("Flat"),
+                            createIconized("Iconized"),
                             createGNButton("GNButton")
                         ),
                         """
@@ -61,15 +69,29 @@ public class ButtonPresCreator extends TutorialCreator {
                         button.setCancelButton(true);
                         // Flat
                         buttonFlat.getStyleClass("btn-flat");
+                        // Icon
+                         button.setGraphic(new IconContainer(Icons.ANALYTICS));
                         // GNButton
                         GNButton gnButton = new GNButton();
                         """,
                         """
                         """)
+
+                .footer(new Author("OpenJFX",
+                        "https://github.com/openjfx/openjfx.github.io",
+                        "https://openjfx.io/javadoc/17/javafx.controls/javafx/scene/control/Button.html"))
+
         ;
         build();
 
 
+    }
+
+    public List<Node> listIconized() {
+        Button button = createButton("Iconized");
+        List<Node> list = Arrays.asList(button);
+        button.setGraphic(new IconContainer(Icons.ANALYTICS));
+        return list;
     }
 
     public Button createButton(String title) {
@@ -83,6 +105,12 @@ public class ButtonPresCreator extends TutorialCreator {
     public Button createBtnFlat(String title) {
         Button button = new Button(title);
         button.getStyleClass().add("btn-flat");
+        return button;
+    }
+
+    public Button createIconized(String title) {
+        Button button = new Button(title);
+        button.setGraphic(new IconContainer(Icons.ANALYTICS));
         return button;
     }
 

@@ -134,8 +134,17 @@ public class PresentationCreator extends Container implements BuildCreator {
             hp.setGraphic(new IconContainer(Icons.GITHUB));
             hp.setText(author.getName());
             hp.setGraphicTextGap(10);
-//            hp.setOnAction(event -> context.openLink(author.getGitUrl()));
+            hp.setOnAction(event -> context.openLink(author.getGitUrl()));
             body.getChildren().add(hp);
+
+            if (author.getDocumentation() != null) {
+                Hyperlink h = new Hyperlink();
+                h.setText(" / Documentation");
+                h.setOnAction(event -> context.openLink(author.getDocumentation()));
+                HBox.setMargin(h, new Insets(5, 0, 0, 0));
+                h.setGraphicTextGap(10);
+                body.getChildren().add(h);
+            }
 
             if (authors.length > 1) {
                 Separator sep = new Separator();
@@ -172,6 +181,7 @@ public class PresentationCreator extends Container implements BuildCreator {
     private Node createMultBlock(List<Node> list, String java, String fxml) {
 
         TabPane tabPane = new TabPane();
+        VBox.setVgrow(tabPane, Priority.ALWAYS);
         tabPane.setMinHeight(400);
         Tab javaTab = new Tab("Java");
         Tab fxmlTab = new Tab("FXML");
@@ -179,9 +189,11 @@ public class PresentationCreator extends Container implements BuildCreator {
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         javaTab.setContent(createBlockCode(java, false));
         fxmlTab.setContent(createBlockCode(fxml, true));
-        HBox root = new HBox();
+        FlowPane root = new FlowPane();
         root.setPadding(new Insets(20));
-        root.setSpacing(20);
+        root.setVgap(10);
+        root.setHgap(10);
+//        root.setSpacing(20);
         root.setAlignment(Pos.CENTER);
         root.getChildren().setAll(list);
         root.setAlignment(Pos.CENTER);

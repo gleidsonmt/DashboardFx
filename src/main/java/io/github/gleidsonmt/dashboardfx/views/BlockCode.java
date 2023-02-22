@@ -24,6 +24,7 @@ import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.SnackColo
 import io.github.gleidsonmt.gncontrols.controls.GNButton;
 import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.concurrent.Worker;
@@ -72,30 +73,23 @@ public class BlockCode extends StackPane {
         URL url = getClass().getResource("/web/index.html");
         webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());
 
-        content.addListener((observable, oldValue, newValue) -> {
-            System.out.println("newValue = " + newValue);
-//            if (fxml) {
-//                webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());
-//
-//            } else {
-//                webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());
-//            }
-        });
 
         webView.getEngine().getLoadWorker().stateProperty()
                 .addListener((obs, oldValue, newValue) -> {
                     if (newValue == Worker.State.SUCCEEDED) {
-                        Document doc  = webView.getEngine().getDocument();
-                        Element el = doc.getElementById("block");
+                        Platform.runLater(() -> {
+                            Document doc  = webView.getEngine().getDocument();
+                            Element el = doc.getElementById("block");
 //                        el.removeAttribute("class");
 //                        System.out.println("fxml = " + fxml);
-                        if (fxml)
-                            el.setAttribute("class", "language-html");
+                            if (fxml)
+                                el.setAttribute("class", "language-html");
 
-                        el.setTextContent(text);
+                            el.setTextContent(text);
 
-                        webView.getEngine().executeScript("hljs.highlightAll();");
-                        this.getChildren().setAll(webView, btn);
+                            webView.getEngine().executeScript("hljs.highlightAll();");
+                            this.getChildren().setAll(webView, btn);
+                        });
                     }
                 }); // addListener()
 

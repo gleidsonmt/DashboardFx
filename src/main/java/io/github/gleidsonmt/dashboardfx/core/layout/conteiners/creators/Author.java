@@ -23,14 +23,20 @@ public class Author {
 
     private String name;
     private String gitUrl;
+    private String documentation;
 
     public Author(String name) {
         this(name, null);
     }
 
     public Author(String name, String gitUrl) {
+        this(name, gitUrl, null);
+    }
+
+    public Author(String name, String gitUrl, String documentation) {
         this.name = name;
         this.gitUrl = gitUrl;
+        this.documentation = documentation;
     }
 
     public String getName() {
@@ -39,5 +45,9 @@ public class Author {
 
     public String getGitUrl() {
         return gitUrl;
+    }
+
+    public String getDocumentation() {
+        return documentation;
     }
 }
