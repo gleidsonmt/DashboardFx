@@ -115,7 +115,7 @@ public final class SideNavController extends SideNav {
 
     @FXML
     private void goButton() {
-        context.routes().registryAndGo(new ButtonPresCreator("Label", context));
+        context.routes().registryAndGo(new ButtonPresCreator("Button", context));
     }
 
     @FXML

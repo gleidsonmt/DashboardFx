@@ -41,7 +41,7 @@ import java.util.List;
 public class ButtonPresCreator extends PresentationCreator {
     public ButtonPresCreator(String name, Context context) {
         super(name, context);
-        this.title("Button")
+        this
                 .text("""
                         A simple button control. The button control can contain text and/or a graphic. A button control has three different modes
                                                 
@@ -79,9 +79,9 @@ public class ButtonPresCreator extends PresentationCreator {
 
                 .footer(new Author("OpenJFX",
                         "https://github.com/openjfx/openjfx.github.io",
-                        "https://openjfx.io/javadoc/17/javafx.controls/javafx/scene/control/Button.html"))
-
-        ;
+                        "https://openjfx.io/javadoc/17/javafx.controls/javafx/scene/control/Button.html")
+                , new Author("Gleidson Neves da Silveira",
+                                "https://github.com/gleidsonmt"));
         build();
 
 

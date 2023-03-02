@@ -298,7 +298,6 @@ public final class DashController extends ResponsiveView implements ActionView, 
 //                upadteContent(context, "profile");
             });
 
-
             boxUserDialog.getChildren().setAll(btnProfile, btnSettings, new Separator(), btnLogout);
 
             boxUser.setOnMouseClicked(event ->
