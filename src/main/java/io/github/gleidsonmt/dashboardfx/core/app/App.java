@@ -79,6 +79,7 @@ public abstract class App extends Application {
         stage.setMaximized(true);
         stage.show();
 
+        CSSFX.start(scene);
 
     }
 

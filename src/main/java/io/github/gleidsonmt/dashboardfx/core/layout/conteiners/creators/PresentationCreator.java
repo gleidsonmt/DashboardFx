@@ -276,6 +276,11 @@ public class PresentationCreator extends Container implements BuildCreator {
 
     @Override
     public View build() {
+        boolean ee = items.stream().anyMatch(n-> n.getStyleClass().contains("title"));
+        System.out.println(ee);
+        if (!ee) {
+            body.setPadding(new Insets(30, 30, 30, 30));
+        }
         body.getChildren().setAll(items);
         return this;
     }
