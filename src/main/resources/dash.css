@@ -147,5 +147,8 @@ Text, .text, .label {
     -fx-background-color : -light-gray;
     -fx-border-color : -light-gray-2;
     -fx-text-fill : -text-color;
+}
 
+.title-text {
+    -fx-text-fill : -aqua;
 }

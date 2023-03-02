@@ -269,7 +269,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
             Label title = new Label("Dashboard");
             title.textProperty().bindBidirectional(context.routes().title());
             title.setPadding(new Insets(0,0,0,5));
-            title.getStyleClass().addAll("title", "text-14");
+            title.getStyleClass().addAll("title-text", "title", "text-14");
 
             context.bar().addInLeft(title);
 

@@ -23,14 +23,12 @@ import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.BuildCreator;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.ActionOptions;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.SnackColors;
 import io.github.gleidsonmt.dashboardfx.views.BlockCode;
 import io.github.gleidsonmt.gncontrols.controls.GNButton;
 import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -39,39 +37,26 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.*;
-import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import javafx.scene.web.WebView;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
-import java.net.URL;
 import java.util.List;
-import java.util.Objects;
 
+@SuppressWarnings("unused")
 public class PresentationCreator extends Container implements BuildCreator {
 
-    private final ScrollPane scroll = new ScrollPane();
     private final VBox body = new VBox();
-
-    private String name;
-    private List<String> sections = List.of();
-    private final List<Label> titles = List.of();
     protected ObservableList<Node> items = FXCollections.observableArrayList();
-
-    private Context context;
+    private final Context context;
 
     public PresentationCreator(String _name, Context _context) {
         super(_name);
-        this.name = _name;
         this.context = _context;
 
+        ScrollPane scroll = new ScrollPane();
         this.getChildren().setAll(scroll);
         scroll.setContent(body);
 
@@ -184,11 +169,9 @@ public class PresentationCreator extends Container implements BuildCreator {
         VBox.setVgrow(tabPane, Priority.ALWAYS);
         tabPane.setMinHeight(400);
         Tab javaTab = new Tab("Java");
-        Tab fxmlTab = new Tab("FXML");
         Tab nodeTab = new Tab("Node");
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         javaTab.setContent(createBlockCode(java, false));
-        fxmlTab.setContent(createBlockCode(fxml, true));
         FlowPane root = new FlowPane();
         root.setPadding(new Insets(20));
         root.setVgap(10);
@@ -198,7 +181,12 @@ public class PresentationCreator extends Container implements BuildCreator {
         root.getChildren().setAll(list);
         root.setAlignment(Pos.CENTER);
         nodeTab.setContent(root);
-        tabPane.getTabs().setAll(nodeTab, javaTab, fxmlTab);
+        tabPane.getTabs().setAll(nodeTab, javaTab);
+        if (!fxml.isEmpty()) {
+            Tab fxmlTab = new Tab("FXML");
+            fxmlTab.setContent(createBlockCode(fxml, true));
+            tabPane.getTabs().add(javaTab);
+        }
         root.getStyleClass().addAll("border-light-gray-2", "border-1");
         return tabPane;
     }
@@ -276,9 +264,7 @@ public class PresentationCreator extends Container implements BuildCreator {
 
     @Override
     public View build() {
-        boolean ee = items.stream().anyMatch(n-> n.getStyleClass().contains("title"));
-        System.out.println(ee);
-        if (!ee) {
+        if (items.stream().noneMatch(n-> n.getStyleClass().contains("title"))) {
             body.setPadding(new Insets(30, 30, 30, 30));
         }
         body.getChildren().setAll(items);

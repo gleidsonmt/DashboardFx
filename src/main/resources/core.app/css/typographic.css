@@ -40,7 +40,6 @@
 
 .title, .text-bold {
     -fx-font-weight : bold;
-    -fx-text-fill: -dark-gray;
 }
 
 .text-info {

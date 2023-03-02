@@ -43,7 +43,7 @@ import java.util.Objects;
 
 public class BlockCode extends StackPane {
 
-    private StringProperty content = new SimpleStringProperty();
+    private final StringProperty content = new SimpleStringProperty();
 
     public BlockCode(Context context, String text) {
         this(context, text, false);
@@ -59,11 +59,7 @@ public class BlockCode extends StackPane {
         btn.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
         path.setContent("M5 22q-.825 0-1.413-.587Q3 20.825 3 20V6h2v14h11v2Zm4-4q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.413Q8.175 2 9 2h9q.825 0 1.413.587Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm0-2h9V4H9v12Zm0 0V4v12Z");
         btn.getStyleClass().add("btn-flat");
-        btn.setStyle("" +
-                "-fx-background-color : white;" +
-                "-fx-border-color :  -medium-gray;" +
-                "-fx-border-width :  1;"
-        );
+        btn.getStyleClass().addAll("flat","btn-flat");
         btn.setGraphic(path);
         this.setStyle("-fx-border-color : -light-gray-2; -fx-background-color : -light-gray;");
         WebView webView = new WebView();
@@ -73,23 +69,24 @@ public class BlockCode extends StackPane {
         URL url = getClass().getResource("/web/index.html");
         webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());
 
-
         webView.getEngine().getLoadWorker().stateProperty()
                 .addListener((obs, oldValue, newValue) -> {
                     if (newValue == Worker.State.SUCCEEDED) {
-                        Platform.runLater(() -> {
-                            Document doc  = webView.getEngine().getDocument();
-                            Element el = doc.getElementById("block");
-//                        el.removeAttribute("class");
-//                        System.out.println("fxml = " + fxml);
-                            if (fxml)
-                                el.setAttribute("class", "language-html");
+//                        Platform.runLater(() -> {
+                            if (!text.isEmpty() && !text.isBlank()) {
 
-                            el.setTextContent(text);
+                                Document doc = webView.getEngine().getDocument();
+                                Element el = doc.getElementById("block");
 
-                            webView.getEngine().executeScript("hljs.highlightAll();");
+                                if (fxml)
+                                    el.setAttribute("class", "language-html");
+
+                                el.setTextContent(text);
+
+                                webView.getEngine().executeScript("hljs.highlightAll();");
+                            }
                             this.getChildren().setAll(webView, btn);
-                        });
+//                        });
                     }
                 }); // addListener()
 
