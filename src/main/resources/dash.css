@@ -152,3 +152,7 @@ Text, .text, .label {
 .title-text {
     -fx-text-fill : -aqua;
 }
+
+.gn-badge:hover, #box-user:hover {
+    -fx-background-color : -light-gray;
+}

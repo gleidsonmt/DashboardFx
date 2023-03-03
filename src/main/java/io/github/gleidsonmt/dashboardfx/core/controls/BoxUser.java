@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class BoxUser extends HBox {
     public BoxUser(String username) {
-
+        this.setId("box-user");
         this.setAlignment(Pos.CENTER);
         GNAvatarStatus avatarStatus = new GNAvatarStatus();
         avatarStatus.setImage(new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/avatar.png")).toExternalForm()));
@@ -44,8 +44,8 @@ public class BoxUser extends HBox {
         btnArrow.setMaxWidth(20);
         btnArrow.setMinWidth(20);
         btnArrow.getStyleClass().addAll("btn-flat", "no-border");
-//        this.getChildren().setAll( avatarStatus, user, btnArrow);
-        this.getChildren().setAll(user, avatarStatus);
+        this.getChildren().setAll( avatarStatus, user, btnArrow);
+//        this.getChildren().setAll(user, avatarStatus);
         avatarStatus.setPadding(new Insets(2, 5, 2, 2));
         avatarStatus.setRadius(15);
         this.setCursor(Cursor.HAND);

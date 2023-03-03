@@ -282,10 +282,10 @@ public final class DashController extends ResponsiveView implements ActionView, 
             sms.getStyleClass().add("bd-info");
 //            sms.setColorCircle(Color.web(Colors.GRAPEFRUIT.toString()));
 
-            Pane space = new Pane();
-            space.setMinWidth(20);
 
             BoxUser boxUser = new BoxUser("Jane Doe");
+            boxUser.setPadding(new Insets(0,0,10,0));
+            HBox.setMargin(boxUser, new Insets(0,0,0,20));
 
             VBox boxUserDialog = new VBox();
             Button btnProfile = createBtn("Profile", event -> {
@@ -308,7 +308,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
                     .content(boxUserDialog)
                     .show(Direction.BOTTOM_LEFT, boxUser));
 
-            context.root().bar().addInRight(sms, notification, space, boxUser);
+            context.root().bar().addInRight(sms, notification, boxUser);
 
             VBox b = createDialogNotification();
 
