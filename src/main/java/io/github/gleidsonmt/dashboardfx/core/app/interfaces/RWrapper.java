@@ -17,27 +17,29 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.FlowContainer;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.WrapperContainer;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Drawer;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Popup;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.PopupContainer;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.IAlert;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/09/2022
  */
+@Deprecated(forRemoval = true)
 @SuppressWarnings("ClassEscapesDefinedScope")
-public interface Wrapper {
+public interface RWrapper {
 
-//    PopupOver getPopOver();
-    Popup getPopup();
+    @Deprecated(forRemoval = true)
+    PopupContainer getPopup();
 
-    FlowContainer getFlow();
+    @Deprecated(forRemoval = true)
+    WrapperContainer getFlow();
 
+    @Deprecated(forRemoval = true)
     IAlert getAlert();
 
+    @Deprecated(forRemoval = true)
     Drawer getDrawer();
-
-
 
 }

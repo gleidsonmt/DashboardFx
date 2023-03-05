@@ -17,27 +17,42 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Alert;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.FlowContainer;
+import animatefx.animation.AnimationFX;
+import animatefx.animation.Pulse;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Drawer;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Popup;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.AbsoluteWrapperContainer;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Screen;
+import javafx.util.Duration;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  05/10/2022
  */
-public class FlowWrapper extends StackPane implements Wrapper {
+public class Wrapper extends StackPane implements AbsoluteWrapperContainer {
 
-    public FlowWrapper() {
+    private Pos pos;
+
+    public Wrapper() {
         reset();
         setId("wrapper");
+    }
+
+    public Wrapper content(Node node) {
+        getChildren().setAll(node);
+        return this;
     }
 
     public void reset() {
@@ -51,40 +66,41 @@ public class FlowWrapper extends StackPane implements Wrapper {
         );
     }
 
-    private Popup popup;
-
-    @Override
-    @Deprecated
-    public Popup getPopup() {
-        if (flowContainer == null) popup = new Popup(this);
-        return popup;
-    }
-
-    private FlowContainer flowContainer;
-    @Override
-    public FlowContainer getFlow() {
-        if (flowContainer == null) flowContainer = new FlowContainer(this);
-        return flowContainer;
-    }
-
-    private Alert alert;
-
-    @Override
-    @Deprecated
-    public Alert getAlert() {
-        if (alert == null) alert = new Alert(this);
-        return alert;
-    }
-
     private Drawer drawer;
-
-    @Override
-    public Drawer getDrawer() {
+    public Drawer drawer() {
         if (drawer == null) drawer = new Drawer(this);
         return drawer;
+    }
+
+    @Override
+    public AbsoluteWrapperContainer pos(Pos _pos) {
+        this.pos = _pos;
+        return this;
+    }
+    @Override
+    public void show() {
+        toFront();
+        setOnMouseClicked(event -> close());
+
+        setAlignment(pos != null ? pos : Pos.CENTER);
+
+        AnimationFX animation = new Pulse(getChildren().get(0));
+        animation.setSpeed(1.8);
+        animation.play();
+    }
+
+    @Override
+    public void close() {
+
+        AnimationFX animation = new Pulse(getChildren().get(0));
+        animation.setSpeed(1.8);
+        animation.play();
+        animation.getTimeline().setOnFinished(event -> toBack());
     }
 
     public enum WrapperBackgroundType {
         NONE, GRAY, BLUR;
     }
+
+
 }

@@ -67,12 +67,10 @@ public class BlockCode extends StackPane {
         webView.getEngine().setJavaScriptEnabled(true);
 
         URL url = getClass().getResource("/web/index.html");
-        webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());
 
         webView.getEngine().getLoadWorker().stateProperty()
                 .addListener((obs, oldValue, newValue) -> {
                     if (newValue == Worker.State.SUCCEEDED) {
-                        Platform.runLater(() -> {
                             if (!text.isEmpty() && !text.isBlank()) {
 
                                 Document doc = webView.getEngine().getDocument();
@@ -86,10 +84,10 @@ public class BlockCode extends StackPane {
                                 webView.getEngine().executeScript("hljs.highlightAll();");
                             }
                             this.getChildren().setAll(webView, btn);
-                        });
                     }
                 }); // addListener()
 
+        webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());
 
         webView.setOnScroll(event -> {
         });

@@ -24,6 +24,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 
 public interface WrapperContainer {
+
     void show();
 
     default void close() {};

@@ -92,7 +92,7 @@ public final class ILayout extends BorderPane implements Layout {
 
         hamburger.setOnMouseClicked(event -> {
             context.wrapper()
-                    .getDrawer()
+                    .drawer()
                     .side(HPos.LEFT)
                     .content(oldDrawer)
                     .show();

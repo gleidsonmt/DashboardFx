@@ -21,50 +21,44 @@ package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
 import animatefx.animation.AnimationFX;
 import animatefx.animation.Pulse;
-import io.github.gleidsonmt.dashboardfx.core.layout.FlowWrapper;
+import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.AbsoluteWrapperContainer;
 import javafx.geometry.Pos;
 import javafx.scene.layout.*;
 import org.jetbrains.annotations.TestOnly;
 
-public class FlowContainer
+public class WrapperContainer
        implements AbsoluteWrapperContainer {
 
     protected Region content;
     private Pos pos;
     protected double width = 350;
     protected double height = 300;
-    private final FlowWrapper wrapper;
+    private final Wrapper wrapper;
     protected double paddingX = 0;
     private double paddingY = 0;
 
-    public FlowContainer(FlowWrapper wrapper) {
+    public WrapperContainer(Wrapper wrapper) {
         this.wrapper = wrapper;
         Region r = new Region();
     }
 
-    public FlowContainer content(Region content) {
+    public WrapperContainer content(Region content) {
         this.content = content;
 
-        wrapper.getChildren().setAll(content);
-        return this;
-    }
-
-    public FlowContainer content(DeclarativeComponent content) {
-        this.content = content;
         wrapper.getChildren().setAll(content);
         return this;
     }
 
     @Override
-    public FlowContainer pos(Pos _pos) {
+    public WrapperContainer pos(Pos _pos) {
         this.pos = _pos;
         return this;
     }
 
     @TestOnly
-    public FlowContainer moveX(double x) {
+    public WrapperContainer moveX(double x) {
         this.paddingX = x;
         return this;
     }

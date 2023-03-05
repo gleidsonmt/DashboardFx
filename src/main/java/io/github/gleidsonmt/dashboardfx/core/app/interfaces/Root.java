@@ -18,9 +18,9 @@
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
 import io.github.gleidsonmt.dashboardfx.core.layout.Bar;
+import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Flow;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.scene.Parent;
 import org.jetbrains.annotations.ApiStatus;
 

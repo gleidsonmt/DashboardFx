@@ -74,7 +74,7 @@ public class WrappersView extends Container {
                         .show();
                 """)
         .separator()
-        .title("FlowContainer")
+        .title("WrapperContainer")
         .options(
             new ActionOptions(
             "Open", event -> createDialogPopup()
@@ -85,7 +85,7 @@ public class WrappersView extends Container {
                     .getDialog()
                     .content(
                         new StackPane(
-                            new Label("Custom FlowContainer Wrapper"))
+                            new Label("Custom WrapperContainer RWrapper"))
                         )
                     .show();
                 """)
@@ -161,7 +161,7 @@ public class WrappersView extends Container {
     private void createDrawer(HPos side) {
 
         context.wrapper()
-                .getDrawer()
+                .drawer()
                 .side(side)
                 .content(
                         new DrawerContainer(new Label("My Custom Drawer."), 250)
@@ -172,11 +172,10 @@ public class WrappersView extends Container {
 
     public void createDialogPopup() {
         context.wrapper()
-                .getFlow()
-//                .size(350, 300)
                 .content(
                     new DialogContainer()
-                            .content(new Label("My custom dialog"))
+                            .content(new Label("My custom dialog")
+                            )
                     )
 
                 .show();
@@ -184,10 +183,9 @@ public class WrappersView extends Container {
 
     public void createAroundDilog(Node node) {
         context.wrapper()
-                .getFlow()
                 .content(
                         new DialogContainer(
-                                new Label("Fuck Wrapper"))
+                                new Label("Fuck RWrapper"))
                 )
                 .show();
     }
@@ -204,7 +202,7 @@ public class WrappersView extends Container {
     private void createDialog(AlertType _type) {
         context.wrapper()
 //                .getAlert()
-                .getFlow()
+//                .getFlow()
                 .content(
                         new AlertContainer(context)
                             .title("Info Alert")

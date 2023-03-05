@@ -19,7 +19,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
-import io.github.gleidsonmt.dashboardfx.core.layout.FlowWrapper;
+import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -41,17 +41,17 @@ import javafx.util.Duration;
  * Version 0.0.1
  * Create on  23/01/2023
  */
-public class Popup extends FlowContainer {
+public class PopupContainer extends WrapperContainer {
 
-    private final FlowWrapper wrapper;
+    private final Wrapper wrapper;
 
-    public Popup(FlowWrapper wrapper) {
+    public PopupContainer(Wrapper wrapper) {
         super(wrapper);
         this.wrapper = wrapper;
     }
 
 
-    public Popup background(FlowWrapper.WrapperBackgroundType type) {
+    public PopupContainer background(Wrapper.WrapperBackgroundType type) {
         switch (type) {
             case NONE -> this.wrapper.setBackground(
                     new Background(
@@ -218,36 +218,36 @@ public class Popup extends FlowContainer {
     }
 
 //    @Override
-//    public Popup size(double width, double height) {
-//        return (Popup) super./size(width, height);
+//    public PopupContainer size(double width, double height) {
+//        return (PopupContainer) super./size(width, height);
 //    }
 
     @Override
-    public Popup content(Region content) {
-        return (Popup) super.content(content);
+    public PopupContainer content(Region content) {
+        return (PopupContainer) super.content(content);
     }
 
     @Override
-    public Popup pos(Pos _pos) {
-        return (Popup) super.pos(_pos);
+    public PopupContainer pos(Pos _pos) {
+        return (PopupContainer) super.pos(_pos);
     }
 
 
 //    @Override
-//    public Popup style(String style) {
+//    public PopupContainer style(String style) {
 //        super.style(style);
 //        return this;
 //    }
 //
 //    @Override
-//    public Popup styleClass(String... styleClass) {
+//    public PopupContainer styleClass(String... styleClass) {
 //        super.styleClass = List.of(styleClass);
 //        return this;
 //    }
 
     @Override
-    public Popup moveX(double x) {
-        return (Popup) super.moveX(x);
+    public PopupContainer moveX(double x) {
+        return (PopupContainer) super.moveX(x);
     }
 
     @Override

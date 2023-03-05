@@ -54,7 +54,7 @@ public class LoadViews extends Task<String> {
 //
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/views/drawer.fxml"));
-//            loader.setController(new DrawerController((FlowWrapper) context.getWrapper()));
+//            loader.setController(new DrawerController((Wrapper) context.getWrapper()));
 
             try {
                 loader.load();

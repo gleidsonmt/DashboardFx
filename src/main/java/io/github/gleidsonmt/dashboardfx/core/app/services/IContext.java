@@ -23,6 +23,7 @@ import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
 import io.github.gleidsonmt.dashboardfx.core.layout.Bar;
 import io.github.gleidsonmt.dashboardfx.core.layout.IRoot;
 import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Flow;
 import javafx.application.HostServices;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -72,19 +73,17 @@ public class IContext implements Context {
         return root.getLayout();
     }
 
-    @Override
-    public RWrapper getWrapper() {
-        return root.getWrapper();
-    }
 
     @Override
     public Wrapper wrapper() {
         return root.getWrapper();
     }
 
+    private Flow flow;
     @Override
     public Flow flow() {
-        return null;
+        if (flow == null) flow = new Flow(root);
+        return flow;
     }
 
     @Override

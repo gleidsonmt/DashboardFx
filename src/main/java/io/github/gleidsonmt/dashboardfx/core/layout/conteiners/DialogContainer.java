@@ -20,6 +20,7 @@
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 
@@ -33,6 +34,7 @@ public class DialogContainer extends DeclarativeComponent<DialogContainer> {
     public DialogContainer(Node... nodes) {
         getStyleClass().add("container");
         getChildren().setAll(nodes);
+        setPadding(new Insets(10));
         setMaxSize(400, 300);
     }
 

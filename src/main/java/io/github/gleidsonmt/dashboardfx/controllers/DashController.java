@@ -27,7 +27,8 @@ import io.github.gleidsonmt.dashboardfx.core.controls.BoxUser;
 import io.github.gleidsonmt.dashboardfx.core.controls.CurvedChart;
 import io.github.gleidsonmt.dashboardfx.core.controls.DonutChart;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;
-import io.github.gleidsonmt.dashboardfx.core.layout.FlowWrapper;
+import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.DialogContainer;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.CardCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListItem;
@@ -273,7 +274,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
 
             BoxUser boxUser = new BoxUser("Jane Doe");
-            boxUser.setPadding(new Insets(0,0,10,0));
+            boxUser.setPadding(new Insets(0,2,10,2));
             HBox.setMargin(boxUser, new Insets(0,0,0,20));
 
             VBox boxUserDialog = new VBox();
@@ -291,10 +292,10 @@ public final class DashController extends ResponsiveView implements ActionView, 
             boxUserDialog.getChildren().setAll(btnProfile, btnSettings, new Separator(), btnLogout);
 
             boxUser.setOnMouseClicked(event ->
-                    context.wrapper()
-                    .getPopup()
+                    context.flow()
+//                    .getPopup()
 //                    .size(300, 150)
-                    .moveX(200)
+//                    .moveX(200)
                     .content(boxUserDialog)
                     .show(Direction.BOTTOM_LEFT, boxUser));
 
@@ -302,11 +303,15 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
             VBox b = createDialogNotification();
 
-            notification.setOnMouseClicked(event -> context.wrapper()
-                    .getPopup()
+            notification.setOnMouseClicked(event -> context.flow()
+//                    .getPopup()
 //                    .size(400,300)
-                    .content(b)
-                    .background(FlowWrapper.WrapperBackgroundType.GRAY)
+                    .content(
+                            new DialogContainer(b)
+                                    .style("-fx-background-radius : 10px;")
+                                    .size(400, 280)
+                    )
+//                    .background(Wrapper.WrapperBackgroundType.GRAY)
                     .show(Direction.BOTTOM_LEFT, notification));
 
 //            b.setMinSize(200, 300);
@@ -391,7 +396,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
     private void upadteContent(Context context, String content) {
         try {
             context.routes().setContent(content);
-            context.wrapper().getFlow().close();
+            context.wrapper().close();
         } catch (NavigationException e) {
             throw new RuntimeException(e);
         }

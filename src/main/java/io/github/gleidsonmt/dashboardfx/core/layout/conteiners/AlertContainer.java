@@ -19,9 +19,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
-import io.github.gleidsonmt.dashboardfx.core.layout.FlowWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.IAlert;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.AlertType;
@@ -210,8 +208,7 @@ public class AlertContainer extends DeclarativeComponent<AlertContainer> impleme
         ButtonBar.setButtonData(btn, item.getButtonType().getButtonData());
 
         btn.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            this.context.wrapper().getFlow().close();
-//            wrapper.close();
+            this.context.wrapper().close();
         });
 
         btn.getStyleClass().add(color);

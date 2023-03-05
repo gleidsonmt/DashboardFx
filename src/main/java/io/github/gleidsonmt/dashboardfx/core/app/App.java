@@ -80,7 +80,7 @@ public abstract class App extends Application {
         stage.show();
 
         CSSFX.start(scene);
-        ScenicView.show(scene);
+//        ScenicView.show(scene);
 
     }
 
