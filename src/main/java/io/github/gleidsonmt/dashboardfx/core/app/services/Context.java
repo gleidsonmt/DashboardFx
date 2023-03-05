@@ -21,6 +21,7 @@ package io.github.gleidsonmt.dashboardfx.core.app.services;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
 import io.github.gleidsonmt.dashboardfx.core.layout.Bar;
+import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
 import javafx.scene.image.Image;
 
 import java.util.logging.Logger;
@@ -41,12 +42,10 @@ public interface Context {
 
     Wrapper wrapper();
 
-    @Deprecated(forRemoval = true)
-    Logger getLogger();
-
+    Flow flow();
 
     @Deprecated
-    Wrapper getWrapper();
+    RWrapper getWrapper();
 
 
     void openLink(String uri);
