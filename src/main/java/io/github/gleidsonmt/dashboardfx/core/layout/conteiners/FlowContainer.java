@@ -19,61 +19,52 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
-import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
+import animatefx.animation.AnimationFX;
+import animatefx.animation.Pulse;
+import io.github.gleidsonmt.dashboardfx.core.layout.FlowWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.AbsoluteWrapperContainer;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
-import javafx.geometry.Bounds;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Control;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.stage.Screen;
 import org.jetbrains.annotations.TestOnly;
 
-public class Dialog
-       extends DeclarativeComponent<Dialog>
+public class FlowContainer
        implements AbsoluteWrapperContainer {
 
     protected Region content;
     private Pos pos;
     protected double width = 350;
     protected double height = 300;
-    private final IWrapper wrapper;
+    private final FlowWrapper wrapper;
     protected double paddingX = 0;
     private double paddingY = 0;
 
-    public Dialog(IWrapper wrapper) {
+    public FlowContainer(FlowWrapper wrapper) {
         this.wrapper = wrapper;
         Region r = new Region();
     }
 
-    public Dialog content(Region content) {
+    public FlowContainer content(Region content) {
+        this.content = content;
+
+        wrapper.getChildren().setAll(content);
+        return this;
+    }
+
+    public FlowContainer content(DeclarativeComponent content) {
         this.content = content;
         wrapper.getChildren().setAll(content);
         return this;
     }
 
     @Override
-    public Dialog pos(Pos _pos) {
+    public FlowContainer pos(Pos _pos) {
         this.pos = _pos;
         return this;
     }
 
-    @Override
-    public Dialog size(double width, double height) {
-        this.width = width;
-        this.height = height;
-        return this;
-    }
-
     @TestOnly
-    public Dialog moveX(double x) {
+    public FlowContainer moveX(double x) {
         this.paddingX = x;
         return this;
     }
@@ -86,15 +77,26 @@ public class Dialog
             wrapper.setAlignment(pos);
         }
 
-
-        if (this.content != null)
-            this.content.setMaxSize(width, height);
-
-        this.content.setStyle(super.style);
-        this.content.getStyleClass().addAll(super.styleClass);
-
         wrapper.toFront();
         wrapper.setOnMouseClicked(event -> close());
+
+        AnimationFX animation = new Pulse(content);
+        animation.setSpeed(1.8);
+        animation.play();
+    }
+
+    @Override
+    public void close() {
+
+        AnimationFX animation = new Pulse(content);
+        animation.setSpeed(1.8);
+        animation.play();
+
+        animation.getTimeline().setOnFinished(event -> {
+            wrapper.toBack();
+            wrapper.setAlignment(Pos.CENTER);
+        });
+//        wrapper.setOnMouseClicked(null);
     }
 
     protected double clamp(double one, double two) {
@@ -103,13 +105,5 @@ public class Dialog
 
     protected double center(double one, double two) {
         return (clamp(one, two) / 2);
-    }
-
-    @Override
-    public void close() {
-        wrapper.toBack();
-//        wrapper.setAlignment(Pos.CENTER);
-//        wrapper.getChildren().clear();
-//        wrapper.setOnMouseClicked(null);
     }
 }

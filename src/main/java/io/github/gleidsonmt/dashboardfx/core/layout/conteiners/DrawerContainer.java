@@ -17,19 +17,21 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces;
+package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.AlertType;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.DialogAction;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
+import javafx.scene.Node;
 
-public interface IAlert {
+/**
+ * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * Version 0.0.1
+ * Create on  04/03/2023
+ */
+public class DrawerContainer extends DeclarativeComponent<Drawer> {
 
-    IAlert title(String title);
-
-    IAlert text(String text);
-
-    IAlert actions(DialogAction... dialogAction);
-
-    IAlert type(AlertType alertType);
-
+    public DrawerContainer(Node node, double width) {
+        getStyleClass().addAll("container", "drawer-container");
+        setMaxWidth(width);
+        getChildren().setAll(node);
+    }
 }

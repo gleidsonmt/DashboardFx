@@ -19,11 +19,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
-import animatefx.animation.AnimationFX;
-import animatefx.animation.Bounce;
-import animatefx.animation.Shake;
-import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
+import io.github.gleidsonmt.dashboardfx.core.layout.FlowWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -40,25 +36,22 @@ import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.util.Duration;
 
-import java.util.List;
-
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Version 0.0.1
  * Create on  23/01/2023
  */
-public class Popup extends Dialog {
+public class Popup extends FlowContainer {
 
-    private final IWrapper wrapper;
+    private final FlowWrapper wrapper;
 
-    public Popup(IWrapper wrapper) {
+    public Popup(FlowWrapper wrapper) {
         super(wrapper);
         this.wrapper = wrapper;
-
     }
 
 
-    public Popup background(IWrapper.WrapperBackgroundType type) {
+    public Popup background(FlowWrapper.WrapperBackgroundType type) {
         switch (type) {
             case NONE -> this.wrapper.setBackground(
                     new Background(
@@ -95,8 +88,8 @@ public class Popup extends Dialog {
             this.content.setMaxSize(width, height);
         else return;
 
-        this.content.setStyle(super.style);
-        this.content.getStyleClass().addAll(super.styleClass);
+//        this.content.setStyle(super.style);
+//        this.content.getStyleClass().addAll(super.styleClass);
 
         this.content.setTranslateX(x);
         this.content.setTranslateY(y);
@@ -127,12 +120,12 @@ public class Popup extends Dialog {
 
 //        node.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 
-        this.content.setStyle(super.style + """
-                -fx-padding: 20;-fx-background-color : white;
-                -fx-background-radius : 5px; -fx-border-radius : 5px;
-                """);
+//        this.content.setStyle(super.style + """
+//                -fx-padding: 20;-fx-background-color : white;
+//                -fx-background-radius : 5px; -fx-border-radius : 5px;
+//                """);
 
-        this.content.getStyleClass().addAll(super.styleClass);
+//        this.content.getStyleClass().addAll(super.styleClass);/
         this.content.getStyleClass().add("depth-1");
         this.content.setPadding(new Insets(10));
         Bounds bounds = node.localToScene(node.getLayoutBounds());
@@ -224,10 +217,10 @@ public class Popup extends Dialog {
 
     }
 
-    @Override
-    public Popup size(double width, double height) {
-        return (Popup) super.size(width, height);
-    }
+//    @Override
+//    public Popup size(double width, double height) {
+//        return (Popup) super./size(width, height);
+//    }
 
     @Override
     public Popup content(Region content) {
@@ -240,17 +233,17 @@ public class Popup extends Dialog {
     }
 
 
-    @Override
-    public Popup style(String style) {
-        super.style(style);
-        return this;
-    }
-
-    @Override
-    public Popup styleClass(String... styleClass) {
-        super.styleClass = List.of(styleClass);
-        return this;
-    }
+//    @Override
+//    public Popup style(String style) {
+//        super.style(style);
+//        return this;
+//    }
+//
+//    @Override
+//    public Popup styleClass(String... styleClass) {
+//        super.styleClass = List.of(styleClass);
+//        return this;
+//    }
 
     @Override
     public Popup moveX(double x) {

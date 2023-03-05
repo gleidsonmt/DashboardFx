@@ -22,26 +22,20 @@ import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.model.NotifcationCell;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
-import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.BreakPoints;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ResponsiveView;
 import io.github.gleidsonmt.dashboardfx.core.controls.BoxUser;
 import io.github.gleidsonmt.dashboardfx.core.controls.CurvedChart;
 import io.github.gleidsonmt.dashboardfx.core.controls.DonutChart;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;
-import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
+import io.github.gleidsonmt.dashboardfx.core.layout.FlowWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.CardCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListItem;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.grid.Grid;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
 import io.github.gleidsonmt.gncontrols.controls.GNAvatar;
-import io.github.gleidsonmt.gncontrols.controls.GNAvatarStatus;
 import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
 import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
 import io.github.gleidsonmt.gncontrols.material.icon.Icons;
-import io.github.gleidsonmt.gncontrols.options.model.Avatar;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -54,20 +48,15 @@ import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import javafx.util.Callback;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.FormatStyle;
 import java.util.*;
 
 /**
@@ -291,6 +280,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
             Button btnProfile = createBtn("Profile", event -> {
                upadteContent(context, "profile");
             });
+
             Button btnSettings = createBtn("Settings", event -> {
 //                upadteContent(context, "profile");
             });
@@ -303,7 +293,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
             boxUser.setOnMouseClicked(event ->
                     context.wrapper()
                     .getPopup()
-                    .size(300, 150)
+//                    .size(300, 150)
                     .moveX(200)
                     .content(boxUserDialog)
                     .show(Direction.BOTTOM_LEFT, boxUser));
@@ -314,9 +304,9 @@ public final class DashController extends ResponsiveView implements ActionView, 
 
             notification.setOnMouseClicked(event -> context.wrapper()
                     .getPopup()
-                    .size(400,300)
+//                    .size(400,300)
                     .content(b)
-                    .background(IWrapper.WrapperBackgroundType.GRAY)
+                    .background(FlowWrapper.WrapperBackgroundType.GRAY)
                     .show(Direction.BOTTOM_LEFT, notification));
 
 //            b.setMinSize(200, 300);
@@ -401,7 +391,7 @@ public final class DashController extends ResponsiveView implements ActionView, 
     private void upadteContent(Context context, String content) {
         try {
             context.routes().setContent(content);
-            context.wrapper().getDialog().close();
+            context.wrapper().getFlow().close();
         } catch (NavigationException e) {
             throw new RuntimeException(e);
         }

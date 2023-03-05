@@ -19,9 +19,10 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
-import animatefx.animation.AnimationFX;
-import animatefx.animation.Pulse;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
+import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.layout.FlowWrapper;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.IAlert;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.AlertType;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.DialogAction;
@@ -35,8 +36,6 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
@@ -45,59 +44,59 @@ import javafx.scene.text.TextFlow;
 import org.jetbrains.annotations.NotNull;
 import org.kordamp.ikonli.material.Material;
 
-public class Alert extends FlowContainer implements IAlert {
+/**
+ * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * Version 0.0.1
+ * Create on  04/03/2023
+ */
+public class AlertContainer extends DeclarativeComponent<AlertContainer> implements IAlert {
 
     private String title;
     private String text;
-    private final StackPane container;
     private final VBox body;
     private AlertType alertType = AlertType.WARNING;
 
     private ObservableList<DialogAction> dialogActions = FXCollections.observableArrayList();
+    private Context context;
 
-    public Alert(FlowWrapper _I_wrapper2) {
-        super(_I_wrapper2);
-        this.container = new StackPane();
+    public AlertContainer(Context context) {
+        this.context = context;
+        getStyleClass().add("container");
+        setMaxSize(350, 300);
+        getStyleClass().add("alert-container");
+
         this.body = new VBox();
         this.body.setAlignment(Pos.TOP_CENTER);
-
-        this.container.setPrefSize(350, 300);
-        this.container.setMaxWidth(Region.USE_PREF_SIZE);
-        this.container.setMaxHeight(Region.USE_PREF_SIZE);
-        container.getStyleClass().add("alert-container");
-
         body.getStyleClass().add("alert-body");
 
-        this.container.getChildren().setAll(body);
-        super.content(this.container);
+        getChildren().setAll(body);
     }
 
     @Override
-    public IAlert title(String _title) {
+    public AlertContainer title(String _title) {
         this.title = _title;
         return this;
     }
 
     @Override
-    public IAlert text(String _text) {
+    public AlertContainer text(String _text) {
         this.text = _text;
         return this;
     }
 
     @Override
-    public IAlert actions(DialogAction... dialogActions) {
+    public AlertContainer actions(DialogAction... dialogActions) {
         this.dialogActions.setAll(dialogActions);
         return this;
     }
 
     @Override
-    public IAlert type(AlertType _alertType) {
+    public AlertContainer type(AlertType _alertType) {
         this.alertType = _alertType;
         return this;
     }
 
-    @Override
-    public void show() {
+    public AlertContainer build() {
         if (text == null || text.isEmpty()) {
             try {
                 throw new Exception("Error : Alert needs a text information.");
@@ -109,8 +108,6 @@ public class Alert extends FlowContainer implements IAlert {
         if (title == null || title.isEmpty()) {
             title = alertType.name();
         }
-
-        super.content(this.container);
 
         String linear1 = "";
         String linear2 = "";
@@ -143,8 +140,8 @@ public class Alert extends FlowContainer implements IAlert {
                 buttonColor = "mint";
                 material = Material.DONE;
             }
-
         }
+
 
         body.getChildren().setAll(
                 createHeader(linear1, linear2, title),
@@ -152,21 +149,11 @@ public class Alert extends FlowContainer implements IAlert {
                 createFooter(buttonColor, dialogActions)
         );
 
-        super.show();
 
-        AnimationFX animation = new Pulse(container);
-        animation.setSpeed(1.8);
-        animation.play();
-    }
-
-    @Override
-    public void close() {
-        AnimationFX animation = new Pulse(container);
-        animation.setSpeed(1.8);
-        animation.play();
-        animation.getTimeline().setOnFinished(event -> {
-            super.close();
-        });
+//        AnimationFX animation = new Pulse(container);
+//        animation.setSpeed(1.8);
+//        animation.play();
+        return this;
     }
 
     private @NotNull Node createContent(String _text) {
@@ -191,10 +178,9 @@ public class Alert extends FlowContainer implements IAlert {
         VBox header = new VBox();
         header.setMinHeight(100);
         header.setSpacing(10);
-
         String color = "linear-gradient(to left, " + linear1 + ", " + linear2 + ");";
-        container.setStyle("-fx-background-color : " + color);
-
+//        container.setStyle("-fx-background-color : " + color);
+        this.setStyle("-fx-background-color: " + color);
         header.setAlignment(Pos.CENTER);
 
         Label title = new Label(_title);
@@ -224,7 +210,8 @@ public class Alert extends FlowContainer implements IAlert {
         ButtonBar.setButtonData(btn, item.getButtonType().getButtonData());
 
         btn.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            close();
+            this.context.wrapper().getFlow().close();
+//            wrapper.close();
         });
 
         btn.getStyleClass().add(color);
@@ -253,4 +240,3 @@ public class Alert extends FlowContainer implements IAlert {
         return path;
     }
 }
-

@@ -24,27 +24,34 @@ import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
 import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.List;
 
 @ApiStatus.Internal
 @SuppressWarnings("unchecked")
-public abstract class DeclarativeComponent<T>  extends Node {
+public abstract class DeclarativeComponent<T>  extends StackPane {
 
     protected String style;
     protected List<String> styleClass = List.of();
 
     public T style(String style) {
-        this.style = style;
+        this.setStyle(style);
         return (T) this;
     }
 
     public T styleClass(String... styleClass) {
-        this.styleClass = List.of(styleClass);
+//        this.styleClass = List.of(styleClass);
+        this.getStyleClass().addAll(styleClass);
         return (T) this;
     }
 
-    public abstract T size(double width, double height);
+    public T size(double width, double height) {
+        this.setMaxSize(width, height);
+        return (T) this;
+    }
+
+
 
 }

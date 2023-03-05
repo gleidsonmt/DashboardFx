@@ -20,6 +20,9 @@
 package io.github.gleidsonmt.dashboardfx.views;
 
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.AlertContainer;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.DialogContainer;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.DrawerContainer;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.Author;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.Container;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.PresentationCreator;
@@ -71,7 +74,7 @@ public class WrappersView extends Container {
                         .show();
                 """)
         .separator()
-        .title("Dialog")
+        .title("FlowContainer")
         .options(
             new ActionOptions(
             "Open", event -> createDialogPopup()
@@ -82,7 +85,7 @@ public class WrappersView extends Container {
                     .getDialog()
                     .content(
                         new StackPane(
-                            new Label("Custom Dialog Wrapper"))
+                            new Label("Custom FlowContainer Wrapper"))
                         )
                     .show();
                 """)
@@ -156,32 +159,35 @@ public class WrappersView extends Container {
 
 
     private void createDrawer(HPos side) {
-//
-//        context.getWrapper()
-//                .getDrawer()
-//                .side(side)
-//                .content(new StackPane(new Label("My Custom Drawer.")))
+
+        context.wrapper()
+                .getDrawer()
+                .side(side)
+                .content(
+                        new DrawerContainer(new Label("My Custom Drawer."), 250)
+                )
 //                .style("-fx-background-color : white;")
-//                .show();
+                .show();
     }
 
     public void createDialogPopup() {
-        context.getWrapper()
-                .getDialog()
-                .size(350, 300)
+        context.wrapper()
+                .getFlow()
+//                .size(350, 300)
                 .content(
-                    new StackPane(
-                        new Label("Custom Dialog Wrapper"))
+                    new DialogContainer()
+                            .content(new Label("My custom dialog"))
                     )
+
                 .show();
     }
 
     public void createAroundDilog(Node node) {
-        context.getWrapper()
-                .getDialog()
+        context.wrapper()
+                .getFlow()
                 .content(
-                        new StackPane(
-                                new Label("Custom Dialog Wrapper"))
+                        new DialogContainer(
+                                new Label("Fuck Wrapper"))
                 )
                 .show();
     }
@@ -196,24 +202,28 @@ public class WrappersView extends Container {
     }
 
     private void createDialog(AlertType _type) {
-        context.getWrapper()
-                .getAlert()
-                .title("Info Alert")
-                .text("""
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Mauris volutpat mauris sit amet rhoncus tempor. Morbi in ex mattis,
-                        sagittis tellus et, accumsan magna.
-                        In quis purus sit amet odio fringilla commodo nec ut massa.
-                    """
-                )
-                .actions(
-                    new DialogAction(
-                            "Ok", ButtonType.OK, event -> System.out.println("Button ok pressed!")
-                    ),
-                    new DialogAction(
-                        "Cancel", ButtonType.CANCEL, event -> System.out.println("Button cancel pressed!")
-                    )
-                ).type(_type)
+        context.wrapper()
+//                .getAlert()
+                .getFlow()
+                .content(
+                        new AlertContainer(context)
+                            .title("Info Alert")
+                            .text("""
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Mauris volutpat mauris sit amet rhoncus tempor. Morbi in ex mattis,
+                            sagittis tellus et, accumsan magna.
+                            In quis purus sit amet odio fringilla commodo nec ut massa.
+                            """)
+                            .actions(
+                        new DialogAction(
+                                            "Ok", ButtonType.OK, event -> System.out.println("Button ok pressed!")
+                                    ),
+                                    new DialogAction(
+                                            "Cancel", ButtonType.CANCEL, event -> System.out.println("Button cancel pressed!")
+                                    )
+                            )
+                        .type(_type)
+                        .build())
                 .show();
     }
 

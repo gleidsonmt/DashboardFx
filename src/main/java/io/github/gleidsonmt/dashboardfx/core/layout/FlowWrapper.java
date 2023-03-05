@@ -19,7 +19,7 @@ package io.github.gleidsonmt.dashboardfx.core.layout;
 
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Alert;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Dialog;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.FlowContainer;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Drawer;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Popup;
 import javafx.geometry.Insets;
@@ -33,9 +33,9 @@ import javafx.scene.paint.Color;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  05/10/2022
  */
-public class IWrapper extends StackPane implements Wrapper {
+public class FlowWrapper extends StackPane implements Wrapper {
 
-    public IWrapper() {
+    public FlowWrapper() {
         reset();
         setId("wrapper");
     }
@@ -54,21 +54,23 @@ public class IWrapper extends StackPane implements Wrapper {
     private Popup popup;
 
     @Override
+    @Deprecated
     public Popup getPopup() {
-        if (dialog == null) popup = new Popup(this);
+        if (flowContainer == null) popup = new Popup(this);
         return popup;
     }
 
-    private Dialog dialog;
+    private FlowContainer flowContainer;
     @Override
-    public Dialog getDialog() {
-        if (dialog == null) dialog = new Dialog(this);
-        return dialog;
+    public FlowContainer getFlow() {
+        if (flowContainer == null) flowContainer = new FlowContainer(this);
+        return flowContainer;
     }
 
     private Alert alert;
 
     @Override
+    @Deprecated
     public Alert getAlert() {
         if (alert == null) alert = new Alert(this);
         return alert;

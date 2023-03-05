@@ -32,6 +32,7 @@ public final class DialogAction {
     public DialogAction(String name, EventHandler<ActionEvent> action) {
         this(name, ButtonType.OK, action);
     }
+
     public DialogAction(String name, ButtonType buttonType, EventHandler<ActionEvent> action) {
         this.buttonType = buttonType;
         this.name = name;

@@ -72,7 +72,7 @@ public class BlockCode extends StackPane {
         webView.getEngine().getLoadWorker().stateProperty()
                 .addListener((obs, oldValue, newValue) -> {
                     if (newValue == Worker.State.SUCCEEDED) {
-//                        Platform.runLater(() -> {
+                        Platform.runLater(() -> {
                             if (!text.isEmpty() && !text.isBlank()) {
 
                                 Document doc = webView.getEngine().getDocument();
@@ -86,7 +86,7 @@ public class BlockCode extends StackPane {
                                 webView.getEngine().executeScript("hljs.highlightAll();");
                             }
                             this.getChildren().setAll(webView, btn);
-//                        });
+                        });
                     }
                 }); // addListener()
 

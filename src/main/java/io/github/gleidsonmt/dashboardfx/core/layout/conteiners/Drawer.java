@@ -3,7 +3,7 @@ package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 import io.github.gleidsonmt.dashboardfx.core.app.controllers.SideNav;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
-import io.github.gleidsonmt.dashboardfx.core.layout.IWrapper;
+import io.github.gleidsonmt.dashboardfx.core.layout.FlowWrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.NestedWrapperContainer;
 import javafx.animation.KeyFrame;
@@ -27,13 +27,13 @@ public class Drawer extends DeclarativeComponent<SideNav> implements ActionView,
     private StackPane content;
     private final Timeline timeline = new Timeline();
 
-    protected IWrapper wrapper;
+    protected FlowWrapper wrapper;
 
     private final double maxSize = 250;
     protected Context context;
     private final EventHandler<MouseEvent> closeEvent = event -> hide();
 
-    public Drawer(IWrapper wrapper) {
+    public Drawer(FlowWrapper wrapper) {
         this.wrapper = wrapper;
     }
 
@@ -49,7 +49,7 @@ public class Drawer extends DeclarativeComponent<SideNav> implements ActionView,
 
     @Override
     public void onInit(Context context) {
-        this.wrapper = (IWrapper) context.wrapper();
+        this.wrapper = (FlowWrapper) context.wrapper();
         this.context = context;
     }
 
