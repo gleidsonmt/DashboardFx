@@ -156,3 +156,15 @@ Text, .text, .label {
 .gn-badge:hover, #box-user:hover {
     -fx-background-color : -light-gray;
 }
+
+.overview-item {
+    -fx-border-width: 0px;
+    -fx-background-color: transparent;
+    -fx-text-fill: -text-color;
+}
+
+.overview-item:selected {
+    -fx-border-width: 1px;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+}

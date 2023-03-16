@@ -70,21 +70,24 @@ public class BlockCode extends StackPane {
 
         webView.getEngine().getLoadWorker().stateProperty()
                 .addListener((obs, oldValue, newValue) -> {
+                    Platform.runLater(() -> {
+
                     if (newValue == Worker.State.SUCCEEDED) {
-                            if (!text.isEmpty() && !text.isBlank()) {
+                        if (!text.isEmpty() && !text.isBlank()) {
 
-                                Document doc = webView.getEngine().getDocument();
-                                Element el = doc.getElementById("block");
+                            Document doc = webView.getEngine().getDocument();
+                            Element el = doc.getElementById("block");
 
-                                if (fxml)
-                                    el.setAttribute("class", "language-html");
+                            if (fxml)
+                                el.setAttribute("class", "language-html");
 
-                                el.setTextContent(text);
+                            el.setTextContent(text);
 
-                                webView.getEngine().executeScript("hljs.highlightAll();");
-                            }
+                            webView.getEngine().executeScript("hljs.highlightAll();");
+                        }
                             this.getChildren().setAll(webView, btn);
-                    }
+                        }
+                    });
                 }); // addListener()
 
         webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());

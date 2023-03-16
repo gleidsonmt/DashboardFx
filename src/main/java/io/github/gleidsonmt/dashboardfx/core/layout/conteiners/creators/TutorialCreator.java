@@ -22,6 +22,9 @@ package io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.BuildCreator;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
+import io.github.gleidsonmt.gncontrols.controls.GNButton;
+import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
+import io.github.gleidsonmt.gncontrols.material.icon.Icons;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
@@ -29,11 +32,15 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.SVGPath;
 import javafx.scene.web.WebView;
 
 /**
@@ -47,6 +54,8 @@ public class TutorialCreator extends PresentationCreator {
     private final HBox body = new HBox();
     private final VBox aside = new VBox();
     private final VBox center = new VBox();
+    private final ToggleGroup group = new ToggleGroup();
+    private final GNButton btnFloat = createButton();
 
     public TutorialCreator(String name, Context context) {
         super(name, context);
@@ -55,19 +64,30 @@ public class TutorialCreator extends PresentationCreator {
         widthProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.doubleValue() < 736) {
                 body.getChildren().remove(aside);
+                StackPane.setMargin(btnFloat, new Insets(10, 40, 10, 10));
             } else {
                 if (!body.getChildren().contains(aside)) {
                     body.getChildren().add(aside);
+                    StackPane.setMargin(btnFloat, new Insets(10, 40 + 250, 10, 10));
                 }
             }
         });
+
     }
 
     public void createNavHeader(String text, Node node) {
-        Label lbl = new Label(text);
+        ToggleButton lbl = new ToggleButton(text);
         lbl.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             Scroll.scrollTo(scroll, node);
         });
+        lbl.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
+            if (lbl.isSelected()){
+                event.consume();
+            }
+        });
+        lbl.setToggleGroup(group);
+        lbl.getStyleClass().add("overview-item");
+
         aside.getChildren().add(lbl);
     }
 
@@ -84,6 +104,11 @@ public class TutorialCreator extends PresentationCreator {
         getChildren().setAll(body);
         body.getChildren().setAll(scroll, aside);
         scroll.setContent(center);
+
+        this.getChildren().add(btnFloat);
+        this.setAlignment(Pos.BOTTOM_RIGHT);
+
+        StackPane.setMargin(btnFloat, new Insets(10, 40 + 250, 10, 10));
 
         aside.setMinWidth(250);
         body.setSpacing(10);
@@ -108,5 +133,19 @@ public class TutorialCreator extends PresentationCreator {
 //        );
 
         return this;
+    }
+
+    private GNButton createButton() {
+        GNButton button = new GNButton();
+        button.getStyleClass().addAll("btn-float", "depth-1");
+        SVGPath icon = new SVGPath();
+        icon.setFill(Color.WHITE);
+        icon.setContent("M11 20V7.825l-5.6 5.6L4 12l8-8 8 8-1.4 1.425-5.6-5.6V20Z");
+        button.setGraphic(icon);
+        icon.setStyle("-fx-fill: white");
+        button.setOnAction(event -> {
+            scroll.setVvalue(0);
+        });
+        return button;
     }
 }
