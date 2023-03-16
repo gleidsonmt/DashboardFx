@@ -181,3 +181,10 @@
     -fx-background-color: -fx-background;
     -fx-background-radius : 20px;
 }
+
+.btn-float {
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-radius: 100px;
+    -fx-content-display: graphic_only;
+}

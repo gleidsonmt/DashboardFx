@@ -60,7 +60,8 @@ public class ButtonPresCreator extends PresentationCreator {
                             createCancel("Cancel"),
                             createBtnFlat("Flat"),
                             createIconized("Iconized"),
-                            createGNButton("GNButton")
+                            createGNButton("GNButton"),
+                                createFloatingButton()
                         ),
                         """
                         // Default
@@ -100,6 +101,13 @@ public class ButtonPresCreator extends PresentationCreator {
 
     public GNButton createGNButton(String title) {
         return new GNButton(title);
+    }
+
+    public GNButton createFloatingButton() {
+        GNButton button = new GNButton();
+        button.getStyleClass().addAll("btn-float", "raised");
+        button.setGraphic(new IconContainer(Icons.ADD));
+        return button;
     }
 
     public Button createBtnFlat(String title) {

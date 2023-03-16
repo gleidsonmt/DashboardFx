@@ -22,6 +22,8 @@ package io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
 import io.github.gleidsonmt.dashboardfx.core.app.material.controls.BuildCreator;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -50,6 +52,15 @@ public class TutorialCreator extends PresentationCreator {
         super(name, context);
         body.setPadding(new Insets(20));
         aside.setPadding(new Insets(20));
+        widthProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.doubleValue() < 736) {
+                body.getChildren().remove(aside);
+            } else {
+                if (!body.getChildren().contains(aside)) {
+                    body.getChildren().add(aside);
+                }
+            }
+        });
     }
 
     public void createNavHeader(String text, Node node) {

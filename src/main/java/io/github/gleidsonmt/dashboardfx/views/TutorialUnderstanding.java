@@ -49,7 +49,7 @@ public class TutorialUnderstanding extends TutorialCreator {
                         Good Frameworks has a big ecosystem, so I was 
                         start ways to get that, because the first problem 
                         I have with javafx is getting one controller from other view..
-                        and so I just build this dash -_(^-^-_
+                        and so I just build this dash -_(^-^)-_
                         """)
                 .text("""
                         First thing I believe it's way to get views from controllers.. navigate for the other views.. and the menu to get ther! 
