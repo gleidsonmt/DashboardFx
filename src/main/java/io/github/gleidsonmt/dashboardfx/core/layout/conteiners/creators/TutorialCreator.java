@@ -61,6 +61,7 @@ public class TutorialCreator extends PresentationCreator {
         super(name, context);
         body.setPadding(new Insets(20));
         aside.setPadding(new Insets(20));
+
         widthProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.doubleValue() < 736) {
                 body.getChildren().remove(aside);

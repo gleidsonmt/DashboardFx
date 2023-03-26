@@ -69,7 +69,7 @@ public class Flow {
 
     private void close() {
 
-        root.getChildren().remove( root.getChildren().size()-1);
+        root.getChildren().remove( this.content);
 
     }
 

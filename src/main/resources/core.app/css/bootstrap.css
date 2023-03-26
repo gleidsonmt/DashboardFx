@@ -182,6 +182,11 @@
     -fx-background-radius : 20px;
 }
 
+.drawer-container {
+    -fx-background-radius: 0px;
+}
+
+
 .btn-float {
     -fx-max-width: 40px;
     -fx-max-height: 40px;
