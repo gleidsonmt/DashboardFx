@@ -121,7 +121,7 @@
                   <children>
                      <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Carousel" toggleGroup="$group" />
                      <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Navigator" toggleGroup="$group" />
-                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Route Not Found" toggleGroup="$group" />
+                     <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goLogin" styleClass="drawer-item" text="Login" toggleGroup="$group" />
                   </children>
                </VBox>
             </TitledPane>

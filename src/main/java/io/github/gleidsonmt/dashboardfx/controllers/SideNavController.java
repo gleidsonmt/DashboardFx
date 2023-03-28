@@ -195,6 +195,14 @@ public final class SideNavController extends SideNav {
     }
 
     @FXML
+    private void goLogin() {
+        try {
+            context.routes().setContent("login");
+        } catch (NavigationException e) {
+            e.getRouteNotFound(context, "view 'login' not found");
+        }
+    }
+    @FXML
     private void goAbout()  {
         try {
             context.routes().setContent("about");
