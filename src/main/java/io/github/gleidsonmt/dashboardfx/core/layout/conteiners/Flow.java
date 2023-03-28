@@ -33,6 +33,8 @@ import javafx.scene.layout.Region;
 import javafx.stage.Screen;
 import javafx.util.Duration;
 
+import java.util.stream.Collectors;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Version 0.0.1
@@ -81,9 +83,15 @@ public class Flow {
 
 
     public void show(Direction direction, Node target) {
-        Screen screen = Screen.getPrimary();
 
-        if (root.getChildren().contains(content)) return;
+        if (root.getChildren().contains(content)) {
+            return;
+        }
+
+        if(root.getChildren().stream().anyMatch(p -> p.getStyleClass().contains("container"))) {
+            root.getChildren().remove(root.getChildren().size()-1);
+//            return;
+        }
 
         content.setTranslateX(0);
         content.setTranslateY(0);
