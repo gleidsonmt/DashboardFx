@@ -70,6 +70,6 @@ However, if you don't know [How to create a pull Request](https://help.github.co
 
 # 📝 License
 
-This project is under license. See the file [LICENSE](LICENSE.md) to more details.
+This project is under license. See the file [LICENSE](LICENSE) to more details.
 
 [⬆ Back to the top](#DashboardFx)<br>
