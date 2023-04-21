@@ -1,8 +1,3 @@
-/**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  02/10/2022
- */
-
 
 module io.github.gleidsonmt.dashboardfx {
 
@@ -12,18 +7,17 @@ module io.github.gleidsonmt.dashboardfx {
     requires org.jetbrains.annotations;
     requires java.logging;
 
-    requires controlsfx;
+//    requires controlsfx;
 
-    requires io.github.gleidsonmt.gndecorator;
     requires io.github.gleidsonmt.gncontrols;
 
-    requires fr.brouillard.oss.cssfx;
+//    requires fr.brouillard.oss.cssfx;
 
     requires org.commonmark;
 
-    requires scenicView;
+//    requires scenicView;
     requires org.yaml.snakeyaml;
-    requires animatefx;
+//    requires animatefx;
 
 //    requires CurvedFittedAreaChart;
 
@@ -50,7 +44,6 @@ module io.github.gleidsonmt.dashboardfx {
     opens io.github.gleidsonmt.dashboardfx.views to javafx.base, javafx.fxml, javafx.graphics;
     exports io.github.gleidsonmt.dashboardfx.views.controls;
     opens io.github.gleidsonmt.dashboardfx.views.controls to javafx.base, javafx.fxml, javafx.graphics;
-
 
 //    requires io.github.gleidsonmt.dashboardfx.core;
 //    exports io.github.gleidsonmt.dashboardfx.core.app to javafx.fxml, javafx.graphics;
