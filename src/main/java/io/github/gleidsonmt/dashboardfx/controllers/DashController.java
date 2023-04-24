@@ -1,89 +1,48 @@
-/*
- *    Copyright (C) Gleidson Neves da Silveira
- *
- *    This program is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package io.github.gleidsonmt.dashboardfx.controllers;
 
-import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
-import io.github.gleidsonmt.dashboardfx.core.app.model.NotifcationCell;
-import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
-import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
-import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ResponsiveView;
-import io.github.gleidsonmt.dashboardfx.core.controls.BoxUser;
+import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.controls.CurvedChart;
 import io.github.gleidsonmt.dashboardfx.core.controls.DonutChart;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;
-import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.DialogContainer;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.CardCreator;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListCreator;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListItem;
-import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
-
-import io.github.gleidsonmt.gncontrols.controls.GNAvatar;
-import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
-import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
-import io.github.gleidsonmt.gncontrols.material.icon.Icons;
+import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.Bar;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.BoxUser;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.ScheduleListCreator;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.ScheduleListItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.*;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
-import org.jetbrains.annotations.ApiStatus;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.Arrays;
+import java.util.ResourceBundle;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  04/10/2022
+ * Version 0.0.1
+ * Create on  23/04/2023
  */
-@ApiStatus.Internal
 @SuppressWarnings("unchecked")
-public final class DashController extends ResponsiveView implements ActionView, Initializable {
+public final class DashController extends ActionView {
 
-    @FXML
-    private StackPane root;
-    public Label experimental;
-    @FXML
-    private StackedAreaChart<Number, Number> graphic;
-    @FXML
-    private VBox body;
     @FXML
     private GridPane footer;
     @FXML
-    private GridPane gridTiles;
+    private StackedAreaChart<Number, Number> graphic;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         //Creating the Area chart
         graphic.setTitle("Sales by Region");
 
@@ -133,9 +92,9 @@ public final class DashController extends ResponsiveView implements ActionView, 
         //Setting the data to area chart
 
 //        graphic.getData().
-        graphic.getData().addAll(series1, series2, series3);
+        graphic.getData().setAll(series1, series2, series3);
 
-        View scheduleList = new ScheduleListCreator("schedule-01")
+        Node scheduleList = new ScheduleListCreator()
                 .title("Schedule")
                 .items(
                         new ScheduleListItem(
@@ -195,15 +154,6 @@ public final class DashController extends ResponsiveView implements ActionView, 
         c.setName("East");
         barChart.getData().addAll(s, b, c);
 
-        Image image = new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_flier.png")).toExternalForm());
-        CardCreator card = new CardCreator(
-                image, "Title", """
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Sed non convallis lorem. Nulla et sapien pulvinar, 
-                vestibulum ex id, laoreet lectus. 
-                """
-        );
-
         CurvedChart<Number, Number> curvedChart = new CurvedChart<>(
                 new NumberAxis(),
                 new NumberAxis()
@@ -221,15 +171,44 @@ public final class DashController extends ResponsiveView implements ActionView, 
                 new XYChart.Data<Number, Number>(6, 50D));
 
         curvedChart.getData().add(series22);
+//        footer.getChildren().addAll(createDonut(), barChart,  scheduleList.getRoot(), curvedChart);
+        footer.getChildren().addAll(createDonut(),barChart, scheduleList, curvedChart);
 
-
-        footer.getChildren().addAll(createDonut(), barChart,  scheduleList.getRoot(), curvedChart);
-//        footer.getChildren().addAll(createDonut());
         GridPane.setConstraints(footer.getChildren().get(0), 0, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(barChart, 1, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-        GridPane.setConstraints(scheduleList.getRoot(), 0, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(scheduleList, 0, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(curvedChart, 1, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
 
+    }
+
+    @Override
+    public void onInit(Context context) {
+        super.onInit(context);
+
+        Bar bar = new Bar();
+        context.layout().setBar(bar);
+
+        Label title = new Label("Dashboard");
+//        title.textProperty().bindBidirectional(context.routes().title());
+        title.setPadding(new Insets(0,0,0,5));
+        title.getStyleClass().addAll("title-text", "title", "text-14");
+
+        context.layout().bar().addInLeft(title);
+
+        GNBadge notification = new GNBadge(Icons.NOTIFICATIONS);
+        notification.setNumberOfNotifications(2);
+        notification.getStyleClass().add("bd-danger");
+//            notification.setColorCircle(Color.web(Colors.AQUA.toString()));
+        GNBadge sms = new GNBadge(Icons.SMS);
+        sms.setNumberOfNotifications(39);
+        sms.getStyleClass().add("bd-info");
+//            sms.setColorCircle(Color.web(Colors.GRAPEFRUIT.toString()));
+
+
+        BoxUser boxUser = new BoxUser("Jane Doe", context.getResource("style/img/avatar.png").toExternalForm());
+        boxUser.setPadding(new Insets(0,2,10,2));
+        HBox.setMargin(boxUser, new Insets(0,0,0,20));
+        context.layout().bar().addInRight(sms, notification, boxUser);
     }
 
     private DonutChart createDonut() {
@@ -248,227 +227,5 @@ public final class DashController extends ResponsiveView implements ActionView, 
         donutChart.setMinHeight(400);
         donutChart.setData(data);
         return donutChart;
-    }
-
-    boolean load = false;
-
-    @Override
-    public void onEnter(Context context) {
-
-        if (!load) {
-
-            Label title = new Label("Dashboard");
-            title.textProperty().bindBidirectional(context.routes().title());
-            title.setPadding(new Insets(0,0,0,5));
-            title.getStyleClass().addAll("title-text", "title", "text-14");
-
-            context.bar().addInLeft(title);
-
-            GNBadge notification = new GNBadge(Icons.NOTIFICATIONS);
-            notification.setNumberOfNotifications(2);
-            notification.getStyleClass().add("bd-danger");
-//            notification.setColorCircle(Color.web(Colors.AQUA.toString()));
-            GNBadge sms = new GNBadge(Icons.SMS);
-            sms.setNumberOfNotifications(39);
-            sms.getStyleClass().add("bd-info");
-//            sms.setColorCircle(Color.web(Colors.GRAPEFRUIT.toString()));
-
-
-            BoxUser boxUser = new BoxUser("Jane Doe");
-            boxUser.setPadding(new Insets(0,2,10,2));
-            HBox.setMargin(boxUser, new Insets(0,0,0,20));
-
-            VBox boxUserDialog = new VBox();
-            Button btnProfile = createBtn("Profile", event -> {
-               upadteContent(context, "profile");
-            });
-
-            Button btnSettings = createBtn("Settings", event -> {
-//                upadteContent(context, "profile");
-            });
-            Button btnLogout = createBtn("Logout", event -> {
-//                upadteContent(context, "profile");
-            });
-
-            boxUserDialog.getChildren().setAll(btnProfile, btnSettings, new Separator(), btnLogout);
-
-            boxUser.setOnMouseClicked(event ->
-                    context.flow()
-//                    .getPopup()
-//                    .size(300, 150)
-//                    .moveX(200)
-                    .content(boxUserDialog)
-                    .show(Direction.BOTTOM_LEFT, boxUser));
-
-            context.root().bar().addInRight(sms, notification, boxUser);
-
-            VBox b = createDialogNotification();
-
-            notification.setOnMouseClicked(event -> context.flow()
-//                    .getPopup()
-//                    .size(400,300)
-                    .content(
-                            new DialogContainer(b)
-                                    .style("-fx-background-radius : 10px;")
-                                    .size(400, 280)
-                    )
-//                    .background(Wrapper.WrapperBackgroundType.GRAY)
-                    .show(Direction.BOTTOM_LEFT, notification));
-
-//            b.setMinSize(200, 300);
-
-//            context.getWrapper()
-//                    .getDialog()
-//                    .size(100, 40)
-//                    .moveX(-100)
-//                    .content(b)
-//                    .contextDialog(
-//                            Direction.BOTTOM_RIGHT,
-//                            experimental
-//                    );
-
-            load = true;
-        }
-    }
-
-    private VBox createDialogNotification() {
-        VBox root = new VBox();
-        root.setAlignment(Pos.TOP_CENTER);
-
-        Text title = new Text("Notifications");
-        title.getStyleClass().addAll("h5", "text-bold");
-        Hyperlink btn = new Hyperlink("Mark as read");
-        btn.setGraphic(new IconContainer(Icons.DONE_ALL));
-        btn.setPadding(new Insets(10));
-        btn.getStyleClass().addAll("text-bold","transparent", "text-info", "no-border");
-
-        GridPane header = new GridPane();
-        header.getChildren().addAll(title, btn);
-        GridPane.setConstraints(title, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-        GridPane.setConstraints(btn, 1,0,1,1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-
-//        ListView<NotifcationCell> listView = new ListView<>();
-//        listView.setCellFactory(new NotificationListFactory());
-
-        VBox vBox = createNotifications(
-                new NotifcationCell(
-                        true,
-                        "Your Password has been changed succesfully.",
-                        new GNIconButton(Icons.BADGE),
-                        LocalDateTime.now()
-                ),
-                new NotifcationCell(
-                        false,
-                        "Thank you for booking a meeting with us.",
-                        new GNAvatar(new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/avatar.jpg")).toExternalForm()), 20),
-                        LocalDateTime.now()
-                ),
-                new NotifcationCell(
-                        false,
-                        "Great News! We are lauching our 5th fund: DLE Senior Living.",
-                        new GNAvatar(new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/avatar.png")).toExternalForm()), 20),
-                        LocalDateTime.now()
-                )
-        );
-
-
-//        listView.setPrefHeight(3 * 45);
-//        listView.setStyle("-fx-fixed-cell-size : 100px;");
-//
-
-        Hyperlink btnAll = new Hyperlink("View All Notifications");
-        btnAll.setPadding(new Insets(10));
-        btnAll.getStyleClass().addAll("text-bold", "transparent", "no-border", "text-info");
-
-        root.getChildren().setAll(header, vBox, btnAll);
-        return root;
-    }
-
-    private Button createBtn(String text, EventHandler<ActionEvent> event) {
-        Button btnProfile = new Button(text);
-        btnProfile.setMaxWidth(Double.MAX_VALUE);
-        btnProfile.getStyleClass().addAll("btn-flat", "no-border");
-        btnProfile.setAlignment(Pos.CENTER_LEFT);
-        btnProfile.setPadding(new Insets(10));
-        btnProfile.setOnAction(event);
-        return btnProfile;
-    }
-
-    private void upadteContent(Context context, String content) {
-        try {
-            context.routes().setContent(content);
-            context.wrapper().close();
-        } catch (NavigationException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void onExit(Context context) {
-
-    }
-
-    @Override
-    public void onInit(Context context) {
-//        gridTiles.setGridLinesVisible(true);
-
-        root.widthProperty()
-            .addListener((observable, oldValue, newValue) -> {
-
-                gridTiles.getColumnConstraints().clear();
-                gridTiles.getRowConstraints().clear();
-//                gridTiles.setHgap(10);
-
-
-                if (newValue.doubleValue() < 537) {
-                    GridUtils.update(gridTiles, 1);
-                } else if (newValue.doubleValue() < 810) {
-                    GridUtils.update(gridTiles, 2);
-                    GridUtils.update(footer, 1);
-                } else if (newValue.doubleValue() < 1400){
-                    GridUtils.inLine(gridTiles);
-                    GridUtils.update(footer, 2);
-                } else {
-                    GridUtils.inLine(gridTiles);
-                    GridUtils.inLine(footer);
-                }
-            });
-    }
-
-    private VBox createNotifications(NotifcationCell... cells) {
-        VBox box = new VBox();
-        for (NotifcationCell item : cells) {
-
-            ToggleButton toggleButton = new ToggleButton();
-            toggleButton.setMaxWidth(Double.MAX_VALUE);
-            toggleButton.getStyleClass().addAll("btn-flat", "transparent");
-
-            Text text = new Text(item.text());
-            TextFlow textFlow = new TextFlow(text);
-            text.getStyleClass().addAll("text-12", "text-bold");
-            String pattern = "dd MMM yyyy HH:mm:ss";
-            Text time = new Text(item.time().format(DateTimeFormatter.ofPattern(pattern, Locale.US)));
-            GridPane grid = new GridPane();
-            Node icon = item.icon();
-            icon.setStyle("-fx-fill : white; -fx-text-fill: white; -text-color : white;");
-            Circle circle = new Circle();
-            circle.setRadius(5);
-            if (item.read()) {
-                circle.setStyle("-fx-fill : -info;");
-            } else {
-                circle.setStyle("-fx-fill : white;");
-            }
-            grid.getChildren().setAll(circle, textFlow, time, icon);
-//            grid.setGridLinesVisible(true);
-            GridPane.setConstraints(circle, 0,0,1,2, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-            GridPane.setConstraints(textFlow, 1,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-            GridPane.setConstraints(time, 1,1,1,1, HPos.LEFT, VPos.TOP, Priority.ALWAYS, Priority.ALWAYS);
-            GridPane.setConstraints(icon, 2,0,1,2, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-            grid.setHgap(10);
-            toggleButton.setGraphic(grid);
-            box.getChildren().addAll(toggleButton, new Separator());
-        }
-
-        return box;
     }
 }

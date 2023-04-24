@@ -19,8 +19,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.controls;
 
-import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
-import io.github.gleidsonmt.gncontrols.material.icon.Icons;
+import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import javafx.beans.binding.Bindings;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -30,10 +29,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.SkinBase;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 
 public class GNBadgeSkin extends SkinBase<GNBadge> {
 

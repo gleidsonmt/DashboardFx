@@ -1,0 +1,393 @@
+
+/*
+    Created on : 25/10/2022, 08:00:15
+    Author     : Gleidson Neves da Silveira
+    This file define what color, what font in default skeleton of controls.
+    Type ctrl + F to search and type @ + properties to navigate.
+*/
+
+.root {
+
+    /* Layouts */
+    -fx-background : white;
+    -fx-foreground : -light-gray;
+    /* Effect colors */
+    -hover-color : -mint;
+
+    /* Text */
+
+    -text-color : -dark-gray;
+    -inner-color : white;
+    -icon-color : -text-color;
+
+    /* Borders */
+    -box-color : -medium-gray;
+    -box-hover-color : -dark-gray;
+    -box-focus-color : -info;
+
+    -error-color : -grapefruit;
+    -warning-color : -sunflower;
+    -info-color : -info;
+    -success-color : -mint;
+
+}
+
+.region,
+Pane {
+    -fx-background-color : white;
+}
+
+.center-body .viewport,
+.scroll-pane:fitToHeight {
+    -fx-background-color : -fx-background;
+    -fx-border-color : red;
+    -fx-border-width : 0px;
+}
+
+Text {
+    -fx-fill : -text-color;
+    -fx-font-family : Roboto;
+}
+
+SVGPath {
+    -fx-fill : -text-color;
+}
+
+/* @Color */
+
+.toggle-button {
+    -fx-border-width : 2px;
+}
+
+.toggle-button:selected {
+    -fx-border-color : -fx-accent;
+    -fx-text-fill : -fx-accent;
+}
+
+.button, .toggle-button,
+.gn-icon-button
+{
+    -fx-background-color : -fx-accent;
+    -fx-text-fill : -inner-color;
+}
+
+.gn-icon-button .icon {
+    -fx-fill : white;
+}
+
+.button:cancel {
+    -fx-background-color : transparent;
+    -fx-border-color : -fx-accent;
+    -fx-text-fill : -fx-accent;
+}
+
+.label {
+    -fx-accent : transparent;
+    -fx-background-color : -fx-accent;
+    -fx-text-fill : -text-color;
+    -fx-padding : 5px;
+}
+
+/* @Radius */
+
+.toggle-button {
+    -fx-border-radius : 0px;
+    -fx-background-radius : 0px;
+}
+
+/* @Cursor */
+
+.button, .toggle-button {
+    -fx-cursor : hand;
+}
+
+/* @Font */
+
+.button, .toggle-button {
+    -fx-font-weight : bold;
+}
+
+/* @Border */
+
+.button:cancel, .toggle-button {
+    -fx-border-width : 2px;
+}
+
+.button:cancel {
+    -fx-border-radius : 2px;
+}
+
+/* @Size */
+
+.button, .toggle-button {
+    -fx-min-height : 35px;
+}
+
+/* @ListView */
+
+.list-view,
+.list-view:vertical,
+.list-view:focused:vertical,
+.list-view:hover,
+.list-view:focused
+{
+    -fx-background-color : transparent;
+    -fx-border-color : transparent;
+    -fx-border-width : 0px;
+    -fx-effect : none;
+    -fx-faint-focus-color : transparent;
+    -fx-focus-color : transparent;
+    -fx-border-radius : 5px;
+    -fx-background-radius : 5px;
+    -fx-padding : 0px;
+    -fx-fixed-cell-size : 40px;
+}
+
+.list-view .virtual-flow {
+    -fx-background-color : transparent;
+    -fx-padding : 0px;
+}
+
+.list-view:vertical .virtual-flow .clipped-container .sheet .list-cell
+{
+    -fx-cursor : hand;
+    -fx-background-color : white;
+}
+
+.border-list .virtual-flow .clipped-container .sheet .list-cell {
+    -fx-border-width : 0 0 0 2.5;
+}
+
+.list-view .virtual-flow .clipped-container .sheet .list-cell:hover .text {
+    -fx-fill : -hover-color;
+}
+
+.list-view .virtual-flow .clipped-container .sheet .list-cell .icon,
+.list-view .virtual-flow .clipped-container .sheet .list-cell .text
+{
+    -fx-fill : -text-color;
+}
+
+.list-view .virtual-flow .clipped-container .sheet .list-cell:selected {
+    -fx-background-color : derive(-fx-accent, 122%);
+}
+
+/* @Effect */
+
+.toggle-button {
+    -fx-effect : none;
+    -fx-background-insets: 0px;
+}
+
+/* @Controls */
+
+
+.gn-badge .box {
+    -fx-text-fill : white;
+    -fx-accent : -grapefruit;
+    -fx-background-color : -fx-accent;
+    -fx-background-radius : 100px;
+    -fx-padding : 0px;
+}
+
+.gn-badge .box .text {
+    -fx-fill : white;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label
+{
+    -fx-pref-width : 100px;
+}
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top
+{
+  -fx-focus-color : transparent;
+}
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top
+{
+  -fx-faint-focus-color : transparent;
+}
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label
+{
+  -fx-font-weight : bold;
+}
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label
+{
+}
+
+.tab-pane:top .tab-header-area .tab-header-background
+{
+  -fx-border-width : 0px 0px 1px 0px;
+}
+
+.tab-pane:top .tab-header-area .headers-region .tab:top
+{
+  -fx-border-width : 0px 0px 2px 0px;
+}
+
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top
+{
+  -fx-border-width : 2px 0px 2px 0px;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label
+{
+  -fx-text-fill : -text-color;
+}
+.tab-pane:top .tab-header-area .headers-region .tab:top
+{
+  -fx-pref-height : 30px;
+}
+
+.tab-pane:top .tab-header-area .tab-header-background {
+    -fx-background-color : transparent;
+}
+
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top {
+    -fx-border-color : -fx-accent;
+    -fx-border-width : 0px 0px 2px 0px;
+}
+.tab-pane:top .tab-header-area .headers-region .tab:top {
+    -fx-border-color : transparent;
+    -fx-background-color : transparent;
+    -fx-border-width : 0px 0px 2px 0px;
+    -fx-border-radius : 2px;
+    -fx-cursor : hand;
+}
+
+
+/*******************************************************************************
+*                                                                              *
+@TableView
+*                                                                              *
+*******************************************************************************/
+
+.table-view {
+  -fx-fixed-cell-size : 45px;
+}
+
+.table-view:constrained-resize:focused {
+}
+
+.table-view:constrained-resize {
+    -fx-border-color : -box-color;
+}
+
+.table-view .virtual-flow .scroll-bar:horizontal {
+    visibility : false;
+   -fx-opacity : 1;
+   -fx-padding : 0px;
+   -fx-max-height : 0px;
+   -fx-pref-height : 0px;
+   -fx-min-height : 0px;
+}
+
+.table-view .column-header-background .nested-column-header .table-column SVGPath {
+    -fx-fill : -icon-color;
+}
+
+.table-view .column-header-background .nested-column-header .table-column,
+.table-view .column-header-background,
+.tree-table-view .column-header-background
+{
+
+  -fx-padding : 10px 2px 10px 2px;
+  -fx-background-color : transparent;
+}
+
+.table-view .column-header-background .filler,
+.tree-table-view .column-header-background .filler,
+.table-view .column-header-background .show-hide-columns-button,
+.tree-table-view .column-header-background .nested-column-header .table-column
+{
+    -fx-background-color : transparent;
+}
+
+.table-view,
+.tree-table-view
+{
+  -fx-font-family : Roboto;
+  -fx-faint-focus-color : transparent;
+  -fx-focus-color : transparent;
+  -fx-background-color : transparent;
+}
+
+.tree-table-view:focused,
+.table-view:focused
+{
+  -fx-border-color : transparent;
+}
+
+.table-view .column-header-background .nested-column-header .table-column .label {
+    -fx-alignment: center_left;
+}
+
+
+.table-row-cell:filled:even
+{
+  -fx-background-color : transparent;
+  -fx-border-color : transparent;
+  -fx-alignment: center;
+}
+
+
+.table-row-cell:filled:odd
+{
+  -fx-background-color : transparent;
+  -fx-border-color : transparent;
+}
+
+.table-row-cell:filled:selected .table-column .text,
+.table-row-cell:filled:selected:focused
+{
+  /* -fx-background-color : derive(-light-gray, 20%); */
+  -fx-border-color : transparent;
+}
+
+.table-row-cell:filled:selected .table-column {
+    -fx-background-color: derive(-light-gray-2, 50%);
+}
+
+.table-row-cell:filled:selected .table-column .button .text {
+    -fx-fill : -text-color;
+}
+
+.table-row-cell:filled:selected .table-column .text
+{
+  -fx-fill : -fx-accent;
+  -fx-font-weight: bold;
+}
+
+.table-row-cell:filled .table-column {
+}
+
+.table-row-cell:filled .table-column .text
+{
+  -fx-fill : -text-color;
+}
+
+.table-row-cell
+{
+  -fx-text-color : -text-color;
+  /* -fx-background-color : derive(-light-gray, 20%); */
+  -fx-background-color : transparent;
+  -fx-border-color : transparent;
+}
+
+.table-row-cell:filled .hyperlink .text {
+    -fx-fill : -base;
+}
+
+.table-row-cell:selected .tooltip,
+.table-row-cell:filled:hover .tooltip {
+    -fx-font-size : 10pt;
+    -fx-background-color : -dark-gray;
+    -fx-font-weight : bold;
+
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,.01) , 10, 0 , 0 , 1 );
+}
+
+.table-row-cell:filled:hover .tooltip .text
+{
+  -fx-fill : white;
+}
+

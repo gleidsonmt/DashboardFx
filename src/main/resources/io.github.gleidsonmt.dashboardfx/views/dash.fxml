@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedAreaChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Text?>
+
+<!--
+  ~    Copyright (C) Gleidson Neves da Silveira
+  ~
+  ~    This program is free software: you can redistribute it and/or modify
+  ~    it under the terms of the GNU General Public License as published by
+  ~    the Free Software Foundation, either version 3 of the License, or
+  ~    (at your option) any later version.
+  ~
+  ~    This program is distributed in the hope that it will be useful,
+  ~    but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~    GNU General Public License for more details.
+  ~
+  ~    You should have received a copy of the GNU General Public License
+  ~    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<StackPane fx:id="root" style="-fx-border-color : transparent; -fx-background-color : white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.DashController">
+   <children>
+      <ScrollPane fitToWidth="true">
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+         <content>
+            <VBox fx:id="body" spacing="10.0">
+               <children>
+                  <GridPane fx:id="gridTiles" alignment="CENTER_LEFT" hgap="20.0" prefHeight="126.0" prefWidth="734.0" vgap="20.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: -light-gray-2;">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="GRAPHIC_ONLY" style="-fx-background-color: -info; -fx-padding: 20; -fx-background-radius: 10;" text="Label">
+                                 <graphic>
+                                    <SVGPath content="M10 23.375h13.125v-2.792H10Zm0-5.292h20v-2.791H10Zm0-5.291h20v-2.75H10ZM3.333 36.667V6.125q0-1.125.834-1.958.833-.834 1.958-.834h27.75q1.125 0 1.958.834.834.833.834 1.958v21.083q0 1.125-.834 1.959Q35 30 33.875 30H10Zm2.792-6.709 2.708-2.75h25.042V6.125H6.125Zm0-23.833v23.833Z" style="-fx-fill: white;" />
+                                 </graphic>
+                              </Label>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -info;" text="39">
+                                       <styleClass>
+                                          <String fx:value="info-text" />
+                                          <String fx:value="text-36" />
+                                       </styleClass>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -aqua;" styleClass="subtitle" text="Messages" />
+                                 </children>
+                                 <padding>
+                                    <Insets right="20.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="199.0" layoutY="10.0" minHeight="-Infinity" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: -light-gray-2;" GridPane.columnIndex="3">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="GRAPHIC_ONLY" prefHeight="55.0" prefWidth="2.0" style="-fx-background-color: -grapefruit; -fx-padding: 20; -fx-background-radius: 10;" styleClass="buy" text="Label">
+                                 <graphic>
+                                    <SVGPath content="M11.875 36.625q-1.292 0-2.208-.917-.917-.916-.917-2.166 0-1.292.917-2.209.916-.916 2.208-.916 1.292 0 2.187.916.896.917.896 2.209 0 1.291-.916 2.187-.917.896-2.167.896Zm16.667 0q-1.292 0-2.209-.917-.916-.916-.916-2.166 0-1.292.916-2.209.917-.916 2.209-.916 1.291 0 2.187.916.896.917.896 2.209 0 1.291-.917 2.187-.916.896-2.166.896ZM9.958 9.417l4.375 9.125h11.875l5-9.125ZM8.583 6.625h24.542q.958 0 1.458.875t.042 1.75l-5.75 10.292q-.458.833-1.187 1.291-.73.459-1.646.459H13.5l-2.167 4h20.292v2.791H11.583q-1.791 0-2.625-1.333-.833-1.333 0-2.833l2.5-4.625L5.25 6.125H1.958V3.333h5.084Zm5.75 11.917h11.875Z" style="-fx-fill: white;" />
+                                 </graphic>
+                              </Label>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -grapefruit;" text="125">
+                                       <styleClass>
+                                          <String fx:value="info-text" />
+                                          <String fx:value="text-36" />
+                                       </styleClass>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -grapefruit;" styleClass="subtitle" text="Sales" />
+                                 </children>
+                                 <padding>
+                                    <Insets right="20.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="388.0" layoutY="10.0" minHeight="-Infinity" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: -light-gray-2;" GridPane.columnIndex="2">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minWidth="74.0" style="-fx-background-color: -amber; -fx-padding: 20; -fx-background-radius: 10;" text="Label">
+                                 <graphic>
+                                    <SVGPath content="M18.625 22h2.75v-8.667h-2.75ZM20 26.667q.625 0 1.042-.417.416-.417.416-1.042t-.416-1.062q-.417-.438-1.042-.438t-1.042.438q-.416.437-.416 1.062t.416 1.042q.417.417 1.042.417Zm-13.333 5v-2.792h3.458V16.5q0-3.5 2.063-6.208 2.062-2.709 5.437-3.459V5.625q0-.958.687-1.625Q19 3.333 20 3.333T21.688 4q.687.667.687 1.625v1.208q3.375.75 5.458 3.459Q29.917 13 29.917 16.5v12.375h3.416v2.792ZM20 19.292Zm0 17.375q-1.333 0-2.333-.979-1-.98-1-2.355h6.666q0 1.375-.979 2.355-.979.979-2.354.979Zm-7.125-7.792h14.25V16.5q0-2.958-2.063-5.062Q23 9.333 20.042 9.333q-3 0-5.084 2.105-2.083 2.104-2.083 5.062Z" style="-fx-fill: white;" />
+                                 </graphic>
+                              </Label>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -amber;" text="4">
+                                       <styleClass>
+                                          <String fx:value="info-text" />
+                                          <String fx:value="text-36" />
+                                       </styleClass>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -amber;" styleClass="subtitle" text="Notifications" />
+                                 </children>
+                                 <padding>
+                                    <Insets right="20.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="388.0" layoutY="10.0" minHeight="-Infinity" minWidth="0.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: -light-gray-2;" GridPane.columnIndex="1">
+                           <children>
+                              <Label fx:id="experimental" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" minWidth="74.0" style="-fx-background-color: -mint; -fx-padding: 20; -fx-background-radius: 10;" text="Label">
+                                 <graphic>
+                                    <SVGPath content="M14.792 27.208q-1.709 0-2.896-1.187-1.188-1.188-1.188-2.896t1.188-2.896q1.187-1.187 2.896-1.187 1.75 0 2.916 1.187 1.167 1.188 1.167 2.896 0 1.75-1.187 2.917-1.188 1.166-2.896 1.166Zm-7 9.459q-1.125 0-1.959-.834Q5 35 5 33.875v-25q0-1.125.833-1.937.834-.813 1.959-.813h2.333V3.333h2.917v2.792h13.916V3.333h2.917v2.792h2.333q1.125 0 1.959.813Q35 7.75 35 8.875v25q0 1.125-.833 1.958-.834.834-1.959.834Zm0-2.792h24.416v-17.5H7.792v17.5Zm0-20.25h24.416v-4.75H7.792Zm0 0v-4.75 4.75Z" style="-fx-fill: white;" />
+                                 </graphic>
+                              </Label>
+                              <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -mint;" text="18">
+                                       <styleClass>
+                                          <String fx:value="info-text" />
+                                          <String fx:value="text-36" />
+                                       </styleClass>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -mint;" styleClass="subtitle" text="Schedules" />
+                                 </children>
+                                 <padding>
+                                    <Insets right="20.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </GridPane>
+                  <StackedAreaChart fx:id="graphic" alternativeColumnFillVisible="true" minHeight="200.0" style="-fx-border-color: -light-gray-2;" title="Sales by Region" VBox.vgrow="ALWAYS">
+                    <xAxis>
+                      <NumberAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </StackedAreaChart>
+                  <GridPane fx:id="footer" hgap="10.0" vgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+    <stylesheets>
+        <URL value="@../style/css/colors.css" />
+        <URL value="@../style/css/skeleton.css" />
+        <URL value="@../style/css/bootstrap.css" />
+        <URL value="@../style/css/helpers.css" />
+        <URL value="@../style/css/typographic.css" />
+<!--        <URL value="@../drawer.css" />-->
+<!--        <URL value="@../dash.css" />-->
+    </stylesheets>
+</StackPane>

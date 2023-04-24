@@ -19,28 +19,12 @@
 
 package io.github.gleidsonmt.dashboardfx.core.controls;
 
-import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
-import io.github.gleidsonmt.gncontrols.controls.GNTextBox;
-import io.github.gleidsonmt.gncontrols.controls.skin.GNTextBoxBase;
-import io.github.gleidsonmt.gncontrols.material.icon.Icons;
+import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.css.*;
-import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Control;
-import javafx.scene.control.Label;
 import javafx.scene.control.Skin;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Text;
-import org.jetbrains.annotations.ApiStatus;
-
-import java.util.List;
 
 public class GNBadge extends Control {
 

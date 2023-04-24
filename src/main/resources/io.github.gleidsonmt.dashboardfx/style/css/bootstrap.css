@@ -1,0 +1,210 @@
+/*
+    Created on : 25/10/2022, 08:00:15
+    Author     : Gleidson Neves da Silveira
+    Colors for productivity
+
+    Type ctrl + F to search and type @ + properties to navigate.
+
+*/
+
+/* @toggle-left */
+
+.toggle-left {
+    -fx-border-radius : 5 0 0 5;
+    -fx-background-radius : 5 0 0 5;
+}
+
+.toggle-right {
+     -fx-background-radius : 0 5 5 0;
+     -fx-border-radius : 0 5 5 0;
+}
+
+.toggle-button:selected {
+    -fx-background-color : transparent;
+}
+
+/* @btn */
+.btn-flat {
+    -fx-border-width : 0px;
+    -fx-border-color : -light-gray;
+    -fx-background-color : transparent;
+}
+
+.button:cancel:hover,
+.btn-flat:hover
+ {
+    -fx-background-color : derive(-fx-accent, 110%);
+}
+
+.button:cancel:focused,
+.button:cancel:hover:focused,
+.btn-flat:focused,
+.btn-flat:hover:focused
+ {
+    -fx-background-color : derive(-fx-accent, 90%);
+}
+
+.btn-flat .text {
+    -fx-fill : -fx-accent;
+}
+
+/* @lbl */
+
+.lbl-filled {
+    -fx-text-fill : -inner-color;
+}
+
+.lbl-filled .icon,
+.lbl-filled SVGPath {
+    -fx-fill : -inner-color;
+}
+
+.button:cancel,
+.lbl-outlined {
+    -fx-border-color : -box-color;
+    -fx-border-width : 2px;
+    -fx-background-color : transparent;
+}
+
+.button:cancel,
+.lbl-outlined .icon,
+.lbl-outlined SVGPath {
+    -fx-fill : -box-color;
+}
+
+.lbl-round {
+    -fx-border-radius : 100px;
+    -fx-background-radius : 100px;
+}
+
+.lbl-rounded {
+    -fx-border-radius : 5px;
+    -fx-background-radius : 5px;
+}
+
+.transparent {
+    -fx-background-color : transparent;
+    -fx-border-color : transparent;
+}
+
+.btn-flat .icon,
+.btn-flat .icon-container .icon,
+.btn-flat SVGPath {
+    -fx-fill : -text-color;
+}
+
+/* @Color - Linear */
+
+.border-light-gray-2 {
+    -box-color : -light-gray-2;
+    -fx-border-color : -box-color;
+}
+
+
+.info, .lbl-info, .bd-info .box {
+    -fx-accent : -info;
+    -box-color : -info;
+}
+
+.aqua, .lbl-aqua {
+    -fx-accent : -aqua;
+    -box-color : -aqua;
+}
+
+.cyan, .lbl-cyan {
+    -fx-accent : -cyan;
+    -box-color : -aqua;
+}
+
+.danger, .lbl-danger, .bd-danger .box {
+    -fx-accent : -danger;
+    -box-color : -danger;
+}
+
+.grapefruit, .lbl-grapefruit {
+    -fx-accent : -grapefruit;
+    -box-color : -grapefruit;
+}
+
+.sunflower, .lbl-sunflower {
+    -fx-accent : -sunflower;
+    -box-color : -sunflower;
+}
+
+.amber, .lbl-amber {
+    -fx-accent : -amber;
+    -box-color : -amber;
+}
+
+.mint, .lbl-mint {
+    -fx-accent : -mint;
+    -box-color : -mint;
+}
+
+.success, .lbl-success {
+    -fx-accent : -success;
+    -box-color : -success;
+}
+
+.warning, .lbl-warning {
+    -fx-accent : -warning;
+    -box-color : -warning;
+}
+
+/* @Color - Linear Gradinent */
+
+.linear-l-amber-sunflower {
+    -fx-accent : linear-gradient(to left, -amber, -sunflower);
+}
+
+
+.border-list .virtual-flow .clipped-container .sheet .list-cell:selected,
+.border-list .virtual-flow .clipped-container .sheet .list-cell:selected .icon,
+.border-list .virtual-flow .clipped-container .sheet .list-cell:selected .text
+{
+    -fx-border-color : -fx-accent;
+    -fx-fill : -fx-accent;
+
+}
+
+.rect-list,
+.rect-list:vertical,
+.rect-list:focused:vertical,
+.rect-list:hover,
+.rect-list:focused{
+    -fx-border-color : -box-color;
+    -fx-border-width : 2px;
+    -fx-border-radius : 5px;
+}
+
+.container {
+    -fx-background-color: -fx-background;
+    -fx-background-radius : 20px;
+}
+
+.drawer-container {
+    -fx-background-radius: 0px;
+}
+
+
+.btn-float {
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-radius: 100px;
+    -fx-content-display: graphic_only;
+}
+
+.deep-button {
+    -fx-padding: 8 10 10 10;
+    -fx-background-insets: 0,0 0 2 0, 0 0 2 0, 0 0 2 0;
+    -fx-background-color : derive(-primary-color, -40%), derive(-primary-color, -40%), derive(-primary-color, -40%), -primary-color;
+    -fx-background-radius : 2px;
+    -fx-border-radius : 2px;
+    -fx-font-weight : bolder;
+}
+
+.deep-button .icon,
+.deep-button SVGPath {
+    -fx-fill : white;
+}
+

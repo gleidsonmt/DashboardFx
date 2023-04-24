@@ -17,23 +17,14 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.controllers;
+package io.github.gleidsonmt.dashboardfx.core.view.layout.creators;
 
-import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
-import io.github.gleidsonmt.dashboardfx.core.Context;
-import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.layout.StackPane;
 
-public final class AboutController extends ActionView {
+public interface BuildCreator {
 
-    private Context context;
+    Node build();
 
-    @FXML
-    private void goAvatarOnPinterest(){
-//        Launcher.openLink("https://br.pinterest.com/pin/597852919271538622/");
-    }
-
-    @Override
-    public void onInit(Context context) {
-        this.context = context;
-    }
+    StackPane getRoot();
 }

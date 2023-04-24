@@ -50,7 +50,7 @@ dependencies {
     implementation 'org.kordamp.ikonli:ikonli-javafx:12.3.1'
 
 //    implementation 'org.commonmark:commonmark:0.20.0'
-    implementation files('vendor/GNControls-1.2.5.jar')
+//    implementation files('vendor/GNControls-1.2.5.jar')
 
 // Here only for tests
 //    implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to vizualize css when app is running.. so amazing!

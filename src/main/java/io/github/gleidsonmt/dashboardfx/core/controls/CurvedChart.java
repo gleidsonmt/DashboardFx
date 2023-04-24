@@ -26,13 +26,7 @@ import javafx.scene.Group;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.Axis;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.shape.ClosePath;
-import javafx.scene.shape.CubicCurveTo;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.scene.shape.PathElement;
+import javafx.scene.shape.*;
 import javafx.util.Pair;
 
 public class CurvedChart<X, Y> extends AreaChart<Number, Number> {
@@ -49,7 +43,7 @@ public class CurvedChart<X, Y> extends AreaChart<Number, Number> {
             super.layoutPlotChildren();
 
             for(int seriesIndex = 0; seriesIndex < this.getDataSize(); ++seriesIndex) {
-                XYChart.Series<Number, Number> series = (XYChart.Series)this.getData().get(seriesIndex);
+                Series<Number, Number> series = (Series)this.getData().get(seriesIndex);
                 Path seriesLine = (Path)((Group)series.getNode()).getChildren().get(1);
                 Path fillPath = (Path)((Group)series.getNode()).getChildren().get(0);
                 smooth(seriesLine.getElements(), fillPath.getElements());

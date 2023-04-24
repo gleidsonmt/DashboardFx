@@ -1,0 +1,21 @@
+
+!!io.github.gleidsonmt.dashboardfx.core.view.ViewMap
+  views:
+  - {
+    name: about,
+    title: About,
+    folder: app,
+    fxml: about.fxml
+  }
+  - {
+    name: dash,
+    title: Dashboard,
+    fxml: dash.fxml
+  }
+#  - {
+#    name: sales_left,
+#    title: Sales Column,
+#    fxml: sales_left.fxml
+#  }
+
+
