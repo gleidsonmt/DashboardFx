@@ -6,6 +6,7 @@ module io.github.gleidsonmt.dashboardfx {
     requires java.logging;
     requires org.yaml.snakeyaml;
     requires org.jetbrains.annotations;
+    requires javafx.web;
 
 //    requires io.github.gleidsonmt.gncontrols;
 //    requires scenicView;
