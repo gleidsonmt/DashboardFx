@@ -53,6 +53,7 @@ public final class IRoot extends StackPane implements Root {
         layout.setMinSize(400, 400);
 
         getChildren().setAll(wrapper, layout);
+
         setId("root");
         setPadding(new Insets(2));
         setStyle("-fx-border-color : -light-gray-2; -fx-border-width : 1px;");
@@ -124,6 +125,11 @@ public final class IRoot extends StackPane implements Root {
     @Override
     public Bar bar() {
         return layout.getBar();
+    }
+
+    @Override
+    public void reset() {
+        getChildren().setAll(wrapper, layout);
     }
 
 }

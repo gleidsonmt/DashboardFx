@@ -34,6 +34,7 @@ import java.net.URL;
 import java.util.List;
 
 public class LoadViews extends Task<String> {
+
     private final StringBuilder builder = new StringBuilder();
     private final List<ViewComposer> yamlViews;
     private final Context context;
@@ -65,7 +66,8 @@ public class LoadViews extends Task<String> {
             context.routes().registry("drawer", loader);
 
             try {
-                context.routes().setView("dash");
+                context.routes().setContent("dash");
+//                context.routes().setView("dash");
             } catch (NavigationException e) {
                 throw new RuntimeException(e);
             }

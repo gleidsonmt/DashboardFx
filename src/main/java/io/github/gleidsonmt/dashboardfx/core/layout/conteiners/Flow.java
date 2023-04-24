@@ -19,8 +19,8 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
-import animatefx.animation.AnimationFX;
-import animatefx.animation.Pulse;
+//import animatefx.animation.AnimationFX;
+//import animatefx.animation.Pulse;
 import io.github.gleidsonmt.dashboardfx.core.layout.IRoot;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
 import javafx.animation.KeyFrame;
@@ -33,6 +33,7 @@ import javafx.scene.layout.Region;
 import javafx.stage.Screen;
 import javafx.util.Duration;
 
+import java.util.HashMap;
 import java.util.stream.Collectors;
 
 /**
@@ -76,9 +77,9 @@ public class Flow {
     }
 
     private void show() {
-        AnimationFX animationFX = new Pulse(this.content);
-        animationFX.setSpeed(1.8);
-        animationFX.play();
+//        AnimationFX animationFX = new Pulse(this.content);
+//        animationFX.setSpeed(1.8);
+//        animationFX.play();
     }
 
 
@@ -92,6 +93,7 @@ public class Flow {
             root.getChildren().remove(root.getChildren().size()-1);
 //            return;
         }
+
 
         content.setTranslateX(0);
         content.setTranslateY(0);

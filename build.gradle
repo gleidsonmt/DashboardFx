@@ -1,9 +1,8 @@
-
 plugins {
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
-    id 'org.beryx.jlink' version '2.24.1'
+    id 'org.openjfx.javafxplugin' version '0.0.13' // here // 0.0.10
+    id 'org.beryx.jlink' version '2.25.0' // here // 2.24.1
 }
 
 group 'io.github.gleidsonmt.dashboardfx'
@@ -19,74 +18,125 @@ repositories {
 sourceCompatibility = '17'
 targetCompatibility = '17'
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 ext {
     junitVersion = '5.8.2'
 }
 
 application {
     mainModule = 'io.github.gleidsonmt.dashboardfx'
-    mainClass = 'io.github.gleidsonmt.dashboardfx.Start'
+    mainClass = 'io.github.gleidsonmt.dashboardfx.Starter'
 }
 
 javafx {
-    version = '18.0.1'
-    modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.graphics', "javafx.swing"]
+    version = '17.0.2' // here 18
+    modules = ['javafx.controls',
+               'javafx.fxml',
+               'javafx.web',
+               'javafx.graphics',
+               "javafx.swing"]
 }
 
 dependencies {
 
     implementation 'org.yaml:snakeyaml:1.33'
-    implementation 'org.jetbrains:annotations:23.0.0'
+    implementation 'org.jetbrains:annotations:24.0.1'
 
     implementation 'org.kordamp.ikonli:ikonli-material-pack:12.3.1'
     implementation 'org.kordamp.ikonli:ikonli-core:12.3.1'
     implementation 'org.kordamp.ikonli:ikonli-javafx:12.3.1'
 
-    implementation 'org.commonmark:commonmark:0.20.0'
+//    implementation 'org.commonmark:commonmark:0.20.0'
+    implementation files('vendor/GNControls-1.2.5.jar')
 
-    implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to vizualize css when app is running.. so amazing!
+// Here only for tests
+//    implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to vizualize css when app is running.. so amazing!
+//    implementation files('vendor/gndecorator-2.2.31.jar')     // Decorator lib for custom windows
 
-    implementation files('vendor/gndecorator-2.2.31.jar')     // Decorator lib for custom windows
+//    implementation files('vendor/scenicView.jar')          // thta's scenic view using jfx 8.. i need to updgrade.. this is essential for view all nodes in process
+//    implementation files('vendor/controlsfx-8.40.17.jar') // My favorite lib.. has a lot of functionality
+//    implementation files('vendor/animatefx-1.2.0.jar')
 
-
-    implementation files('vendor/GNControls-1.2.4.jar')
-    implementation files('vendor/scenicView.jar')          // thta's scenic view using jfx 8.. i need to updgrade.. this is essential for view all nodes in process
-    implementation files('vendor/controlsfx-8.40.17.jar') // My favorite lib.. has a lot of functionality
-    implementation files('vendor/animatefx-1.2.0.jar')
-
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+//    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+//    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
-test {
-    useJUnitPlatform()
-}
+//test {
+//    useJUnitPlatform()
+//}
 
 jlink {
     imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
     launcher {
-        name = 'DashboardFx'
+        name = 'App'
     }
 
     jpackage {
-
-        imageOptions = [
-                '--icon', 'logoT.ico'
-        ]
         installerType = 'exe'
+        installerOptions += '--verbose'
         installerOptions = [
                 '--description', "Projeto Dashboard Fx.",
                 '--copyright', 'Copyrigth © 2021-2022 GLEIDSON NEVES DA SILVEIRA'
-                , '--icon', 'logoT.ico'
+//                'win-console', 'true'
+//                , '--icon', 'logoT.ico'
 
         ]
-
         addExtraDependencies("javafx")
     }
 }
 
-
 jlinkZip {
     group = 'distribution'
 }
+
+
+//jlink {
+//    imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
+//    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+//    launcher {
+//        name = 'DashboardFx'
+//    }
+//
+//    jpackage {
+//
+////        imageOptions = [
+////                '--icon', 'logo_128.png'
+////        ]
+//        installerType = 'exe'
+//        installerOptions = [
+//                '--description', "Projeto Dashboard Fx.",
+//                '--copyright', 'Copyrigth © 2021-2022 GLEIDSON NEVES DA SILVEIRA'
+////                , '--icon', 'logoT.ico'
+//
+//        ]
+//
+//        addExtraDependencies("javafx")
+//    }
+//}
+
+
+//jar {
+//
+//    duplicatesStrategy = DuplicatesStrategy.WARN
+////    setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+//
+//    manifest {
+//        attributes(
+//                'Main-Class': 'io.github.gleidsonmt.dashboardfx.Starter'
+//        )
+//    }
+//    from {
+//        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+//    }
+//}
+
+//task runWithExecJarExecutable(type: Exec) {
+//    dependsOn jar
+//    group = "io.github.gleidsonmt"
+//    description = "Run the output executable jar with ExecTask"
+//    commandLine "java", "-jar", jar.archiveFile.get()
+//}

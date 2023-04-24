@@ -17,8 +17,8 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
-import animatefx.animation.AnimationFX;
-import animatefx.animation.Pulse;
+//import animatefx.animation.AnimationFX;
+//import animatefx.animation.Pulse;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.Drawer;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.AbsoluteWrapperContainer;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
@@ -84,18 +84,19 @@ public class Wrapper extends StackPane implements AbsoluteWrapperContainer {
 
         setAlignment(pos != null ? pos : Pos.CENTER);
 
-        AnimationFX animation = new Pulse(getChildren().get(0));
-        animation.setSpeed(1.8);
-        animation.play();
+//        AnimationFX animation = new Pulse(getChildren().get(0));
+//        animation.setSpeed(1.8);
+//        animation.play();
     }
 
     @Override
     public void close() {
 
-        AnimationFX animation = new Pulse(getChildren().get(0));
-        animation.setSpeed(1.8);
-        animation.play();
-        animation.getTimeline().setOnFinished(event -> toBack());
+//        AnimationFX animation = new Pulse(getChildren().get(0));
+//        animation.setSpeed(1.8);
+//        animation.play();
+//        animation.getTimeline().setOnFinished(event -> toBack());
+        toBack();
     }
 
     public enum WrapperBackgroundType {

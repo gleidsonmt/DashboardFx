@@ -44,7 +44,10 @@ public interface Root {
 
     Bar bar();
 
-
+    /**
+     * Return to the dash initial layout.
+     */
+    void reset();
 
 //    double getWidth();
 //

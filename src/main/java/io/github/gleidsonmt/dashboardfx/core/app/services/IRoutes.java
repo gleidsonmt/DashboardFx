@@ -135,9 +135,15 @@ public class IRoutes implements Routes {
 
     @Override
     public void setView(String _view) throws NavigationException {
+        if (_view.equals("layout")) {
+            this.root.reset();
+            return;
+        }
         View view = getView(_view);
         doActions(view);
-        this.root.getLayout().setBody(view.getRoot());
+//        this.root.getLayout().setBody(view.getRoot());
+        this.root.getChildren().remove(this.root.getChildren().size() - 1);
+        this.root.getChildren().add(view.getRoot());
     }
 
     private View doActions(View view) throws NavigationException {

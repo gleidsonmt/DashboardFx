@@ -19,22 +19,31 @@
 
 package io.github.gleidsonmt.dashboardfx.controllers;
 
+import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
 import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
+import io.github.gleidsonmt.gncontrols.controls.GNButton;
 import javafx.fxml.FXML;
 
-public final class AboutController implements ActionView {
+/**
+ * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * Version 0.0.1
+ * Create on  02/04/2023
+ */
+public class LoginController implements ActionView {
 
-    private Context context;
+    @FXML private GNButton btnSignIn;
 
-    @FXML
-    private void goAvatarOnPinterest(){
-//        Launcher.openLink("https://br.pinterest.com/pin/597852919271538622/");
-    }
 
     @Override
     public void onEnter(Context context) {
-
+        btnSignIn.setOnAction(e -> {
+            try {
+                context.routes().setView("layout");
+            } catch (NavigationException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
     }
 
     @Override
@@ -44,6 +53,6 @@ public final class AboutController implements ActionView {
 
     @Override
     public void onInit(Context context) {
-        this.context = context;
+
     }
 }

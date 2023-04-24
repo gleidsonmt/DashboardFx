@@ -17,8 +17,8 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
-import animatefx.animation.RollIn;
-import animatefx.animation.RollOut;
+//import animatefx.animation.RollIn;
+//import animatefx.animation.RollOut;
 import io.github.gleidsonmt.dashboardfx.core.layout.IRoot;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.WrapperContainer;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.options.SnackColors;
@@ -128,15 +128,15 @@ public class SnackBar implements WrapperContainer {
 
         IRoot.getChildren().add(snack);
 
-        RollIn animation = new RollIn(snack);
-        animation.setSpeed(1.5);
+//        RollIn animation = new RollIn(snack);
+//        animation.setSpeed(1.5);
 
-        animation.play();
-        animation.getTimeline().setOnFinished(event -> {
-            RollOut out = new RollOut(snack);
-            out.setDelay(Duration.millis(3000));
-            out.play();
-        });
+//        animation.play();
+//        animation.getTimeline().setOnFinished(event -> {
+//            RollOut out = new RollOut(snack);
+//            out.setDelay(Duration.millis(3000));
+//            out.play();
+//        });
 
     }
 

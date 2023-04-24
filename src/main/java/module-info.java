@@ -13,7 +13,7 @@ module io.github.gleidsonmt.dashboardfx {
 
 //    requires fr.brouillard.oss.cssfx;
 
-    requires org.commonmark;
+//    requires org.commonmark;
 
 //    requires scenicView;
     requires org.yaml.snakeyaml;
@@ -44,8 +44,5 @@ module io.github.gleidsonmt.dashboardfx {
     opens io.github.gleidsonmt.dashboardfx.views to javafx.base, javafx.fxml, javafx.graphics;
     exports io.github.gleidsonmt.dashboardfx.views.controls;
     opens io.github.gleidsonmt.dashboardfx.views.controls to javafx.base, javafx.fxml, javafx.graphics;
-
-//    requires io.github.gleidsonmt.dashboardfx.core;
-//    exports io.github.gleidsonmt.dashboardfx.core.app to javafx.fxml, javafx.graphics;
 
 }

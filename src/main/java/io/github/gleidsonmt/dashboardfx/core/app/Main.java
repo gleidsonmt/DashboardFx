@@ -18,41 +18,36 @@
 package io.github.gleidsonmt.dashboardfx.core.app;
 
 import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
-import io.github.gleidsonmt.dashboardfx.core.app.services.LoadViews;
-import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.Loader;
-import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.SimpleView;
-import io.github.gleidsonmt.dashboardfx.views.LoadCircle;
-import javafx.concurrent.Task;
-import javafx.scene.Node;
-import javafx.scene.image.Image;
-
-import java.util.Objects;
 
 /**
  * Class that provides logger and states.
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  02/10/2022
  */
-public class Main extends App {
+public class Main extends Launcher {
 
     @Override
     public void build(Context context) {
-        Loader loadCircle = new LoadCircle("Starting..", "");
+//        Loader loadCircle = new LoadCircle("Starting..", "");
+//
+//        Task<String> loadViews = new LoadViews(context, loadCircle); // Load View task
+//
+//        Thread tLoadViews = new Thread(loadViews);
+//        tLoadViews.setDaemon(true);
+//        tLoadViews.start();
+//
+//        context.icons(
+//                new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_64.png")).toExternalForm()),
+//                new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_32.png")).toExternalForm()),
+//                new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_48.png")).toExternalForm()),
+//                new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_16.png")).toExternalForm())
+//        );
+//
+//        context.routes().registryAndGo(new SimpleView((Node) loadCircle, "loadCircle"));
 
-        Task<String> loadViews = new LoadViews(context, loadCircle); // Load View task
+    }
 
-        Thread tLoadViews = new Thread(loadViews);
-        tLoadViews.setDaemon(true);
-        tLoadViews.start();
-
-        context.icons(
-                new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_64.png")).toExternalForm()),
-                new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_32.png")).toExternalForm()),
-                new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_48.png")).toExternalForm()),
-                new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/logo_16.png")).toExternalForm())
-        );
-
-        context.routes().registryAndGo(new SimpleView((Node) loadCircle, "loadCircle"));
-
+    public static void main(String[] args) {
+        launch(args);
     }
 }

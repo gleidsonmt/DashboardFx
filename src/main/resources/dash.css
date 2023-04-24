@@ -168,3 +168,8 @@ Text, .text, .label {
     -fx-background-color: transparent;
     -fx-border-radius: 10px;
 }
+
+.fore-login {
+    -fx-background-image: url("predios.jpg");
+    -fx-background-size: cover;
+}

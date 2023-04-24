@@ -28,7 +28,6 @@ import java.util.ResourceBundle;
  * Create on  05/02/2022
  */
 public interface ActionView extends Initializable {
-
     void onEnter(Context context) ;
 
     void onExit(Context context);

@@ -19,8 +19,8 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout.conteiners;
 
-import animatefx.animation.AnimationFX;
-import animatefx.animation.Pulse;
+//import animatefx.animation.AnimationFX;
+//import animatefx.animation.Pulse;
 import io.github.gleidsonmt.dashboardfx.core.layout.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.DeclarativeComponent;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.interfaces.AbsoluteWrapperContainer;
@@ -74,22 +74,22 @@ public class WrapperContainer
         wrapper.toFront();
         wrapper.setOnMouseClicked(event -> close());
 
-        AnimationFX animation = new Pulse(content);
-        animation.setSpeed(1.8);
-        animation.play();
+//        AnimationFX animation = new Pulse(content);
+//        animation.setSpeed(1.8);
+//        animation.play();
     }
 
     @Override
     public void close() {
 
-        AnimationFX animation = new Pulse(content);
-        animation.setSpeed(1.8);
-        animation.play();
-
-        animation.getTimeline().setOnFinished(event -> {
-            wrapper.toBack();
-            wrapper.setAlignment(Pos.CENTER);
-        });
+//        AnimationFX animation = new Pulse(content);
+//        animation.setSpeed(1.8);
+//        animation.play();
+//
+//        animation.getTimeline().setOnFinished(event -> {
+//            wrapper.toBack();
+//            wrapper.setAlignment(Pos.CENTER);
+//        });
 //        wrapper.setOnMouseClicked(null);
     }
 

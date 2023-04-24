@@ -24,9 +24,9 @@ import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.web.WebView;
-import org.commonmark.node.Node;
-import org.commonmark.parser.Parser;
-import org.commonmark.renderer.html.HtmlRenderer;
+//import org.commonmark.node.Node;
+//import org.commonmark.parser.Parser;
+//import org.commonmark.renderer.html.HtmlRenderer;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.net.URL;
@@ -54,14 +54,14 @@ public final class WrapperController implements ActionView {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Parser parser = Parser.builder().build();
+//        Parser parser = Parser.builder().build();
 
-        Node document = parser.parse("" +
-                "<code>Random <code style='color: red'>r</code> = new Random();<code/> ");
-
-        HtmlRenderer renderer = HtmlRenderer.builder().build();
-        renderer.render(document);
-
+//        Node document = parser.parse("" +
+//                "<code>Random <code style='color: red'>r</code> = new Random();<code/> ");
+//
+//        HtmlRenderer renderer = HtmlRenderer.builder().build();
+//        renderer.render(document);
+//
 
         String _code = """
                 context.getDecorator()

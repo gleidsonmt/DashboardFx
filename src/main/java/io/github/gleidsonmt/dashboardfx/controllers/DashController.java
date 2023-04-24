@@ -33,6 +33,7 @@ import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.CardCrea
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListCreator;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.creators.ScheduleListItem;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.layout.Direction;
+
 import io.github.gleidsonmt.gncontrols.controls.GNAvatar;
 import io.github.gleidsonmt.gncontrols.controls.GNIconButton;
 import io.github.gleidsonmt.gncontrols.material.icon.IconContainer;
