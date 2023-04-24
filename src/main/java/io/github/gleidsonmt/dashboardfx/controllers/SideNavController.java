@@ -1,8 +1,14 @@
 package io.github.gleidsonmt.dashboardfx.controllers;
 
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.services.DrawerBehavior;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.StackPane;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -11,22 +17,21 @@ import javafx.fxml.FXML;
  */
 public class SideNavController extends ActionView {
 
+    @FXML private StackPane root;
+    @FXML private ToggleGroup group;
+
     @FXML
-    private void goSales() {
+    private void goDash() {
+        context.routes().nav("dash");
 //        context.routes().nav("sales_left", "sales_right");
     }
 
     @FXML
-    private void goWelcome() {
+    private void goWrappers() {
 //        View view = new SimpleView("view1", "/views/view01.fxml");
 //        context.routes().putAndGo(view);
     }
 
-    @FXML
-    private void goView02() {
-//        View view = new SimpleView("view2", "/view02.fxml");
-//        context.routes().putAndGo(view);
-    }
 
     public void goUnderstanding(ActionEvent actionEvent) {
     }
@@ -43,5 +48,10 @@ public class SideNavController extends ActionView {
     @FXML
     private void goAbout() {
         context.routes().nav("about");
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        new DrawerBehavior(root, group);
     }
 }
