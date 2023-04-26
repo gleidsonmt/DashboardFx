@@ -31,11 +31,7 @@ public class Main extends Launcher {
         layout.setContent((Node) loadCircle);
 
         loadViews.setOnSucceeded(event -> {
-
             layout.setNav(context.getResource("views/drawer.fxml"));
-
-
-
             context.routes().nav("dash");
         });
 

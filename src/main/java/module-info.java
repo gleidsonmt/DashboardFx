@@ -7,9 +7,10 @@ module io.github.gleidsonmt.dashboardfx {
     requires org.yaml.snakeyaml;
     requires org.jetbrains.annotations;
     requires javafx.web;
+    requires org.kordamp.ikonli.material;
 
 //    requires io.github.gleidsonmt.gncontrols;
-//    requires scenicView;
+    requires scenicView;
 
     opens io.github.gleidsonmt.dashboardfx to javafx.fxml;
     opens io.github.gleidsonmt.dashboardfx.controllers to javafx.fxml;

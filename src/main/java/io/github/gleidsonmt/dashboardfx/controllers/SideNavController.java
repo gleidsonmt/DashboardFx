@@ -4,6 +4,7 @@ import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.services.DrawerBehavior;
 import io.github.gleidsonmt.dashboardfx.core.view.View;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.SimpleView;
+import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
 import io.github.gleidsonmt.dashboardfx.views.WrappersView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,21 +30,28 @@ public class SideNavController extends ActionView {
 //        context.routes().nav("sales_left", "sales_right");
     }
 
+    @FXML
+    private void goUnderstanding() {
+        System.out.println("going");
+        context.routes().putAndGo(
+                new SimpleView(
+                        "tutorial_understanding",
+                        new TutorialUnderstanding(context)
+                        )
+        );
+    }
+
     private View presentation;
 
     @FXML
     private void goWrappers() {
         if(presentation == null) presentation =
                 new SimpleView("view_wrapper",
-            new WrappersView("presentation", context));
+            new WrappersView(context));
 
         context.routes().putAndGo(presentation);
 //        View view = new SimpleView("view1", "/views/view01.fxml");
 //        context.routes().putAndGo(view);
-    }
-
-
-    public void goUnderstanding(ActionEvent actionEvent) {
     }
 
     public void goBuild(ActionEvent actionEvent) {

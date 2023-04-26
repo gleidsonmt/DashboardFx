@@ -3,6 +3,7 @@ package io.github.gleidsonmt.dashboardfx.core.impl;
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.Routes;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.Wrapper;
 
 import java.net.URL;
 import java.util.Objects;
@@ -42,6 +43,11 @@ public class IContext implements Context {
     @Override
     public Routes routes() {
         return routes;
+    }
+
+    @Override
+    public Wrapper wrapper() {
+        return root.getWrapper();
     }
 
     @Override

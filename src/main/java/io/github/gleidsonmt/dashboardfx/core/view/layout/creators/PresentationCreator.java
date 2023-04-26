@@ -50,7 +50,7 @@ public class PresentationCreator extends StackPane implements BuildCreator {
     protected ObservableList<Node> items = FXCollections.observableArrayList();
     private final Context context;
 
-    public PresentationCreator(String _name, Context _context) {
+    public PresentationCreator(Context _context) {
         this.context = _context;
 
         ScrollPane scroll = new ScrollPane();

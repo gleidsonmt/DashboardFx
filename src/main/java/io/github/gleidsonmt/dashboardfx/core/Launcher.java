@@ -5,6 +5,7 @@ import io.github.gleidsonmt.dashboardfx.core.impl.IRoot;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.scenicview.ScenicView;
 //import org.scenicview.ScenicView;
 
 

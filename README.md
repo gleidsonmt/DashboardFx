@@ -13,7 +13,7 @@
 ## Preview
 
 <p align="center">
-  <img src="./src/main/resources/core.app/img/screen_dash.png"  />
+  <img src="./src/main/resources/io.github.gleidsonmt.dashboardfx/style/img/screen_dash.png"  />
 </p>
 
 # 🛠 Enhancements

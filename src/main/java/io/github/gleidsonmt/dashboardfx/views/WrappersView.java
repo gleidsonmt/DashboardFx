@@ -20,12 +20,12 @@
 package io.github.gleidsonmt.dashboardfx.views;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.Container;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.SimpleView;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.*;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.Author;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.PresentationCreator;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.options.ActionOptions;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.options.AlertType;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.options.DialogAction;
 import javafx.geometry.HPos;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -38,8 +38,7 @@ public class WrappersView extends StackPane {
     private Context context;
     private StackPane root = new StackPane();
 
-    public WrappersView(String _name, Context context) {
-//        super(_name, root);
+    public WrappersView(Context context) {
         this.context = context;
 
         final ActionOptions customDialog = new ActionOptions();
@@ -48,7 +47,7 @@ public class WrappersView extends StackPane {
             createAroundDilog(customDialog);
         });
 
-        PresentationCreator creator = new PresentationCreator("wrappers_creator", context)
+        PresentationCreator creator = new PresentationCreator(context)
         .title("Popups and wrappers.")
         .text("""
             App ecosystem needs a way to create modals, alerts to talk his users. Getting the context to use an accessor class for creating dialogs,
@@ -156,25 +155,26 @@ public class WrappersView extends StackPane {
 
     private void createDrawer(HPos side) {
 
-//        context.wrapper()
-//                .drawer()
-//                .side(side)
-//                .content(
-//                        new DrawerContainer(new Label("My Custom Drawer."), 250)
-//                )
-////                .style("-fx-background-color : white;")
-//                .show();
+        context.wrapper()
+                .drawer()
+                .side(side)
+                .content(
+                        new DrawerContainer(new Label("My Custom Drawer."), 250)
+                )
+//                .style("-fx-background-color : white;")
+                .show();
+
     }
 
     public void createDialogPopup() {
-//        context.wrapper()
-//                .content(
-//                    new DialogContainer()
-//                            .content(new Label("My custom dialog")
-//                            )
-//                    )
-//
-//                .show();
+        context.wrapper()
+                .content(
+                    new DialogContainer()
+                            .content(new Label("My custom dialog")
+                            )
+                    )
+
+                .show();
     }
 
     public void createAroundDilog(Node node) {
@@ -196,29 +196,29 @@ public class WrappersView extends StackPane {
     }
 
     private void createDialog(AlertType _type) {
-//        context.wrapper()
-////                .getAlert()
-////                .getFlow()
-//                .content(
-//                        new AlertContainer(context)
-//                            .title("Info Alert")
-//                            .text("""
-//                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-//                            Mauris volutpat mauris sit amet rhoncus tempor. Morbi in ex mattis,
-//                            sagittis tellus et, accumsan magna.
-//                            In quis purus sit amet odio fringilla commodo nec ut massa.
-//                            """)
-//                            .actions(
-//                        new DialogAction(
-//                                            "Ok", ButtonType.OK, event -> System.out.println("Button ok pressed!")
-//                                    ),
-//                                    new DialogAction(
-//                                            "Cancel", ButtonType.CANCEL, event -> System.out.println("Button cancel pressed!")
-//                                    )
-//                            )
-//                        .type(_type)
-//                        .build())
-//                .show();
+        context.wrapper()
+//                .getAlert()
+//                .getFlow()
+                .content(
+                        new AlertContainer(context)
+                            .title("Info Alert")
+                            .text("""
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Mauris volutpat mauris sit amet rhoncus tempor. Morbi in ex mattis,
+                            sagittis tellus et, accumsan magna.
+                            In quis purus sit amet odio fringilla commodo nec ut massa.
+                            """)
+                            .actions(
+                        new DialogAction(
+                                            "Ok", ButtonType.OK, event -> System.out.println("Button ok pressed!")
+                                    ),
+                                    new DialogAction(
+                                            "Cancel", ButtonType.CANCEL, event -> System.out.println("Button cancel pressed!")
+                                    )
+                            )
+                        .type(_type)
+                        .build())
+                .show();
     }
 
 }
