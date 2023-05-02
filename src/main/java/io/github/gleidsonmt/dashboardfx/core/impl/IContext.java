@@ -3,7 +3,9 @@ package io.github.gleidsonmt.dashboardfx.core.impl;
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.Routes;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.SnackBar;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.Wrapper;
+import javafx.application.HostServices;
 
 import java.net.URL;
 import java.util.Objects;
@@ -17,9 +19,12 @@ public class IContext implements Context {
 
     private final Routes routes;
     private final IRoot root;
+    private SnackBar snackBar;
+    private final HostServices hostServices;
 
-    public IContext(IRoot root) {
+    public IContext(IRoot root, HostServices hostServices) {
         this.root = root;
+        this.hostServices = hostServices;
         this.routes = new IRoutes(root, this);
     }
 
@@ -53,5 +58,16 @@ public class IContext implements Context {
     @Override
     public ActionView controllerOf(String view) {
         return this.routes.getView(view).getController();
+    }
+
+    @Override
+    public void openLink(String uri) {
+        hostServices.showDocument(uri);
+    }
+
+    @Override
+    public SnackBar createSnackBar() {
+        if (snackBar == null) snackBar = new SnackBar(root);
+        return snackBar;
     }
 }

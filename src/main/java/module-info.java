@@ -8,6 +8,9 @@ module io.github.gleidsonmt.dashboardfx {
     requires org.jetbrains.annotations;
     requires javafx.web;
     requires org.kordamp.ikonli.material;
+    requires org.kordamp.ikonli.core;
+    requires org.kordamp.ikonli.javafx;
+    requires animatefx;
 
 //    requires io.github.gleidsonmt.gncontrols;
     requires scenicView;

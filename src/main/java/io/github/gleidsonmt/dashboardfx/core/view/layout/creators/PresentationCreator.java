@@ -116,13 +116,13 @@ public class PresentationCreator extends StackPane implements BuildCreator {
             hp.setGraphic(new IconContainer(Icons.GITHUB));
             hp.setText(author.getName());
             hp.setGraphicTextGap(10);
-//            hp.setOnAction(event -> context.openLink(author.getGitUrl()));
+            hp.setOnAction(event -> context.openLink(author.getGitUrl()));
             body.getChildren().add(hp);
 
             if (author.getDocumentation() != null) {
                 Hyperlink h = new Hyperlink();
                 h.setText(" / Documentation");
-//                h.setOnAction(event -> context.openLink(author.getDocumentation()));
+                h.setOnAction(event -> context.openLink(author.getDocumentation()));
                 HBox.setMargin(h, new Insets(5, 0, 0, 0));
                 h.setGraphicTextGap(10);
                 body.getChildren().add(h);

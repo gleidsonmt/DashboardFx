@@ -21,6 +21,9 @@ package io.github.gleidsonmt.dashboardfx.core.view.layout;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNButton;
+import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
+import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.options.SnackColors;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -102,12 +105,11 @@ public class BlockCode extends StackPane {
             content.putHtml("<b>Bold</b> text");
             Clipboard.getSystemClipboard().setContent(content);
 
-//            context.root()
-//                    .createSnackBar()
-//                    .icon(new IconContainer(Icons.DONE))
-//                    .color(SnackColors.SUCCESS)
-//                    .message("Copied!")
-//                    .show();
+            context.createSnackBar()
+                    .icon(new IconContainer(Icons.DONE))
+                    .color(SnackColors.SUCCESS)
+                    .message("Copied!")
+                    .show();
         });
     }
 

@@ -49,6 +49,8 @@ dependencies {
     implementation 'org.kordamp.ikonli:ikonli-core:12.3.1'
     implementation 'org.kordamp.ikonli:ikonli-javafx:12.3.1'
 
+    implementation files('vendor/animatefx-1.2.0.jar')
+
 //    implementation 'org.commonmark:commonmark:0.20.0'
 //    implementation files('vendor/GNControls-1.2.5.jar')
 
@@ -58,7 +60,6 @@ dependencies {
 
     implementation files('vendor/scenicView.jar')          // thta's scenic view using jfx 8.. i need to updgrade.. this is essential for view all nodes in process
 //    implementation files('vendor/controlsfx-8.40.17.jar') // My favorite lib.. has a lot of functionality
-//    implementation files('vendor/animatefx-1.2.0.jar')
 
 //    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
 //    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")

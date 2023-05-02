@@ -3,6 +3,7 @@ package io.github.gleidsonmt.dashboardfx.core;
 import io.github.gleidsonmt.dashboardfx.core.impl.Layout;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.Routes;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.SnackBar;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.Wrapper;
 
 import java.net.URL;
@@ -29,6 +30,10 @@ public interface Context {
      * Util methods
      *
      *******************************************************/
+
+    SnackBar createSnackBar();
+
+    void openLink(String uri);
 
     ActionView controllerOf(String view);
 

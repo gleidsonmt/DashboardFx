@@ -12,7 +12,7 @@ import org.scenicview.ScenicView;
 public abstract class Launcher extends Application {
 
     private final IRoot root = new IRoot();
-    private final Context context = new IContext(root);
+    private final Context context = new IContext(root, getHostServices());
 
     @Override
     public void start(Stage stage) {

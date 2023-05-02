@@ -6,6 +6,7 @@ import io.github.gleidsonmt.dashboardfx.core.view.View;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.SimpleView;
 import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
 import io.github.gleidsonmt.dashboardfx.views.WrappersView;
+import io.github.gleidsonmt.dashboardfx.views.controls.ButtonPresCreator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleGroup;
@@ -54,11 +55,17 @@ public class SideNavController extends ActionView {
 //        context.routes().putAndGo(view);
     }
 
+    @FXML
+    private void goButton() {
+        context.routes().putAndGo(
+                new SimpleView("view_button", new ButtonPresCreator(context))
+        );
+    }
+
+
     public void goBuild(ActionEvent actionEvent) {
     }
 
-    public void goButton(ActionEvent actionEvent) {
-    }
 
     public void goLogin(ActionEvent actionEvent) {
     }
