@@ -64,8 +64,10 @@ public class PresentationCreator extends StackPane implements BuildCreator {
         body.setSpacing(10);
     }
 
-    public PresentationCreator title(String title) {
-        items.add(createTitle(title));
+    private String title = null;
+    public PresentationCreator title(String _title) {
+        if (title == null) title = _title;
+        items.add(createTitle(_title));
         return this;
     }
 
@@ -98,6 +100,20 @@ public class PresentationCreator extends StackPane implements BuildCreator {
         return this;
     }
 
+    public PresentationCreator footer(ObservableList<Author> authors) {
+        for(Author author : authors) {
+            items.add(createFooter(author));
+        }
+        return this;
+    }
+
+    public ObservableList<Author> createDefaultControl() {
+        return FXCollections.observableArrayList(
+            new Author("OpenJFX",
+                    "https://github.com/openjfx/openjfx.github.io",
+                    "https://openjfx.io/javadoc/17/javafx.controls/javafx/scene/control/"+title+".html")
+            );
+    }
     private Node createFooter(Author... authors) {
         VBox root = new VBox();
 
@@ -179,11 +195,13 @@ public class PresentationCreator extends StackPane implements BuildCreator {
         root.setAlignment(Pos.CENTER);
         nodeTab.setContent(root);
         tabPane.getTabs().setAll(nodeTab, javaTab);
+
         if (!fxml.isEmpty()) {
             Tab fxmlTab = new Tab("FXML");
             fxmlTab.setContent(createBlockCode(fxml, true));
-            tabPane.getTabs().add(javaTab);
+            tabPane.getTabs().add(fxmlTab);
         }
+
         root.getStyleClass().addAll("border-light-gray-2", "border-1");
         return tabPane;
     }

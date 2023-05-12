@@ -6,9 +6,7 @@ import io.github.gleidsonmt.dashboardfx.core.view.View;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.SimpleView;
 import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
 import io.github.gleidsonmt.dashboardfx.views.WrappersView;
-import io.github.gleidsonmt.dashboardfx.views.controls.ButtonPresCreator;
-import io.github.gleidsonmt.dashboardfx.views.controls.HyperlinkPresCreator;
-import io.github.gleidsonmt.dashboardfx.views.controls.LabelPresCreator;
+import io.github.gleidsonmt.dashboardfx.views.controls.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
@@ -72,22 +70,6 @@ public class SideNavController extends ActionView {
         context.routes().putAndGo(
                 new SimpleView("view_hyperlink", new HyperlinkPresCreator(context))
         );
-        WebView webView = new WebView();
-        webView.setContextMenuEnabled(false);
-        webView.getEngine().setJavaScriptEnabled(true);
-        webView.getEngine().load("https://openjfx.io/javadoc/17/javafx.controls/javafx/scene/control/Button.html");
-        webView.getEngine().getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
-            @Override
-            public void changed(ObservableValue<? extends Worker.State> observable, Worker.State oldValue, Worker.State newValue) {
-                if (newValue == Worker.State.SUCCEEDED) {
-                    System.out.println(
-                            webView.getEngine().getDocument().getElementsByTagName("block")
-                    );
-                }
-            }
-        });
-
-
     }
 
     @FXML
@@ -97,6 +79,20 @@ public class SideNavController extends ActionView {
         );
     }
 
+    @FXML
+    private void goTextField() {
+        context.routes().putAndGo(
+                new SimpleView("view_label", new TextFieldPresCreator(context))
+        );
+
+    }
+
+    @FXML
+    private void goListView() {
+        context.routes().putAndGo(
+                new SimpleView("view_list", new ListViewCreator(context))
+        );
+    }
 
     public void goBuild(ActionEvent actionEvent) {
     }

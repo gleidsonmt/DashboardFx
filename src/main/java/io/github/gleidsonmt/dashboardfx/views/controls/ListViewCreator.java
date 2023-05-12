@@ -32,7 +32,7 @@ import java.util.List;
  */
 public class ListViewCreator extends TutorialCreator {
 
-    public ListViewCreator(String name, Context context) {
+    public ListViewCreator(Context context) {
         super(context);
         this    .title("ListView")
                 .text("A ListView displays a horizontal or vertical list of items from which the user may select, or with which the user may interact. A ListView is able to have its generic type set to represent the type of data in the backing model. Doing this has the benefit of making various methods in the ListView, as well as the supporting classes (mentioned below), type-safe. In addition, making use of the generic type supports substantially simplified development of applications making use of ListView, as all modern IDEs are able to auto-complete far more successfully with the additional type information.")

@@ -34,6 +34,7 @@ public class LabelPresCreator extends TutorialCreator {
 
     public LabelPresCreator(Context context) {
         super( context);
+
         this    .title("Starting")
                 .text("""
                 Label is a non-editable text control. 

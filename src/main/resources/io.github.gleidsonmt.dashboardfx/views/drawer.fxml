@@ -98,6 +98,16 @@
                               <ToggleGroup fx:id="group1" />
                            </toggleGroup>
                         </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="90.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goListView" styleClass="drawer-item" text="ListView">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group11" />
+                           </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="125.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goTextField" styleClass="drawer-item" text="TextField">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group111" />
+                           </toggleGroup>
+                        </ToggleButton>
                      </children>
                   </VBox>
                </content>
