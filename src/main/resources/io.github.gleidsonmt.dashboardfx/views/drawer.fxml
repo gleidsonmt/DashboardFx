@@ -92,6 +92,12 @@
                   <VBox nodeOrientation="LEFT_TO_RIGHT">
                      <children>
                         <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="67.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goButton" styleClass="drawer-item" text="Button" toggleGroup="$group" />
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goHyperlink" styleClass="drawer-item" text="Hyperlink" toggleGroup="$group" />
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="55.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goLabels" styleClass="drawer-item" text="Label">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group1" />
+                           </toggleGroup>
+                        </ToggleButton>
                      </children>
                   </VBox>
                </content>

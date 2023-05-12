@@ -25,6 +25,7 @@ import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.Author;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.PresentationCreator;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 
@@ -36,11 +37,11 @@ import java.util.List;
  * Version 0.0.1
  * Create on  21/01/2023
  */
-public class ButtonPresCreator extends PresentationCreator {
+public class ButtonPresCreator extends TutorialCreator {
 
     public ButtonPresCreator(Context context) {
         super(context);
-        this
+        this    .title("Start")
                 .text("""
                         A simple button control. The button control can contain text and/or a graphic. A button control has three different modes
                                                 
@@ -76,7 +77,7 @@ public class ButtonPresCreator extends PresentationCreator {
                         """,
                         """
                         """)
-
+                .title("Links")
                 .footer(new Author("OpenJFX",
                         "https://github.com/openjfx/openjfx.github.io",
                         "https://openjfx.io/javadoc/17/javafx.controls/javafx/scene/control/Button.html")

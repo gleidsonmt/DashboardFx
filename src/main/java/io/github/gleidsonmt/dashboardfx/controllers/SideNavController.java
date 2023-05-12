@@ -7,10 +7,16 @@ import io.github.gleidsonmt.dashboardfx.core.view.layout.SimpleView;
 import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
 import io.github.gleidsonmt.dashboardfx.views.WrappersView;
 import io.github.gleidsonmt.dashboardfx.views.controls.ButtonPresCreator;
+import io.github.gleidsonmt.dashboardfx.views.controls.HyperlinkPresCreator;
+import io.github.gleidsonmt.dashboardfx.views.controls.LabelPresCreator;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.StackPane;
+import javafx.scene.web.WebView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,7 +39,6 @@ public class SideNavController extends ActionView {
 
     @FXML
     private void goUnderstanding() {
-        System.out.println("going");
         context.routes().putAndGo(
                 new SimpleView(
                         "tutorial_understanding",
@@ -59,6 +64,36 @@ public class SideNavController extends ActionView {
     private void goButton() {
         context.routes().putAndGo(
                 new SimpleView("view_button", new ButtonPresCreator(context))
+        );
+    }
+
+    @FXML
+    private void goHyperlink() {
+        context.routes().putAndGo(
+                new SimpleView("view_hyperlink", new HyperlinkPresCreator(context))
+        );
+        WebView webView = new WebView();
+        webView.setContextMenuEnabled(false);
+        webView.getEngine().setJavaScriptEnabled(true);
+        webView.getEngine().load("https://openjfx.io/javadoc/17/javafx.controls/javafx/scene/control/Button.html");
+        webView.getEngine().getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
+            @Override
+            public void changed(ObservableValue<? extends Worker.State> observable, Worker.State oldValue, Worker.State newValue) {
+                if (newValue == Worker.State.SUCCEEDED) {
+                    System.out.println(
+                            webView.getEngine().getDocument().getElementsByTagName("block")
+                    );
+                }
+            }
+        });
+
+
+    }
+
+    @FXML
+    private void goLabels() {
+        context.routes().putAndGo(
+                new SimpleView("view_label", new LabelPresCreator(context))
         );
     }
 
