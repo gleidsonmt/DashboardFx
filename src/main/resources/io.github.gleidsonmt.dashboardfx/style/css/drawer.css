@@ -1,9 +1,7 @@
-
 #drawer-root {
     -fx-background-color : red;
     -fx-accent : -aqua;
 }
-
 
 .toggle-button {
     -fx-background-color : transparent;
@@ -134,4 +132,3 @@
     -fx-scale-x : 1.0;
     -fx-scale-y : 1.0;
 }
-

@@ -25,6 +25,7 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -52,7 +53,9 @@ public class DrawerBehavior {
 
         box.getChildren()
                 .stream()
-                .filter(fill -> fill instanceof TitledPane && ((TitledPane) fill).getContent() instanceof VBox)
+                .filter(fill -> fill instanceof TitledPane
+                        && ((TitledPane) fill).getContent() instanceof VBox
+                )
                 .map(item -> (VBox) ((TitledPane) item).getContent())
                 .forEach(each -> {
                     for (Node fill : each.getChildren()) {

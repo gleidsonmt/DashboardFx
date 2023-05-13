@@ -4,6 +4,7 @@ import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.services.DrawerBehavior;
 import io.github.gleidsonmt.dashboardfx.core.view.View;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.SimpleView;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
 import io.github.gleidsonmt.dashboardfx.views.WrappersView;
 import io.github.gleidsonmt.dashboardfx.views.controls.*;
@@ -84,14 +85,24 @@ public class SideNavController extends ActionView {
         context.routes().putAndGo(
                 new SimpleView("view_label", new TextFieldPresCreator(context))
         );
-
     }
 
     @FXML
     private void goListView() {
-        context.routes().putAndGo(
-                new SimpleView("view_list", new ListViewCreator(context))
-        );
+        go("view_list", new ListViewCreator(context));
+    }
+
+    @FXML
+    private void goPassword() {
+         go("view_pass", new PasswordPresCreator(context));
+    }
+    @FXML
+    private void goCheckBox() {
+        go("view_check", new CheckBoxPresCreator(context));
+    }
+
+    private void go(String name, TutorialCreator tutorialCreator) {
+        context.routes().putAndGo(new SimpleView(name, tutorialCreator));
     }
 
     public void goBuild(ActionEvent actionEvent) {

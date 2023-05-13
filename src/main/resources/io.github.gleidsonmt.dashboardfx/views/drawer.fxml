@@ -108,6 +108,16 @@
                               <ToggleGroup fx:id="group111" />
                            </toggleGroup>
                         </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="160.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goPassword" styleClass="drawer-item" text="PasswordField">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group1111" />
+                           </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="245.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goCheckBox" styleClass="drawer-item" text="CheckBox">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group11111" />
+                           </toggleGroup>
+                        </ToggleButton>
                      </children>
                   </VBox>
                </content>
