@@ -17,23 +17,25 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.view;
-
-import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
-import javafx.scene.Parent;
+package io.github.gleidsonmt.dashboardfx.core.view.layout.creators;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Version 0.0.1
- * Create on  13/05/2023
+ * Create on  14/05/2023
  */
-public interface View {
+public class HierarchyItem extends Item {
 
-    String getName();
+    public HierarchyItem(String name) {
+        this(name, null);
+    }
 
-    Parent getRoot();
+    public HierarchyItem(String name, String text) {
+        super(name, text);
+    }
 
-    ActionView getController() ;
-
-
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

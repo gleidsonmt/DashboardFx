@@ -56,6 +56,7 @@ dependencies {
 
 // Here only for tests
     implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to vizualize css when app is running.. so amazing!
+
 //    implementation files('vendor/gndecorator-2.2.31.jar')     // Decorator lib for custom windows
 
     implementation files('vendor/scenicView.jar')          // thta's scenic view using jfx 8.. i need to updgrade.. this is essential for view all nodes in process

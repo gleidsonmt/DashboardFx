@@ -19,21 +19,24 @@
 
 package io.github.gleidsonmt.dashboardfx.core.view;
 
-import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import javafx.scene.Parent;
+
+import java.net.URL;
+import java.nio.charset.Charset;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Version 0.0.1
  * Create on  13/05/2023
  */
-public interface View {
+public interface IFXMLView extends View {
 
-    String getName();
+    ViewComposer getComposer() throws NullPointerException;
 
     Parent getRoot();
 
-    ActionView getController() ;
+    Charset getCharset();
 
+    URL getLocation();
 
 }

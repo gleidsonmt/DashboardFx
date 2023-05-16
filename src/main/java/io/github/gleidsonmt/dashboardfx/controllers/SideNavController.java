@@ -2,20 +2,17 @@ package io.github.gleidsonmt.dashboardfx.controllers;
 
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.services.DrawerBehavior;
+import io.github.gleidsonmt.dashboardfx.core.view.SimpleView;
 import io.github.gleidsonmt.dashboardfx.core.view.View;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.SimpleView;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
 import io.github.gleidsonmt.dashboardfx.views.WrappersView;
 import io.github.gleidsonmt.dashboardfx.views.controls.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Worker;
+import io.github.gleidsonmt.dashboardfx.views.tutorial.NewsLetter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.StackPane;
-import javafx.scene.web.WebView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,13 +34,13 @@ public class SideNavController extends ActionView {
     }
 
     @FXML
+    private void goNewsletter() {
+        go("view_news", new NewsLetter(context));
+    }
+
+    @FXML
     private void goUnderstanding() {
-        context.routes().putAndGo(
-                new SimpleView(
-                        "tutorial_understanding",
-                        new TutorialUnderstanding(context)
-                        )
-        );
+        go("tutorial_understanding", new TutorialUnderstanding(context));
     }
 
     private View presentation;
@@ -55,36 +52,29 @@ public class SideNavController extends ActionView {
             new WrappersView(context));
 
         context.routes().putAndGo(presentation);
+
 //        View view = new SimpleView("view1", "/views/view01.fxml");
 //        context.routes().putAndGo(view);
     }
 
     @FXML
     private void goButton() {
-        context.routes().putAndGo(
-                new SimpleView("view_button", new ButtonPresCreator(context))
-        );
+        go("view_button", new ButtonPresCreator(context));
     }
 
     @FXML
     private void goHyperlink() {
-        context.routes().putAndGo(
-                new SimpleView("view_hyperlink", new HyperlinkPresCreator(context))
-        );
+        go("view_hyperlink", new HyperlinkPresCreator(context));
     }
 
     @FXML
     private void goLabels() {
-        context.routes().putAndGo(
-                new SimpleView("view_label", new LabelPresCreator(context))
-        );
+        go("view_label", new LabelPresCreator(context));
     }
 
     @FXML
     private void goTextField() {
-        context.routes().putAndGo(
-                new SimpleView("view_label", new TextFieldPresCreator(context))
-        );
+        go("view_label", new TextFieldPresCreator(context));
     }
 
     @FXML
@@ -106,10 +96,11 @@ public class SideNavController extends ActionView {
     }
 
     public void goBuild(ActionEvent actionEvent) {
+
     }
 
-
     public void goLogin(ActionEvent actionEvent) {
+
     }
 
     @FXML

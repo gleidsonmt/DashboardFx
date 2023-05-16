@@ -25,9 +25,9 @@ public class IRoutes implements Routes {
     public Routes setView(String _view) {
 //        View view = doActions(manager.get(_view));
         if (_view != null) {
-            View view = manager.get(_view);
-            if (valid(view)) {
-//                root.getBody().setContent(view);
+            View View = manager.get(_view);
+            if (valid(View)) {
+//                root.getBody().setContent(View);
             }
         }
 //        doActions(view);
@@ -36,12 +36,12 @@ public class IRoutes implements Routes {
     }
 
     @Override
-    public Routes putAndGo(View view) {
-        if(valid(view)) {
-            manager.add(view);
-            doOnInit(view);
-            root.getBody().getLayout().setContent(view.getRoot());
-            doActions(view);
+    public Routes putAndGo(View View) {
+        if(valid(View)) {
+            manager.add(View);
+            doOnInit(View);
+            root.getBody().getLayout().setContent(View.getRoot());
+            doActions(View);
         } else {
 
         }
@@ -49,12 +49,12 @@ public class IRoutes implements Routes {
         return this;
     }
 
-    public Routes put(View view) {
-        if(valid(view)) {
-            doOnInit(view);
-            manager.add(view);
+    public Routes put(View View) {
+        if(valid(View)) {
+            doOnInit(View);
+            manager.add(View);
         }
-//        this.addView(view);
+//        this.addView(View);
         return this;
     }
 
@@ -65,10 +65,10 @@ public class IRoutes implements Routes {
 
     @Override
     public Routes nav(String key) {
-        View view = manager.get(key);
-        if (view != null) {
-            doActions(view);
-            root.getBody().getLayout().setContent(view.getRoot());
+        View View = manager.get(key);
+        if (View != null) {
+            doActions(View);
+            root.getBody().getLayout().setContent(View.getRoot());
         }
 
         root.getBody().getLayout().setRight(null);
@@ -77,20 +77,20 @@ public class IRoutes implements Routes {
 
 
 
-    private boolean valid(View view) {
-        return view != null;
+    private boolean valid(View View) {
+        return View != null;
     }
 
-    private void doActions(View view) {
-        if(view.getController() != null) {
-            view.getController().onEnter();
+    private void doActions(View View) {
+        if(View.getController() != null) {
+            View.getController().onEnter();
         }
     }
 
-    private void doOnInit(View view) {
-        if(valid(view)) {
-            if(view.getController() != null) {
-                view.getController().onInit(context);
+    private void doOnInit(View View) {
+        if(valid(View)) {
+            if(View.getController() != null) {
+                View.getController().onInit(context);
             }
         }
     }

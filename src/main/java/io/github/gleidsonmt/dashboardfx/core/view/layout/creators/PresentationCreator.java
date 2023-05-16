@@ -72,9 +72,11 @@ public class PresentationCreator extends StackPane implements BuildCreator {
     }
 
     public PresentationCreator subTitle(String title) {
+        Label label = createLabel(title);
         items.add(createSubTitle(title));
         return this;
     }
+
     public PresentationCreator image(Image image) {
         items.add(createImage(image));
         return this;
@@ -162,7 +164,12 @@ public class PresentationCreator extends StackPane implements BuildCreator {
     }
 
     public PresentationCreator code(String text) {
-        items.add(createBlockCode(text, false));
+        items.add(createBlockCode(text, "java"));
+        return this;
+    }
+
+    public PresentationCreator code(String text, String language) {
+        items.add(createBlockCode(text, language));
         return this;
     }
 
@@ -184,7 +191,7 @@ public class PresentationCreator extends StackPane implements BuildCreator {
         Tab javaTab = new Tab("Java");
         Tab nodeTab = new Tab("Node");
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-        javaTab.setContent(createBlockCode(java, false));
+        javaTab.setContent(createBlockCode(java, "java"));
         FlowPane root = new FlowPane();
         root.setPadding(new Insets(20));
         root.setVgap(10);
@@ -198,7 +205,7 @@ public class PresentationCreator extends StackPane implements BuildCreator {
 
         if (!fxml.isEmpty()) {
             Tab fxmlTab = new Tab("FXML");
-            fxmlTab.setContent(createBlockCode(fxml, true));
+            fxmlTab.setContent(createBlockCode(fxml, "html"));
             tabPane.getTabs().add(fxmlTab);
         }
 
@@ -210,8 +217,8 @@ public class PresentationCreator extends StackPane implements BuildCreator {
         return createMultBlock(List.of(node), java, fxml);
     }
 
-    private StackPane createBlockCode(String text, boolean fxml) {
-        return new BlockCode(context, text, fxml);
+    private StackPane createBlockCode(String text, String language) {
+        return new BlockCode(context, text, language);
     }
 
     private TilePane createOptions(ActionOptions... options) {
@@ -243,7 +250,7 @@ public class PresentationCreator extends StackPane implements BuildCreator {
     }
 
     private @NotNull Label createSubTitle(String title) {
-        return createLabel(title, "title", "h6");
+        return createLabel(title, "subtitle", "h6", "text-bold");
     }
 
     private @NotNull Label createLabel(String text, String... clazz) {

@@ -46,10 +46,10 @@ public class BlockCode extends StackPane {
     private final StringProperty content = new SimpleStringProperty();
 
     public BlockCode(Context context, String text) {
-        this(context, text, false);
+        this(context, text, "java");
     }
 
-    public BlockCode(Context context, String text, boolean fxml) {
+    public BlockCode(Context context, String text, String language) {
         content.setValue(text);
         this.setMinHeight(150);
         this.setAlignment(Pos.TOP_RIGHT);
@@ -78,19 +78,23 @@ public class BlockCode extends StackPane {
                             Document doc = webView.getEngine().getDocument();
                             Element el = doc.getElementById("block");
 
-                            if (fxml)
-                                el.setAttribute("class", "language-html");
-
+                            if (!Objects.equals(language, "java")) {
+                                el.setAttribute("class", "language-" + language);
+                            }
                             el.setTextContent(text);
 
-                            webView.getEngine().executeScript("hljs.highlightAll();");
                         }
-                            this.getChildren().setAll(webView, btn);
-                        }
+
+                        this.getChildren().setAll(webView, btn);
+                        webView.getEngine().executeScript("hljs.highlightAll();");
+
+
+                    }
                     });
                 }); // addListener()
 
         webView.getEngine().load(Objects.requireNonNull(url).toExternalForm());
+//        webView.getEngine().executeScript("hljs.highlightAll();");
 
         webView.setOnScroll(event -> {
         });

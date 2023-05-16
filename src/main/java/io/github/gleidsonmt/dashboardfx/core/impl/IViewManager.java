@@ -18,8 +18,8 @@ public class IViewManager implements ViewManager {
     private View previous;
 
     @Override
-    public void add(View view) {
-        views.put(view.getName(), view);
+    public void add(View View) {
+        views.put(View.getName(), View);
     }
 
     @Override

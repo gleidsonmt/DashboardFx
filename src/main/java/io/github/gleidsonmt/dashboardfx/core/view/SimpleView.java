@@ -20,6 +20,8 @@
 package io.github.gleidsonmt.dashboardfx.core.view;
 
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.Container;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 
 /**
@@ -27,13 +29,28 @@ import javafx.scene.Parent;
  * Version 0.0.1
  * Create on  13/05/2023
  */
-public interface View {
+public class SimpleView extends ActionView implements View {
 
-    String getName();
+    private final String name;
+    private final Parent container;
 
-    Parent getRoot();
+    public SimpleView(String name, Node node) {
+        this.name = name;
+        container = new Container(node);
+    }
 
-    ActionView getController() ;
+    @Override
+    public String getName() {
+        return name;
+    }
 
+    @Override
+    public Parent getRoot() {
+        return container;
+    }
 
+    @Override
+    public ActionView getController() {
+        return this;
+    }
 }

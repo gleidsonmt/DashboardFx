@@ -1,7 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.core.view.layout;
 
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
-import io.github.gleidsonmt.dashboardfx.core.view.View;
+import io.github.gleidsonmt.dashboardfx.core.view.IView;
 import io.github.gleidsonmt.dashboardfx.core.view.ViewComposer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,7 +16,7 @@ import java.nio.charset.Charset;
  * Version 0.0.1
  * Create on  02/04/2023
  */
-public class SimpleView implements View {
+public class SimpleView implements IView {
 
     private final String name;
     private final Parent container;

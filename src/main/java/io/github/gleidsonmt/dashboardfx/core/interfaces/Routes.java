@@ -11,9 +11,9 @@ public interface Routes {
 
     Routes setView(String view);
 
-    Routes putAndGo(View view);
+    Routes putAndGo(View View);
 
-    Routes put(View view);
+    Routes put(View View);
 
     View getView(String view);
 

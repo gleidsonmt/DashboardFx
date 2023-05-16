@@ -2,10 +2,7 @@ package io.github.gleidsonmt.dashboardfx.core.services;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.Loader;
-import io.github.gleidsonmt.dashboardfx.core.view.View;
-import io.github.gleidsonmt.dashboardfx.core.view.IView;
-import io.github.gleidsonmt.dashboardfx.core.view.ViewComposer;
-import io.github.gleidsonmt.dashboardfx.core.view.ViewMap;
+import io.github.gleidsonmt.dashboardfx.core.view.*;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
@@ -100,8 +97,8 @@ public class LoadViews extends Task<View> {
                 e.printStackTrace();
             }
 
-//            context.getRoutes().addView(new IView(view, loader));
-            context.routes().put(new IView(view, loader));
+//            context.getRoutes().addView(new View(view, loader));
+            context.routes().put(new FXMLView(view, loader));
 
         } else if (view.getFxml() != null) {
             IOException io = new IOException("The fxml with ["

@@ -38,4 +38,4 @@ Doing:
 To fixed:
 
 - [ ] Filtrar melhor metodos para fazer em routes tipo, metodos q são feitos inicializados uma boa ideia é utilizar uma strea e mapear
-- [ ] Scroll Pane com seu view port some com as bordas
+- [ ] Scroll Pane com seu View port some com as bordas

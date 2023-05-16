@@ -17,23 +17,23 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.view;
+package io.github.gleidsonmt.dashboardfx.views.tutorial;
 
-import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
-import javafx.scene.Parent;
+import io.github.gleidsonmt.dashboardfx.core.Context;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 
-/**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
- * Create on  13/05/2023
- */
-public interface View {
+import java.time.LocalDate;
 
-    String getName();
+public class NewsLetter extends TutorialCreator {
 
-    Parent getRoot();
+    public NewsLetter(Context context) {
+        super(context);
 
-    ActionView getController() ;
+        this.
+                title(LocalDate.of(2023, 5, 13).toString())
+                .text("Presenting newsletter I hope can write at least once per week here!")
+                .build();
 
+    }
 
 }

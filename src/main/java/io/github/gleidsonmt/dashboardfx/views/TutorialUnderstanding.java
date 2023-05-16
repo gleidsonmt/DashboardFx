@@ -22,6 +22,7 @@ package io.github.gleidsonmt.dashboardfx.views;
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import javafx.geometry.Pos;
+import javafx.scene.image.Image;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -34,7 +35,7 @@ public class TutorialUnderstanding extends TutorialCreator {
         super(context);
 
         this    .title("""
-                        Point of Start
+                        Introduction
                         """)
                 .text("""
                         If you like me and passionate about java, you will see that javafx is 
@@ -45,46 +46,88 @@ public class TutorialUnderstanding extends TutorialCreator {
                 .text("""
                         Good Frameworks has a big ecosystem, so I was 
                         start ways to get that, because the first problem 
-                        I have with javafx is getting one controller from other view..
+                        I have with javafx is getting one controller from other View..
                         and so I just build this dash -_(^-^)-_
                         """)
                 .text("""
-                        First thing I believe it's way to get views from controllers.. navigate for the other views.. and the menu to get ther! 
+                        First thing I believe it's way to get views from controllers.. navigate for the other views.. and the menu to get there! 
                         """)
-                .title("""
-                        Hello World View!
+                .title("Context")
+                .text("""
+                        A context is a point to get things inside the project, making a global way to get resources around whole project.
                         """)
-                .text("In views package create a file named HelloView.java ", "text-12", "text-bold")
+                .image(new Image(context.getResource("style/img/tree_context.png").toExternalForm()))
+                .title("View")
+                .text("The base interface to create views, get controllers, navigate between views. ")
+                .image(new Image(context.getResource("style/img/View.png").toExternalForm()))
+                .title("Simple View")
+                .text("It's only a default java class as self-view. They are our own controllers.")
                 .code("""
-                        public class HelloView extends Container {
-                           \s
-                            public HelloView(String name) {
-                                super(name);
-                                getChildren().setAll(new Label("Hello View");
-                            }
-                           \s
-                        }
+                        SimpleView myView = new SimpleView("My View", new StackPane()); 
+                            // the name is used to navigate
+                            // the node acts as a container
                         """)
-                .text("In DrawerController create one action..", "text-12", "text-bold")
+
+                .title("Controllers")
+                .text("The SimpleView descends a ActionView, a typical controller class has the method initialize, but isn't only the actions you need, when you enter a view.")
+                .text("See in code (The same methods are applicative in SimpleView as well).", "text-12", "text-bold")
                 .code("""
-                        public class DrawerController {
-                        \s
-                            public DrawerController(IWrapper _wrapper) {
-                                super(_wrapper);
+                        public class MyView extends ActionView {
+                            @Override
+                            public void OnEnter() { // When you use context.routes().nav("view"); 
+                                                    // then this method is trigger
                             }
-                                                
-                            @FXML
-                            private void goHello() {
-                                context.routes().registryAndGo(new HelloView("hello_view"));
+                            
+                            @Override
+                            public void OnExit() {  // When you use context.routes().nav("to another view"); 
+                                                    // then this method is trigger, end close the view
                             }
-                        \s
+                            
+                            @Override
+                            public void onInit(Context context) {   // When this method is called, you can give access
+                                                                    // of context object
+                            }
                         }
                         """)
 
-                .text("Now in your drawer.fxml set the one toggle button the action and you go to the HelloView!", "text-12", "text-bold")
+                .title("Loading Views")
+                .text("It's a view that is loaded by yml file, this wrapper class wrappers the composer, location, charsets.. so you can get in the future or load when application starts.")
+                .text("In views.yml file add you will see.(If your controller class doesn't extend ActionView, so you can't access the context)", "text-12", "text-bold")
+                .code("""
+                        !!io.github.gleidsonmt.dashboardfx.core.view.ViewMap
+                         views:
+                         - {
+                           name: myView,
+                           title: My View,
+                           folder: app,
+                           fxml: myView.fxml
+                         }
+                        """, "yaml")
+                .title("Navigating")
+                .subTitle("Routes")
+                .text("""
+                        Use routes to access views and controllers directly.
+                        """)
+                .subTitle("Use Nav")
+                .text("Use the command.")
+                .code("""
+                        // nav betweeen views
+                        context.routes().nav("Your view name");
+                        // Putting views in routes
+                        context.routes().put(new SimpleView("name", node));
+                        // add and nav a simple view
+                        context.routes().putAndGo(new SimpleView("name", node)));
+                        // Getting a view
+                        context.routes().getView(viewName);
+                        // Getting a controller from a view
+                        context.routes().getView(viewName).getController();
+                        // Util to get directly controller class
+                        context.controllerOf(viewName);
+                        """)
+
                 ;
 
-        setAlignment(Pos.CENTER);
+        setAlignment(Pos.CENTER_LEFT);
 
         build();
 

@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.core;
 
+import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.gleidsonmt.dashboardfx.core.impl.IContext;
 import io.github.gleidsonmt.dashboardfx.core.impl.IRoot;
 import javafx.application.Application;
@@ -35,8 +36,9 @@ public abstract class Launcher extends Application {
         );
 
         stage.show();
-
+        CSSFX.start(stage);
 //        ScenicView.show(scene);
+
     }
 
     private String clean(String c) {

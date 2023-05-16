@@ -164,9 +164,8 @@ Text, .text, .label {
 }
 
 .overview-item:selected {
-    -fx-border-width: 1px;
-    -fx-background-color: transparent;
-    -fx-border-radius: 10px;
+    -fx-border-width: 0px 0px 0px 2px;
+-fx-border-radius: 2px;
 }
 
 .fore-login {

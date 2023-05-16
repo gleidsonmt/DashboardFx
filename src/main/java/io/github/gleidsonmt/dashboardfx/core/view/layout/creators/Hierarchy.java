@@ -17,23 +17,38 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.view;
+package io.github.gleidsonmt.dashboardfx.core.view.layout.creators;
 
-import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
-import javafx.scene.Parent;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Version 0.0.1
- * Create on  13/05/2023
+ * Create on  14/05/2023
  */
-public interface View {
+public class Hierarchy extends Item {
+    private final List<Item> items = new ArrayList<>();
 
-    String getName();
+    public Hierarchy(String name, Item... items) {
+        this(name, null, items);
+    }
 
-    Parent getRoot();
+    public Hierarchy(String name, String text, Item... items) {
+        super(name, text);
+        this.items.addAll(Arrays.asList(items));
+    }
 
-    ActionView getController() ;
 
 
+    public List<Item> getItems() {
+        return items;
+    }
+
+
+    @Override
+    public String toString() {
+        return getName() + getItems();
+    }
 }

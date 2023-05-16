@@ -59,6 +59,11 @@
                   <ToggleGroup fx:id="group" />
                </toggleGroup>
             </ToggleButton>
+            <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="20.0" maxWidth="1.7976931348623157E308" minHeight="0.0" mnemonicParsing="false" onAction="#goNewsletter" prefWidth="485.0" styleClass="drawer-item" text="Newsletter" toggleGroup="$group">
+               <graphic>
+                  <SVGPath content="M5 21q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3h11l5 5v11q0 .825-.587 1.413Q19.825 21 19 21Zm0-2h14V9h-4V5H5v14Zm2-2h10v-2H7Zm0-8h5V7H7Zm0 4h10v-2H7ZM5 5v4-4 14V5Z" />
+               </graphic>
+            </ToggleButton>
             <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Tutorials" textAlignment="JUSTIFY">
                <graphic>
                   <SVGPath content="m12 21-7-3.8v-6L1 9l11-6 11 6v8h-2v-6.9l-2 1.1v6Zm0-8.3L18.85 9 12 5.3 5.15 9Zm0 6.025 5-2.7V12.25L12 15l-5-2.75v3.775Zm0-6.025Zm0 2.25Zm0 0Z" nodeOrientation="LEFT_TO_RIGHT" />

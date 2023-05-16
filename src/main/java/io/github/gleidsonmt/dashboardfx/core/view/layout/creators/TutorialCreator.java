@@ -21,10 +21,11 @@ package io.github.gleidsonmt.dashboardfx.core.view.layout.creators;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNButton;
-import io.github.gleidsonmt.dashboardfx.core.view.View;
 import io.github.gleidsonmt.dashboardfx.core.view.util.Scroll;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -71,24 +72,38 @@ public class TutorialCreator extends PresentationCreator {
 
     }
 
-    public void createNavHeader(String text, Node node) {
-        ToggleButton lbl = new ToggleButton(text);
-        lbl.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            Scroll.scrollTo(scroll, node);
-        });
+    public void createNavHeader(String name, Node node) {
+
+        ToggleButton lbl = new ToggleButton(name);
+
+        lbl.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->
+                Scroll.scrollTo(scroll, node));
+
         lbl.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
-            if (lbl.isSelected()){
+            if (lbl.isSelected()) {
                 event.consume();
             }
         });
+
         lbl.setToggleGroup(group);
-        lbl.getStyleClass().add("overview-item");
+        lbl.getStyleClass().addAll("overview-item");
 
         aside.getChildren().add(lbl);
+
     }
 
     @Override
     public Node build() {
+
+        Label t = new Label("Overview Content");
+        t.getStyleClass().addAll("text-bold", "h4");
+        SVGPath icon = new SVGPath();
+        icon.setContent("M480 882.92 152.31 628.306l37.307-28.153L480 825.383l290.383-225.23 37.307 28.153L480 882.92Zm0-140.845L152.31 487.461 480 232.848l327.69 254.613L480 742.075Zm0-269.844Zm0 212.306 253.538-197.076L480 290.769 226.462 487.461 480 684.537Z");
+        icon.setScaleX(0.03);
+        icon.setScaleY(0.03);
+        t.setGraphic(new Group(icon));
+        aside.getChildren().add(t);
+
         items.forEach(each -> {
             if (each instanceof Label lbl) {
                 if (lbl.getStyleClass().contains("title")) {
@@ -132,6 +147,7 @@ public class TutorialCreator extends PresentationCreator {
     }
 
     private GNButton createButton() {
+
         GNButton button = new GNButton();
         button.getStyleClass().addAll("btn-float", "depth-1");
         SVGPath icon = new SVGPath();
@@ -139,9 +155,11 @@ public class TutorialCreator extends PresentationCreator {
         icon.setContent("M11 20V7.825l-5.6 5.6L4 12l8-8 8 8-1.4 1.425-5.6-5.6V20Z");
         button.setGraphic(icon);
         icon.setStyle("-fx-fill: white");
-        button.setOnAction(event -> {
-            scroll.setVvalue(0);
-        });
+
+        button.setOnAction(event ->
+                scroll.setVvalue(0));
+
         return button;
+
     }
 }

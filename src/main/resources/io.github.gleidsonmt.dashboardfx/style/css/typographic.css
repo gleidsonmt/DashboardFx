@@ -45,3 +45,7 @@
 .text-info {
     -text-color : -info;
 }
+
+.title {
+    -fx-padding: 0px;
+}

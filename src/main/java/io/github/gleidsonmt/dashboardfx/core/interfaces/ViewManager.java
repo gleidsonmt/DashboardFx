@@ -9,7 +9,7 @@ import io.github.gleidsonmt.dashboardfx.core.view.View;
  */
 public interface ViewManager {
 
-    void add(View view);
+    void add(View View);
 
     View get(String name);
 
