@@ -72,7 +72,6 @@ public class PresentationCreator extends StackPane implements BuildCreator {
     }
 
     public PresentationCreator subTitle(String title) {
-        Label label = createLabel(title);
         items.add(createSubTitle(title));
         return this;
     }
@@ -254,7 +253,7 @@ public class PresentationCreator extends StackPane implements BuildCreator {
     }
 
     private @NotNull Label createLabel(String text, String... clazz) {
-        Label label = new Label(text);
+        LabelPosition label = new LabelPosition(text);
         label.getStyleClass().addAll(clazz);
         return label;
     }

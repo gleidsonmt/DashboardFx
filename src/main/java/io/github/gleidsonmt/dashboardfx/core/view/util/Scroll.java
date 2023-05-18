@@ -22,6 +22,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToggleButton;
 import javafx.util.Duration;
 
 /**
@@ -30,9 +31,7 @@ import javafx.util.Duration;
  */
 public class Scroll {
 
-
-    public static void scrollTo (ScrollPane scrollPane, Node node) {
-
+    public static void scrollTo(ScrollPane scrollPane, Node node, ToggleButton target) {
         double heightViewPort = scrollPane.getViewportBounds().getHeight();
         double heightScrollPane = scrollPane.getContent().getBoundsInLocal().getHeight();
         double y = node.getBoundsInParent().getMaxY();
@@ -40,10 +39,46 @@ public class Scroll {
         Timeline timeline = new Timeline();
         double yEnd = 0;
 
-        if ( y < (heightViewPort/2) ){ // set y for menor do que a metade
+        if ( y < (heightViewPort / 2) ){ // set y for menor do que a metade
             // below 0 of scrollpane
             yEnd = 0;
-        } else if ( ( y >= (heightViewPort/2) ) & ( y<= (heightScrollPane - heightViewPort/2)) ){
+        } else if ( ( y >= (heightViewPort / 2) ) & ( y<= (heightScrollPane - heightViewPort/2)) ){
+            // between 0 and 1 of scrollpane
+            yEnd = (y-(heightViewPort/2))/(heightScrollPane-heightViewPort);
+        }
+        else if(y>= (heightScrollPane-(heightViewPort/2))){
+            // above 1 of scrollpane
+            yEnd = 1;
+        }
+
+        timeline.getKeyFrames().addAll(
+                new KeyFrame(Duration.ZERO, new KeyValue(
+                        scrollPane.vvalueProperty(),  scrollPane.getVvalue()
+                )),
+                new KeyFrame(Duration.millis(200), new KeyValue(
+                        scrollPane.vvalueProperty(), yEnd
+                ))
+        );
+
+        timeline.play();
+    }
+    public static void scrollTo (ScrollPane scrollPane, Node node) {
+
+        double heightViewPort = scrollPane.getViewportBounds().getHeight();
+        double heightScrollPane = scrollPane.getContent().getBoundsInLocal().getHeight();
+        double y = node.getBoundsInParent().getMaxY();
+
+//        System.out.println("heightViewPort = " + heightViewPort);
+//        System.out.println("heightScrollPane = " + heightScrollPane);
+//        System.out.println("y = " + y);
+
+        Timeline timeline = new Timeline();
+        double yEnd = 0;
+
+        if ( y < (heightViewPort / 2) ){ // set y for menor do que a metade
+            // below 0 of scrollpane
+            yEnd = 0;
+        } else if ( ( y >= (heightViewPort / 2) ) & ( y<= (heightScrollPane - heightViewPort/2)) ){
             // between 0 and 1 of scrollpane
             yEnd = (y-(heightViewPort/2))/(heightScrollPane-heightViewPort);
         }

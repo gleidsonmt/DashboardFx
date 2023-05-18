@@ -33,24 +33,25 @@ public class TutorialUnderstanding extends TutorialCreator {
 
     public TutorialUnderstanding( Context context) {
         super(context);
-
-        this    .title("""
-                        Introduction
-                        """)
+        this
+//        this    .title("""
+//                        Introduction
+//                        """)
+                .title("Introduction")
                 .text("""
-                        If you like me and passionate about java, you will see that javafx is 
-                        the best way to build apps for desktops. I spend too much time searching good 
-                        tutorials and I found, but when I had this solutions in my hand, 
+                        If you like me and passionate about java, you will see that javafx is
+                        the best way to build apps for desktops. I spend too much time searching good
+                        tutorials and I found, but when I had this solutions in my hand,
                         I saw yes it's time to create my way to get there!
                         """)
                 .text("""
-                        Good Frameworks has a big ecosystem, so I was 
-                        start ways to get that, because the first problem 
+                        Good Frameworks has a big ecosystem, so I was
+                        start ways to get that, because the first problem
                         I have with javafx is getting one controller from other View..
                         and so I just build this dash -_(^-^)-_
                         """)
                 .text("""
-                        First thing I believe it's way to get views from controllers.. navigate for the other views.. and the menu to get there! 
+                        First thing I believe it's way to get views from controllers.. navigate for the other views.. and the menu to get there!
                         """)
                 .title("Context")
                 .text("""
@@ -63,7 +64,7 @@ public class TutorialUnderstanding extends TutorialCreator {
                 .title("Simple View")
                 .text("It's only a default java class as self-view. They are our own controllers.")
                 .code("""
-                        SimpleView myView = new SimpleView("My View", new StackPane()); 
+                        SimpleView myView = new SimpleView("My View", new StackPane());
                             // the name is used to navigate
                             // the node acts as a container
                         """)
@@ -74,15 +75,15 @@ public class TutorialUnderstanding extends TutorialCreator {
                 .code("""
                         public class MyView extends ActionView {
                             @Override
-                            public void OnEnter() { // When you use context.routes().nav("view"); 
+                            public void OnEnter() { // When you use context.routes().nav("view");
                                                     // then this method is trigger
                             }
-                            
+
                             @Override
-                            public void OnExit() {  // When you use context.routes().nav("to another view"); 
+                            public void OnExit() {  // When you use context.routes().nav("to another view");
                                                     // then this method is trigger, end close the view
                             }
-                            
+
                             @Override
                             public void onInit(Context context) {   // When this method is called, you can give access
                                                                     // of context object

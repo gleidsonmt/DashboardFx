@@ -17,25 +17,27 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.views.tutorial;
+package io.github.gleidsonmt.dashboardfx.core.view.layout.creators;
 
-import io.github.gleidsonmt.dashboardfx.core.Context;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
+import javafx.scene.control.Label;
 
-import java.time.LocalDate;
+/**
+ * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * Version 0.0.1
+ * Create on  17/05/2023
+ */
+public class LabelPosition extends Label {
+    private double position;
 
-public class NewsLetter extends TutorialCreator {
-
-    public NewsLetter(Context context) {
-        super(context);
-
-        this
-                .title(LocalDate.of(2023, 5, 13).toString())
-                .text("Presenting newsletter I hope can write at least once per week here!")
-                .title(LocalDate.of(2023, 5, 17).toString())
-                .text("Update module tutorial, understanding view, add a navigation view.")
-                .build();
-
+    public LabelPosition(String text) {
+        super(text);
     }
 
+    public double getPosition() {
+        return position;
+    }
+
+    public void setPosition(double position) {
+        this.position = position;
+    }
 }

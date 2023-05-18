@@ -23,6 +23,7 @@ import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.*;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.Author;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.PresentationCreator;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.options.ActionOptions;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.options.AlertType;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.options.DialogAction;
@@ -46,7 +47,9 @@ public class WrappersView extends StackPane {
             createAroundDilog(customDialog);
         });
 
-        PresentationCreator creator = new PresentationCreator(context)
+//        TutorialUnderstanding h = new TutorialUnderstanding(context);
+//        PresentationCreator creator = new PresentationCreator(context)
+        TutorialCreator creator = (TutorialCreator) new TutorialCreator(context)
         .title("Popups and wrappers.")
         .text("""
             App ecosystem needs a way to create modals, alerts to talk his users. Getting the context to use an accessor class for creating dialogs,

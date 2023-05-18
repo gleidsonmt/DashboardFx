@@ -72,9 +72,6 @@
                   <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="292.0" spacing="5.0">
                      <children>
                         <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goUnderstanding" styleClass="drawer-item" text="Understanding" toggleGroup="$group" />
-                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Starting" toggleGroup="$group" />
-                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="60.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Declarative + Imperative" toggleGroup="$group" />
-                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="100.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBuild" styleClass="drawer-item" text="Routes" toggleGroup="$group" />
                      </children>
                   </VBox>
                </content>
