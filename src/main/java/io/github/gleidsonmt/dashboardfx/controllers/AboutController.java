@@ -25,8 +25,6 @@ import javafx.fxml.FXML;
 
 public final class AboutController extends ActionView {
 
-    private Context context;
-
     @FXML
     private void goAvatarOnPinterest(){
 //        Launcher.openLink("https://br.pinterest.com/pin/597852919271538622/");
@@ -34,6 +32,6 @@ public final class AboutController extends ActionView {
 
     @Override
     public void onInit(Context context) {
-        this.context = context;
     }
+
 }

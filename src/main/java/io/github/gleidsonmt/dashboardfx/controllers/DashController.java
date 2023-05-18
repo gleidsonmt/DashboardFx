@@ -190,7 +190,7 @@ public final class DashController extends ActionView {
         bar.getStyleClass().addAll("border-light-gray-2", "border-b-1");
 
         Label title = new Label("Dashboard");
-//        title.textProperty().bindBidirectional(context.routes().title());
+        title.textProperty().bindBidirectional(context.routes().title());
         title.setPadding(new Insets(0,0,0,5));
         title.getStyleClass().addAll("title-text", "title", "text-14");
 
@@ -210,6 +210,7 @@ public final class DashController extends ActionView {
         boxUser.setPadding(new Insets(0,2,10,2));
         HBox.setMargin(boxUser, new Insets(0,0,0,20));
         context.layout().bar().addInRight(sms, notification, boxUser);
+
     }
 
     private DonutChart createDonut() {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -14,8 +15,6 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
-
-<?import java.net.URL?>
 
 <StackPane prefHeight="762.0" prefWidth="977.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.AboutController">
     <children>
@@ -142,7 +141,7 @@
                                             <children>
                                                 <Label styleClass="h5" text="Contact Information" />
                                                 <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Phone :" GridPane.rowIndex="1" />
-                                                <Hyperlink text="+55 62 999362299" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Hyperlink text="+55 62 996755782" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Email :" GridPane.rowIndex="2" />
                                                 <Hyperlink text="gleidsonmt@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                 <Label styleClass="h5" text="Basic Information" GridPane.rowIndex="4" />

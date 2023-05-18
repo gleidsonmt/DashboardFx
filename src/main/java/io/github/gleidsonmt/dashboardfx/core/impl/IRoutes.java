@@ -3,6 +3,8 @@ package io.github.gleidsonmt.dashboardfx.core.impl;
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.Routes;
 import io.github.gleidsonmt.dashboardfx.core.view.View;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -15,6 +17,8 @@ public class IRoutes implements Routes {
 
     private final IRoot root;
     private final Context context;
+
+    private StringProperty title = new SimpleStringProperty();
 
     public IRoutes(IRoot root, Context context) {
         this.root = root;
@@ -36,17 +40,17 @@ public class IRoutes implements Routes {
     }
 
     @Override
-    public Routes putAndGo(View View) {
-        if(valid(View)) {
-            manager.add(View);
-            doOnInit(View);
-            root.getBody().getLayout().setContent(View.getRoot());
-            doActions(View);
+    public void putAndGo(View view) {
+        if(valid(view)) {
+            manager.add(view);
+            doOnInit(view);
+            root.getBody().getLayout().setContent(view.getRoot());
+            doActions(view);
+            title.set(view.getName());
         } else {
 
         }
         root.getBody().getLayout().setRight(null);
-        return this;
     }
 
     public Routes put(View View) {
@@ -71,11 +75,16 @@ public class IRoutes implements Routes {
             root.getBody().getLayout().setContent(View.getRoot());
         }
 
+        title.set(key);
+
         root.getBody().getLayout().setRight(null);
         return this;
     }
 
-
+    @Override
+    public StringProperty title() {
+        return title;
+    }
 
     private boolean valid(View View) {
         return View != null;

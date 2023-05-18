@@ -1,6 +1,8 @@
 package io.github.gleidsonmt.dashboardfx.core.impl;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
+import io.github.gleidsonmt.dashboardfx.core.controls.GNIconButton;
+import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.Bar;
 import javafx.fxml.FXMLLoader;
@@ -24,11 +26,34 @@ public class Layout {
     private final BorderPane content = new BorderPane();
     private final Context context;
 
+    private GNIconButton hamburger = new GNIconButton(Icons.HAMBURGER);
+
+    private Node side;
+
     public Layout(Context context) {
         this.context = context;
         root.getStyleClass().add("layout");
         root.getChildren().add(content);
         HBox.setHgrow(content, Priority.ALWAYS);
+        
+        root.widthProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (newValue.doubleValue() < 660) {
+                if (root.getChildren().contains(side)) {
+                    root.getChildren().remove(0);
+                    bar().addInLeft(0, hamburger);
+                }
+            } else {
+                if (!root.getChildren().contains(side)) {
+                    if (side != null) {
+                        root.getChildren().add(0, side);
+                        bar().removeInLeft(hamburger);
+                    }
+                }
+            }
+
+        });
+        
     }
 
     public void setContent(Node node) {
@@ -44,6 +69,7 @@ public class Layout {
     }
 
     public void setNav(Node node) {
+        side = node;
         root.getChildren().add(0, node);
     }
 
@@ -71,6 +97,7 @@ public class Layout {
         root.getChildren().add(0, loader.getRoot());
         Region region = loader.getRoot();
         region.setMinWidth(250D);
+        side = region;
     }
 
     public Node getContent() {

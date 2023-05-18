@@ -64,6 +64,7 @@ public class TutorialCreator extends PresentationCreator {
         super(context);
         body.setPadding(new Insets(20));
         aside.setPadding(new Insets(20));
+        btnFloat.setVisible(false);
 
         widthProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.doubleValue() < 736) {
@@ -97,9 +98,7 @@ public class TutorialCreator extends PresentationCreator {
 
         });
 
-        Platform.runLater(() -> {
-            node.setPosition(getY(scroll, node));
-        });
+        Platform.runLater(() -> node.setPosition(getY(scroll, node)));
 
         toggle.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
             if (toggle.isSelected()) {
@@ -122,10 +121,6 @@ public class TutorialCreator extends PresentationCreator {
         double heightScrollPane = scrollPane.getContent().getBoundsInLocal().getHeight();
 //        double y = node.getBoundsInParent().getMaxY();
         double y = node.getBoundsInParent().getMaxY() + 200;
-
-        System.out.println("heightViewPort = " + heightViewPort);
-        System.out.println("heightScrollPane = " + heightScrollPane);
-        System.out.println("y = " + y);
 
         Timeline timeline = new Timeline();
         double yEnd = 0;
@@ -250,6 +245,12 @@ public class TutorialCreator extends PresentationCreator {
 //        );
 
         scroll.vvalueProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (newValue.doubleValue() > 0.5) {
+                btnFloat.setVisible(true);
+            } else {
+                btnFloat.setVisible(false);
+            }
 
             if (rolling.get()) {
                 for (int i = 1; i < breaks.size(); i++) {

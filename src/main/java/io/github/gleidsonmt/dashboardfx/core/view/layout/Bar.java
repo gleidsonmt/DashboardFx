@@ -37,13 +37,11 @@ import java.util.List;
  */
 
 @ApiStatus.Internal
-@ApiStatus.AvailableSince("0.1")
+@ApiStatus.AvailableSince("1.0")
 @SuppressWarnings("unused")
 public class Bar extends GridPane {
-
     private final HBox left = new HBox();
     private final HBox right = new HBox();
-
     BooleanProperty hasChild = new SimpleBooleanProperty();
     public Bar() {
         left.setId("bar-left");
@@ -57,6 +55,7 @@ public class Bar extends GridPane {
         GridPane.setConstraints(left, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(right, 1,0,1,1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         this.setMinHeight(30D);
+
         IntegerBinding totalBinding = new IntegerBinding() {
 
             {
@@ -70,6 +69,8 @@ public class Bar extends GridPane {
         };
 
         hasChild.bind(totalBinding.greaterThan(0));
+
+        hasChild.addListener((observable, oldValue, newValue) -> System.out.println("observable = " + observable));
 
     }
 

@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.core.interfaces;
 
 import io.github.gleidsonmt.dashboardfx.core.view.View;
+import javafx.beans.property.StringProperty;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -11,12 +12,14 @@ public interface Routes {
 
     Routes setView(String view);
 
-    Routes putAndGo(View View);
+    void putAndGo(View View);
 
     Routes put(View View);
 
     View getView(String view);
 
     Routes nav(String key);
+
+    StringProperty title();
 
 }
