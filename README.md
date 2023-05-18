@@ -16,8 +16,6 @@
   <img src="./src/main/resources/io.github.gleidsonmt.dashboardfx/style/img/screen_dash.png"  />
 </p>
 
-# 🛠 Enhancements
-...
 # 📑 Contents
 
 <!-- TOC -->
@@ -47,7 +45,8 @@ I really recommend to use japackage to create your jar and the .exe. <br>
 In intellij or visual studio (in visual you need to prepare the  ide to use javafx) it's really simple, only open the tab gradle and run the command build after jpackage. 
 ...
 # ☕ Using Dashboard
-Just build and run \((-_-))/
+Just build and run \((-_-))/.. there's no trick.. only use gradle to build and run in your ide.
+If you have problem, or a tip do an issue.
 ...
 # 🧬  Basic Structure
 ... 
