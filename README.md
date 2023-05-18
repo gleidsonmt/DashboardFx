@@ -44,8 +44,10 @@ I have a great workstation here, then I've using a gradle 7.2 and Java and JavaF
 # 🚀 Installing
 I really recommend to use japackage to create your jar and the .exe. <br>
 !🗒️Note ** The generate you .exe you need the wix tool, you can get the url if you using intellij or from here  https://wixtoolset.org 🥸***
+In intellij or visual studio (in visual you need to prepare the  ide to use javafx) it's really simple, only open the tab gradle and run the command build after jpackage. 
 ...
 # ☕ Using Dashboard
+Just build and run \((-_-))/
 ...
 # 🧬  Basic Structure
 ... 
