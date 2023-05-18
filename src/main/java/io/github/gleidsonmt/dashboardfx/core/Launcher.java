@@ -29,14 +29,14 @@ public abstract class Launcher extends Application {
                 clean("style/css/bootstrap.css"),
                 clean("style/css/theme/simple_info.css"),
                 clean("style/css/typographic.css"),
-                clean("style/css/imersive_scroll.css"),
+                clean("style/css/immersive_scroll.css"),
                 clean("style/css/shapes.css"),
                 clean("style/css/helpers.css"),
                 clean("style/css/dash.css")
         );
 
         stage.show();
-//        CSSFX.start(stage);
+        CSSFX.start(stage);
 //        ScenicView.show(scene);
 
     }

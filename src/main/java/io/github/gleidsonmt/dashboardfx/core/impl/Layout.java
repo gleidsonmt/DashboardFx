@@ -7,10 +7,7 @@ import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.Bar;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,6 +32,8 @@ public class Layout {
         root.getStyleClass().add("layout");
         root.getChildren().add(content);
         HBox.setHgrow(content, Priority.ALWAYS);
+
+        hamburger.getStyleClass().addAll("hamburger");
         
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
 
@@ -52,6 +51,12 @@ public class Layout {
                 }
             }
 
+        });
+
+        hamburger.setOnMouseClicked(event -> {
+            context.wrapper().drawer()
+                    .content((StackPane) side)
+                    .show();
         });
         
     }
