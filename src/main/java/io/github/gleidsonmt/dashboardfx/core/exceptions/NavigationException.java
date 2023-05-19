@@ -16,74 +16,39 @@
  */
 package io.github.gleidsonmt.dashboardfx.core.exceptions;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.View;
-import io.github.gleidsonmt.dashboardfx.core.app.services.Context;
-import io.github.gleidsonmt.dashboardfx.core.app.services.ViewComposer;
-import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.Context;
+import io.github.gleidsonmt.dashboardfx.core.view.SimpleView;
+import io.github.gleidsonmt.dashboardfx.core.view.View;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import org.jetbrains.annotations.NotNull;
 
-import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.Objects;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  31/03/2020
+ * Create on  31/03/2023
  */
 public final class NavigationException extends Exception {
 
     private String code;
+    private Context context;
 
-    private View errorView = new View() {
+    private final VBox blank = new VBox();
+    private final Text message = new Text();
+    private View errorView;
 
-        private ViewComposer composer = new ViewComposer(
-                "Route Not Found", "error_page"
-        );
-        @Override
-        public String getName() {
-            return composer.getName();
-        }
 
-        @Override
-        public ViewComposer getComposer() {
-            return composer;
-        }
-
-        @Override
-        public ActionView getController() {
-            return null;
-        }
-
-        @Override
-        public Parent getRoot() {
-            return createRouteNotFound(null);
-        }
-
-        @Override
-        public Charset getCharset() {
-            return null;
-        }
-
-        @Override
-        public URL getLocation() {
-            return null;
-        }
-    };
-
-    public NavigationException(String code, String message) {
+    public NavigationException(Context context, String code, String message) {
         super(message);
         this.setCode(code);
-    }
-
-    public NavigationException(String code, String message, Throwable cause) {
-        super(message, cause);
-        this.setCode(code);
+        this.context = context;
+        errorView = new SimpleView(
+                "error_page", createRouteNotFound(null)
+        );
     }
 
     public String getCode() {
@@ -94,8 +59,7 @@ public final class NavigationException extends Exception {
         this.code = code;
     }
 
-    private final VBox blank = new VBox();
-    private final Text message = new Text();
+
 
     private void setMessage(String _message) {
         message.setText(_message);
@@ -106,7 +70,7 @@ public final class NavigationException extends Exception {
 //        root.setPadding(new Insets(100));
         blank.setBackground(new Background(
                 new BackgroundImage(
-                        new Image(Objects.requireNonNull(getClass().getResource("/core.app/img/404.png")).toExternalForm()),
+                        new Image(context.getResource("style/img/404.png").toExternalForm()),
                         BackgroundRepeat.NO_REPEAT,
                         BackgroundRepeat.NO_REPEAT,
                         BackgroundPosition.CENTER,
@@ -130,12 +94,12 @@ public final class NavigationException extends Exception {
     public void getRouteNotFound(@NotNull Context context, String message) {
         if (context.routes().getView(errorView.getName()) == null) {
             setMessage(message);
-            context.routes().addView(errorView);
+            context.routes().put(errorView);
         }
-        try {
-            context.routes().setContent(errorView.getName());
-        } catch (NavigationException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+            context.routes().setView(errorView.getName());
+//        } catch (NavigationException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 }

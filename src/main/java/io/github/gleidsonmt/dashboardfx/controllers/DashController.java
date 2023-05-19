@@ -2,6 +2,7 @@ package io.github.gleidsonmt.dashboardfx.controllers;
 
 import io.github.gleidsonmt.dashboardfx.core.controls.*;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
+import io.github.gleidsonmt.dashboardfx.core.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.impl.layout.Direction;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.Context;
@@ -26,10 +27,7 @@ import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -50,6 +48,10 @@ import java.util.ResourceBundle;
 @SuppressWarnings("unchecked")
 public final class DashController extends ActionView {
 
+    @FXML
+    private StackPane root;
+    @FXML
+    private GridPane gridTiles;
     @FXML
     private GridPane footer;
     @FXML
@@ -193,6 +195,11 @@ public final class DashController extends ActionView {
         GridPane.setConstraints(scheduleList, 0, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(curvedChart, 1, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
 
+        responsive();
+    }
+
+    private void responsive() {
+
     }
 
     @Override
@@ -220,8 +227,8 @@ public final class DashController extends ActionView {
 //            sms.setColorCircle(Color.web(Colors.GRAPEFRUIT.toString()));
 
 
-        BoxUser boxUser = new BoxUser("Jane Doe", context.getResource("style/img/avatar.png").toExternalForm());
-        boxUser.setPadding(new Insets(0,2,10,2));
+        BoxUser boxUser = new BoxUser("Gleidson Neves", context.getResource("style/img/me_avatar.jpeg").toExternalForm());
+//        boxUser.setPadding(new Insets(0,2,10,2));
         HBox.setMargin(boxUser, new Insets(0,0,0,20));
         context.layout().bar().addInRight(sms, notification, boxUser);
 
@@ -241,6 +248,18 @@ public final class DashController extends ActionView {
 
         Button btnProfile = createBtn("Profile", event -> {
 //            upadteContent(context, "profile");
+//            try {
+//                context.routes().nav("profile");
+//            } catch (NavigationException e) {
+//                throw new RuntimeException(e);
+//            }
+
+
+//            try {
+//                context.routes().setView("login");
+//            } catch (NavigationException e) {
+//                e.getRouteNotFound(context, "view 'login' not found");
+//            }
         });
         btnProfile.setGraphic(new IconContainer(Icons.ACCOUNT_CIRCLE));
         Button btnSettings = createBtn("Settings", event -> {
@@ -266,6 +285,28 @@ public final class DashController extends ActionView {
                         )
                         .show(Direction.BOTTOM_LEFT, boxUser);
         });
+
+        root.widthProperty()
+                .addListener((observable, oldValue, newValue) -> {
+
+                    gridTiles.getColumnConstraints().clear();
+                    gridTiles.getRowConstraints().clear();
+//                gridTiles.setHgap(10);
+
+
+                    if (newValue.doubleValue() < 537) {
+                        GridUtils.update(gridTiles, 1);
+                    } else if (newValue.doubleValue() < 810) {
+                        GridUtils.update(gridTiles, 2);
+                        GridUtils.update(footer, 1);
+                    } else if (newValue.doubleValue() < 1400){
+                        GridUtils.inLine(gridTiles);
+                        GridUtils.update(footer, 2);
+                    } else {
+                        GridUtils.inLine(gridTiles);
+                        GridUtils.inLine(footer);
+                    }
+                });
     }
 
     private VBox createDialogNotification() {
@@ -332,7 +373,7 @@ public final class DashController extends ActionView {
         btnProfile.setOnAction(event);
 
         btnProfile.addEventFilter(MouseEvent.MOUSE_CLICKED, event1 -> {
-//            context.flow().close();
+            context.flow().close();
         });
         return btnProfile;
     }

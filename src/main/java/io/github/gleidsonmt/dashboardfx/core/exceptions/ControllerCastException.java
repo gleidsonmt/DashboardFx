@@ -18,7 +18,7 @@ package io.github.gleidsonmt.dashboardfx.core.exceptions;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  31/03/2020
+ * Create on  31/03/2023
  */
 public final class ControllerCastException extends Exception {
 

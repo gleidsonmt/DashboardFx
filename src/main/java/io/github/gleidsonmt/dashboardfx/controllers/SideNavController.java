@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.controllers;
 
+import io.github.gleidsonmt.dashboardfx.core.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.services.DrawerBehavior;
 import io.github.gleidsonmt.dashboardfx.core.view.SimpleView;
@@ -28,7 +29,7 @@ public class SideNavController extends ActionView {
     @FXML private ToggleGroup group;
 
     @FXML
-    private void goDash() {
+    private void goDash() throws NavigationException {
         context.routes().nav("dash");
 //        context.routes().nav("sales_left", "sales_right");
     }
@@ -104,7 +105,7 @@ public class SideNavController extends ActionView {
     }
 
     @FXML
-    private void goAbout() {
+    private void goAbout() throws NavigationException{
         context.routes().nav("about");
     }
 

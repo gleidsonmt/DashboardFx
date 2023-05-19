@@ -30,14 +30,14 @@ public class NewsLetter extends TutorialCreator {
         super(context);
 
         this
-                .title(LocalDate.of(2023, 5, 13).toString())
-                .text("Presenting newsletter I hope can write at least once per week here!")
-                .title(LocalDate.of(2023, 5, 17).toString())
-                .text("Update module tutorial, understanding view, add a navigation view.")
-                .title(LocalDate.of(2023, 5, 18).toString())
-                .text("Add hamburger when the size was updated.")
                 .title(LocalDate.of(2023, 5, 18).toString())
                 .text("Add flow to open custom dialog.")
+                .title(LocalDate.of(2023, 5, 18).toString())
+                .text("Add hamburger when the size was updated.")
+                .title(LocalDate.of(2023, 5, 17).toString())
+                .text("Update module tutorial, understanding view, add a navigation view.")
+                .title(LocalDate.of(2023, 5, 13).toString())
+                .text("Presenting newsletter I hope can write at least once per week here!")
                 .build();
 
     }

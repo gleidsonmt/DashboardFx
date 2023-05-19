@@ -91,6 +91,11 @@ public class PresentationCreator extends StackPane implements BuildCreator {
         return this;
     }
 
+    public PresentationCreator legend(String legend) {
+        items.add(createLabel(legend, "text-12", "text-bold"));
+        return this;
+    }
+
     public PresentationCreator options(ActionOptions... options) {
         items.add(createOptions(options));
         return this;
@@ -255,6 +260,7 @@ public class PresentationCreator extends StackPane implements BuildCreator {
     private @NotNull Label createLabel(String text, String... clazz) {
         LabelPosition label = new LabelPosition(text);
         label.getStyleClass().addAll(clazz);
+        VBox.setMargin(label, new Insets(10, 0, 20, 0));
         return label;
     }
 
