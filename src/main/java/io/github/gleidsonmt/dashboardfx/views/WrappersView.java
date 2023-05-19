@@ -36,7 +36,7 @@ import javafx.scene.layout.StackPane;
 
 public class WrappersView extends StackPane {
 
-    private Context context;
+    private final Context context;
 
     public WrappersView(Context context) {
         this.context = context;

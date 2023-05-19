@@ -36,6 +36,8 @@ public class NewsLetter extends TutorialCreator {
                 .text("Update module tutorial, understanding view, add a navigation view.")
                 .title(LocalDate.of(2023, 5, 18).toString())
                 .text("Add hamburger when the size was updated.")
+                .title(LocalDate.of(2023, 5, 18).toString())
+                .text("Add flow to open custom dialog.")
                 .build();
 
     }

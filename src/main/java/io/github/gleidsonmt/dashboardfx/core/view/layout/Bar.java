@@ -70,7 +70,6 @@ public class Bar extends GridPane {
 
         hasChild.bind(totalBinding.greaterThan(0));
 
-        hasChild.addListener((observable, oldValue, newValue) -> System.out.println("observable = " + observable));
 
     }
 

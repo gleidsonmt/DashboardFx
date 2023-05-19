@@ -29,14 +29,22 @@ public class IconContainer extends SVGPath {
     private String name;
 
     public IconContainer() {
-        this(Icons.NONE);
+        this(Icons.NONE, false);
     }
 
-    public IconContainer(Icons icon) {
-        this(icon, Color.GRAY);
+    public IconContainer(boolean needsUpdate) {
+        this(Icons.NONE, needsUpdate);
     }
 
-    public IconContainer(Icons icon, Color color) {
+    public IconContainer(Icons icons) {
+        this(icons, false);
+    }
+
+    public IconContainer(Icons icon, boolean needsUpdate) {
+        this(icon, Color.GRAY, needsUpdate);
+    }
+
+    public IconContainer(Icons icon, Color color, boolean needsUpdate) {
         setContent(icon);
         getStyleClass().add("icon");
         setFill(color);

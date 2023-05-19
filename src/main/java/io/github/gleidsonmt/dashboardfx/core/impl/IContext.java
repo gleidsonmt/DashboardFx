@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.core.impl;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
+import io.github.gleidsonmt.dashboardfx.core.impl.layout.Flow;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.Routes;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.SnackBar;
@@ -48,6 +49,13 @@ public class IContext implements Context {
     @Override
     public Routes routes() {
         return routes;
+    }
+
+    private Flow flow;
+    @Override
+    public Flow flow() {
+        if (flow == null) flow = new Flow(root);
+        return flow;
     }
 
     @Override
