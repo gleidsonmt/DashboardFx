@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.core;
 
 import io.github.gleidsonmt.dashboardfx.core.impl.Layout;
+import io.github.gleidsonmt.dashboardfx.core.impl.layout.Flow;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.Routes;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.SnackBar;
@@ -24,6 +25,8 @@ public interface Context {
     Routes routes();
 
     Wrapper wrapper();
+
+    Flow flow();
 
     /*********************************************************
      *

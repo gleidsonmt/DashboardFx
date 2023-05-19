@@ -173,3 +173,11 @@ Text, .text, .label {
     -fx-background-image: url("predios.jpg");
     -fx-background-size: cover;
 }
+
+.btn-option .text {
+    -fx-fill: -text-color;
+}
+
+.btn-option .icon {
+    -fx-fill: -text-color;
+}

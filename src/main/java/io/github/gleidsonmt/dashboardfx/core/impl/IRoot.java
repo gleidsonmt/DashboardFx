@@ -2,6 +2,7 @@ package io.github.gleidsonmt.dashboardfx.core.impl;
 
 import io.github.gleidsonmt.dashboardfx.core.interfaces.Root;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.Wrapper;
+import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -19,6 +20,7 @@ public class IRoot extends StackPane implements Root {
         setId("root");
         wrapper = new Wrapper();
         getChildren().setAll(wrapper, body);
+        setAlignment(Pos.TOP_LEFT);
     }
 
     public IBody getBody() {
