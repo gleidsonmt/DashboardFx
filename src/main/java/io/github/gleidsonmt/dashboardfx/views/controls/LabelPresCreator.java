@@ -27,7 +27,6 @@ import javafx.scene.control.Label;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
  * Create on  19/01/2023
  */
 public class LabelPresCreator extends TutorialCreator {

@@ -27,7 +27,6 @@ import java.util.List;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
  * Create on  22/01/2023
  */
 public class ListViewCreator extends TutorialCreator {

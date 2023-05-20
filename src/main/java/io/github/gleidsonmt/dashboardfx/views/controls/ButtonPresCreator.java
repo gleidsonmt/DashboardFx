@@ -24,8 +24,6 @@ import io.github.gleidsonmt.dashboardfx.core.controls.GNButton;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNIconButton;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.Author;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.PresentationCreator;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -35,7 +33,6 @@ import java.util.List;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
  * Create on  21/01/2023
  */
 public class ButtonPresCreator extends TutorialCreator {
@@ -90,7 +87,11 @@ public class ButtonPresCreator extends TutorialCreator {
                             GNButton gnButton = new GNButton();
                             // GNbutton with icon
                             GNIconButton gnButton = new GNIconButton();
-                                """, "<GNButton text=\"button\"></GNButton>"
+                                """, """
+                                <GNButton text=\"button\"/>
+                                <!-- Icon button -->
+                                <GNIconButton icon="DISCOUNT"/>
+                            """
                 )
                 .title("Links")
                 .footer(createDefaultControl());

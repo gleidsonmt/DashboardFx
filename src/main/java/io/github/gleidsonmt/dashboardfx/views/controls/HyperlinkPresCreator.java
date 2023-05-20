@@ -40,8 +40,9 @@ public class HyperlinkPresCreator extends TutorialCreator {
                                 Hyperlink link = new Hyperlink("Hyperlink");
                                 """,
                         """
-                                <Hyperlink text="My hperlink"></Hyperlink>
+                                <Hyperlink text="My Hyperlink">
                                 """)
+                .title("Links")
                 .footer(createDefaultControl());
         ;
         build();

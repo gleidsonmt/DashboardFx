@@ -23,6 +23,10 @@ import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import javafx.scene.control.TextField;
 
+/**
+ * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * Create on  22/01/2023
+ */
 public class PasswordPresCreator extends TutorialCreator {
 
     public PasswordPresCreator(Context context) {
