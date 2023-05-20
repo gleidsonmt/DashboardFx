@@ -22,8 +22,11 @@ package io.github.gleidsonmt.dashboardfx.views.controls;
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
 
+/**
+ * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * Create on  21/01/2023
+ */
 public class CheckBoxPresCreator extends TutorialCreator {
 
     public CheckBoxPresCreator(Context context) {
