@@ -32,8 +32,8 @@ public class TextFieldPresCreator extends TutorialCreator {
         super(context);
         this    .title("TextField")
                 .text("""
-                        Text input component that allows a user to enter a single line of unformatted text. 
-                        Unlike in previous releases of JavaFX, support for multi-line input is not available as part of the TextField control, 
+                        Text input component that allows a user to enter a single line of unformatted text.
+                        Unlike in previous releases of JavaFX, support for multi-line input is not available as part of the TextField control,
                         however this is the sole-purpose of the TextArea control.
                         """)
                 .multCode(
