@@ -1,12 +1,11 @@
 package io.github.gleidsonmt.dashboardfx.controllers;
 
+import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.controls.*;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
-import io.github.gleidsonmt.dashboardfx.core.exceptions.NavigationException;
+import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import io.github.gleidsonmt.dashboardfx.core.impl.layout.Direction;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
-import io.github.gleidsonmt.dashboardfx.core.Context;
-import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import io.github.gleidsonmt.dashboardfx.core.model.NotificationCell;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.Bar;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.BoxUser;
@@ -175,16 +174,16 @@ public final class DashController extends ActionView {
                 new NumberAxis()
         );
 
-        final XYChart.Series<Number, Number> series22 = new XYChart.Series<Number, Number>();
+        final XYChart.Series<Number, Number> series22 = new XYChart.Series<>();
 
         series22.getData().addAll(
-                new XYChart.Data<Number, Number>(0, 20D),
-                new XYChart.Data<Number, Number>(1, 40D),
-                new XYChart.Data<Number, Number>(2, 50D),
-                new XYChart.Data<Number, Number>(3, 30D),
-                new XYChart.Data<Number, Number>(4, 80D),
-                new XYChart.Data<Number, Number>(5, 10D),
-                new XYChart.Data<Number, Number>(6, 50D));
+                new XYChart.Data<>(0, 20D),
+                new XYChart.Data<>(1, 40D),
+                new XYChart.Data<>(2, 50D),
+                new XYChart.Data<>(3, 30D),
+                new XYChart.Data<>(4, 80D),
+                new XYChart.Data<>(5, 10D),
+                new XYChart.Data<>(6, 50D));
 
         curvedChart.getData().add(series22);
 //        footer.getChildren().addAll(createDonut(), barChart,  scheduleList.getRoot(), curvedChart);
@@ -216,6 +215,7 @@ public final class DashController extends ActionView {
         title.getStyleClass().addAll("title-text", "title", "text-14");
 
         context.layout().bar().addInLeft(title);
+        HBox.setMargin(title, new Insets(0,0,0,5));
 
         GNBadge notification = new GNBadge(Icons.NOTIFICATIONS);
         notification.setNumberOfNotifications(2);
@@ -274,17 +274,15 @@ public final class DashController extends ActionView {
         VBox boxUserDialog = new VBox();
         boxUserDialog.getChildren().setAll(btnProfile, btnSettings, new Separator(), btnLogout);
 
-        boxUser.setOnMouseClicked(event -> {
-                context.flow()
+        boxUser.setOnMouseClicked(event -> context.flow()
 //                    .getPopup()
 //                    .size(300, 150)
 //                    .moveX(200)
-                        .content(
-                                new DialogContainer(boxUserDialog)
-                                        .size(200, 100)
-                        )
-                        .show(Direction.BOTTOM_LEFT, boxUser);
-        });
+                .content(
+                        new DialogContainer(boxUserDialog)
+                                .size(200, 100)
+                )
+                .show(Direction.BOTTOM_LEFT, boxUser));
 
         root.widthProperty()
                 .addListener((observable, oldValue, newValue) -> {
@@ -372,9 +370,7 @@ public final class DashController extends ActionView {
         btnProfile.setPadding(new Insets(10));
         btnProfile.setOnAction(event);
 
-        btnProfile.addEventFilter(MouseEvent.MOUSE_CLICKED, event1 -> {
-            context.flow().close();
-        });
+        btnProfile.addEventFilter(MouseEvent.MOUSE_CLICKED, event1 -> context.flow().close());
         return btnProfile;
     }
 
