@@ -10,9 +10,9 @@ import javafx.scene.layout.Priority;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  03/02/2023
  */
-public class GridUtils {
+public class Grid {
 
-    public static void update(GridPane grid, int maxCols) {
+    public static void change(GridPane grid, int maxCols) {
 
         int cols = 0;
         int rows = 0;
@@ -32,6 +32,6 @@ public class GridUtils {
 
     }
     public static void inLine(GridPane grid) {
-        update(grid, grid.getChildren().size());
+        change(grid, grid.getChildren().size());
     }
 }

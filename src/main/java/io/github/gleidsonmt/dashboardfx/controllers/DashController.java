@@ -293,16 +293,16 @@ public final class DashController extends ActionView {
 
 
                     if (newValue.doubleValue() < 537) {
-                        GridUtils.update(gridTiles, 1);
+                        Grid.change(gridTiles, 1);
                     } else if (newValue.doubleValue() < 810) {
-                        GridUtils.update(gridTiles, 2);
-                        GridUtils.update(footer, 1);
+                        Grid.change(gridTiles, 2);
+                        Grid.change(footer, 1);
                     } else if (newValue.doubleValue() < 1400){
-                        GridUtils.inLine(gridTiles);
-                        GridUtils.update(footer, 2);
+                        Grid.inLine(gridTiles);
+                        Grid.change(footer, 2);
                     } else {
-                        GridUtils.inLine(gridTiles);
-                        GridUtils.inLine(footer);
+                        Grid.inLine(gridTiles);
+                        Grid.inLine(footer);
                     }
                 });
     }

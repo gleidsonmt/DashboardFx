@@ -16,6 +16,9 @@
  */
 package io.github.gleidsonmt.dashboardfx.core.controls.icon;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import org.jetbrains.annotations.NotNull;
@@ -27,6 +30,7 @@ import org.jetbrains.annotations.NotNull;
 public class IconContainer extends SVGPath {
 
     private String name;
+    private SimpleObjectProperty<Icons> icon = new SimpleObjectProperty<>();
 
     public IconContainer() {
         this(Icons.NONE, false);
@@ -45,10 +49,29 @@ public class IconContainer extends SVGPath {
     }
 
     public IconContainer(Icons icon, Color color, boolean needsUpdate) {
+        this.icon.set(icon);
         setContent(icon);
         getStyleClass().add("icon");
         setFill(color);
         name = icon.name();
+
+        this.icon.addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                setContent(newValue);
+            }
+        });
+    }
+
+    public Icons getIcon() {
+        return icon.get();
+    }
+
+    public SimpleObjectProperty<Icons> iconProperty() {
+        return icon;
+    }
+
+    public void setIcon(Icons icon) {
+        this.icon.set(icon);
     }
 
     public void setContent(@NotNull Icons icon) {

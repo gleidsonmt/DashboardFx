@@ -18,6 +18,7 @@ module io.github.gleidsonmt.dashboardfx {
 
     opens io.github.gleidsonmt.dashboardfx to javafx.fxml;
     opens io.github.gleidsonmt.dashboardfx.controllers to javafx.fxml;
+    opens  io.github.gleidsonmt.dashboardfx.core.controls.icon to javafx.fxml;
     exports io.github.gleidsonmt.dashboardfx;
     exports io.github.gleidsonmt.dashboardfx.core.view;
 }
