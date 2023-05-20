@@ -67,7 +67,8 @@ public class ButtonPresCreator extends TutorialCreator {
                         """,
                         """
                         """)
-                .subTitle("Links")
+                .title("Customized Buttons")
+                .title("Links")
                 .footer(createDefaultControl());
         build();
 
