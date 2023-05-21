@@ -12,7 +12,10 @@ import javafx.stage.Stage;
 import org.scenicview.ScenicView;
 //import org.scenicview.ScenicView;
 
-
+/**
+ * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * Create on  22/04/2023
+ */
 public abstract class Launcher extends Application {
 
     private final IRoot root = new IRoot();
@@ -44,7 +47,7 @@ public abstract class Launcher extends Application {
 
         stage.show();
         CSSFX.start(stage);
-        ScenicView.show(scene);
+//        ScenicView.show(scene);
 
     }
 
