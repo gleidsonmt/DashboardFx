@@ -35,7 +35,7 @@ public class CheckBoxPresCreator extends TutorialCreator {
                 .text("""
                       A tri-state selection Control typically skinned as a box with a checkmark or tick mark when checked.
                         """)
-                .multCode(
+                .demonstration(
                         new CheckBox(),
                         """
                                 TextField field = new TextField();

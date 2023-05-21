@@ -177,12 +177,12 @@ public class PresentationCreator extends StackPane implements BuildCreator {
         return this;
     }
 
-    public PresentationCreator multCode(Node node, String java, String fxml) {
+    public PresentationCreator demonstration(Node node, String java, String fxml) {
         items.add(createMultBlock(node, java, fxml));
         return this;
     }
 
-    public PresentationCreator multCode(List<Node> nodes, String java, String fxml) {
+    public PresentationCreator demonstration(List<Node> nodes, String java, String fxml) {
         items.add(createMultBlock(nodes, java, fxml));
         return this;
     }

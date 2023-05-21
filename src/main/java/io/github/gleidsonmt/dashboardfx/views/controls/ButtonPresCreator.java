@@ -43,7 +43,7 @@ public class ButtonPresCreator extends TutorialCreator {
                 .text("""
                         A simple button control. The button control can contain text and/or a graphic.
                         """)
-                .multCode(List.of(
+                .demonstration(List.of(
                             createButton("Default"),
                             createCancel("Cancel"),
                             createBtnFlat("Flat"),
@@ -78,7 +78,7 @@ public class ButtonPresCreator extends TutorialCreator {
                                 </Button>
                                 """)
                 .title("Dash Buttons")
-                .multCode(List.of(
+                .demonstration(List.of(
                         createGNButton("GNButton"),
                         createFloatingButton()
                         ),

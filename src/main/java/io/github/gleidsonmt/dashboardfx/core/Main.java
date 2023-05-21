@@ -47,6 +47,4 @@ public class Main extends Launcher {
 //        layout.setContent((Node) loadCircle);
     }
 
-
-
 }

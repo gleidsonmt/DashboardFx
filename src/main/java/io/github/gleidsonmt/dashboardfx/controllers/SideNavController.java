@@ -92,6 +92,11 @@ public class SideNavController extends ActionView {
         go("view_check", new CheckBoxPresCreator(context));
     }
 
+    @FXML
+    private void goTableView() {
+        go("view_table", new TableViewPresCreator(context));
+    }
+
     private void go(String name, TutorialCreator tutorialCreator) {
         context.routes().putAndGo(new SimpleView(name, tutorialCreator));
     }

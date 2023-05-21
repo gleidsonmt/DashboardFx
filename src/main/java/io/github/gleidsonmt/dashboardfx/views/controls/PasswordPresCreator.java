@@ -35,7 +35,7 @@ public class PasswordPresCreator extends TutorialCreator {
                 .text("""
                         Text field that masks entered characters.
                         """)
-                .multCode(
+                .demonstration(
                         new TextField(),
                         """
                                 PasswordField label = new PasswordField();

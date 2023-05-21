@@ -43,7 +43,7 @@ public class ListViewCreator extends TutorialCreator {
                          ListView<String> listView = new ListView<String>(names);
                         """)
                 .text("The elements of the ListView are contained within the items ObservableList. This ObservableList is automatically observed by the ListView, such that any changes that occur inside the ObservableList will be automatically shown in the ListView itself. If passing the ObservableList in to the ListView constructor is not feasible, the recommended approach for setting the items is to simply call: ")
-                .multCode(List.of(
+                .demonstration(List.of(
                             createListView(),
                             createBorderList(),
                                 createRectList()

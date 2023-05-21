@@ -35,7 +35,7 @@ public class HyperlinkPresCreator extends TutorialCreator {
 
         this    .title("Hyperlink")
                 .text("An HTML like label which can be a graphic and/or text which responds to rollovers and clicks. When a hyperlink is clicked/pressed isVisited() becomes true. A Hyperlink behaves just like a Button. When a hyperlink is pressed and released a ActionEvent is sent, and your application can perform some action based on this event.")
-                .multCode(new Hyperlink("Hyperlink"),
+                .demonstration(new Hyperlink("Hyperlink"),
                         """
                                 Hyperlink link = new Hyperlink("Hyperlink");
                                 """,

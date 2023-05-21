@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane id="drawer-IRoot" fx:id="root" maxWidth="549.0" prefHeight="600.0" prefWidth="549.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.SideNavController">
+   <VBox id="drawer-content" prefHeight="200.0" prefWidth="100.0">
+      <children>
+         <TableView prefHeight="200.0" prefWidth="200.0">
+           <columns>
+             <TableColumn prefWidth="75.0" text="C1" />
+             <TableColumn prefWidth="75.0" text="C2" />
+           </columns>
+         </TableView>
+      </children>
+   </VBox>
+   <stylesheets>
+      <URL value="@../style/css/colors.css" />
+      <URL value="@../style/css/drawer.css" />
+      <URL value="@../style/css/dash.css" />
+
+      <URL value="@../style/css/bootstrap.css" />
+      <URL value="@../style/css/immersive_scroll.css" />
+      <URL value="@../style/css/typographic.css" />
+      <URL value="@../style/css/dash.css" />
+      <URL value="@../style/css/skeleton.css" />
+
+   </stylesheets>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</StackPane>

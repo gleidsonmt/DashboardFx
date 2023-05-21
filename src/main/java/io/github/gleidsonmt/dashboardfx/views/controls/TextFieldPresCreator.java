@@ -36,7 +36,7 @@ public class TextFieldPresCreator extends TutorialCreator {
                         Unlike in previous releases of JavaFX, support for multi-line input is not available as part of the TextField control,
                         however this is the sole-purpose of the TextArea control.
                         """)
-                .multCode(
+                .demonstration(
                         new TextField(),
                         """
                                 TextField field = new TextField();
