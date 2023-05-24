@@ -130,7 +130,7 @@ public class TutorialUnderstanding extends TutorialCreator {
 
                 ;
 
-        setAlignment(Pos.CENTER_LEFT);
+//        setAlignment(Pos.CENTER_LEFT);
 
         build();
 

@@ -150,7 +150,7 @@ public class WrappersView extends StackPane {
                 "https://github.com/gleidsonmt")
         );
         creator.build();
-        this.getChildren().setAll(creator);
+        this.getChildren().setAll(creator.getRoot());
     }
 
 
