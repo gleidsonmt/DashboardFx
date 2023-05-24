@@ -24,9 +24,15 @@ import io.github.gleidsonmt.dashboardfx.core.controls.GNButton;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNIconButton;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TableCreator;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
+import io.github.gleidsonmt.dashboardfx.model.Data;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -93,18 +99,21 @@ public class ButtonPresCreator extends TutorialCreator {
                                 <GNIconButton icon="DISCOUNT"/>
                             """
                 )
+                .title("Attributes")
+                .table(
+                    new TableCreator<Data>(context)
+                            .column("name")
+                            .column("value")
+                            .data(
+                                    new Data("-gn-circle-fill", "#fff")
+                            )
+                            .build()
+                )
                 .title("Links")
                 .footer(createDefaultControl());
         build();
+        new TableColumn<>("");
 
-
-    }
-
-    public List<Node> listIconized() {
-        Button button = createButton("Iconized");
-        List<Node> list = Arrays.asList(button);
-        button.setGraphic(new IconContainer(Icons.ANALYTICS));
-        return list;
     }
 
     public Button createButton(String title) {

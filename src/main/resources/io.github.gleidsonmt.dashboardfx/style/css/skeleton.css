@@ -75,6 +75,11 @@ SVGPath {
     -fx-fill : white;
 }
 
+.gn-button {
+    /* -gn-circle-fill: red; */
+
+}
+
 .button:cancel {
     -fx-background-color : transparent;
     -fx-border-color : -fx-accent;
@@ -330,7 +335,7 @@ SVGPath {
 {
   -fx-background-color : transparent;
   -fx-border-color : transparent;
-  -fx-alignment: center;
+  -fx-alignment: center_left;
 }
 
 
@@ -338,7 +343,7 @@ SVGPath {
 {
   -fx-background-color : transparent;
   -fx-border-color : transparent;
-    -fx-alignment: center;
+    -fx-alignment: center_left;
 }
 
 .table-row-cell:filled:selected .table-column .text,
@@ -414,5 +419,5 @@ SVGPath {
 }
 
 .table-view .table-cell {
-    -fx-alignment: center;
+    -fx-alignment: center_left;
 }

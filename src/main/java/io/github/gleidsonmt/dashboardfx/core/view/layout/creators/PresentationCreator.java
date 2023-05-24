@@ -41,6 +41,7 @@ import javafx.scene.text.TextFlow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("unused")
@@ -93,6 +94,12 @@ public class PresentationCreator extends StackPane implements BuildCreator {
 
     public PresentationCreator legend(String legend) {
         items.add(createLabel(legend, "text-12", "text-bold"));
+        return this;
+    }
+
+    public PresentationCreator table(@NotNull TableCreator table) {
+        VBox.setMargin(table.getRoot(), new Insets(10, 0, 10,0));
+        items.add(table.getRoot());
         return this;
     }
 
@@ -290,7 +297,7 @@ public class PresentationCreator extends StackPane implements BuildCreator {
     }
 
     @Override
-    public Node build() {
+    public PresentationCreator build() {
         if (items.stream().noneMatch(n-> n.getStyleClass().contains("title"))) {
             body.setPadding(new Insets(30, 30, 30, 30));
         }

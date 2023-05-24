@@ -24,7 +24,7 @@ import javafx.scene.layout.StackPane;
 
 public interface BuildCreator {
 
-    Node build();
+    BuildCreator build();
 
-    StackPane getRoot();
+    Node getRoot();
 }

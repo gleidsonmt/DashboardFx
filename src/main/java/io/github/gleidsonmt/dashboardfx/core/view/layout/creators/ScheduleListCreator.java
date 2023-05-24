@@ -79,9 +79,9 @@ public class ScheduleListCreator
     }
 
     @Override
-    public Node build() {
+    public ScheduleListCreator build() {
         construct();
-        return root;
+        return this;
     }
 
     @Override

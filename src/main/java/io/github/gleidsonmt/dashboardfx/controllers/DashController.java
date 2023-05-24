@@ -136,7 +136,7 @@ public final class DashController extends ActionView {
 
                         )
                 )
-                .build();
+                .build().getRoot();
 
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setCategories(FXCollections.observableArrayList(

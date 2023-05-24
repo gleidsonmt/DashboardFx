@@ -19,8 +19,14 @@ package io.github.gleidsonmt.dashboardfx.core.controls;
 
 import io.github.gleidsonmt.dashboardfx.core.controls.skin.GNButtonSkin;
 import javafx.beans.DefaultProperty;
+import javafx.css.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+
+import java.util.List;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -29,6 +35,16 @@ import javafx.scene.control.Skin;
 @DefaultProperty("control")
 public class GNButton extends Button {
 
+    private static final StyleablePropertyFactory<GNButton> FACTORY =
+            new StyleablePropertyFactory<>(Control.getClassCssMetaData());
+
+    private final StyleableProperty<Color> circleFill =
+            new SimpleStyleableObjectProperty<>(CIRCLE_FILL, this, "circleFill");
+
+    private static final CssMetaData<GNButton, Color> CIRCLE_FILL =
+            FACTORY.createColorCssMetaData("-gn-circle-fill",
+                    GNButton::circleFillProperty, Color.WHITE, true);
+
     public GNButton() {
         this(null);
     }
@@ -36,6 +52,7 @@ public class GNButton extends Button {
     public GNButton(String text) {
         setText(text == null ? "Button" : text);
         setPrefSize(100, 40);
+        getStyleClass().add("gn-button");
     }
 
     @Override
@@ -43,5 +60,20 @@ public class GNButton extends Button {
         return new GNButtonSkin(this);
     }
 
+    public static List<CssMetaData<? extends Styleable, ?>> getClassCssMetaData() {
+        return FACTORY.getCssMetaData();
+    }
 
+    @Override
+    public List<CssMetaData<? extends Styleable, ?>> getControlCssMetaData() {
+        return FACTORY.getCssMetaData();
+    }
+
+    public StyleableProperty<Color> circleFillProperty() {
+        return circleFill;
+    }
+
+    public Color getCircleFill() {
+        return circleFill.getValue();
+    }
 }

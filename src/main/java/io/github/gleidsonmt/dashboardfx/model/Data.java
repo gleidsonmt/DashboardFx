@@ -17,38 +17,45 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.view.layout.creators;
+package io.github.gleidsonmt.dashboardfx.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
- * Create on  14/05/2023
+ * Create on  20/05/2023
  */
-public class Hierarchy extends Item {
-    private final List<Item> items = new ArrayList<>();
+public class Data {
+    private final StringProperty name = new SimpleStringProperty();
+    private final StringProperty value = new SimpleStringProperty();
 
-    public Hierarchy(String name, Item... items) {
-        this(name, null, items);
+    public Data(String name, String value) {
+        this.name.set(name);
+        this.value.set(value);
     }
 
-    public Hierarchy(String name, String text, Item... items) {
-        super(name, text);
-        this.items.addAll(Arrays.asList(items));
+    public String getName() {
+        return name.get();
     }
 
-
-
-    public List<Item> getItems() {
-        return items;
+    public StringProperty nameProperty() {
+        return name;
     }
 
+    public void setName(String name) {
+        this.name.set(name);
+    }
 
-    @Override
-    public String toString() {
-        return getName() + getItems();
+    public String getValue() {
+        return value.get();
+    }
+
+    public StringProperty valueProperty() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value.set(value);
     }
 }
