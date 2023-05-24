@@ -21,6 +21,7 @@ package io.github.gleidsonmt.dashboardfx.core.view;
 
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.Container;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.BuildCreator;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 
@@ -37,6 +38,11 @@ public class SimpleView extends ActionView implements View {
     public SimpleView(String name, Node node) {
         this.name = name;
         container = new Container(node);
+    }
+
+    public SimpleView(String name, BuildCreator node) {
+        this.name = name;
+        container = new Container(node.getRoot());
     }
 
     @Override

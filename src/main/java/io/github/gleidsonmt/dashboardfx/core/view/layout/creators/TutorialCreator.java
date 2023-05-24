@@ -66,7 +66,7 @@ public class TutorialCreator extends PresentationCreator {
         aside.setPadding(new Insets(20));
         btnFloat.setVisible(false);
 
-        widthProperty().addListener((observable, oldValue, newValue) -> {
+        root.widthProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.doubleValue() < 736) {
                 body.getChildren().remove(aside);
                 StackPane.setMargin(btnFloat, new Insets(10, 40, 10, 10));
@@ -212,13 +212,13 @@ public class TutorialCreator extends PresentationCreator {
 
 //        ((ToggleButton)aside.getChildren().get(1)).setSelected(true);
 
-        getChildren().setAll(body);
+        root.getChildren().setAll(body);
         body.getChildren().setAll(scroll, aside);
         scroll.setPadding(new Insets(100, 0, 0,0));
         scroll.setContent(center);
 
-        this.getChildren().add(btnFloat);
-        this.setAlignment(Pos.BOTTOM_RIGHT);
+        root.getChildren().add(btnFloat);
+        root.setAlignment(Pos.BOTTOM_RIGHT);
 
         StackPane.setMargin(btnFloat, new Insets(10, 40 + 250, 10, 10));
 

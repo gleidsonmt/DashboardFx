@@ -38,24 +38,49 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
 import java.util.List;
 
-@SuppressWarnings("unused")
-public class PresentationCreator extends StackPane implements BuildCreator {
+/**
+ * Base class to create imperative presentations.
+ * Used to create view without fxml and to fast way to create presentation.
+ * It's a top and down blocks. Which blocks represents one method inside
+ * this class.
+ *      Ex. the method title(String title). creates a label, if I put another method
+ * in sequence two titles will be created in a vbox layout.
+ *      More: this.title("One").title("Two").build(); creates a vbos with two titles.
+ * if I want a text between ones -
+ *      this.title("One").text("between").title("Two").build();
+ * indented:
+ *      this.title("One)
+ *          .text("Between")
+ *          .title("Two")
+ *          .build().
+ * Create a node as like a document with sections and blocks.
+ * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * Create on  22/01/2023
+ */
+
+@ApiStatus.Internal
+public class PresentationCreator
+        implements BuildCreator {
 
     private final VBox body = new VBox();
-    protected ObservableList<Node> items = FXCollections.observableArrayList();
+    protected ObservableList<Node> items;
     private final Context context;
+
+    protected final StackPane root;
 
     public PresentationCreator(Context _context) {
         this.context = _context;
+        this.root = new StackPane();
+        items = FXCollections.observableArrayList();
 
         ScrollPane scroll = new ScrollPane();
-        this.getChildren().setAll(scroll);
+        this.root.getChildren().setAll(scroll);
         scroll.setContent(body);
 
         scroll.setFitToHeight(true);
@@ -66,6 +91,7 @@ public class PresentationCreator extends StackPane implements BuildCreator {
     }
 
     private String title = null;
+
     public PresentationCreator title(String _title) {
         if (title == null) title = _title;
         items.add(createTitle(_title));
@@ -87,8 +113,8 @@ public class PresentationCreator extends StackPane implements BuildCreator {
         return this;
     }
 
-    public PresentationCreator text(String text, String... style) {
-        items.add(createText(text, style));
+    public PresentationCreator text(String text, String... options) {
+        items.add(createText(text, options));
         return this;
     }
 
@@ -97,22 +123,44 @@ public class PresentationCreator extends StackPane implements BuildCreator {
         return this;
     }
 
-    public PresentationCreator table(@NotNull TableCreator table) {
+    public PresentationCreator separator() {
+        items.add(new Separator());
+        return this;
+    }
+
+    @ApiStatus.Internal
+    public PresentationCreator code(String text) {
+        items.add(createBlockCode(text, "java"));
+        return this;
+    }
+
+    @ApiStatus.Internal
+    @ApiStatus.Experimental
+    public PresentationCreator code(String text, String language) {
+        items.add(createBlockCode(text, language));
+        return this;
+    }
+
+    @ApiStatus.Experimental
+    public PresentationCreator table(@NotNull TableCreator<?> table) {
         VBox.setMargin(table.getRoot(), new Insets(10, 0, 10,0));
         items.add(table.getRoot());
         return this;
     }
 
+    @ApiStatus.Experimental
     public PresentationCreator options(ActionOptions... options) {
         items.add(createOptions(options));
         return this;
     }
 
+    @ApiStatus.Experimental
     public PresentationCreator footer(Author... authors) {
         items.add(createFooter(authors));
         return this;
     }
 
+    @ApiStatus.Experimental
     public PresentationCreator footer(ObservableList<Author> authors) {
         for(Author author : authors) {
             items.add(createFooter(author));
@@ -120,6 +168,7 @@ public class PresentationCreator extends StackPane implements BuildCreator {
         return this;
     }
 
+    @ApiStatus.OverrideOnly
     public ObservableList<Author> createDefaultControl() {
         return FXCollections.observableArrayList(
             new Author("OpenJFX",
@@ -127,6 +176,7 @@ public class PresentationCreator extends StackPane implements BuildCreator {
                     "https://openjfx.io/javadoc/17/javafx.controls/javafx/scene/control/"+title+".html")
             );
     }
+
     private Node createFooter(Author... authors) {
         VBox root = new VBox();
 
@@ -169,20 +219,7 @@ public class PresentationCreator extends StackPane implements BuildCreator {
         return root;
     }
 
-    public PresentationCreator separator() {
-        items.add(new Separator());
-        return this;
-    }
 
-    public PresentationCreator code(String text) {
-        items.add(createBlockCode(text, "java"));
-        return this;
-    }
-
-    public PresentationCreator code(String text, String language) {
-        items.add(createBlockCode(text, language));
-        return this;
-    }
 
     public PresentationCreator demonstration(Node node, String java, String fxml) {
         items.add(createMultBlock(node, java, fxml));
@@ -256,17 +293,16 @@ public class PresentationCreator extends StackPane implements BuildCreator {
         return createLabel(title, "title", "h4");
     }
 
-    private @NotNull Label createText(String title, String... styles) {
-        return createLabel(title, styles);
-    }
+
+
 
     private @NotNull Label createSubTitle(String title) {
         return createLabel(title, "subtitle", "h6", "text-bold");
     }
 
-    private @NotNull Label createLabel(String text, String... clazz) {
+    private @NotNull Label createLabel(String text, String... options) {
         LabelPosition label = new LabelPosition(text);
-        label.getStyleClass().addAll(clazz);
+        label.getStyleClass().addAll(options);
         VBox.setMargin(label, new Insets(10, 0, 20, 0));
         return label;
     }
@@ -296,6 +332,24 @@ public class PresentationCreator extends StackPane implements BuildCreator {
         return new TextFlow(text);
     }
 
+    private @NotNull TextFlow createText(String _text, String... options) {
+        Text text = new Text(_text);
+        text.getStyleClass().add("text-14");
+        TextFlow flow = new TextFlow(text);
+
+        StringBuilder builder = new StringBuilder();
+        for(String c : options) {
+            if (c.startsWith("-fx-")) {
+                builder.append(c);
+            } else {
+                flow.getStyleClass().add(c);
+            }
+        }
+        flow.setStyle(builder.toString());
+
+        return flow;
+    }
+
     @Override
     public PresentationCreator build() {
         if (items.stream().noneMatch(n-> n.getStyleClass().contains("title"))) {
@@ -306,8 +360,8 @@ public class PresentationCreator extends StackPane implements BuildCreator {
     }
 
     @Override
-    public StackPane getRoot() {
-        return this;
+    public Node getRoot() {
+        return root;
     }
 
 
