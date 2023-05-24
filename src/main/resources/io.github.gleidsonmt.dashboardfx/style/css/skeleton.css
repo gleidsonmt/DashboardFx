@@ -40,7 +40,6 @@ Pane {
 .center-body .viewport,
 .scroll-pane:fitToHeight {
     -fx-background-color : -fx-background;
-    -fx-border-color : red;
     -fx-border-width : 0px;
 }
 
@@ -420,4 +419,45 @@ SVGPath {
 
 .table-view .table-cell {
     -fx-alignment: center_left;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * CheckBox                                                                    *
+ *                                                                             *
+ ******************************************************************************/
+
+.check-box {
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+}
+
+.check-box > .box {
+    /* -fx-background-radius: 3, 2, 2; */
+    -fx-background-color:transparent;
+    -fx-border-color: -fx-accent;
+    -fx-border-radius: 3,2,1;
+    -fx-border-width: 2px;
+}
+
+.check-box:selected > .box  {
+    -fx-background-color: -fx-accent;
+}
+
+.check-box:selected > .box > .mark {
+    -fx-shape: "M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z";
+    -fx-scale-shape: true;
+    -fx-background-color: white;
+}
+
+.check-box:indeterminate > .box {
+
+}
+
+.check-box:indeterminate  > .box > .mark {
+    -fx-shape: "M0,0H10V2H0Z";
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-scale-shape: false;
+    -fx-background-color: -fx-accent;
 }

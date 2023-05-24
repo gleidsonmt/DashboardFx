@@ -20,11 +20,26 @@
 package io.github.gleidsonmt.dashboardfx.core.view.layout.creators;
 
 import javafx.scene.Node;
-import javafx.scene.layout.StackPane;
+import org.jetbrains.annotations.ApiStatus;
 
+/**
+ * Base interface for others creators.
+ * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * Create on  22/01/2023
+ */
+@ApiStatus.Internal
 public interface BuildCreator {
 
+
+    /**
+     * Call a method to add items and create a structure.
+     * @return this build.
+     */
     BuildCreator build();
 
+    /**
+     * If needed for a layout, to pass a view or set a content.
+     * @return the root inside the wrapper.
+     */
     Node getRoot();
 }

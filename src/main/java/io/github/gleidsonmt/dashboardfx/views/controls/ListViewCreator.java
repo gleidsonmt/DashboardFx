@@ -35,6 +35,19 @@ public class ListViewCreator extends TutorialCreator {
         super(context);
         this    .title("ListView")
                 .text("A ListView displays a horizontal or vertical list of items from which the user may select, or with which the user may interact. A ListView is able to have its generic type set to represent the type of data in the backing model. Doing this has the benefit of making various methods in the ListView, as well as the supporting classes (mentioned below), type-safe. In addition, making use of the generic type supports substantially simplified development of applications making use of ListView, as all modern IDEs are able to auto-complete far more successfully with the additional type information.")
+                .demonstration(List.of(
+                                createListView(),
+                                createBorderList(),
+                                createRectList()
+                        ),
+                        """
+                                ListView<String> listView = new ListView<>();
+                                listView.getItems().setAll(
+                                        "First", "Second", "Third", "Fourth"
+                                );
+                                """,
+                        """
+                                """)
                 .title("Populating a ListView")
                 .text("A simple example of how to create and populate a ListView of names (Strings) is shown here: ")
                 .code("""
@@ -42,17 +55,14 @@ public class ListViewCreator extends TutorialCreator {
                                   "Julia", "Ian", "Sue", "Matthew", "Hannah", "Stephan", "Denise");
                          ListView<String> listView = new ListView<String>(names);
                         """)
-                .text("The elements of the ListView are contained within the items ObservableList. This ObservableList is automatically observed by the ListView, such that any changes that occur inside the ObservableList will be automatically shown in the ListView itself. If passing the ObservableList in to the ListView constructor is not feasible, the recommended approach for setting the items is to simply call: ")
-                .demonstration(List.of(
-                            createListView(),
-                            createBorderList(),
-                                createRectList()
-                        ),
-                        """
-                                Hyperlink link = new Hyperlink("Hyperlink");
-                                """,
-                        """
-                                """)
+                .text("""
+                            The elements of the ListView are contained within the items ObservableList. This ObservableList is automatically observed by the ListView, such that any changes that occur inside the ObservableList will be automatically shown in the ListView itself. If passing the ObservableList in to the ListView constructor is not feasible, the recommended approach for setting the items is to simply call:
+                            """
+                       , "-fx-padding: 10px 0px 10px 0px;"
+                )
+                .title("Links")
+                .footer(createDefaultControl())
+
         ;
         build();
     }

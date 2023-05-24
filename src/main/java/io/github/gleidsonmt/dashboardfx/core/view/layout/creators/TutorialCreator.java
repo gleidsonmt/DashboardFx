@@ -29,10 +29,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -66,7 +63,7 @@ public class TutorialCreator extends PresentationCreator {
         aside.setPadding(new Insets(20));
         btnFloat.setVisible(false);
 
-        widthProperty().addListener((observable, oldValue, newValue) -> {
+        root.widthProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.doubleValue() < 736) {
                 body.getChildren().remove(aside);
                 StackPane.setMargin(btnFloat, new Insets(10, 40, 10, 10));
@@ -212,13 +209,13 @@ public class TutorialCreator extends PresentationCreator {
 
 //        ((ToggleButton)aside.getChildren().get(1)).setSelected(true);
 
-        getChildren().setAll(body);
+        root.getChildren().setAll(body);
         body.getChildren().setAll(scroll, aside);
         scroll.setPadding(new Insets(100, 0, 0,0));
         scroll.setContent(center);
 
-        this.getChildren().add(btnFloat);
-        this.setAlignment(Pos.BOTTOM_RIGHT);
+        root.getChildren().add(btnFloat);
+        root.setAlignment(Pos.BOTTOM_RIGHT);
 
         StackPane.setMargin(btnFloat, new Insets(10, 40 + 250, 10, 10));
 
@@ -289,7 +286,8 @@ public class TutorialCreator extends PresentationCreator {
         icon.setContent("M11 20V7.825l-5.6 5.6L4 12l8-8 8 8-1.4 1.425-5.6-5.6V20Z");
         button.setGraphic(icon);
         icon.setStyle("-fx-fill: white");
-
+        button.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+        button.setAlignment(Pos.CENTER);
         button.setOnAction(event ->
                 scroll.setVvalue(0));
 
