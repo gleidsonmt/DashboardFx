@@ -123,6 +123,7 @@ public class PresentationCreator
         return this;
     }
 
+    @ApiStatus.Internal
     public PresentationCreator separator() {
         items.add(new Separator());
         return this;
@@ -167,6 +168,7 @@ public class PresentationCreator
         }
         return this;
     }
+
 
     @ApiStatus.OverrideOnly
     public ObservableList<Author> createDefaultControl() {
@@ -218,8 +220,6 @@ public class PresentationCreator
         root.setPadding(new Insets(10));
         return root;
     }
-
-
 
     public PresentationCreator demonstration(Node node, String java, String fxml) {
         items.add(createMultBlock(node, java, fxml));
