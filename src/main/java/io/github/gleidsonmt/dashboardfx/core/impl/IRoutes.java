@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.core.impl;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
+import io.github.gleidsonmt.dashboardfx.core.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.Routes;
 import io.github.gleidsonmt.dashboardfx.core.view.View;
 import javafx.beans.property.SimpleStringProperty;
@@ -46,7 +47,7 @@ public class IRoutes implements Routes {
             doOnInit(view);
             root.getBody().getLayout().setContent(view.getRoot());
             doActions(view);
-            title.set(view.getName());
+            title.set(changeTitle(view.getName()));
         } else {
 
         }
@@ -68,17 +69,30 @@ public class IRoutes implements Routes {
     }
 
     @Override
-    public Routes nav(String key) {
-        View View = manager.get(key);
-        if (View != null) {
-            doActions(View);
-            root.getBody().getLayout().setContent(View.getRoot());
-        }
+    public Routes nav(String key) throws NavigationException {
+        View view = manager.get(key);
 
-        title.set(key);
+        if (view == null) throw new NavigationException(context, "0", "View not found.");
+
+        doActions(view);
+        root.getBody().getLayout().setContent(view.getRoot());
+
+        title.set(changeTitle(key));
 
         root.getBody().getLayout().setRight(null);
         return this;
+    }
+
+    private String changeTitle(String title) {
+
+        String[] arr = title.split("[^a-z]");
+        title = "";
+
+        for (String e : arr) {
+            title += e.substring(0,1).toUpperCase() + e.substring(1) + " ";
+        }
+
+        return title;
     }
 
     @Override

@@ -80,8 +80,8 @@ public class TutorialCreator extends PresentationCreator {
 
     }
 
-    private List<LabelPosition> breaks = new ArrayList<>();
-    private AtomicBoolean rolling = new AtomicBoolean(true);
+    private final List<LabelPosition> breaks = new ArrayList<>();
+    private final AtomicBoolean rolling = new AtomicBoolean(true);
 
     public void createNavHeader(String name, LabelPosition node) {
 
@@ -191,7 +191,7 @@ public class TutorialCreator extends PresentationCreator {
     }
 
     @Override
-    public Node build() {
+    public TutorialCreator build() {
 
         Label title = new Label("Overview Content");
         title.getStyleClass().addAll("text-bold", "h4");

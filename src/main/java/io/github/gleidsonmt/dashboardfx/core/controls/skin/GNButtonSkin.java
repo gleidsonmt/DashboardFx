@@ -22,10 +22,12 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.control.skin.ButtonSkin;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -52,6 +54,13 @@ public class GNButtonSkin extends ButtonSkin {
 
         control.setOnMouseClicked(onPressed);
 
+        circle.setFill(_control.getCircleFill());
+
+        registerChangeListener((ObservableValue<?>) _control.circleFillProperty(), c -> {
+            if (c.getValue() != null) {
+                circle.setFill((Paint) c.getValue());
+            }
+        });
     }
 
 
@@ -65,8 +74,6 @@ public class GNButtonSkin extends ButtonSkin {
 
             circle.setRadius(0);
             circle.setStrokeWidth(0);
-
-            circle.setFill(Color.WHITE);
 
             circle.setLayoutX(event.getX());
             circle.setLayoutY(event.getY());

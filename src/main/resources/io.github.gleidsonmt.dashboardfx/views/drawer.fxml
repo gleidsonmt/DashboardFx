@@ -120,6 +120,11 @@
                               <ToggleGroup fx:id="group11111" />
                            </toggleGroup>
                         </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="230.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goTableView" styleClass="drawer-item" text="TableView">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group111111" />
+                           </toggleGroup>
+                        </ToggleButton>
                      </children>
                   </VBox>
                </content>

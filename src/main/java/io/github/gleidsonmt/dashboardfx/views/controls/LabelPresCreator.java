@@ -27,7 +27,6 @@ import javafx.scene.control.Label;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
  * Create on  19/01/2023
  */
 public class LabelPresCreator extends TutorialCreator {
@@ -41,7 +40,7 @@ public class LabelPresCreator extends TutorialCreator {
                 A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. 
                 Labels also are useful in that they can have mnemonics which, if used, will send focus to the Control listed as the target of the labelFor property.
                 """)
-                .multCode(
+                .demonstration(
                         new Label("Label"),
                         """
                         // importing label
@@ -62,7 +61,7 @@ public class LabelPresCreator extends TutorialCreator {
                         GNBadge
                         """)
                 .text("Custom icon label based in icon button.")
-                .multCode(
+                .demonstration(
                         new GNBadge(Icons.NOTIFICATIONS),
                         """
                                import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;

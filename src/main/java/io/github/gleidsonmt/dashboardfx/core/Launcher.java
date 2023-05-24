@@ -4,17 +4,24 @@ import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.gleidsonmt.dashboardfx.core.impl.IContext;
 import io.github.gleidsonmt.dashboardfx.core.impl.IRoot;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
 //import org.scenicview.ScenicView;
 
-
+/**
+ * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * Create on  22/04/2023
+ */
 public abstract class Launcher extends Application {
 
     private final IRoot root = new IRoot();
     private final Context context = new IContext(root, getHostServices());
 
+    protected ObservableList<Image> icons = FXCollections.observableArrayList();
     @Override
     public void start(Stage stage) {
         build(context);
@@ -22,6 +29,8 @@ public abstract class Launcher extends Application {
         stage.setTitle("DashboardFx App!");
         stage.setScene(scene);
         stage.setMaximized(true);
+
+        stage.getIcons().addAll(icons);
 
         scene.getStylesheets().addAll(
                 clean("style/css/colors.css"),
@@ -35,9 +44,10 @@ public abstract class Launcher extends Application {
                 clean("style/css/dash.css")
         );
 
+
         stage.show();
         CSSFX.start(stage);
-        ScenicView.show(scene);
+//        ScenicView.show(scene);
 
     }
 
@@ -46,5 +56,7 @@ public abstract class Launcher extends Application {
     }
 
     public abstract void build(Context context);
+
+
 
 }

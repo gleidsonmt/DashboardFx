@@ -39,8 +39,8 @@ import java.util.Random;
 
 public class ScheduleListItem extends GridPane {
 
-    private List<String> colors = List.of("-info", "-mint", "-amber", "-grapefruit", "-secondary");
-    private Random random = new Random();
+    private final List<String> colors = List.of("-info", "-mint", "-amber", "-grapefruit", "-secondary");
+    private final Random random = new Random();
 
     private Label num;
     private Text title;

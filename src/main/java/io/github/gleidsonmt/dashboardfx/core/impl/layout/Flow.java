@@ -64,14 +64,22 @@ public class Flow implements WrapperContainer {
         content.addEventFilter(MouseEvent.MOUSE_EXITED, event -> {
             if (root.getChildren().size() <= 2) return;
             if (event.getPickResult().getIntersectedNode().getStyleClass().contains("gn-badge")) return;
+
+            if (!opened) return;
             close();
         });
         return this;
     }
 
+    private boolean opened = true;
+
     @Override
     public void close() {
-        root.getChildren().remove( this.content);
+        opened = false;
+
+        if (root.getChildren().contains(content)) {
+            root.getChildren().remove(this.content);
+        }
     }
 
     @Override
@@ -83,6 +91,8 @@ public class Flow implements WrapperContainer {
 
 
     public void show(Direction direction, Node target) {
+
+        opened = true;
 
         if (root.getChildren().contains(content)) {
             return;

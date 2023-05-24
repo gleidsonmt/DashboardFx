@@ -8,6 +8,12 @@
     fxml: about.fxml
   }
   - {
+    name: profile,
+    title: Profile,
+    folder: app,
+    fxml: profile.fxml
+  }
+  - {
     name: dash,
     title: Dashboard,
     fxml: dash.fxml

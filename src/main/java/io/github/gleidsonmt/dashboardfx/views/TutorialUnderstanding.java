@@ -93,6 +93,8 @@ public class TutorialUnderstanding extends TutorialCreator {
 
                 .title("Loading Views")
                 .text("It's a view that is loaded by yml file, this wrapper class wrappers the composer, location, charsets.. so you can get in the future or load when application starts.")
+                .legend("View of the tree")
+                .image(new Image(context.getResource("style/img/img_tree.png").toExternalForm()))
                 .text("In views.yml file add you will see.(If your controller class doesn't extend ActionView, so you can't access the context)", "text-12", "text-bold")
                 .code("""
                         !!io.github.gleidsonmt.dashboardfx.core.view.ViewMap

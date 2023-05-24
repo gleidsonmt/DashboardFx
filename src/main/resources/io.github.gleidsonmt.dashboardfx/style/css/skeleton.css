@@ -75,6 +75,11 @@ SVGPath {
     -fx-fill : white;
 }
 
+.gn-button {
+    /* -gn-circle-fill: red; */
+
+}
+
 .button:cancel {
     -fx-background-color : transparent;
     -fx-border-color : -fx-accent;
@@ -263,6 +268,9 @@ SVGPath {
 
 .table-view {
   -fx-fixed-cell-size : 45px;
+  -fx-border-color: -dark-gray;
+  -fx-border-radius: 5px;
+  -fx-border-width: 2px;
 }
 
 .table-view:constrained-resize:focused {
@@ -314,7 +322,7 @@ SVGPath {
 .tree-table-view:focused,
 .table-view:focused
 {
-  -fx-border-color : transparent;
+  -fx-border-color : -fx-accent;
 }
 
 .table-view .column-header-background .nested-column-header .table-column .label {
@@ -322,11 +330,12 @@ SVGPath {
 }
 
 
+
 .table-row-cell:filled:even
 {
   -fx-background-color : transparent;
   -fx-border-color : transparent;
-  -fx-alignment: center;
+  -fx-alignment: center_left;
 }
 
 
@@ -334,6 +343,7 @@ SVGPath {
 {
   -fx-background-color : transparent;
   -fx-border-color : transparent;
+    -fx-alignment: center_left;
 }
 
 .table-row-cell:filled:selected .table-column .text,
@@ -343,8 +353,12 @@ SVGPath {
   -fx-border-color : transparent;
 }
 
-.table-row-cell:filled:selected .table-column {
+.table-row-cell:filled:hover .table-column {
     -fx-background-color: derive(-light-gray-2, 50%);
+}
+
+.table-row-cell:filled:selected .table-column {
+    -fx-background-color: derive(-fx-accent, 120%);
 }
 
 .table-row-cell:filled:selected .table-column .button .text {
@@ -391,3 +405,19 @@ SVGPath {
   -fx-fill : white;
 }
 
+.table-view .table-row-cell {
+    -fx-border-width: 0px;
+}
+
+.table-view .virtual-flow .clipped-container .sheet .table-row-cell:filled .table-column:filled {
+    -fx-border-width : 1px 0px 1px 0px;
+    -fx-border-color: -box-color;
+}
+
+.table-view .virtual-flow .clipped-container .sheet .table-row-cell .table-column {
+    -fx-border-width : 0px;
+}
+
+.table-view .table-cell {
+    -fx-alignment: center_left;
+}

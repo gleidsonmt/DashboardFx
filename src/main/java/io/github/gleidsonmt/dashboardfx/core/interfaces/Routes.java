@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.core.interfaces;
 
+import io.github.gleidsonmt.dashboardfx.core.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.view.View;
 import javafx.beans.property.StringProperty;
 
@@ -18,7 +19,7 @@ public interface Routes {
 
     View getView(String view);
 
-    Routes nav(String key);
+    Routes nav(String key) throws NavigationException;
 
     StringProperty title();
 

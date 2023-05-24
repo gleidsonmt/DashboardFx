@@ -21,20 +21,24 @@ package io.github.gleidsonmt.dashboardfx.views.controls;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNButton;
+import io.github.gleidsonmt.dashboardfx.core.controls.GNIconButton;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.Author;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.PresentationCreator;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TableCreator;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
+import io.github.gleidsonmt.dashboardfx.model.Data;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
  * Create on  21/01/2023
  */
 public class ButtonPresCreator extends TutorialCreator {
@@ -45,13 +49,12 @@ public class ButtonPresCreator extends TutorialCreator {
                 .text("""
                         A simple button control. The button control can contain text and/or a graphic.
                         """)
-                .multCode(List.of(
+                .demonstration(List.of(
                             createButton("Default"),
                             createCancel("Cancel"),
                             createBtnFlat("Flat"),
-                            createIconized("Iconized"),
-                            createGNButton("GNButton"),
-                                createFloatingButton()
+                            createIconized("Iconized")
+
                         ),
                         """
                         // Default
@@ -62,23 +65,55 @@ public class ButtonPresCreator extends TutorialCreator {
                         buttonFlat.getStyleClass("btn-flat");
                         // Icon
                          button.setGraphic(new IconContainer(Icons.ANALYTICS));
-                        // GNButton
-                        GNButton gnButton = new GNButton();
+                       
                         """,
                         """
-                        """)
-                .subTitle("Links")
+                                <!-- Default -->
+                                <Button text="button"></Button>
+                                <!-- Main button/gave action from enter -->
+                                <Button text="button" defaultButton="true"></Button>
+                                <!-- Cancel button/gave action using scape -->
+                                <Button text="button" cancelButton="true"></Button>
+                                <!-- Only add inline styleClass -->
+                                <Button text="button" styleClass="btn-flat""></Button>
+                                <!-- Using a graphic -->
+                                <Button text="button">
+                                    <graphic>
+                                        <IconContainer icon="DISCOUNT">
+                                    </graphic> 
+                                </Button>
+                                """)
+                .title("Dash Buttons")
+                .demonstration(List.of(
+                        createGNButton("GNButton"),
+                        createFloatingButton()
+                        ),
+                        """
+                            // GNButton
+                            GNButton gnButton = new GNButton();
+                            // GNbutton with icon
+                            GNIconButton gnButton = new GNIconButton();
+                                """, """
+                                <GNButton text=\"button\"/>
+                                <!-- Icon button -->
+                                <GNIconButton icon="DISCOUNT"/>
+                            """
+                )
+                .title("Attributes")
+                .table(
+                    new TableCreator<Data>(context)
+                            .column("name")
+                            .column("value")
+                            .data(
+                                    new Data("-gn-circle-fill", "#fff")
+                            )
+                            .build()
+                )
+                .title("Links")
                 .footer(createDefaultControl());
         build();
+        new TableColumn<>("");
 
-
-    }
-
-    public List<Node> listIconized() {
-        Button button = createButton("Iconized");
-        List<Node> list = Arrays.asList(button);
-        button.setGraphic(new IconContainer(Icons.ANALYTICS));
-        return list;
     }
 
     public Button createButton(String title) {
@@ -89,10 +124,10 @@ public class ButtonPresCreator extends TutorialCreator {
         return new GNButton(title);
     }
 
-    public GNButton createFloatingButton() {
-        GNButton button = new GNButton();
+    public GNIconButton createFloatingButton() {
+        GNIconButton button = new GNIconButton(Icons.ADD);
         button.getStyleClass().addAll("btn-float", "raised");
-        button.setGraphic(new IconContainer(Icons.ADD));
+//        button.setGraphic(new IconContainer(Icons.ADD));
         return button;
     }
 

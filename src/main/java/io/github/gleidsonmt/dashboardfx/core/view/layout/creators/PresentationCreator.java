@@ -41,6 +41,7 @@ import javafx.scene.text.TextFlow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("unused")
@@ -88,6 +89,17 @@ public class PresentationCreator extends StackPane implements BuildCreator {
 
     public PresentationCreator text(String text, String... style) {
         items.add(createText(text, style));
+        return this;
+    }
+
+    public PresentationCreator legend(String legend) {
+        items.add(createLabel(legend, "text-12", "text-bold"));
+        return this;
+    }
+
+    public PresentationCreator table(@NotNull TableCreator table) {
+        VBox.setMargin(table.getRoot(), new Insets(10, 0, 10,0));
+        items.add(table.getRoot());
         return this;
     }
 
@@ -172,12 +184,12 @@ public class PresentationCreator extends StackPane implements BuildCreator {
         return this;
     }
 
-    public PresentationCreator multCode(Node node, String java, String fxml) {
+    public PresentationCreator demonstration(Node node, String java, String fxml) {
         items.add(createMultBlock(node, java, fxml));
         return this;
     }
 
-    public PresentationCreator multCode(List<Node> nodes, String java, String fxml) {
+    public PresentationCreator demonstration(List<Node> nodes, String java, String fxml) {
         items.add(createMultBlock(nodes, java, fxml));
         return this;
     }
@@ -255,6 +267,7 @@ public class PresentationCreator extends StackPane implements BuildCreator {
     private @NotNull Label createLabel(String text, String... clazz) {
         LabelPosition label = new LabelPosition(text);
         label.getStyleClass().addAll(clazz);
+        VBox.setMargin(label, new Insets(10, 0, 20, 0));
         return label;
     }
 
@@ -284,7 +297,7 @@ public class PresentationCreator extends StackPane implements BuildCreator {
     }
 
     @Override
-    public Node build() {
+    public PresentationCreator build() {
         if (items.stream().noneMatch(n-> n.getStyleClass().contains("title"))) {
             body.setPadding(new Insets(30, 30, 30, 30));
         }
