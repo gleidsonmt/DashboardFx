@@ -22,7 +22,7 @@ Doing:
 - [ ] alerts podem alterar a transição [usando fxanimations]
 - [ ] remover dependencias de bibliotecas [enxugar]
 - [ ] Metodo dos cards que ficam bunitinhos
-- [ ] Criando barr utilizando declarative style
+- [ ] Criando bar utilizando declarative style
 
   Done
 - [X] Create a bar with icons
@@ -41,3 +41,6 @@ To fixed:
 
 - [X] Filtrar melhor metodos para fazer em routes tipo, metodos q são feitos inicializados uma boa ideia é utilizar uma strea e mapear
 - [X] Scroll Pane com seu View port some com as bordas
+- [ ] Drawer fica no lado direito quando é clicado no hamburger
+- [ ] Quando a tela sai de maximizada o drawer não desaparece
+- [ ] Quando fica pequeno a barra retira a atualização de tamanho
