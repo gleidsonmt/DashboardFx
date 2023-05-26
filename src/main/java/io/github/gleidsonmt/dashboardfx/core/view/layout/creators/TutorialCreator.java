@@ -21,14 +21,16 @@ package io.github.gleidsonmt.dashboardfx.core.view.layout.creators;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNButton;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.DrawerContainer;
+import io.github.gleidsonmt.dashboardfx.core.view.util.Scroll;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -42,7 +44,6 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -57,143 +58,43 @@ public class TutorialCreator extends PresentationCreator {
     private final VBox aside = new VBox();
     private final VBox menu = new VBox();
     private final VBox center = new VBox();
-
     private List<TreeTitle> data;
-
     private final ToggleGroup group = new ToggleGroup();
-    private final GNButton btnFloat = createButton();
+    private final GNButton btnTop = createButton();
+    private final GNButton btnMap = createSideButton();
+    private final List<TreeTitle> breaks = new ArrayList<>();
+    private boolean rolling = true;
+    int count = 1;
+
 
     public TutorialCreator(Context context) {
         super(context);
         body.setPadding(new Insets(20));
-        aside.setPadding(new Insets(20));
-        btnFloat.setVisible(false);
+        aside.setPadding(new Insets(0, 20, 0, 20));
+        btnTop.setVisible(false);
 
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.doubleValue() < 736) {
                 body.getChildren().remove(aside);
-                StackPane.setMargin(btnFloat, new Insets(10, 40, 10, 10));
+                StackPane.setMargin(btnTop, new Insets(10, 40, 10, 10));
+                if (!root.getChildren().contains(btnMap))
+                    root.getChildren().add(btnMap);
             } else {
                 if (!body.getChildren().contains(aside)) {
                     body.getChildren().add(aside);
-                    StackPane.setMargin(btnFloat, new Insets(10, 40 + 250, 10, 10));
+                    StackPane.setMargin(btnTop, new Insets(10, 40 + 250, 10, 10));
+                    root.getChildren().remove(btnMap);
                 }
             }
         });
 
-    }
-
-    private final List<TreeTitle> breaks = new ArrayList<>();
-    private final AtomicBoolean rolling = new AtomicBoolean(true);
-
-    public void createNavHeader(String name, TreeTitle node) {
-
-        ToggleButton toggle = new ToggleButton(name);
-        node.setLabelFor(toggle);
-        toggle.setUserData(node);
-        breaks.add(node);
-
-        toggle.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-//            Scroll.scrollTo(scroll, node);
-
-            TreeTitle l = (TreeTitle) toggle.getUserData();
-            rolling.set(false);
-            scrollTo(scroll, l);
-
-        });
-
-        Platform.runLater(() -> node.setPosition(getY(scroll, node)));
-
-        toggle.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
-            if (toggle.isSelected()) {
-                event.consume();
-            }
-        });
-
-
-        toggle.setToggleGroup(group);
-        toggle.getStyleClass().addAll("overview-item");
-
-        aside.getChildren().add(toggle);
-
+        StackPane.setAlignment(btnMap, Pos.TOP_RIGHT);
+        StackPane.setMargin(btnMap, new Insets(10, 0, 0,0));
 
     }
 
-    public double getY (ScrollPane scrollPane, Node node) {
-
-        double heightViewPort = scrollPane.getViewportBounds().getHeight();
-        double heightScrollPane = scrollPane.getContent().getBoundsInLocal().getHeight();
-//        double y = node.getBoundsInParent().getMaxY();
-        double y = node.getBoundsInParent().getMaxY() + 200;
-
-        Timeline timeline = new Timeline();
-        double yEnd = 0;
-
-        if ( y < (heightViewPort / 2) ){ // set y for menor do que a metade
-            // below 0 of scrollpane
-            yEnd = 0;
-        } else if ( ( y >= (heightViewPort / 2) ) & ( y<= (heightScrollPane - heightViewPort/2)) ){
-
-            // between 0 and 1 of scrollpane
-            yEnd = (y-(heightViewPort/2))/(heightScrollPane-heightViewPort);
-
-
-        }
-        else if(y>= (heightScrollPane-(heightViewPort/2))){
-            // above 1 of scrollpane
-            yEnd = 1;
-        }
-
-//        System.out.println("y = " + yEnd);
-        return yEnd;
-
-    }
-
-    public void scrollTo (ScrollPane scrollPane, Node node) {
-
-        double heightViewPort = scrollPane.getViewportBounds().getHeight();
-        double heightScrollPane = scrollPane.getContent().getBoundsInLocal().getHeight();
-        double y = node.getBoundsInParent().getMaxY();
-
-//        System.out.println("heightViewPort = " + heightViewPort);
-//        System.out.println("heightScrollPane = " + heightScrollPane);
-//        System.out.println("y = " + y);
-
-        Timeline timeline = new Timeline();
-        double yEnd = 0;
-
-        if ( y < (heightViewPort / 2) ){ // set y for menor do que a metade
-            // below 0 of scrollpane
-            yEnd = 0;
-        } else if ( ( y >= (heightViewPort / 2) ) & ( y<= (heightScrollPane - heightViewPort/2)) ){
-
-            // between 0 and 1 of scrollpane
-            yEnd = (y-(heightViewPort/2))/(heightScrollPane-heightViewPort);
-
-
-        }
-        else if(y>= (heightScrollPane-(heightViewPort/2))){
-            // above 1 of scrollpane
-            yEnd = 1;
-        }
-
-
-        timeline.getKeyFrames().addAll(
-                new KeyFrame(Duration.ZERO, new KeyValue(
-                        scrollPane.vvalueProperty(),  scrollPane.getVvalue()
-                )),
-                new KeyFrame(Duration.millis(200), new KeyValue(
-                        scrollPane.vvalueProperty(), yEnd
-                ))
-        );
-
-        timeline.play();
-        timeline.setOnFinished(event -> {
-            rolling.set(true);
-
-        });
-    }
-
+//    StackPane.setMargin(btnTop, new Insets(10, 40, 10, 10));
+//
     private  void createTree(List<TreeTitle> data, VBox nav) {
         List<TreeTitle> firstLevel = data.stream()
                 .filter(p -> p.getRelated() == null)
@@ -203,13 +104,10 @@ public class TutorialCreator extends PresentationCreator {
         List<VBox> firstList = firstLevel.stream().map(this::buildTree).toList();
         firstList.forEach(c -> menu.getChildren().add(c));
         nav.getChildren().add(menu);
-
     }
 
-    int count = 1;
-
     private VBox buildTree(TreeTitle item) {
-        VBox tg = createMenu(item);
+        VBox parent = createMenu(item);
         List<TreeTitle> children = data.stream().filter(child -> child.getRelated() != null && child.getRelated().equals(item.getText())).toList();
 
         AtomicInteger space = new AtomicInteger();
@@ -217,10 +115,7 @@ public class TutorialCreator extends PresentationCreator {
         if (children.size() > 0) {
             children.forEach(c -> c.setIndex(count++));
             count = 1;
-//            ct++;
         }
-
-//        if (children.size() > 0) {
 
         VBox subMenu = new VBox();
         children.stream().map(this::buildTree)
@@ -234,9 +129,9 @@ public class TutorialCreator extends PresentationCreator {
                     );
                 });
 
-        tg.getChildren().add(subMenu);
-//        }
-        return tg;
+        parent.getChildren().add(subMenu);
+
+        return parent;
     }
 
     private VBox createMenu(TreeTitle label) {
@@ -253,17 +148,16 @@ public class TutorialCreator extends PresentationCreator {
         group.getToggles().add(toggle);
 
         toggle.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-//            Scroll.scrollTo(scroll, node);
-
             TreeTitle l = (TreeTitle) toggle.getUserData();
-            rolling.set(false);
-            scrollTo(scroll, l);
-
+            rolling = false;
+            Scroll.scrollTo(scroll, l)
+                    .setOnFinished(e -> rolling = true);
         });
+
         label.setLabelFor(toggle);
         breaks.add(label);
 
-        Platform.runLater(() -> label.setPosition(getY(scroll, label)));
+        Platform.runLater(() -> label.setPosition(Scroll.getY(scroll, label)));
 
         toggle.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
             if (toggle.isSelected()) {
@@ -305,10 +199,10 @@ public class TutorialCreator extends PresentationCreator {
         scroll.setPadding(new Insets(100, 0, 0,0));
         scroll.setContent(center);
 
-        root.getChildren().add(btnFloat);
+        root.getChildren().add(btnTop);
         root.setAlignment(Pos.BOTTOM_RIGHT);
 
-        StackPane.setMargin(btnFloat, new Insets(10, 40 + 250, 10, 10));
+        StackPane.setMargin(btnTop, new Insets(10, 40 + 250, 10, 10));
 
         aside.setMinWidth(250);
         body.setSpacing(10);
@@ -325,13 +219,9 @@ public class TutorialCreator extends PresentationCreator {
 
         scroll.vvalueProperty().addListener((observable, oldValue, newValue) -> {
 
-            if (newValue.doubleValue() > 0.5) {
-                btnFloat.setVisible(true);
-            } else {
-                btnFloat.setVisible(false);
-            }
+            btnTop.setVisible(newValue.doubleValue() > 0.5);
 
-            if (rolling.get()) {
+            if (rolling) {
                 for (int i = 1; i < breaks.size(); i++) {
                     TreeTitle la = breaks.get(i);
                     ToggleButton t = (ToggleButton) la.getLabelFor();
@@ -343,14 +233,9 @@ public class TutorialCreator extends PresentationCreator {
                         ((ToggleButton) breaks.get(0).getLabelFor()).setSelected(true);
 
                     }
-//                else
-                    if (la.getPosition() >= newValue.doubleValue() &&
-                            newValue.doubleValue() >= breaks.get(i - 1).getPosition()) {
-                        t.setSelected(true);
-//                        ((ToggleButton) breaks.get(0).getLabelFor()).setSelected(false);
-                    } else {
-                        t.setSelected(false);
-                    }
+
+                    t.setSelected(la.getPosition() >= newValue.doubleValue() &&
+                            newValue.doubleValue() >= breaks.get(i - 1).getPosition());
                 }
 
             }
@@ -359,8 +244,64 @@ public class TutorialCreator extends PresentationCreator {
         return this;
     }
 
-    private GNButton createButton() {
+    private GNButton createSideButton() {
 
+        GNButton button = new GNButton();
+        button.getStyleClass().addAll("btn-option", "depth-2");
+        SVGPath icon = new SVGPath();
+        icon.setFill(Color.WHITE);
+        icon.setContent("""
+                M450.001-100.001v-160h-205.77l-109.999-110L244.231-480h205.77v-80h-280v-219.999h280v-80h59.998v80h205.77l109.999 110L715.769-560h-205.77v80h280v219.999h-280v160h-59.998ZM229.999-619.999h461.232l50.001-50L691.231-720H229.999v100.001ZM268.769-320h461.232v-100.001H268.769l-50.001 50L268.769-320Zm-38.77-299.999V-720v100.001ZM730.001-320v-100.001V-320Z
+                """);
+        icon.setScaleX(0.03);
+        icon.setScaleY(0.03);
+        Group group1 = new Group(icon);
+        icon.setMouseTransparent(true);
+        group1.setMouseTransparent(true);
+        button.setGraphic(group1);
+        button.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+        button.setAlignment(Pos.CENTER);
+        button.setMaxWidth(30);
+
+        button.setOnMouseClicked(event -> {
+            context.wrapper()
+                    .drawer()
+                    .content(new DrawerContainer(
+                            aside, 250
+                        )
+                    )
+                    .side(HPos.RIGHT)
+                    .show();
+        });
+
+        button.setOnMouseEntered(event -> {
+            Timeline timeline = new Timeline();
+            timeline.getKeyFrames().setAll(
+                    new KeyFrame(Duration.ZERO, new KeyValue(
+                            button.maxWidthProperty(), 30)),
+                    new KeyFrame(Duration.millis(200), new KeyValue(
+                            button.maxWidthProperty(), 50
+                    ))
+            );
+            timeline.play();
+        });
+
+        button.setOnMouseExited(event -> {
+            Timeline timeline = new Timeline();
+            timeline.getKeyFrames().setAll(
+                    new KeyFrame(Duration.ZERO, new KeyValue(
+                            button.maxWidthProperty(), 50)),
+                    new KeyFrame(Duration.millis(200), new KeyValue(
+                            button.maxWidthProperty(), 30
+                    ))
+            );
+            timeline.play();
+        });
+
+        return button;
+    }
+
+    private GNButton createButton() {
         GNButton button = new GNButton();
         button.getStyleClass().addAll("btn-float", "depth-1");
         SVGPath icon = new SVGPath();
@@ -374,6 +315,9 @@ public class TutorialCreator extends PresentationCreator {
                 scroll.setVvalue(0));
 
         return button;
-
     }
+
+
+
+
 }
