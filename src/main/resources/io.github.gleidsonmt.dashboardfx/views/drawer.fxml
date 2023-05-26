@@ -26,7 +26,7 @@
          </VBox>
          <VBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="135.0" HBox.hgrow="ALWAYS">
             <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT"
-                   style="-fx-text-fill: -cyan; -fx-font-weight: bold;" styleClass="h4" text="DashboradFx">
+                   style="-fx-text-fill: -cyan; -fx-font-weight: bold;" styleClass="h4" text="DashboardFx">
                <graphic>
                   <SVGPath content="m12 15-5-5h10Z"/>
                </graphic>
