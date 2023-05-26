@@ -52,7 +52,7 @@ public class GNButtonSkin extends ButtonSkin {
         this.clip.widthProperty().bind(control.widthProperty());
         this.clip.heightProperty().bind(control.heightProperty());
 
-        control.setOnMouseClicked(onPressed);
+        control.addEventFilter(MouseEvent.MOUSE_CLICKED, onPressed);
 
         circle.setFill(_control.getCircleFill());
 
