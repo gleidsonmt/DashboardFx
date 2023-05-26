@@ -36,12 +36,14 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -53,7 +55,11 @@ public class TutorialCreator extends PresentationCreator {
     private final ScrollPane scroll = new ScrollPane();
     private final HBox body = new HBox();
     private final VBox aside = new VBox();
+    private final VBox menu = new VBox();
     private final VBox center = new VBox();
+
+    private List<TreeTitle> data;
+
     private final ToggleGroup group = new ToggleGroup();
     private final GNButton btnFloat = createButton();
 
@@ -77,19 +83,20 @@ public class TutorialCreator extends PresentationCreator {
 
     }
 
-    private final List<LabelPosition> breaks = new ArrayList<>();
+    private final List<TreeTitle> breaks = new ArrayList<>();
     private final AtomicBoolean rolling = new AtomicBoolean(true);
 
-    public void createNavHeader(String name, LabelPosition node) {
+    public void createNavHeader(String name, TreeTitle node) {
 
         ToggleButton toggle = new ToggleButton(name);
         node.setLabelFor(toggle);
         toggle.setUserData(node);
         breaks.add(node);
+
         toggle.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 //            Scroll.scrollTo(scroll, node);
 
-            LabelPosition l = (LabelPosition) toggle.getUserData();
+            TreeTitle l = (TreeTitle) toggle.getUserData();
             rolling.set(false);
             scrollTo(scroll, l);
 
@@ -187,6 +194,88 @@ public class TutorialCreator extends PresentationCreator {
         });
     }
 
+    private  void createTree(List<TreeTitle> data, VBox nav) {
+        List<TreeTitle> firstLevel = data.stream()
+                .filter(p -> p.getRelated() == null)
+                .peek(c -> c.setIndex(count++))
+                .toList();
+        count = 1;
+        List<VBox> firstList = firstLevel.stream().map(this::buildTree).toList();
+        firstList.forEach(c -> menu.getChildren().add(c));
+        nav.getChildren().add(menu);
+
+    }
+
+    int count = 1;
+
+    private VBox buildTree(TreeTitle item) {
+        VBox tg = createMenu(item);
+        List<TreeTitle> children = data.stream().filter(child -> child.getRelated() != null && child.getRelated().equals(item.getText())).toList();
+
+        AtomicInteger space = new AtomicInteger();
+
+        if (children.size() > 0) {
+            children.forEach(c -> c.setIndex(count++));
+            count = 1;
+//            ct++;
+        }
+
+//        if (children.size() > 0) {
+
+        VBox subMenu = new VBox();
+        children.stream().map(this::buildTree)
+                .forEach(i -> {
+                    subMenu.getChildren().add(i);
+
+                    space.getAndSet(10); // padding
+                    VBox.setMargin(
+                            subMenu,
+                            new Insets(0, 0, 0, space.get())
+                    );
+                });
+
+        tg.getChildren().add(subMenu);
+//        }
+        return tg;
+    }
+
+    private VBox createMenu(TreeTitle label) {
+        VBox root = new VBox();
+        ToggleButton toggle = createToggle(label);
+        root.getChildren().add(toggle);
+        return root;
+    }
+
+    private ToggleButton createToggle(TreeTitle label) {
+        ToggleButton toggle = new ToggleButton(label.getIndex() + ". " +label.getText());
+        toggle.setUserData(label);
+        toggle.getStyleClass().addAll("overview-item");
+        group.getToggles().add(toggle);
+
+        toggle.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+//            Scroll.scrollTo(scroll, node);
+
+            TreeTitle l = (TreeTitle) toggle.getUserData();
+            rolling.set(false);
+            scrollTo(scroll, l);
+
+        });
+        label.setLabelFor(toggle);
+        breaks.add(label);
+
+        Platform.runLater(() -> label.setPosition(getY(scroll, label)));
+
+        toggle.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
+            if (toggle.isSelected()) {
+                event.consume();
+            }
+        });
+        Circle dot = new Circle();
+        dot.setRadius(3);
+        toggle.setGraphic(dot);
+        return toggle;
+    }
+
     @Override
     public TutorialCreator build() {
 
@@ -199,13 +288,15 @@ public class TutorialCreator extends PresentationCreator {
         title.setGraphic(new Group(icon));
         aside.getChildren().add(title);
 
-        items.forEach(each -> {
-            if (each instanceof LabelPosition lbl) {
-                if (lbl.getStyleClass().contains("title")) {
-                    createNavHeader(lbl.getText(), lbl);
-                }
-            }
-        });
+        // pegando todos os items q são labelposition e titulos
+
+        data = items.stream()
+                .filter(filter -> filter instanceof TreeTitle
+                        && filter.getStyleClass().contains("title"))
+                .map(mapped -> (TreeTitle) mapped).toList();
+
+        // Criando a tree
+        createTree(data, aside);
 
 //        ((ToggleButton)aside.getChildren().get(1)).setSelected(true);
 
@@ -232,15 +323,6 @@ public class TutorialCreator extends PresentationCreator {
 
         center.setAlignment(Pos.TOP_LEFT);
 
-//        WebView webView = new WebView();
-//        webView.getEngine().setJavaScriptEnabled(true);
-//        webView.getEngine().loadContent("""
-//                <iframe width="400" height="480" src="https://www.youtube.com/embed/hZsYU7UbWmU" title="Decorator JavaFx 8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-//                """);
-//        aside.getChildren().add(
-//                webView
-//        );
-
         scroll.vvalueProperty().addListener((observable, oldValue, newValue) -> {
 
             if (newValue.doubleValue() > 0.5) {
@@ -251,7 +333,7 @@ public class TutorialCreator extends PresentationCreator {
 
             if (rolling.get()) {
                 for (int i = 1; i < breaks.size(); i++) {
-                    LabelPosition la = breaks.get(i);
+                    TreeTitle la = breaks.get(i);
                     ToggleButton t = (ToggleButton) la.getLabelFor();
                     t.setSelected(false);
 

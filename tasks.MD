@@ -1,4 +1,4 @@
-# Build Context
+
 
 # Declarative Style
 
@@ -33,9 +33,11 @@ Doing:
 - [X] Put color in Upper letter (block code)
 - [X] Implementing model for simple dialogs, alerts..
 - [X] Block code com button
+- [X] Context inteface
+- [X] Routes interface
 
 
 To fixed:
 
-- [ ] Filtrar melhor metodos para fazer em routes tipo, metodos q são feitos inicializados uma boa ideia é utilizar uma strea e mapear
-- [ ] Scroll Pane com seu View port some com as bordas
+- [X] Filtrar melhor metodos para fazer em routes tipo, metodos q são feitos inicializados uma boa ideia é utilizar uma strea e mapear
+- [X] Scroll Pane com seu View port some com as bordas

@@ -20,24 +20,62 @@
 package io.github.gleidsonmt.dashboardfx.core.view.layout.creators;
 
 import javafx.scene.control.Label;
+import org.jetbrains.annotations.ApiStatus;
 
 /**
+ * This is a custom label used to create a link with the tree.
+ * Using presentations creators needs a component that
+ * store its position in document and if is related with another
+ * title.
+ * @see TutorialCreator
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
  * Create on  17/05/2023
  */
-public class LabelPosition extends Label {
+@ApiStatus.Internal
+@ApiStatus.AvailableSince("1.0")
+public class TreeTitle extends Label {
     private double position;
+    private String related;
+    private int index;
 
-    public LabelPosition(String text) {
+    public TreeTitle(String text) {
         super(text);
     }
 
+    /**
+     * Get the position in root.
+     * This position is used for scroller actions.
+     * @return Position in root.
+     */
     public double getPosition() {
         return position;
     }
 
     public void setPosition(double position) {
         this.position = position;
+    }
+
+    /**
+     * Get the parent in hierarchy in the tree.
+     * @return the first parent.
+     */
+    public String getRelated() {
+        return related;
+    }
+
+    public void setRelated(String related) {
+        this.related = related;
+    }
+
+    /**
+     * Get the index in tree.
+     * @return The index in tree.
+     */
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 }

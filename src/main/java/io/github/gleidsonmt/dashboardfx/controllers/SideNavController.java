@@ -97,6 +97,11 @@ public class SideNavController extends ActionView {
         go("view_table", new TableViewPresCreator(context));
     }
 
+    @FXML
+    private void goTreeView() {
+        go("view_tree", new TreeViewPresCreator(context));
+    }
+
     private void go(String name, TutorialCreator tutorialCreator) {
         context.routes().putAndGo(new SimpleView(name, tutorialCreator));
     }
