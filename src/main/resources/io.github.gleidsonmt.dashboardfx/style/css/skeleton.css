@@ -323,7 +323,7 @@ SVGPath {
   -fx-font-family : Roboto;
   -fx-faint-focus-color : transparent;
   -fx-focus-color : transparent;
-  -fx-background-color : transparent;
+  -fx-background-color : -fx-background;
 }
 
 .tree-table-view:focused,
@@ -498,4 +498,22 @@ SVGPath {
 {
     -fx-padding: 20px 10px 20px 10px;
     -fx-pref-height: 40px;
+}
+
+/*******************************************************************************
+*                                                                              *
+@ TextField
+*                                                                              *
+*******************************************************************************/
+
+.text-field {
+    -fx-background-color: -fx-background;
+    -fx-border-color: -medium-gray;
+    -fx-border-radius: 2px;
+    -fx-border-width: 2px;
+    -fx-pref-height: 40px;
+}
+
+.text-field:focused {
+    -fx-border-color: -fx-accent;
 }

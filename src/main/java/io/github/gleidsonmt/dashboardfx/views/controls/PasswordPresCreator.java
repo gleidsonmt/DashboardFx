@@ -21,6 +21,7 @@ package io.github.gleidsonmt.dashboardfx.views.controls;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
@@ -36,11 +37,18 @@ public class PasswordPresCreator extends TutorialCreator {
                         Text field that masks entered characters.
                         """)
                 .demonstration(
-                        new TextField(),
+                        new PasswordField(),
                         """
+                                // Constructor
                                 PasswordField label = new PasswordField();
-                                """, ""
+                                """,
+                                """
+                                <!-- Building -->
+                                <PasswordField />
+                                """
                 )
+                .title("Links")
+                .footer(createDefaultControl())
                 .build();
     }
 }

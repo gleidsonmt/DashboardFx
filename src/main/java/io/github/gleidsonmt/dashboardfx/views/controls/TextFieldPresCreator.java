@@ -39,8 +39,12 @@ public class TextFieldPresCreator extends TutorialCreator {
                 .demonstration(
                         new TextField(),
                         """
+                                // Constructor
                                 TextField field = new TextField();
-                                """, ""
+                                """,
+                                """
+                                <TextField />
+                                """
                 )
                 .title("Links")
                 .footer(createDefaultControl())
