@@ -292,7 +292,8 @@ public class PresentationCreator
             tabPane.getTabs().add(fxmlTab);
         }
 
-        root.getStyleClass().addAll("border-light-gray-2", "border-1");
+        root.getStyleClass().addAll("border-light-gray-2", "border-1", "depth-2");
+        root.setStyle("-fx-background-color: -light-gray;");
         return tabPane;
     }
 
