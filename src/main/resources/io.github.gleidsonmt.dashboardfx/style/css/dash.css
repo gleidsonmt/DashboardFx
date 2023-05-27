@@ -181,6 +181,10 @@ Text, .text, .label {
     -fx-background-color: white;
 }
 
+.btn-option:focused {
+    -fx-background-color : -fx-background;
+}
+
 .fore-login {
     -fx-background-image: url("predios.jpg");
     -fx-background-size: cover;

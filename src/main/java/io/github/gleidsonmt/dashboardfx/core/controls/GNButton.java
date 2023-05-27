@@ -20,6 +20,7 @@ package io.github.gleidsonmt.dashboardfx.core.controls;
 import io.github.gleidsonmt.dashboardfx.core.controls.skin.GNButtonSkin;
 import javafx.beans.DefaultProperty;
 import javafx.css.*;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
@@ -39,7 +40,7 @@ public class GNButton extends Button {
             new StyleablePropertyFactory<>(Control.getClassCssMetaData());
 
     private final StyleableProperty<Color> circleFill =
-            new SimpleStyleableObjectProperty<>(CIRCLE_FILL, this, "circleFill");
+            new SimpleStyleableObjectProperty<>(CIRCLE_FILL, this, "circleFill", Color.WHITE);
 
     private static final CssMetaData<GNButton, Color> CIRCLE_FILL =
             FACTORY.createColorCssMetaData("-gn-circle-fill",
@@ -53,6 +54,7 @@ public class GNButton extends Button {
         setText(text == null ? "Button" : text);
         setPrefSize(100, 40);
         getStyleClass().add("gn-button");
+        setAlignment(Pos.CENTER);
     }
 
     @Override

@@ -36,11 +36,11 @@ public class GNBadgeSkin extends SkinBase<GNBadge> {
 
     private final Label lblInfo = new Label();
 
-    public GNBadgeSkin(Icons _icon, GNBadge control) {
+    public GNBadgeSkin( GNBadge control) {
         super(control);
 
-        GNIconButton icon = new GNIconButton(_icon);
-        icon.getStyleClass().addAll("btn-flat", "no-border", "transparent");
+        GNIconButton icon = new GNIconButton(control.getIcon());
+        icon.getStyleClass().addAll( "icon", "no-border", "transparent");
 
         lblInfo.setAlignment(Pos.CENTER);
         lblInfo.getStyleClass().add("box");

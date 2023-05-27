@@ -64,7 +64,7 @@ public class ButtonPresCreator extends TutorialCreator {
                         // Flat
                         buttonFlat.getStyleClass("btn-flat");
                         // Icon
-                         button.setGraphic(new IconContainer(Icons.ANALYTICS));
+                        button.setGraphic(new IconContainer(Icons.ANALYTICS));
                        
                         """,
                         """
@@ -95,7 +95,8 @@ public class ButtonPresCreator extends TutorialCreator {
                         
                         • Cancel: A Cancel Button is the button that receives a keyboard VK_ESC press, if no other node in the scene consumes it.
                         """, "-fx-padding: 20px 10px 20px 10px;")
-                .title("Extra Buttons")
+                .title("Designed Buttons")
+                .text("Extensible button with an press effect action.")
                 .demonstration(List.of(
                         createGNButton("GNButton"),
                         createFloatingButton()
@@ -104,18 +105,19 @@ public class ButtonPresCreator extends TutorialCreator {
                             // GNButton
                             GNButton gnButton = new GNButton();
                             // GNbutton with icon
-                            GNIconButton gnButton = new GNIconButton();
-                                """, """
-                                <GNButton text=\"button\"/>
-                                <!-- Icon button -->
-                                <GNIconButton icon="DISCOUNT"/>
+                            GNButton gnButton = new GNIconButton();
+                                """,
+                            """
+                            <GNButton text=\"button\"/>
+                            <!-- Icon button -->
+                            <GNIconButton icon="DISCOUNT"/>
                             """
                 )
-                .title("Attributes")
+                .title("Attributes", "Designed Buttons")
                 .table(
                     new TableCreator<Data>(context)
                             .column("name")
-                            .column("value")
+                            .column("name")
                             .data(
                                     new Data("-gn-circle-fill", "#fff")
                             )
@@ -124,7 +126,6 @@ public class ButtonPresCreator extends TutorialCreator {
                 .title("Links")
                 .footer(createDefaultControl());
         build();
-        new TableColumn<>("");
 
     }
 
@@ -138,7 +139,7 @@ public class ButtonPresCreator extends TutorialCreator {
 
     public GNIconButton createFloatingButton() {
         GNIconButton button = new GNIconButton(Icons.ADD);
-        button.getStyleClass().addAll("btn-float", "raised");
+        button.getStyleClass().addAll("btn-float", "depth-1");
 //        button.setGraphic(new IconContainer(Icons.ADD));
         return button;
     }

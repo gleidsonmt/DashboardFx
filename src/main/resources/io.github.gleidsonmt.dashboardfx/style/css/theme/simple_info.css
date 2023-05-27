@@ -90,12 +90,7 @@ Text {
 
 /* @Button */
 
-.button .text {
-    -fx-fill : white;
-}
-
 .button {
-    -fx-text-fill : white;
     -fx-font-weight : bolder;
     -fx-graphic-text-gap : 10;
     -fx-cursor : hand;
@@ -110,7 +105,20 @@ Text {
     -fx-border-color : -fx-accent;
     -fx-border-radius : 5px;
     -fx-border-width : 2px;
+}
 
+.button:focused {
+  -fx-background-color : derive(-fx-accent, -40%), derive(-fx-accent, -40%), -fx-accent;
+}
+
+
+.btn-flat:focused
+{
+    -fx-background-color : derive(-fx-accent, 90%);
+}
+
+.button:pressed {
+    -fx-background-color : derive(-fx-accent, -40%)
 }
 
 .button:cancel .text {

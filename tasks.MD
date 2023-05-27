@@ -44,3 +44,21 @@ To fixed:
 - [ ] Drawer fica no lado direito quando é clicado no hamburger
 - [ ] Quando a tela sai de maximizada o drawer não desaparece
 - [ ] Quando fica pequeno a barra retira a atualização de tamanho
+- [ ] Adicionar opção de mudar a cor do box do badge, como uma -fx- property
+
+
+
+Review: 
+- [X] Button
+- [X] Hyperlink
+- [X] Label
+- [X] ListView
+- [ ] TextField
+- [ ] PasswordField
+- [X] CheckBox
+- [X] TableView
+- [ ] TreeView
+
+
+To create:
+- [ ] Search View

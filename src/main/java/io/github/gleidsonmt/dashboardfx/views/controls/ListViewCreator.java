@@ -41,12 +41,26 @@ public class ListViewCreator extends TutorialCreator {
                                 createRectList()
                         ),
                         """
+                                // Constructor
                                 ListView<String> listView = new ListView<>();
+                                // Setting items
                                 listView.getItems().setAll(
                                         "First", "Second", "Third", "Fourth"
                                 );
                                 """,
                         """
+                             <!-- Declaring -->
+                             <ListView>
+                                <!-- Populating views -->
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <!-- Passing the items -->
+                                       <Label text="First"/>
+                                       <Label text="Second"/>
+                                       <Label text="Third"/>
+                                    </FXCollections>
+                                 </items>
+                              </ListView>
                                 """)
                 .title("Populating a ListView")
                 .text("A simple example of how to create and populate a ListView of names (Strings) is shown here: ")

@@ -42,6 +42,7 @@ public class TableCreator<T> implements BuildCreator {
         this.context = context;
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.setEditable(false);
+
     }
 
     public TableCreator<T> size(double w, double h) {
@@ -63,8 +64,8 @@ public class TableCreator<T> implements BuildCreator {
     }
 
     private TableColumn<T, String> createTableColumn(String name) {
-        TableColumn<T, String> column =  new TableColumn<>(name);
-        column.setCellValueFactory(new PropertyValueFactory<>("name"));
+        TableColumn<T, String> column =  new TableColumn<>(name.substring(0,1).toUpperCase() + name.substring(1));
+        column.setCellValueFactory(new PropertyValueFactory<>(name));
         return column;
     }
 

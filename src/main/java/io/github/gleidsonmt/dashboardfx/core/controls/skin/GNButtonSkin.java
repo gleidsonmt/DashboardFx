@@ -52,21 +52,7 @@ public class GNButtonSkin extends ButtonSkin {
         this.clip.widthProperty().bind(control.widthProperty());
         this.clip.heightProperty().bind(control.heightProperty());
 
-        control.addEventFilter(MouseEvent.MOUSE_CLICKED, onPressed);
-
-        circle.setFill(_control.getCircleFill());
-
-        registerChangeListener((ObservableValue<?>) _control.circleFillProperty(), c -> {
-            if (c.getValue() != null) {
-                circle.setFill((Paint) c.getValue());
-            }
-        });
-    }
-
-
-    private final EventHandler<MouseEvent> onPressed = new EventHandler<>() {
-        @Override
-        public void handle(MouseEvent event) {
+        EventHandler<MouseEvent> onPressed = event -> {
 
             if (timeline.getStatus() == Animation.Status.RUNNING) {
                 return;
@@ -83,31 +69,39 @@ public class GNButtonSkin extends ButtonSkin {
 
             getChildren().add(circle);
 
+            clip.setArcWidth(10);
+            clip.setArcHeight(10);
 
-            clip.setArcWidth(10 );
-            clip.setArcHeight(10 );
 
-
-            clip.setTranslateX(-(circle.getLayoutX() ));
-            clip.setTranslateY(-(circle.getLayoutY() ));
+            clip.setTranslateX(-(circle.getLayoutX()));
+            clip.setTranslateY(-(circle.getLayoutY()));
 
             circle.setClip(clip);
 
             double diameter = Math.max(control.getWidth(), control.getHeight());
             double radius = diameter / 2;
 
-
             timeline.getKeyFrames().setAll(
                     new KeyFrame(Duration.ZERO, new KeyValue(circle.radiusProperty(), 0)),
-                    new KeyFrame(Duration.millis(250), new KeyValue(circle.radiusProperty(), radius *2 ))
+                    new KeyFrame(Duration.millis(250), new KeyValue(circle.radiusProperty(), radius * 2))
             );
 
 
             timeline.play();
 
+            timeline.setOnFinished(e -> getChildren().remove(circle));
+        };
 
-            timeline.setOnFinished( e -> getChildren().remove(circle));
-        }
-    };
+        control.addEventFilter(MouseEvent.MOUSE_CLICKED, onPressed);
+
+        circle.setFill(_control.getCircleFill());
+
+        registerChangeListener((ObservableValue<?>) _control.circleFillProperty(), c -> {
+            if (c.getValue() != null) {
+                circle.setFill((Paint) c.getValue());
+            }
+        });
+    }
+
 
 }

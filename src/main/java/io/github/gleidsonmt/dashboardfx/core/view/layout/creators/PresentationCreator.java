@@ -324,8 +324,6 @@ public class PresentationCreator
         return gn;
     }
 
-
-
     private @NotNull Label createSubTitle(String title) {
         return createLabel(title, "subtitle", "h6", "text-bold");
     }
@@ -336,7 +334,7 @@ public class PresentationCreator
         label.getStyleClass().addAll("title", "h4");
         if (related != null) label.setRelated(related);
         if (options != null) label.getStyleClass().addAll(options);
-        VBox.setMargin(label, new Insets(10, 0, 20, 0));
+        VBox.setMargin(label, new Insets(10, 0, 10, 0));
 
         return label;
 
