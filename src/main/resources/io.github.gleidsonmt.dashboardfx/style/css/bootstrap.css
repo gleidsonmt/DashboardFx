@@ -28,6 +28,7 @@
     -fx-border-width : 0px;
     -fx-border-color : -light-gray;
     -fx-background-color : transparent;
+    -fx-text-fill: -fx-accent;
 }
 
 .button:cancel:hover,
@@ -38,14 +39,19 @@
 
 .button:cancel:focused,
 .button:cancel:hover:focused,
-.btn-flat:focused,
 .btn-flat:hover:focused
  {
     -fx-background-color : derive(-fx-accent, 90%);
 }
 
-.btn-flat .text {
-    -fx-fill : -fx-accent;
+.btn-flat:hover:focused:pressed,
+.btn-flat:hover:pressed,
+.btn-flat:hover:focused:pressed SVGPath,
+.btn-flat:hover:pressed SVGPath
+{
+    -fx-background-color : -fx-accent;
+    -fx-text-fill: white;
+    -fx-fill: white;
 }
 
 /* @lbl */
@@ -90,7 +96,7 @@
 .btn-flat .icon,
 .btn-flat .icon-container .icon,
 .btn-flat SVGPath {
-    -fx-fill : -text-color;
+    -fx-fill : -fx-accent;
 }
 
 /* @Color - Linear */

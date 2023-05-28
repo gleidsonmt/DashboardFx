@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
-//import org.scenicview.ScenicView;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

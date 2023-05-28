@@ -213,6 +213,7 @@ public final class DashController extends ActionView {
         title.textProperty().bindBidirectional(context.routes().title());
         title.setPadding(new Insets(0,0,0,5));
         title.getStyleClass().addAll("title-text", "title", "text-14");
+        title.setWrapText(true);
 
         context.layout().bar().addInLeft(title);
         HBox.setMargin(title, new Insets(0,0,0,5));
@@ -227,12 +228,16 @@ public final class DashController extends ActionView {
 //            sms.setColorCircle(Color.web(Colors.GRAPEFRUIT.toString()));
 
 
-        BoxUser boxUser = new BoxUser("Gleidson Neves", context.getResource("style/img/me_avatar.jpeg").toExternalForm());
+        BoxUser boxUser = new BoxUser("Gleidson Neves",
+                context.getResource("style/img/me_avatar.jpeg").toExternalForm());
+
 //        boxUser.setPadding(new Insets(0,2,10,2));
         HBox.setMargin(boxUser, new Insets(0,0,0,20));
         context.layout().bar().addInRight(sms, notification, boxUser);
 
         VBox b = createDialogNotification();
+
+
 
         notification.setOnMouseClicked(event ->
                 context.flow()

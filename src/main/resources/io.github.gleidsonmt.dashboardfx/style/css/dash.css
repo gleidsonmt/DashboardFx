@@ -165,8 +165,24 @@ Text, .text, .label {
 }
 
 .overview-item:selected {
-    -fx-border-width: 0px 0px 0px 2px;
--fx-border-radius: 2px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.overview-item Circle {
+    -fx-fill: transparent;
+}
+
+.overview-item:selected Circle {
+    -fx-fill: -fx-accent;
+}
+
+.btn-option {
+    -fx-background-color: white;
+}
+
+.btn-option:focused {
+    -fx-background-color : -fx-background;
 }
 
 .fore-login {

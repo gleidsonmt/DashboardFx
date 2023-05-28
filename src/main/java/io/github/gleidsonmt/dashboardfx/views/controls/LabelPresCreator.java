@@ -25,6 +25,8 @@ import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import javafx.scene.control.Label;
 
+import java.util.List;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  19/01/2023
@@ -43,18 +45,11 @@ public class LabelPresCreator extends TutorialCreator {
                 .demonstration(
                         new Label("Label"),
                         """
-                        // importing label
-                        import javafx.scene.control.Label;
-                        // importing GNBadge
-                        import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;
                         // Constructing label
                         Label label = new Label("Label");
-                        // Constructing GNBadge
-                        GNBadge badge = new GNBadge();
                         """,
                         """
-                        <?import javafx.scene.control.Label?>
-                        //...
+                        <!-- Building -->
                         <Label text="Label"/>
                         """)
                 .title("""
@@ -62,20 +57,41 @@ public class LabelPresCreator extends TutorialCreator {
                         """)
                 .text("Custom icon label based in icon button.")
                 .demonstration(
-                        new GNBadge(Icons.NOTIFICATIONS),
+                        List.of(
+                            createBadge("", Icons.BADGE),
+                            createBadge("bd-danger", Icons.DELETE),
+                            createBadge("bd-info", Icons.ANALYTICS)
+                        ),
                         """
-                               import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge;
-                               //...
+                               // Constructing GNBadge
                                GNBadge badge = new GNBadge(Icons.NOTIFICATIONS);
+                               // Setting number of notifications
+                               badge.setNumberOfNotifications(20);
+                               // Danger
+                               badge.getStyleClass().add("bd-danger");
+                               // Info
+                               badge.getStyleClass().add("bd-info");
                                 """,
                         """
-                               <?import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge?>;
-                               //...
-                               <GNBadge />
+                               <!-- Building -->
+                              <GNBadge numberOfNotifications="2"/>
+                              <!-- Using item -->
+                              <GNBadge numberOfNotifications="2" icon="ACCOUNT_CIRCLE"/>
+                              <!-- Class -->
+                              <GNBadge styleClass="bd-danger" icon="ACCOUNT_CIRCLE"/>
+                              <!-- Class -->
+                              <GNBadge styleClass="bd-info" icon="ACCOUNT_CIRCLE"/>
                                 """
                 )
-        ;
-        build();
+                .title("Links")
+                .footer(createDefaultControl())
+                .build();
 
+    }
+
+    private GNBadge createBadge(String clazz, Icons icons) {
+        GNBadge badge = new GNBadge(icons);
+        badge.getStyleClass().add(clazz);
+        return badge;
     }
 }

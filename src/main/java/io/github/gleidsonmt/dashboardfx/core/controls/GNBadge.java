@@ -21,29 +21,36 @@ package io.github.gleidsonmt.dashboardfx.core.controls;
 
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Cursor;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
 
 public class GNBadge extends Control {
 
-    private final Icons icon;
-    private IntegerProperty numberOfNotifications = new SimpleIntegerProperty(this, "numberOfNotification",0);
+    private final ObjectProperty<Icons> icon = new SimpleObjectProperty<>(this, "icon");
+    private final IntegerProperty numberOfNotifications = new SimpleIntegerProperty(this, "numberOfNotification",0);
 
     public GNBadge() {
-        this(Icons.BADGE);
+        this(Icons.BADGE, 0);
     }
 
     public GNBadge(Icons _icon) {
-        this.icon = _icon;
+        this(_icon, 0);
+    }
+
+    public GNBadge(Icons _icon, int number) {
+        this.icon.set(_icon);
         getStyleClass().add("gn-badge");
         setCursor(Cursor.HAND);
+        numberOfNotifications.set(number);
     }
 
     @Override
     protected Skin<?> createDefaultSkin() {
-        return new GNBadgeSkin(icon, this);
+        return new GNBadgeSkin( this);
     }
 
     public int getNumberOfNotifications() {
@@ -56,5 +63,17 @@ public class GNBadge extends Control {
 
     public void setNumberOfNotifications(int numberOfNotifications) {
         this.numberOfNotifications.set(numberOfNotifications);
+    }
+
+    public Icons getIcon() {
+        return icon.get();
+    }
+
+    public ObjectProperty<Icons> iconProperty() {
+        return icon;
+    }
+
+    public void setIcon(Icons icon) {
+        this.icon.set(icon);
     }
 }

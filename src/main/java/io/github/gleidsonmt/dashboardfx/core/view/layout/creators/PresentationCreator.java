@@ -65,13 +65,17 @@ import java.util.List;
  */
 
 @ApiStatus.Internal
+@ApiStatus.AvailableSince("1.0")
 public class PresentationCreator
         implements BuildCreator {
 
+    //Top and down root
     private final VBox body = new VBox();
+    // items for add in tree
     protected ObservableList<Node> items;
-    private final Context context;
-
+    // context for actions
+    protected final Context context;
+    // base from nodes
     protected final StackPane root;
 
     public PresentationCreator(Context _context) {
@@ -92,11 +96,42 @@ public class PresentationCreator
 
     private String title = null;
 
+    /**
+     * Create a title in tree.
+     * @param _title the name of the title
+     * @return The Presentation.
+     */
     public PresentationCreator title(String _title) {
         if (title == null) title = _title;
-        items.add(createTitle(_title));
+        items.add(createTitle(_title, null, null));
         return this;
     }
+
+    /**
+     *  Create a title and set its a parent.
+     * @param _title the name of title
+     * @param parent the first parent.
+     * @return The Presentation
+     */
+    public PresentationCreator title(String _title, String parent) {
+        if (title == null) title = _title;
+        items.add(createTitle(_title, parent, null));
+        return this;
+    }
+
+    public PresentationCreator title(String _title, List<String> options) {
+        if (title == null) title = _title;
+        items.add(createTitle(_title, null, options));
+        return this;
+    }
+
+    public PresentationCreator title(String _title, String parent, List<String> options) {
+        if (title == null) title = _title;
+        items.add(createTitle(_title, parent, options));
+        return this;
+    }
+
+
 
     public PresentationCreator subTitle(String title) {
         items.add(createSubTitle(title));
@@ -257,7 +292,8 @@ public class PresentationCreator
             tabPane.getTabs().add(fxmlTab);
         }
 
-        root.getStyleClass().addAll("border-light-gray-2", "border-1");
+        root.getStyleClass().addAll("border-light-gray-2", "border-1", "depth-2");
+        root.setStyle("-fx-background-color: -light-gray;");
         return tabPane;
     }
 
@@ -289,19 +325,24 @@ public class PresentationCreator
         return gn;
     }
 
-    private @NotNull Label createTitle(String title) {
-        return createLabel(title, "title", "h4");
-    }
-
-
-
-
     private @NotNull Label createSubTitle(String title) {
         return createLabel(title, "subtitle", "h6", "text-bold");
     }
 
+    private @NotNull Label createTitle(String title, String related, List<String> options) {
+
+        TreeTitle label = new TreeTitle(title);
+        label.getStyleClass().addAll("title", "h4");
+        if (related != null) label.setRelated(related);
+        if (options != null) label.getStyleClass().addAll(options);
+        VBox.setMargin(label, new Insets(10, 0, 10, 0));
+
+        return label;
+
+    }
+
     private @NotNull Label createLabel(String text, String... options) {
-        LabelPosition label = new LabelPosition(text);
+        Label label = new Label(text);
         label.getStyleClass().addAll(options);
         VBox.setMargin(label, new Insets(10, 0, 20, 0));
         return label;

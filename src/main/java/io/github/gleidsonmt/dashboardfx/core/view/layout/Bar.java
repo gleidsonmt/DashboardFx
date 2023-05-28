@@ -20,6 +20,8 @@ package io.github.gleidsonmt.dashboardfx.core.view.layout;
 import javafx.beans.binding.IntegerBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
@@ -43,6 +45,7 @@ public class Bar extends GridPane {
     private final HBox left = new HBox();
     private final HBox right = new HBox();
     BooleanProperty hasChild = new SimpleBooleanProperty();
+
     public Bar() {
         left.setId("bar-left");
         right.setId("bar-right");
@@ -70,6 +73,21 @@ public class Bar extends GridPane {
 
         hasChild.bind(totalBinding.greaterThan(0));
 
+        this.widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+
+                if (newValue.doubleValue() < 500) {
+                    GridPane.setConstraints(left, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                    GridPane.setConstraints(right, 0,1,1,1, HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                    right.setAlignment(Pos.CENTER);
+                } else {
+                    GridPane.setConstraints(left, 0,0,1,1, HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                    GridPane.setConstraints(right, 1,0,1,1, HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                    right.setAlignment(Pos.CENTER_RIGHT);
+                }
+            }
+        });
 
     }
 
