@@ -37,7 +37,7 @@ public class TextFieldPresCreator extends TutorialCreator {
                         however this is the sole-purpose of the TextArea control.
                         """)
                 .demonstration(
-                        new TextField(),
+                        createDefault(null, "TextField"),
                         """
                                 // Constructor
                                 TextField field = new TextField();
@@ -50,5 +50,11 @@ public class TextFieldPresCreator extends TutorialCreator {
                 .footer(createDefaultControl())
                 .build();
 //                .build();
+    }
+
+    private TextField createDefault(String text, String prompt) {
+        TextField textField = new TextField(text);
+        textField.setPromptText(prompt);
+        return textField;
     }
 }
