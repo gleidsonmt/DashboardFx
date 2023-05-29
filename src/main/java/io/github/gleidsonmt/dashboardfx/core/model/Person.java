@@ -17,7 +17,7 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.model;
+package io.github.gleidsonmt.dashboardfx.core.model;
 
 import javafx.beans.property.SimpleStringProperty;
 

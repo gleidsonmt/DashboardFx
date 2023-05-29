@@ -20,15 +20,13 @@
 package io.github.gleidsonmt.dashboardfx.core.services;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
-import io.github.gleidsonmt.dashboardfx.model.SearchItem;
-import io.github.gleidsonmt.dashboardfx.model.SearchItemAdapter;
+import io.github.gleidsonmt.dashboardfx.core.model.SearchItemAdapter;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 

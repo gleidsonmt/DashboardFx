@@ -19,7 +19,7 @@
 
 package io.github.gleidsonmt.dashboardfx.views.controls;
 
-import io.github.gleidsonmt.dashboardfx.model.Person;
+import io.github.gleidsonmt.dashboardfx.core.model.Person;
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import javafx.scene.control.TableColumn;

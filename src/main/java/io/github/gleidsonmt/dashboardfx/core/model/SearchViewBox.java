@@ -17,30 +17,18 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.model;
+package io.github.gleidsonmt.dashboardfx.core.model;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
-import io.github.gleidsonmt.dashboardfx.core.controls.GNTextBox;
-import io.github.gleidsonmt.dashboardfx.core.impl.layout.Direction;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
-import java.util.function.Predicate;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

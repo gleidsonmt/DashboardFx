@@ -17,23 +17,24 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.model;
+package io.github.gleidsonmt.dashboardfx.core.model;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  27/05/2023
+ * Create on  20/05/2023
  */
-public class SearchItem {
-    private StringProperty name = new SimpleStringProperty();
-    private ObjectProperty<EventHandler> action = new SimpleObjectProperty<>();
+public class Data {
+    private final StringProperty name = new SimpleStringProperty();
+    private final StringProperty value = new SimpleStringProperty();
+
+    public Data(String name, String value) {
+        this.name.set(name);
+        this.value.set(value);
+    }
+
     public String getName() {
         return name.get();
     }
@@ -46,16 +47,15 @@ public class SearchItem {
         this.name.set(name);
     }
 
-    public void setAction(EventHandler event) {
-        action.set(event);
+    public String getValue() {
+        return value.get();
     }
 
-    public EventHandler getAction() {
-        return action.get();
+    public StringProperty valueProperty() {
+        return value;
     }
 
-    @Override
-    public String toString() {
-        return name.get();
+    public void setValue(String value) {
+        this.value.set(value);
     }
 }

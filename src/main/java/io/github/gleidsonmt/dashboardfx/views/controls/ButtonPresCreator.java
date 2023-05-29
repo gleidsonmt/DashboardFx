@@ -26,15 +26,9 @@ import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TableCreator;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
-import io.github.gleidsonmt.dashboardfx.model.Data;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.scene.Node;
+import io.github.gleidsonmt.dashboardfx.core.model.Data;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**

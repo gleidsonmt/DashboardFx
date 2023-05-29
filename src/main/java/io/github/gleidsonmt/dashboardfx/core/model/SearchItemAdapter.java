@@ -17,13 +17,11 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.model;
+package io.github.gleidsonmt.dashboardfx.core.model;
 
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Labeled;
-import javafx.scene.control.ToggleButton;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
