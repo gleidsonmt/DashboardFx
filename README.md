@@ -30,10 +30,8 @@
 
 # 📑 Overview
 
-In this example you can see how components in javafx can be worked align with a good design.
-This lib contains methods to fast understand how javafx and properties works. 
-As a dashboard separated as modules, you can see the appearance and properties for controls and layouts, 
-base classes for implement pre build views.
+In this example, you can see how components in Javafx can be worked to align with a good design. This lib contains methods to fast understand how JavaFX and properties work. As a dashboard separated as modules, you can see the appearance and properties for controls and layouts, and base classes for implementing pre-build views.
+
 
 # 💻 Environment
 
