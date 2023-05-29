@@ -34,7 +34,7 @@ public class DialogContainer extends DeclarativeComponent<DialogContainer> {
         getStyleClass().add("container");
         getChildren().setAll(nodes);
         setPadding(new Insets(10));
-        setMaxSize(400, 300);
+//        setMaxSize(400, 300);
     }
 
     public DialogContainer content(Node node) {

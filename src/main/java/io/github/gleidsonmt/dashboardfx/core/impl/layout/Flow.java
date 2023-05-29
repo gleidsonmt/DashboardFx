@@ -29,10 +29,12 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.geometry.Bounds;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.skin.TextInputControlSkin;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
+import javafx.stage.Screen;
 import javafx.util.Duration;
 
 /**
@@ -89,8 +91,11 @@ public class Flow implements WrapperContainer {
 //        animationFX.play();
     }
 
+    public void show(Direction direction,  Node target) {
+        show(direction, target, 0, 0);
+    }
 
-    public void show(Direction direction, Node target) {
+    public void show(Direction direction, Node target, double x, double y) {
 
         opened = true;
 
@@ -111,67 +116,73 @@ public class Flow implements WrapperContainer {
         content.toFront();
 
 //        node.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-//        content.getStyleClass().addAll(super.styleClass);/
+//        content.getStyleClass().addAll(super.styleClass);
         content.getStyleClass().add("depth-1");
-//        content.setPadding(new Insets(10));
+        content.setPadding(new Insets(10));
+
         Bounds bounds = target.localToScene(target.getLayoutBounds());
 //        wrapper.toFront();
-
+//        content.setTranslateX(bounds.getMinX());
+//        content.setTranslateY(bounds.getMaxY());
 
         switch (direction) {
-//            case TOP_LEFT -> {
-//                content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth() ) );
-//                content.setTranslateY(clamp(bounds.getMinY(), content.getMaxHeight()));
-//            }
-//            case TOP_CENTER -> {
-//                content.setTranslateX(
-//                        bounds.getMinX() -
-//                                (center(bounds.getWidth() , content.getMaxWidth()))
-//                );
-//                content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
-//            }
-//            case TOP_RIGHT -> {
-//                content.setTranslateX(bounds.getMinX() + bounds.getWidth());
-//                content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
-//            }
-//            case RIGHT_CENTER -> {
-//                content.setTranslateX(bounds.getMinX() + bounds.getWidth());
-//                content.setTranslateY( (bounds.getMinY() ) +
-//                        (center(bounds.getWidth(), content.getMaxHeight())/2));
-//            }
-//            case RIGHT_TOP -> {
-//                content.setTranslateX(bounds.getMinX() + bounds.getWidth());
-//                content.setTranslateY(bounds.getMinY());
-//            }
-//            case BOTTOM_RIGHT -> {
-//                content.setTranslateX((bounds.getMinX() + bounds.getWidth()) + paddingX);
-//                content.setTranslateY(bounds.getMinY() + bounds.getHeight());
-//            }
+            case TOP_LEFT -> {
+                content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
+                content.setTranslateY(clamp(bounds.getMinY(), content.getMaxHeight()));
 //
-//            case BOTTOM_CENTER -> {
-//                content.setTranslateX(bounds.getMinX() -
-//                        (center(bounds.getWidth(), content.getMaxWidth())) + content.getPadding().getRight());
-//                content.setTranslateY(bounds.getMaxY());
-//            }
+            }
+            case TOP_CENTER -> {
+                content.setTranslateX(
+                        bounds.getMinX() -
+                                (center(bounds.getWidth() , content.getMaxWidth()))
+                );
+                content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
+            }
+            case TOP_RIGHT -> {
+                content.setTranslateX(bounds.getMinX() + bounds.getWidth());
+                content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
+            }
+            case RIGHT_CENTER -> {
+                content.setTranslateX(bounds.getMinX() + bounds.getWidth());
+                content.setTranslateY( (bounds.getMaxY() - bounds.getHeight()) -
+                         content.getMaxHeight()/2);
+            }
+            case RIGHT_TOP -> {
+                content.setTranslateX(bounds.getMinX() + bounds.getWidth());
+                content.setTranslateY(bounds.getMinY());
+            }
+            case BOTTOM_RIGHT -> {
+                content.setTranslateX((bounds.getMinX() + bounds.getWidth()));
+                content.setTranslateY(bounds.getMinY() + bounds.getHeight());
+            }
 
-            case BOTTOM_LEFT -> {
-                content.setTranslateX(clamp(bounds.getMaxX(), content.getMaxWidth()/2));
+            case BOTTOM_CENTER -> {
+                content.setTranslateX(bounds.getMinX() -
+                        (center(bounds.getWidth(), content.getMaxWidth())) );
                 content.setTranslateY(bounds.getMaxY());
             }
-//
-//            case LEFT_CENTER -> {
-//                content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
-//                content.setTranslateY(bounds.getMinY() + (
-//                        center(bounds.getWidth(), content.getMaxWidth())
-//                ));
-//            }
-//
-//            case LEFT_TOP -> {
-//                content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
-//                content.setTranslateY(bounds.getMinY());
-//            }
-//
+
+            // Done
+            case BOTTOM_LEFT -> {
+                content.setTranslateX(bounds.getMinX() - content.getMaxWidth());
+                content.setTranslateY(bounds.getMaxY());
+            }
+
+            case LEFT_CENTER -> {
+                content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
+                content.setTranslateY(bounds.getMinY() + (
+                        center(bounds.getWidth(), content.getMaxWidth())
+                ));
+            }
+
+            case LEFT_TOP -> {
+                content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
+                content.setTranslateY(bounds.getMinY());
+            }
         }
+
+        content.setTranslateX(content.getTranslateX() + x);
+        content.setTranslateY(content.getTranslateY() + y);
 //
 //        // se sair pelo canto esquerdo...
 //        double whole = bounds.getMaxX();
@@ -181,30 +192,33 @@ public class Flow implements WrapperContainer {
 //        System.out.println("width = " + content.getTranslateX());
 //
 //        double mx = content.localToScene(content.getLayoutBounds()).getMaxX(); // 1095
-//        double md = screen.getVisualBounds().getMaxX() - width; // 1366 - 400 = 966,
+        Bounds bd = target.localToScene(content.getLayoutBounds());
+        double md = Screen.getPrimary().getVisualBounds().getMaxX(); // 1366 - 400 = 966,
+
+
 //
 //        if (half > max) {
 ////            System.out.println("(content.getTranslateX() - ((i - max))) = " + (content.getTranslateX() - ((i - max))));
 ////            content.setTranslateX(content.getTranslateX() - ((half - max)) );
 //        }
 
-        double cp = content.getTranslateX() + content.getMaxWidth();
+//        double cp = content.getTranslateX() + content.getMaxWidth();
+//
+//        if (cp > root.getWidth()) {
+//            content.setTranslateX(
+//                (content.getTranslateX() - ( cp - root.getWidth())) -10);
+//        }
 
-        if (cp > root.getWidth()) {
-            content.setTranslateX(
-                (content.getTranslateX() - ( cp - root.getWidth())) -10);
-        }
-
-        Timeline animation = new Timeline();
-        animation.getKeyFrames().setAll(
-                new KeyFrame(Duration.ZERO, new KeyValue(
-                        content.translateYProperty(), content.getTranslateY() - 10
-                )),
-                new KeyFrame(Duration.millis(100), new KeyValue(
-                        content.translateYProperty(), content.getTranslateY() + 10
-                ))
-        );
-        animation.play();
+//        Timeline animation = new Timeline();
+//        animation.getKeyFrames().setAll(
+//                new KeyFrame(Duration.ZERO, new KeyValue(
+//                        content.translateYProperty(), content.getTranslateY() - 10
+//                )),
+//                new KeyFrame(Duration.millis(100), new KeyValue(
+//                        content.translateYProperty(), content.getTranslateY() + 10
+//                ))
+//        );
+//        animation.play();
     }
 
     protected double clamp(double one, double two) {

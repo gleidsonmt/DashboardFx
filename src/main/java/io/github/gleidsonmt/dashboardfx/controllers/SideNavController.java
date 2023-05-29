@@ -1,10 +1,13 @@
 package io.github.gleidsonmt.dashboardfx.controllers;
 
+import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.exceptions.NavigationException;
+import io.github.gleidsonmt.dashboardfx.core.impl.layout.Direction;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.services.DrawerBehavior;
 import io.github.gleidsonmt.dashboardfx.core.view.SimpleView;
 import io.github.gleidsonmt.dashboardfx.core.view.View;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
 import io.github.gleidsonmt.dashboardfx.views.WrappersView;
@@ -12,7 +15,11 @@ import io.github.gleidsonmt.dashboardfx.views.controls.*;
 import io.github.gleidsonmt.dashboardfx.views.tutorial.NewsLetter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
 import java.net.URL;
@@ -110,9 +117,33 @@ public class SideNavController extends ActionView {
 
     }
 
-    public void goLogin(ActionEvent actionEvent) {
 
+    @FXML
+    private void goLogin() {
+        context.routes().putAndGo(new SimpleView("v", new StackPane(new ImageView(
+                new Image(context.getResource("style/img/404.png").toExternalForm()))
+        )));
     }
+
+    @FXML
+    private void goCarousel() {
+        StackPane root = new StackPane();
+        root.setAlignment(Pos.CENTER);;
+        Button button = new Button("Button");
+        root.getChildren().add(button);
+        context.routes().putAndGo(new SimpleView("my", root));
+
+        button.setOnMouseClicked(event -> {
+            context.flow()
+                    .content(
+                            new DialogContainer(new Button("Button"))
+                                    .size(300, 300)
+                    )
+                    .show(Direction.BOTTOM_RIGHT, button, -300, 0);
+        });
+    }
+
+
 
     @FXML
     private void goAbout() throws NavigationException{
@@ -120,7 +151,8 @@ public class SideNavController extends ActionView {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        new DrawerBehavior(root, group);
+    public void onInit(Context context) {
+        this.context = context;
+        new DrawerBehavior(root, group, context);
     }
 }

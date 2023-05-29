@@ -19,6 +19,9 @@
 
 package io.github.gleidsonmt.dashboardfx.core.services;
 
+import io.github.gleidsonmt.dashboardfx.core.Context;
+import io.github.gleidsonmt.dashboardfx.model.SearchItem;
+import io.github.gleidsonmt.dashboardfx.model.SearchItemAdapter;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
@@ -36,7 +39,7 @@ import javafx.scene.layout.VBox;
  */
 public class DrawerBehavior {
 
-    public DrawerBehavior(StackPane content, ToggleGroup group) {
+    public DrawerBehavior(StackPane content, ToggleGroup group, Context context) {
         VBox body = (VBox) content.lookup("#drawer-content");
         ScrollPane scrollPane = (ScrollPane) body.lookup("#drawer-scroll");
         VBox box = (VBox) scrollPane.getContent();
@@ -47,9 +50,12 @@ public class DrawerBehavior {
                 .filter(fil ->
                         fil instanceof ToggleButton && fil.getStyleClass().contains("drawer-item"))
                 .map(item -> (ToggleButton) item)
-                .forEach(each -> each.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
-                    if (each.isSelected()) event.consume();
-                }));
+                .forEach(each -> {
+                    each.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
+                        if (each.isSelected()) event.consume();
+                    });
+                    context.searchItems().add(SearchItemAdapter.adapter(each));
+                });
 
         box.getChildren()
                 .stream()
@@ -73,6 +79,8 @@ public class DrawerBehavior {
                                     e.getParent().getParent().getParent().setId("drawer-menu-selected");
                                 }
                             });
+
+                            context.searchItems().add(SearchItemAdapter.adapter(e));
                         }
                     }
                 });

@@ -18,7 +18,6 @@ import java.net.URL;
  * Create on  02/04/2023
  */
 public class Layout {
-
     private final HBox root = new HBox();
     private final BorderPane content = new BorderPane();
     private final Context context;
