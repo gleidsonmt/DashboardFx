@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="649.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutX="280.0" layoutY="164.0" prefHeight="103.0" prefWidth="103.0" style="-fx-border-color: gray; -fx-border-radius: 100;" text="Context" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="107.0" layoutY="166.0" prefHeight="103.0" prefWidth="103.0" style="-fx-border-color: gray; -fx-border-radius: 100;" text="Resources" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="451.0" layoutY="164.0" prefHeight="103.0" prefWidth="103.0" style="-fx-border-color: gray; -fx-border-radius: 100;" text="Controllers" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="275.0" layoutY="14.0" prefHeight="103.0" prefWidth="103.0" style="-fx-border-color: gray; -fx-border-radius: 100;" text="Views" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="280.0" layoutY="326.0" prefHeight="103.0" prefWidth="103.0" style="-fx-border-color: gray; -fx-border-radius: 100;" text="Layout" textAlignment="CENTER" />
+      <Separator layoutX="390.0" layoutY="214.0" prefHeight="0.0" prefWidth="50.0" />
+      <Separator layoutX="221.0" layoutY="216.0" prefHeight="0.0" prefWidth="50.0" />
+      <Separator layoutX="329.0" layoutY="269.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="6.0" />
+      <Separator layoutX="326.0" layoutY="117.0" orientation="VERTICAL" prefHeight="45.0" prefWidth="6.0" />
+   </children>
+</AnchorPane>
