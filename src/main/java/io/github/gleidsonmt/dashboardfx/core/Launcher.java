@@ -24,12 +24,15 @@ public abstract class Launcher extends Application {
     @Override
     public void start(Stage stage) {
         build(context);
-        Scene scene = new Scene(root, 320, 240);
+        Scene scene = new Scene(root);
         stage.setTitle("DashboardFx App!");
         stage.setScene(scene);
         stage.setMaximized(true);
 
         stage.getIcons().addAll(icons);
+
+        stage.setMinWidth(400);
+        stage.setMinHeight(500);
 
         scene.getStylesheets().addAll(
                 clean("style/css/colors.css"),

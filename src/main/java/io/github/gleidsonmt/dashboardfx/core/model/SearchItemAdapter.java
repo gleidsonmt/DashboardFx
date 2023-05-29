@@ -17,29 +17,34 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.view.layout;
+package io.github.gleidsonmt.dashboardfx.core.model;
 
-import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.DeclarativeComponent;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.ButtonBase;
+import javafx.scene.control.Labeled;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
- * Create on  04/03/2023
+ * Create on  27/05/2023
  */
-public class DialogContainer extends DeclarativeComponent<DialogContainer> {
+public class SearchItemAdapter {
 
-    public DialogContainer(Node... nodes) {
-        getStyleClass().add("container");
-        getChildren().setAll(nodes);
-        setPadding(new Insets(10));
-//        setMaxSize(400, 300);
+    private final SearchItem searchItem = new SearchItem();
+    public SearchItemAdapter(Node node) {
+        if (node instanceof Labeled labeled) {
+            searchItem.nameProperty().bind(labeled.textProperty());
+        }
+    }
+    public static SearchItem adapter(Node node) {
+        final SearchItem searchItem = new SearchItem();
+        if (node instanceof ButtonBase labeled) {
+            searchItem.setName(labeled.getText());
+            searchItem.setAction(labeled.getOnAction());
+        }
+        return searchItem;
     }
 
-    public DialogContainer content(Node node) {
-        this.getChildren().setAll(node);
-        return this;
+    public SearchItem getSearchItem() {
+        return searchItem;
     }
-
 }

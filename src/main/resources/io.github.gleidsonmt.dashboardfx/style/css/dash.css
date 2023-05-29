@@ -197,3 +197,15 @@ Text, .text, .label {
 .btn-option .icon {
     -fx-fill: -text-color;
 }
+
+#tf-search .gn-text-box-base {
+    -fx-background-color: transparent;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+
+#tf-search {
+    -fx-background-color: transparent;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}

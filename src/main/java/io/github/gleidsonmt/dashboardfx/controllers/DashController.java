@@ -12,6 +12,7 @@ import io.github.gleidsonmt.dashboardfx.core.view.layout.BoxUser;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.ScheduleListCreator;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.ScheduleListItem;
+import io.github.gleidsonmt.dashboardfx.core.model.SearchViewBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -215,7 +216,34 @@ public final class DashController extends ActionView {
         title.getStyleClass().addAll("title-text", "title", "text-14");
         title.setWrapText(true);
 
-        context.layout().bar().addInLeft(title);
+//        GNTextBox textSearch = new GNTextBox("");
+//        textSearch.setId("tf-search");
+//        textSearch.setPrefHeight(30);
+//        textSearch.setPrefWidth(300);
+//        textSearch.setPromptText("Search");
+//        textSearch.setOnMouseClicked(event -> {
+//            System.out.println("test 01");
+//        });
+
+        GNIconButton btnSearch = new GNIconButton(Icons.SEARCH);
+        btnSearch.getStyleClass().add("btn-flat");
+        btnSearch.setStyle("-fx-cursor: hand;");
+        btnSearch.setOnMouseClicked(event -> {
+            context.wrapper()
+                    .content(
+                            new DialogContainer(
+                                    new SearchViewBox(context)
+                            )
+                            .size(800, 400)
+                    )
+                    .show();
+        });
+
+//        textSearch.setIcon(Icons.SEARCH);
+//        HBox.setMargin(textSearch, new Insets(2,10, 2, 10));
+//        new SearchViewBox(context, textSearch, context.searchItems());
+
+        context.layout().bar().addInLeft( title );
         HBox.setMargin(title, new Insets(0,0,0,5));
 
         GNBadge notification = new GNBadge(Icons.NOTIFICATIONS);
@@ -232,11 +260,10 @@ public final class DashController extends ActionView {
                 context.getResource("style/img/me_avatar.jpeg").toExternalForm());
 
 //        boxUser.setPadding(new Insets(0,2,10,2));
-        HBox.setMargin(boxUser, new Insets(0,0,0,20));
-        context.layout().bar().addInRight(sms, notification, boxUser);
+        HBox.setMargin(boxUser, new Insets(0,0,0,10));
+        context.layout().bar().addInRight(btnSearch, sms, notification, boxUser);
 
         VBox b = createDialogNotification();
-
 
 
         notification.setOnMouseClicked(event ->

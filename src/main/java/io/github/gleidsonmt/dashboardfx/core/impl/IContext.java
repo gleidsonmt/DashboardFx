@@ -6,7 +6,10 @@ import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.Routes;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.SnackBar;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.Wrapper;
+import io.github.gleidsonmt.dashboardfx.core.model.SearchItem;
 import javafx.application.HostServices;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.net.URL;
 import java.util.Objects;
@@ -23,10 +26,13 @@ public class IContext implements Context {
     private SnackBar snackBar;
     private final HostServices hostServices;
 
+    private final ObservableList<SearchItem> searchItems;
+
     public IContext(IRoot root, HostServices hostServices) {
         this.root = root;
         this.hostServices = hostServices;
         this.routes = new IRoutes(root, this);
+        searchItems = FXCollections.observableArrayList();
     }
 
     @Override
@@ -56,6 +62,11 @@ public class IContext implements Context {
     public Flow flow() {
         if (flow == null) flow = new Flow(root);
         return flow;
+    }
+
+    @Override
+    public ObservableList<SearchItem> searchItems() {
+        return searchItems;
     }
 
     @Override

@@ -11,28 +11,29 @@
 [![License](https://img.shields.io/github/license/Gleidson28/GNDecorator.svg?style=for-the-badge)](https://github.com/gleidsonmt/GNDecorator/blob/master/LICENSE)
 
 
-## Preview
-
 <p align="center">
   <img src="./src/main/resources/io.github.gleidsonmt.dashboardfx/style/img/screen_dash.png"  />
 </p>
 
-# 📑 Contents
-
 <!-- TOC -->
-  * [Preview](#preview)
-* [🛠 Enhancements](#-enhancements)
-* [📑 Contents](#-contents)
+* [📑 Overview](#-overview)
 * [💻 Environment](#-environment)
 * [🚀 Installing](#-installing)
-* [☕ Using Dashboard](#-using-dashboard)
+* [☕ Using Dashboard](#-using-dashboard-)
 * [🧬  Basic Structure](#-basic-structure)
 * [📺 On Youtube](#-on-youtube)
 * [🛠 Enhancements](#-enhancements)
 * [📫 Contributing to Project](#-contributing-to-project)
-* [😄 Be a contritubutor<br>](#-be-a-contritubutor-br)
+* [😄 Be a contritubutor<br>](#-be-a-contritubutorbr)
 * [📝 License](#-license)
 <!-- TOC -->
+
+# 📑 Overview
+
+In this example you can see how components in javafx can be worked align with a good design.
+This lib contains methods to fast understand how javafx and properties works. 
+As a dashboard separated as modules, you can see the appearance and properties for controls and layouts, 
+base classes for implement pre build views.
 
 # 💻 Environment
 

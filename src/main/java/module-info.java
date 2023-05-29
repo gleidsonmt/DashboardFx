@@ -22,7 +22,7 @@ module io.github.gleidsonmt.dashboardfx {
     exports io.github.gleidsonmt.dashboardfx;
     opens io.github.gleidsonmt.dashboardfx.views.controls to javafx.base;
     exports io.github.gleidsonmt.dashboardfx.core.view;
-    exports io.github.gleidsonmt.dashboardfx.model;
-    opens io.github.gleidsonmt.dashboardfx.model to javafx.fxml;
     opens io.github.gleidsonmt.dashboardfx.core.controls to javafx.fxml;
+    exports io.github.gleidsonmt.dashboardfx.core.model;
+    opens io.github.gleidsonmt.dashboardfx.core.model to javafx.fxml;
 }
