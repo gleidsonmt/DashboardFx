@@ -57,10 +57,10 @@ public class FloatEditor extends Editor {
         return new FloatEditorSkin(this);
     }
 
-    @Override
-    public String getUserAgentStylesheet() {
-        return Objects.requireNonNull(FloatEditor.class.getResource("/io.github.gleidsonmt.gncontrols/agents/float_editor.css")).toExternalForm();
-    }
+//    @Override
+//    public String getUserAgentStylesheet() {
+//        return Objects.requireNonNull(FloatEditor.class.getResource("/io.github.gleidsonmt.gncontrols/agents/float_editor.css")).toExternalForm();
+//    }
 
     public FloatAlignment getFloatAlignment() {
         return floatAlignment.get();

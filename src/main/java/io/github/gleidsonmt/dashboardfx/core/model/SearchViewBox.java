@@ -20,6 +20,9 @@
 package io.github.gleidsonmt.dashboardfx.core.model;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
+import io.github.gleidsonmt.dashboardfx.core.controls.FieldType;
+import io.github.gleidsonmt.dashboardfx.core.controls.GNTextBox;
+import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import javafx.collections.ListChangeListener;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -37,7 +40,7 @@ import javafx.util.Callback;
 public class SearchViewBox extends VBox {
 
     private ListView<SearchItem> listView = new ListView<>();
-    private TextField textField = new TextField();
+    private GNTextBox textField = new GNTextBox();
 
     public SearchViewBox(Context context) {
 
@@ -49,6 +52,11 @@ public class SearchViewBox extends VBox {
                 listView.setMaxHeight(filteredList.size() * 48);
             }
         });
+
+        textField.setIcon(Icons.SEARCH);
+        textField.setPromptText("Search");
+        textField.setAction(true);
+        textField.setId("tf-search");
 
 //        this.maxWidthProperty().bind(textField.widthProperty());
 //        this.prefWidthProperty().bind(textField.widthProperty());
@@ -73,6 +81,7 @@ public class SearchViewBox extends VBox {
                         super.updateItem(item, empty);
                         if (item != null) {
                             setText(item.getName());
+                            setStyle("-fx-font-weight: bold;");
                             setOnMouseClicked(event -> {
                                 item.getAction().handle(new ActionEvent());
                                 context.wrapper().close();

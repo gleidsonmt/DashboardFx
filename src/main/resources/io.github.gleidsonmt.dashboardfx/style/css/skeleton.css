@@ -506,7 +506,8 @@ SVGPath {
 *                                                                              *
 *******************************************************************************/
 
-.text-field {
+.text-field,
+.combo-box-base {
     -fx-background-color: -fx-background;
     -fx-border-color: -medium-gray;
     -fx-border-radius: 2px;
@@ -514,6 +515,43 @@ SVGPath {
     -fx-pref-height: 40px;
 }
 
+/*******************************************************************************
+*                                                                              *
+    @ComboBox
+*                                                                              *
+*******************************************************************************/
+
+.combo-box-base {
+    -fx-cursor: hand
+}
+
+.combo-box-base:focused,
 .text-field:focused {
     -fx-border-color: -fx-accent;
+}
+
+.combo-box-base:showing .arrow-button .arrow
+{
+    -fx-background-color: -fx-accent;
+}
+
+.combo-box > .list-cell { /* essa aparece no value */
+
+}
+
+.combo-box-base:editable > .text-field,
+.combo-box-base:editable > .arrow-button
+
+{
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+}
+
+.combo-box-popup > .list-view {
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,.3) , 5, 0 , 0 , 1 );
+}
+
+.combo-box-popup {
+   -fx-background-color: -fx-accent;
+    -fx-padding: 20px;
 }
