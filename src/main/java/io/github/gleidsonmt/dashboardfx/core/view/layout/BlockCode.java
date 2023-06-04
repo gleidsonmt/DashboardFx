@@ -70,6 +70,7 @@ public class BlockCode extends StackPane {
 
         webView.getEngine().getLoadWorker().stateProperty()
                 .addListener((obs, oldValue, newValue) -> {
+
                     Platform.runLater(() -> {
 
                     if (newValue == Worker.State.SUCCEEDED) {
@@ -87,7 +88,6 @@ public class BlockCode extends StackPane {
 
                         this.getChildren().setAll(webView, btn);
                         webView.getEngine().executeScript("hljs.highlightAll();");
-
 
                     }
                     });

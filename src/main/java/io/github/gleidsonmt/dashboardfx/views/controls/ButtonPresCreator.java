@@ -44,11 +44,11 @@ public class ButtonPresCreator extends TutorialCreator {
                         A simple button control. The button control can contain text and/or a graphic.
                         """)
                 .demonstration(List.of(
-                            createButton("Default"),
-                            createCancel("Cancel"),
-                            createBtnFlat("Flat"),
-                            createIconized("Iconized")
-
+                                createButton("Default"),
+                                createCancel("Cancel"),
+                                createDisable("Disable"),
+                                createBtnFlat("Flat"),
+                                createIconized("Iconized")
                         ),
                         """
                         // Default
@@ -62,20 +62,20 @@ public class ButtonPresCreator extends TutorialCreator {
                        
                         """,
                         """
-                                <!-- Default -->
-                                <Button text="button"></Button>
+                              <!-- Default -->
+                                <Button text="button"/>
                                 <!-- Main button/gave action from enter -->
-                                <Button text="button" defaultButton="true"></Button>
+                                <Button text="button" defaultButton="true"/>
                                 <!-- Cancel button/gave action using scape -->
-                                <Button text="button" cancelButton="true"></Button>
+                                <Button text="button" cancelButton="true"/>
                                 <!-- Only add inline styleClass -->
-                                <Button text="button" styleClass="btn-flat""></Button>
-                                <!-- Using a graphic -->
-                                <Button text="button">
-                                    <graphic>
-                                        <IconContainer icon="DISCOUNT">
-                                    </graphic> 
-                                </Button>
+                                <Button text="button" styleClass="btn-flat"/>
+                             <!-- Using a graphic -->
+                             <Button text="button">
+                                <graphic>
+                                   <IconContainer icon="DISCOUNT"/>
+                                </graphic>
+                             </Button>
                                 """)
                 .title("States")
                 .text("""
@@ -153,6 +153,12 @@ public class ButtonPresCreator extends TutorialCreator {
     public Button createCancel(String title) {
         Button button = new Button(title);
         button.setCancelButton(true);
+        return button;
+    }
+
+    public Button createDisable(String title) {
+        Button button = new Button(title);
+        button.setDisable(true);
         return button;
     }
 }

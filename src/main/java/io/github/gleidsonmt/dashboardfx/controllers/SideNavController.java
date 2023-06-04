@@ -21,6 +21,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -51,6 +54,57 @@ public class SideNavController extends ActionView {
         go("tutorial_understanding", new TutorialUnderstanding(context));
     }
 
+    @FXML
+    private void goButton() {
+        go("view_button", new ButtonPresCreator(context));
+    }
+
+    @FXML
+    private void goCheckBox() {
+        go("view_check", new CheckBoxPresCreator(context));
+    }
+
+    @FXML
+    private void goComboBox() {
+        go("view_check", new ComboBoxPresCreator(context));
+    }
+
+    @FXML
+    private void goHyperlink() {
+        go("view_hyperlink", new HyperlinkPresCreator(context));
+    }
+
+    @FXML
+    private void goLabels() {
+        go("view_label", new LabelPresCreator(context));
+    }
+
+    @FXML
+    private void goListView() {
+        go("view_list", new ListViewCreator(context));
+    }
+    @FXML
+    private void goPassword() {
+        go("view_pass", new PasswordPresCreator(context));
+    }
+
+    @FXML
+    private void goTableView() {
+        go("view_table", new TableViewPresCreator(context));
+    }
+
+    @FXML
+    private void goTextField() {
+        go("view_label", new TextFieldPresCreator(context));
+    }
+
+    @FXML
+    private void goTreeView() {
+        go("view_tree", new TreeViewPresCreator(context));
+    }
+
+
+
     private View presentation;
 
     @FXML
@@ -65,82 +119,36 @@ public class SideNavController extends ActionView {
 //        context.routes().putAndGo(view);
     }
 
-    @FXML
-    private void goButton() {
-        go("view_button", new ButtonPresCreator(context));
-    }
 
-    @FXML
-    private void goHyperlink() {
-        go("view_hyperlink", new HyperlinkPresCreator(context));
-    }
-
-    @FXML
-    private void goLabels() {
-        go("view_label", new LabelPresCreator(context));
-    }
-
-    @FXML
-    private void goTextField() {
-        go("view_label", new TextFieldPresCreator(context));
-    }
-
-    @FXML
-    private void goListView() {
-        go("view_list", new ListViewCreator(context));
-    }
-
-    @FXML
-    private void goPassword() {
-         go("view_pass", new PasswordPresCreator(context));
-    }
-    @FXML
-    private void goCheckBox() {
-        go("view_check", new CheckBoxPresCreator(context));
-    }
-
-    @FXML
-    private void goTableView() {
-        go("view_table", new TableViewPresCreator(context));
-    }
-
-    @FXML
-    private void goTreeView() {
-        go("view_tree", new TreeViewPresCreator(context));
-    }
 
     private void go(String name, TutorialCreator tutorialCreator) {
         context.routes().putAndGo(new SimpleView(name, tutorialCreator));
     }
 
-    public void goBuild(ActionEvent actionEvent) {
-
+    @FXML
+    private void goBuild() {
+        createProblemView();
     }
 
 
     @FXML
     private void goLogin() {
-        context.routes().putAndGo(new SimpleView("v", new StackPane(new ImageView(
-                new Image(context.getResource("style/img/404.png").toExternalForm()))
-        )));
+        createProblemView();
+    }
+
+    private void createProblemView(){
+        Circle rectangle = new Circle();
+        rectangle.setFill(new ImagePattern(
+                new Image(context.getResource("style/img/404.png").toExternalForm())
+        ));
+        rectangle.setRadius(200);
+        context.routes().putAndGo(new SimpleView("error_404", new StackPane(rectangle)
+        ));
     }
 
     @FXML
     private void goCarousel() {
-        StackPane root = new StackPane();
-        root.setAlignment(Pos.CENTER);;
-        Button button = new Button("Button");
-        root.getChildren().add(button);
-        context.routes().putAndGo(new SimpleView("my", root));
-
-        button.setOnMouseClicked(event -> {
-            context.flow()
-                    .content(
-                            new DialogContainer(new Button("Button"))
-                                    .size(300, 300)
-                    )
-                    .show(Direction.BOTTOM_RIGHT, button, -300, 0);
-        });
+        createProblemView();
     }
 
 

@@ -37,7 +37,7 @@ public class PasswordPresCreator extends TutorialCreator {
                         Text field that masks entered characters.
                         """)
                 .demonstration(
-                        new PasswordField(),
+                        createDefault("PasswordField"),
                         """
                                 // Constructor
                                 PasswordField label = new PasswordField();
@@ -51,4 +51,10 @@ public class PasswordPresCreator extends TutorialCreator {
                 .footer(createDefaultControl())
                 .build();
     }
+    private PasswordField createDefault(String prompt) {
+        PasswordField textField = new PasswordField();
+        textField.setPromptText(prompt);
+        return textField;
+    }
+
 }

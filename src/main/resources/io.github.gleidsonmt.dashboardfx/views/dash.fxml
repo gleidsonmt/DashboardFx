@@ -26,10 +26,6 @@
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
-<?import io.github.gleidsonmt.dashboardfx.core.model.Person?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge?>
 <StackPane fx:id="root" style="-fx-border-color : transparent; -fx-background-color : white;"
            xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="io.github.gleidsonmt.dashboardfx.controllers.DashController">
