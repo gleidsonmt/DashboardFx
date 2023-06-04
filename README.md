@@ -42,7 +42,7 @@ This lib is a component for JavaFx:   Get in the official website [JavaFx](https
 I have a great workstation here, then I've using a gradle 7.2 and Java and JavaFx +17 on Windows. (I really want to test in other systems in future).
 
 # 🚀 Installing
-I really recommend to use japackage to create your jar and the .exe. <br>
+I really recommend to use jpackage to create your jar and the .exe. <br>
 !🗒️Note ** The generate you .exe you need the wix tool, you can get the url if you using intellij or from here  https://wixtoolset.org 🥸***
 In intellij or visual studio (in visual you need to prepare the  ide to use javafx) it's really simple, only open the tab gradle and run the command build after jpackage. 
 ...
