@@ -85,7 +85,7 @@ public class PresentationCreator
 
         ScrollPane scroll = new ScrollPane();
         this.root.getChildren().setAll(scroll);
-        scroll.setContent(body);
+//        scroll.setContent(body);
 
         scroll.setFitToHeight(true);
         scroll.setFitToWidth(true);

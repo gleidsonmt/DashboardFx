@@ -31,6 +31,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -44,6 +45,8 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -106,11 +109,11 @@ public class TutorialCreator extends PresentationCreator {
         nav.getChildren().add(menu);
     }
 
+    private double space = 0;
     private VBox buildTree(TreeTitle item) {
         VBox parent = createMenu(item);
         List<TreeTitle> children = data.stream().filter(child -> child.getRelated() != null && child.getRelated().equals(item.getText())).toList();
 
-        AtomicInteger space = new AtomicInteger();
 
         if (children.size() > 0) {
             children.forEach(c -> c.setIndex(count++));
@@ -122,10 +125,10 @@ public class TutorialCreator extends PresentationCreator {
                 .forEach(i -> {
                     subMenu.getChildren().add(i);
 
-                    space.getAndSet(10); // padding
+                    space+=10; // padding
                     VBox.setMargin(
                             subMenu,
-                            new Insets(0, 0, 0, space.get())
+                            new Insets(0, 0, 0, space)
                     );
                 });
 
@@ -190,7 +193,9 @@ public class TutorialCreator extends PresentationCreator {
                 .map(mapped -> (TreeTitle) mapped).toList();
 
         // Criando a tree
-        createTree(data, aside);
+        Platform.runLater(() -> {
+            createTree(data, aside);
+        });
 
 //        ((ToggleButton)aside.getChildren().get(1)).setSelected(true);
 
@@ -213,7 +218,27 @@ public class TutorialCreator extends PresentationCreator {
 
         HBox.setHgrow(scroll, Priority.ALWAYS);
 
-        center.getChildren().setAll(items);
+        Platform.runLater(() -> {
+
+        for (Node node : items) {
+//            TimerTask timerTask = new TimerTask() {
+//                @Override
+//                public void run() {
+                    Platform.runLater(() -> {
+                        center.getChildren().add(node);
+//                        try {
+//                            Thread.sleep(1000);
+//                        } catch (InterruptedException e) {
+//                            throw new RuntimeException(e);
+//                        }
+                    });
+//                }
+//            };
+//            Timer timer = new Timer();
+//            timer.schedule(timerTask, 1000);
+        }
+
+        });
 
         center.setAlignment(Pos.TOP_LEFT);
 

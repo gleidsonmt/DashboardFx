@@ -276,7 +276,7 @@ public final class DashController extends ActionView {
                                 .size(400, 280)
                 )
 //                    .background(Wrapper.WrapperBackgroundType.GRAY)
-                .show(Direction.BOTTOM_LEFT, notification));
+                .show(Direction.BOTTOM_LEFT, notification, notification.getWidth()));
 
         Button btnProfile = createBtn("Profile", event -> {
 //            upadteContent(context, "profile");
@@ -314,7 +314,7 @@ public final class DashController extends ActionView {
                         new DialogContainer(boxUserDialog)
                                 .size(200, 100)
                 )
-                .show(Direction.BOTTOM_LEFT, boxUser));
+                .show(Direction.BOTTOM_LEFT, boxUser, 140));
 
         root.widthProperty()
                 .addListener((observable, oldValue, newValue) -> {
