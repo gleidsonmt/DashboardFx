@@ -232,8 +232,7 @@ public final class DashController extends ActionView {
             context.wrapper()
                     .content(
                             new DialogContainer(
-                                    new SearchViewBox(context)
-                            )
+                                    new SearchViewBox(context))
                             .size(800, 400)
                     )
                     .show();
@@ -276,7 +275,7 @@ public final class DashController extends ActionView {
                                 .size(400, 280)
                 )
 //                    .background(Wrapper.WrapperBackgroundType.GRAY)
-                .show(Direction.BOTTOM_LEFT, notification, notification.getWidth()));
+                .show(Direction.TOP_CENTER, notification, notification.getWidth()));
 
         Button btnProfile = createBtn("Profile", event -> {
 //            upadteContent(context, "profile");

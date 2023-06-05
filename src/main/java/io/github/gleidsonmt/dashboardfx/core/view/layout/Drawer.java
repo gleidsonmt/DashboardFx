@@ -105,6 +105,4 @@ public class Drawer extends ActionView implements NestedWrapperContainer {
 
         timeline.play();
     }
-
-
 }

@@ -31,7 +31,7 @@ public abstract class Launcher extends Application {
 
         stage.getIcons().addAll(icons);
 
-        stage.setMinWidth(400);
+        stage.setMinWidth(300);
         stage.setMinHeight(500);
 
         scene.getStylesheets().addAll(

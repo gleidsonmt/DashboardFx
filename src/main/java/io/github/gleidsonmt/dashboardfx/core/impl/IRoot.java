@@ -2,6 +2,7 @@ package io.github.gleidsonmt.dashboardfx.core.impl;
 
 import io.github.gleidsonmt.dashboardfx.core.interfaces.Root;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.Wrapper;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
 

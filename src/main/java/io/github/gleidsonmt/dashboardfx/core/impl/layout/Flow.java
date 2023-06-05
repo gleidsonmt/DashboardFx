@@ -19,23 +19,16 @@
 
 package io.github.gleidsonmt.dashboardfx.core.impl.layout;
 
-//import animatefx.animation.AnimationFX;
-//import animatefx.animation.Pulse;
-
 import io.github.gleidsonmt.dashboardfx.core.impl.IRoot;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.WrapperContainer;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.Wrapper;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
-import javafx.scene.control.skin.TextInputControlSkin;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
-import javafx.util.Duration;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -47,13 +40,13 @@ public class Flow implements WrapperContainer {
     private final IRoot root;
     private Region content;
 
+    private final Insets padding = new Insets(5);
+
     public Flow(IRoot root) {
         this.root = root;
-
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) close();
         });
-
     }
 
     public Flow content(Region region) {
@@ -66,7 +59,6 @@ public class Flow implements WrapperContainer {
         content.addEventFilter(MouseEvent.MOUSE_EXITED, event -> {
             if (root.getChildren().size() <= 2) return;
             if (event.getPickResult().getIntersectedNode().getStyleClass().contains("gn-badge")) return;
-
             if (!opened) return;
             close();
         });
@@ -74,11 +66,9 @@ public class Flow implements WrapperContainer {
     }
 
     private boolean opened = true;
-
     @Override
     public void close() {
         opened = false;
-
         if (root.getChildren().contains(content)) {
             root.getChildren().remove(this.content);
         }
@@ -91,11 +81,11 @@ public class Flow implements WrapperContainer {
 //        animationFX.play();
     }
 
-    public void show(Direction direction,  Node target) {
+    public void show(Direction direction, Node target) {
         show(direction, target, 0, 0);
     }
 
-    public void show(Direction direction,  Node target, double x) {
+    public void show(Direction direction, Node target, double x) {
         show(direction, target, x, 0);
     }
 
@@ -112,28 +102,26 @@ public class Flow implements WrapperContainer {
             return;
         }
 
-
         content.setTranslateX(0);
         content.setTranslateY(0);
 
         root.getChildren().add( root.getChildren().size()-1, content);
         content.toFront();
 
-//        node.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-//        content.getStyleClass().addAll(super.styleClass);
         content.getStyleClass().add("depth-1");
         content.setPadding(new Insets(10));
 
         Bounds bounds = target.localToScene(target.getLayoutBounds());
-//        wrapper.toFront();
-//        content.setTranslateX(bounds.getMinX());
-//        content.setTranslateY(bounds.getMaxY());
 
         switch (direction) {
             case TOP_LEFT -> {
-                content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
-                content.setTranslateY(clamp(bounds.getMinY(), content.getMaxHeight()));
-//
+
+                content.setTranslateX(bounds.getMinX() - content.getMaxWidth());
+                content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
+
+//                content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
+//                content.setTranslateY(clamp(bounds.getMinY(), content.getMaxHeight()));
+
             }
             case TOP_CENTER -> {
                 content.setTranslateX(
@@ -165,20 +153,15 @@ public class Flow implements WrapperContainer {
                         (center(bounds.getWidth(), content.getMaxWidth())) );
                 content.setTranslateY(bounds.getMaxY());
             }
-
-            // Done
             case BOTTOM_LEFT -> {
                 content.setTranslateX(bounds.getMinX() - content.getMaxWidth());
                 content.setTranslateY(bounds.getMaxY());
             }
-
             case LEFT_CENTER -> {
-                content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
-                content.setTranslateY(bounds.getMinY() + (
-                        center(bounds.getWidth(), content.getMaxWidth())
-                ));
+                content.setTranslateX((bounds.getMinX() - content.getMaxWidth()));
+                content.setTranslateY( (bounds.getMaxY() - bounds.getHeight()) -
+                        content.getMaxHeight()/2);
             }
-
             case LEFT_TOP -> {
                 content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
                 content.setTranslateY(bounds.getMinY());
@@ -188,30 +171,42 @@ public class Flow implements WrapperContainer {
         content.setTranslateX(content.getTranslateX() + x);
         content.setTranslateY(content.getTranslateY() + y);
 //
-//        // se sair pelo canto esquerdo...
-//        double whole = bounds.getMaxX();
-//        double half = bounds.getMaxX() - (width / 2);
-//        double max = wrapper.getWidth() - width;
-//
-//        System.out.println("width = " + content.getTranslateX());
-//
-//        double mx = content.localToScene(content.getLayoutBounds()).getMaxX(); // 1095
-        Bounds bd = target.localToScene(content.getLayoutBounds());
-        double md = Screen.getPrimary().getVisualBounds().getMaxX(); // 1366 - 400 = 966,
+        Bounds contentBounds = content.localToScene(content.getLayoutBounds());
 
+        if (isOutsideInTopLeft(contentBounds)) {
+            relocateLeft();
+            relocateTop();
+        } else if (isOutsideInTopRight(contentBounds)) {
+            relocateTop();
+            relocateRight(bounds);
+        } else if(isOutsideInBottomRight(contentBounds)) {
+            relocateRight(bounds);
+            relocateBottom(bounds);
+        } else if (isOutsideBottomLeft(contentBounds)) {
+            relocateBottom(bounds);
+            relocateLeft();
+        } else if (isOutsideInTop(contentBounds)) { // se passa a lnha do topo
+            relocateTop();
+        } else if(isOutsideRight(contentBounds)) { // se passa a linha da dirita
+            relocateRight(contentBounds);
+        } else if(isOutsideBottom(contentBounds)) { // se passa linha do fundo
+            relocateBottom(contentBounds);
+        } else if(isOutsideLeft(contentBounds)) { // se passa da linha da esquerda
+            relocateLeft();
+        }
 
-//
-//        if (half > max) {
-////            System.out.println("(content.getTranslateX() - ((i - max))) = " + (content.getTranslateX() - ((i - max))));
-////            content.setTranslateX(content.getTranslateX() - ((half - max)) );
+//        if (isOutsideInLeft(contentBounds)) {
+//            content.setTranslateX( 0 );
+//            System.out.println("1");
+//        } else if (isOutsideInRight(contentBounds)) {
+//            System.out.println("2");
+//            rest = restInRight(contentBounds);
+//            content.setTranslateX((content.getTranslateX() - rest) -
+//                    (padding.getLeft() + padding.getRight()));
+//        } else if(isOutsideInTop(contentBounds)) {
+//            System.out.println("3");
 //        }
 
-//        double cp = content.getTranslateX() + content.getMaxWidth();
-//
-//        if (cp > root.getWidth()) {
-//            content.setTranslateX(
-//                (content.getTranslateX() - ( cp - root.getWidth())) -10);
-//        }
 
 //        Timeline animation = new Timeline();
 //        animation.getKeyFrames().setAll(
@@ -223,6 +218,59 @@ public class Flow implements WrapperContainer {
 //                ))
 //        );
 //        animation.play();
+    }
+
+    protected void relocateTop() {
+        content.setTranslateY(0 + padding.getTop());
+    }
+    protected void relocateRight(Bounds bounds) {
+        content.setTranslateX((content.getTranslateX() - restInRight(bounds)) - padding.getRight());
+    }
+    protected void relocateBottom(Bounds bounds) {
+        content.setTranslateY((content.getTranslateY() - restInBottom(bounds)) - padding.getBottom());
+    }
+    protected void relocateLeft() {
+        content.setTranslateX(0 + padding.getLeft());
+    }
+
+    protected boolean isOutsideInTopLeft(Bounds bounds) {
+        return isOutsideLeft(bounds) && bounds.getMinY() < 0;
+    }
+
+    protected boolean isOutsideInTopRight(Bounds bounds) {
+        return bounds.getMinY() < 0 && isOutsideRight(bounds);
+    }
+
+    protected boolean isOutsideInBottomRight(Bounds bounds) {
+        return isOutsideBottom(bounds) && isOutsideRight(bounds);
+    }
+
+    protected boolean isOutsideBottomLeft(Bounds bounds) {
+        return isOutsideLeft(bounds) && isOutsideBottom(bounds);
+    }
+
+    protected boolean isOutsideLeft(Bounds bounds) {
+        return bounds.getMinX() < 0;
+    }
+
+    protected boolean isOutsideRight(Bounds bounds) {
+        return (bounds.getMaxX() + content.getMaxWidth()) > root.getWidth();
+    }
+
+    protected boolean isOutsideInTop(Bounds bounds) {
+        return bounds.getMaxY() < 0;
+    }
+
+    protected boolean isOutsideBottom(Bounds bounds) {
+        return (bounds.getMaxY() + content.getMaxHeight()) > root.getHeight();
+    }
+
+    protected double restInRight(Bounds bounds) {
+        return  (bounds.getMaxX() + content.getMaxWidth()) - root.getWidth();
+    }
+
+    protected double restInBottom(Bounds bounds) {
+        return  (bounds.getMaxY() + content.getMaxHeight()) - root.getHeight();
     }
 
     protected double clamp(double one, double two) {

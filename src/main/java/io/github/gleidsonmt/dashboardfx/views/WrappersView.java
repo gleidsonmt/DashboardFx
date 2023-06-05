@@ -170,12 +170,9 @@ public class WrappersView extends StackPane {
 
     public void createDialogPopup() {
         context.wrapper()
-                .content(
-                    new DialogContainer()
-                            .content(new Label("My custom dialog")
-                            )
-                    )
-
+                .content(new DialogContainer()
+                        .content(new Label("My custom dialog"))
+                        .size(400, 300))
                 .show();
     }
 

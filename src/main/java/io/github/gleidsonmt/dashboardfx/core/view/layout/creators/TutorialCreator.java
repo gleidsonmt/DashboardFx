@@ -45,9 +45,6 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -121,16 +118,11 @@ public class TutorialCreator extends PresentationCreator {
         }
 
         VBox subMenu = new VBox();
-        children.stream().map(this::buildTree)
-                .forEach(i -> {
-                    subMenu.getChildren().add(i);
-
-                    space+=10; // padding
-                    VBox.setMargin(
-                            subMenu,
-                            new Insets(0, 0, 0, space)
-                    );
-                });
+        for (TreeTitle child : children) {
+            VBox i = buildTree(child);
+            subMenu.getChildren().add(i);
+            VBox.setMargin(subMenu, new Insets(0, 0, 0, space += 10));
+        }
 
         parent.getChildren().add(subMenu);
 
