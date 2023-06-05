@@ -6,6 +6,7 @@ import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.Bar;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
 import javafx.scene.Node;
 import javafx.scene.layout.*;
 
@@ -22,7 +23,7 @@ public class Layout {
     private final BorderPane content = new BorderPane();
     private final Context context;
 
-    private GNIconButton hamburger = new GNIconButton(Icons.HAMBURGER);
+    private final GNIconButton hamburger = new GNIconButton(Icons.HAMBURGER);
 
     private Node side;
 
@@ -55,6 +56,7 @@ public class Layout {
         hamburger.setOnMouseClicked(event -> {
             context.wrapper().drawer()
                     .content((StackPane) side)
+                    .side(HPos.LEFT)
                     .show();
         });
         

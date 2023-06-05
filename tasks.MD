@@ -41,7 +41,7 @@ To fixed:
 
 - [X] Filtrar melhor metodos para fazer em routes tipo, metodos q são feitos inicializados uma boa ideia é utilizar uma strea e mapear
 - [X] Scroll Pane com seu View port some com as bordas
-- [ ] Drawer fica no lado direito quando é clicado no hamburger
+- [X] Drawer fica no lado direito quando é clicado no hamburger
 - [ ] Quando a tela sai de maximizada o drawer não desaparece
 - [ ] Quando fica pequeno a barra retira a atualização de tamanho
 - [ ] Adicionar opção de mudar a cor do box do badge, como uma -fx- property
@@ -61,4 +61,4 @@ Review:
 
 
 To create:
-- [ ] Search View
+- [X] Search View
