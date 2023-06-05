@@ -95,6 +95,10 @@ public class Flow implements WrapperContainer {
         show(direction, target, 0, 0);
     }
 
+    public void show(Direction direction,  Node target, double x) {
+        show(direction, target, x, 0);
+    }
+
     public void show(Direction direction, Node target, double x, double y) {
 
         opened = true;
