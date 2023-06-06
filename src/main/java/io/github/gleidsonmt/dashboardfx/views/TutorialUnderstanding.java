@@ -20,8 +20,18 @@
 package io.github.gleidsonmt.dashboardfx.views;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.AlertContainer;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.DrawerContainer;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.Author;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.options.ActionOptions;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.options.AlertType;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.options.DialogAction;
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 
 /**
@@ -58,10 +68,10 @@ public class TutorialUnderstanding extends TutorialCreator {
                         A context is a point to get things inside the project, making a global way to get resources around whole project.
                         """)
                 .image(new Image(context.getResource("style/img/tree_context.png").toExternalForm()))
-                .title("View")
+                .title("View", "Context")
                 .text("The base interface to create views, get controllers, navigate between views. ")
                 .image(new Image(context.getResource("style/img/View.png").toExternalForm()))
-                .title("Simple View")
+                .title("Simple View", "View")
                 .text("It's only a default java class as self-view. They are our own controllers.")
                 .code("""
                         SimpleView myView = new SimpleView("My View", new StackPane());
@@ -69,6 +79,23 @@ public class TutorialUnderstanding extends TutorialCreator {
                             // the node acts as a container
                         """)
 
+
+
+                .title("Loading Views", "View")
+                .text("It's a view that is loaded by yml file, this wrapper class wrappers the composer, location, charsets.. so you can get in the future or load when application starts.")
+                .legend("View of the tree")
+                .image(new Image(context.getResource("style/img/img_tree.png").toExternalForm()))
+                .text("In views.yml file add you will see.(If your controller class doesn't extend ActionView, so you can't access the context)", "text-12", "text-bold")
+                .code("""
+                        !!io.github.gleidsonmt.dashboardfx.core.view.ViewMap
+                         views:
+                         - {
+                           name: myView,
+                           title: My View,
+                           folder: app,
+                           fxml: myView.fxml
+                         }
+                        """, "yaml")
                 .title("Controllers")
                 .text("The SimpleView descends a ActionView, a typical controller class has the method initialize, but isn't only the actions you need, when you enter a view.")
                 .text("See in code (The same methods are applicative in SimpleView as well).", "text-12", "text-bold")
@@ -90,29 +117,11 @@ public class TutorialUnderstanding extends TutorialCreator {
                             }
                         }
                         """)
-
-                .title("Loading Views")
-                .text("It's a view that is loaded by yml file, this wrapper class wrappers the composer, location, charsets.. so you can get in the future or load when application starts.")
-                .legend("View of the tree")
-                .image(new Image(context.getResource("style/img/img_tree.png").toExternalForm()))
-                .text("In views.yml file add you will see.(If your controller class doesn't extend ActionView, so you can't access the context)", "text-12", "text-bold")
-                .code("""
-                        !!io.github.gleidsonmt.dashboardfx.core.view.ViewMap
-                         views:
-                         - {
-                           name: myView,
-                           title: My View,
-                           folder: app,
-                           fxml: myView.fxml
-                         }
-                        """, "yaml")
                 .title("Navigating")
-                .subTitle("Routes")
+                .title("Routes", "Navigating")
                 .text("""
                         Use routes to access views and controllers directly.
                         """)
-                .subTitle("Use Nav")
-                .text("Use the command.")
                 .code("""
                         // nav betweeen views
                         context.routes().nav("Your view name");
@@ -128,11 +137,158 @@ public class TutorialUnderstanding extends TutorialCreator {
                         context.controllerOf(viewName);
                         """)
 
+                .title("Popups and wrappers.")
+                .text("""
+            App ecosystem needs a way to create modals, alerts to talk his users. Getting the context to use an accessor class for creating dialogs,
+            snackbars, alerts and side drawers.
+            """)
+                .separator()
+                .title("Snack Bar")
+                .text("""
+            Creating a snack! I think that snack is more helpful in most cases. You can get the code in block to your clip content.
+            Create a snack using the button on the top right of the code box
+            """)
+                .code("""
+                context.getDecorator()
+                        .getRoot()
+                        .createSnackBar()
+                        .color(SnackColors.SUCCESS)
+                        .icon(new IconContainer(Icons.DONE))
+                        .message("Your message")
+                        .show();
+                """)
+                .separator()
+                .title("WrapperContainer")
+                .options(
+                        new ActionOptions(
+                                "Open", event -> createDialogPopup()
+                        )
+                )
+                .code("""
+                context.getWrapper()
+                    .getDialog()
+                    .content(
+                        new StackPane(
+                            new Label("Custom WrapperContainer RWrapper"))
+                        )
+                    .show();
+                """)
+                .separator()
+                .title("Alerts")
+                .text("""
+                Default alerts
+                """)
+                .options(
+                        new ActionOptions(
+                                "Info", event -> createDialog(AlertType.INFO)
+                        ).style("-fx-accent : -info;"),
+                        new ActionOptions(
+                                "Warning", event -> createDialog(AlertType.WARNING)
+                        ).style("-fx-accent : -amber;"),
+                        new ActionOptions(
+                                "Success", event -> createDialog(AlertType.SUCCESS)
+                        ).style("-fx-accent : -mint;"),
+                        new ActionOptions(
+                                "Danger", event -> createDialog(AlertType.ERROR)
+                        ).style("-fx-accent : -grapefruit;"))
+                .code(
+                        """
+                              context.getWrapper()
+                                    .getAlert()
+                                    .title("Info Alert")
+                                    .text(\"\"\"
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Mauris volutpat mauris sit amet rhoncus tempor. Morbi in ex mattis,
+                                            sagittis tellus et, accumsan magna.
+                                            In quis purus sit amet odio fringilla commodo nec ut massa.\s
+                                        \"\"\"
+                                    )
+                                    .actions(
+                                        new DialogAction(
+                                                "Ok", ButtonType.OK, event -> System.out.println("Button ok pressed!")
+                                        ),
+                                        new DialogAction(
+                                            "Cancel", ButtonType.CANCEL, event -> System.out.println("Button cancel pressed!")
+                                        )
+                                    )
+                                    .type(_type)
+                                    .show();
+                            """)
+                .separator()
+                .title("Drawers")
+                .text("Create you drawer left or right using this.")
+                .options(
+                        new ActionOptions(
+                                "Left", event -> createDrawer(HPos.LEFT)
+                        ),
+                        new ActionOptions(
+                                "Right", event -> createDrawer(HPos.RIGHT)
+                        )
+                )
+                .code("""
+                context.getWrapper()
+                        .getDrawer()
+                        .side(side)
+                        .content(new StackPane(new Label("My Custom Drawer.")))
+                        .style("-fx-background-color : white;")
+                        .show();
+                """)
+                .footer(new Author("Gleidson Neves da Silveira",
+                        "https://github.com/gleidsonmt")
+                )
+
                 ;
 
 //        setAlignment(Pos.CENTER_LEFT);
 
         build();
 
+    }
+
+    private void createDrawer(HPos side) {
+
+        context.wrapper()
+                .drawer()
+                .side(side)
+                .content(
+                        new DrawerContainer(new Label("My Custom Drawer."), 250)
+                )
+//                .style("-fx-background-color : white;")
+                .show();
+
+    }
+
+    public void createDialogPopup() {
+        context.wrapper()
+                .content(new DialogContainer()
+                        .content(new Label("My custom dialog"))
+                        .size(400, 300))
+                .show();
+    }
+
+    private void createDialog(AlertType _type) {
+        context.wrapper()
+//                .getAlert()
+//                .getFlow()
+                .content(
+                        new AlertContainer(context)
+                                .title("Info Alert")
+                                .text("""
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Mauris volutpat mauris sit amet rhoncus tempor. Morbi in ex mattis,
+                            sagittis tellus et, accumsan magna.
+                            In quis purus sit amet odio fringilla commodo nec ut massa.
+                            """)
+                                .actions(
+                                        new DialogAction(
+                                                "Ok", ButtonType.OK, event -> System.out.println("Button ok pressed!")
+                                        ),
+                                        new DialogAction(
+                                                "Cancel", ButtonType.CANCEL, event -> System.out.println("Button cancel pressed!")
+                                        )
+                                )
+                                .type(_type)
+                                .build())
+                .show();
     }
 }

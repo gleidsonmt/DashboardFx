@@ -1,6 +1,8 @@
 package io.github.gleidsonmt.dashboardfx.core.impl;
 
+import io.github.gleidsonmt.dashboardfx.core.view.View;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -14,7 +16,12 @@ public class IBody extends StackPane {
 
     public void setContent(Layout view) {
         this.layout = view;
-        getChildren().add(0, view.getContent());
+        getChildren().setAll( view.getContent());
+        setAlignment(Pos.CENTER);
+    }
+
+    public void setContent(View view) {
+        getChildren().setAll( view.getRoot());
         setAlignment(Pos.CENTER);
     }
 

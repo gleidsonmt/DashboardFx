@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -19,7 +19,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.text.TextFlow?>
 
 <StackPane prefHeight="762.0" prefWidth="977.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <children>
@@ -34,13 +33,13 @@
                             <children>
                                 <ImageView fitHeight="226.0" fitWidth="303.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../core.app/img/avatar.png" />
+                              <Image url="@../../style/img/me_avatar.jpeg" />
                            </image></ImageView>
                                 <VBox prefHeight="306.0" prefWidth="238.0">
                                     <children>
-                                        <HBox alignment="BOTTOM_LEFT">
+                                        <HBox alignment="CENTER">
                                             <children>
-                                                <Label prefHeight="17.0" prefWidth="60.0" styleClass="min" text="Work" />
+                                                <Label prefHeight="17.0" prefWidth="60.0" styleClass="min" text="Social" />
                                                 <Separator prefWidth="215.0" />
                                             </children>
                                             <VBox.margin>
@@ -49,57 +48,25 @@
                                         </HBox>
                                         <VBox prefHeight="200.0" prefWidth="100.0">
                                             <children>
-                                                <GridPane>
-                                                    <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
-                                                    </columnConstraints>
-                                                    <rowConstraints>
-                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                                    </rowConstraints>
-                                                    <children>
-                                                        <Label style="-fx-font-weight: bold;" styleClass="h5" text="Spotify New York" />
-                                                        <Label mnemonicParsing="false" text="Primary" GridPane.columnIndex="1">
-                                                            <styleClass>
-                                                                <String fx:value="btn-small" />
-                                                                <String fx:value="lbl-profile" />
-                                                            </styleClass>
-                                                        </Label>
-                                                    </children>
-                                                </GridPane>
-                                                <TextFlow prefHeight="56.0" prefWidth="216.0">
-                                                    <children>
-                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="170 Wiliam Street&#10;New Yourk, NY 10038-78 2120312051" />
-                                                    </children>
-                                                </TextFlow>
-                                                <GridPane>
-                                                    <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
-                                                    </columnConstraints>
-                                                    <rowConstraints>
-                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                                    </rowConstraints>
-                                                    <children>
-                                                        <Label style="-fx-font-weight: bold;" styleClass="h5" text="Metropolitan &#10;Museum" />
-                                                        <Label mnemonicParsing="false" text="Secondary" GridPane.columnIndex="1">
-                                                            <styleClass>
-                                                                <String fx:value="btn-small" />
-                                                                <String fx:value="lbl-profile" />
-                                                            </styleClass>
-                                                        </Label>
-                                                    </children>
-                                                </GridPane>
-                                                <TextFlow layoutX="10.0" layoutY="50.0" prefHeight="56.0" prefWidth="216.0">
-                                                    <children>
-                                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="170 Wiliam Street &#10;New Yourk, NY 10038-78 2120312051" />
-                                                    </children>
-                                                </TextFlow>
+                                    <Hyperlink style="-fx-font-weight: bold; -fx-font-size: 12pt;" text="in/gleidson-neves-da-silveira-50353a1b2">
+                                       <graphic>
+                                          <SVGPath content="M14.5455 0H1.45455C0.650909 0 0 0.650909 0 1.45455V14.5455C0 15.3491 0.650909 16 1.45455 16H14.5455C15.3491 16 16 15.3491 16 14.5455V1.45455C16 0.650909 15.3491 0 14.5455 0ZM5.05746 13.0909H2.912V6.18764H5.05746V13.0909ZM3.96291 5.20073C3.27127 5.20073 2.712 4.64 2.712 3.94982C2.712 3.25964 3.272 2.69964 3.96291 2.69964C4.65236 2.69964 5.21309 3.26036 5.21309 3.94982C5.21309 4.64 4.65236 5.20073 3.96291 5.20073ZM13.0938 13.0909H10.9498V9.73382C10.9498 8.93309 10.9353 7.90327 9.83491 7.90327C8.71855 7.90327 8.54691 8.77527 8.54691 9.67564V13.0909H6.40291V6.18764H8.46109V7.13091H8.49018C8.77673 6.58836 9.47636 6.016 10.52 6.016C12.6924 6.016 13.0938 7.44582 13.0938 9.30473V13.0909V13.0909Z" />
+                                       </graphic>
+                                    </Hyperlink>
+                                    <Hyperlink layoutX="10.0" layoutY="10.0" style="-fx-font-size: 12pt; -fx-font-weight: bold;" text="\@gleidisonmt">
+                                       <graphic>
+                                          <Group>
+                                             <children>
+                                                <SVGPath content="M273.5 26.3a109.77 109.77 0 0 1-32.2 8.8 56.07 56.07 0 0 0 24.7-31 113.39 113.39 0 0 1-35.7 13.6 56.1 56.1 0 0 0-97 38.4 54 54 0 0 0 1.5 12.8A159.68 159.68 0 0 1 19.1 10.3a56.12 56.12 0 0 0 17.4 74.9 56.06 56.06 0 0 1-25.4-7v.7a56.11 56.11 0 0 0 45 55 55.65 55.65 0 0 1-14.8 2 62.39 62.39 0 0 1-10.6-1 56.24 56.24 0 0 0 52.4 39 112.87 112.87 0 0 1-69.7 24 119 119 0 0 1-13.4-.8 158.83 158.83 0 0 0 86 25.2c103.2 0 159.6-85.5 159.6-159.6 0-2.4-.1-4.9-.2-7.3a114.25 114.25 0 0 0 28.1-29.1" scaleX="0.06" scaleY="0.06" />
+                                             </children>
+                                          </Group>
+                                       </graphic>
+                                    </Hyperlink>
                                             </children>
                                         </VBox>
-                                        <HBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0">
+                                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0">
                                             <children>
-                                                <Label prefHeight="17.0" prefWidth="46.0" styleClass="min" text="Skills" />
+                                                <Label prefHeight="27.0" prefWidth="64.0" styleClass="min" text="Skills" />
                                                 <Separator prefWidth="215.0" />
                                             </children>
                                         </HBox>
@@ -129,8 +96,8 @@
                                             <children>
                                                 <VBox>
                                                     <children>
-                                                        <Label fx:id="fullName" style="-fx-font-weight: bold;" styleClass="h3" text="Jane Doe" />
-                                                        <Hyperlink text="Product Designer" />
+                                                        <Label fx:id="fullName" style="-fx-font-weight: bold;" styleClass="h3" text="Gleidson Neves" />
+                                                        <Hyperlink text="Software Developer" />
                                                     </children>
                                                 </VBox>
                                                 <GridPane HBox.hgrow="ALWAYS">
@@ -150,7 +117,7 @@
                                                                 <Insets top="10.0" />
                                                             </GridPane.margin>
                                                         </Label>
-                                                        <Label layoutX="171.0" layoutY="40.0" style="-fx-text-fill: -text-color;" text="New York, NY" GridPane.valignment="TOP">
+                                                        <Label layoutX="171.0" layoutY="40.0" style="-fx-text-fill: -text-color;" text="Confresa, MT" GridPane.valignment="TOP">
                                                             <graphic>
                                                                 <SVGPath content="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" style="-fx-fill: -icon-color;" />
                                                             </graphic>
@@ -184,7 +151,7 @@
                                                     <graphic>
                                                         <SVGPath content="M22 2H2v20l4-4h16V2z" />
                                                     </graphic></Button>
-                                                <Button mnemonicParsing="false" prefWidth="117.0" styleClass="btn-profile" text="Contacts">
+                                                <Button mnemonicParsing="false" prefWidth="117.0" styleClass="btn-flat" text="Contacts">
                                                     <graphic>
                                                         <SVGPath content="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
                                                     </graphic></Button>
@@ -199,7 +166,7 @@
                                             <content>
                                                 <VBox prefHeight="200.0" prefWidth="100.0">
                                                     <children>
-                                                        <GridPane prefHeight="329.0" prefWidth="579.0">
+                                                        <GridPane prefHeight="276.0" prefWidth="579.0">
                                                             <columnConstraints>
                                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.0" minWidth="10.0" prefWidth="136.0" />
                                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="443.0" minWidth="10.0" prefWidth="443.0" />
@@ -217,18 +184,18 @@
                                                             <children>
                                                                 <Label styleClass="h5" text="Contact Information" />
                                                                 <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Phone :" GridPane.rowIndex="1" />
-                                                                <Hyperlink text="+1 23 4567 8910" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                <Hyperlink text="+55 62 996755782" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                                 <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Addresss :" GridPane.rowIndex="2" />
-                                                                <Text style="-fx-fill: -text-color;" text="525 E 68th Street&#10;New York, NT 10651-78 156-187-60&#10;" wrappingWidth="190.166015625" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                                <Text style="-fx-fill: -text-color;" text="Brazil - Confresa, MT " wrappingWidth="190.166015625" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                                 <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Email :" GridPane.rowIndex="3" />
-                                                                <Hyperlink text="janedoe@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                                <Hyperlink text="gleidsonmt@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                                 <Label styleClass="h5" text="Basic Information" GridPane.rowIndex="5" />
                                                                 <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Birthday : " GridPane.rowIndex="6" />
                                                                 <Text style="-fx-fill: -text-color;" text="April 06, 1996" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                                                 <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Gender : " GridPane.rowIndex="7" />
-                                                                <Text style="-fx-fill: -text-color;" text="Female" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                                <Text style="-fx-fill: -text-color;" text="Male" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                                                 <Label layoutX="10.0" layoutY="131.0" style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Site :" GridPane.rowIndex="4" />
-                                                                <Hyperlink layoutX="146.0" layoutY="128.0" text="janedoe.github.io" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                                <Hyperlink layoutX="146.0" layoutY="128.0" text="gleidsonmt.github.io" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                                             </children>
                                                         </GridPane>
                                                     </children>

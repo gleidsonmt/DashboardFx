@@ -111,7 +111,6 @@ public class TutorialCreator extends PresentationCreator {
         VBox parent = createMenu(item);
         List<TreeTitle> children = data.stream().filter(child -> child.getRelated() != null && child.getRelated().equals(item.getText())).toList();
 
-
         if (children.size() > 0) {
             children.forEach(c -> c.setIndex(count++));
             count = 1;
@@ -185,9 +184,9 @@ public class TutorialCreator extends PresentationCreator {
                 .map(mapped -> (TreeTitle) mapped).toList();
 
         // Criando a tree
-        Platform.runLater(() -> {
+//        Platform.runLater(() -> {
             createTree(data, aside);
-        });
+//        });
 
 //        ((ToggleButton)aside.getChildren().get(1)).setSelected(true);
 
@@ -210,27 +209,27 @@ public class TutorialCreator extends PresentationCreator {
 
         HBox.setHgrow(scroll, Priority.ALWAYS);
 
-        Platform.runLater(() -> {
+//        Platform.runLater(() -> {
 
         for (Node node : items) {
 //            TimerTask timerTask = new TimerTask() {
 //                @Override
 //                public void run() {
-                    Platform.runLater(() -> {
+//                    Platform.runLater(() -> {
                         center.getChildren().add(node);
 //                        try {
 //                            Thread.sleep(1000);
 //                        } catch (InterruptedException e) {
 //                            throw new RuntimeException(e);
 //                        }
-                    });
+//                    });
 //                }
 //            };
 //            Timer timer = new Timer();
 //            timer.schedule(timerTask, 1000);
         }
 
-        });
+//        });
 
         center.setAlignment(Pos.TOP_LEFT);
 

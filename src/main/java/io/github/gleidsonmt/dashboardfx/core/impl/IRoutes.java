@@ -30,9 +30,10 @@ public class IRoutes implements Routes {
     public Routes setView(String _view) {
 //        View view = doActions(manager.get(_view));
         if (_view != null) {
-            View View = manager.get(_view);
-            if (valid(View)) {
-//                root.getBody().setContent(View);
+            View view = manager.get(_view);
+            if (valid(view)) {
+//                root.getBody().setContent(View.getRoot());
+                root.getBody().setContent(view);
             }
         }
 //        doActions(view);

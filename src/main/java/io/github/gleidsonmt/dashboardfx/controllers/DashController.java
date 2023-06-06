@@ -4,6 +4,7 @@ import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.controls.*;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
+import io.github.gleidsonmt.dashboardfx.core.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.impl.layout.Direction;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.model.NotificationCell;
@@ -18,10 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
+import javafx.geometry.*;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
@@ -188,17 +186,12 @@ public final class DashController extends ActionView {
 
         curvedChart.getData().add(series22);
 //        footer.getChildren().addAll(createDonut(), barChart,  scheduleList.getRoot(), curvedChart);
-        footer.getChildren().addAll(createDonut(),barChart, scheduleList, curvedChart);
+        footer.getChildren().addAll(createDonut(), barChart, scheduleList, curvedChart);
 
         GridPane.setConstraints(footer.getChildren().get(0), 0, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(barChart, 1, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(scheduleList, 0, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(curvedChart, 1, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-
-        responsive();
-    }
-
-    private void responsive() {
 
     }
 
@@ -259,8 +252,12 @@ public final class DashController extends ActionView {
                 context.getResource("style/img/me_avatar.jpeg").toExternalForm());
 
 //        boxUser.setPadding(new Insets(0,2,10,2));
+        Separator separator =  new Separator(Orientation.VERTICAL);
         HBox.setMargin(boxUser, new Insets(0,0,0,10));
-        context.layout().bar().addInRight(btnSearch, sms, notification, boxUser);
+        context.layout().bar().addInRight(btnSearch, sms, notification,
+               separator, boxUser);
+
+        HBox.setMargin(separator, new Insets(0, 5, 0,15));
 
         VBox b = createDialogNotification();
 
@@ -275,22 +272,16 @@ public final class DashController extends ActionView {
                                 .size(400, 280)
                 )
 //                    .background(Wrapper.WrapperBackgroundType.GRAY)
-                .show(Direction.TOP_CENTER, notification, notification.getWidth()));
+                .show(Direction.BOTTOM_CENTER, notification));
 
         Button btnProfile = createBtn("Profile", event -> {
 //            upadteContent(context, "profile");
-//            try {
-//                context.routes().nav("profile");
-//            } catch (NavigationException e) {
-//                throw new RuntimeException(e);
-//            }
 
-
-//            try {
-//                context.routes().setView("login");
-//            } catch (NavigationException e) {
-//                e.getRouteNotFound(context, "view 'login' not found");
-//            }
+            try {
+                context.routes().nav("profile");
+            } catch (NavigationException e) {
+                throw new RuntimeException(e);
+            }
         });
         btnProfile.setGraphic(new IconContainer(Icons.ACCOUNT_CIRCLE));
         Button btnSettings = createBtn("Settings", event -> {

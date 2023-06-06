@@ -36,17 +36,17 @@ public class BoxUser extends HBox {
         this.setAlignment(Pos.CENTER);
         GNAvatarStatus avatarStatus = new GNAvatarStatus();
         avatarStatus.setImage(new Image(av));
-        Label user = new Label(username);
+//        Label user = new Label(username);
         avatarStatus.setMouseTransparent(true);
-        user.getStyleClass().addAll( "text-14");
+//        user.getStyleClass().addAll( "text-14");
         GNIconButton btnArrow = new GNIconButton(Icons.ARROW_DROP_DOWN);
         btnArrow.setMaxWidth(20);
         btnArrow.setMinWidth(20);
         btnArrow.getStyleClass().addAll("btn-flat", "no-border");
-        this.getChildren().setAll( avatarStatus, user);
-//        this.getChildren().setAll(user, avatarStatus);
+//        this.getChildren().setAll( avatarStatus);
+        this.getChildren().setAll(avatarStatus, btnArrow);
         avatarStatus.setPadding(new Insets(2, 5, 8, 2));
-        user.setPadding(new Insets(0, 5, 15, 2));
+//        user.setPadding(new Insets(0, 5, 15, 2));
         avatarStatus.setRadius(14);
         this.setCursor(Cursor.HAND);
 

@@ -2,6 +2,11 @@
 !!io.github.gleidsonmt.dashboardfx.core.view.ViewMap
   views:
   - {
+      name: login,
+      title: Login,
+      fxml: login.fxml
+  }
+  - {
     name: about,
     title: About,
     folder: app,
