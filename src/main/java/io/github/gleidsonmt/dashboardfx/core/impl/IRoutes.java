@@ -26,6 +26,12 @@ public class IRoutes implements Routes {
         this.context = context;
     }
 
+    private Layout layout;
+
+    public void reset() {
+        root.getBody().setContent(root.getBody().getLayout());
+    }
+
     @Override
     public Routes setView(String _view) {
 //        View view = doActions(manager.get(_view));
@@ -49,8 +55,6 @@ public class IRoutes implements Routes {
             root.getBody().getLayout().setContent(view.getRoot());
             doActions(view);
             title.set(changeTitle(view.getName()));
-        } else {
-
         }
         root.getBody().getLayout().setRight(null);
     }
@@ -87,11 +91,13 @@ public class IRoutes implements Routes {
     private String changeTitle(String title) {
 
         String[] arr = title.split("[^a-z]");
-        title = "";
+        StringBuilder titleBuilder = new StringBuilder();
 
         for (String e : arr) {
-            title += e.substring(0,1).toUpperCase() + e.substring(1) + " ";
+            titleBuilder.append(e.substring(0, 1).toUpperCase())
+                    .append(e.substring(1)).append(" ");
         }
+        title = titleBuilder.toString();
 
         return title;
     }

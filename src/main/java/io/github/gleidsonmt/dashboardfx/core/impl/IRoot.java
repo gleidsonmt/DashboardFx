@@ -28,16 +28,19 @@ public class IRoot extends StackPane implements Root {
         return body;
     }
 
+    @Deprecated(forRemoval = true)
     @Override
     public void setTitle(String title) {
 
     }
 
+    @Deprecated(forRemoval = true)
     @Override
     public Wrapper getWrapper() {
         return wrapper;
     }
 
+    @Deprecated(forRemoval = true)
     @Override
     public void reset() {
 

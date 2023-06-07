@@ -19,13 +19,18 @@ import java.net.URL;
  * Create on  02/04/2023
  */
 public class Layout {
+
     private final HBox root = new HBox();
     private final BorderPane content = new BorderPane();
     private final Context context;
 
     private final GNIconButton hamburger = new GNIconButton(Icons.HAMBURGER);
 
-    private Node side;
+    private Node center;
+    private Node top;
+    private Node bottom;
+    private Node right;
+    private Node left;
 
     public Layout(Context context) {
         this.context = context;
@@ -34,48 +39,58 @@ public class Layout {
         HBox.setHgrow(content, Priority.ALWAYS);
 
         hamburger.getStyleClass().addAll("hamburger");
-        
+
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
 
             if (newValue.doubleValue() < 660) {
-                if (root.getChildren().contains(side)) {
+                if (root.getChildren().contains(left)) {
                     root.getChildren().remove(0);
                     bar().addInLeft(0, hamburger);
                 }
             } else {
-                if (!root.getChildren().contains(side)) {
-                    if (side != null) {
-                        root.getChildren().add(0, side);
+                if (!root.getChildren().contains(left)) {
+                    if (left != null) {
+                        root.getChildren().add(0, left);
                         bar().removeInLeft(hamburger);
                     }
                 }
             }
-
         });
 
         hamburger.setOnMouseClicked(event -> {
-            context.wrapper().drawer()
-                    .content((StackPane) side)
+            context.wrapper()
+                    .drawer()
+                    .content((StackPane) left)
                     .side(HPos.LEFT)
                     .show();
         });
-        
     }
 
+    public void reset() {
+        content.setCenter(center);
+        content.setTop(top);
+        content.setRight(right);
+        content.setBottom(bottom);
+    }
+
+
     public void setContent(Node node) {
+        this.center = node;
         content.setCenter(node);
     }
 
     public void setRight(Node node) {
+        this.right = node;
         content.setRight(node);
     }
 
     public void setBar(Node bar) {
+        this.top = bar;
         content.setTop(bar);
     }
 
     public void setNav(Node node) {
-        side = node;
+        left = node;
         root.getChildren().add(0, node);
     }
 
@@ -103,7 +118,7 @@ public class Layout {
         root.getChildren().add(0, loader.getRoot());
         Region region = loader.getRoot();
         region.setMinWidth(250D);
-        side = region;
+        left = region;
     }
 
     public Node getContent() {

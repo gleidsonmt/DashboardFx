@@ -25,6 +25,10 @@ public class IBody extends StackPane {
         setAlignment(Pos.CENTER);
     }
 
+    public void reset() {
+        getChildren().setAll(layout.getContent());
+    }
+
     public Layout getLayout() {
         return layout;
     }

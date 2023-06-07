@@ -23,4 +23,6 @@ public interface Routes {
 
     StringProperty title();
 
+    void reset();
+
 }

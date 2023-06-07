@@ -18,6 +18,9 @@ import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
 import io.github.gleidsonmt.dashboardfx.views.WrappersView;
 import io.github.gleidsonmt.dashboardfx.views.controls.*;
 import io.github.gleidsonmt.dashboardfx.views.tutorial.NewsLetter;
+import io.github.gleidsonmt.gncarousel.GNCarousel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
@@ -164,8 +167,10 @@ public class SideNavController extends ActionView {
 
     @FXML
     private void goCarousel() {
-        createProblemView();
+        go("carousel", new CarouselViewPresCreator(context));
     }
+
+
 
 
     @FXML
