@@ -38,7 +38,6 @@ public interface Context {
      *
      *******************************************************/
 
-
     SnackBar createSnackBar();
 
     void openLink(String uri);

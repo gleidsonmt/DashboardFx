@@ -3,19 +3,22 @@ module io.github.gleidsonmt.dashboardfx {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
+    requires javafx.web;
+
     requires java.logging;
+
     requires org.yaml.snakeyaml;
     requires org.jetbrains.annotations;
-    requires javafx.web;
+    requires animatefx;
+//    requires io.github.gleidsonmt.gncarousel;
+
     requires org.kordamp.ikonli.material;
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.javafx;
-    requires animatefx;
 
 //    requires io.github.gleidsonmt.gncontrols;
-    requires scenicView;
-    requires fr.brouillard.oss.cssfx;
-    requires io.github.gleidsonmt.gncarousel;
+//    requires scenicView;
+//    requires fr.brouillard.oss.cssfx;
 
     opens io.github.gleidsonmt.dashboardfx to javafx.fxml;
     opens io.github.gleidsonmt.dashboardfx.controllers to javafx.fxml;

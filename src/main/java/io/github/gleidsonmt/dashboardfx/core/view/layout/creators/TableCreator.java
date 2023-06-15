@@ -54,6 +54,13 @@ public class TableCreator<T> implements BuildCreator {
         return this;
     }
 
+    public TableCreator<T> columns(String... names) {
+        for (String name : names) {
+            table.getColumns().add(createTableColumn(name));
+        }
+        return this;
+    }
+
     @SafeVarargs
     public final TableCreator<T> data(T... items) {
         this.items.setAll(items);

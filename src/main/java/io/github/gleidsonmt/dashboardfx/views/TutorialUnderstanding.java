@@ -44,9 +44,6 @@ public class TutorialUnderstanding extends TutorialCreator {
     public TutorialUnderstanding( Context context) {
         super(context);
         this
-//        this    .title("""
-//                        Introduction
-//                        """)
                 .title("Introduction")
                 .text("""
                         If you like me and passionate about java, you will see that javafx is

@@ -1,51 +1,22 @@
 package io.github.gleidsonmt.dashboardfx.controllers;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
-import io.github.gleidsonmt.dashboardfx.core.controls.GNAvatar;
-import io.github.gleidsonmt.dashboardfx.core.controls.GNIconButton;
-import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
-import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import io.github.gleidsonmt.dashboardfx.core.exceptions.NavigationException;
-import io.github.gleidsonmt.dashboardfx.core.impl.layout.Direction;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
-import io.github.gleidsonmt.dashboardfx.core.model.NotificationCell;
 import io.github.gleidsonmt.dashboardfx.core.services.DrawerBehavior;
 import io.github.gleidsonmt.dashboardfx.core.view.SimpleView;
 import io.github.gleidsonmt.dashboardfx.core.view.View;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
 import io.github.gleidsonmt.dashboardfx.views.WrappersView;
 import io.github.gleidsonmt.dashboardfx.views.controls.*;
 import io.github.gleidsonmt.dashboardfx.views.tutorial.NewsLetter;
-import io.github.gleidsonmt.gncarousel.GNCarousel;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
-import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
-
-import java.net.URL;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -122,6 +93,10 @@ public class SideNavController extends ActionView {
         go("view_tree", new TreeViewPresCreator(context));
     }
 
+    @FXML
+    private void goSwitch() {
+        go("view_tree", new SwitchPresCreator(context));
+    }
 
 
     private View presentation;
@@ -138,8 +113,6 @@ public class SideNavController extends ActionView {
 //        context.routes().putAndGo(view);
     }
 
-
-
     private void go(String name, TutorialCreator tutorialCreator) {
         context.routes().putAndGo(new SimpleView(name, tutorialCreator));
     }
@@ -148,8 +121,6 @@ public class SideNavController extends ActionView {
     private void goBuild() {
         createProblemView();
     }
-
-
     @FXML
     private void goLogin() {
         context.routes().setView("login");
@@ -171,7 +142,10 @@ public class SideNavController extends ActionView {
     }
 
 
-
+    @FXML
+    private void goRating() {
+        go("carousel", new RatingPresCreator(context));
+    }
 
     @FXML
     private void goAbout() throws NavigationException{

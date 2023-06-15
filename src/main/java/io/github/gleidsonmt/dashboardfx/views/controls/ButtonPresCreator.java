@@ -107,13 +107,12 @@ public class ButtonPresCreator extends TutorialCreator {
                             <GNIconButton icon="DISCOUNT"/>
                             """
                 )
-                .title("Attributes", "Designed Buttons")
+                .title("Custom CSS", "Designed Buttons")
                 .table(
                     new TableCreator<Data>(context)
-                            .column("name")
-                            .column("name")
+                            .columns("name", "value")
                             .data(
-                                    new Data("-gn-circle-fill", "#fff")
+                            new Data("-gn-circle-fill", "[<paint>]")
                             )
                             .build()
                 )

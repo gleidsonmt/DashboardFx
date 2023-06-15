@@ -555,3 +555,42 @@ SVGPath {
    -fx-background-color: -fx-accent;
     -fx-padding: 20px;
 }
+
+/*******************************************************************************
+*                                                                              *
+    @Rating
+*                                                                              *
+*******************************************************************************/
+
+.rating {
+    -fx-background-color: transparent;
+    /* -gn-number-of-stars: 5;
+    -gn-range: 3; */
+}
+
+.rating .star {
+    -fx-pref-width: 25px;
+    -fx-pref-height: 25px;
+    -fx-cursor: hand;
+}
+
+.rating .star {
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-accent;
+    -fx-border-width: 1px;
+}
+
+.rating .star:activate {
+    -fx-background-color: -fx-accent;
+}
+
+/*******************************************************************************
+*                                                                              *
+    @ToggleSwitch
+*                                                                              *
+*******************************************************************************/
+
+.toggle-switch {
+    -fx-cursor: hand;
+}
+

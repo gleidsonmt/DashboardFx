@@ -34,9 +34,10 @@ import org.jetbrains.annotations.ApiStatus;
 @ApiStatus.Internal
 @ApiStatus.AvailableSince("1.0")
 public class TreeTitle extends Label {
+
     private double position;
-    private String related;
-    private int index;
+    private TreeTitle related;
+    private String index;
 
     public TreeTitle(String text) {
         super(text);
@@ -59,11 +60,11 @@ public class TreeTitle extends Label {
      * Get the parent in hierarchy in the tree.
      * @return the first parent.
      */
-    public String getRelated() {
+    public TreeTitle getRelated() {
         return related;
     }
 
-    public void setRelated(String related) {
+    public void setRelated(TreeTitle related) {
         this.related = related;
     }
 
@@ -71,11 +72,16 @@ public class TreeTitle extends Label {
      * Get the index in tree.
      * @return The index in tree.
      */
-    public int getIndex() {
+    public String getIndex() {
         return index;
     }
 
-    public void setIndex(int index) {
+    public void setIndex(String index) {
         this.index = index;
     }
+
+//    @Override
+//    public String toString() {
+//        return ", parent = " + getRelated();
+//    }
 }

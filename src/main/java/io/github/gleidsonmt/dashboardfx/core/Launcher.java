@@ -1,6 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.core;
 
-import fr.brouillard.oss.cssfx.CSSFX;
+//import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.gleidsonmt.dashboardfx.core.impl.IContext;
 import io.github.gleidsonmt.dashboardfx.core.impl.IRoot;
 import javafx.application.Application;
@@ -9,7 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.scenicview.ScenicView;
+//import org.scenicview.ScenicView;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -19,8 +19,8 @@ public abstract class Launcher extends Application {
 
     private final IRoot root = new IRoot();
     private final Context context = new IContext(root, getHostServices());
-
     protected ObservableList<Image> icons = FXCollections.observableArrayList();
+
     @Override
     public void start(Stage stage) {
         build(context);
@@ -48,8 +48,8 @@ public abstract class Launcher extends Application {
 
 
         stage.show();
-        CSSFX.start(stage);
-        ScenicView.show(scene);
+//        CSSFX.start(stage);
+//        ScenicView.show(scene);
 
     }
 
@@ -58,7 +58,5 @@ public abstract class Launcher extends Application {
     }
 
     public abstract void build(Context context);
-
-
 
 }

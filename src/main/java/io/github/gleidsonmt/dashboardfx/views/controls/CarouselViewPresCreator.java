@@ -20,16 +20,15 @@
 package io.github.gleidsonmt.dashboardfx.views.controls;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
+import io.github.gleidsonmt.dashboardfx.core.model.Data;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TableCreator;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
-import io.github.gleidsonmt.gncarousel.GNCarousel;
+//import io.github.gleidsonmt.gncarousel.GNCarousel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
 /**
@@ -45,36 +44,60 @@ public class CarouselViewPresCreator extends TutorialCreator {
                         The carousel is a control of the overlapping layer, which navigates about her, showing one for once.
                         """)
                 .demonstration(
-                        new GNCarousel(createItems()),
+//                        createCarousel(createItems()),
+                        new Label(),
                                 """
                                      //  Creating children
                                      GNCarousel carousel = new GNCarousel();
                                      // Passing children
-                                     root.setItems(
+                                     carousel.setItems(
                                          new Label("Label 1"),
                                          new Label("Label 2"),
                                          new Label("Label 3")
                                      );
+                                     // Setting auto ride
+                                     carousel.setAutoRide(false);
+                                     // arrows
+                                     carousel.setArrows(false);
                                     """,
                                 """
                                      <!-- Building -->
-                                     <TreeView>
-                                        <!-- Defining root -->
-                                        <TreeItem value="Root">
+                                     <GNCarousel >
                                         <!-- Defining children -->
-                                        <children>
-                                           <TreeItem value="First" />
-                                           <TreeItem value="Second" />
-                                           <TreeItem value="Third" />
-                                           <TreeItem value="Fourth" />
-                                        </children>
-                                     </TreeItem>
-                                    """
+                                             <items>
+                                                 <FXCollections fx:factory="observableArrayList">
+                                                     <Label text="First"/>
+                                                     <Label text="Second"/>
+                                                     <Label text="Third"/>
+                                                 </FXCollections>
+                                             </items>
+                                         
+                                         </GNCarousel>
+                                         <!-- Without arrows -->
+                                     <GNCarousel arrows="false"/>
+                                        """
+                )
+                .title("Custom CSS")
+                .table(
+                        new TableCreator<Data>(context)
+                                .column("name")
+                                .column("value")
+                                .data(
+                                        new Data("-gn-auto-ride", "[<boolean>]"),
+                                        new Data("-gn-transition-duration", "[<number>ms | <number>s]")
+                                )
+                                .build()
                 )
                 .title("Links")
                 .footer(createDefaultControl())
                 .build();
     }
+
+//    private GNCarousel<Node> createCarousel(ObservableList<Node> items) {
+//        GNCarousel<Node> carousel = new GNCarousel<>(items);
+//        carousel.setArrows(false);
+//        return carousel;
+//    }
 
     private ObservableList<Node> createItems(){
 

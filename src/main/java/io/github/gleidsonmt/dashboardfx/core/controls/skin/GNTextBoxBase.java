@@ -111,8 +111,6 @@ public class GNTextBoxBase extends Control {
 //            editor.set(new Editor());
 //            pseudoClassStateChanged(PSEUDO_CLASS_ANIMATED, false);
 //        }
-//
-//        System.out.println("Fuck you");
 
         if (fieldType.get() == FieldType.FILLED) {
             pseudoClassStateChanged(PSEUDO_CLASS_FILLED, true);

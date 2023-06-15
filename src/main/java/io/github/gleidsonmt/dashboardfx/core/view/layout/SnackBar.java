@@ -17,9 +17,6 @@
 
 package io.github.gleidsonmt.dashboardfx.core.view.layout;
 
-//import animatefx.animation.RollIn;
-//import animatefx.animation.RollOut;
-
 import animatefx.animation.RollIn;
 import animatefx.animation.RollOut;
 import io.github.gleidsonmt.dashboardfx.core.impl.IRoot;
@@ -35,12 +32,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Material;
 import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
 import org.jetbrains.annotations.NotNull;
 import org.kordamp.ikonli.javafx.FontIcon;
-import org.kordamp.ikonli.material.Material;
-import io.github.gleidsonmt.dashboardfx.core.impl.IRoot;
 
 
 /**
@@ -75,17 +71,17 @@ public class SnackBar implements WrapperContainer {
         return this;
     }
 
-    public SnackBar icon(Material ikon) {
-
-        FontIcon icon = new FontIcon();
-        icon.setIconSize(18);
-        icon.setIconCode(ikon);
-        icon.getStyleClass().add("ikon");
-        icon.setIconColor(Color.WHITE);
-        this.icon = icon;
-
-        return this;
-    }
+//    public SnackBar icon(Material ikon) {
+//
+//        FontIcon icon = new FontIcon();
+//        icon.setIconSize(18);
+//        icon.setIconCode(ikon);
+//        icon.getStyleClass().add("ikon");
+//        icon.setIconColor(Color.WHITE);
+//        this.icon = icon;
+//
+//        return this;
+//    }
 
     public SnackBar icon(SVGPath _icon) {
         this.icon = _icon;

@@ -27,6 +27,7 @@ import javafx.beans.property.StringProperty;
  * Create on  20/05/2023
  */
 public class Data {
+
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty value = new SimpleStringProperty();
 

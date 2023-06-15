@@ -333,7 +333,11 @@ public class PresentationCreator
 
         TreeTitle label = new TreeTitle(title);
         label.getStyleClass().addAll("title", "h4");
-        if (related != null) label.setRelated(related);
+
+        if (related != null) {
+            label.setRelated(new TreeTitle(related));
+        }
+
         if (options != null) label.getStyleClass().addAll(options);
         VBox.setMargin(label, new Insets(10, 0, 10, 0));
 

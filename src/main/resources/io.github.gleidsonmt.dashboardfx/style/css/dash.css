@@ -215,7 +215,7 @@ Text, .text, .label {
 {
     -fx-background-color : rgba(0,0,0,.2);
      -gn-auto-ride : true;
-     -gn-transition-duration : 800ms;
+     -gn-transition-duration : 300ms;
 }
 
 .gn-carousel > .button
@@ -278,3 +278,4 @@ Text, .text, .label {
     -fx-background-insets  : 3px;
     -fx-translate-y : -10px;
 }
+

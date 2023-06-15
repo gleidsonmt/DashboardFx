@@ -98,7 +98,7 @@ public class TutorialCreator extends PresentationCreator {
     private  void createTree(List<TreeTitle> data, VBox nav) {
         List<TreeTitle> firstLevel = data.stream()
                 .filter(p -> p.getRelated() == null)
-                .peek(c -> c.setIndex(count++))
+                .peek(c -> c.setIndex(String.valueOf(count++)))
                 .toList();
         count = 1;
         List<VBox> firstList = firstLevel.stream().map(this::buildTree).toList();
@@ -109,10 +109,12 @@ public class TutorialCreator extends PresentationCreator {
     private double space = 0;
     private VBox buildTree(TreeTitle item) {
         VBox parent = createMenu(item);
-        List<TreeTitle> children = data.stream().filter(child -> child.getRelated() != null && child.getRelated().equals(item.getText())).toList();
+        List<TreeTitle> children = data.stream().filter(child -> child.getRelated() != null && child.getRelated().getText().equals(item.getText())).toList();
 
         if (children.size() > 0) {
-            children.forEach(c -> c.setIndex(count++));
+            children.forEach(c -> {
+                c.setIndex(item.getIndex() + "." + count++);
+            });
             count = 1;
         }
 
@@ -184,9 +186,7 @@ public class TutorialCreator extends PresentationCreator {
                 .map(mapped -> (TreeTitle) mapped).toList();
 
         // Criando a tree
-//        Platform.runLater(() -> {
             createTree(data, aside);
-//        });
 
 //        ((ToggleButton)aside.getChildren().get(1)).setSelected(true);
 

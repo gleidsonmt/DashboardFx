@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'io.github.gleidsonmt.dashboardfx'
-version '1.0'
+version '1.0.4'
 
 repositories {
     mavenCentral()
@@ -18,7 +18,7 @@ repositories {
 sourceCompatibility = '17'
 targetCompatibility = '17'
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
@@ -44,23 +44,26 @@ dependencies {
 
     implementation 'org.yaml:snakeyaml:1.33'
     implementation 'org.jetbrains:annotations:24.0.1'
+    implementation files('vendor/animatefx-1.2.0.jar')
+
 
     implementation 'org.kordamp.ikonli:ikonli-material-pack:12.3.1'
     implementation 'org.kordamp.ikonli:ikonli-core:12.3.1'
     implementation 'org.kordamp.ikonli:ikonli-javafx:12.3.1'
 
-    implementation files('vendor/animatefx-1.2.0.jar')
+//    implementation files('vendor/GNCarousel-1.0.4.jar')
+
+
 
 //    implementation 'org.commonmark:commonmark:0.20.0'
 //    implementation files('vendor/GNControls-1.2.5.jar')
 
 // Here only for tests
-    implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to vizualize css when app is running.. so amazing!
+//    implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to vizualize css when app is running.. so amazing!
 
 //    implementation files('vendor/gndecorator-2.2.31.jar')     // Decorator lib for custom windows
 
-    implementation files('vendor/scenicView.jar')          // thta's scenic view using jfx 8.. i need to updgrade.. this is essential for view all nodes in process
-    implementation files('vendor/GNCarousel-1.0.3.jar')
+//    implementation files('vendor/scenicView.jar')          // thta's scenic view using jfx 8.. i need to updgrade.. this is essential for view all nodes in process
 //    implementation files('vendor/controlsfx-8.40.17.jar') // My favorite lib.. has a lot of functionality
 
 //    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")

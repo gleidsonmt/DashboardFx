@@ -19,6 +19,7 @@
 * [📑 Overview](#-overview)
 * [💻 Environment](#-environment)
 * [🚀 Installing](#-installing)
+  * [Using in SceneBuilder](#using-in-scenebuilder)
 * [☕ Using Dashboard](#-using-dashboard-)
 * [🧬  Basic Structure](#-basic-structure)
 * [📺 On Youtube](#-on-youtube)
@@ -42,7 +43,11 @@ I have a great workstation here, then I've using a gradle 7.2 and Java and JavaF
 # 🚀 Installing
 I really recommend to use jpackage to create your jar and the .exe. <br>
 !🗒️Note ** The generate you .exe you need the wix tool, you can get the url if you using intellij or from here  https://wixtoolset.org 🥸***
-In intellij or visual studio (in visual you need to prepare the  ide to use javafx) it's really simple, only open the tab gradle and run the command build after jpackage. 
+In intellij or visual studio (in visual you need to prepare the  ide to use javafx) it's really simple, only open the tab gradle and run the command build after jpackage.
+
+## Using in SceneBuilder
+If you want or have an error on opening the fxml files, you need the jar with the custom components, 
+using gradle create a jar and import in your SceneBuilder. 
 ...
 # ☕ Using Dashboard       
 Just build and run -(º-º)- there's no trick.. only use gradle to build and run in your ide.
