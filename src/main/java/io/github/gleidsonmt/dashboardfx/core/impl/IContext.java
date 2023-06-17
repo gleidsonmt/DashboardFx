@@ -10,9 +10,11 @@ import io.github.gleidsonmt.dashboardfx.core.model.SearchItem;
 import javafx.application.HostServices;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -65,8 +67,23 @@ public class IContext implements Context {
     }
 
     @Override
+    public Stage stage() {
+        return stage;
+    }
+
+    private Stage stage;
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    @Override
     public ObservableList<SearchItem> searchItems() {
         return searchItems;
+    }
+
+    @Override
+    public Logger logger() {
+        return Logger.getLogger("app");
     }
 
     @Override

@@ -46,7 +46,7 @@ public class SideNavController extends ActionView {
 
     @FXML
     private void goButton() {
-        go("view_button", new ButtonPresCreator(context));
+        go("button", new ButtonPresCreator(context));
     }
 
     @FXML
@@ -141,10 +141,9 @@ public class SideNavController extends ActionView {
         go("carousel", new CarouselViewPresCreator(context));
     }
 
-
     @FXML
     private void goRating() {
-        go("carousel", new RatingPresCreator(context));
+        go("rating", new RatingPresCreator(context));
     }
 
     @FXML
@@ -154,7 +153,8 @@ public class SideNavController extends ActionView {
 
     @Override
     public void onInit(Context context) {
-        this.context = context;
+//        this.context = context;
+        super.onInit(context);
         new DrawerBehavior(root, group, context);
     }
 }

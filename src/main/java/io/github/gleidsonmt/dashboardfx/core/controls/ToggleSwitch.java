@@ -34,12 +34,13 @@ import javafx.util.Duration;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  15/06/2023
  */
+@SuppressWarnings("unused")
 public class ToggleSwitch extends Parent {
 
     private final BooleanProperty switchedOn = new SimpleBooleanProperty(false);
 
-    private final TranslateTransition translateAnimation = new TranslateTransition(Duration.seconds(0.25));
-    private final FillTransition fillAnimation = new FillTransition(Duration.seconds(0.25));
+    private final TranslateTransition translateAnimation = new TranslateTransition(Duration.seconds(0.15));
+    private final FillTransition fillAnimation = new FillTransition(Duration.seconds(0.15));
     private final ParallelTransition animation = new ParallelTransition(translateAnimation, fillAnimation);
 
     private BooleanProperty switchedOnProperty() {
@@ -48,15 +49,15 @@ public class ToggleSwitch extends Parent {
 
     public ToggleSwitch() {
         getStyleClass().add("toggle-switch");
-        Rectangle background = new Rectangle(40, 23);
+        Rectangle background = new Rectangle(40, 26);
         background.getStyleClass().add("background");
         background.setArcWidth(25);
         background.setArcHeight(25);
         background.setFill(Color.WHITE);
         background.setStroke(Color.LIGHTGRAY);
         Circle trigger = new Circle(10);
-        trigger.setCenterX(10);
-        trigger.setCenterY(12);
+        trigger.setCenterX(12);
+        trigger.setCenterY(13);
         trigger.setFill(Color.WHITE);
         trigger.setStroke(Color.LIGHTGRAY);
         getChildren().addAll(background, trigger);
@@ -67,15 +68,13 @@ public class ToggleSwitch extends Parent {
         switchedOn.addListener((obs, oldState, newState) -> {
             boolean isOn = newState;
             translateAnimation.setToX(
-                    isOn ? 100 - 80 : 0
+                    isOn ? 100 - 84 : 0
             );
             fillAnimation.setFromValue(isOn ? Color.WHITE : Color.web("#00BCD4"));
             fillAnimation.setToValue(isOn ? Color.web("#00BCD4") : Color.WHITE);
             animation.play();
         });
 
-        setOnMouseClicked(event -> {
-            switchedOn.set(!switchedOn.get());
-        });
+        setOnMouseClicked(event -> switchedOn.set(!switchedOn.get()));
     }
 }

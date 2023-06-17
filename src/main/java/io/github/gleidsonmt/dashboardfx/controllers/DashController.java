@@ -54,7 +54,6 @@ public final class DashController extends ActionView {
     private GridPane footer;
     @FXML
     private StackedAreaChart<Number, Number> graphic;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Creating the Area chart
@@ -226,6 +225,7 @@ public final class DashController extends ActionView {
                     .content(
                             new DialogContainer(
                                     new SearchViewBox(context))
+                            .style("-fx-background-radius: 5px;")
                             .size(800, 400)
                     )
                     .show();

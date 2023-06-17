@@ -39,10 +39,11 @@ public class ButtonPresCreator extends TutorialCreator {
 
     public ButtonPresCreator(Context context) {
         super(context);
-        this    .title("Button")
+        this    .title("Intro")
                 .text("""
                         A simple button control. The button control can contain text and/or a graphic.
                         """)
+                .legend("css style => .button")
                 .demonstration(List.of(
                                 createButton("Default"),
                                 createCancel("Cancel"),
@@ -102,7 +103,7 @@ public class ButtonPresCreator extends TutorialCreator {
                             GNButton gnButton = new GNIconButton();
                                 """,
                             """
-                            <GNButton text=\"button\"/>
+                            <GNButton text="button"/>
                             <!-- Icon button -->
                             <GNIconButton icon="DISCOUNT"/>
                             """

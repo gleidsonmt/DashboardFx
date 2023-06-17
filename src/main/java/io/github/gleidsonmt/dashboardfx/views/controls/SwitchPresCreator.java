@@ -21,8 +21,10 @@ package io.github.gleidsonmt.dashboardfx.views.controls;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.controls.ToggleSwitch;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.Author;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import javafx.scene.control.CheckBox;
+import javafx.scene.image.Image;
 
 import java.util.List;
 
@@ -34,21 +36,16 @@ public class SwitchPresCreator extends TutorialCreator {
 
     public SwitchPresCreator(Context context) {
         super(context);
-        this    .title("CheckBox")
+        this    .title("ToggleSwitch")
                 .text("""
-                      A tri-state selection Control typically skinned as a box with a checkmark or tick mark when checked.
+                        Toggle Switch and we are going to be model it based on iOS 8 style toggle switch.
+                                                                                                                            
                         """)
                 .demonstration(
                         new ToggleSwitch(),
                         """
                                 // Constructor
-                                CheckBox checkBox = new CheckBox("Check");
-                                // Sets the checkbox to state indeterminate  
-                                checkBox.setIndeterminate(true);
-                                // Sets the checkbox to use sub state after select
-                                checkBox.setAllowIndeterminate(true);
-                                // CheckBox selected state is activated
-                                checkBox.setSelected(true);
+                                ToggleSwitch toggleSwitch = new ToggleSwitch("Check");
                                 """,
                             """
                                 <!-- Constructor -->
@@ -59,7 +56,13 @@ public class SwitchPresCreator extends TutorialCreator {
                                   />
                             """)
                 .title("Links")
-                .footer(createDefaultControl())
+                .title("Watch")
+                .youTube("", context.getResource("style/img/transparent-logo.png"))
+                .footer(
+                        createDefaultAuthor(),
+                        new Author("Almas", "https://github.com/AlmasB/FXTutorials/tree/master",
+                                "https://www.youtube.com/watch?v=maX5ymmQixM")
+                )
                 .build();
     }
 

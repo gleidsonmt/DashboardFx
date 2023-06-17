@@ -19,6 +19,7 @@
 
 package io.github.gleidsonmt.dashboardfx.core.controls;
 
+import io.github.gleidsonmt.dashboardfx.core.controls.skin.GNAvatarSkin;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;

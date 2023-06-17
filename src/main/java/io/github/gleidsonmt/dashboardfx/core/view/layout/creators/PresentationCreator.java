@@ -24,7 +24,10 @@ import io.github.gleidsonmt.dashboardfx.core.controls.GNButton;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.BlockCode;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.options.ActionOptions;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -38,11 +41,15 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.scene.web.WebView;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.net.URI;
+import java.net.URL;
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * Base class to create imperative presentations.
@@ -64,8 +71,8 @@ import java.util.List;
  * Create on  22/01/2023
  */
 
-@ApiStatus.Internal
 @ApiStatus.AvailableSince("1.0")
+@SuppressWarnings("unused")
 public class PresentationCreator
         implements BuildCreator {
 
@@ -131,8 +138,6 @@ public class PresentationCreator
         return this;
     }
 
-
-
     public PresentationCreator subTitle(String title) {
         items.add(createSubTitle(title));
         return this;
@@ -158,22 +163,82 @@ public class PresentationCreator
         return this;
     }
 
-    @ApiStatus.Internal
     public PresentationCreator separator() {
         items.add(new Separator());
         return this;
     }
 
-    @ApiStatus.Internal
     public PresentationCreator code(String text) {
         items.add(createBlockCode(text, "java"));
         return this;
     }
 
-    @ApiStatus.Internal
-    @ApiStatus.Experimental
     public PresentationCreator code(String text, String language) {
         items.add(createBlockCode(text, language));
+        return this;
+    }
+
+    public PresentationCreator youTube(String url, URL resource) {
+
+//        Region region = (Region) createImage(
+//                new Image(resource.toExternalForm())
+//        );
+//
+//        region.setPrefSize(300, 300);
+
+        StackPane root = new StackPane();
+        WebView webView = new WebView();
+
+
+//        webView.getEngine().load("https://www.youtube.com/watch?v=maX5ymmQixM");
+//        webView.setMinSize(200, 200);
+
+        Button button = new Button("Open Player");
+
+        button.setOnMouseClicked(event -> {
+
+
+            double width = context.stage().getWidth()
+                    > 700 ? 700 : context.stage().getWidth() - 100 ;
+
+            double height = context.stage().getHeight()
+                    > 500 ? 500 : context.stage().getHeight() - 200 ;
+
+            webView.getEngine().setJavaScriptEnabled(true);
+
+            webView.getEngine().loadContent(
+                    "<html lang=\"en\">" +
+                            "<body>" +
+                            "<iframe width=\"" + width + "\" height=\"" + height + "\"" +
+                            """
+                            src="https://www.youtube.com/embed/maX5ymmQixM"
+                            title="JavaFX UI: iOS Style Toggle Switch"
+                            frameborder="0" allow="accelerometer;
+                            autoplay; clipboard-write; encrypted-media;
+                            gyroscope; picture-in-picture; web-share" allowfullscreen>
+                            </iframe>
+                            """ +
+                            "<body>" +
+                            "</html>"
+            );
+
+            webView.getEngine().getLoadWorker().stateProperty()
+                    .addListener((obs, oldValue, newValue) -> {
+                        context.logger().info(
+                                newValue.name()
+                        );
+                    });
+
+            context.wrapper()
+                    .content(
+                            new DialogContainer(webView)
+                                    .size(width + 50, height + 45)
+                    )
+                    .pos(Pos.CENTER)
+                    .show();
+        });
+//        items.add(webView);
+        items.add(button);
         return this;
     }
 
@@ -190,14 +255,12 @@ public class PresentationCreator
         return this;
     }
 
-    @ApiStatus.Experimental
     public PresentationCreator footer(Author... authors) {
         items.add(createFooter(authors));
         return this;
     }
 
-    @ApiStatus.Experimental
-    public PresentationCreator footer(ObservableList<Author> authors) {
+    public PresentationCreator footer(@NotNull ObservableList<Author> authors) {
         for(Author author : authors) {
             items.add(createFooter(author));
         }
@@ -214,6 +277,14 @@ public class PresentationCreator
             );
     }
 
+    @ApiStatus.OverrideOnly
+    public Author createDefaultAuthor() {
+       return new Author("OpenJFX",
+                        "https://github.com/openjfx/openjfx.github.io",
+                        "https://openjfx.io/javadoc/17/javafx.controls/javafx/scene/control/"+title+".html");
+    }
+
+    @ApiStatus.Internal
     private Node createFooter(Author... authors) {
         VBox root = new VBox();
 
@@ -266,6 +337,7 @@ public class PresentationCreator
         return this;
     }
 
+    @ApiStatus.Internal
     private Node createMultBlock(List<Node> list, String java, String fxml) {
 
         TabPane tabPane = new TabPane();
@@ -297,14 +369,17 @@ public class PresentationCreator
         return tabPane;
     }
 
+    @ApiStatus.Internal
     private Node createMultBlock(Node node, String java, String fxml) {
         return createMultBlock(List.of(node), java, fxml);
     }
 
+    @ApiStatus.Internal
     private StackPane createBlockCode(String text, String language) {
         return new BlockCode(context, text, language);
     }
 
+    @ApiStatus.Internal
     private TilePane createOptions(ActionOptions... options) {
         TilePane layout = new TilePane();
         layout.setHgap(10);
@@ -318,6 +393,7 @@ public class PresentationCreator
         return layout;
     }
 
+    @ApiStatus.Internal
     private GNButton createButton(String title, EventHandler<ActionEvent> actionEventEventHandler) {
         GNButton gn = new GNButton(title);
         gn.setDefaultButton(true);
@@ -339,7 +415,7 @@ public class PresentationCreator
         }
 
         if (options != null) label.getStyleClass().addAll(options);
-        VBox.setMargin(label, new Insets(10, 0, 10, 0));
+        VBox.setMargin(label, new Insets(0, 0, 10, 0));
 
         return label;
 
@@ -348,7 +424,7 @@ public class PresentationCreator
     private @NotNull Label createLabel(String text, String... options) {
         Label label = new Label(text);
         label.getStyleClass().addAll(options);
-        VBox.setMargin(label, new Insets(10, 0, 20, 0));
+        VBox.setMargin(label, new Insets(0, 0, 20, 0));
         return label;
     }
 
@@ -362,7 +438,7 @@ public class PresentationCreator
                                 BackgroundRepeat.NO_REPEAT,
                                 BackgroundRepeat.NO_REPEAT,
                                 BackgroundPosition.DEFAULT,
-                                BackgroundSize.DEFAULT
+                                new BackgroundSize(300, 300, false, false, false, true)
 //                                new BackgroundSize(100, 100, true, true, true, true)
                         )
                 )

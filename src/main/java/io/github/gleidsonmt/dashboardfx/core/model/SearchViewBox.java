@@ -21,14 +21,17 @@ package io.github.gleidsonmt.dashboardfx.core.model;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNTextBox;
+import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import javafx.collections.ListChangeListener;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
@@ -39,7 +42,8 @@ import javafx.util.Callback;
 public class SearchViewBox extends VBox {
 
     private final ListView<SearchItem> listView = new ListView<>();
-    private final GNTextBox  textField = new GNTextBox();
+    private final HBox searchBox = new HBox();
+    private final TextField  textField = new TextField();
 
     @SuppressWarnings("unchecked")
     public SearchViewBox(Context context) {
@@ -53,26 +57,21 @@ public class SearchViewBox extends VBox {
             }
         });
 
-        textField.setIcon(Icons.SEARCH);
+//        textField.setIcon(Icons.SEARCH);
+//        textField.setAction(true);
         textField.setPromptText("Search");
-        textField.setAction(true);
         textField.setId("tf-search");
-
 
 //        this.maxWidthProperty().bind(textField.widthProperty());
 //        this.prefWidthProperty().bind(textField.widthProperty());
+
         this.setMaxHeight(filteredList.size() * 48);
         listView.setItems(filteredList);
-
-        this.textField.setStyle("-fx-border-color: -light-gray-2;" +
-                "-fx-border-radius: 20px;" +
-                "-fx-min-height: 50px; -fx-border-width: 1px; ");
 
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredList.setPredicate(searchItem -> searchItem.getName().contains(newValue));
 
         });
-
 
         listView.setCellFactory(new Callback<ListView<SearchItem>, ListCell<SearchItem>>() {
             @Override
@@ -95,7 +94,13 @@ public class SearchViewBox extends VBox {
             }
         });
 
-        this.getChildren().addAll(textField, listView);
+        IconContainer icon = new IconContainer(Icons.SEARCH);
+        searchBox.getChildren().addAll(icon, textField);
+        searchBox.setMinHeight(50);
+        searchBox.setAlignment(Pos.CENTER_LEFT);
+        searchBox.setStyle("-fx-border-color: -medium-gray; -fx-border-width: 0px 0px 1px 0px");
+
+        this.getChildren().addAll(searchBox, listView);
         this.setSpacing(20);
         this.setPadding(new Insets(5));
     }

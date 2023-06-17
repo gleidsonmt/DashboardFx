@@ -24,6 +24,7 @@ import io.github.gleidsonmt.dashboardfx.core.view.layout.Container;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.BuildCreator;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -40,7 +41,7 @@ public class SimpleView extends ActionView implements View {
         container = new Container(node);
     }
 
-    public SimpleView(String name, BuildCreator node) {
+    public SimpleView(String name, @NotNull BuildCreator node) {
         this.name = name;
         container = new Container(node.getRoot());
     }

@@ -21,6 +21,7 @@ package io.github.gleidsonmt.dashboardfx.core.view.layout;
 
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.DeclarativeComponent;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 
 /**
@@ -34,6 +35,7 @@ public class DialogContainer extends DeclarativeComponent<DialogContainer> {
         getStyleClass().add("container");
         getChildren().setAll(nodes);
         setPadding(new Insets(10));
+        setAlignment(Pos.CENTER);
 //        setMaxSize(400, 300);
     }
 

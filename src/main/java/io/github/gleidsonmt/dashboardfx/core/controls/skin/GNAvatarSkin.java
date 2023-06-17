@@ -17,8 +17,9 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.controls;
+package io.github.gleidsonmt.dashboardfx.core.controls.skin;
 
+import io.github.gleidsonmt.dashboardfx.core.controls.GNAvatar;
 import javafx.scene.control.SkinBase;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;

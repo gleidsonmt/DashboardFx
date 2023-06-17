@@ -8,8 +8,11 @@ import io.github.gleidsonmt.dashboardfx.core.view.layout.SnackBar;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.Wrapper;
 import io.github.gleidsonmt.dashboardfx.core.model.SearchItem;
 import javafx.collections.ObservableList;
+import javafx.stage.Stage;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.net.URL;
+import java.util.logging.Logger;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -30,7 +33,12 @@ public interface Context {
 
     Flow flow();
 
+    Stage stage();
+
     ObservableList<SearchItem> searchItems();
+
+    @ApiStatus.Experimental
+    Logger logger();
 
     /*********************************************************
      *

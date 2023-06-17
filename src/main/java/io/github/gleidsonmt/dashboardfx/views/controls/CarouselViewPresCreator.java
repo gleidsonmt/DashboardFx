@@ -20,10 +20,10 @@
 package io.github.gleidsonmt.dashboardfx.views.controls;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
+import io.github.gleidsonmt.dashboardfx.core.controls.GNCarousel;
 import io.github.gleidsonmt.dashboardfx.core.model.Data;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TableCreator;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
-//import io.github.gleidsonmt.gncarousel.GNCarousel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
@@ -44,8 +44,8 @@ public class CarouselViewPresCreator extends TutorialCreator {
                         The carousel is a control of the overlapping layer, which navigates about her, showing one for once.
                         """)
                 .demonstration(
-//                        createCarousel(createItems()),
-                        new Label(),
+                        createCarousel(createItems()),
+//                        new Label(),
                                 """
                                      //  Creating children
                                      GNCarousel carousel = new GNCarousel();
@@ -93,11 +93,9 @@ public class CarouselViewPresCreator extends TutorialCreator {
                 .build();
     }
 
-//    private GNCarousel<Node> createCarousel(ObservableList<Node> items) {
-//        GNCarousel<Node> carousel = new GNCarousel<>(items);
-//        carousel.setArrows(false);
-//        return carousel;
-//    }
+    private GNCarousel<Node> createCarousel(ObservableList<Node> items) {
+        return  new GNCarousel<>(items);
+    }
 
     private ObservableList<Node> createItems(){
 
