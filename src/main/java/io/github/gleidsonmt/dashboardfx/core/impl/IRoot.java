@@ -37,10 +37,4 @@ public class IRoot extends StackPane implements Root {
     public Wrapper getWrapper() {
         return wrapper;
     }
-
-    @Deprecated(forRemoval = true)
-    @Override
-    public void reset() {
-
-    }
 }

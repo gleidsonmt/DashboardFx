@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 //import org.scenicview.ScenicView;
@@ -28,7 +29,6 @@ public abstract class Launcher extends Application {
     protected ObservableList<Image> icons = FXCollections.observableArrayList();
 
     private final Logger logger = Logger.getLogger("app");
-
     @Override
     public void start(Stage stage) {
         build(context);
@@ -60,9 +60,8 @@ public abstract class Launcher extends Application {
 //        ScenicView.show(scene);
 
         addLoggerHandler();
-
-
     }
+
 
     private void addLoggerHandler() {
         try {
@@ -74,8 +73,7 @@ public abstract class Launcher extends Application {
             fh.setFormatter(formatter);
 
             // the following statement is used to log any messages
-            logger.info("My first log");
-
+            logger.setLevel(Level.OFF);
         } catch (SecurityException | IOException e) {
             e.printStackTrace();
         }

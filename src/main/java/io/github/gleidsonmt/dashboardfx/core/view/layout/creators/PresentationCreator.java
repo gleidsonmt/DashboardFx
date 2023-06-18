@@ -197,7 +197,6 @@ public class PresentationCreator
 
         button.setOnMouseClicked(event -> {
 
-
             double width = context.stage().getWidth()
                     > 700 ? 700 : context.stage().getWidth() - 100 ;
 
@@ -207,19 +206,20 @@ public class PresentationCreator
             webView.getEngine().setJavaScriptEnabled(true);
 
             webView.getEngine().loadContent(
-                    "<html lang=\"en\">" +
-                            "<body>" +
-                            "<iframe width=\"" + width + "\" height=\"" + height + "\"" +
+                "<!DOCTYPE html>" +
+                "<html lang=\"en\">" +
+                    "<body>" +
+                        "<iframe width=\"" + width + "\" height=\"" + height + "\"" +
                             """
                             src="https://www.youtube.com/embed/maX5ymmQixM"
                             title="JavaFX UI: iOS Style Toggle Switch"
                             frameborder="0" allow="accelerometer;
                             autoplay; clipboard-write; encrypted-media;
                             gyroscope; picture-in-picture; web-share" allowfullscreen>
-                            </iframe>
+                        </iframe>
                             """ +
-                            "<body>" +
-                            "</html>"
+                    "</body>" +
+                "</html>"
             );
 
             webView.getEngine().getLoadWorker().stateProperty()
@@ -328,17 +328,27 @@ public class PresentationCreator
     }
 
     public PresentationCreator demonstration(Node node, String java, String fxml) {
-        items.add(createMultBlock(node, java, fxml));
+        items.add(createTabs(List.of(node), java, fxml, null));
         return this;
     }
 
+//    public PresentationCreator demonstration(Node node, String java, String fxml) {
+//        items.add(createTabs(node, java, fxml, null));
+//        return this;
+//    }
+
     public PresentationCreator demonstration(List<Node> nodes, String java, String fxml) {
-        items.add(createMultBlock(nodes, java, fxml));
+        items.add(createTabs(nodes, java, fxml, null));
+        return this;
+    }
+
+    public PresentationCreator demonstration(List<Node> nodes, String java, String fxml, String css) {
+        items.add(createTabs(nodes, java, fxml, css));
         return this;
     }
 
     @ApiStatus.Internal
-    private Node createMultBlock(List<Node> list, String java, String fxml) {
+    private Node createTabs(List<Node> list, String java, String fxml, String css) {
 
         TabPane tabPane = new TabPane();
         VBox.setVgrow(tabPane, Priority.ALWAYS);
@@ -364,15 +374,18 @@ public class PresentationCreator
             tabPane.getTabs().add(fxmlTab);
         }
 
+        if(css != null && !css.isEmpty()) {
+            Tab cssTab = new Tab("CSS");
+            cssTab.setContent(createBlockCode(css, "css"));
+            tabPane.getTabs().add(cssTab);
+        }
+
         root.getStyleClass().addAll("border-light-gray-2", "border-1", "depth-2");
         root.setStyle("-fx-background-color: -light-gray;");
         return tabPane;
     }
 
-    @ApiStatus.Internal
-    private Node createMultBlock(Node node, String java, String fxml) {
-        return createMultBlock(List.of(node), java, fxml);
-    }
+
 
     @ApiStatus.Internal
     private StackPane createBlockCode(String text, String language) {
@@ -430,7 +443,8 @@ public class PresentationCreator
 
     private @NotNull Node createImage(Image image) {
         Region region = new Region();
-        region.setMinSize(image.getWidth(), image.getHeight());
+//        region.setMinSize(image.getWidth(), image.getHeight());
+        region.setMinHeight(image.getHeight());
         region.setBackground(
                 new Background(
                         new BackgroundImage(
@@ -438,7 +452,7 @@ public class PresentationCreator
                                 BackgroundRepeat.NO_REPEAT,
                                 BackgroundRepeat.NO_REPEAT,
                                 BackgroundPosition.DEFAULT,
-                                new BackgroundSize(300, 300, false, false, false, true)
+                                new BackgroundSize(300, 300, true, true, true, false)
 //                                new BackgroundSize(100, 100, true, true, true, true)
                         )
                 )

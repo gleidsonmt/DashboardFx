@@ -39,7 +39,7 @@ public class Drawer extends ActionView implements NestedWrapperContainer {
 
     @Override
     public void onInit(Context context) {
-        this.wrapper = (Wrapper) context.wrapper();
+        this.wrapper = context.wrapper();
         this.context = context;
     }
 
@@ -84,7 +84,9 @@ public class Drawer extends ActionView implements NestedWrapperContainer {
         );
 
         this.timeline.setOnFinished(null);
+
         this.wrapper.setOnMouseClicked(closeEvent);
+
         this.wrapper.toFront();
         timeline.play();
     }

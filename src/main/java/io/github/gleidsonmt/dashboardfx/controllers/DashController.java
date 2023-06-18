@@ -264,8 +264,6 @@ public final class DashController extends ActionView {
 
         notification.setOnMouseClicked(event ->
                 context.flow()
-//                    .getPopup()
-//                    .size(400,300)
                 .content(
                         new DialogContainer(b)
                                 .style("-fx-background-radius : 10px;")
