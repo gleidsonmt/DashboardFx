@@ -31,6 +31,19 @@
     -fx-text-fill: -fx-accent;
 }
 
+
+.btn-danger {
+    -fx-accent: -grapefruit;
+}
+
+.btn-warning {
+    -fx-accent: -warning;
+}
+
+.btn-success {
+    -fx-accent: -success;
+}
+
 .button:cancel:hover,
 .btn-flat:hover
  {
