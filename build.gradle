@@ -46,10 +46,12 @@ dependencies {
     implementation 'org.jetbrains:annotations:24.0.1'
     implementation files('vendor/animatefx-1.2.0.jar')
 
-
     implementation 'org.kordamp.ikonli:ikonli-material-pack:12.3.1'
     implementation 'org.kordamp.ikonli:ikonli-core:12.3.1'
     implementation 'org.kordamp.ikonli:ikonli-javafx:12.3.1'
+
+    implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to vizualize css when app is running.. so amazing!
+
 
 //    implementation files('vendor/GNCarousel-1.0.4.jar')
 
@@ -59,7 +61,6 @@ dependencies {
 //    implementation files('vendor/GNControls-1.2.5.jar')
 
 // Here only for tests
-//    implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to vizualize css when app is running.. so amazing!
 
 //    implementation files('vendor/gndecorator-2.2.31.jar')     // Decorator lib for custom windows
 

@@ -43,40 +43,50 @@ public class ButtonPresCreator extends TutorialCreator {
                 .text("""
                         A simple button control. The button control can contain text and/or a graphic.
                         """)
-                .legend("css style => .button")
                 .demonstration(List.of(
                                 createButton("Default"),
                                 createCancel("Cancel"),
                                 createDisable("Disable"),
-                                createBtnFlat("Flat"),
-                                createIconized("Iconized")
+                                createIconized("Iconized"),
+                                createClassButton("Flat", "btn-flat"),
+                                createClassButton("Warning", "btn-warning"),
+                                createClassButton("Success", "btn-success"),
+                                createClassButton("Danger", "btn-danger")
                         ),
                         """
-                        // Default
+                        // Default/Constructor
                         Button button = new Button("Button");
                         // cancel
                         button.setCancelButton(true);
-                        // Flat
-                        buttonFlat.getStyleClass("btn-flat");
                         // Icon
                         button.setGraphic(new IconContainer(Icons.ANALYTICS));
-                       
+                        // Flat
+                        buttonFlat.getStyleClass("btn-flat");
+                        // danger
+                        buttonFlat.getStyleClass("btn-danger");
                         """,
                         """
-                              <!-- Default -->
-                                <Button text="button"/>
-                                <!-- Main button/gave action from enter -->
-                                <Button text="button" defaultButton="true"/>
-                                <!-- Cancel button/gave action using scape -->
-                                <Button text="button" cancelButton="true"/>
-                                <!-- Only add inline styleClass -->
-                                <Button text="button" styleClass="btn-flat"/>
-                             <!-- Using a graphic -->
-                             <Button text="button">
-                                <graphic>
-                                   <IconContainer icon="DISCOUNT"/>
-                                </graphic>
-                             </Button>
+                        <!-- Default -->
+                        <Button text="button"/>
+                        <!-- Main button/gave action from enter -->
+                        <Button text="button" defaultButton="true"/>
+                        <!-- Cancel button/gave action using scape -->
+                        <Button text="button" cancelButton="true"/>
+                        <!-- Only add inline styleClass -->
+                        <Button text="button" styleClass="btn-flat"/>
+                        <!-- Using a graphic -->
+                        <Button text="button">
+                        <graphic>
+                           <IconContainer icon="DISCOUNT"/>
+                        </graphic>
+                        </Button>
+                                """,
+                        """
+                        .button {
+                        }
+                        
+                        .button [<graphic>] {
+                        }
                                 """)
                 .title("States")
                 .text("""
@@ -106,6 +116,13 @@ public class ButtonPresCreator extends TutorialCreator {
                             <GNButton text="button"/>
                             <!-- Icon button -->
                             <GNIconButton icon="DISCOUNT"/>
+                            """,
+                        """
+                            .gn-button {
+                            }
+                            
+                            .gn-icon-button {
+                            }
                             """
                 )
                 .title("Custom CSS", "Designed Buttons")
@@ -138,9 +155,9 @@ public class ButtonPresCreator extends TutorialCreator {
         return button;
     }
 
-    public Button createBtnFlat(String title) {
+    public Button createClassButton(String title, String style) {
         Button button = new Button(title);
-        button.getStyleClass().add("btn-flat");
+        button.getStyleClass().add(style);
         return button;
     }
 
