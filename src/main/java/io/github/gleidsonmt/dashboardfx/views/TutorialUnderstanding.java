@@ -146,9 +146,7 @@ public class TutorialUnderstanding extends TutorialCreator {
             Create a snack using the button on the top right of the code box
             """)
                 .code("""
-                context.getDecorator()
-                        .getRoot()
-                        .createSnackBar()
+                context .createSnackBar()
                         .color(SnackColors.SUCCESS)
                         .icon(new IconContainer(Icons.DONE))
                         .message("Your message")
@@ -162,14 +160,12 @@ public class TutorialUnderstanding extends TutorialCreator {
                         )
                 )
                 .code("""
-                context.getWrapper()
-                    .getDialog()
-                    .content(
-                        new StackPane(
-                            new Label("Custom WrapperContainer RWrapper"))
-                        )
-                    .show();
-                """)
+                      context.wrapper()
+                            .content(new DialogContainer()
+                                    .content(new Label("My custom dialog"))
+                                    .size(400, 300))
+                            .show();
+                        """)
                 .separator()
                 .title("Alerts")
                 .text("""
@@ -190,27 +186,28 @@ public class TutorialUnderstanding extends TutorialCreator {
                         ).style("-fx-accent : -grapefruit;"))
                 .code(
                         """
-                              context.getWrapper()
-                                    .getAlert()
-                                    .title("Info Alert")
-                                    .text(\"\"\"
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Mauris volutpat mauris sit amet rhoncus tempor. Morbi in ex mattis,
-                                            sagittis tellus et, accumsan magna.
-                                            In quis purus sit amet odio fringilla commodo nec ut massa.\s
-                                        \"\"\"
-                                    )
-                                    .actions(
-                                        new DialogAction(
-                                                "Ok", ButtonType.OK, event -> System.out.println("Button ok pressed!")
-                                        ),
-                                        new DialogAction(
-                                            "Cancel", ButtonType.CANCEL, event -> System.out.println("Button cancel pressed!")
-                                        )
-                                    )
-                                    .type(_type)
-                                    .show();
-                            """)
+                                context.wrapper()
+                                .content(
+                                    new AlertContainer(context)
+                                            .title("Info Alert")
+                                            .text(""\"
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                        Mauris volutpat mauris sit amet rhoncus tempor. Morbi in ex mattis,
+                                        sagittis tellus et, accumsan magna.
+                                        In quis purus sit amet odio fringilla commodo nec ut massa.
+                                        ""\")
+                                            .actions(
+                                                    new DialogAction(
+                                                            "Ok", ButtonType.OK, event -> System.out.println("Button ok pressed!")
+                                                    ),
+                                                    new DialogAction(
+                                                            "Cancel", ButtonType.CANCEL, event -> System.out.println("Button cancel pressed!")
+                                                    )
+                                            )
+                                            .type(_type)
+                                            .build())
+                                .show();
+                                """)
                 .separator()
                 .title("Drawers")
                 .text("Create you drawer left or right using this.")
@@ -223,11 +220,12 @@ public class TutorialUnderstanding extends TutorialCreator {
                         )
                 )
                 .code("""
-                context.getWrapper()
-                        .getDrawer()
+                    context.wrapper()
+                        .drawer()
                         .side(side)
-                        .content(new StackPane(new Label("My Custom Drawer.")))
-                        .style("-fx-background-color : white;")
+                        .content(
+                                new DrawerContainer(new Label("My Custom Drawer."), 250)
+                        )
                         .show();
                 """)
                 .footer(new Author("Gleidson Neves da Silveira",
@@ -265,8 +263,6 @@ public class TutorialUnderstanding extends TutorialCreator {
 
     private void createDialog(AlertType _type) {
         context.wrapper()
-//                .getAlert()
-//                .getFlow()
                 .content(
                         new AlertContainer(context)
                                 .title("Info Alert")
