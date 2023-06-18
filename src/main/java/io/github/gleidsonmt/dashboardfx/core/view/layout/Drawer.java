@@ -28,7 +28,10 @@ public class Drawer extends ActionView implements NestedWrapperContainer {
 
     private final double maxSize = 250;
     protected Context context;
-    private final EventHandler<MouseEvent> closeEvent = event -> hide();
+
+    private final EventHandler<MouseEvent> closeEvent = event -> {
+        if (event.getTarget() == wrapper) hide();
+    };
 
     public Drawer(Wrapper wrapper) {
         this.wrapper = wrapper;
@@ -54,6 +57,10 @@ public class Drawer extends ActionView implements NestedWrapperContainer {
 
 
     public void show() {
+//        setOnMouseClicked(event -> {
+//            if (event.getTarget() == this)
+//                close();
+//        });
         wrapper.setAlignment(
                 side == HPos.LEFT ?
                         Pos.CENTER_LEFT : Pos.CENTER_RIGHT
@@ -83,6 +90,7 @@ public class Drawer extends ActionView implements NestedWrapperContainer {
     }
 
     public void hide() {
+
 
         final double tx = side == HPos.LEFT ?
                 -content.getMaxWidth() :

@@ -72,7 +72,10 @@ public class Wrapper extends StackPane implements AbsoluteWrapperContainer {
     @Override
     public void show() {
         toFront();
-        setOnMouseClicked(event -> close());
+        setOnMouseClicked(event -> {
+            if (event.getTarget() == this)
+                close();
+        });
 
         setAlignment(pos != null ? pos : Pos.CENTER);
 
@@ -88,7 +91,7 @@ public class Wrapper extends StackPane implements AbsoluteWrapperContainer {
 //        animation.setSpeed(1.8);
 //        animation.play();
 //        animation.getTimeline().setOnFinished(event -> toBack());
-        toBack();
+//        toBack();
     }
 
     public enum WrapperBackgroundType {
