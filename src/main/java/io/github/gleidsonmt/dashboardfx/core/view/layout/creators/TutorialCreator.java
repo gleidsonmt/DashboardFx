@@ -66,7 +66,6 @@ public class TutorialCreator extends PresentationCreator {
     private boolean rolling = true;
     int count = 1;
 
-
     public TutorialCreator(Context context) {
         super(context);
         body.setPadding(new Insets(20));
@@ -102,14 +101,19 @@ public class TutorialCreator extends PresentationCreator {
                 .toList();
         count = 1;
         List<VBox> firstList = firstLevel.stream().map(this::buildTree).toList();
+        ((ToggleButton)firstList.get(0).getChildren().get(0)).setSelected(true);
         firstList.forEach(c -> menu.getChildren().add(c));
         nav.getChildren().add(menu);
+
     }
 
     private double space = 0;
     private VBox buildTree(TreeTitle item) {
         VBox parent = createMenu(item);
-        List<TreeTitle> children = data.stream().filter(child -> child.getRelated() != null && child.getRelated().getText().equals(item.getText())).toList();
+        List<TreeTitle> children =
+                data.stream().filter(child -> child.getRelated() != null
+                        && child.getRelated().getText().equals(item.getText()))
+                        .toList();
 
         if (children.size() > 0) {
             children.forEach(c -> {
@@ -126,7 +130,6 @@ public class TutorialCreator extends PresentationCreator {
         }
 
         parent.getChildren().add(subMenu);
-
         return parent;
     }
 
@@ -153,7 +156,8 @@ public class TutorialCreator extends PresentationCreator {
         label.setLabelFor(toggle);
         breaks.add(label);
 
-        Platform.runLater(() -> label.setPosition(Scroll.getY(scroll, label)));
+        Platform.runLater(() ->
+                label.setPosition(Scroll.getY(scroll, label)));
 
         toggle.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
             if (toggle.isSelected()) {
@@ -186,8 +190,8 @@ public class TutorialCreator extends PresentationCreator {
                 .map(mapped -> (TreeTitle) mapped).toList();
 
         // Criando a tree
-            createTree(data, aside);
-
+        createTree(data, aside);
+//        System.out.println("data = " + data);
 //        ((ToggleButton)aside.getChildren().get(1)).setSelected(true);
 
         root.getChildren().setAll(body);

@@ -18,6 +18,8 @@
 package io.github.gleidsonmt.dashboardfx.core.view.layout;
 
 
+import animatefx.animation.AnimationFX;
+import animatefx.animation.Pulse;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.AbsoluteWrapperContainer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -79,18 +81,18 @@ public class Wrapper extends StackPane implements AbsoluteWrapperContainer {
 
         setAlignment(pos != null ? pos : Pos.CENTER);
 
-//        AnimationFX animation = new Pulse(getChildren().get(0));
-//        animation.setSpeed(1.8);
-//        animation.play();
+        AnimationFX animation = new Pulse(getChildren().get(0));
+        animation.setSpeed(2.2);
+        animation.play();
     }
 
     @Override
     public void close() {
 
-//        AnimationFX animation = new Pulse(getChildren().get(0));
-//        animation.setSpeed(1.8);
-//        animation.play();
-//        animation.getTimeline().setOnFinished(event -> toBack());
+        AnimationFX animation = new Pulse(getChildren().get(0));
+        animation.setSpeed(2.2);
+        animation.play();
+        animation.getTimeline().setOnFinished(event -> toBack());
 //        toBack();
     }
 
