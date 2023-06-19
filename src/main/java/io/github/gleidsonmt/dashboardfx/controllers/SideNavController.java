@@ -5,10 +5,8 @@ import io.github.gleidsonmt.dashboardfx.core.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.services.DrawerBehavior;
 import io.github.gleidsonmt.dashboardfx.core.view.SimpleView;
-import io.github.gleidsonmt.dashboardfx.core.view.View;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
-import io.github.gleidsonmt.dashboardfx.views.WrappersView;
 import io.github.gleidsonmt.dashboardfx.views.controls.*;
 import io.github.gleidsonmt.dashboardfx.views.tutorial.NewsLetter;
 import javafx.fxml.FXML;
@@ -20,7 +18,6 @@ import javafx.scene.shape.Circle;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
  * Create on  02/04/2023
  */
 public class SideNavController extends ActionView {
@@ -31,7 +28,6 @@ public class SideNavController extends ActionView {
     @FXML
     private void goDash() throws NavigationException {
         context.routes().nav("dash");
-//        context.routes().nav("sales_left", "sales_right");
     }
 
     @FXML
@@ -95,45 +91,12 @@ public class SideNavController extends ActionView {
 
     @FXML
     private void goSwitch() {
-        go("view_tree", new SwitchPresCreator(context));
+        go("view_tree", new ToggleButtonPresCreator(context));
     }
 
-
-    private View presentation;
-
-    @FXML
-    private void goWrappers() {
-        if(presentation == null) presentation =
-                new SimpleView("view_wrapper",
-            new WrappersView(context));
-
-        context.routes().putAndGo(presentation);
-
-//        View view = new SimpleView("view1", "/views/view01.fxml");
-//        context.routes().putAndGo(view);
-    }
-
-    private void go(String name, TutorialCreator tutorialCreator) {
-        context.routes().putAndGo(new SimpleView(name, tutorialCreator));
-    }
-
-    @FXML
-    private void goBuild() {
-        createProblemView();
-    }
     @FXML
     private void goLogin() {
         context.routes().setView("login");
-    }
-
-    private void createProblemView(){
-        Circle rectangle = new Circle();
-        rectangle.setFill(new ImagePattern(
-                new Image(context.getResource("style/img/404.png").toExternalForm())
-        ));
-        rectangle.setRadius(200);
-        context.routes().putAndGo(new SimpleView("error_404", new StackPane(rectangle)
-        ));
     }
 
     @FXML
@@ -149,6 +112,20 @@ public class SideNavController extends ActionView {
     @FXML
     private void goAbout() throws NavigationException{
         context.routes().nav("about");
+    }
+
+    private void go(String name, TutorialCreator tutorialCreator) {
+        context.routes().putAndGo(new SimpleView(name, tutorialCreator));
+    }
+
+    private void createProblemView(){
+        Circle rectangle = new Circle();
+        rectangle.setFill(new ImagePattern(
+                new Image(context.getResource("style/img/404.png").toExternalForm())
+        ));
+        rectangle.setRadius(200);
+        context.routes().putAndGo(new SimpleView("error_404", new StackPane(rectangle)
+        ));
     }
 
     @Override

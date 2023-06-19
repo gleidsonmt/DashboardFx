@@ -24,17 +24,14 @@ import io.github.gleidsonmt.dashboardfx.core.controls.ToggleSwitch;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.Author;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import javafx.scene.control.CheckBox;
-import javafx.scene.image.Image;
-
-import java.util.List;
 
 /**
  * @author Gleidson Neve    s da Silveira | gleidisonmt@gmail.com
  * Create on  21/01/2023
  */
-public class SwitchPresCreator extends TutorialCreator {
+public class ToggleButtonPresCreator extends TutorialCreator {
 
-    public SwitchPresCreator(Context context) {
+    public ToggleButtonPresCreator(Context context) {
         super(context);
         this    .title("ToggleSwitch")
                 .text("""
