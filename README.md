@@ -46,7 +46,7 @@ I really recommend to use jpackage to create your jar and the .exe. <br>
 In intellij or visual studio (in visual you need to prepare the  ide to use javafx) it's really simple, only open the tab gradle and run the command build after jpackage.
 
 ## Using in SceneBuilder
-If you want or have an error on opening the fxml files, you need the jar with the custom components, 
+If you want or had an error on opening the fxml files, you need the jar with the custom components, 
 using gradle create a jar and import in your SceneBuilder. 
 ...
 # ☕ Using Dashboard       
@@ -54,7 +54,18 @@ Just build and run -(º-º)- there's no trick.. only use gradle to build and run
 If you have problem, or a tip do an issue.
 ...
 # 🧬  Basic Structure
-... 
+<pre>
++ java
+  |-- controllers // your controller class
+  |-- core	// dash core.. controls, routes..
+  |-- views       // java views build
++ Resources
+  |-- style // all stylesheets of this dash
+  |-- views // directory of fxml views
+  |-- web   // there's a directory used for web contents
+  -- views.yml
+</pre>
+
 # 📺 On Youtube
 ...
 # 🛠 Enhancements

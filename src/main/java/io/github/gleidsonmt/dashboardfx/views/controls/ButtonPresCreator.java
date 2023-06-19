@@ -83,6 +83,8 @@ public class ButtonPresCreator extends TutorialCreator {
                                 """,
                         """
                         .button {
+                            /* You need a different color.. but you don't want to change all states */
+                            -fx-accent: [<paint>];
                         }
                         
                         .button [<graphic>] {
@@ -119,6 +121,7 @@ public class ButtonPresCreator extends TutorialCreator {
                             """,
                         """
                             .gn-button {
+                      
                             }
                             
                             .gn-icon-button {

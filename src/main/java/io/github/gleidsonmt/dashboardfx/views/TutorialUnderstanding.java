@@ -66,8 +66,14 @@ public class TutorialUnderstanding extends TutorialCreator {
                         """)
                 .image(new Image(context.getResource("style/img/tree_context.png").toExternalForm()))
                 .title("View", "Context")
-                .text("The base interface to create views, get controllers, navigate between views. ")
+                .text("""
+                        The base interface to create views, get controllers, navigate between views. It's divided in two types, the simple using java to build, and the other using fxml to build.
+                        Normally using SimpleView class it's fast to put and navigate in the ecosystem, but isn't for a large view with many nodes, there's a second way, configuring one file and put his resources here.
+                        Now this dash uses yaml file to configure location for fxml files and load its after initialization.
+                        
+                        """)
                 .image(new Image(context.getResource("style/img/View.png").toExternalForm()))
+                .legend("Tree View the main point")
                 .title("Simple View", "View")
                 .text("It's only a default java class as self-view. They are our own controllers.")
                 .code("""
@@ -191,11 +197,11 @@ public class TutorialUnderstanding extends TutorialCreator {
                                     new AlertContainer(context)
                                             .title("Info Alert")
                                             .text(""\"
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Mauris volutpat mauris sit amet rhoncus tempor. Morbi in ex mattis,
-                                        sagittis tellus et, accumsan magna.
-                                        In quis purus sit amet odio fringilla commodo nec ut massa.
-                                        ""\")
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                    Mauris volutpat mauris sit amet rhoncus tempor. Morbi in ex mattis,
+                                                    sagittis tellus et, accumsan magna.
+                                                    In quis purus sit amet odio fringilla commodo nec ut massa.
+                                                    ""\")
                                             .actions(
                                                     new DialogAction(
                                                             "Ok", ButtonType.OK, event -> System.out.println("Button ok pressed!")

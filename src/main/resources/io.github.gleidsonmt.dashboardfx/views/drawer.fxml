@@ -90,12 +90,12 @@
                   <ToggleButton alignment="CENTER_LEFT" onAction="#goRating" styleClass="drawer-item" text="Rating" />
                   <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="230.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goTableView" styleClass="drawer-item" text="TableView" />
                   <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="125.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goTextField" styleClass="drawer-item" text="TextField" />
-                  <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="265.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goTreeView" styleClass="drawer-item" text="TreeView" />
-                  <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goSwitch" styleClass="drawer-item" text="Switch">
+                  <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goSwitch" styleClass="drawer-item" text="ToggleButton">
                      <toggleGroup>
                         <ToggleGroup fx:id="group1" />
                      </toggleGroup>
                   </ToggleButton>
+                  <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="265.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goTreeView" styleClass="drawer-item" text="TreeView" />
                </VBox>
             </TitledPane>
             <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Pages" textAlignment="JUSTIFY">

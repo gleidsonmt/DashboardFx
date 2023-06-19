@@ -8,14 +8,7 @@
 
 To Do:
 
-##### Add Search Bar {SearchBar, SearchItem[type])
-##### Add Badges
-##### Add Actions in top
 ##### adicionar animação nas tiles de dashboard
-##### GNBadge tem que virar um component customizavel
-##### GNBadge deve ir pra gncontrols
-
-
 
 Doing:
 - [ ] alerts podem mudar icone
@@ -43,7 +36,7 @@ To fixed:
 - [X] Scroll Pane com seu View port some com as bordas
 - [X] Drawer fica no lado direito quando é clicado no hamburger
 - [ ] Quando a tela sai de maximizada o drawer não desaparece
-- [ ] Quando fica pequeno a barra retira a atualização de tamanho
+- [X] Quando fica pequeno a barra retira a atualização de tamanho
 - [ ] Adicionar opção de mudar a cor do box do badge, como uma -fx- property
 
 
