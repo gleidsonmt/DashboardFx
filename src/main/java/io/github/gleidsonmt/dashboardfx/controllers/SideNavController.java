@@ -66,9 +66,20 @@ public class SideNavController extends ActionView {
     }
 
     @FXML
+    private void goSlider() {
+        go("slider", new SliderPresCreator(context));
+    }
+
+    @FXML
     private void goListView() {
         go("view_list", new ListViewCreator(context));
     }
+
+    @FXML
+    private void goMediaView() {
+        go("mediaView", new MediaViewPresCreator(context));
+    }
+
     @FXML
     private void goPassword() {
         go("view_pass", new PasswordPresCreator(context));

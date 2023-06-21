@@ -55,7 +55,6 @@ SVGPath {
 /* @Color */
 
 .toggle-button {
-    -fx-border-width : 2px;
 }
 
 .toggle-button:selected {
@@ -103,6 +102,7 @@ SVGPath {
 
 .button, .toggle-button {
     -fx-cursor : hand;
+    -fx-background-radius: 3px;
 }
 
 /* @Font */
@@ -113,7 +113,7 @@ SVGPath {
 
 /* @Border */
 
-.button:cancel, .toggle-button {
+.button:cancel {
     -fx-border-width : 2px;
 }
 
@@ -172,15 +172,20 @@ SVGPath {
     -fx-fill : -text-color;
 }
 
-.list-view .virtual-flow .clipped-container .sheet .list-cell:selected {
-    -fx-background-color : derive(-fx-accent, 122%);
+.combo-box-base .list-view:vertical .virtual-flow .clipped-container .sheet .list-cell:focused:selected {
+    -fx-background-color: -fx-accent;
 }
+
+.combo-box-base .list-view:vertical .virtual-flow .clipped-container .sheet .list-cell:focused:selected .text {
+    -fx-fill: white;
+}
+
+
 
 /* @Effect */
 
 .toggle-button {
     -fx-effect : none;
-    -fx-background-insets: 0px;
 }
 
 /* @Controls */
@@ -507,7 +512,9 @@ SVGPath {
 *******************************************************************************/
 
 .text-field,
-.combo-box-base {
+.combo-box-base,
+.menu-button, .split-menu-button
+{
     -fx-background-color: -fx-background;
     -fx-border-color: -medium-gray;
     -fx-border-radius: 2px;
@@ -521,7 +528,7 @@ SVGPath {
 *                                                                              *
 *******************************************************************************/
 
-.combo-box-base {
+.combo-box-base, .menu-button {
     -fx-cursor: hand
 }
 
@@ -556,6 +563,16 @@ SVGPath {
     -fx-padding: 20px;
 }
 
+
+
+.combo-box-popup  > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover {
+    -fx-background-color: -light-gray;
+}
+
+.combo-box-popup  > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:focused .text
+{
+    -fx-fill: -fx-accent;
+}
 /*******************************************************************************
 *                                                                              *
     @Rating
@@ -582,6 +599,33 @@ SVGPath {
 
 .rating .star:activate {
     -fx-background-color: -fx-accent;
+}
+
+/*******************************************************************************
+*                                                                              *
+    @ToggleButton
+*                                                                              *
+*******************************************************************************/
+
+.left-toggle {
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+}
+
+.left-toggle:selected {
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+}
+
+.right-toggle {
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+}
+
+.right-toggle:selected {
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+    -fx-background-color: red;
 }
 
 /*******************************************************************************
@@ -649,7 +693,7 @@ SVGPath {
   -fx-fill : white;
 }
 
-.gn-carousel .indicators .toggle-button
+.gn-carousel .indicators > .toggle-button
 {
     -fx-cursor : hand;
     -fx-background-color : #ffffff40;
@@ -660,4 +704,53 @@ SVGPath {
     -fx-pref-width : 30px;
     -fx-background-insets  : 3px;
     -fx-translate-y : -10px;
+}
+
+/*******************************************************************************
+*                                                                              *
+    @SplitMenuButton
+*                                                                              *
+*******************************************************************************/
+
+.split-menu-button .arrow-button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+/*******************************************************************************
+*                                                                              *
+    @Slider
+*                                                                              *
+*******************************************************************************/
+
+
+.slider .thumb {
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 1.0em; /* makes sure this remains circular */
+    -fx-padding: 0.583333em;  /* 7 */
+    -fx-effect: dropshadow(two-pass-box , rgba(0, 0, 0, 0.1), 5, 0.0 , 0, 2);
+    -fx-background-color: -fx-accent;
+}
+.slider:focused .thumb {
+    -fx-background-radius: 1.0em; /* makes sure this remains circular */
+}
+.slider .track {
+    -fx-background-color: -light-gray-2 ;
+    -fx-background-insets: 0 0 -1 0, 0, 1;
+    -fx-background-radius: 0.25em, 0.25em, 0.166667em; /* 3 3 2 */
+    -fx-padding: 0.25em; /* 3 */
+}
+.slider:vertical .track {
+    -fx-background-color: -light-gray-2;
+}
+
+.slider:horizontal .track {
+    -fx-background-color: -light-gray-2;
+}
+
+.slider .axis {
+    -fx-tick-label-fill: red;
+    -fx-tick-length: 5px;
+    -fx-minor-tick-length: 3px;
+    -fx-border-color: null;
 }

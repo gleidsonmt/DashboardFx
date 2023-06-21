@@ -75,7 +75,7 @@ public class TreeViewPresCreator extends TutorialCreator {
     private TreeView<String> createTreeView() {
         TreeItem<String> root = new TreeItem<>("Extra Button");
         root.setExpanded(true);
-        TreeItem<String> options = new TreeItem<>("Option");
+        TreeItem<String> options = new TreeItem<>("IOption");
 
 
 
@@ -86,7 +86,7 @@ public class TreeViewPresCreator extends TutorialCreator {
         );
 
 
-        TreeItem<String> options1 = new TreeItem<>("Option 01");
+        TreeItem<String> options1 = new TreeItem<>("IOption 01");
         options1.getChildren().addAll(
                 new TreeItem<>("Item 01"),
                 new TreeItem<>("Item 02"),

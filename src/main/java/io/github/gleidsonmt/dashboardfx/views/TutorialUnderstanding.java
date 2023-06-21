@@ -20,19 +20,28 @@
 package io.github.gleidsonmt.dashboardfx.views;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
+import io.github.gleidsonmt.dashboardfx.core.controls.GNButton;
+import io.github.gleidsonmt.dashboardfx.core.controls.enums.FloatAlignment;
+import io.github.gleidsonmt.dashboardfx.core.impl.layout.Direction;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.AlertContainer;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.DrawerContainer;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.Author;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.options.ActionOptions;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.options.Option;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.options.AlertType;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.options.DialogAction;
+import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -43,6 +52,7 @@ public class TutorialUnderstanding extends TutorialCreator {
 
     public TutorialUnderstanding( Context context) {
         super(context);
+
         this
                 .title("Introduction")
                 .text("""
@@ -81,9 +91,6 @@ public class TutorialUnderstanding extends TutorialCreator {
                             // the name is used to navigate
                             // the node acts as a container
                         """)
-
-
-
                 .title("Loading Views", "View")
                 .text("It's a view that is loaded by yml file, this wrapper class wrappers the composer, location, charsets.. so you can get in the future or load when application starts.")
                 .legend("View of the tree")
@@ -99,7 +106,7 @@ public class TutorialUnderstanding extends TutorialCreator {
                            fxml: myView.fxml
                          }
                         """, "yaml")
-                .title("Controllers")
+                .title("Controllers", "View")
                 .text("The SimpleView descends a ActionView, a typical controller class has the method initialize, but isn't only the actions you need, when you enter a view.")
                 .text("See in code (The same methods are applicative in SimpleView as well).", "text-12", "text-bold")
                 .code("""
@@ -140,16 +147,24 @@ public class TutorialUnderstanding extends TutorialCreator {
                         context.controllerOf(viewName);
                         """)
 
-                .title("Popups and wrappers.")
-                .text("""
-            App ecosystem needs a way to create modals, alerts to talk his users. Getting the context to use an accessor class for creating dialogs,
-            snackbars, alerts and side drawers.
-            """)
                 .separator()
-                .title("Snack Bar")
+                .title("Flow")
+                .text("Create and put children in root directly, this can use to create stacked items like snacks, and notifications.")
+                .title("Popup")
+                .text("")
+                .demonstration(  createActions(),
+                        """
+                            context.flow()
+                                .content(
+                                    new DialogContainer(b)
+                                    .style("-fx-background-radius : 10px;")
+                                    .size(400, 280)
+                            )
+                                """)
+                .title("Snack Bar", "Flow")
                 .text("""
-            Creating a snack! I think that snack is more helpful in most cases. You can get the code in block to your clip content.
-            Create a snack using the button on the top right of the code box
+                    Creating a snack! I think that snack is more helpful in most cases. You can get the code in block to your clip content.
+                    Create a snack using the button on the top right of the code box
             """)
                 .code("""
                 context .createSnackBar()
@@ -158,10 +173,16 @@ public class TutorialUnderstanding extends TutorialCreator {
                         .message("Your message")
                         .show();
                 """)
+
+                .title("Wrapper")
+                .text("""
+                    App ecosystem needs a way to create modals, alerts to talk his users. Getting the context to use an accessor class for creating dialogs,
+                    alerts and side drawers.
+                    """)
                 .separator()
-                .title("WrapperContainer")
+                .title("Dialog", "Wrapper")
                 .options(
-                        new ActionOptions(
+                        new Option(
                                 "Open", event -> createDialogPopup()
                         )
                 )
@@ -173,21 +194,21 @@ public class TutorialUnderstanding extends TutorialCreator {
                             .show();
                         """)
                 .separator()
-                .title("Alerts")
+                .title("Alerts", "Wrapper")
                 .text("""
                 Default alerts
                 """)
                 .options(
-                        new ActionOptions(
+                        new Option(
                                 "Info", event -> createDialog(AlertType.INFO)
                         ).style("-fx-accent : -info;"),
-                        new ActionOptions(
+                        new Option(
                                 "Warning", event -> createDialog(AlertType.WARNING)
                         ).style("-fx-accent : -amber;"),
-                        new ActionOptions(
+                        new Option(
                                 "Success", event -> createDialog(AlertType.SUCCESS)
                         ).style("-fx-accent : -mint;"),
-                        new ActionOptions(
+                        new Option(
                                 "Danger", event -> createDialog(AlertType.ERROR)
                         ).style("-fx-accent : -grapefruit;"))
                 .code(
@@ -215,13 +236,13 @@ public class TutorialUnderstanding extends TutorialCreator {
                                 .show();
                                 """)
                 .separator()
-                .title("Drawers")
+                .title("Drawers", "Wrapper")
                 .text("Create you drawer left or right using this.")
                 .options(
-                        new ActionOptions(
+                        new Option(
                                 "Left", event -> createDrawer(HPos.LEFT)
                         ),
-                        new ActionOptions(
+                        new Option(
                                 "Right", event -> createDrawer(HPos.RIGHT)
                         )
                 )
@@ -289,5 +310,26 @@ public class TutorialUnderstanding extends TutorialCreator {
                                 .type(_type)
                                 .build())
                 .show();
+    }
+
+    private void createPop(Node node, Pos direction) {
+        context.flow()
+                .content(
+                        new DialogContainer(new Label("Welcome"))
+                                .style("-fx-background-radius : 10px;")
+                                .size(400, 280)
+                )
+                .show(direction, node, 0 , 0);
+    }
+
+    public List<Node> createActions() {
+        List<Node> list = new ArrayList<>();
+        for(Pos pos : Pos.values()) {
+            Button button = new Button(pos.name());
+            button.setOnMouseClicked(event -> createPop(button, pos));
+            list.add(button);
+        }
+
+        return list;
     }
 }

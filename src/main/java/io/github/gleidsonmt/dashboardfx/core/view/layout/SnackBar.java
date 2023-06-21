@@ -52,7 +52,7 @@ public class SnackBar implements WrapperContainer {
     // Events to set
     private EventHandler<ActionEvent> undoEvent;
 
-    // ActionOptions to set
+    // Option to set
     private String message;
     private Node icon;
     private SnackColors color = SnackColors.GRAY;

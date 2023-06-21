@@ -25,9 +25,7 @@ import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.BlockCode;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.options.ActionOptions;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.options.Option;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -46,10 +44,8 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import java.net.URI;
 import java.net.URL;
 import java.util.List;
-import java.util.function.Supplier;
 
 /**
  * Base class to create imperative presentations.
@@ -250,9 +246,24 @@ public class PresentationCreator
     }
 
     @ApiStatus.Experimental
-    public PresentationCreator options(ActionOptions... options) {
+    public PresentationCreator options(Option... options) {
         items.add(createOptions(options));
         return this;
+    }
+
+    @ApiStatus.Internal
+    private TilePane createOptions(Option... options) {
+        TilePane layout = new TilePane();
+        layout.setHgap(10);
+        layout.setVgap(10);
+        layout.setPadding(new Insets(10));
+
+        for (Option option : options) {
+            GNButton btn = createButton(option.getName(), option.getAction());
+            btn.setStyle(option.getStyle());
+            layout.getChildren().add(btn);
+        }
+        return layout;
     }
 
     public PresentationCreator footer(Author... authors) {
@@ -278,11 +289,18 @@ public class PresentationCreator
     }
 
     @ApiStatus.OverrideOnly
-    public Author createDefaultAuthor() {
+    public Author createDefaultAuthor(String control) {
        return new Author("OpenJFX",
                         "https://github.com/openjfx/openjfx.github.io",
-                        "https://openjfx.io/javadoc/17/javafx.controls/javafx/scene/control/"+title+".html");
+                        "https://openjfx.io/javadoc/17/javafx.controls/javafx/scene/control/"+control+".html");
     }
+
+    public Author createUserDefault() {
+        return new Author("Gleidson Neves",
+                "https://github.com/gleidsonmt",
+                "https://github.com/gleidsonmt/DashboardFx");
+    }
+
 
     @ApiStatus.Internal
     private Node createFooter(Author... authors) {
@@ -337,6 +355,15 @@ public class PresentationCreator
 //        return this;
 //    }
 
+    public PresentationCreator demonstration(List<Node> nodes, String java) {
+        demonstration(nodes, java, "");
+        return this;
+    }
+
+    public PresentationCreator demonstration(Node node, String java) {
+        demonstration(node, java, "");
+        return this;
+    }
     public PresentationCreator demonstration(List<Node> nodes, String java, String fxml) {
         items.add(createTabs(nodes, java, fxml, null));
         return this;
@@ -392,19 +419,6 @@ public class PresentationCreator
         return new BlockCode(context, text, language);
     }
 
-    @ApiStatus.Internal
-    private TilePane createOptions(ActionOptions... options) {
-        TilePane layout = new TilePane();
-        layout.setHgap(10);
-        layout.setVgap(10);
-
-        for (ActionOptions option : options) {
-            GNButton btn = createButton(option.getName(), option.getAction());
-            btn.setStyle(option.getStyle());
-            layout.getChildren().add(btn);
-        }
-        return layout;
-    }
 
     @ApiStatus.Internal
     private GNButton createButton(String title, EventHandler<ActionEvent> actionEventEventHandler) {

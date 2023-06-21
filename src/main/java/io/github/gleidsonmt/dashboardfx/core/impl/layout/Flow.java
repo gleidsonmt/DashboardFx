@@ -23,6 +23,7 @@ import io.github.gleidsonmt.dashboardfx.core.impl.IRoot;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.WrapperContainer;
 import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
@@ -81,16 +82,15 @@ public class Flow implements WrapperContainer {
 //        animationFX.play();
     }
 
-    public void show(Direction direction, Node target) {
+    public void show(Pos direction, Node target) {
         show(direction, target, 0, 0);
     }
 
-    public void show(Direction direction, Node target, double x) {
+    public void show(Pos direction, Node target, double x) {
         show(direction, target, x, 0);
     }
 
-    public void show(Direction direction, Node target, double x, double y) {
-
+    public void show(Pos pos, Node target, double x, double y) {
         opened = true;
 
         if (root.getChildren().contains(content)) {
@@ -101,6 +101,7 @@ public class Flow implements WrapperContainer {
             root.getChildren().remove(root.getChildren().size()-1);
             return;
         }
+
 
         content.setTranslateX(0);
         content.setTranslateY(0);
@@ -113,15 +114,10 @@ public class Flow implements WrapperContainer {
 
         Bounds bounds = target.localToScene(target.getLayoutBounds());
 
-        switch (direction) {
+        switch (pos) {
             case TOP_LEFT -> {
-
                 content.setTranslateX(bounds.getMinX() - content.getMaxWidth());
                 content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
-
-//                content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
-//                content.setTranslateY(clamp(bounds.getMinY(), content.getMaxHeight()));
-
             }
             case TOP_CENTER -> {
                 content.setTranslateX(
@@ -134,20 +130,15 @@ public class Flow implements WrapperContainer {
                 content.setTranslateX(bounds.getMinX() + bounds.getWidth());
                 content.setTranslateY(bounds.getMinY() - content.getMaxHeight());
             }
-            case RIGHT_CENTER -> {
+            case CENTER_RIGHT -> {
                 content.setTranslateX(bounds.getMinX() + bounds.getWidth());
                 content.setTranslateY( (bounds.getMaxY() - bounds.getHeight()) -
-                         content.getMaxHeight()/2);
-            }
-            case RIGHT_TOP -> {
-                content.setTranslateX(bounds.getMinX() + bounds.getWidth());
-                content.setTranslateY(bounds.getMinY());
+                        content.getMaxHeight()/2);
             }
             case BOTTOM_RIGHT -> {
                 content.setTranslateX((bounds.getMinX() + bounds.getWidth()));
                 content.setTranslateY(bounds.getMinY() + bounds.getHeight());
             }
-
             case BOTTOM_CENTER -> {
                 content.setTranslateX(bounds.getMinX() -
                         (center(bounds.getWidth(), content.getMaxWidth())) );
@@ -157,16 +148,37 @@ public class Flow implements WrapperContainer {
                 content.setTranslateX(bounds.getMinX() - content.getMaxWidth());
                 content.setTranslateY(bounds.getMaxY());
             }
-            case LEFT_CENTER -> {
+
+            case CENTER_LEFT -> {
                 content.setTranslateX((bounds.getMinX() - content.getMaxWidth()));
                 content.setTranslateY( (bounds.getMaxY() - bounds.getHeight()) -
                         content.getMaxHeight()/2);
             }
-            case LEFT_TOP -> {
-                content.setTranslateX(clamp(bounds.getMinX(), content.getMaxWidth()));
+            case CENTER -> {
+                content.setTranslateX(
+                        bounds.getMinX() -
+                                (center(bounds.getWidth() , content.getMaxWidth()))
+                );
+                content.setTranslateY((bounds.getMinY()) - (content.getMaxHeight()/2));
+            }
+            case BASELINE_LEFT -> {
+                content.setTranslateY(bounds.getMinY());
+                content.setTranslateX(bounds.getMinX() - content.getMaxWidth());
+            }
+            case BASELINE_CENTER -> {
+                content.setTranslateX(
+                        bounds.getMinX() -
+                                (center(bounds.getWidth() , content.getMaxWidth()))
+                );
                 content.setTranslateY(bounds.getMinY());
             }
+
+            case BASELINE_RIGHT -> {
+                content.setTranslateY(bounds.getMinY());
+                content.setTranslateX(bounds.getMaxX());
+            }
         }
+
 
         content.setTranslateX(content.getTranslateX() + x);
         content.setTranslateY(content.getTranslateY() + y);
@@ -194,30 +206,6 @@ public class Flow implements WrapperContainer {
         } else if(isOutsideLeft(contentBounds)) { // se passa da linha da esquerda
             relocateLeft();
         }
-
-//        if (isOutsideInLeft(contentBounds)) {
-//            content.setTranslateX( 0 );
-//            System.out.println("1");
-//        } else if (isOutsideInRight(contentBounds)) {
-//            System.out.println("2");
-//            rest = restInRight(contentBounds);
-//            content.setTranslateX((content.getTranslateX() - rest) -
-//                    (padding.getLeft() + padding.getRight()));
-//        } else if(isOutsideInTop(contentBounds)) {
-//            System.out.println("3");
-//        }
-
-
-//        Timeline animation = new Timeline();
-//        animation.getKeyFrames().setAll(
-//                new KeyFrame(Duration.ZERO, new KeyValue(
-//                        content.translateYProperty(), content.getTranslateY() - 10
-//                )),
-//                new KeyFrame(Duration.millis(100), new KeyValue(
-//                        content.translateYProperty(), content.getTranslateY() + 10
-//                ))
-//        );
-//        animation.play();
     }
 
     protected void relocateTop() {

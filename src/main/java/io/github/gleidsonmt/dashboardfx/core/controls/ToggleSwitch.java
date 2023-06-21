@@ -70,8 +70,8 @@ public class ToggleSwitch extends Parent {
             translateAnimation.setToX(
                     isOn ? 100 - 84 : 0
             );
-            fillAnimation.setFromValue(isOn ? Color.WHITE : Color.web("#00BCD4"));
-            fillAnimation.setToValue(isOn ? Color.web("#00BCD4") : Color.WHITE);
+            fillAnimation.setFromValue(isOn ? Color.WHITE : Color.web("#0096C9"));
+            fillAnimation.setToValue(isOn ? Color.web("#0096C9") : Color.WHITE);
             animation.play();
         });
 

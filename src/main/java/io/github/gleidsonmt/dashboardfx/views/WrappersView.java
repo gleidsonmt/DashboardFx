@@ -22,14 +22,12 @@ package io.github.gleidsonmt.dashboardfx.views;
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.*;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.Author;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.PresentationCreator;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
-import io.github.gleidsonmt.dashboardfx.core.view.layout.options.ActionOptions;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.options.Option;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.options.AlertType;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.options.DialogAction;
 import javafx.geometry.HPos;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
@@ -41,7 +39,7 @@ public class WrappersView extends StackPane {
     public WrappersView(Context context) {
         this.context = context;
 
-        final ActionOptions customDialog = new ActionOptions();
+        final Option customDialog = new Option();
         customDialog.setName("Around");
         customDialog.setAction(event -> {
             createAroundDilog(customDialog);
@@ -73,7 +71,7 @@ public class WrappersView extends StackPane {
         .separator()
         .title("WrapperContainer")
         .options(
-            new ActionOptions(
+            new Option(
             "Open", event -> createDialogPopup()
             )
         )
@@ -92,16 +90,16 @@ public class WrappersView extends StackPane {
                 Default alerts
                 """)
         .options(
-                new ActionOptions(
+                new Option(
                         "Info", event -> createDialog(AlertType.INFO)
                 ).style("-fx-accent : -info;"),
-                new ActionOptions(
+                new Option(
                         "Warning", event -> createDialog(AlertType.WARNING)
                 ).style("-fx-accent : -amber;"),
-                new ActionOptions(
+                new Option(
                         "Success", event -> createDialog(AlertType.SUCCESS)
                 ).style("-fx-accent : -mint;"),
-                new ActionOptions(
+                new Option(
                         "Danger", event -> createDialog(AlertType.ERROR)
                 ).style("-fx-accent : -grapefruit;"))
         .code(
@@ -131,10 +129,10 @@ public class WrappersView extends StackPane {
         .title("Drawers")
         .text("Create you drawer left or right using this.")
         .options(
-                new ActionOptions(
+                new Option(
                         "Left", event -> createDrawer(HPos.LEFT)
                 ),
-                new ActionOptions(
+                new Option(
                         "Right", event -> createDrawer(HPos.RIGHT)
                 )
         )

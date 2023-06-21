@@ -23,16 +23,16 @@ import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.DeclarativeCom
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class ActionOptions extends DeclarativeComponent<ActionOptions> {
+public class Option extends DeclarativeComponent<Option> {
 
     private String name;
     private EventHandler<ActionEvent> action;
 
-    public ActionOptions() {
+    public Option() {
         this(null, null);
     }
 
-    public ActionOptions(String name, EventHandler<ActionEvent> action) {
+    public Option(String name, EventHandler<ActionEvent> action) {
         this.name = name;
         this.action = action;
     }
@@ -54,7 +54,8 @@ public class ActionOptions extends DeclarativeComponent<ActionOptions> {
     }
 
     @Override
-    public ActionOptions size(double width, double height) {
+    public Option size(double width, double height) {
         return null;
     }
+
 }
