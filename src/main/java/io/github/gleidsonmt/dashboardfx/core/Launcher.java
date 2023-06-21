@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.scenicview.ScenicView;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;

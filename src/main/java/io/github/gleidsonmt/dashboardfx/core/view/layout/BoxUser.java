@@ -44,7 +44,7 @@ public class BoxUser extends HBox {
         btnArrow.setMinWidth(20);
         btnArrow.getStyleClass().addAll("btn-flat", "no-border");
 //        this.getChildren().setAll( avatarStatus);
-        this.getChildren().setAll(avatarStatus, btnArrow);
+        this.getChildren().setAll(avatarStatus);
         avatarStatus.setPadding(new Insets(2, 5, 8, 2));
 //        user.setPadding(new Insets(0, 5, 15, 2));
         avatarStatus.setRadius(14);

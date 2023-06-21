@@ -138,7 +138,10 @@ public class ButtonPresCreator extends TutorialCreator {
                             .build()
                 )
                 .title("Links")
-                .footer(createDefaultControl());
+                .footer(
+                        createDefaultAuthor("Button"),
+                        createUserDefault()
+                );
         build();
 
     }
