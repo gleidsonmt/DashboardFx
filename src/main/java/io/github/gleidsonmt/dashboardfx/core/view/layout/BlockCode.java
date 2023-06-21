@@ -62,7 +62,7 @@ public class BlockCode extends StackPane {
         btn.setGraphic(path);
         this.setStyle("-fx-border-color : -light-gray-2; -fx-background-color : -light-gray;");
         WebView webView = new WebView();
-        webView.setContextMenuEnabled(false);
+//        webView.setContextMenuEnabled(false);
         webView.getEngine().setJavaScriptEnabled(true);
 
         URL url = context.getResource("web/index.html");
@@ -96,17 +96,16 @@ public class BlockCode extends StackPane {
         webView.setOnScroll(event -> {
         });
 
-        this.getChildren().addAll(
-               new SimpleLoadCircle()
-        );
+        this.getChildren().addAll(new SimpleLoadCircle());
 
         btn.setOnAction(event -> {
+
             ClipboardContent content = new ClipboardContent();
             content.putString(this.content.get());
             content.putHtml("<b>Bold</b> text");
             Clipboard.getSystemClipboard().setContent(content);
 
-            context.createSnackBar()
+            context .createSnackBar()
                     .icon(new IconContainer(Icons.DONE))
                     .color(SnackColors.SUCCESS)
                     .message("Copied!")
