@@ -47,7 +47,7 @@ import java.util.function.Predicate;
 public class SearchViewBox extends VBox {
 
     private final ListView<SearchItem> listView = new ListView<>();
-    private IntegerProperty listSize = new SimpleIntegerProperty();
+    private final IntegerProperty listSize = new SimpleIntegerProperty();
 
     @SuppressWarnings("unchecked")
     public SearchViewBox(@NotNull Context context) {
@@ -117,9 +117,8 @@ public class SearchViewBox extends VBox {
 
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null && !newValue.isEmpty()) {
-                filteredList.setPredicate(searchItem -> {
-                        return searchItem.getName().contains(newValue);
-                });
+                filteredList.setPredicate(searchItem ->
+                        searchItem.getName().toLowerCase().contains(newValue.toLowerCase()));
 
 
                 if (filteredList.size() < 1) {
