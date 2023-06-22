@@ -71,6 +71,11 @@ public class SideNavController extends ActionView {
     }
 
     @FXML
+    private void goMenuButton() {
+        go("slider", new MenuButtonPresCreator(context));
+    }
+
+    @FXML
     private void goListView() {
         go("view_list", new ListViewCreator(context));
     }
