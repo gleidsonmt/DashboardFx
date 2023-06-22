@@ -38,8 +38,6 @@ import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.function.Predicate;
-
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  27/05/2023
@@ -117,6 +115,7 @@ public class SearchViewBox extends VBox {
 
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null && !newValue.isEmpty()) {
+
                 filteredList.setPredicate(searchItem ->
                         searchItem.getName().toLowerCase().contains(newValue.toLowerCase()));
 
