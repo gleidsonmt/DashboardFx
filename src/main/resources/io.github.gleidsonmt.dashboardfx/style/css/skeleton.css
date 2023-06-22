@@ -180,8 +180,6 @@ SVGPath {
     -fx-fill: white;
 }
 
-
-
 /* @Effect */
 
 .toggle-button {
@@ -713,8 +711,14 @@ SVGPath {
 *******************************************************************************/
 
 .split-menu-button .arrow-button {
-    -fx-background-color: transparent;
+    -fx-background-color: -light-gray;
+    -fx-border-width: 0px 0px 0px 1px;
+    -fx-border-color: -light-gray-2;
     -fx-cursor: hand;
+}
+
+.split-menu-button .arrow-button:pressed {
+    -fx-background-color: -medium-gray;
 }
 
 /*******************************************************************************
