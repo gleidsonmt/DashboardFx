@@ -150,7 +150,7 @@ public class TutorialUnderstanding extends TutorialCreator {
                 .separator()
                 .title("Flow")
                 .text("Create and put children in root directly, this can use to create stacked items like snacks, and notifications.")
-                .title("Popup")
+                .title("Popup", "Flow")
                 .text("")
                 .demonstration(  createActions(),
                         """
@@ -159,7 +159,8 @@ public class TutorialUnderstanding extends TutorialCreator {
                                     new DialogContainer(b)
                                     .style("-fx-background-radius : 10px;")
                                     .size(400, 280)
-                            )
+                                )
+                            .show(direction, node)
                                 """)
                 .title("Snack Bar", "Flow")
                 .text("""
@@ -319,7 +320,7 @@ public class TutorialUnderstanding extends TutorialCreator {
                                 .style("-fx-background-radius : 10px;")
                                 .size(400, 280)
                 )
-                .show(direction, node, 0 , 0);
+                .show(direction, node);
     }
 
     public List<Node> createActions() {
