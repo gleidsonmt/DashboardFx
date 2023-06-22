@@ -456,13 +456,15 @@ SVGPath {
 .check-box > .box {
     /* -fx-background-radius: 3, 2, 2; */
     -fx-background-color:transparent;
-    -fx-border-color: -fx-accent;
+    -fx-border-color: -box-color;
     -fx-border-radius: 3,2,1;
     -fx-border-width: 2px;
 }
 
 .check-box:selected > .box  {
     -fx-background-color: -fx-accent;
+    -fx-border-width: 2px;
+    -fx-border-color: transparent;
 }
 
 .check-box:selected > .box > .mark {
@@ -472,7 +474,7 @@ SVGPath {
 }
 
 .check-box:indeterminate > .box {
-
+    -fx-border-color: -fx-accent;
 }
 
 .check-box:indeterminate  > .box > .mark {
@@ -706,6 +708,35 @@ SVGPath {
 
 /*******************************************************************************
 *                                                                              *
+    @MenuBar
+*                                                                              *
+*******************************************************************************/
+
+.menu-bar {
+    -fx-background-color: transparent;
+}
+
+.menu-bar .container .menu {
+    -fx-border-color: transparent;
+}
+
+.menu-bar > .container > .menu-button:hover,
+.menu-bar > .container > .menu-button:focused,
+.menu-bar > .container > .menu-button:showing {
+    -fx-background: -fx-selection-bar;
+    -fx-background-color: -fx-background;
+}
+.menu-bar > .container > .menu-button:hover > .label,
+.menu-bar > .container > .menu-button:focused > .label,
+.menu-bar > .container > .menu-button:showing  > .label {
+    -fx-text-fill: white;
+}
+
+.menu-bar > .container > .menu-button:hover > .menu-item {
+    -fx-background-color: red;
+}
+/*******************************************************************************
+*                                                                              *
     @SplitMenuButton
 *                                                                              *
 *******************************************************************************/
@@ -757,4 +788,36 @@ SVGPath {
     -fx-tick-length: 5px;
     -fx-minor-tick-length: 3px;
     -fx-border-color: null;
+}
+
+/*******************************************************************************
+*                                                                              *
+    @RadioButton
+*                                                                              *
+*******************************************************************************/
+
+.radio-button {
+    -fx-cursor: hand;
+    -fx-border-width: 2px;
+}
+
+.radio-button .radio {
+    -fx-background-color: transparent;
+    -fx-border-color: -box-color;
+    -fx-border-radius: 100px;
+    -fx-background-insets: 14px;
+    -fx-border-width: 2px;
+    -fx-padding: 5px;
+}
+
+.radio-button:selected .radio  {
+    -fx-background-color: white;
+    -fx-border-color: -fx-accent;
+    -fx-border-radius: 100px;
+    -fx-border-width: 2px;
+}
+
+.radio-button:selected .radio .dot {
+    -fx-background-color: -fx-accent;
+    -fx-background-insets: -2px;
 }

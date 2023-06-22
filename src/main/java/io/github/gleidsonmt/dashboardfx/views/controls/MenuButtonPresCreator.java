@@ -36,7 +36,7 @@ public class MenuButtonPresCreator extends TutorialCreator {
     public MenuButtonPresCreator(Context context) {
         super(context);
         this
-                .title("MenuButton")
+                .title("Intro")
                 .text("""
                         MenuButtonPresCreator is a button which, when clicked or pressed, will show a ContextMenu. A MenuButtonPresCreator shares a very similar API to the Menu control, insofar that you set the items that should be shown in the items ObservableList, and there is a text property to specify the label shown within the MenuButtonPresCreator.
                         """)

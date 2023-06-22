@@ -72,7 +72,7 @@ public class SideNavController extends ActionView {
 
     @FXML
     private void goMenuButton() {
-        go("slider", new MenuButtonPresCreator(context));
+        go("menu_button", new MenuButtonPresCreator(context));
     }
 
     @FXML
@@ -123,6 +123,16 @@ public class SideNavController extends ActionView {
     @FXML
     private void goRating() {
         go("rating", new RatingPresCreator(context));
+    }
+
+    @FXML
+    private void goMenuBar() {
+        go("menu_bar", new MenuBarPresCreator(context));
+    }
+
+    @FXML
+    private void goRadioButton() {
+        go("radio_button", new RadioButtonPresCreator(context));
     }
 
     @FXML
