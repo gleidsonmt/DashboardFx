@@ -32,9 +32,14 @@ public class RadioButtonPresCreator extends TutorialCreator {
         super(context);
         this
                 .title("Intro")
-                .demonstration(new RadioButton("RadioButton"), "")
+                .text("RadioButtons create a series of items where only one item can be selected. RadioButtons are a specialized ToggleButton. When a RadioButton is pressed and released a ActionEvent is sent. Your application can perform some action based on this event by implementing an EventHandler to process the ActionEvent.")
+                .demonstration(new RadioButton("RadioButton"), """
+                        //Constructor
+                        RadioButton radioBtn = new RadioButton("Radio Button");
+                        """)
                 .title("Links")
                 .footer(createDefaultAuthor("RadioButton"))
                 .build();
+
     }
 }

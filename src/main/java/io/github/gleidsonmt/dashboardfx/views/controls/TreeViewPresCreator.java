@@ -54,7 +54,7 @@ public class TreeViewPresCreator extends TutorialCreator {
                                     """,
                                 """
                                      <!-- Building -->
-                                     <TreeView>
+                                    <TreeView>
                                         <!-- Defining root -->
                                         <TreeItem value="Root">
                                         <!-- Defining children -->
@@ -64,7 +64,8 @@ public class TreeViewPresCreator extends TutorialCreator {
                                            <TreeItem value="Third" />
                                            <TreeItem value="Fourth" />
                                         </children>
-                                     </TreeItem>
+                                        </TreeItem>
+                                    </TreeView>
                                     """
                 )
                 .title("Links")

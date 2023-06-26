@@ -136,6 +136,21 @@ public class SideNavController extends ActionView {
     }
 
     @FXML
+    private void goChoiceBox() {
+        go("choice_box", new ChoiceBoxPresCreator(context));
+    }
+
+    @FXML
+    private void goSpinner() {
+        go("spinner", new SpinnerPresCreator(context));
+    }
+
+    @FXML
+    private void goTreeTableView() {
+        go("tree_table_view", new TreeTableViewPresCreator(context));
+    }
+
+    @FXML
     private void goAbout() throws NavigationException{
         context.routes().nav("about");
     }

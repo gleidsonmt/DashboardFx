@@ -92,7 +92,6 @@ Text {
 
 .button, .toggle-button {
     -fx-font-weight : bolder;
-    -fx-graphic-text-gap : 10;
     -fx-cursor : hand;
 }
 

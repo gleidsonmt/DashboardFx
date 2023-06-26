@@ -23,6 +23,7 @@ import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNButton;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
+import io.github.gleidsonmt.dashboardfx.core.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.BlockCode;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.options.Option;
@@ -148,6 +149,22 @@ public class PresentationCreator
         items.add(createText(text));
         return this;
     }
+
+//    public PresentationCreator textBlock(String text, String view) {
+////        TextFlow flow = createText(text);
+////        items.add(flow);
+//        Hyperlink link = new Hyperlink(text);
+//        link.setOnAction(event -> {
+//            try {
+//                context.routes().nav(view);
+//            } catch (NavigationException e) {
+//                throw new RuntimeException(e);
+//            }
+//        });
+//
+//        items.add(link);
+//        return this;
+//    }
 
     public PresentationCreator text(String text, String... options) {
         items.add(createText(text, options));

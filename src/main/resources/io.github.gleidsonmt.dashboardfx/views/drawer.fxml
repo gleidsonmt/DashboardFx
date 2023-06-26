@@ -2,15 +2,9 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -85,6 +79,19 @@
                   <SVGPath content="M12 11q-1.65 0-2.825-1.175Q8 8.65 8 7q0-1.65 1.175-2.825Q10.35 3 12 3q1.65 0 2.825 1.175Q16 5.35 16 7q0 1.65-1.175 2.825Q13.65 11 12 11Zm0-2q.825 0 1.413-.588Q14 7.825 14 7t-.587-1.412Q12.825 5 12 5q-.825 0-1.412.588Q10 6.175 10 7t.588 1.412Q11.175 9 12 9ZM7 21q-1.65 0-2.825-1.175Q3 18.65 3 17q0-1.65 1.175-2.825Q5.35 13 7 13q1.65 0 2.825 1.175Q11 15.35 11 17q0 1.65-1.175 2.825Q8.65 21 7 21Zm0-2q.825 0 1.412-.587Q9 17.825 9 17q0-.825-.588-1.412Q7.825 15 7 15t-1.412.588Q5 16.175 5 17t.588 1.413Q6.175 19 7 19Zm10 2q-1.65 0-2.825-1.175Q13 18.65 13 17q0-1.65 1.175-2.825Q15.35 13 17 13q1.65 0 2.825 1.175Q21 15.35 21 17q0 1.65-1.175 2.825Q18.65 21 17 21Zm0-2q.825 0 1.413-.587Q19 17.825 19 17q0-.825-.587-1.412Q17.825 15 17 15q-.825 0-1.412.588Q15 16.175 15 17t.588 1.413Q16.175 19 17 19ZM12 7ZM7 17Zm10 0Z" nodeOrientation="LEFT_TO_RIGHT" />
                </graphic>
                <VBox nodeOrientation="LEFT_TO_RIGHT">
+                  <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goTreeTableView" styleClass="drawer-item" text="TreeTableView" />
+                  <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="650.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goSpinner" styleClass="drawer-item" text="Spinner" />
+                  <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="615.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goChoiceBox" styleClass="drawer-item" text="ChoiceBox" />
+                  <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goRadioButton" styleClass="drawer-item" text="RadioButton">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="group21" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goMenuBar" styleClass="drawer-item" text="MenuBar">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="group2" />
+                     </toggleGroup>
+                  </ToggleButton>
                   <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goMenuButton" styleClass="drawer-item" text="MenuButton" toggleGroup="$group" />
                   <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="67.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goButton" styleClass="drawer-item" text="Button" toggleGroup="$group" />
                   <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="55.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goCarousel" styleClass="drawer-item" text="Carousel" />
@@ -131,38 +138,6 @@
                   <SVGPath content="M11.95 18q.525 0 .888-.363.362-.362.362-.887t-.362-.887q-.363-.363-.888-.363t-.888.363q-.362.362-.362.887t.362.887q.363.363.888.363Zm-.9-3.85h1.85q0-.825.188-1.3.187-.475 1.062-1.3.65-.65 1.025-1.238.375-.587.375-1.412 0-1.4-1.025-2.15T12.1 6q-1.425 0-2.312.75-.888.75-1.238 1.8l1.65.65q.125-.45.563-.975Q11.2 7.7 12.1 7.7q.8 0 1.2.437.4.438.4.963 0 .5-.3.937-.3.438-.75.813-1.1.975-1.35 1.475-.25.5-.25 1.825ZM12 22q-2.075 0-3.9-.788-1.825-.787-3.175-2.137-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175 1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138 1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175-1.35 1.35-3.175 2.137Q14.075 22 12 22Zm0-2q3.35 0 5.675-2.325Q20 15.35 20 12q0-3.35-2.325-5.675Q15.35 4 12 4 8.65 4 6.325 6.325 4 8.65 4 12q0 3.35 2.325 5.675Q8.65 20 12 20Zm0-8Z" />
                </graphic>
             </ToggleButton>
-            <MenuButton mnemonicParsing="false" text="MenuButton">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-            </MenuButton>
-            <ColorPicker />
-            <MenuBar>
-              <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-            <SplitMenuButton text="SplitMenuButton">
-              <items>
-                <MenuItem text="Action 1" />
-                <MenuItem text="Action 2" />
-              </items>
-            </SplitMenuButton>
          </VBox>
       </ScrollPane>
    </VBox>
