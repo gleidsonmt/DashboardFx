@@ -90,10 +90,15 @@
     -fx-border-width : 0 0 0 2.5;
     -fx-background-color : linear-gradient(to left, derive(-aqua, 95%), derive(-aqua, 95%));
     -fx-font-weight : bold;
+        -fx-padding : 15px;
 }
 
 #drawer-box .drawer-item:selected:hover {
     -fx-background-color : transparent;
+}
+
+#drawer-box .drawer-item:selected:focused {
+    -fx-padding : 15px;
 }
 
 #drawer-box .drawer-item:selected SVGPath {

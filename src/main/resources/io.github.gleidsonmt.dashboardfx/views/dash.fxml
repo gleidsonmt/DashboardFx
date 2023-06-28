@@ -33,6 +33,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.web.HTMLEditor?>
 <StackPane fx:id="root" style="-fx-border-color : transparent; -fx-background-color : white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.DashController">
    <stylesheets>
       <URL value="@../style/css/colors.css" />

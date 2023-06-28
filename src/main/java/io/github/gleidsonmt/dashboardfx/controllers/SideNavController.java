@@ -144,12 +144,30 @@ public class SideNavController extends ActionView {
     private void goSpinner() {
         go("spinner", new SpinnerPresCreator(context));
     }
+    @FXML
+    private void goColorPicker() {
+        go("color_picker", new ColorPickerPresCreator(context));
+    }
+
+    @FXML
+    private void goDatePicker() {
+        go("date_picker", new DatePickerPresCreator(context));
+    }
+
+    @FXML
+    private void goPagination() {
+        go("pagination", new DatePickerPresCreator(context));
+    }
 
     @FXML
     private void goTreeTableView() {
         go("tree_table_view", new TreeTableViewPresCreator(context));
     }
 
+    @FXML
+    private void goHtmlEditor() {
+        go("html_editor", new HtmlEditorViewPresCreator(context));
+    }
     @FXML
     private void goAbout() throws NavigationException{
         context.routes().nav("about");
