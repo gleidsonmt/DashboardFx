@@ -8,6 +8,7 @@ module io.github.gleidsonmt.dashboardfx {
     requires javafx.media;
 
     requires java.logging;
+    requires javafx.swing;
 
     requires org.yaml.snakeyaml;
     requires org.jetbrains.annotations;

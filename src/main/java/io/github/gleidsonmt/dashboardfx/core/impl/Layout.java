@@ -4,7 +4,9 @@ import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.controls.GNIconButton;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.view.View;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.Bar;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.Drawer;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.scene.Node;
@@ -92,6 +94,12 @@ public class Layout {
     public void setNav(Node node) {
         left = node;
         root.getChildren().add(0, node);
+    }
+
+    public void setNav(View view) {
+        root.getChildren().add(0, view.getRoot());
+//        view.getRoot().setMinWidth(250D);
+        left = view.getRoot();
     }
 
     public void setNav(URL location) {

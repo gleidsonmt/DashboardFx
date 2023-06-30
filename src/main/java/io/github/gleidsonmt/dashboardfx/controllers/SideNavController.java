@@ -173,6 +173,10 @@ public class SideNavController extends ActionView {
         context.routes().nav("about");
     }
 
+    public void removeFocus() {
+        group.getSelectedToggle().setSelected(false);
+    }
+
     private void go(String name, TutorialCreator tutorialCreator) {
         context.routes().putAndGo(new SimpleView(name, tutorialCreator));
     }

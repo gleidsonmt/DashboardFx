@@ -262,7 +262,7 @@
             <ColorPicker />
                 <DatePicker />
             </HBox>
-            <ProgressBar prefWidth="200.0" progress="0.0" GridPane.rowIndex="4" />
+            <ProgressBar prefHeight="7.0" prefWidth="228.0" progress="0.86" GridPane.rowIndex="4" />
             <Pagination prefHeight="79.0" prefWidth="232.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <HBox alignment="CENTER" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                 <ComboBox maxHeight="40.0" prefHeight="40.0" prefWidth="146.0" value="First">

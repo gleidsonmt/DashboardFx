@@ -46,7 +46,4 @@ public abstract class DeclarativeComponent<T>  extends StackPane {
         this.setMaxSize(width, height);
         return (T) this;
     }
-
-
-
 }

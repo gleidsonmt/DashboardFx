@@ -220,14 +220,17 @@ public final class DashController extends ActionView {
         GNIconButton btnSearch = new GNIconButton(Icons.SEARCH);
         btnSearch.getStyleClass().add("btn-flat");
         btnSearch.setStyle("-fx-cursor: hand;");
+
+
         btnSearch.setOnMouseClicked(event -> {
+            SearchViewBox searchViewBox = new SearchViewBox(context);
             context.wrapper()
                     .content(
-                            new DialogContainer(
-                                    new SearchViewBox(context))
+                            new DialogContainer(searchViewBox)
                             .style("-fx-background-radius: 5px;")
                             .size(800, 400)
                     )
+                    .onShown(e -> searchViewBox.focus())
                     .show();
         });
 
@@ -247,7 +250,6 @@ public final class DashController extends ActionView {
         sms.getStyleClass().add("bd-info");
 //            sms.setColorCircle(Color.web(Colors.GRAPEFRUIT.toString()));
 
-
         BoxUser boxUser = new BoxUser("Gleidson Neves",
                 context.getResource("style/img/me_avatar.jpeg").toExternalForm());
 
@@ -260,7 +262,6 @@ public final class DashController extends ActionView {
         HBox.setMargin(separator, new Insets(0, 5, 0,15));
 
         VBox b = createDialogNotification();
-
 
         notification.setOnMouseClicked(event ->
                 context.flow()
@@ -277,13 +278,20 @@ public final class DashController extends ActionView {
 
             try {
                 context.routes().nav("profile");
+                removeFocus();
             } catch (NavigationException e) {
                 throw new RuntimeException(e);
             }
         });
         btnProfile.setGraphic(new IconContainer(Icons.ACCOUNT_CIRCLE));
         Button btnSettings = createBtn("Settings", event -> {
-//                upadteContent(context, "profile");
+            try {
+                context.routes().nav("settings");
+                removeFocus();
+            } catch (NavigationException e) {
+                throw new RuntimeException(e);
+            }
+
         });
         btnSettings.setGraphic(new IconContainer(Icons.SETTINGS_FILLED));
         Button btnLogout = createBtn("Logout", event -> {
@@ -325,6 +333,11 @@ public final class DashController extends ActionView {
                         Grid.inLine(footer);
                     }
                 });
+    }
+
+    private void removeFocus() {
+        ((SideNavController)
+                context.controllerOf("drawer")).removeFocus();
     }
 
     private VBox createDialogNotification() {

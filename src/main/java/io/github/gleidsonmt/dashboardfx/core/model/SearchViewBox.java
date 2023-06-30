@@ -46,15 +46,17 @@ public class SearchViewBox extends VBox {
 
     private final ListView<SearchItem> listView = new ListView<>();
     private final IntegerProperty listSize = new SimpleIntegerProperty();
+    private final TextField textField = new TextField();
+
 
     @SuppressWarnings("unchecked")
     public SearchViewBox(@NotNull Context context) {
 
         FilteredList<SearchItem> filteredList = new FilteredList<>(context.searchItems());
-        TextField textField = new TextField();
         textField.setPromptText("Search");
 
         listSize.set(50);
+
 
         filteredList.addListener((ListChangeListener<SearchItem>) c -> {
             if (c.next()) {
@@ -75,8 +77,6 @@ public class SearchViewBox extends VBox {
 
         listView.setFixedCellSize(listSize.get());
         listView.setStyle("-fx-fixed-cell-size:" + listSize.get());
-
-
 
         listView.setCellFactory(new Callback<>() {
             @Override
@@ -131,5 +131,9 @@ public class SearchViewBox extends VBox {
             }
 
         });
+    }
+
+    public void focus() {
+        textField.requestFocus();
     }
 }

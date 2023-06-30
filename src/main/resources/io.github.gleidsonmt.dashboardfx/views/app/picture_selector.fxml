@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<?import io.github.gleidsonmt.dashboardfx.core.controls.GNButton?>
+<StackPane fx:id="root" alignment="TOP_LEFT" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.PictureSelectorController">
+    <stylesheets>
+<!--        <URL value="@../../io.github.gleidsonmt.speedcut.core.app/theme/css/material-color.css" />-->
+<!--        <URL value="@../../io.github.gleidsonmt.speedcut.core.app/theme/css/light.css" />-->
+<!--        <URL value="@../../io.github.gleidsonmt.speedcut.core.app/theme/css/skeleton.css" />-->
+<!--        <URL value="@../../io.github.gleidsonmt.speedcut.core.app/theme/css/bootstrap.css" />-->
+<!--        <URL value="@../../io.github.gleidsonmt.speedcut.core.app/theme/css/shape.css" />-->
+<!--        <URL value="@../../io.github.gleidsonmt.speedcut.core.app/theme/css/typographic.css" />-->
+<!--        <URL value="@../../io.github.gleidsonmt.speedcut.core.app/theme/css/helpers.css" />-->
+<!--        <URL value="@../../io.github.gleidsonmt.speedcut.core.app/theme/css/master.css" />-->
+    </stylesheets>
+    <children>
+        <GridPane fx:id="body" alignment="TOP_CENTER" vgap="10.0">
+            <StackPane.margin>
+                <Insets />
+            </StackPane.margin>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <VBox fx:id="boxFixed">
+                    <children>
+                        <VBox fx:id="boxTitle">
+                            <children>
+                                <Label styleClass="h3" text="Recorte seu avatar.">
+                                    <graphic>
+                                        <SVGPath content="M14 21q-.425 0-.712-.288Q13 20.425 13 20t.288-.712Q13.575 19 14 19q1.175 0 2.087-.462Q17 18.075 17 17.5q0-.35-.325-.65-.325-.3-.9-.55l1.475-1.475q.8.475 1.275 1.125.475.65.475 1.55 0 1.65-1.575 2.575Q15.85 21 14 21Zm-9.425-7.65q-.725-.425-1.15-.988Q3 11.8 3 11q0-1.05.775-1.763.775-.712 2.775-1.587 1.575-.725 2.012-1.013Q9 6.35 9 6q0-.4-.488-.7Q8.025 5 7 5q-.625 0-1.05.15-.425.15-.775.5-.275.275-.675.325-.4.05-.725-.225Q3.45 5.5 3.4 5.1q-.05-.4.225-.725Q4.1 3.8 4.988 3.4 5.875 3 7 3q1.8 0 2.9.812Q11 4.625 11 6q0 .975-.725 1.75T7.35 9.475q-1.45.625-1.9.925-.45.3-.45.6 0 .225.287.438.288.212.788.412ZM18.85 10.4 14.6 6.15l1.05-1.05q.6-.6 1.437-.6.838 0 1.413.6l1.4 1.4q.6.575.6 1.412 0 .838-.6 1.438ZM6 19h1.4l7.2-7.2-1.4-1.4L6 17.6Zm-2 2v-4.25l9.2-9.2 4.25 4.25-9.2 9.2Zm9.2-10.6 1.4 1.4Z" scaleX="1.2" scaleY="1.2" style="-fx-fill: -info;" />
+                                    </graphic>
+                                </Label>
+                                <Separator />
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="10.0" />
+                            </VBox.margin>
+                        </VBox>
+                        <VBox fx:id="boxScreen" spacing="30.0" style="-fx-border-width: 1; -fx-border-color: -light-gray-2;">
+                            <children>
+                                <StackPane fx:id="boxContainer" alignment="TOP_LEFT">
+                                    <children>
+                                        <VBox fx:id="wrapper">
+                                            <children>
+                                                <ImageView fx:id="imageView" cache="true" cacheHint="SPEED" fitHeight="400.0" fitWidth="600.0" mouseTransparent="true" onMousePressed="#getImageCord" pickOnBounds="true" preserveRatio="true">
+                                                    <cursor>
+                                                        <Cursor fx:constant="CROSSHAIR" />
+                                                    </cursor>
+                                                    <viewport>
+                                                        <Rectangle2D height="400.0" minX="200.0" minY="150.0" width="600.0" />
+                                                    </viewport>
+<!--                                                    <image>-->
+<!--                                                        <Image url="@../../io.github.gleidsonmt.speedcut.core.app/theme/img/sample_smile.jpg" />-->
+<!--                                                    </image>-->
+                                                </ImageView>
+                                            </children>
+                                            <effect>
+                                                <ColorAdjust brightness="-0.5" />
+                                            </effect>
+                                        </VBox>
+                                        <AnchorPane fx:id="screenSelector" cacheHint="QUALITY" onMouseDragged="#dragImage" onMousePressed="#getImageCord" onScroll="#scrollImage" StackPane.alignment="CENTER_LEFT">
+                                            <children>
+                                                <AnchorPane fx:id="boxSelector" minHeight="50.0" minWidth="50.0" onMouseDragged="#moveBox" onMousePressed="#getBoxCordinates" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-width: 2; -fx-border-style: segments(10,20);" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                    <children>
+                                                        <VBox fx:id="boxLight" alignment="CENTER" blendMode="OVERLAY" maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <opaqueInsets>
+                                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                            </opaqueInsets>
+                                                        </VBox>
+                                                        <Circle fx:id="top_left" cache="true" cacheHint="SPEED" fill="WHITE" onMouseDragged="#resizeFromTopLeft" onMousePressed="#fixedOnTopLeft" pickOnBounds="true" radius="10.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" style="-fx-fill: -info;" AnchorPane.leftAnchor="-10.0" AnchorPane.topAnchor="-10.0">
+                                                            <cursor>
+                                                                <Cursor fx:constant="SE_RESIZE" />
+                                                            </cursor>
+                                                        </Circle>
+                                                        <Circle fx:id="bottom_left" cache="true" cacheHint="SPEED" fill="WHITE" onMouseDragged="#resizeFromBottomLeft" onMousePressed="#fixedOnBottomLeft" pickOnBounds="true" radius="10.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" style="-fx-fill: -info;" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-10.0">
+                                                            <cursor>
+                                                                <Cursor fx:constant="SW_RESIZE" />
+                                                            </cursor>
+                                                        </Circle>
+                                                        <Circle fx:id="bottom_right" cache="true" cacheHint="SPEED" fill="WHITE" layoutX="381.0" layoutY="315.0" onMouseDragged="#resizeFromBottomRight" onMousePressed="#fixedOnBottomRight" pickOnBounds="true" radius="10.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" style="-fx-fill: -info;" AnchorPane.bottomAnchor="-10.0" AnchorPane.rightAnchor="-10.0">
+                                                            <cursor>
+                                                                <Cursor fx:constant="SE_RESIZE" />
+                                                            </cursor>
+                                                        </Circle>
+                                                        <Circle fx:id="top_right" cache="true" cacheHint="SPEED" fill="WHITE" layoutX="12.0" layoutY="315.0" onMouseDragged="#resizeFromTopRight" onMousePressed="#fixedOnTopRight" pickOnBounds="true" radius="10.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" style="-fx-fill: -info;" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-10.0">
+                                                            <cursor>
+                                                                <Cursor fx:constant="SW_RESIZE" />
+                                                            </cursor>
+                                                        </Circle>
+                                                    </children>
+                                                </AnchorPane>
+                                            </children>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </AnchorPane>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </StackPane>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER" spacing="5.0" GridPane.rowIndex="1">
+                    <children>
+                        <Label style="-fx-font-weight: bold;" styleClass="h4" text="Como controlar o seletor">
+                            <graphic>
+                                <SVGPath content="M12 21.775q-.8 0-1.375-.575t-.575-1.375h3.9q0 .8-.562 1.375-.563.575-1.388.575Zm-3.9-3V16.9h7.8v1.875Zm.225-2.925q-1.675-1-2.65-2.662Q4.7 11.525 4.7 9.55q0-3.05 2.125-5.175T12 2.25q3.05 0 5.175 2.125T19.3 9.55q0 1.975-.975 3.638-.975 1.662-2.65 2.662Zm.575-1.875h6.2q1.125-.775 1.725-1.938.6-1.162.6-2.487 0-2.275-1.575-3.85Q14.275 4.125 12 4.125q-2.275 0-3.85 1.575-1.575 1.575-1.575 3.85 0 1.325.613 2.487Q7.8 13.2 8.9 13.975Zm3.1 0Z" style="-fx-fill: -text-color;" />
+                            </graphic>
+                            <VBox.margin>
+                                <Insets bottom="20.0" />
+                            </VBox.margin>
+                        </Label>
+                        <TextFlow>
+                            <children>
+                                <Text layoutX="100.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color; -fx-font-weight: bold;" styleClass="h5" text="Zoom: " wrappingWidth="57.232421875" x="10.0" />
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Gire o botõe principal do mouse." />
+                            </children>
+                        </TextFlow>
+                        <TextFlow layoutX="10.0" layoutY="76.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color; -fx-font-weight: bold;" styleClass="h5" text="Arrastar o seletor: " />
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Pressione e movimente o mouse em cima do seletor." />
+                            </children>
+                        </TextFlow>
+                        <TextFlow>
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color; -fx-font-weight: bold;" styleClass="h5" text="Arrastar a imagem: " />
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Segure Ctrl e movimente o mouse." />
+                            </children>
+                        </TextFlow>
+                        <TextFlow>
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color; -fx-font-weight: bold;" styleClass="h5" text="Usar toda image: " />
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -text-color;" text="Duplo clique no seletor." />
+                            </children>
+                        </TextFlow>
+                        <GridPane hgap="10.0">
+                            <VBox.margin>
+                                <Insets top="5.0" />
+                            </VBox.margin>
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <GNButton defaultButton="true" maxWidth="1.7976931348623157E308" onAction="#closePopup" styleClass="btn-mint" text="Recortar e Aplicar" GridPane.columnIndex="1">
+                                    <graphic>
+                                        <SVGPath content="M17 23v-4H7q-.825 0-1.412-.587Q5 17.825 5 17V7H1V5h4V1h2v16h16v2h-4v4Zm0-8V7H9V5h8q.825 0 1.413.588Q19 6.175 19 7v8Z" style="-fx-fill: white;" />
+                                    </graphic>
+                                </GNButton>
+                                <GNButton cancelButton="true" layoutX="311.0" layoutY="10.0" maxWidth="1.7976931348623157E308" onAction="#closePopup" style="-fx-border-color: -mint;" styleClass="btn-mint" text="Fechar e Cancelar">
+                                    <graphic>
+                                        <SVGPath content="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" style="-fx-fill: -mint;" />
+                                    </graphic>
+                                </GNButton>
+                            </children>
+                        </GridPane>
+                    </children>
+                </VBox>
+            </children>
+        </GridPane>
+    </children>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+</StackPane>

@@ -21,6 +21,8 @@ package io.github.gleidsonmt.dashboardfx.core.view.layout;
 import animatefx.animation.AnimationFX;
 import animatefx.animation.Pulse;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.AbsoluteWrapperContainer;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -71,6 +73,12 @@ public class Wrapper extends StackPane implements AbsoluteWrapperContainer {
         return this;
     }
 
+    private EventHandler<ActionEvent> onShow;
+    public Wrapper onShown(EventHandler<ActionEvent> onShow) {
+        this.onShow = onShow;
+        return this;
+    }
+
     @Override
     public void show() {
         toFront();
@@ -84,6 +92,8 @@ public class Wrapper extends StackPane implements AbsoluteWrapperContainer {
         AnimationFX animation = new Pulse(getChildren().get(0));
         animation.setSpeed(2.2);
         animation.play();
+
+        animation.getTimeline().setOnFinished(onShow);
     }
 
     @Override

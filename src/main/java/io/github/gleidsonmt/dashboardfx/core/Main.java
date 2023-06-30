@@ -5,6 +5,7 @@ import io.github.gleidsonmt.dashboardfx.core.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.impl.Layout;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.Loader;
 import io.github.gleidsonmt.dashboardfx.core.services.LoadViews;
+import io.github.gleidsonmt.dashboardfx.core.view.SimpleView;
 import io.github.gleidsonmt.dashboardfx.core.view.View;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.LoadCircle;
 import javafx.concurrent.Task;
@@ -33,7 +34,10 @@ public class Main extends Launcher {
         layout.setContent((Node) loadCircle);
 
         loadViews.setOnSucceeded(event -> {
-            layout.setNav(context.getResource("views/drawer.fxml"));
+
+//            layout.setNav(context.getResource("views/drawer.fxml"));
+            layout.setNav(context.routes().getView("drawer"));
+
             try {
                 context.routes().nav("dash");
             } catch (NavigationException e) {

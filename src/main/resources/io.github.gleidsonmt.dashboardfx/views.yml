@@ -2,6 +2,11 @@
 !!io.github.gleidsonmt.dashboardfx.core.view.ViewMap
   views:
   - {
+      name: drawer,
+      title: Drawer,
+      fxml: drawer.fxml
+  }
+  - {
       name: login,
       title: Login,
       fxml: login.fxml
@@ -19,9 +24,21 @@
     fxml: profile.fxml
   }
   - {
+    name: settings,
+    title: Settings,
+    folder: app,
+    fxml: settings.fxml
+  }
+  - {
     name: dash,
     title: Dashboard,
     fxml: dash.fxml
+  }
+  - {
+      name: picture,
+      title: Picture,
+      folder: app,
+      fxml: picture_selector.fxml
   }
 #  - {
 #    name: sales_left,
