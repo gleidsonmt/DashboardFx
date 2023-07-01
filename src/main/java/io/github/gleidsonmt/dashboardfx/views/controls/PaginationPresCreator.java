@@ -21,7 +21,13 @@ package io.github.gleidsonmt.dashboardfx.views.controls;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
+import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
+import javafx.util.Callback;
+
+import java.util.List;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -33,18 +39,30 @@ public class PaginationPresCreator extends TutorialCreator {
 
         this
                 .title("Intro")
-                .text("The DatePicker control allows the user to enter a date as text or to select a date from a calendar popup. The calendar is based on either the standard ISO-8601 chronology or any of the other chronology classes defined in the java.time.chrono package.")
-                .demonstration(new DatePicker(), """
+                .text("A Pagination control is used for navigation between pages of a single content, which has been divided into smaller parts.")
+                .demonstration(List.of(
+                        createPagination(""),
+                        createPagination("pag-round")
+                ), """
                         // Constructor
-                        DatePicker datePicker = new DatePicker();
-                        // Get value
-                        datePicker.getValue();
-                        """, """
-                        <!-- Building -->
-                        <DatePicker/>
+                        // first page count, second act index
+                        Pagination pagination = new Pagination(10, 0);
                         """)
                 .title("Links")
                 .footer(createDefaultAuthor("Pagination"))
                 .build();
+    }
+
+    private Node createPagination(String clas) {
+        Pagination pagination = new Pagination(5, 0);
+        pagination.setPageFactory(pageIndex ->
+                new Label(pageIndex + 1 + ". Lorem ipsum dolor sit amet,\n"
+                        + "consectetur adipiscing elit,\n"
+                        + "sed do eiusmod tempor incididunt ut\n"
+                        + "labore et dolore magna aliqua.")
+        );
+        pagination.getStyleClass().addAll(clas);
+        return pagination;
+
     }
 }

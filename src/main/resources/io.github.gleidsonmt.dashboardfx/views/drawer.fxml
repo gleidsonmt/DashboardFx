@@ -2,6 +2,7 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
 
-<StackPane id="drawer-IRoot" fx:id="root" maxWidth="250" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: -light-gray-2; -fx-border-width: 0 1 0 0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.SideNavController">
+<StackPane id="drawer-IRoot" fx:id="root" maxWidth="250" minWidth="-Infinity" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: -light-gray-2; -fx-border-width: 0 1 0 0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.SideNavController">
    <VBox id="drawer-content" prefHeight="200.0" prefWidth="100.0">
       <HBox alignment="CENTER_LEFT" prefWidth="229.0" spacing="10.0" style="-fx-border-color: -light-gray-2; -fx-border-width: 0 0 1 0;">
          <padding>
@@ -118,14 +119,38 @@
                   <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="265.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goTreeView" styleClass="drawer-item" text="TreeView" />
                </VBox>
             </TitledPane>
-            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Pages" textAlignment="JUSTIFY">
+            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Containers" textAlignment="JUSTIFY">
                <graphic>
                   <SVGPath content="M5 21q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3h14q.825 0 1.413.587Q21 4.175 21 5v14q0 .825-.587 1.413Q19.825 21 19 21Zm0-2h6V5H5v14Zm8 0h6v-7h-6Zm0-9h6V5h-6Z" nodeOrientation="LEFT_TO_RIGHT" />
                </graphic>
                <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="292.0" spacing="5.0">
-                  <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goCarousel" styleClass="drawer-item" text="Carousel" toggleGroup="$group" />
-                  <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goLogin" styleClass="drawer-item" text="Login" toggleGroup="$group" />
+                  <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goTabPane" styleClass="drawer-item" text="TabPane" toggleGroup="$group" />
                </VBox>
+            </TitledPane>
+            <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" layoutX="10.0" layoutY="242.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Pages" textAlignment="JUSTIFY">
+               <graphic>
+                  <Group>
+                     <children>
+                        <SVGPath content="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-200v120h560v-120H568q-17 18-39.5 29T480-280q-26 0-48.5-11T392-320H200Zm280-40q17 0 28.5-11.5T520-400q0-17-11.5-28.5T480-440q-17 0-28.5 11.5T440-400q0 17 11.5 28.5T480-360Zm-280-40h160q0-50 35-85t85-35q50 0 85 35t35 85h160v-360H200v360Zm0 200h560-560Z" layoutX="720.0" nodeOrientation="LEFT_TO_RIGHT" scaleX="0.025" scaleY="0.025" />
+                     </children>
+                  </Group>
+               </graphic>
+               <content>
+                  <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="292.0" spacing="5.0">
+                     <children>
+                        <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goLogin" styleClass="drawer-item" text="Login">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group3" />
+                           </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goHero" styleClass="drawer-item" text="Hero Page">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group31" />
+                           </toggleGroup>
+                        </ToggleButton>
+                     </children>
+                  </VBox>
+               </content>
             </TitledPane>
             <Separator prefWidth="200.0">
                <VBox.margin>
@@ -156,5 +181,6 @@
       <URL value="@../style/css/bootstrap.css" />
       <URL value="@../style/css/immersive_scroll.css" />
       <URL value="@../style/css/typographic.css" />
+      <URL value="@../style/css/shapes.css" />
    </stylesheets>
 </StackPane>

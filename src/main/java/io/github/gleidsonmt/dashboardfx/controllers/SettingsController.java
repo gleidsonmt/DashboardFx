@@ -21,10 +21,9 @@ package io.github.gleidsonmt.dashboardfx.controllers;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.picture_selector.PictureSelectorController;
 import io.github.gleidsonmt.dashboardfx.core.view.View;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
@@ -71,7 +70,6 @@ public class SettingsController extends ActionView {
     public void onInit(Context context) {
         super.onInit(context);
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("newValue = " + newValue);
             if (newValue.doubleValue() < 800) {
                 org(tileOne.getChildren().get(0), tileOne.getChildren().get(1), false);
                 org(tileTwo.getChildren().get(0), tileTwo.getChildren().get(1), false);

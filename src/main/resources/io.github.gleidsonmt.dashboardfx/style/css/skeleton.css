@@ -99,7 +99,6 @@ SVGPath {
     -fx-accent : transparent;
     -fx-background-color : -fx-accent;
     -fx-text-fill : -text-color;
-    -fx-padding : 5px;
 }
 
 /* @Radius */
@@ -218,14 +217,25 @@ SVGPath {
 {
     -fx-pref-width : 100px;
 }
-.tab-pane:top .tab-header-area .headers-region .tab:selected:top
+.tab-pane:top .tab-header-area .headers-region .tab .text
 {
-  -fx-focus-color : transparent;
+    -fx-fill: -text-color;
+}
+.tab-pane:top .tab-header-area .headers-region .tab:selected:top .text
+{
+    -fx-fill: -fx-accent;
 }
 .tab-pane:top .tab-header-area .headers-region .tab:selected:top
 {
   -fx-faint-focus-color : transparent;
+  -fx-focus-color : transparent;
 }
+
+.tab-pane .tab-header-area .headers-region .tab:hover .text
+{
+    -fx-fill: -hover-color;
+}
+
 .tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label
 {
   -fx-font-weight : bold;
@@ -1484,7 +1494,9 @@ SVGPath {
 .pagination .pagination-control .control-box .number-button
  {
   -fx-min-width : 30px;
+  -fx-pref-width : 30px;
   -fx-min-height : 30px;
+  -fx-max-height : 30px;
   -fx-background-color : transparent;
   -fx-text-fill : -text-color;
 }
@@ -1493,3 +1505,4 @@ SVGPath {
   -fx-effect: dropshadow( gaussian , rgba(0,0,0,.2) , 5, 0 , 0 , 0 );
   -fx-text-fill : white;
 }
+

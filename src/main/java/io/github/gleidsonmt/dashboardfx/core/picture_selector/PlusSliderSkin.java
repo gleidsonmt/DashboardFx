@@ -17,7 +17,7 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.controllers;
+package io.github.gleidsonmt.dashboardfx.core.picture_selector;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Slider;

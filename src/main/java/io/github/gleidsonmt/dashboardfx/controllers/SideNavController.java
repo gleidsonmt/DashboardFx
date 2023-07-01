@@ -8,6 +8,7 @@ import io.github.gleidsonmt.dashboardfx.core.view.SimpleView;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
 import io.github.gleidsonmt.dashboardfx.views.controls.*;
+import io.github.gleidsonmt.dashboardfx.views.layout.TabPanePresCreator;
 import io.github.gleidsonmt.dashboardfx.views.tutorial.NewsLetter;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleGroup;
@@ -116,6 +117,10 @@ public class SideNavController extends ActionView {
     }
 
     @FXML
+    private void goHero() throws NavigationException {
+        context.routes().nav("hero");
+    }
+    @FXML
     private void goCarousel() {
         go("carousel", new CarouselViewPresCreator(context));
     }
@@ -156,7 +161,7 @@ public class SideNavController extends ActionView {
 
     @FXML
     private void goPagination() {
-        go("pagination", new DatePickerPresCreator(context));
+        go("pagination", new PaginationPresCreator(context));
     }
 
     @FXML
@@ -167,6 +172,11 @@ public class SideNavController extends ActionView {
     @FXML
     private void goHtmlEditor() {
         go("html_editor", new HtmlEditorViewPresCreator(context));
+    }
+
+    @FXML
+    private void goTabPane() {
+        go("tab_pane", new TabPanePresCreator(context));
     }
     @FXML
     private void goAbout() throws NavigationException{

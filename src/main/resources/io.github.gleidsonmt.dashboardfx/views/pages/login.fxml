@@ -42,12 +42,12 @@
 
 <StackPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.LoginController">
     <stylesheets>
-        <URL value="@../style/css/colors.css" />
-        <URL value="@../style/css/skeleton.css" />
-        <URL value="@../style/css/bootstrap.css" />
-        <URL value="@../style/css/helpers.css" />
-        <URL value="@../style/css/typographic.css" />
-      <URL value="@../style/css/shapes.css" />
+        <URL value="@../../style/css/colors.css" />
+        <URL value="@../../style/css/skeleton.css" />
+        <URL value="@../../style/css/bootstrap.css" />
+        <URL value="@../../style/css/helpers.css" />
+        <URL value="@../../style/css/typographic.css" />
+      <URL value="@../../style/css/shapes.css" />
         <!--        <URL value="@../drawer.css" />-->
         <!--        <URL value="@../dash.css" />-->
     </stylesheets>

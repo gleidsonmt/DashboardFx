@@ -197,7 +197,7 @@
 
 .container {
     -fx-background-color: -fx-background;
-    -fx-background-radius : 20px;
+    -fx-background-radius : 10px;
 }
 
 .drawer-container {
@@ -226,3 +226,10 @@
     -fx-fill : white;
 }
 
+
+/* @Pagination */
+
+.pag-round .pagination-control .control-box .number-button {
+    -fx-background-radius: 100px;
+    -fx-border-radius: 100px;
+}

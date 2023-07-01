@@ -267,7 +267,6 @@ public final class DashController extends ActionView {
                 context.flow()
                 .content(
                         new DialogContainer(b)
-                                .style("-fx-background-radius : 10px;")
                                 .size(400, 280)
                 )
 //                    .background(Wrapper.WrapperBackgroundType.GRAY)
@@ -362,7 +361,7 @@ public final class DashController extends ActionView {
         VBox vBox = createNotifications(
                 new NotificationCell(
                         true,
-                        "Your Password has been changed succesfully.",
+                        "Your Password has been changed successfully.",
                         new GNIconButton(Icons.BADGE),
                         LocalDateTime.now()
                 ),
@@ -374,7 +373,7 @@ public final class DashController extends ActionView {
                 ),
                 new NotificationCell(
                         false,
-                        "Great News! We are lauching our 5th fund: DLE Senior Living.",
+                        "Great News! We are launching our 5th fund: DLE Senior Living.",
                         new GNAvatar(new Image(context.getResource("style/img/avatar.png").toExternalForm()), 20),
                         LocalDateTime.now()
                 )

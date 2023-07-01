@@ -9,6 +9,7 @@
   - {
       name: login,
       title: Login,
+      folder: pages,
       fxml: login.fxml
   }
   - {
@@ -35,11 +36,17 @@
     fxml: dash.fxml
   }
   - {
-      name: picture,
-      title: Picture,
-      folder: app,
-      fxml: picture_selector.fxml
+      name: hero,
+      title: Hero,
+      folder: pages,
+      fxml: hero.fxml
   }
+#  - {
+#      name: picture,
+#      title: Picture,
+#      folder: app,
+#      fxml: picture_selector.fxml
+#  }
 #  - {
 #    name: sales_left,
 #    title: Sales Column,
