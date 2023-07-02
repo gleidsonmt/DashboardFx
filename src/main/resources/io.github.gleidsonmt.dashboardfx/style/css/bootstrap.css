@@ -56,14 +56,10 @@
     -fx-background-color : derive(-fx-accent, 90%);
 }
 
-.btn-flat:hover:focused:pressed,
-.btn-flat:hover:pressed,
-.btn-flat:hover:focused:pressed SVGPath,
-.btn-flat:hover:pressed SVGPath
+
+.btn-flat:pressed:hover > SVGPath
 {
-    -fx-background-color : -fx-accent;
-    -fx-text-fill: white;
-    -fx-fill: white;
+    -fx-fill: red;
 }
 
 /* @lbl */
@@ -233,3 +229,17 @@
     -fx-background-radius: 100px;
     -fx-border-radius: 100px;
 }
+
+/* @List */
+
+.border-titled {
+    -fx-border-width: 2px 0px 0px 0px;
+    -fx-background-color: transparent;
+}
+.border-titled:expanded .title,
+.border-titled .title {
+    -fx-background-color: transparent;
+    -fx-padding: 10px;
+}
+
+

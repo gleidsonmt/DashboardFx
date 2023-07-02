@@ -9,6 +9,7 @@ import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreato
 import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
 import io.github.gleidsonmt.dashboardfx.views.controls.*;
 import io.github.gleidsonmt.dashboardfx.views.layout.TabPanePresCreator;
+import io.github.gleidsonmt.dashboardfx.views.layout.TitledPanePresCreator;
 import io.github.gleidsonmt.dashboardfx.views.tutorial.NewsLetter;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleGroup;
@@ -120,6 +121,17 @@ public class SideNavController extends ActionView {
     private void goHero() throws NavigationException {
         context.routes().nav("hero");
     }
+
+    @FXML
+    private void goTitledPane()  {
+        go("carousel", new TitledPanePresCreator(context));
+    }
+
+    @FXML
+    private void goAccordion() {
+        go("carousel", new CarouselViewPresCreator(context));
+    }
+
     @FXML
     private void goCarousel() {
         go("carousel", new CarouselViewPresCreator(context));

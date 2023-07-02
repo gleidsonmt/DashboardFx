@@ -81,10 +81,11 @@ public class HeroCodeController extends ActionView {
 
             VBox box = new VBox();
             box.getStyleClass().addAll("container");
+            box.setStyle("-fx-border-width: 0px 0px 0px 1px; -fx-border-color: -light-gray-2;");
             HBox top = new HBox();
             top.setAlignment(Pos.CENTER_RIGHT);
             top.getChildren().addAll(close);
-            top.setPadding(new Insets(20, 20 , 10, 20));
+            top.setPadding(new Insets(15, 20 , 10, 20));
             top.setMinHeight(75);
             box.setMaxWidth(250);
             box.getChildren().addAll(top);
@@ -94,6 +95,7 @@ public class HeroCodeController extends ActionView {
             StackPane.setAlignment(box, Pos.CENTER_RIGHT);
 
             ListView<Label> list = new ListView<>();
+            list.setStyle("-fx-padding: 10px;");
 
             bar.getChildren()
                     .stream()

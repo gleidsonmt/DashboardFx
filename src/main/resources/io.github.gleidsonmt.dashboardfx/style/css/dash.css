@@ -211,3 +211,21 @@ Text, .text, .label {
     -fx-border-width: 0px;
 }
 
+.toggle-pay,
+.toggle-pay:selected {
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+.toggle-pay:selected {
+    -fx-background-color: -fx-accent;
+}
+.toggle-pay:selected .text {
+    -fx-fill: white;
+}
+.toggle-pay {
+    -fx-background-color: transparent;
+}
+
+.toggle-pay .text {
+    -fx-fill: -fx-accent;
+}

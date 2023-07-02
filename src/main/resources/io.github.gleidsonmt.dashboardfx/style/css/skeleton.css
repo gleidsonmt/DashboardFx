@@ -1506,3 +1506,77 @@ SVGPath {
   -fx-text-fill : white;
 }
 
+/*******************************************************************************
+ *                                                                             *
+ * @TitledPane                                                                  *
+ *                                                                             *
+ ******************************************************************************/
+
+.titled-pane .title {
+    -fx-alignment: center_right;
+    -fx-orientation: right-to-left;
+    -fx-managed: false;
+    -fx-padding: 0px 2px 0px 10px;
+}
+
+.titled-pane {
+    -fx-background-color: white;
+    -fx-border-color : -box-color;
+    -fx-border-width : 2px;
+    -fx-border-radius : 2px;
+}
+
+.titled-pane .content {
+    -fx-border-color : transparent;
+    -fx-background-color: white;
+}
+
+.titled-pane .title,
+.titled-pane:expanded .title {
+    -fx-font-size : 12pt;
+    -fx-border-color : transparent;
+    -fx-background-color: white;
+    -fx-border-color : transparent transparent -box-color transparent;
+     -fx-border-width : 1px;
+}
+
+.titled-pane .title .text {
+    -fx-fill : -text-color;
+    -fx-font-weight : bold;
+}
+
+
+.titled-pane:focused .title .arrow-button .arrow,
+.titled-pane:expanded .title .arrow-button .arrow {
+    -fx-shape : "m12 15-5-5h10Z";
+    -fx-max-height : 5px;
+    -fx-max-width : 5px;
+    -fx-effect : none;
+    -fx-focus-color : transparent;
+}
+
+.gn-titled-pane
+{
+    -fx-font-weight : normal;
+}
+
+.gn-titled-pane:expanded .title .arrow-button .arrow,
+.gn-titled-pane:focused:collapsed .title .arrow-button .arrow,
+.gn-titled-pane:collapsed .title .arrow-button .arrow
+{
+    -fx-shape : "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z";
+    -fx-min-width : 12px;
+    -fx-min-height : 12px;
+
+}
+
+.gn-titled-pane.title .arrow-button .arrow,
+.gn-titled-pane:expanded .title .arrow-button .arrow,
+.gn-titled-pane:expanded:focused .title .arrow-button .arrow
+{
+    -fx-shape : "M5 13v-2h14v2Z";
+    -fx-max-height : 2px;
+    -fx-min-height : 2px;
+}
+
+

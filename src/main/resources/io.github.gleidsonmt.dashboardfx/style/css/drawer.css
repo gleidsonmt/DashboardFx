@@ -1,5 +1,4 @@
 
-
 #drawer-root {
     -fx-background-color : red;
     -fx-accent : -aqua;
@@ -19,7 +18,6 @@
     -fx-graphic-text-gap : 12px;
     -fx-node-orientation : left_to_right;
     -fx-label-padding : 2px;
-
 }
 
 #drawer-box .drawer-menu .title .text {
@@ -90,7 +88,7 @@
     -fx-border-width : 0 0 0 2.5;
     -fx-background-color : linear-gradient(to left, derive(-aqua, 95%), derive(-aqua, 95%));
     -fx-font-weight : bold;
-        -fx-padding : 15px;
+    -fx-padding : 15px;
 }
 
 #drawer-box .drawer-item:selected:hover {
@@ -109,8 +107,6 @@
 #drawer-box .drawer-item:hover {
      -fx-text-fill : -hover-color;
 }
-
-
 
 #drawer-box .drawer-item SVGPath  {
     -fx-fill : -text-color;

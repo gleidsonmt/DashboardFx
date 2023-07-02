@@ -125,6 +125,16 @@
                </graphic>
                <VBox id="drawer-content" minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="292.0" spacing="5.0">
                   <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goTabPane" styleClass="drawer-item" text="TabPane" toggleGroup="$group" />
+                  <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goTitledPane" styleClass="drawer-item" text="TitledPane">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="group4" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="60.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goAccordion" styleClass="drawer-item" text="Accordion">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="group41" />
+                     </toggleGroup>
+                  </ToggleButton>
                </VBox>
             </TitledPane>
             <TitledPane alignment="CENTER_RIGHT" contentDisplay="RIGHT" expanded="false" layoutX="10.0" layoutY="242.0" nodeOrientation="RIGHT_TO_LEFT" styleClass="drawer-menu" text="Pages" textAlignment="JUSTIFY">
