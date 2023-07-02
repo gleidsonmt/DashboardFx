@@ -34,15 +34,8 @@ public class Main extends Launcher {
         layout.setContent((Node) loadCircle);
 
         loadViews.setOnSucceeded(event -> {
-
-//            layout.setNav(context.getResource("views/drawer.fxml"));
             layout.setNav(context.routes().getView("drawer"));
-
-            try {
-                context.routes().nav("dash");
-            } catch (NavigationException e) {
-                throw new RuntimeException(e);
-            }
+            context.routes().nav("dash");
         });
 
         icons.add(new Image(context.getResource("style/img/logo_64.png").toExternalForm(), 128, 128, true, true));

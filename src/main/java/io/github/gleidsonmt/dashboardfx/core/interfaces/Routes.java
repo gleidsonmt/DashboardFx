@@ -19,7 +19,7 @@ public interface Routes {
 
     View getView(String view);
 
-    Routes nav(String key) throws NavigationException;
+    Routes nav(String key);
 
     StringProperty title();
 

@@ -59,7 +59,6 @@
 
 .btn-flat:pressed:hover > SVGPath
 {
-    -fx-fill: red;
 }
 
 /* @lbl */

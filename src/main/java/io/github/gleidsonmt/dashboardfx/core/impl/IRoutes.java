@@ -4,6 +4,7 @@ import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.exceptions.NavigationException;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.Routes;
 import io.github.gleidsonmt.dashboardfx.core.view.View;
+import io.github.gleidsonmt.dashboardfx.core.views.ErrorPage;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -74,17 +75,24 @@ public class IRoutes implements Routes {
     }
 
     @Override
-    public Routes nav(String key) throws NavigationException {
+    public Routes nav(String key) {
         View view = manager.get(key);
 
-        if (view == null) throw new NavigationException(context, "0", "View not found.");
+        if (view == null) {
+//            throw new NavigationException(context, "0", "View not found.");
+            ErrorPage errorPage = new ErrorPage(key);
+            root.getBody().getLayout().setContent(errorPage);
+            title.set("Error");
+        } else {
+            doActions(view);
+            root.getBody().getLayout().setContent(view.getRoot());
 
-        doActions(view);
-        root.getBody().getLayout().setContent(view.getRoot());
+            title.set(changeTitle(key));
 
-        title.set(changeTitle(key));
+        }
 
         root.getBody().getLayout().setRight(null);
+
         return this;
     }
 

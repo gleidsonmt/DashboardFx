@@ -118,8 +118,23 @@ public class SideNavController extends ActionView {
     }
 
     @FXML
-    private void goHero() throws NavigationException {
+    private void goHero() {
         context.routes().nav("hero");
+    }
+
+    @FXML
+    private void goErrorPage() {
+        context.routes().nav("view"); // obvious error to force navigate
+    }
+
+    @FXML
+    private void goPricing() {
+        context.routes().nav("pricing"); // obvious error to force navigate
+    }
+
+    @FXML
+    private void goFrequently() {
+        context.routes().nav("frequently"); // obvious error to force navigate
     }
 
     @FXML
@@ -129,7 +144,8 @@ public class SideNavController extends ActionView {
 
     @FXML
     private void goAccordion() {
-        go("carousel", new CarouselViewPresCreator(context));
+//        go("carousel", new CarouselViewPresCreator(context));
+        context.routes().nav("poio");
     }
 
     @FXML
@@ -191,7 +207,7 @@ public class SideNavController extends ActionView {
         go("tab_pane", new TabPanePresCreator(context));
     }
     @FXML
-    private void goAbout() throws NavigationException{
+    private void goAbout() {
         context.routes().nav("about");
     }
 

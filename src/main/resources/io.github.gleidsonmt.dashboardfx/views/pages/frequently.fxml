@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.gleidsonmt.dashboardfx.core.controls.GNTitledPane?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<!--
+  ~
+  ~    Copyright (C) Gleidson Neves da Silveira
+  ~
+  ~    This program is free software: you can redistribute it and/or modify
+  ~    it under the terms of the GNU General Public License as published by
+  ~    the Free Software Foundation, either version 3 of the License, or
+  ~   (at your option) any later version.
+  ~
+  ~    This program is distributed in the hope that it will be useful,
+  ~    but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~    GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../../style/css/colors.css" />
+        <URL value="@../../style/css/skeleton.css" />
+        <URL value="@../../style/css/bootstrap.css" />
+        <URL value="@../../style/css/helpers.css" />
+        <URL value="@../../style/css/typographic.css" />
+        <URL value="@../../style/css/shapes.css" />
+      <URL value="@../../style/css/dash.css" />
+        <!--        <URL value="@../drawer.css" />-->
+        <!--        <URL value="@../dash.css" />-->
+    </stylesheets>
+   <children>
+      <ScrollPane fitToHeight="true" fitToWidth="true">
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+         <content>
+            <VBox>
+               <children>
+                  <VBox minHeight="-Infinity">
+                     <children>
+                        <GridPane prefHeight="400.0" prefWidth="1052.0" VBox.vgrow="ALWAYS">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Frequently asked questions">
+                                       <styleClass>
+                                          <String fx:value="h3" />
+                                          <String fx:value="text-bold" />
+                                       </styleClass>
+                                    </Text>
+                                    <TextFlow>
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="Can’t find the answer you’re looking for? Reach out to our" />
+                                          <Hyperlink style="-fx-text-fill: -fx-accent;" styleClass="h5" text="customer support" />
+                                          <Text layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="team." />
+                                       </children>
+                                    </TextFlow>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="20.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <VBox>
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How do you make holy water?">
+                                             <styleClass>
+                                                <String fx:value="h4" />
+                                                <String fx:value="text-bold" />
+                                             </styleClass>
+                                          </Text>
+                                          <TextFlow>
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat." />
+                                             </children>
+                                          </TextFlow>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="10.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How do you make holy water?">
+                                             <styleClass>
+                                                <String fx:value="h4" />
+                                                <String fx:value="text-bold" />
+                                             </styleClass>
+                                          </Text>
+                                          <TextFlow>
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat." />
+                                             </children>
+                                          </TextFlow>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="72.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How do you make holy water?">
+                                             <styleClass>
+                                                <String fx:value="h4" />
+                                                <String fx:value="text-bold" />
+                                             </styleClass>
+                                          </Text>
+                                          <TextFlow>
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat." />
+                                             </children>
+                                          </TextFlow>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="134.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How do you make holy water?">
+                                             <styleClass>
+                                                <String fx:value="h4" />
+                                                <String fx:value="text-bold" />
+                                             </styleClass>
+                                          </Text>
+                                          <TextFlow>
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat." />
+                                             </children>
+                                          </TextFlow>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </GridPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox minHeight="-Infinity">
+                     <children>
+                        <GridPane style="-fx-border-color: -light-gray-2; -fx-border-width: 1px 0px 0px 0px;">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What's the best thing about Switzerland?">
+                                 <styleClass>
+                                    <String fx:value="h4" />
+                                    <String fx:value="text-bold" />
+                                 </styleClass>
+                              </Text>
+                              <TextFlow GridPane.columnIndex="1">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat." />
+                                 </children>
+                              </TextFlow>
+                           </children>
+                           <padding>
+                              <Insets bottom="40.0" top="40.0" />
+                           </padding>
+                        </GridPane>
+                        <GridPane layoutX="10.0" layoutY="10.0" style="-fx-border-color: -light-gray-2; -fx-border-width: 1px 0px 0px 0px;">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How do you make holy water?">
+                                 <styleClass>
+                                    <String fx:value="h4" />
+                                    <String fx:value="text-bold" />
+                                 </styleClass>
+                              </Text>
+                              <TextFlow GridPane.columnIndex="1">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam aut tempora vitae odio inventore fuga aliquam nostrum quod porro. Delectus quia facere id sequi expedita natus." />
+                                 </children>
+                              </TextFlow>
+                           </children>
+                           <padding>
+                              <Insets bottom="40.0" top="40.0" />
+                           </padding>
+                        </GridPane>
+                        <GridPane layoutX="10.0" layoutY="121.0" style="-fx-border-color: -light-gray-2; -fx-border-width: 1px 0px 0px 0px;">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What do you call someone with no body and no nose?">
+                                 <styleClass>
+                                    <String fx:value="h4" />
+                                    <String fx:value="text-bold" />
+                                 </styleClass>
+                              </Text>
+                              <TextFlow GridPane.columnIndex="1">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nobody knows. Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem." />
+                                 </children>
+                              </TextFlow>
+                           </children>
+                           <padding>
+                              <Insets bottom="40.0" top="40.0" />
+                           </padding>
+                        </GridPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox prefHeight="192.0" prefWidth="516.0">
+                     <children>
+                        <Label styleClass="h2" text="Frequently asked list" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets bottom="40.0" />
+                           </VBox.margin></Label>
+                        <Accordion>
+                          <panes>
+                              <GNTitledPane expanded="false" styleClass="border-titled" text="How do you make holy water?">
+                                 <content>
+                                    <TextFlow style="-fx-background-color: transparent;">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat." />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </TextFlow>
+                                 </content>
+                              </GNTitledPane>
+                              <GNTitledPane expanded="false" layoutX="10.0" layoutY="10.0" styleClass="border-titled" text="What do you call someone with no body and no nose?">
+                                 <content>
+                                    <TextFlow style="-fx-background-color: transparent;">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat." />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </TextFlow>
+                                 </content>
+                              </GNTitledPane>
+                              <GNTitledPane expanded="false" layoutX="10.0" layoutY="46.0" styleClass="border-titled" text="Why do you never see elephants hiding in trees?">
+                                 <content>
+                                    <TextFlow style="-fx-background-color: transparent;">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam aut tempora vitae odio inventore fuga aliquam nostrum quod porro. Delectus quia facere id sequi expedita natus." />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </TextFlow>
+                                 </content>
+                              </GNTitledPane>
+                          </panes>
+                        </Accordion>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+    
+      </StackPane>

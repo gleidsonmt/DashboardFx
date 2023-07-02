@@ -275,22 +275,13 @@ public final class DashController extends ActionView {
         Button btnProfile = createBtn("Profile", event -> {
 //            upadteContent(context, "profile");
 
-            try {
-                context.routes().nav("profile");
-                removeFocus();
-            } catch (NavigationException e) {
-                throw new RuntimeException(e);
-            }
+            context.routes().nav("profile");
+            removeFocus();
         });
         btnProfile.setGraphic(new IconContainer(Icons.ACCOUNT_CIRCLE));
         Button btnSettings = createBtn("Settings", event -> {
-            try {
-                context.routes().nav("settings");
-                removeFocus();
-            } catch (NavigationException e) {
-                throw new RuntimeException(e);
-            }
-
+            context.routes().nav("settings");
+            removeFocus();
         });
         btnSettings.setGraphic(new IconContainer(Icons.SETTINGS_FILLED));
         Button btnLogout = createBtn("Logout", event -> {

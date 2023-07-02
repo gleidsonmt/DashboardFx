@@ -153,9 +153,24 @@
                               <ToggleGroup fx:id="group3" />
                            </toggleGroup>
                         </ToggleButton>
-                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goHero" styleClass="drawer-item" text="Hero Page">
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goHero" styleClass="drawer-item" text="Hero Section">
                            <toggleGroup>
                               <ToggleGroup fx:id="group31" />
+                           </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="60.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goErrorPage" styleClass="drawer-item" text="Error View">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group311" />
+                           </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="60.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goPricing" styleClass="drawer-item" text="Pricing">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group312" />
+                           </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="140.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goFrequently" styleClass="drawer-item" text="Frequently ask">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group3121" />
                            </toggleGroup>
                         </ToggleButton>
                      </children>

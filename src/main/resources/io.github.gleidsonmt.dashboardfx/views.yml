@@ -41,6 +41,18 @@
       folder: pages,
       fxml: hero.fxml
   }
+  - {
+      name: pricing,
+      title: Pricing,
+      folder: pages,
+      fxml: pricing.fxml
+  }
+  - {
+      name: frequently,
+      title: Frequently,
+      folder: pages,
+      fxml: frequently.fxml
+  }
 #  - {
 #      name: picture,
 #      title: Picture,

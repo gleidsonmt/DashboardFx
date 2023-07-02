@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.gleidsonmt.dashboardfx.core.controls.GNAvatar?>
-<?import io.github.gleidsonmt.dashboardfx.core.controls.GNTitledPane?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
-<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -43,7 +39,7 @@
   ~
   -->
 
-<StackPane fx:id="root" prefHeight="1427.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.HeroCodeController">
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.HeroCodeController">
     <stylesheets>
         <URL value="@../../style/css/colors.css" />
         <URL value="@../../style/css/skeleton.css" />
@@ -97,17 +93,25 @@
                         </Hyperlink>
                      </children>
                   </GridPane>
-                  <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                  <VBox alignment="CENTER" spacing="30.0" VBox.vgrow="ALWAYS">
                      <children>
                         <VBox alignment="CENTER" minHeight="600.0" spacing="20.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -fx-accent;" text="Pricing">
-                                 <styleClass>
-                                    <String fx:value="text-bold" />
-                                    <String fx:value="h4" />
-                                 </styleClass>
-                              </Text>
-                              <Label text="Pricing plans for teams of all sizes" wrapText="true">
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-border-color: -light-gray-2; -fx-border-radius: 20px; -fx-padding: 5px;">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Announcing our next round of funding." />
+                                    <Hyperlink contentDisplay="RIGHT" text="Read more">
+                                       <graphic>
+                                          <Group>
+                                             <children>
+                                                <SVGPath content="m480-192-51-51 201-201H192v-72h438L429-717l51-51 288 288-288 288Z" scaleX="0.02" scaleY="0.02" />
+                                             </children>
+                                          </Group>
+                                       </graphic>
+                                    </Hyperlink>
+                                 </children>
+                              </HBox>
+                              <Label text="Data to enrich your online business" wrapText="true">
                                  <styleClass>
                                     <String fx:value="text-bold" />
                                     <String fx:value="h2" />
@@ -115,17 +119,21 @@
                               </Label>
                               <TextFlow textAlignment="CENTER">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-12" text="Choose an affordable plan that’s packed with the best features for engaging your audience, creating customer loyalty, and driving sales." textAlignment="CENTER" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-12" text="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua." textAlignment="CENTER" />
                                  </children>
                               </TextFlow>
-                              <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="132.0" spacing="2.0" style="-fx-background-color: -light-gray-2; -fx-background-radius: 20px;">
+                              <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="335.0" spacing="10.0">
                                  <children>
-                                    <ToggleButton mnemonicParsing="false" selected="true" styleClass="toggle-pay" text="Monthly">
-                                       <toggleGroup>
-                                          <ToggleGroup fx:id="group" />
-                                       </toggleGroup>
-                                    </ToggleButton>
-                                    <ToggleButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="toggle-pay" text="Annually" toggleGroup="$group" />
+                                    <Button mnemonicParsing="false" text="Get started" />
+                                    <Button contentDisplay="RIGHT" mnemonicParsing="false" styleClass="btn-flat" text="Learn more">
+                                       <graphic>
+                                          <Group>
+                                             <children>
+                                                <SVGPath content="m480-192-51-51 201-201H192v-72h438L429-717l51-51 288 288-288 288Z" scaleX="0.02" scaleY="0.02" />
+                                             </children>
+                                          </Group>
+                                       </graphic>
+                                    </Button>
                                  </children>
                                  <padding>
                                     <Insets bottom="2.0" top="2.0" />
@@ -133,328 +141,6 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <HBox alignment="CENTER" minHeight="-Infinity" prefHeight="400.0" prefWidth="654.0" spacing="5.0">
-                           <children>
-                              <VBox prefHeight="500.0" prefWidth="415.0" style="-fx-border-color: -light-gray-2; -fx-border-radius: 10px; -fx-border-width: 2px;">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer">
-                                       <styleClass>
-                                          <String fx:value="h3" />
-                                          <String fx:value="text-bold" />
-                                       </styleClass>
-                                    </Text>
-                                    <TextFlow>
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="The essentials to provide your best work for clients." />
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="20.0" />
-                                       </VBox.margin>
-                                    </TextFlow>
-                                    <TextFlow>
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$15">
-                                             <styleClass>
-                                                <String fx:value="h2" />
-                                                <String fx:value="text-bold" />
-                                             </styleClass>
-                                          </Text>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="/month" />
-                                       </children>
-                                    </TextFlow>
-                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-border-color: -fx-accent; -fx-border-width: 1px; -fx-border-radius: 4px;" styleClass="btn-flat" text="Buy plan">
-                                       <VBox.margin>
-                                          <Insets top="40.0" />
-                                       </VBox.margin>
-                                    </Button>
-                                    <Label styleClass="h4" text="5 products">
-                                       <VBox.margin>
-                                          <Insets top="20.0" />
-                                       </VBox.margin>
-                                       <graphic>
-                                          <Group>
-                                             <children>
-                                                <SVGPath content="M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z" scaleX="0.02" scaleY="0.02" />
-                                             </children>
-                                          </Group>
-                                       </graphic>
-                                    </Label>
-                                    <Label layoutX="32.0" layoutY="238.0" styleClass="h4" text="Up to 1,000 subscribers">
-                                       <graphic>
-                                          <Group>
-                                             <children>
-                                                <SVGPath content="M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z" scaleX="0.02" scaleY="0.02" />
-                                             </children>
-                                          </Group>
-                                       </graphic>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label layoutX="32.0" layoutY="255.0" styleClass="h4" text="Basic analytics">
-                                       <graphic>
-                                          <Group>
-                                             <children>
-                                                <SVGPath content="M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z" scaleX="0.02" scaleY="0.02" />
-                                             </children>
-                                          </Group>
-                                       </graphic>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label layoutX="32.0" layoutY="272.0" styleClass="h4" text="48-hour support response time">
-                                       <graphic>
-                                          <Group>
-                                             <children>
-                                                <SVGPath content="M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z" scaleX="0.02" scaleY="0.02" />
-                                             </children>
-                                          </Group>
-                                       </graphic>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="10.0" top="20.0" />
-                                 </HBox.margin>
-                                 <padding>
-                                    <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                                 </padding>
-                              </VBox>
-                              <VBox layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="415.0" style="-fx-border-color: -fx-accent; -fx-border-radius: 10px; -fx-border-width: 2px;">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Startup">
-                                       <styleClass>
-                                          <String fx:value="h3" />
-                                          <String fx:value="text-bold" />
-                                       </styleClass>
-                                    </Text>
-                                    <TextFlow>
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="A plan that scales with your rapidly growing business." />
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="20.0" />
-                                       </VBox.margin>
-                                    </TextFlow>
-                                    <TextFlow>
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$30">
-                                             <styleClass>
-                                                <String fx:value="h2" />
-                                                <String fx:value="text-bold" />
-                                             </styleClass>
-                                          </Text>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="/month" />
-                                       </children>
-                                    </TextFlow>
-                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Buy plan">
-                                       <VBox.margin>
-                                          <Insets top="40.0" />
-                                       </VBox.margin>
-                                    </Button>
-                                    <Label styleClass="h4" text="25 products">
-                                       <VBox.margin>
-                                          <Insets top="20.0" />
-                                       </VBox.margin>
-                                       <graphic>
-                                          <Group>
-                                             <children>
-                                                <SVGPath content="M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z" scaleX="0.02" scaleY="0.02" />
-                                             </children>
-                                          </Group>
-                                       </graphic>
-                                    </Label>
-                                    <Label layoutX="32.0" layoutY="238.0" styleClass="h4" text="Up to 100,000 subscribers">
-                                       <graphic>
-                                          <Group>
-                                             <children>
-                                                <SVGPath content="M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z" scaleX="0.02" scaleY="0.02" />
-                                             </children>
-                                          </Group>
-                                       </graphic>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label layoutX="32.0" layoutY="255.0" styleClass="h4" text="24-hour support response time">
-                                       <graphic>
-                                          <Group>
-                                             <children>
-                                                <SVGPath content="M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z" scaleX="0.02" scaleY="0.02" />
-                                             </children>
-                                          </Group>
-                                       </graphic>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label layoutX="32.0" layoutY="272.0" styleClass="h4" text="48-hour support response time">
-                                       <graphic>
-                                          <Group>
-                                             <children>
-                                                <SVGPath content="M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z" scaleX="0.02" scaleY="0.02" />
-                                             </children>
-                                          </Group>
-                                       </graphic>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label layoutX="42.0" layoutY="396.0" styleClass="h4" text="Marketing automations">
-                                       <graphic>
-                                          <Group>
-                                             <children>
-                                                <SVGPath content="M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z" scaleX="0.02" scaleY="0.02" />
-                                             </children>
-                                          </Group>
-                                       </graphic>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                                 </padding>
-                              </VBox>
-                              <VBox layoutX="337.0" layoutY="10.0" prefHeight="500.0" prefWidth="415.0" style="-fx-border-color: -light-gray-2; -fx-border-radius: 10px; -fx-border-width: 2px;">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enterprise">
-                                       <styleClass>
-                                          <String fx:value="h3" />
-                                          <String fx:value="text-bold" />
-                                       </styleClass>
-                                    </Text>
-                                    <TextFlow>
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="Dedicated support and infrastructure for your company." />
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="20.0" />
-                                       </VBox.margin>
-                                    </TextFlow>
-                                    <TextFlow>
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$45">
-                                             <styleClass>
-                                                <String fx:value="h2" />
-                                                <String fx:value="text-bold" />
-                                             </styleClass>
-                                          </Text>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="/month" />
-                                       </children>
-                                    </TextFlow>
-                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-border-color: -fx-accent; -fx-border-width: 1px; -fx-border-radius: 4px;" styleClass="btn-flat" text="Buy plan">
-                                       <VBox.margin>
-                                          <Insets top="40.0" />
-                                       </VBox.margin>
-                                    </Button>
-                                    <Label styleClass="h4" text="5 products">
-                                       <VBox.margin>
-                                          <Insets top="20.0" />
-                                       </VBox.margin>
-                                       <graphic>
-                                          <Group>
-                                             <children>
-                                                <SVGPath content="M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z" scaleX="0.02" scaleY="0.02" />
-                                             </children>
-                                          </Group>
-                                       </graphic>
-                                    </Label>
-                                    <Label layoutX="32.0" layoutY="238.0" styleClass="h4" text="Up to 1,000 subscribers">
-                                       <graphic>
-                                          <Group>
-                                             <children>
-                                                <SVGPath content="M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z" scaleX="0.02" scaleY="0.02" />
-                                             </children>
-                                          </Group>
-                                       </graphic>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label layoutX="32.0" layoutY="255.0" styleClass="h4" text="Basic analytics">
-                                       <graphic>
-                                          <Group>
-                                             <children>
-                                                <SVGPath content="M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z" scaleX="0.02" scaleY="0.02" />
-                                             </children>
-                                          </Group>
-                                       </graphic>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <Label layoutX="32.0" layoutY="272.0" styleClass="h4" text="48-hour support response time">
-                                       <graphic>
-                                          <Group>
-                                             <children>
-                                                <SVGPath content="M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z" scaleX="0.02" scaleY="0.02" />
-                                             </children>
-                                          </Group>
-                                       </graphic>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                                 </padding>
-                                 <HBox.margin>
-                                    <Insets right="10.0" top="20.0" />
-                                 </HBox.margin>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <Label styleClass="h2" text="Frequently asked questions">
-                           <VBox.margin>
-                              <Insets bottom="20.0" top="40.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Accordion>
-                          <panes>
-                              <GNTitledPane expanded="false" styleClass="border-titled" text="How do you make holy water?">
-                                 <content>
-                                    <TextFlow style="-fx-background-color: transparent;">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat." />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </padding>
-                                    </TextFlow>
-                                 </content>
-                              </GNTitledPane>
-                              <GNTitledPane expanded="false" layoutX="10.0" layoutY="10.0" styleClass="border-titled" text="What do you call someone with no body and no nose?">
-                                 <content>
-                                    <TextFlow style="-fx-background-color: transparent;">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat." />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </padding>
-                                    </TextFlow>
-                                 </content>
-                              </GNTitledPane>
-                              <GNTitledPane expanded="false" layoutX="10.0" layoutY="46.0" styleClass="border-titled" text="Why do you never see elephants hiding in trees?">
-                                 <content>
-                                    <TextFlow style="-fx-background-color: transparent;">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam aut tempora vitae odio inventore fuga aliquam nostrum quod porro. Delectus quia facere id sequi expedita natus." />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </padding>
-                                    </TextFlow>
-                                 </content>
-                              </GNTitledPane>
-                          </panes>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Accordion>
                      </children>
                   </VBox>
                </children>
