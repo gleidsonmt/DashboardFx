@@ -377,6 +377,11 @@ public class PresentationCreator
         return this;
     }
 
+    public PresentationCreator demonstration(Node node) {
+        demonstration(node, null);
+        return this;
+    }
+
     public PresentationCreator demonstration(Node node, String java) {
         demonstration(node, java, "");
         return this;
@@ -397,10 +402,8 @@ public class PresentationCreator
         TabPane tabPane = new TabPane();
         VBox.setVgrow(tabPane, Priority.ALWAYS);
         tabPane.setMinHeight(400);
-        Tab javaTab = new Tab("Java");
         Tab nodeTab = new Tab("Node");
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-        javaTab.setContent(createBlockCode(java, "java"));
         FlowPane root = new FlowPane();
         root.setPadding(new Insets(20));
         root.setVgap(10);
@@ -410,7 +413,14 @@ public class PresentationCreator
         root.getChildren().setAll(list);
         root.setAlignment(Pos.CENTER);
         nodeTab.setContent(root);
-        tabPane.getTabs().setAll(nodeTab, javaTab);
+        tabPane.getTabs().setAll(nodeTab);
+
+        if (java != null) {
+            Tab javaTab = new Tab("Java");
+            tabPane.getTabs().add(javaTab);
+            javaTab.setContent(createBlockCode(java, "java"));
+
+        }
 
         if (!fxml.isEmpty()) {
             Tab fxmlTab = new Tab("FXML");

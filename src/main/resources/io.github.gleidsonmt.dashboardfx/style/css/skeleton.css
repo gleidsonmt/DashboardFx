@@ -1450,7 +1450,7 @@ SVGPath {
 }
 
 .progress-bar:indeterminate .track {
-    -fx-background-color : red;
+    -fx-background-color : -light-gray;
 }
 
 /*******************************************************************************

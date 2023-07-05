@@ -9,15 +9,19 @@
 
 /* @toggle-left */
 
+.toggle-left:selected,
 .toggle-left {
     -fx-border-radius : 5 0 0 5;
     -fx-background-radius : 5 0 0 5;
 }
 
+.toggle-right:selected,
 .toggle-right {
      -fx-background-radius : 0 5 5 0;
      -fx-border-radius : 0 5 5 0;
 }
+
+
 
 .toggle-button:selected {
     -fx-background-color : transparent;

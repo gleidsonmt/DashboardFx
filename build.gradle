@@ -54,7 +54,7 @@ dependencies {
     implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to vizualize css when app is running.. so amazing!
 
 
-//    implementation files('vendor/GNCarousel-1.0.4.jar')
+    implementation files('vendor/GNAvatarView-1.0.5.jar')
 
 
 

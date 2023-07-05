@@ -15,6 +15,8 @@ module io.github.gleidsonmt.dashboardfx {
     requires animatefx;
 //    requires io.github.gleidsonmt.gncarousel;
 
+    requires GNAvatarView;
+
     requires org.kordamp.ikonli.material;
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.javafx;

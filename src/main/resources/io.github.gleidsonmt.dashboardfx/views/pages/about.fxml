@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.gleidson28.GNAvatarView?>
+<?import io.github.gleidsonmt.dashboardfx.core.controls.GNAvatar?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<!--
+  ~
+  ~    Copyright (C) Gleidson Neves da Silveira
+  ~
+  ~    This program is free software: you can redistribute it and/or modify
+  ~    it under the terms of the GNU General Public License as published by
+  ~    the Free Software Foundation, either version 3 of the License, or
+  ~   (at your option) any later version.
+  ~
+  ~    This program is distributed in the hope that it will be useful,
+  ~    but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~    GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<StackPane fx:id="root" prefHeight="2299.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+      <URL value="@../../style/css/colors.css" />
+      <URL value="@../../style/css/skeleton.css" />
+      <URL value="@../../style/css/bootstrap.css" />
+      <URL value="@../../style/css/helpers.css" />
+      <URL value="@../../style/css/typographic.css" />
+      <URL value="@../../style/css/shapes.css" />
+      <URL value="@../../style/css/dash.css" />
+      <!--        <URL value="@../drawer.css" />-->
+      <!--        <URL value="@../dash.css" />-->
+   </stylesheets>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+
+   <ScrollPane id="view-block" fitToHeight="true" fitToWidth="true">
+      <StackPane.margin>
+         <Insets />
+      </StackPane.margin>
+      <VBox spacing="100.0">
+         <HBox alignment="CENTER" prefHeight="400.0" prefWidth="635.0">
+            <padding>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <VBox alignment="CENTER_LEFT" prefHeight="352.0" prefWidth="390.0" spacing="20.0" HBox.hgrow="ALWAYS">
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Our mission">
+                  <styleClass>
+                     <String fx:value="h2" />
+                     <String fx:value="text-bold" />
+                  </styleClass>
+               </Text>
+               <TextFlow layoutX="10.0" layoutY="42.0">
+                  <children>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text="Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget. Eleifend egestas fringilla sapien." />
+                  </children>
+               </TextFlow>
+               <TextFlow layoutX="10.0" layoutY="60.0">
+                  <children>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text="Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget. Eleifend egestas fringilla sapien." />
+                  </children>
+               </TextFlow>
+               <TextFlow layoutX="10.0" layoutY="214.0">
+                  <children>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text="Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget. Eleifend egestas fringilla sapien." />
+                  </children>
+               </TextFlow>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="338.0" prefWidth="214.0" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="44 million">
+                  <styleClass>
+                     <String fx:value="h2" />
+                     <String fx:value="text-bold" />
+                  </styleClass>
+               </Text>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Transactions every 24 hours" />
+               <Text layoutX="94.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$119 trillion">
+                  <styleClass>
+                     <String fx:value="h2" />
+                     <String fx:value="text-bold" />
+                  </styleClass>
+               </Text>
+               <Text layoutX="99.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assets under holding" />
+               <Text layoutX="94.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="46,000">
+                  <styleClass>
+                     <String fx:value="h2" />
+                     <String fx:value="text-bold" />
+                  </styleClass>
+               </Text>
+               <Text layoutX="99.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New users annually" />
+            </VBox>
+         </HBox>
+         <HBox prefHeight="674.0" prefWidth="635.0" VBox.vgrow="ALWAYS">
+            <children>
+               <GNAvatarView maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="443.0" prefWidth="441.0">
+                  <image>
+                     <Image url="@../../style/img/predios-e-vetores-3fee7.jpg" />
+                  </image>
+               </GNAvatarView>
+               <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                  <padding>
+                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                  </padding>
+                  <VBox spacing="10.0">
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Full-time designer">
+                        <styleClass>
+                           <String fx:value="h4" />
+                           <String fx:value="text-bold" />
+                        </styleClass>
+                     </Text>
+                     <TextFlow>
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quos sunt ad dolore ullam qui. Enim et quisquam dicta molestias. Corrupti quo voluptatum eligendi autem labore." />
+                        </children>
+                     </TextFlow>
+                     <TextFlow>
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$75,0000 USD">
+                              <styleClass>
+                                 <String fx:value="h4" />
+                                 <String fx:value="text-bold" />
+                              </styleClass>
+                           </Text>
+                           <Text layoutX="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text="San Francisco, CA" x="20.0" />
+                        </children>
+                     </TextFlow>
+                  </VBox>
+                  <VBox layoutX="30.0" layoutY="30.0" spacing="10.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Full-time designer">
+                           <styleClass>
+                              <String fx:value="h4" />
+                              <String fx:value="text-bold" />
+                           </styleClass>
+                        </Text>
+                        <TextFlow>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quos sunt ad dolore ullam qui. Enim et quisquam dicta molestias. Corrupti quo voluptatum eligendi autem labore." />
+                           </children>
+                        </TextFlow>
+                        <TextFlow>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$75,0000 USD">
+                                 <styleClass>
+                                    <String fx:value="h4" />
+                                    <String fx:value="text-bold" />
+                                 </styleClass>
+                              </Text>
+                              <Text layoutX="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text="San Francisco, CA" x="20.0" />
+                           </children>
+                        </TextFlow>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="30.0" layoutY="183.0" spacing="10.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Full-time designer">
+                           <styleClass>
+                              <String fx:value="h4" />
+                              <String fx:value="text-bold" />
+                           </styleClass>
+                        </Text>
+                        <TextFlow>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quos sunt ad dolore ullam qui. Enim et quisquam dicta molestias. Corrupti quo voluptatum eligendi autem labore." />
+                           </children>
+                        </TextFlow>
+                        <TextFlow>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$75,0000 USD">
+                                 <styleClass>
+                                    <String fx:value="h4" />
+                                    <String fx:value="text-bold" />
+                                 </styleClass>
+                              </Text>
+                              <Text layoutX="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text="San Francisco, CA" x="20.0" />
+                           </children>
+                        </TextFlow>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="30.0" layoutY="336.0" spacing="10.0">
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Full-time designer">
+                        <styleClass>
+                           <String fx:value="h4" />
+                           <String fx:value="text-bold" />
+                        </styleClass>
+                     </Text>
+                     <TextFlow>
+                        <children>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quos sunt ad dolore ullam qui. Enim et quisquam dicta molestias. Corrupti quo voluptatum eligendi autem labore." />
+                        </children>
+                     </TextFlow>
+                     <TextFlow>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$75,0000 USD">
+                           <styleClass>
+                              <String fx:value="h4" />
+                              <String fx:value="text-bold" />
+                           </styleClass>
+                        </Text>
+                        <Text layoutX="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text="San Francisco, CA" x="20.0" />
+                     </TextFlow>
+                  </VBox>
+               </VBox>
+            </children>
+         </HBox>
+         <VBox prefHeight="233.0" prefWidth="635.0">
+            <children>
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Our Team">
+                  <styleClass>
+                     <String fx:value="h3" />
+                     <String fx:value="text-bold" />
+                  </styleClass>
+               </Text>
+               <TextFlow>
+                  <children>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text="Sit facilis neque ab nulla vel. Cum eos in laudantium. Temporibus eos totam in dolorum. Nemo vel facere repellendus ut eos dolores similique." />
+                  </children>
+               </TextFlow>
+               <TilePane alignment="CENTER" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0" VBox.vgrow="ALWAYS">
+                  <children>
+                     <VBox alignment="CENTER" prefHeight="149.0" prefWidth="170.0">
+                        <children>
+                           <GNAvatar prefHeight="76.0" prefWidth="81.0" radius="40.0">
+                              <image>
+                                 <Image url="@../../style/avatars/man1@100.png" />
+                              </image>
+                           </GNAvatar>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Oliver Johnson">
+                              <styleClass>
+                                 <String fx:value="h4" />
+                                 <String fx:value="text-bold" />
+                              </styleClass>
+                           </Text>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" />
+                        </children>
+                     </VBox>
+                     <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="149.0" prefWidth="170.0">
+                        <children>
+                           <GNAvatar prefHeight="76.0" prefWidth="81.0" radius="40.0">
+                              <image>
+                                 <Image url="@../../style/avatars/man2@100.png" />
+                              </image>
+                           </GNAvatar>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="William Davis">
+                              <styleClass>
+                                 <String fx:value="h4" />
+                                 <String fx:value="text-bold" />
+                              </styleClass>
+                           </Text>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Data Scientist" />
+                        </children>
+                     </VBox>
+                     <VBox alignment="CENTER" layoutX="190.0" layoutY="10.0" prefHeight="149.0" prefWidth="170.0">
+                        <children>
+                           <GNAvatar prefHeight="76.0" prefWidth="81.0" radius="40.0">
+                              <image>
+                                 <Image url="@../../style/avatars/woman@400.png" />
+                              </image>
+                           </GNAvatar>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Emma Thompson">
+                              <styleClass>
+                                 <String fx:value="h4" />
+                                 <String fx:value="text-bold" />
+                              </styleClass>
+                           </Text>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cybersecurity Analyst" />
+                        </children>
+                     </VBox>
+                     <VBox alignment="CENTER" layoutX="370.0" layoutY="10.0" prefHeight="149.0" prefWidth="170.0">
+                        <children>
+                           <GNAvatar prefHeight="76.0" prefWidth="81.0" radius="40.0">
+                              <image>
+                                 <Image url="@../../style/avatars/man@100.png" />
+                              </image>
+                           </GNAvatar>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ethan Wright">
+                              <styleClass>
+                                 <String fx:value="h4" />
+                                 <String fx:value="text-bold" />
+                              </styleClass>
+                           </Text>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="UX Designer" />
+                        </children>
+                     </VBox>
+                     <VBox alignment="CENTER" layoutX="10.0" layoutY="169.0" prefHeight="149.0" prefWidth="170.0">
+                        <GNAvatar prefHeight="76.0" prefWidth="81.0" radius="40.0">
+                           <image>
+                              <Image url="@../../style/avatars/man3@400.png" />
+                           </image>
+                        </GNAvatar>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Benjamin Lee">
+                           <styleClass>
+                              <String fx:value="h4" />
+                              <String fx:value="text-bold" />
+                           </styleClass>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cloud Solutions Architect" />
+                     </VBox>
+                     <VBox alignment="CENTER" layoutX="190.0" layoutY="169.0" prefHeight="149.0" prefWidth="170.0">
+                        <children>
+                           <GNAvatar prefHeight="76.0" prefWidth="81.0" radius="40.0">
+                              <image>
+                                 <Image url="@../../style/avatars/woman1@100.png" />
+                              </image>
+                           </GNAvatar>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sophia Martinez">
+                              <styleClass>
+                                 <String fx:value="h4" />
+                                 <String fx:value="text-bold" />
+                              </styleClass>
+                           </Text>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Network Administrator" />
+                        </children>
+                     </VBox>
+                     <VBox alignment="CENTER" layoutX="370.0" layoutY="169.0" prefHeight="149.0" prefWidth="170.0">
+                        <children>
+                           <GNAvatar prefHeight="76.0" prefWidth="81.0" radius="40.0">
+                              <image>
+                                 <Image url="@../../style/avatars/woman4@100.png" />
+                              </image>
+                           </GNAvatar>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Madison Brown">
+                              <styleClass>
+                                 <String fx:value="h4" />
+                                 <String fx:value="text-bold" />
+                              </styleClass>
+                           </Text>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Machine Learning Engineer" />
+                        </children>
+                     </VBox>
+                     <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="149.0" prefWidth="170.0">
+                        <children>
+                           <GNAvatar prefHeight="76.0" prefWidth="81.0" radius="40.0">
+                              <image>
+                                 <Image url="@../../style/avatars/man4@100.png" />
+                              </image>
+                           </GNAvatar>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chloe Wilson">
+                              <styleClass>
+                                 <String fx:value="h4" />
+                                 <String fx:value="text-bold" />
+                              </styleClass>
+                           </Text>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Web Developer" />
+                        </children>
+                     </VBox>
+                     <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="149.0" prefWidth="170.0">
+                        <children>
+                           <GNAvatar prefHeight="76.0" prefWidth="81.0" radius="40.0">
+                              <image>
+                                 <Image url="@../../style/avatars/man5@100.png" />
+                              </image>
+                           </GNAvatar>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Alexander Garcia">
+                              <styleClass>
+                                 <String fx:value="h4" />
+                                 <String fx:value="text-bold" />
+                              </styleClass>
+                           </Text>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Database Administrator" />
+                        </children>
+                     </VBox>
+                     <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="149.0" prefWidth="170.0">
+                        <children>
+                           <GNAvatar prefHeight="76.0" prefWidth="81.0" radius="40.0">
+                              <image>
+                                 <Image url="@../../style/avatars/woman2@100.png" />
+                              </image>
+                           </GNAvatar>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Isabella Wong">
+                              <styleClass>
+                                 <String fx:value="h4" />
+                                 <String fx:value="text-bold" />
+                              </styleClass>
+                           </Text>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IT Project Manager" />
+                        </children>
+                     </VBox>
+                     <VBox alignment="CENTER" layoutX="10.0" layoutY="487.0" prefHeight="149.0" prefWidth="170.0">
+                        <children>
+                           <GNAvatar prefHeight="76.0" prefWidth="81.0" radius="40.0">
+                              <image>
+                                 <Image url="@../../style/avatars/woman3@100.png" />
+                              </image>
+                           </GNAvatar>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gabriella Rodriguez">
+                              <styleClass>
+                                 <String fx:value="h4" />
+                                 <String fx:value="text-bold" />
+                              </styleClass>
+                           </Text>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Founder / CEO" />
+                        </children>
+                     </VBox>
+                     <VBox alignment="CENTER" layoutX="190.0" layoutY="487.0" prefHeight="149.0" prefWidth="170.0">
+                        <children>
+                           <GNAvatar prefHeight="76.0" prefWidth="81.0" radius="40.0">
+                              <image>
+                                 <Image url="@../../style/avatars/woman5@100.png" />
+                              </image>
+                           </GNAvatar>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Abigail Robinson">
+                              <styleClass>
+                                 <String fx:value="h4" />
+                                 <String fx:value="text-bold" />
+                              </styleClass>
+                           </Text>
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Co-Founder / CTO" />
+                        </children>
+                     </VBox>
+                  </children>
+                  <VBox.margin>
+                     <Insets top="20.0" />
+                  </VBox.margin>
+               </TilePane>
+            </children>
+            <padding>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+         </VBox>
+      </VBox>
+   </ScrollPane>
+</StackPane>

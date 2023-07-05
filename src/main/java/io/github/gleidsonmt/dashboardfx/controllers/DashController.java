@@ -54,6 +54,8 @@ public final class DashController extends ActionView {
     private GridPane footer;
     @FXML
     private StackedAreaChart<Number, Number> graphic;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Creating the Area chart
@@ -192,6 +194,7 @@ public final class DashController extends ActionView {
         GridPane.setConstraints(scheduleList, 0, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(curvedChart, 1, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
 
+
     }
 
     @Override
@@ -256,10 +259,13 @@ public final class DashController extends ActionView {
 //        boxUser.setPadding(new Insets(0,2,10,2));
         Separator separator =  new Separator(Orientation.VERTICAL);
         HBox.setMargin(boxUser, new Insets(0,0,0,10));
-        context.layout().bar().addInRight(btnSearch, sms, notification,
-               separator, boxUser);
 
-        HBox.setMargin(separator, new Insets(0, 5, 0,15));
+//        context.layout().bar().addInRight(btnSearch, sms, notification,
+//               separator, boxUser);
+
+        context.layout().bar().addInRight(btnSearch, sms, notification);
+
+        HBox.setMargin(notification, new Insets(0, 15, 0,5));
 
         VBox b = createDialogNotification();
 
@@ -272,35 +278,8 @@ public final class DashController extends ActionView {
 //                    .background(Wrapper.WrapperBackgroundType.GRAY)
                 .show(Pos.BOTTOM_CENTER, notification));
 
-        Button btnProfile = createBtn("Profile", event -> {
-//            upadteContent(context, "profile");
 
-            context.routes().nav("profile");
-            removeFocus();
-        });
-        btnProfile.setGraphic(new IconContainer(Icons.ACCOUNT_CIRCLE));
-        Button btnSettings = createBtn("Settings", event -> {
-            context.routes().nav("settings");
-            removeFocus();
-        });
-        btnSettings.setGraphic(new IconContainer(Icons.SETTINGS_FILLED));
-        Button btnLogout = createBtn("Logout", event -> {
-//                upadteContent(context, "profile");
-        });
-        btnLogout.setGraphic(new IconContainer(Icons.LOGOUT));
 
-        VBox boxUserDialog = new VBox();
-        boxUserDialog.getChildren().setAll(btnProfile, btnSettings, new Separator(), btnLogout);
-
-        boxUser.setOnMouseClicked(event -> context.flow()
-//                    .getPopup()
-//                    .size(300, 150)
-//                    .moveX(200)
-                .content(
-                        new DialogContainer(boxUserDialog)
-                                .size(200, 100)
-                )
-                .show(Pos.BOTTOM_LEFT, boxUser, 140));
 
         root.widthProperty()
                 .addListener((observable, oldValue, newValue) -> {
@@ -323,11 +302,6 @@ public final class DashController extends ActionView {
                         Grid.inLine(footer);
                     }
                 });
-    }
-
-    private void removeFocus() {
-        ((SideNavController)
-                context.controllerOf("drawer")).removeFocus();
     }
 
     private VBox createDialogNotification() {
@@ -381,20 +355,6 @@ public final class DashController extends ActionView {
 
         root.getChildren().setAll(header, vBox, btnAll);
         return root;
-    }
-
-    private Button createBtn(String text, EventHandler<ActionEvent> event) {
-
-        Button btnProfile = new Button(text);
-        btnProfile.setMaxWidth(Double.MAX_VALUE);
-        btnProfile.getStyleClass().addAll("btn-option", "btn-flat", "no-border");
-
-        btnProfile.setAlignment(Pos.CENTER_LEFT);
-        btnProfile.setPadding(new Insets(10));
-        btnProfile.setOnAction(event);
-
-        btnProfile.addEventFilter(MouseEvent.MOUSE_CLICKED, event1 -> context.flow().close());
-        return btnProfile;
     }
 
     private DonutChart createDonut() {

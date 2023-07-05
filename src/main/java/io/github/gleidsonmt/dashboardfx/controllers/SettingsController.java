@@ -61,9 +61,6 @@ public class SettingsController extends ActionView {
                                         )
                 )
                 .show();
-
-
-
     }
 
     @Override

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.gleidsonmt.dashboardfx.core.controls.GNAvatarStatus?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
@@ -11,10 +13,14 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Text?>
 
 <StackPane id="drawer-IRoot" fx:id="root" maxWidth="250" minWidth="-Infinity" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: -light-gray-2; -fx-border-width: 0 1 0 0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.SideNavController">
    <VBox id="drawer-content" prefHeight="200.0" prefWidth="100.0">
@@ -31,11 +37,7 @@
             </ImageView>
          </VBox>
          <VBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="135.0" HBox.hgrow="ALWAYS">
-            <Label contentDisplay="RIGHT" style="-fx-text-fill: -cyan; -fx-font-weight: bold;" styleClass="h4" text="DashboardFx">
-               <graphic>
-                  <SVGPath content="m12 15-5-5h10Z" />
-               </graphic>
-            </Label>
+            <Label contentDisplay="RIGHT" style="-fx-text-fill: -cyan; -fx-font-weight: bold;" styleClass="h4" text="DashboardFx" />
             <Label text="gleidsonmt, Inc." />
          </VBox>
       </HBox>
@@ -99,6 +101,7 @@
                   </ToggleButton>
                   <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goMenuButton" styleClass="drawer-item" text="MenuButton" toggleGroup="$group" />
                   <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goPagination" styleClass="drawer-item" text="Pagination" />
+                  <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="615.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goProgressbar" styleClass="drawer-item" text="Progressbar" />
                   <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goRadioButton" styleClass="drawer-item" text="RadioButton">
                      <toggleGroup>
                         <ToggleGroup fx:id="group21" />
@@ -173,6 +176,21 @@
                               <ToggleGroup fx:id="group3121" />
                            </toggleGroup>
                         </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="180.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goFooter" styleClass="drawer-item" text="Footer">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group31211" />
+                           </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="220.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goTestimonials" styleClass="drawer-item" text="Testimonials">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group312111" />
+                           </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goAbout" styleClass="drawer-item" text="About">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group32" />
+                           </toggleGroup>
+                        </ToggleButton>
                      </children>
                   </VBox>
                </content>
@@ -187,13 +205,42 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goAbout" styleClass="drawer-item" text="About" toggleGroup="$group">
+            <ToggleButton alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goAboutDash" styleClass="drawer-item" text="About" toggleGroup="$group">
                <graphic>
                   <SVGPath content="M11.95 18q.525 0 .888-.363.362-.362.362-.887t-.362-.887q-.363-.363-.888-.363t-.888.363q-.362.362-.362.887t.362.887q.363.363.888.363Zm-.9-3.85h1.85q0-.825.188-1.3.187-.475 1.062-1.3.65-.65 1.025-1.238.375-.587.375-1.412 0-1.4-1.025-2.15T12.1 6q-1.425 0-2.312.75-.888.75-1.238 1.8l1.65.65q.125-.45.563-.975Q11.2 7.7 12.1 7.7q.8 0 1.2.437.4.438.4.963 0 .5-.3.937-.3.438-.75.813-1.1.975-1.35 1.475-.25.5-.25 1.825ZM12 22q-2.075 0-3.9-.788-1.825-.787-3.175-2.137-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175 1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138 1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175-1.35 1.35-3.175 2.137Q14.075 22 12 22Zm0-2q3.35 0 5.675-2.325Q20 15.35 20 12q0-3.35-2.325-5.675Q15.35 4 12 4 8.65 4 6.325 6.325 4 8.65 4 12q0 3.35 2.325 5.675Q8.65 20 12 20Zm0-8Z" />
                </graphic>
             </ToggleButton>
          </VBox>
       </ScrollPane>
+      <GridPane alignment="CENTER" minHeight="-Infinity" prefHeight="37.0" prefWidth="229.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="38.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="193.0" minWidth="10.0" prefWidth="156.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="193.0" minWidth="10.0" prefWidth="37.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GNAvatarStatus prefHeight="25.0" prefWidth="30.0" radius="15.0">
+               <image>
+                  <Image url="@../style/avatars/man@50.png" />
+               </image>
+            </GNAvatarStatus>
+            <VBox alignment="CENTER_LEFT" GridPane.columnIndex="1">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-bold" text="Jhon Doe" />
+                  <Text layoutX="10.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="jhondoe@gmail.com" />
+               </children>
+            </VBox>
+            <Button fx:id="arrowButton" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#openUserPreferences" styleClass="btn-flat" text="Button" GridPane.columnIndex="2">
+               <graphic>
+                  <SVGPath content="m12 15-5-5h10Z" />
+               </graphic>
+            </Button>
+         </children>
+      </GridPane>
    </VBox>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

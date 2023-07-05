@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.gleidson28.GNAvatarView?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<!--
+  ~
+  ~    Copyright (C) Gleidson Neves da Silveira
+  ~
+  ~    This program is free software: you can redistribute it and/or modify
+  ~    it under the terms of the GNU General Public License as published by
+  ~    the Free Software Foundation, either version 3 of the License, or
+  ~   (at your option) any later version.
+  ~
+  ~    This program is distributed in the hope that it will be useful,
+  ~    but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~    GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<StackPane fx:id="root" prefHeight="1045.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../../style/css/colors.css" />
+        <URL value="@../../style/css/skeleton.css" />
+        <URL value="@../../style/css/bootstrap.css" />
+        <URL value="@../../style/css/helpers.css" />
+        <URL value="@../../style/css/typographic.css" />
+        <URL value="@../../style/css/shapes.css" />
+      <URL value="@../../style/css/dash.css" />
+        <!--        <URL value="@../drawer.css" />-->
+        <!--        <URL value="@../dash.css" />-->
+    </stylesheets>
+   <children>
+      <ScrollPane id="view-block" fitToHeight="true" fitToWidth="true">
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+         <content>
+            <VBox>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+               <children>
+                  <VBox alignment="CENTER" spacing="20.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: -fx-accent;" text="Testimonials">
+                           <styleClass>
+                              <String fx:value="h5" />
+                              <String fx:value="text-bold" />
+                           </styleClass>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="We have worked with thousands of amazing people">
+                           <styleClass>
+                              <String fx:value="h3" />
+                              <String fx:value="text-bold" />
+                           </styleClass>
+                        </Text>
+                        <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="20.0" prefWrapLength="500.0" vgap="20.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: -light-gray; -fx-background-radius: 10px;">
+                                 <children>
+                                    <TextFlow VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="“Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.”" />
+                                       </children>
+                                    </TextFlow>
+                                    <GridPane hgap="10.0" prefHeight="39.0" prefWidth="248.0" VBox.vgrow="ALWAYS">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="86.0" minWidth="10.0" prefWidth="59.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="301.0" minWidth="10.0" prefWidth="301.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-bold" text="Oliver Johnson" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="email@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                          <GNAvatarView prefHeight="73.0" prefWidth="87.0" strokeWidth="0.0" GridPane.rowSpan="2147483647">
+                                             <image>
+                                                <Image url="@../../style/avatars/man1@100.png" />
+                                             </image>
+                                          </GNAvatarView>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </GridPane>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox layoutX="103.0" layoutY="10.0" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: -light-gray; -fx-background-radius: 10px;">
+                                 <children>
+                                    <TextFlow VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="“Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.”" />
+                                       </children>
+                                    </TextFlow>
+                                    <GridPane hgap="10.0" prefHeight="39.0" prefWidth="248.0" VBox.vgrow="ALWAYS">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="86.0" minWidth="10.0" prefWidth="59.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="301.0" minWidth="10.0" prefWidth="301.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-bold" text="Benjamin Lee" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="email@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                          <GNAvatarView prefHeight="73.0" prefWidth="87.0" strokeWidth="0.0" GridPane.rowSpan="2147483647">
+                                             <image>
+                                                <Image url="@../../style/avatars/man3@100.png" />
+                                             </image>
+                                          </GNAvatarView>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </GridPane>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox layoutX="103.0" layoutY="230.0" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: -light-gray; -fx-background-radius: 10px;">
+                                 <children>
+                                    <TextFlow VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="“Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.”" />
+                                       </children>
+                                    </TextFlow>
+                                    <GridPane hgap="10.0" prefHeight="39.0" prefWidth="248.0" VBox.vgrow="ALWAYS">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="86.0" minWidth="10.0" prefWidth="59.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="301.0" minWidth="10.0" prefWidth="301.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-bold" text="Isabella Wong" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="email@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                          <GNAvatarView prefHeight="73.0" prefWidth="87.0" strokeWidth="0.0" GridPane.rowSpan="2147483647">
+                                             <image>
+                                                <Image url="@../../style/avatars/woman2@100.png" />
+                                             </image>
+                                          </GNAvatarView>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </GridPane>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox layoutX="103.0" layoutY="450.0" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: -light-gray; -fx-background-radius: 10px;">
+                                 <children>
+                                    <TextFlow VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="“Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.”" />
+                                       </children>
+                                    </TextFlow>
+                                    <GridPane hgap="10.0" prefHeight="39.0" prefWidth="248.0" VBox.vgrow="ALWAYS">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="86.0" minWidth="10.0" prefWidth="59.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="301.0" minWidth="10.0" prefWidth="301.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-bold" text="Madison Brown" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="email@gmail.com" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                          <GNAvatarView prefHeight="73.0" prefWidth="87.0" strokeWidth="0.0" GridPane.rowSpan="2147483647">
+                                             <image>
+                                                <Image url="@../../style/avatars/woman3@100.png" />
+                                             </image>
+                                          </GNAvatarView>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </GridPane>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </FlowPane>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+    
+      </StackPane>

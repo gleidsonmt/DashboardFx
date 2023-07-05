@@ -15,6 +15,12 @@
   - {
     name: about,
     title: About,
+    folder: pages,
+    fxml: about.fxml
+  }
+  - {
+    name: about_dash,
+    title: About,
     folder: app,
     fxml: about.fxml
   }
@@ -52,6 +58,18 @@
       title: Frequently,
       folder: pages,
       fxml: frequently.fxml
+  }
+  - {
+      name: footer,
+      title: Footer,
+      folder: pages,
+      fxml: footer.fxml
+  }
+  - {
+      name: testimonials,
+      title: Testimonials,
+      folder: pages,
+      fxml: testimonial.fxml
   }
 #  - {
 #      name: picture,

@@ -39,7 +39,7 @@ public class MenuBarPresCreator extends TutorialCreator {
         this
                 .title("Intro")
                 .text("A MenuBar control traditionally is placed at the very top of the user interface, and embedded within it are Menus. To add a menu to a menubar, you add it to the menus ObservableList. By default, for each menu added to the menubar, it will be represented as a button with the Menu text value displayed.")
-                .demonstration(createMenuBar(), "")
+                .demonstration(createMenuBar())
                 .title("Links")
                 .footer(createDefaultAuthor("MenuBar"))
                 .build();
