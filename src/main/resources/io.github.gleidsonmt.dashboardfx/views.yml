@@ -2,6 +2,11 @@
 !!io.github.gleidsonmt.dashboardfx.core.view.ViewMap
   views:
   - {
+    name: data_table,
+    title: Data Table,
+    fxml: dataTable.fxml
+  }
+  - {
       name: drawer,
       title: Drawer,
       fxml: drawer.fxml
@@ -17,6 +22,12 @@
     title: About,
     folder: pages,
     fxml: about.fxml
+  }
+  - {
+    name: blog,
+    title: Blog,
+    folder: pages,
+    fxml: blog.fxml
   }
   - {
     name: about_dash,
@@ -71,12 +82,7 @@
       folder: pages,
       fxml: testimonial.fxml
   }
-#  - {
-#      name: picture,
-#      title: Picture,
-#      folder: app,
-#      fxml: picture_selector.fxml
-#  }
+
 #  - {
 #    name: sales_left,
 #    title: Sales Column,

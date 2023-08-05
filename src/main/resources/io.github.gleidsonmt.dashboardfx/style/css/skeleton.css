@@ -57,7 +57,8 @@ SVGPath {
     -fx-padding: 4px;
     -fx-border-width: 2px;
     -fx-background-insets: 0px;
-        -fx-border-color : transparent;
+    -fx-border-color : transparent;
+    -fx-background-color : red;
 }
 
 .toggle-button:selected {
@@ -1269,12 +1270,14 @@ SVGPath {
 .date-picker-popup > * > .spinner > .right-button {
     -fx-padding: 10px; /* 0 3 0 4 */
     -fx-border-color: white;
-    -fx-background-color: -fx-accent;
+    -fx-background-color: transparent;
     -fx-border-width: 2px;
+    -fx-border-color: -medium-gray-2;
+    -fx-border-radius: 4px;
 }
 .date-picker-popup > * > .spinner > .button > .left-arrow,
 .date-picker-popup > * > .spinner > .button > .right-arrow {
-    -fx-background-color: white;
+    -fx-background-color: -medium-gray-2;
     -fx-background-insets: 1 0 -1 0, 0;
     -fx-padding: 10px; /* 4 2 4 2 */
 }

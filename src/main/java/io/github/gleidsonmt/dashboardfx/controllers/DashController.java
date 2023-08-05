@@ -333,13 +333,13 @@ public final class DashController extends ActionView {
                 new NotificationCell(
                         false,
                         "Thank you for booking a meeting with us.",
-                        new GNAvatar(new Image(context.getResource("style/img/avatar.png").toExternalForm()), 20),
+                        new GNAvatar(new Image(context.getResource("style/avatars/man1@50.png").toExternalForm()), 20),
                         LocalDateTime.now()
                 ),
                 new NotificationCell(
                         false,
                         "Great News! We are launching our 5th fund: DLE Senior Living.",
-                        new GNAvatar(new Image(context.getResource("style/img/avatar.png").toExternalForm()), 20),
+                        new GNAvatar(new Image(context.getResource("style/avatars/man2@50.png").toExternalForm()), 20),
                         LocalDateTime.now()
                 )
         );

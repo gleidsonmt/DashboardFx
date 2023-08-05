@@ -164,8 +164,8 @@ Text, .text, .label {
     -fx-text-fill: -text-color;
 }
 
-.overview-item:selected {
-    -fx-border-width: 2px;
+.overview-item:hover {
+    -fx-border-width: 1px;
     -fx-border-radius: 5px;
 }
 
@@ -175,6 +175,10 @@ Text, .text, .label {
 
 .overview-item:selected Circle {
     -fx-fill: -fx-accent;
+}
+
+.overview-item:selected {
+    -fx-border-color: transparent;
 }
 
 .btn-option {
@@ -234,4 +238,112 @@ Text, .text, .label {
     -fx-border-radius: 10px;
     -fx-border-color: -light-gray-2;
     -fx-border-width: 1px;
+}
+
+.block01 {
+    -fx-background-image: url('../img/laptop.jpg');
+    -fx-background-size: stretch;
+}
+
+.block02 {
+    -fx-background-image: url('../img/office.jpg');
+    -fx-background-size: stretch;
+}
+
+.block03 {
+    -fx-background-image: url('../img/white_office.jpg');
+    -fx-background-size: stretch;
+}
+
+.radio-color {
+    -fx-border-width: 2px;
+}
+
+.radio-color .radio {
+    -fx-background-color: -fx-accent;
+    -fx-border-color: -fx-accent;
+    -fx-border-radius: 100px;
+    -fx-background-insets: 16px;
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
+}
+
+.radio-color .radio .dot {
+    -fx-background-color: -fx-accent;
+    -fx-border-color: -fx-accent;
+    -fx-background-insets: -10px;
+        -fx-border-radius: 100px;
+}
+
+
+.radio-color:selected .radio  {
+    -fx-background-color: -fx-accent;
+    -fx-border-color: -fx-accent;
+    -fx-border-radius: 100px;
+    -fx-border-width: 2px;
+}
+
+.radio-color:selected .radio .dot {
+    -fx-background-color: -fx-accent;
+    -fx-background-insets: -8px;
+    -fx-border-width: 2px;
+    -fx-background-radius: 100px;
+}
+
+
+
+
+
+.radio-danger .radio,
+.radio-danger .radio .dot,
+.radio-danger:selected .radio,
+.radio-danger:selected .radio .dot
+{
+    -fx-background-color: -danger;
+    -fx-border-color:  -danger;
+}
+
+
+.radio-info .radio,
+.radio-info .radio .dot,
+.radio-info:selected .radio,
+.radio-info:selected .radio .dot
+{
+    -fx-background-color: -info;
+    -fx-border-color:  -info;
+}
+
+.radio-warning .radio,
+.radio-warning .radio .dot,
+.radio-warning:selected .radio,
+.radio-warning:selected .radio .dot
+{
+    -fx-background-color: -warning;
+    -fx-border-color:  -warning;
+}
+
+.radio-success .radio,
+.radio-success .radio .dot,
+.radio-success:selected .radio,
+.radio-success:selected .radio .dot
+{
+    -fx-background-color: -success;
+    -fx-border-color:  -success;
+}
+
+.radio-secondary .radio,
+.radio-secondary .radio .dot,
+.radio-secondary:selected .radio,
+.radio-secondary:selected .radio .dot
+{
+    -fx-background-color: -secondary;
+    -fx-border-color:  -secondary;
+}
+
+
+.inner-toggle {
+    -fx-background-color: transparent;
+    -fx-border-color: -light-gray-2;
+    -fx-border-width: 2px;
+    -fx-border-radius: 4px;
 }

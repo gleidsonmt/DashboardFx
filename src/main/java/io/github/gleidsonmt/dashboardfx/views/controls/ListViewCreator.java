@@ -21,7 +21,19 @@ package io.github.gleidsonmt.dashboardfx.views.controls;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
-import javafx.scene.control.ListView;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.VPos;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.text.Text;
+import javafx.util.Callback;
+import org.kordamp.ikonli.Ikon;
+import org.kordamp.ikonli.javafx.FontIcon;
+import org.kordamp.ikonli.material.Material;
+import org.kordamp.ikonli.material2.Material2AL;
 
 import java.util.List;
 
@@ -74,11 +86,86 @@ public class ListViewCreator extends TutorialCreator {
                             """
                        , "-fx-padding: 10px 0px 10px 0px;"
                 )
+                .title("Customized")
+                .text("Customized list with controls.")
+                .demonstration(createCustomList())
                 .title("Links")
                 .footer(createDefaultControl())
 
         ;
         build();
+    }
+
+    record ListItem(String title, String price, String legend ) {
+
+    }
+    private Node createCustomList() {
+        ListView<ListItem> listView = new ListView<>();
+//        listView.getStyleClass().add("border-list");
+
+        listView.getItems().addAll(
+                new ListItem(
+                        "Startup", "$29 / mo ($290 / yr)", "Up to 5 active job postings"
+                ),
+                new ListItem(
+                        "Business", "$99 / mo ($990 / yr)", "Up to 25 active job postings"
+               ),
+                new ListItem(
+                        "Enterprise", "$249 / mo ($2490 / yr)", "Unlimited active job postings"
+                )
+        );
+
+        listView.setPrefWidth(500);
+        listView.setStyle("-fx-fixed-cell-size: 60px;");
+        listView.getStyleClass().add("rect-list");
+        listView.setPadding(new Insets(20));
+
+        ToggleGroup group = new ToggleGroup();
+        listView.setCellFactory(new Callback<>() {
+            @Override
+            public ListCell<ListItem> call(ListView<ListItem> param) {
+                return new ListCell<>() {
+                    @Override
+                    protected void updateItem(ListItem item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (!empty) {
+                            GridPane grid = new GridPane();
+
+                            RadioButton title = new RadioButton(item.title);
+                            group.getToggles().add(title);
+
+                            setOnMouseClicked(event -> {
+                                title.setSelected(true);
+                            });
+
+//                            Text title = new Text(item.title);
+                            Label price = new Label(item.price);
+                            Label legend = new Label(item.legend);
+                            grid.getChildren().addAll(title, price, legend);
+                            title.setMouseTransparent(true);
+                            price.setMouseTransparent(true);
+                            legend.setMouseTransparent(true);
+                            grid.setMouseTransparent(true);
+
+                            GridPane.setConstraints(title, 0,0, 1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                            GridPane.setConstraints(price, 1,0, 1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                            GridPane.setConstraints(legend, 2,0, 1,1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                            grid.setHgap(10);
+
+                            setItem(item);
+                            setGraphic(grid);
+//                            getChildren().addAll(radio);
+                        } else {
+                            setItem(null);
+                            setText(null);
+                            setGraphic(null);
+                        }
+                    }
+                };
+            }
+        });
+
+        return listView;
     }
 
     private ListView<String> createListView() {

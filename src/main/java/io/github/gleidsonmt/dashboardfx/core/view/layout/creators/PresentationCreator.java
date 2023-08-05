@@ -377,6 +377,11 @@ public class PresentationCreator
         return this;
     }
 
+    public PresentationCreator demonstration(List<Node> nodes) {
+        demonstration(nodes, null, "");
+        return this;
+    }
+
     public PresentationCreator demonstration(Node node) {
         demonstration(node, null);
         return this;

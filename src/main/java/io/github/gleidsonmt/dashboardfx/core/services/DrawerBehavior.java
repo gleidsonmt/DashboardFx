@@ -20,7 +20,9 @@
 package io.github.gleidsonmt.dashboardfx.core.services;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
+import io.github.gleidsonmt.dashboardfx.core.model.SearchItem;
 import io.github.gleidsonmt.dashboardfx.core.model.SearchItemAdapter;
+import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
@@ -30,6 +32,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Version 0.0.1
@@ -37,8 +42,12 @@ import javafx.scene.layout.VBox;
  */
 public class DrawerBehavior {
 
-    public DrawerBehavior(StackPane content, ToggleGroup group, Context context) {
+    private List<SearchItem> searchItems =  new ArrayList<>();
+
+    public DrawerBehavior(StackPane content, ToggleGroup group) {
+
         VBox body = (VBox) content.lookup("#drawer-content");
+
         ScrollPane scrollPane = (ScrollPane) body.lookup("#drawer-scroll");
         VBox box = (VBox) scrollPane.getContent();
 
@@ -52,7 +61,8 @@ public class DrawerBehavior {
                     each.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
                         if (each.isSelected()) event.consume();
                     });
-                    context.searchItems().add(SearchItemAdapter.adapter(each));
+//                    context.searchItems().add(SearchItemAdapter.adapter(each));
+                        searchItems.add(SearchItemAdapter.adapter(each));
                 });
 
         box.getChildren()
@@ -78,7 +88,9 @@ public class DrawerBehavior {
                                 }
                             });
 
-                            context.searchItems().add(SearchItemAdapter.adapter(e));
+//                            context.searchItems().add(SearchItemAdapter.adapter(e));
+                                searchItems.add(SearchItemAdapter.adapter(e));
+
                         }
                     }
                 });

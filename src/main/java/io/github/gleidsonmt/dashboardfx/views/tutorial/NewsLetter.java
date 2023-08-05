@@ -22,6 +22,7 @@ package io.github.gleidsonmt.dashboardfx.views.tutorial;
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 
+import java.lang.reflect.Type;
 import java.time.LocalDate;
 
 public class NewsLetter extends TutorialCreator {
@@ -41,5 +42,4 @@ public class NewsLetter extends TutorialCreator {
                 .build();
 
     }
-
 }

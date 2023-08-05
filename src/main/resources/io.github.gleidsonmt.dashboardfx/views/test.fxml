@@ -1,34 +1,287 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Text?>
 
-<?import io.github.gleidsonmt.dashboardfx.core.controls.GNBadge?>
-<StackPane id="drawer-IRoot" fx:id="root" maxWidth="549.0" prefHeight="600.0" prefWidth="549.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.SideNavController">
-   <VBox id="drawer-content" prefHeight="200.0" prefWidth="100.0">
+<StackPane id="drawer-IRoot" fx:id="root" maxWidth="549.0" prefHeight="657.0" prefWidth="549.0" style="-fx-background-color: whtie;" stylesheets="@../style/css/dash.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.SideNavController">
+    <stylesheets>
+        <URL value="@../style/css/colors.css" />
+        <URL value="@../style/css/skeleton.css" />
+        <URL value="@../style/css/bootstrap.css" />
+        <URL value="@../style/css/helpers.css" />
+        <URL value="@../style/css/typographic.css" />
+        <URL value="@../style/css/shapes.css" />
+        <URL value="@../style/css/dash.css" />
+    </stylesheets>
+   <VBox id="drawer-content" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
       <TableView prefHeight="200.0" prefWidth="200.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="C1"/>
-            <TableColumn prefWidth="75.0" text="C2"/>
+            <TableColumn prefWidth="75.0" text="C1" />
+            <TableColumn prefWidth="75.0" text="C2" />
          </columns>
       </TableView>
+      <RadioButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="RadioButton">
+         <graphic>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="GRid" />
+                  <Text layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GRid" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </graphic>
+      </RadioButton>
+      <ToggleButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="63.0" prefWidth="392.0" styleClass="inner-toggle" text="ToggleButton">
+         <graphic>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="Business" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8GB / 4 CPUs * 160 GB SSD disk" GridPane.rowIndex="1" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$40" GridPane.columnIndex="1" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/mo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </GridPane>
+         </graphic>
+         <toggleGroup>
+            <ToggleGroup fx:id="group" />
+         </toggleGroup>
+      </ToggleButton>
+      <ToggleButton contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="230.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="392.0" style="-fx-background-color: transparent; -fx-border-color: -light-gray-2; -fx-border-width: 2px; -fx-border-radius: 4px;" text="ToggleButton" toggleGroup="$group">
+         <graphic>
+            <GridPane>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="Business" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8GB / 4 CPUs * 160 GB SSD disk" GridPane.rowIndex="1" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$40" GridPane.columnIndex="1" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/mo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </GridPane>
+         </graphic>
+      </ToggleButton>
+      <ToggleButton contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="313.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="392.0" style="-fx-background-color: transparent; -fx-border-color: -light-gray-2; -fx-border-width: 2px; -fx-border-radius: 4px;" text="ToggleButton" toggleGroup="$group">
+         <graphic>
+            <GridPane>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="Business" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8GB / 4 CPUs * 160 GB SSD disk" GridPane.rowIndex="1" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$40" GridPane.columnIndex="1" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/mo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </GridPane>
+         </graphic>
+      </ToggleButton>
+      <RadioButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="RadioButton">
+         <graphic>
+            <GridPane prefHeight="43.0" prefWidth="367.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="Business" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8GB / 4 CPUs * 160 GB SSD disk" GridPane.rowIndex="1" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$40" GridPane.columnIndex="1" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/mo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </GridPane>
+         </graphic>
+      </RadioButton>
+      <Label alignment="TOP_LEFT" contentDisplay="GRAPHIC_ONLY" prefHeight="40.0" prefWidth="262.0" text="Label">
+         <graphic>
+            <GridPane fx:id="jorge" prefHeight="43.0" prefWidth="367.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="Business" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8GB / 4 CPUs * 160 GB SSD disk" GridPane.rowIndex="1" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$40" GridPane.columnIndex="1" />
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/mo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </GridPane>
+         </graphic>
+      </Label>
+      <ListView prefHeight="200.0" prefWidth="200.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <!-- Passing the items -->
+               <GridPane prefHeight="43.0" prefWidth="367.0">
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                     <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  </rowConstraints>
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                  </padding>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="Business"/>
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                        text="8GB / 4 CPUs * 160 GB SSD disk" GridPane.rowIndex="1"/>
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$40"
+                        GridPane.columnIndex="1"/>
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/mo"
+                        GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+               </GridPane>
+               <GridPane prefHeight="43.0" prefWidth="367.0">
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                     <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  </rowConstraints>
+                  <padding>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                  </padding>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h5" text="Business"/>
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                        text="8GB / 4 CPUs * 160 GB SSD disk" GridPane.rowIndex="1"/>
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$40"
+                        GridPane.columnIndex="1"/>
+                  <Text layoutX="10.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/mo"
+                        GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+               </GridPane>
+            </FXCollections>
+         </items>
+      </ListView>
+      <ToggleButton contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="74.0" prefWidth="354.0" style="-fx-background-color: white; -fx-border-color: -light-gray-2; -fx-border-radius: 4px;" text="ToggleButton">
+         <graphic>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Group GridPane.columnIndex="1">
+                     <children>
+                        <SVGPath content="M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z" scaleX="0.025" scaleY="0.025" />
+                     </children>
+                  </Group>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Newsletter" />
+                  <Text layoutX="10.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last message sent one hour ago" GridPane.rowIndex="1" />
+                  <Text layoutX="10.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="678 users" GridPane.rowIndex="2" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </GridPane>
+         </graphic>
+      </ToggleButton>
+      <HBox spacing="10.0">
+         <children>
+            <RadioButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="32.0" selected="true" text="Danger">
+               <styleClass>
+                  <String fx:value="radio-color" />
+                  <String fx:value="radio-danger" />
+               </styleClass></RadioButton>
+            <RadioButton contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" selected="true" text="Info">
+               <styleClass>
+                  <String fx:value="radio-color" />
+                  <String fx:value="radio-info" />
+               </styleClass></RadioButton>
+            <RadioButton contentDisplay="CENTER" layoutX="103.0" layoutY="10.0" mnemonicParsing="false" text="Warning">
+               <styleClass>
+                  <String fx:value="radio-color" />
+                  <String fx:value="radio-warning" />
+               </styleClass></RadioButton>
+            <RadioButton contentDisplay="CENTER" layoutX="118.0" layoutY="10.0" mnemonicParsing="false" text="Success">
+               <styleClass>
+                  <String fx:value="radio-color" />
+                  <String fx:value="radio-success" />
+               </styleClass>
+            </RadioButton>
+            <RadioButton contentDisplay="CENTER" layoutX="267.0" layoutY="10.0" mnemonicParsing="false" text="secondary">
+               <styleClass>
+                  <String fx:value="radio-color" />
+                  <String fx:value="radio-secondary" />
+               </styleClass>
+            </RadioButton>
+         </children>
+      </HBox>
+      <CheckBox mnemonicParsing="false" text="CheckBox" />
    </VBox>
-   <stylesheets>
-      <URL value="@../style/css/colors.css" />
-      <URL value="@../style/css/drawer.css" />
-      <URL value="@../style/css/dash.css" />
-
-      <URL value="@../style/css/bootstrap.css" />
-      <URL value="@../style/css/immersive_scroll.css" />
-      <URL value="@../style/css/typographic.css" />
-      <URL value="@../style/css/dash.css" />
-      <URL value="@../style/css/skeleton.css" />
-
-   </stylesheets>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>

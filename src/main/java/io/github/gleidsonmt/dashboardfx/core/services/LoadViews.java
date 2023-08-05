@@ -39,7 +39,7 @@ public class LoadViews extends Task<View> {
     protected View call() throws Exception {
 
         for (ViewComposer viewComposer : data.getViews()) {
-            Thread.sleep(1000);
+            Thread.sleep(100);
 
             Platform.runLater(() -> {
                 loader.updateLegend("Loading view... " + viewComposer.getName());

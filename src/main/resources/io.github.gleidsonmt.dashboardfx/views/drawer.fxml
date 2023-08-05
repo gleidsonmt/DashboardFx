@@ -22,8 +22,8 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Text?>
 
-<StackPane id="drawer-IRoot" fx:id="root" maxWidth="250" minWidth="-Infinity" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: -light-gray-2; -fx-border-width: 0 1 0 0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.SideNavController">
-   <VBox id="drawer-content" prefHeight="200.0" prefWidth="100.0">
+<StackPane id="drawer-root" fx:id="root" maxWidth="250" minWidth="-Infinity" prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: white; -fx-border-color: -light-gray-2; -fx-border-width: 0 1 0 0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.SideNavController">
+   <VBox id="drawer-content" fx:id="drawerContent" prefHeight="200.0" prefWidth="100.0">
       <HBox alignment="CENTER_LEFT" prefWidth="229.0" spacing="10.0" style="-fx-border-color: -light-gray-2; -fx-border-width: 0 0 1 0;">
          <padding>
             <Insets bottom="10.0" />
@@ -54,7 +54,12 @@
                   <ToggleGroup fx:id="group" />
                </toggleGroup>
             </ToggleButton>
-            <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="20.0" maxWidth="1.7976931348623157E308" minHeight="0.0" mnemonicParsing="false" onAction="#goNewsletter" prefWidth="485.0" styleClass="drawer-item" text="Newsletter" toggleGroup="$group">
+            <ToggleButton alignment="CENTER_LEFT" layoutX="10.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goDataTable" styleClass="drawer-item" text="Data Table" toggleGroup="$group">
+               <graphic>
+                  <SVGPath content="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z" />
+               </graphic>
+            </ToggleButton>
+            <ToggleButton alignment="CENTER_LEFT" disable="true" layoutX="10.0" layoutY="20.0" maxWidth="1.7976931348623157E308" minHeight="0.0" mnemonicParsing="false" onAction="#goNewsletter" prefWidth="485.0" styleClass="drawer-item" text="Newsletter" toggleGroup="$group">
                <graphic>
                   <SVGPath content="M5 21q-.825 0-1.413-.587Q3 19.825 3 19V5q0-.825.587-1.413Q4.175 3 5 3h11l5 5v11q0 .825-.587 1.413Q19.825 21 19 21Zm0-2h14V9h-4V5H5v14Zm2-2h10v-2H7Zm0-8h5V7H7Zm0 4h10v-2H7ZM5 5v4-4 14V5Z" />
                </graphic>
@@ -157,14 +162,8 @@
                            </toggleGroup>
                         </ToggleButton>
                         <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goHero" styleClass="drawer-item" text="Hero Section">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="group31" />
-                           </toggleGroup>
                         </ToggleButton>
                         <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="60.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goErrorPage" styleClass="drawer-item" text="Error View">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="group311" />
-                           </toggleGroup>
                         </ToggleButton>
                         <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="60.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goPricing" styleClass="drawer-item" text="Pricing">
                            <toggleGroup>
@@ -189,6 +188,11 @@
                         <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="20.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goAbout" styleClass="drawer-item" text="About">
                            <toggleGroup>
                               <ToggleGroup fx:id="group32" />
+                           </toggleGroup>
+                        </ToggleButton>
+                        <ToggleButton alignment="CENTER_LEFT" layoutX="20.0" layoutY="300.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBlog" styleClass="drawer-item" text="Blog">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="group321" />
                            </toggleGroup>
                         </ToggleButton>
                      </children>

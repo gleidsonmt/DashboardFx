@@ -15,6 +15,7 @@ import io.github.gleidsonmt.dashboardfx.views.layout.AccordionViewPresCreator;
 import io.github.gleidsonmt.dashboardfx.views.layout.TabPanePresCreator;
 import io.github.gleidsonmt.dashboardfx.views.layout.TitledPanePresCreator;
 import io.github.gleidsonmt.dashboardfx.views.tutorial.NewsLetter;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -29,6 +30,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -244,6 +248,11 @@ public class SideNavController extends ActionView {
         context.routes().nav("about_dash");
     }
 
+    @FXML
+    private void goBlog() {
+        context.routes().nav("blog");
+    }
+
 
     private final VBox boxUserDialog = new VBox();
 
@@ -294,6 +303,11 @@ public class SideNavController extends ActionView {
     }
 
     @FXML
+    private void goDataTable() {
+        context.routes().nav("data_table");
+    }
+
+    @FXML
     private void openUserPreferences() {
         context.flow()
 //                    .getPopup()
@@ -325,11 +339,18 @@ public class SideNavController extends ActionView {
         ));
     }
 
+    private DrawerBehavior behavior;
+
     @Override
     public void onInit(Context context) {
 //        this.context = context;
         super.onInit(context);
-        new DrawerBehavior(root, group, context);
+
+        Platform.runLater(() -> {
+            behavior = new DrawerBehavior(root, group);
+        });
         configLayout();
     }
+
+
 }
