@@ -60,7 +60,8 @@ public class Layout {
         });
 
         hamburger.setOnMouseClicked(event -> {
-            context.wrapper()
+            context
+                    .wrapper()
                     .drawer()
                     .content((StackPane) left)
                     .side(HPos.LEFT)

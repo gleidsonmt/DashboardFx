@@ -1,11 +1,11 @@
 
 module io.github.gleidsonmt.dashboardfx {
 
-    requires javafx.controls;
-    requires javafx.fxml;
-    requires javafx.graphics;
-    requires javafx.web;
-    requires javafx.media;
+    requires transitive javafx.controls;
+    requires transitive javafx.fxml;
+    requires transitive javafx.graphics;
+    requires transitive javafx.web;
+    requires transitive javafx.media;
 
     requires java.logging;
     requires javafx.swing;

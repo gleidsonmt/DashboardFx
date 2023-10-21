@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.dlsc.gemsfx.PhotoView?>
 <?import io.github.gleidsonmt.dashboardfx.core.controls.Rating?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -10,8 +11,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -39,9 +39,7 @@
         </padding>
         <HBox spacing="80.0" VBox.vgrow="ALWAYS">
             <VBox alignment="TOP_CENTER" prefHeight="742.0" prefWidth="238.0">
-                <ImageView fitHeight="226.0" fitWidth="303.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../../style/img/me_avatar.jpeg" />
-                </ImageView>
+            <PhotoView clipShape="RECTANGLE" prefHeight="313.0" prefWidth="238.0" />
                 <VBox prefHeight="306.0" prefWidth="238.0">
                     <padding>
                         <Insets top="50.0" />
@@ -72,6 +70,16 @@
                         <Separator prefWidth="215.0" />
                     </HBox>
                 </VBox>
+            <TextField editable="false" style="-fx-border-color: white;" text="Hematologia">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField editable="false" layoutX="10.0" layoutY="526.0" style="-fx-border-color: white;" text="Química Clínica">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </TextField>
                 <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                     <children>
                         <Label style="-fx-font-weight: bold; -fx-text-fill: -text-color;" text="Branding" />

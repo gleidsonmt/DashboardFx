@@ -81,7 +81,7 @@ jlink {
     imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
     launcher {
-        name = 'App'
+        name = 'DashboardFx'
     }
 
     jpackage {
@@ -89,7 +89,8 @@ jlink {
         installerOptions += '--verbose'
         installerOptions = [
                 '--description', "Projeto Dashboard Fx.",
-                '--copyright', 'Copyrigth © 2021-2022 GLEIDSON NEVES DA SILVEIRA'
+                '--vendor', 'Gleidson Neves da Silveira',
+                '--copyright', 'Copyrigth © 2021-2023 GLEIDSON NEVES DA SILVEIRA'
 //                'win-console', 'true'
 //                , '--icon', 'logoT.ico'
 
@@ -129,8 +130,8 @@ jlinkZip {
 
 //jar {
 //
-//    duplicatesStrategy = DuplicatesStrategy.WARN
-////    setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+////    duplicatesStrategy = DuplicatesStrategy.WARN
+//    setDuplicatesStrategy(DuplicatesStrategy.WARN)
 //
 //    manifest {
 //        attributes(
@@ -142,9 +143,9 @@ jlinkZip {
 //    }
 //}
 
-//task runWithExecJarExecutable(type: Exec) {
-//    dependsOn jar
-//    group = "io.github.gleidsonmt"
-//    description = "Run the output executable jar with ExecTask"
-//    commandLine "java", "-jar", jar.archiveFile.get()
-//}
+task runWithExecJarExecutable(type: Exec) {
+    dependsOn jar
+    group = "io.github.gleidsonmt"
+    description = "Run the output executable jar with ExecTask"
+    commandLine "java", "-jar", jar.archiveFile.get()
+}

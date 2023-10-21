@@ -279,8 +279,6 @@ public final class DashController extends ActionView {
                 .show(Pos.BOTTOM_CENTER, notification));
 
 
-
-
         root.widthProperty()
                 .addListener((observable, oldValue, newValue) -> {
 
