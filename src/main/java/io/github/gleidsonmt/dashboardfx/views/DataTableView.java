@@ -69,7 +69,7 @@ public class DataTableView extends ActionView implements View {
                                 .color(SnackColors.WARNING)
                                 .icon(new IconContainer(Icons.WARNING))
                                 .message("No items selected")
-                                .show(Pos.CENTER, new Insets(10));
+                                .show(Pos.CENTER, new Insets(10,250,10,10));
                     } else {
                         items.removeAll(dataTable.getSelectedItems());
                     }

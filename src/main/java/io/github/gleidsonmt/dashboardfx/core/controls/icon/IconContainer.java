@@ -17,8 +17,7 @@
 package io.github.gleidsonmt.dashboardfx.core.controls.icon;
 
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import org.jetbrains.annotations.NotNull;
@@ -27,32 +26,39 @@ import org.jetbrains.annotations.NotNull;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  23/11/2021
  */
-public class IconContainer extends SVGPath {
+public class IconContainer extends Group {
 
     private String name;
     private SimpleObjectProperty<Icons> icon = new SimpleObjectProperty<>();
+    private SVGPath path = new SVGPath();
 
     public IconContainer() {
         this(Icons.NONE, false);
     }
 
-    public IconContainer(boolean needsUpdate) {
-        this(Icons.NONE, needsUpdate);
+    public IconContainer(boolean needsResize) {
+        this(Icons.NONE, needsResize);
     }
 
     public IconContainer(Icons icons) {
         this(icons, false);
     }
 
-    public IconContainer(Icons icon, boolean needsUpdate) {
-        this(icon, Color.GRAY, needsUpdate);
+    public IconContainer(Icons icon, boolean needsResize) {
+        this(icon, Color.GRAY, needsResize);
     }
 
-    public IconContainer(Icons icon, Color color, boolean needsUpdate) {
+    public IconContainer(Icons icon, Color color, boolean needsResize) {
         this.icon.set(icon);
-        setContent(icon);
-        getStyleClass().add("icon");
-        setFill(color);
+        if (needsResize) {
+            setContentAndResize(icon);
+        } else {
+            setContent(icon);
+        }
+
+        this.getStyleClass().add("icon-container");
+        path.getStyleClass().add("icon");
+//        setFill(color);
         name = icon.name();
 
         this.icon.addListener((observable, oldValue, newValue) -> {
@@ -75,9 +81,21 @@ public class IconContainer extends SVGPath {
     }
 
     public void setContent(@NotNull Icons icon) {
-        setContent(icon.getContent());
+        path.setContent(icon.getContent());
+        if (!this.getChildren().contains(path)) {
+            this.getChildren().add(path);
+        }
         name = icon.name();
     }
+
+    private void setContentAndResize(@NotNull Icons icon) {
+        path.setContent(icon.getContent());
+        this.getChildren().add(path);
+        path.setScaleX(0.023);
+        path.setScaleY(0.023);
+        name = icon.name();
+    }
+
 
     public String getName() {
         return name;
