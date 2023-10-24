@@ -9,6 +9,7 @@ import io.github.gleidsonmt.dashboardfx.core.services.DrawerBehavior;
 import io.github.gleidsonmt.dashboardfx.core.view.SimpleView;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
+import io.github.gleidsonmt.dashboardfx.views.DataTableView;
 import io.github.gleidsonmt.dashboardfx.views.TutorialUnderstanding;
 import io.github.gleidsonmt.dashboardfx.views.controls.*;
 import io.github.gleidsonmt.dashboardfx.views.layout.AccordionViewPresCreator;
@@ -304,7 +305,8 @@ public class SideNavController extends ActionView {
 
     @FXML
     private void goDataTable() {
-        context.routes().nav("data_table");
+//        context.routes().nav("data_table");
+        context.routes().putAndGo(new DataTableView(context));
     }
 
     @FXML
@@ -346,9 +348,9 @@ public class SideNavController extends ActionView {
 //        this.context = context;
         super.onInit(context);
 
-        Platform.runLater(() -> {
-            behavior = new DrawerBehavior(root, group);
-        });
+//        Platform.runLater(() ->
+//                behavior = new DrawerBehavior(root, group, context));
+
         configLayout();
     }
 

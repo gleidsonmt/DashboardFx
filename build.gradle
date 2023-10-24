@@ -11,7 +11,8 @@ version '1.0.4'
 repositories {
     mavenCentral()
     maven {
-        url 'https://jitpack.io'
+//        url 'https://jitpack.io',
+        url "https://sandec.jfrog.io/artifactory/repo"
     }
 }
 
@@ -54,7 +55,7 @@ dependencies {
 
     implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to vizualize css when app is running.. so amazing!
 
-
+    implementation group: 'com.dlsc.gemsfx', name: 'gemsfx', version: '1.82.0'
     implementation files('vendor/GNAvatarView-1.0.5.jar')
 
 
@@ -85,16 +86,32 @@ jlink {
     }
 
     jpackage {
-        installerType = 'exe'
-        installerOptions += '--verbose'
-        installerOptions = [
-                '--description', "Projeto Dashboard Fx.",
-                '--vendor', 'Gleidson Neves da Silveira',
-                '--copyright', 'Copyrigth © 2021-2023 GLEIDSON NEVES DA SILVEIRA'
-//                'win-console', 'true'
-//                , '--icon', 'logoT.ico'
+        installerOptions += [
+                '--verbose',
+                '--description', "Eightware.",
+                "--vendor", "Eightware Technology",
+                "--app-version", "0.0.120",
+                '--copyright', 'Copyrigth © 2023 Eightware Company'
+//                , '--icon', 'logo_200.ico'
 
         ]
+
+        if (System.properties['os.name'].toLowerCase().contains('windows')) {
+            println "Platform Windows"
+            installerOptions += [
+                    '--win-menu',
+                    '--win-shortcut',
+                    '--type', 'exe'
+            ]
+        } else {
+            println "Platform Mac"
+            installerOptions += [
+                    '--name', 'app',
+                    "--mac-package-identifier", "app",
+                    "--app-version", "0.0.114",
+                    '--type', 'pkg'
+            ]
+        }
         addExtraDependencies("javafx")
     }
 }

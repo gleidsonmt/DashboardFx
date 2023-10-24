@@ -24,30 +24,29 @@ import io.github.gleidsonmt.dashboardfx.core.interfaces.WrapperContainer;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.options.SnackColors;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Material;
-import javafx.scene.shape.SVGPath;
+import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 import org.jetbrains.annotations.NotNull;
-import org.kordamp.ikonli.javafx.FontIcon;
 
 
 /**
- * Class to create a snack bar.
+ * Class to create a snack bar. A temporary child.
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
 public class SnackBar implements WrapperContainer {
 
     // IRoot to get background
-    private final IRoot IRoot;
+    private final IRoot root;
 
     // Events to set
     private EventHandler<ActionEvent> undoEvent;
@@ -57,8 +56,8 @@ public class SnackBar implements WrapperContainer {
     private Node icon;
     private SnackColors color = SnackColors.GRAY;
 
-    public SnackBar(IRoot IRoot) {
-        this.IRoot = IRoot;
+    public SnackBar(IRoot _root) {
+        this.root = _root;
     }
 
     public SnackBar message(String message) {
@@ -83,9 +82,8 @@ public class SnackBar implements WrapperContainer {
 //        return this;
 //    }
 
-    public SnackBar icon(SVGPath _icon) {
+    public SnackBar icon(Group _icon) {
         this.icon = _icon;
-        _icon.setFill(Color.WHITE);
         return this;
     }
 
@@ -94,41 +92,29 @@ public class SnackBar implements WrapperContainer {
         return this;
     }
 
+    private EventHandler<ActionEvent> closeEvent;
+    public SnackBar onClose(EventHandler<ActionEvent> closEvent) {
+        this.closeEvent = closEvent;
+        return this;
+    }
+
     @Override
     public void show() {
-        try {
-            _show(false);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        show(Pos.BOTTOM_CENTER);
     }
 
-    public void showOnTop() {
-        try {
-            _show(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void show(Pos pos) {
+        show(pos, new Insets(0));
     }
 
-    private void _show(boolean top) throws Exception {
-
-        if (message == null || message.isEmpty()) {
-            throw new Exception("Error snacks can't be empty.");
-        }
+    public void show(Pos pos, Insets insets)  {
 
         GridPane snack = createSnack();
 
-        if (top) {
-            IRoot.setAlignment(Pos.TOP_CENTER);
-            snack.setTranslateY(10);
-        } else {
-            snack.setTranslateY(-10);
-            IRoot.setAlignment(Pos.BOTTOM_CENTER);
-        }
+        root.setAlignment(pos);
+        root.getChildren().add(snack);
 
-        IRoot.getChildren().add(snack);
-
+        StackPane.setMargin(snack, insets);
         RollIn animation = new RollIn(snack);
         animation.setSpeed(1.5);
 //
@@ -137,6 +123,10 @@ public class SnackBar implements WrapperContainer {
             RollOut out = new RollOut(snack);
             out.setDelay(Duration.millis(3000));
             out.play();
+            out.getTimeline().setOnFinished(e -> {
+                if (closeEvent != null)
+                    closeEvent.handle(new ActionEvent());
+            });
         });
 
     }

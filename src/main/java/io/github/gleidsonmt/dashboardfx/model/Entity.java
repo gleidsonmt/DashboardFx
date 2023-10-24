@@ -17,25 +17,28 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.view;
+package io.github.gleidsonmt.dashboardfx.model;
 
-import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
-import javafx.scene.Parent;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
- * Create on  13/05/2023
+ * Create on  21/10/2023
  */
-public interface View {
+public class Entity {
 
-    String getName();
+    private IntegerProperty id = new SimpleIntegerProperty();
 
-    Parent getRoot();
-
-    default ActionView getController() {
-        return (ActionView) this;
+    public int getId() {
+        return id.get();
     }
 
+    public IntegerProperty idProperty() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id.set(id);
+    }
 }

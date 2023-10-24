@@ -54,6 +54,13 @@ Text, .text, .label {
     -fx-fill : -text-color;
 }
 
+
+.snack-bar .icon,
+.snack-bar > .icon > SVGPath
+{
+    -fx-fill: white;
+}
+
 .snack-bar .label-action {
     -fx-padding : 2px;
     -fx-border-width : 1px;

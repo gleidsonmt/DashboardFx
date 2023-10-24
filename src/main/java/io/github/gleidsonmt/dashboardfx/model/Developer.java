@@ -17,25 +17,16 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.view;
-
-import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
-import javafx.scene.Parent;
+package io.github.gleidsonmt.dashboardfx.model;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
- * Create on  13/05/2023
+ * Create on  21/10/2023
  */
-public interface View {
+public final class Developer extends Item {
 
-    String getName();
-
-    Parent getRoot();
-
-    default ActionView getController() {
-        return (ActionView) this;
+    @Override
+    public String toString() {
+        return super.getName();
     }
-
-
 }

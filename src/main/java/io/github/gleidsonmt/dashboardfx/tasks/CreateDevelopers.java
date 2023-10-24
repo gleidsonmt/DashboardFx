@@ -17,25 +17,35 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.view;
+package io.github.gleidsonmt.dashboardfx.tasks;
 
-import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
-import javafx.scene.Parent;
+import io.github.gleidsonmt.dashboardfx.model.Developer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+
+import java.util.List;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
- * Create on  13/05/2023
+ * Create on  23/10/2023
  */
-public interface View {
-
-    String getName();
-
-    Parent getRoot();
-
-    default ActionView getController() {
-        return (ActionView) this;
+public class CreateDevelopers extends Task<ObservableList<Developer>> {
+    private ObservableList<Developer> developers;
+    public CreateDevelopers(ObservableList<Developer> developers) {
+        this.developers = developers;
     }
 
+    @Override
+    protected ObservableList<Developer> call() throws Exception {
 
+        Thread.sleep(1000);
+        for (int i = 1; i <= 51; i++) {
+            Developer developer = new Developer();
+            developer.setName("Dev" + i);
+            developers.add(developer);
+        }
+
+        return developers;
+    }
 }

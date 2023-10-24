@@ -59,11 +59,11 @@ public class GNIconButtonSkin extends SkinBase<GNIconButton> {
 
         _control.iconProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null && newValue != Icons.NONE) {
-                iconContainer.setContent(newValue.getContent());
+                iconContainer.setContent(newValue);
             }
         });
 
-        iconContainer.setFill(Color.WHITE);
+//        iconContainer.setFill(Color.WHITE);
         getChildren().add(iconContainer);
 
         this.clip.widthProperty().bind(this.control.widthProperty());

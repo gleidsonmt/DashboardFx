@@ -17,7 +17,7 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.core.model;
+package io.github.gleidsonmt.dashboardfx.model;
 
 import javafx.beans.property.SimpleStringProperty;
 
@@ -25,7 +25,8 @@ import javafx.beans.property.SimpleStringProperty;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  20/05/2023
  */
-public class Person {
+public class Person extends Entity {
+
     private final SimpleStringProperty firstName = new SimpleStringProperty("");
     private final SimpleStringProperty lastName = new SimpleStringProperty("");
     private final SimpleStringProperty email = new SimpleStringProperty("");

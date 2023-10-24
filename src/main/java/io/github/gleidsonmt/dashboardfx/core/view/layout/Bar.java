@@ -73,19 +73,16 @@ public class Bar extends GridPane {
 
         hasChild.bind(totalBinding.greaterThan(0));
 
-        this.widthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+        this.widthProperty().addListener((observable, oldValue, newValue) -> {
 
-                if (newValue.doubleValue() < 500) {
-                    GridPane.setConstraints(left, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-                    GridPane.setConstraints(right, 0,1,1,1, HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-                    right.setAlignment(Pos.CENTER);
-                } else {
-                    GridPane.setConstraints(left, 0,0,1,1, HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-                    GridPane.setConstraints(right, 1,0,1,1, HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-                    right.setAlignment(Pos.CENTER_RIGHT);
-                }
+            if (newValue.doubleValue() < 500) {
+                GridPane.setConstraints(left, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                GridPane.setConstraints(right, 0,1,1,1, HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                right.setAlignment(Pos.CENTER);
+            } else {
+                GridPane.setConstraints(left, 0,0,1,1, HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                GridPane.setConstraints(right, 1,0,1,1, HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                right.setAlignment(Pos.CENTER_RIGHT);
             }
         });
 

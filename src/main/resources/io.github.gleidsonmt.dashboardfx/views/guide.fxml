@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.gleidsonmt.dashboardfx.core.controls.Rating?>
-<?import io.github.gleidsonmt.dashboardfx.core.model.Person?>
+<?import io.github.gleidsonmt.dashboardfx.model.Person?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.collections.FXCollections?>

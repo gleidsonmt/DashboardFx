@@ -44,13 +44,14 @@ public class DrawerBehavior {
 
     private List<SearchItem> searchItems =  new ArrayList<>();
 
-    public DrawerBehavior(StackPane content, ToggleGroup group) {
+    public DrawerBehavior(StackPane content, ToggleGroup group, Context context) {
+
+        System.out.println("myname = " + content);
 
         VBox body = (VBox) content.lookup("#drawer-content");
 
         ScrollPane scrollPane = (ScrollPane) body.lookup("#drawer-scroll");
         VBox box = (VBox) scrollPane.getContent();
-
 
         box.getChildren()
                 .stream()
@@ -61,8 +62,8 @@ public class DrawerBehavior {
                     each.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
                         if (each.isSelected()) event.consume();
                     });
-//                    context.searchItems().add(SearchItemAdapter.adapter(each));
-                        searchItems.add(SearchItemAdapter.adapter(each));
+                    context.searchItems().add(SearchItemAdapter.adapter(each));
+//                        searchItems.add(SearchItemAdapter.adapter(each));
                 });
 
         box.getChildren()
@@ -88,8 +89,8 @@ public class DrawerBehavior {
                                 }
                             });
 
-//                            context.searchItems().add(SearchItemAdapter.adapter(e));
-                                searchItems.add(SearchItemAdapter.adapter(e));
+                            context.searchItems().add(SearchItemAdapter.adapter(e));
+//                                searchItems.add(SearchItemAdapter.adapter(e));
 
                         }
                     }

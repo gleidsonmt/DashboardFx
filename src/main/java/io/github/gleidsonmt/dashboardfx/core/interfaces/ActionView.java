@@ -15,6 +15,14 @@ public abstract class ActionView implements Initializable {
 
     public Context context = null;
 
+    public ActionView() {
+
+    }
+
+    public ActionView(Context context) {
+        this.context = context;
+    }
+
     public void onEnter() {} ;
 
     public void onExit() {};
