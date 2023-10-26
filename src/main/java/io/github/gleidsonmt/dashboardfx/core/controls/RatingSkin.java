@@ -1,5 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.core.controls;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.css.PseudoClass;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
@@ -13,20 +15,30 @@ import javafx.scene.layout.TilePane;
 public class RatingSkin extends SkinBase<Rating> {
 
     private final TilePane body;
-    
+    private ObservableList<Star> stars;
     protected RatingSkin(Rating control) {
         super(control);
-        
+        stars = FXCollections.observableArrayList();
+
         body = createTitledPane();
-        
+
         getChildren().add(body);
         body.getStyleClass().add("box");
+
         createStars(control.getNumberOfStars());
+        if (control.getNumberOfStars() < control.getRange()) {
+            setRange(control.getNumberOfStars());
+        } else setRange(control.getRange());
+
+        if (control.isEditable()) {
+            setOnMouseClicked();
+        }
 
         registerChangeListener(control.numberOfStarsProperty(), c -> {
             if (c.getValue() != null) {
                 body.getChildren().clear();
                 createStars((int) c.getValue());
+                setOnMouseClicked();
             }
         });
 
@@ -63,29 +75,40 @@ public class RatingSkin extends SkinBase<Rating> {
         super.layoutChildren(x, y, w, h);
         layoutInArea(body, x,y,w, h, -1, HPos.RIGHT, VPos.BOTTOM);
     }
-    
+
     private TilePane createTitledPane() {
         return new TilePane();
     }
-    
-    private void createStars(double num) {
 
+    private void setRange(int num) {
         for (int i = 0; i < num; i++) {
-            Star star = new Star();
-            star.setOnMouseClicked(event -> {
+            stars.get(i).pseudoClassStateChanged(PseudoClass.getPseudoClass("activate"), true);
+        }
+    }
+
+    private void createStars(double num) {
+        for (int i = 0; i < num; i++) {
+            stars.add(new Star());
+        }
+        body.getChildren().setAll(stars);
+    }
+
+    private void setOnMouseClicked() {
+
+        stars.forEach(c ->  {
+            c.setOnMouseClicked(e -> {
                 body.getChildren()
                         .stream()
                         .map(mapped -> (Star) mapped)
                         .forEach(s -> {
 
                             int index = body.getChildren().indexOf(s);
-                            int ac = body.getChildren().indexOf(star);
+                            int ac = body.getChildren().indexOf(c);
 
                             s.pseudoClassStateChanged(PseudoClass.getPseudoClass("activate"), index <= ac);
 
                         });
             });
-            body.getChildren().add(i, star);
-        }
+        });
     }
 }

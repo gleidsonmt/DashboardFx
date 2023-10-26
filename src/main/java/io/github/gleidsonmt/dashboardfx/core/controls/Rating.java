@@ -1,6 +1,8 @@
 package io.github.gleidsonmt.dashboardfx.core.controls;
 
 import javafx.beans.DefaultProperty;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.css.*;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
@@ -31,18 +33,20 @@ public class Rating extends Control {
                     1, true);
 
     private final StyleableIntegerProperty range =
-            new SimpleStyleableIntegerProperty(RANGE, this, "range", 0);
+            new SimpleStyleableIntegerProperty(RANGE, this, "range", 2);
+
+    private BooleanProperty editable = new SimpleBooleanProperty(true);
 
     public Rating() {
         this(5);
     }
 
-    public Rating(int num) {
-        this(num, 0);
+    public Rating(int numberOfStars) {
+        this(0, numberOfStars);
     }
 
-    public Rating(int num, int range) {
-        setNumberOfStars(num);
+    public Rating(int range, int numberOfStars) {
+        setNumberOfStars(numberOfStars);
         setRange(range);
         getStyleClass().add("rating");
     }
@@ -86,4 +90,15 @@ public class Rating extends Control {
         this.range.set(range);
     }
 
+    public boolean isEditable() {
+        return editable.get();
+    }
+
+    public BooleanProperty editableProperty() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable.set(editable);
+    }
 }

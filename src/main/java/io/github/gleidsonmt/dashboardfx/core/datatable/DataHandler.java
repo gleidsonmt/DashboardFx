@@ -121,7 +121,6 @@ public class DataHandler<E extends Item> {
 
             task.setOnSucceeded(e -> {
                 items = task.getValue();
-                System.out.println("_items = " + _items);
                 pagination(0, getVisibleEntries());
                 table.setPlaceholder(null);
             });
@@ -254,9 +253,11 @@ public class DataHandler<E extends Item> {
 
         if (isFiltered()) {
             paginationFilter(filteredList, index);
+            entries.setVisible(false);
         } else {
 //             int size = converter.size(); // Testing
             int size = filteredList.size();
+            entries.setVisible(true);
 
 //             converter.pagination(table, index, limit); old method
 
@@ -373,7 +374,8 @@ public class DataHandler<E extends Item> {
         ObservableList<E> newData = FXCollections.observableArrayList(subList);
         table.setItems(newData);
 
-        updatePagination(filtered.size());
+//        updatePagination(filtered.size());
+        updateButtons(filtered.size());
 
         altLegend(
                 subList.isEmpty() ? 0 :
@@ -519,3 +521,4 @@ public class DataHandler<E extends Item> {
         return pagination.getCurrentPageIndex();
     }
 }
+

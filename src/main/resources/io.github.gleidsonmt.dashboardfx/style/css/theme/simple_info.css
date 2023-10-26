@@ -28,6 +28,8 @@
     -box-focus-color : -info;
 
     -fx-background-color: -fx-background;
+
+    -fx-accent: -blue-jeans;
 }
 
 .layout {

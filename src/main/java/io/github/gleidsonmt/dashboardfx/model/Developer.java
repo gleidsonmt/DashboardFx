@@ -19,11 +19,89 @@
 
 package io.github.gleidsonmt.dashboardfx.model;
 
+import io.github.gleidsonmt.dashboardfx.factory.cells.Experience;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+import java.math.BigDecimal;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  21/10/2023
  */
 public final class Developer extends Item {
+
+    private final ObjectProperty<Status> status = new SimpleObjectProperty<>();
+    private final ObjectProperty<Gender> gender = new SimpleObjectProperty<>();
+    private final ObjectProperty<Experience> experience = new SimpleObjectProperty<>();
+
+    private final StringProperty email = new SimpleStringProperty();
+
+    private final ObjectProperty<BigDecimal> pricePerHour = new SimpleObjectProperty<>();
+
+    public enum Gender { MALE, FEMALE };
+
+    public Status getStatus() {
+        return status.get();
+    }
+
+    public ObjectProperty<Status> statusProperty() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status.set(status);
+    }
+
+    public Gender getGender() {
+        return gender.get();
+    }
+
+    public ObjectProperty<Gender> genderProperty() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender.set(gender);
+    }
+
+    public Experience getExperience() {
+        return experience.get();
+    }
+
+    public ObjectProperty<Experience> experienceProperty() {
+        return experience;
+    }
+
+    public void setExperience(Experience experience) {
+        this.experience.set(experience);
+    }
+
+    public String getEmail() {
+        return email.get();
+    }
+
+    public StringProperty emailProperty() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email.set(email);
+    }
+
+    public BigDecimal getPricePerHour() {
+        return pricePerHour.get();
+    }
+
+    public ObjectProperty<BigDecimal> pricePerHourProperty() {
+        return pricePerHour;
+    }
+
+    public void setPricePerHour(BigDecimal pricePerHour) {
+        this.pricePerHour.set(pricePerHour);
+    }
 
     @Override
     public String toString() {

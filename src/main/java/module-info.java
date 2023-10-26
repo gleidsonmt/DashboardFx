@@ -23,10 +23,9 @@ module io.github.gleidsonmt.dashboardfx {
     requires org.kordamp.ikonli.javafx;
 
     requires fr.brouillard.oss.cssfx;
-
-
 //    requires io.github.gleidsonmt.gncontrols;
     requires scenicView;
+    requires com.dlsc.gemsfx;
 
     opens io.github.gleidsonmt.dashboardfx to javafx.fxml;
     opens io.github.gleidsonmt.dashboardfx.controllers to javafx.fxml;
@@ -39,5 +38,7 @@ module io.github.gleidsonmt.dashboardfx {
     opens io.github.gleidsonmt.dashboardfx.core.model to javafx.fxml;
     opens io.github.gleidsonmt.dashboardfx.core.controls.skin to javafx.fxml;
     opens io.github.gleidsonmt.dashboardfx.core.picture_selector to javafx.fxml;
+    opens io.github.gleidsonmt.dashboardfx.model to javafx.fxml;
+    exports io.github.gleidsonmt.dashboardfx.model;
 
 }

@@ -17,35 +17,32 @@
  *
  */
 
-package io.github.gleidsonmt.dashboardfx.tasks;
-
-import io.github.gleidsonmt.dashboardfx.model.Developer;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.concurrent.Task;
-
-import java.util.List;
+package io.github.gleidsonmt.dashboardfx.factory.cells;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  23/10/2023
+ * Create on  24/10/2023
  */
-public class CreateDevelopers extends Task<ObservableList<Developer>> {
-    private ObservableList<Developer> developers;
-    public CreateDevelopers(ObservableList<Developer> developers) {
-        this.developers = developers;
+public enum Experience {
+
+    BASIC("Basic", 1),
+    MEDIUM("Medium", 2),
+    ADVANCED("Advanced", 3),
+    SPECIALIST("Specialist", 4);
+
+    private final String experience;
+    private int range;
+    Experience(String experience, int range) {
+        this.experience = experience;
+        this.range = range;
+    }
+
+    public int getRange() {
+        return range;
     }
 
     @Override
-    protected ObservableList<Developer> call() throws Exception {
-
-        Thread.sleep(1000);
-        for (int i = 1; i <= 51; i++) {
-            Developer developer = new Developer();
-            developer.setName("Dev" + i);
-            developers.add(developer);
-        }
-
-        return developers;
+    public String toString() {
+        return experience;
     }
 }

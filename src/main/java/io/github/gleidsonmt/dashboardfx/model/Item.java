@@ -32,6 +32,7 @@ public class Item extends Entity {
 
     private final StringProperty name = new SimpleStringProperty();
     private final BooleanProperty checked = new SimpleBooleanProperty(false);
+    private final StringProperty avatar = new SimpleStringProperty();
 
     public String getName() {
         return name.get();
@@ -55,5 +56,17 @@ public class Item extends Entity {
 
     public void setChecked(boolean checked) {
         this.checked.set(checked);
+    }
+
+    public String getAvatar() {
+        return avatar.get();
+    }
+
+    public StringProperty avatarProperty() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar.set(avatar);
     }
 }
