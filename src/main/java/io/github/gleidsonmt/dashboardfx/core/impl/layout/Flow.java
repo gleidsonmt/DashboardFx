@@ -92,15 +92,16 @@ public class Flow implements WrapperContainer {
 
     public void show(Pos pos, Node target, double x, double y) {
         opened = true;
+        StackPane.setAlignment(content, Pos.TOP_LEFT);
 
-        if (root.getChildren().contains(content)) {
-            return;
-        }
-
-        if(root.getChildren().stream().anyMatch(p -> p.getStyleClass().contains("container"))) {
-            root.getChildren().remove(root.getChildren().size()-1);
-            return;
-        }
+//        if (root.getChildren().contains(content)) {
+//            return;
+//        }
+//
+//        if(root.getChildren().stream().anyMatch(p -> p.getStyleClass().contains("container"))) {
+//            root.getChildren().remove(root.getChildren().size()-1);
+//            return;
+//        }
 
 
         content.setTranslateX(0);
@@ -206,6 +207,21 @@ public class Flow implements WrapperContainer {
         } else if(isOutsideLeft(contentBounds)) { // se passa da linha da esquerda
             relocateLeft();
         }
+
+//        AnimationFX animation = new Jello(content);
+//        animation.setSpeed(2);
+//        animation.play();
+
+//        Timeline timeline = new Timeline();
+//        timeline.getKeyFrames().setAll(
+//                new KeyFrame(Duration.ZERO, new KeyValue(
+//                        content.translateYProperty(), content.getTranslateY()
+//                )),
+//                new KeyFrame(Duration.millis(200), new KeyValue(
+//                        content.translateYProperty(), content.getTranslateY() + 20
+//                ))
+//        );
+//        timeline.play();
     }
 
     protected void relocateTop() {

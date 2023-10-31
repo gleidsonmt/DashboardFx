@@ -14,7 +14,7 @@
 }
 
 Text, .text, .label {
-    -fx-font-family : Roboto Regular;
+    -fx-font-family : 'Roboto Regular';
 }
 
 .scroll-pane,

@@ -24,6 +24,7 @@ public class ExperienceFactoryCell<T extends Entity> implements Callback<TableCo
                     Text title = new Text(item.toString());
 //                    Rating rating = new Rating(Experience.values().length);
                     Rating rating = new Rating(Experience.values().length);
+                    rating.setMouseTransparent(true);
 //                    rating.setEditable(false);
                     rating.setRange(item.getRange());
 //                    rating.setStyle("-gn-range:" + item.getRange() + ";");

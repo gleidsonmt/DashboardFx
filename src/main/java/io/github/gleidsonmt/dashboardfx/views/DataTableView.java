@@ -69,16 +69,17 @@ public class DataTableView extends ActionView implements View {
 
         TableColumn<Developer, Developer> optionsColumn = new TableColumn<>("Options");
         optionsColumn.setCellValueFactory(new DefaultEntityFactory<>());
-        optionsColumn.setCellFactory(new OptionsCellFactory<>());
+        optionsColumn.setCellFactory(new OptionsCellFactory<>(context));
 
-        optionsColumn.setMaxWidth(50);
+        optionsColumn.setMaxWidth(100);
+        optionsColumn.setPrefWidth(100);
+        optionsColumn.setMinWidth(100);
 
         TableColumn<Developer, Experience> ratingColumn = new TableColumn<>("Rating");
         ratingColumn.setCellValueFactory((param) -> new ReadOnlyObjectWrapper<>(param.getValue().getExperience()));
         ratingColumn.setCellFactory(new ExperienceFactoryCell<>());
 
-
-        TableColumn<Developer, BigDecimal> priceColumn = new TableColumn<>("Rating");
+        TableColumn<Developer, BigDecimal> priceColumn = new TableColumn<>("Price/hour");
         priceColumn.setCellValueFactory((param) -> new ReadOnlyObjectWrapper<>(param.getValue().getPricePerHour()));
         priceColumn.setCellFactory(new MonetaryCellFactory<>());
 
@@ -88,6 +89,7 @@ public class DataTableView extends ActionView implements View {
         dataTable = new DataTable<Developer>()
                 .columns(nameColumn, statusColumn, ratingColumn, priceColumn, optionsColumn)
                 .task(task)
+                .filters()
                 .deleteEvent(event -> {
 //                    items.remove(index.getAndIncrement());
                     if (dataTable.getSelectedItems().isEmpty()) {
@@ -120,3 +122,4 @@ public class DataTableView extends ActionView implements View {
 
 
 }
+
