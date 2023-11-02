@@ -4,12 +4,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -20,8 +21,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
 
-<?import java.lang.String?>
-<?import javafx.scene.control.TableView?>
 <StackPane fx:id="root" prefHeight="437.0" prefWidth="484.0" style="-fx-background-color: white; -fx-border-color: -light-gray-2; -fx-border-width: 0 1 0 0;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboardfx.controllers.SideNavController">
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

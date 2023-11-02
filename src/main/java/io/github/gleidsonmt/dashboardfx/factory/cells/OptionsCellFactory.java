@@ -43,15 +43,16 @@ public class OptionsCellFactory<T extends Entity> implements Callback<TableColum
 
                     ListOptions listOptions = new ListOptions()
                             .items(
-                                    new Option("First", Icons.EDIT),
-                                    new Option("Second", Icons.VIEWER)
+                                    new Option("Edit", Icons.EDIT),
+                                    new Option("View", Icons.ANALYTICS),
+                                    new Option("Delete", Icons.DELETE)
                             );
 
                     button.setOnAction(event -> {
                         context.flow()
                                 .content(
                                         new DialogContainer(listOptions.build())
-                                        .size(200, 100)
+                                        .size(180, 140)
                                 )
                                 .show(Pos.CENTER_LEFT, button, 0, 100);
                     });

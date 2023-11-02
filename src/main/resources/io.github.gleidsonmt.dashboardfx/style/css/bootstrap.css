@@ -245,4 +245,18 @@
     -fx-padding: 10px;
 }
 
+.selected-list:vertical .virtual-flow .clipped-container .sheet .list-cell:hover
+{
+-fx-background-color: -fx-accent;
+}
 
+.selected-list:vertical .virtual-flow .clipped-container .sheet .list-cell:hover .text
+{
+    -fx-fill: white;
+}
+
+.selected-list:vertical .virtual-flow .clipped-container .sheet .list-cell:hover SVGPath,
+.selected-list:vertical .virtual-flow .clipped-container .sheet .list-cell:hover .icon
+{
+    -fx-fill: white;
+}

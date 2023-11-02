@@ -35,14 +35,17 @@ public abstract class Launcher extends Application {
         build(context);
         context.setStage(stage);
         Scene scene = new Scene(root);
-        stage.setTitle("DashboardFx App!");
+        stage.setTitle("DashboardFx!");
         stage.setScene(scene);
-        stage.setMaximized(true);
+//        stage.setMaximized(true);
 
         stage.getIcons().addAll(icons);
 
         stage.setMinWidth(300);
         stage.setMinHeight(500);
+
+        stage.setWidth(1136);
+        stage.setHeight(720);
 
         scene.getStylesheets().addAll(
                 clean("style/css/colors.css"),
@@ -58,7 +61,7 @@ public abstract class Launcher extends Application {
 
         stage.show();
         CSSFX.start(stage);
-//        ScenicView.show(scene);
+        ScenicView.show(scene);
         addLoggerHandler();
     }
 

@@ -179,6 +179,7 @@ SVGPath {
     -fx-fill : -text-color;
 }
 
+
 .combo-box-base .list-view:vertical .virtual-flow .clipped-container .sheet .list-cell:focused:selected {
     -fx-background-color: -fx-accent;
 }

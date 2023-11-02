@@ -34,10 +34,12 @@ import java.awt.*;
  */
 public class ListOptions {
 
-    private ListView<Option> listView;
+    private final ListView<Option> listView;
+
     public ListOptions() {
         listView = new ListView<>();
         options = FXCollections.observableArrayList();
+        listView.getStyleClass().add("selected-list");
     }
 
     private ObservableList<Option> options;
@@ -67,7 +69,9 @@ public class ListOptions {
                             setGraphic(iconContainer);
                             setText(item.text());
                             this.getStyleClass().add("h5");
-                            this.setStyle("-fx-font-weight: bold");
+                            setGraphicTextGap(10);
+
+//                            this.setStyle("-fx-font-weight: bold");
 //                            this.setLineSpacing(10);
                         } else {
                             setGraphic(null);

@@ -94,14 +94,16 @@ public class Flow implements WrapperContainer {
         opened = true;
         StackPane.setAlignment(content, Pos.TOP_LEFT);
 
-//        if (root.getChildren().contains(content)) {
-//            return;
-//        }
-//
-//        if(root.getChildren().stream().anyMatch(p -> p.getStyleClass().contains("container"))) {
-//            root.getChildren().remove(root.getChildren().size()-1);
-//            return;
-//        }
+        if (root.getChildren().contains(content)) {
+            return;
+        }
+
+
+        if(root.getChildren().stream().anyMatch(p -> p.getStyleClass().contains("container"))) {
+            root.getChildren().remove(root.getChildren().size()-1);
+            root.getChildren().removeAll(root.getChildren().stream().filter(p -> p.getStyleClass().contains("container")).toList());
+            return;
+        }
 
 
         content.setTranslateX(0);
