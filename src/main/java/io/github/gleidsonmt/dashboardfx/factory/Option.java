@@ -20,11 +20,13 @@
 package io.github.gleidsonmt.dashboardfx.factory;
 
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  28/10/2023
  */
-public record Option(String text, Icons icon) {
+public record Option(String text, Icons icon, EventHandler<MouseEvent> event) {
 
 }

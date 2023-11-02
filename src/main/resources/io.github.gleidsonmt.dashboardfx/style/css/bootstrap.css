@@ -239,13 +239,14 @@
     -fx-border-width: 2px 0px 0px 0px;
     -fx-background-color: transparent;
 }
+
 .border-titled:expanded .title,
 .border-titled .title {
     -fx-background-color: transparent;
     -fx-padding: 10px;
 }
 
-.selected-list:vertical .virtual-flow .clipped-container .sheet .list-cell:hover
+.selected-list:vertical .virtual-flow .clipped-container .sheet .list-cell:hover:filled
 {
 -fx-background-color: -fx-accent;
 }

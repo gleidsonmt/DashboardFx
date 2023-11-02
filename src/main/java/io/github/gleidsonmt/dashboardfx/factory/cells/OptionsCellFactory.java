@@ -1,5 +1,8 @@
 package io.github.gleidsonmt.dashboardfx.factory.cells;
 
+import animatefx.animation.AnimationFX;
+import animatefx.animation.Jello;
+import animatefx.animation.Pulse;
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.controls.Rating;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
@@ -41,21 +44,27 @@ public class OptionsCellFactory<T extends Entity> implements Callback<TableColum
                     button.getStyleClass().add("btn-flat");
                     setGraphic(button);
 
-                    ListOptions listOptions = new ListOptions()
+                    button.setOnMouseEntered(event -> {
+                        AnimationFX animation = new Pulse(this);
+                        animation.play();
+                    });
+
+                    ListOptions listOptions = new ListOptions(context)
                             .items(
-                                    new Option("Edit", Icons.EDIT),
-                                    new Option("View", Icons.ANALYTICS),
-                                    new Option("Delete", Icons.DELETE)
+                                    new Option("Edit", Icons.EDIT, event -> {}),
+                                    new Option("View", Icons.ANALYTICS, event -> {}),
+                                    new Option("Delete", Icons.DELETE, event -> {})
                             );
 
                     button.setOnAction(event -> {
                         context.flow()
                                 .content(
                                         new DialogContainer(listOptions.build())
-                                        .size(180, 140)
+                                                .size(180, 140)
                                 )
-                                .show(Pos.CENTER_LEFT, button, 0, 100);
+                                .show(Pos.CENTER_LEFT, button, 0, 80);
                     });
+
                 } else {
                     setGraphic(null);
                     setItem(null);

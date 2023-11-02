@@ -44,7 +44,7 @@
 
 Text {
     -fx-fill : -text-color;
-    -fx-font-family : Roboto;
+    -fx-font-family : Roboto Regular;
 }
 
 SVGPath {

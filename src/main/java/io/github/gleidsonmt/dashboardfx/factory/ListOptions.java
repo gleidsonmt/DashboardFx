@@ -19,11 +19,14 @@
 
 package io.github.gleidsonmt.dashboardfx.factory;
 
+import animatefx.animation.*;
+import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 import java.awt.*;
@@ -35,11 +38,13 @@ import java.awt.*;
 public class ListOptions {
 
     private final ListView<Option> listView;
+    private final Context context;
 
-    public ListOptions() {
+    public ListOptions(Context context) {
         listView = new ListView<>();
         options = FXCollections.observableArrayList();
         listView.getStyleClass().add("selected-list");
+        this.context = context;
     }
 
     private ObservableList<Option> options;
@@ -70,6 +75,17 @@ public class ListOptions {
                             setText(item.text());
                             this.getStyleClass().add("h5");
                             setGraphicTextGap(10);
+
+                            this.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+                                AnimationFX animation = new SlideOutRight(this);
+                                animation.setSpeed(5);
+                                animation.getTimeline().setOnFinished(e -> {
+                                    context.flow().close();
+                                });
+                                animation.play();
+                            });
+
+                            this.setOnMouseClicked(item.event());
 
 //                            this.setStyle("-fx-font-weight: bold");
 //                            this.setLineSpacing(10);

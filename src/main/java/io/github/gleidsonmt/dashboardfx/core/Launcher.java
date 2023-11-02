@@ -48,6 +48,7 @@ public abstract class Launcher extends Application {
         stage.setHeight(720);
 
         scene.getStylesheets().addAll(
+                clean("style/fonts/fonts.css"),
                 clean("style/css/colors.css"),
                 clean("style/css/skeleton.css"),
                 clean("style/css/bootstrap.css"),
@@ -61,8 +62,8 @@ public abstract class Launcher extends Application {
 
         stage.show();
         CSSFX.start(stage);
-        ScenicView.show(scene);
         addLoggerHandler();
+//        ScenicView.show(scene);
     }
 
 

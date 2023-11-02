@@ -19,6 +19,8 @@
 
 package io.github.gleidsonmt.dashboardfx.views.controls;
 
+import animatefx.animation.AnimationFX;
+import animatefx.animation.Pulse;
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.creators.TutorialCreator;
 import javafx.geometry.HPos;
@@ -157,6 +159,7 @@ public class ListViewCreator extends TutorialCreator {
                             setItem(item);
                             setGraphic(grid);
 //                            getChildren().addAll(radio);
+
                         } else {
                             setItem(null);
                             setText(null);
