@@ -48,9 +48,10 @@ public class ListViewCreator extends TutorialCreator {
         this    .title("ListView")
                 .text("A ListView displays a horizontal or vertical list of items from which the user may select, or with which the user may interact. A ListView is able to have its generic type set to represent the type of data in the backing model. Doing this has the benefit of making various methods in the ListView, as well as the supporting classes (mentioned below), type-safe. In addition, making use of the generic type supports substantially simplified development of applications making use of ListView, as all modern IDEs are able to auto-complete far more successfully with the additional type information.")
                 .demonstration(List.of(
-                                createListView(),
-                                createBorderList(),
-                                createRectList()
+                                createListView(null),
+                                createListView("border-list"),
+                                createListView("rect-list"),
+                                createListView("selected-list")
                         ),
                         """
                                 // Constructor
@@ -99,6 +100,7 @@ public class ListViewCreator extends TutorialCreator {
     record ListItem(String title, String price, String legend ) {
 
     }
+
     private Node createCustomList() {
         ListView<ListItem> listView = new ListView<>();
 //        listView.getStyleClass().add("border-list");
@@ -168,8 +170,10 @@ public class ListViewCreator extends TutorialCreator {
         return listView;
     }
 
-    private ListView<String> createListView() {
+
+    private ListView<String> createListView(String cls) {
         ListView<String> listView = new ListView<>();
+        if(cls != null) listView.getStyleClass().add(cls);
         listView.getItems().addAll(
                 "First", "Second", "Third", "Fourth"
         );
@@ -177,23 +181,4 @@ public class ListViewCreator extends TutorialCreator {
         return listView;
     }
 
-    private ListView<String> createBorderList() {
-        ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(
-                "First", "Second", "Third", "Fourth"
-        );
-        listView.setPrefHeight(300);
-        listView.getStyleClass().add("border-list");
-        return listView;
-    }
-
-    private ListView<String> createRectList() {
-        ListView<String> listView = new ListView<>();
-        listView.getItems().addAll(
-                "First", "Second", "Third", "Fourth"
-        );
-        listView.setPrefHeight(300);
-        listView.getStyleClass().add("rect-list");
-        return listView;
-    }
 }
