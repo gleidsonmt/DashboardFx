@@ -88,12 +88,11 @@ jlink {
     jpackage {
         installerOptions += [
                 '--verbose',
-                '--description', "Eightware.",
-                "--vendor", "Eightware Technology",
-                "--app-version", "0.0.120",
-                '--copyright', 'Copyrigth © 2023 Eightware Company'
+                '--description', "Software Example of theming and controls view.",
+                "--vendor", "Gleidson Technology",
+                "--app-version", "0.1.1",
+                '--copyright', 'Copyrigth © 2023 Gleidson Neves'
 //                , '--icon', 'logo_200.ico'
-
         ]
 
         if (System.properties['os.name'].toLowerCase().contains('windows')) {
@@ -119,31 +118,6 @@ jlink {
 jlinkZip {
     group = 'distribution'
 }
-
-//jlink {
-//    imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
-//    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
-//    launcher {
-//        name = 'DashboardFx'
-//    }
-//
-//    jpackage {
-//
-////        imageOptions = [
-////                '--icon', 'logo_128.png'
-////        ]
-//        installerType = 'exe'
-//        installerOptions = [
-//                '--description', "Projeto Dashboard Fx.",
-//                '--copyright', 'Copyrigth © 2021-2022 GLEIDSON NEVES DA SILVEIRA'
-////                , '--icon', 'logoT.ico'
-//
-//        ]
-//
-//        addExtraDependencies("javafx")
-//    }
-//}
-
 
 //jar {
 //

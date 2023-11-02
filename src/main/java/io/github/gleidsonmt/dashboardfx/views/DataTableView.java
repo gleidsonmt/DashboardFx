@@ -61,7 +61,7 @@ public class DataTableView extends ActionView implements View {
         TableColumn<Developer, Developer> nameColumn = new TableColumn<>("Name");
 
         nameColumn.setCellValueFactory(new DefaultEntityFactory<>());
-        nameColumn.setCellFactory(new ItemAvatarFactory<>(context));
+        nameColumn.setCellFactory(new ItemAvatarFactory<>());
 
         TableColumn<Developer, Status> statusColumn = new TableColumn<>("Status");
         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));

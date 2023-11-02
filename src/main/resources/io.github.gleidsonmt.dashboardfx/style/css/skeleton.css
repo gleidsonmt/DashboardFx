@@ -42,9 +42,9 @@
 }
 
 
-Text {
-    -fx-fill : -text-color;
-    -fx-font-family : Roboto Regular;
+Text, .text, .label, .label .text {
+    -fx-font-family : Roboto;
+
 }
 
 SVGPath {

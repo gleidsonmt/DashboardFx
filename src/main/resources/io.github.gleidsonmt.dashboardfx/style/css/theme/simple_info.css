@@ -3,12 +3,6 @@
     Author     : Gleidson Neves da Silveira
 */
 
-/*
-   @Color System
-
-*/
-
-
 .root {
 
     /* Layouts */
@@ -37,11 +31,6 @@
 }
 
 /* @Text */
-
-Text, .text, .label {
-    -fx-font-family : 'Roboto Regular';
-}
-
 Text {
     -fx-fill : -text-color;
 }

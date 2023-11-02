@@ -23,13 +23,6 @@ import java.util.Random;
  */
 public class ItemAvatarFactory<T extends Item> implements Callback<TableColumn<T, T>, TableCell<T, T>> {
 
-    private final Context context;
-
-    public ItemAvatarFactory(Context context) {
-        this.context = context;
-    }
-
-    private Random random = new Random();
 
     @Override
     public TableCell<T, T> call(TableColumn<T, T> param) {
@@ -40,16 +33,14 @@ public class ItemAvatarFactory<T extends Item> implements Callback<TableColumn<T
                 if (item != null) {
                     setItem(item);
                     GNAvatarStatus status = new GNAvatarStatus(15);
-//                    status.setImage(new Image(
-//                            context.getResource("media/avatars/man" + random.nextInt(1,5)  + "@50.png").toExternalForm()
-//                    ));
+
                     status.setImage(new Image(item.getAvatar()));
                     GridPane grid = new GridPane();
                     grid.setHgap(10);
 
                     this.setPadding(new Insets(6));
                     Text name = new Text(item.getName());
-                    name.setStyle("-fx-font-family: Regular Bold; -fx-font-weight: bold;");
+                    name.setStyle("-fx-font-weight: bold;");
                     Text description = new Text();
 
                     if (item instanceof Developer engineer) {

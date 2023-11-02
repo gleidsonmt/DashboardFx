@@ -287,9 +287,6 @@ public class SideNavController extends ActionView {
     private void openUserPreferences() {
         configLayout();
         context.flow()
-//                    .getPopup()
-//                    .size(300, 150)
-//                    .moveX(200)
                 .content(
                         new DialogContainer(list)
                                 .size(200, 140)
@@ -323,11 +320,10 @@ public class SideNavController extends ActionView {
 //        this.context = context;
         super.onInit(context);
 
-//        Platform.runLater(() ->
-//                behavior = new DrawerBehavior(root, group, context));
-
+        Platform.runLater(() -> {
+            behavior = new DrawerBehavior(root, group);
+        });
         configLayout();
     }
-
 
 }

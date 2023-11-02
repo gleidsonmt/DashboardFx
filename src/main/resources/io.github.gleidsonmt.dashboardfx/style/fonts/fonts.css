@@ -7,13 +7,8 @@
 */
 
 @font-face {
-    -fx-font-family: Roboto Black;
-        src: url('Roboto-Black.ttf');
-}
-
-@font-face {
-    -fx-font-family: Roboto Black Italic;
-        src: url('Roboto-BlackItalic.ttf');
+    -fx-font-family: Roboto;
+        src: url('Roboto-Regular.ttf');
 }
 
 @font-face {
@@ -27,18 +22,13 @@
 }
 
 @font-face {
-    -fx-font-family: Roboto Italic;
-        src: url('Roboto-Italic.ttf');
+    -fx-font-family: Roboto Black;
+        src: url('Roboto-Black.ttf');
 }
 
 @font-face {
-    -fx-font-family: Roboto Light;
-        src: url('Roboto-Light.ttf');
-}
-
-@font-face {
-    -fx-font-family: Roboto Light Italic;
-        src: url('Roboto-LightItalic.ttf');
+    -fx-font-family: Roboto Black Italic;
+        src: url('Roboto-BlackItalic.ttf');
 }
 
 @font-face {
@@ -52,8 +42,13 @@
 }
 
 @font-face {
-    -fx-font-family: Roboto Regular;
-        src: url('Roboto-Regular.ttf');
+    -fx-font-family: Roboto Light;
+        src: url('Roboto-Light.ttf');
+}
+
+@font-face {
+    -fx-font-family: Roboto Light Italic;
+        src: url('Roboto-LightItalic.ttf');
 }
 
 @font-face {
@@ -61,19 +56,8 @@
         src: url('Roboto-Thin.ttf');
 }
 
+
 @font-face {
     -fx-font-family: Roboto Thin Italic;
         src: url('Roboto-ThinItalic.ttf');
 }
-
-@font-face {
-    -fx-font-family: Roboto Italic;
-        src: url('Roboto-Italic.ttf');
-}
-
-@font-face {
-    -fx-font-family: Roboto Medium;
-        src: url('Roboto-Medium.ttf');
-}
-
-
