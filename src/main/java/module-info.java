@@ -13,7 +13,7 @@ module io.github.gleidsonmt.dashboardfx {
     requires org.yaml.snakeyaml;
     requires org.jetbrains.annotations;
     requires animatefx;
-//    requires io.github.gleidsonmt.gncarousel;
+    requires org.controlsfx.controls;
 
     requires GNAvatarView;
 

@@ -21,6 +21,7 @@ package io.github.gleidsonmt.dashboardfx.core.impl.layout;
 
 import io.github.gleidsonmt.dashboardfx.core.impl.IRoot;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.WrapperContainer;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -63,6 +64,8 @@ public class Flow implements WrapperContainer {
             if (root.getChildren().size() <= 2) return;
             if (event.getPickResult().getIntersectedNode().getStyleClass().contains("gn-badge")) return;
             if (!opened) return;
+//            System.out.println("event = " + event.getTarget());
+//            if (event.getTarget() instanceof DialogContainer) return;
             close();
         });
         return this;

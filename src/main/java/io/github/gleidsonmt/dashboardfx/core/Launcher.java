@@ -63,7 +63,7 @@ public abstract class Launcher extends Application {
         stage.show();
         CSSFX.start(stage);
         addLoggerHandler();
-        ScenicView.show(scene);
+//        ScenicView.show(scene);
     }
 
 

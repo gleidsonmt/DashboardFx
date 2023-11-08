@@ -15,7 +15,8 @@ import javafx.scene.layout.TilePane;
 public class RatingSkin extends SkinBase<Rating> {
 
     private final TilePane body;
-    private ObservableList<Star> stars;
+    private final ObservableList<Star> stars;
+
     protected RatingSkin(Rating control) {
         super(control);
         stars = FXCollections.observableArrayList();
@@ -26,9 +27,8 @@ public class RatingSkin extends SkinBase<Rating> {
         body.getStyleClass().add("box");
 
         createStars(control.getNumberOfStars());
-        if (control.getNumberOfStars() < control.getRange()) {
-            setRange(control.getNumberOfStars());
-        } else setRange(control.getRange());
+
+        setRange(Math.min(control.getNumberOfStars(), control.getRange()));
 
         if (control.isEditable()) {
             setOnMouseClicked();
@@ -43,6 +43,7 @@ public class RatingSkin extends SkinBase<Rating> {
         });
 
         registerChangeListener(control.rangeProperty(), c -> {
+            System.out.println("c = " + c);
             if (c.getValue() != null) {
 
                 int value = (int) c.getValue();

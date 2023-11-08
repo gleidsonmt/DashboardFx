@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.core.datatable;
 
 import com.dlsc.gemsfx.SearchTextField;
+import io.github.gleidsonmt.dashboardfx.model.Developer;
 import io.github.gleidsonmt.dashboardfx.model.Item;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
@@ -59,6 +60,9 @@ public class DataHandler<E extends Item> {
     private HBox container;
     private CheckBox checkButton;
 
+    private ObjectProperty<Predicate<E>> filter = new SimpleObjectProperty<>();
+    private ObjectProperty<Predicate<E>> nameFilter = new SimpleObjectProperty<>();
+
 
 //    public DataHandler(TableView<E> table, Button first, Button last,
 //                       Pagination pagination, ComboBox<Integer> entries, Text legend, GridPane footer, CheckBox checkButton,
@@ -69,10 +73,33 @@ public class DataHandler<E extends Item> {
 
 //    private ObservableList<Integer> values = FXCollections.observableArrayList(5, 10, 50, 100);
 
+    ObjectBinding<Predicate<E>> bigPicture;
+
+    public void applyFilter(ObjectBinding<Predicate<E>> fil) {
+
+        bigPicture = Bindings.createObjectBinding(
+                () -> nameFilter.get().and(fil.get()),
+                nameFilter, fil
+        );
+
+        filteredList.predicateProperty().unbind();
+        filteredList.predicateProperty().bind(bigPicture);
+        pagination();
+    }
+
+    private void resetFilter() {
+        bigPicture = Bindings.createObjectBinding(
+                () -> nameFilter.get(),
+                nameFilter
+        );
+        filteredList.predicateProperty().unbind();
+        filteredList.predicateProperty().bind(bigPicture);
+        pagination();
+    }
 
     public DataHandler(TableView<E> table, Button first, Button last,
                        Pagination pagination, ComboBox<Integer> entries, Text legend, GridPane footer, CheckBox checkButton,
-                       Task<ObservableList<E>> task, List<ObjectProperty<Predicate<E>>> filters, ObservableList<E> _items, ResourceBundle bundle, SearchTextField search) {
+                       Task<ObservableList<E>> task, ObjectBinding<Predicate<E>> filter, ObservableList<E> _items, ResourceBundle bundle, SearchTextField search) {
 
         entries.getItems().addAll(5, 10, 50, 100);
         entries.setValue(5);
@@ -114,8 +141,6 @@ public class DataHandler<E extends Item> {
 
         filteredList = new FilteredList<>(items, f -> true);
 
-
-//        table.setItems(items);
         if (task != null) {
             task.setOnRunning(event -> table.setPlaceholder(new SimpleLoadCircle()));
 
@@ -153,13 +178,13 @@ public class DataHandler<E extends Item> {
             if (c.next()) {
 
                 if (table.getItems().size() < getVisibleEntries()) {
-                    Platform.runLater(() -> pagination( pagination.getCurrentPageIndex(), getVisibleEntries()));
+                    Platform.runLater(() -> pagination(pagination.getCurrentPageIndex(), getVisibleEntries()));
                 } else {
                     Platform.runLater(() -> pagination(pagination.getCurrentPageIndex(), getVisibleEntries()));
                 }
                 Platform.runLater(() ->
                         updatePagination(
-                        pagination.getCurrentPageIndex())
+                                pagination.getCurrentPageIndex())
                 );
             }
         });
@@ -185,18 +210,18 @@ public class DataHandler<E extends Item> {
         footer.setVisible(true);
 
 
-        ObjectProperty<Predicate<E>> nameFilter = new SimpleObjectProperty<>();
-
         nameFilter.bind(Bindings.createObjectBinding(() ->
                         person -> person.getName().toLowerCase().contains(search.getText().toLowerCase()),
                 search.textProperty()));
 
-        ObjectBinding<Predicate<E>> bigPicture = Bindings.createObjectBinding(
+        bigPicture = Bindings.createObjectBinding(
                 () -> nameFilter.get(),
                 nameFilter
         );
 
         filteredList.predicateProperty().bind(bigPicture);
+
+//        filteredList.predicateProperty().addListener((observable, oldValue, newValue) -> pagination());
 
         bigPicture.addListener((observable, oldValue, newValue) -> {
 
@@ -245,6 +270,11 @@ public class DataHandler<E extends Item> {
 
     }
 
+    public void setFilters(Predicate<E> predicate) {
+        filteredList.setPredicate(
+                nameFilter.get().and(predicate)
+        );
+    }
 
     public void pagination(int index, int limit) {
         pag = true;

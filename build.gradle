@@ -58,7 +58,7 @@ dependencies {
     implementation group: 'com.dlsc.gemsfx', name: 'gemsfx', version: '1.82.0'
     implementation files('vendor/GNAvatarView-1.0.5.jar')
 
-
+    implementation 'org.controlsfx:controlsfx:11.1.2'
 
 //    implementation 'org.commonmark:commonmark:0.20.0'
 //    implementation files('vendor/GNControls-1.2.5.jar')

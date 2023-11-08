@@ -20,6 +20,7 @@
 package io.github.gleidsonmt.dashboardfx.views;
 
 import io.github.gleidsonmt.dashboardfx.core.Context;
+import io.github.gleidsonmt.dashboardfx.core.controls.Rating;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.IconContainer;
 import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import io.github.gleidsonmt.dashboardfx.core.datatable.DataTable;
@@ -28,21 +29,39 @@ import io.github.gleidsonmt.dashboardfx.core.view.View;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.options.SnackColors;
 import io.github.gleidsonmt.dashboardfx.factory.DefaultEntityFactory;
 import io.github.gleidsonmt.dashboardfx.factory.cells.*;
-import io.github.gleidsonmt.dashboardfx.model.Developer;
 import io.github.gleidsonmt.dashboardfx.factory.tasks.CreateDevelopers;
+import io.github.gleidsonmt.dashboardfx.model.Developer;
 import io.github.gleidsonmt.dashboardfx.model.Status;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.ObjectBinding;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import org.controlsfx.control.RangeSlider;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.concurrent.Callable;
+import java.util.function.Predicate;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -52,11 +71,14 @@ public class DataTableView extends ActionView implements View {
 
     private StackPane root = new StackPane();
     private DataTable dataTable;
+
+    //Filters
+
+    private ObjectBinding<Predicate<Developer>> filter = null;
+
+
     public DataTableView(Context context) {
         super(context);
-
-//        TableColumn<Developer, String> nameColumn = new TableColumn<>("Name");
-//        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
         TableColumn<Developer, Developer> nameColumn = new TableColumn<>("Name");
 
@@ -86,10 +108,12 @@ public class DataTableView extends ActionView implements View {
         ObservableList<Developer> items = FXCollections.observableArrayList();
         Task<ObservableList<Developer>> task = new CreateDevelopers(context, items);
 
-        dataTable = new DataTable<Developer>()
+        Node filterPane = createFilterPane();
+
+        dataTable = new DataTable<Developer>(context)
                 .columns(nameColumn, statusColumn, ratingColumn, priceColumn, optionsColumn)
                 .task(task)
-                .filters()
+                .filterEvent(filterPane, filter)
                 .deleteEvent(event -> {
 //                    items.remove(index.getAndIncrement());
                     if (dataTable.getSelectedItems().isEmpty()) {
@@ -108,6 +132,8 @@ public class DataTableView extends ActionView implements View {
         ;
 
         root.getChildren().add(dataTable.build());
+
+
     }
 
     @Override
@@ -120,6 +146,168 @@ public class DataTableView extends ActionView implements View {
         return root;
     }
 
+    private Node createFilterPane2() {
 
+        GridPane root = new GridPane();
+        ComboBox<Status> comboBox = new ComboBox<>();
+        ObservableList<Status> list = FXCollections.observableArrayList(Status.values());
+        comboBox.setItems(list);
+
+        root.getChildren().add(comboBox);
+
+        Button apply = new Button("Apply");
+        root.getChildren().add(apply);
+
+        apply.setOnMouseClicked(event -> {
+            ObjectProperty<Predicate<Developer>> statusFilter = new SimpleObjectProperty<>();
+
+            statusFilter.bind(Bindings.createObjectBinding(() ->
+                            item ->
+                                    item.getStatus().equals(
+                                            comboBox.getSelectionModel().getSelectedItem()),
+                    comboBox.getSelectionModel().selectedItemProperty()));
+
+            filter = Bindings.createObjectBinding(
+                    statusFilter::get,
+                    statusFilter
+            );
+
+            dataTable.applyFilter(filter);
+        });
+
+        return root;
+    }
+
+    private Node createFilterPane() {
+
+        GridPane root = new GridPane();
+
+        Node node = createRightList();
+        Node range = createRangePanel();
+        Node experiencePanel = createExperiencePanel();
+
+        root.getChildren().addAll(node, experiencePanel);
+
+        Button apply = new Button("Apply");
+        root.getChildren().add(apply);
+
+        GridPane.setConstraints(node, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(experiencePanel, 0,1,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(apply, 0,2,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+
+        ObjectProperty<Predicate<Developer>> statusFilter = new SimpleObjectProperty<>();
+        ObjectProperty<Predicate<Developer>> ratingFilter = new SimpleObjectProperty<>();
+
+        statusFilter.bind(Bindings.createObjectBinding(() ->
+                        item ->
+                                item.getStatus().equals(
+                                        statusObject.getValue()),
+                statusObject));
+
+        ratingFilter.bind(Bindings.createObjectBinding(() ->
+                        item ->
+                                item.getExperience().getRange() ==
+                                        ratingObject.get(),
+                ratingObject));
+
+        apply.setOnMouseClicked(event -> {
+
+            if (statusObject.get() != null && ratingObject.get() != null) {
+                filter = Bindings.createObjectBinding(
+                        () -> statusFilter.get().and(ratingFilter.get()),
+                        statusFilter, ratingFilter
+                );
+            } else if (statusObject.get() != null){
+                filter = Bindings.createObjectBinding(
+                        statusFilter::get,
+                        statusFilter
+                );
+            } else if(ratingObject.get() != null) {
+                filter = Bindings.createObjectBinding(
+                        ratingFilter::get,
+                        ratingFilter
+                );
+            }
+
+            if (filter != null) {
+                dataTable.applyFilter(filter);
+            }
+
+            System.out.println("event = " + filter);
+//
+
+        });
+
+        return root;
+    }
+
+    private ToggleGroup statusGroup = new ToggleGroup();
+    private ObjectProperty<Status> statusObject = new SimpleObjectProperty<>();
+    private ObjectProperty<Integer> ratingObject = new SimpleObjectProperty<>();
+
+    private Node createRightList() {
+        VBox body = new VBox();
+        Text title = new Text("Filters");
+        title.getStyleClass().addAll("h5", "text-bold");
+        Text legend = new Text("Status:");
+        legend.getStyleClass().addAll("h5");
+
+        RadioButton active = new RadioButton("Active");
+        RadioButton inactive = new RadioButton("Inactive");
+        RadioButton busy = new RadioButton("Busy");
+
+        active.setUserData(Status.ACTIVE);
+        inactive.setUserData(Status.INACTIVE);
+        busy.setUserData(Status.BUSY);
+
+        GridPane content = new GridPane();
+        content.getChildren().setAll(active, inactive, busy);
+        content.setHgap(10);
+
+        GridPane.setConstraints(active, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(inactive, 1,0,1,1, HPos.CENTER, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(busy, 2,0,1,1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+
+        statusGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> statusObject.setValue((Status) newValue.getUserData()));
+
+        body.setSpacing(10);
+        body.getChildren().setAll(title, legend, content);
+        statusGroup.getToggles().addAll(active, inactive, busy);
+
+        return body;
+    }
+
+    @ApiStatus.Experimental
+    private Node createExperiencePanel() {
+        VBox box = new VBox();
+        Text legend = new Text("Experience:");
+        legend.getStyleClass().addAll("h5");
+
+        Rating rating = new Rating();
+        rating.numberOfStarsProperty().addListener((observable, oldValue, newValue) -> System.out.println("newValue = " + newValue));
+
+        rating.rangeProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("newValue = " + newValue);
+            ratingObject.setValue(newValue.intValue());
+        });
+
+        box.getChildren().addAll(legend, rating);
+        return box;
+    }
+
+    @ApiStatus.Experimental
+    private Node createRangePanel() {
+        VBox box = new VBox();
+        RangeSlider slider = new RangeSlider();
+        slider.setBlockIncrement(10);
+        slider.setMax(100);
+        slider.setShowTickLabels(true);
+        slider.setSnapToTicks(true);
+//        slider.setSnapToTicks(true);
+        Text legend = new Text("Status:");
+        legend.getStyleClass().addAll("h5");
+        box.getChildren().addAll(legend, slider);
+        return box;
+    }
 }
 

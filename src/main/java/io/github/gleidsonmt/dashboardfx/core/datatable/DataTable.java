@@ -1,7 +1,12 @@
 package io.github.gleidsonmt.dashboardfx.core.datatable;
 
 import com.dlsc.gemsfx.SearchTextField;
+import io.github.gleidsonmt.dashboardfx.core.Context;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
+import io.github.gleidsonmt.dashboardfx.model.Developer;
 import io.github.gleidsonmt.dashboardfx.model.Item;
+import io.github.gleidsonmt.dashboardfx.model.Status;
+import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.collections.FXCollections;
@@ -14,15 +19,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
@@ -55,8 +58,10 @@ public class DataTable<T extends Item> {
 
     private Task<ObservableList<T>> task;
 
-    public DataTable() {
+    private final Context context;
 
+    public DataTable(Context context) {
+        this.context = context;
     }
 
     public DataTable<T> task(Task<ObservableList<T>> task) {
@@ -106,13 +111,32 @@ public class DataTable<T extends Item> {
         return this;
     }
 
-    private List<ObjectProperty<Predicate<T>>> filters;
+    private EventHandler<ActionEvent> filterEvent;
 
-    @SafeVarargs
-    public final DataTable<T> filters(ObjectProperty<Predicate<T>>... filters) {
-        this.filters = List.of(filters);
+    public DataTable<T> filterEvent(EventHandler<ActionEvent> event) {
+        this.filterEvent = event;
         return this;
     }
+
+    private Node filterContent;
+
+    public DataTable<T> filterEvent(Node event, ObjectBinding<Predicate<T>> filter) {
+        this.filterContent = event;
+        this.filter = filter;
+        return this;
+    }
+
+    private List<ObjectProperty<Predicate<T>>> filters;
+    private ObjectBinding<Predicate<T>> filter;
+    private Node filterNode;
+
+    public final DataTable<T> filters(Node content, ObjectBinding<Predicate<T>> filter) {
+//        this.filters = List.of(filters);
+        this.filter = filter;
+        this.filterNode = content;
+        return this;
+    }
+
 
     private ObservableList<TableColumn<T, ?>> columns;
 
@@ -136,6 +160,7 @@ public class DataTable<T extends Item> {
         root = new VBox();
         root.setId("body");
         bar = new GridPane();
+        bar.setId("bar");
         tableView = new TableView<>();
         tableView.setId("tableView");
         footer = new GridPane();
@@ -167,9 +192,9 @@ public class DataTable<T extends Item> {
         Button _export = createExport();
         Button print = createPrint();
         Button add = createAdd();
-        Button filter = createFilter();
+        Button _filter = createFilter();
 
-        buttonBar.getChildren().setAll(checkBox, delete, _import, _export, print, add, filter, search);
+        buttonBar.getChildren().setAll(checkBox, delete, _import, _export, print, add, _filter, search);
 
         HBox.setMargin(checkBox, new Insets(2, 5, 0, 0));
         entriesBox.getChildren().setAll(show, entries, entriesLegend);
@@ -218,11 +243,17 @@ public class DataTable<T extends Item> {
             tableView.setRowFactory(new DefaultDoubleClickRowFactory<>(doubleClick));
         else tableView.setRowFactory(new DefaultRowFactory<T>());
 
-        new DataHandler<>(tableView, first, last, pagination, entries, legend, footer, checkBox, task, filters, items, null, search);
+        dataHandler = new DataHandler<>(tableView, first, last, pagination, entries, legend, footer, checkBox, task, filter, items, null, search);
 
 //            public DataHandler(TableView<E> table, Button first, Button last,
 //                Pagination pagination, ComboBox<Integer> entries, Label legend,
 //                FilteredList<E> filteredList)
+    }
+
+    private DataHandler<T> dataHandler;
+
+    public void applyFilter(ObjectBinding<Predicate<T>> filter) {
+        dataHandler.applyFilter(filter);
     }
 
     public T getSelectedItem() {
@@ -251,7 +282,7 @@ public class DataTable<T extends Item> {
                             @Override
                             public void updateItem(Boolean item, boolean empty) {
                                 super.updateItem(item, empty);
-                                if(item != null) {
+                                if (item != null) {
                                     setMouseTransparent(true);
                                 }
                             }
@@ -317,6 +348,20 @@ public class DataTable<T extends Item> {
     private Button createFilter() {
         Button button = createButton();
         button.setGraphic(createGroup("M400-240v-80h160v80H400ZM240-440v-80h480v80H240ZM120-640v-80h720v80H120Z"));
+        button.setOnAction(filterEvent);
+        if (filterContent != null) {
+
+            button.addEventFilter(ActionEvent.ACTION, event -> {
+                context.flow()
+                        .content(
+                                new DialogContainer(filterContent)
+                                        .size(300, 300)
+                        )
+                        .show(Pos.BOTTOM_CENTER, button, 0, 0);
+            });
+
+        }
+
         return button;
     }
 

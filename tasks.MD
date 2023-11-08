@@ -16,6 +16,7 @@ Doing:
 - [ ] remover dependencias de bibliotecas [enxugar]
 - [ ] Metodo dos cards que ficam bunitinhos
 - [ ] Criando bar utilizando declarative style
+- [ ] RatingProperty from rating, nao eh possivel pegar a listener o valor nunca eh atualizado, usado para filtrar em datatable
 
   Done
 - [X] Create a bar with icons

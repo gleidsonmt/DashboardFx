@@ -3,6 +3,8 @@ package io.github.gleidsonmt.dashboardfx.core.controls;
 import javafx.beans.DefaultProperty;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.css.*;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
@@ -49,6 +51,8 @@ public class Rating extends Control {
         setNumberOfStars(numberOfStars);
         setRange(range);
         getStyleClass().add("rating");
+
+        rangeProperty().addListener((observable, oldValue, newValue) -> System.out.println("observable = " + observable));
     }
 
     @Override
@@ -82,10 +86,6 @@ public class Rating extends Control {
         return range.get();
     }
 
-    public StyleableIntegerProperty rangeProperty() {
-        return range;
-    }
-
     public void setRange(int range) {
         this.range.set(range);
     }
@@ -100,5 +100,9 @@ public class Rating extends Control {
 
     public void setEditable(boolean editable) {
         this.editable.set(editable);
+    }
+
+    public StyleableIntegerProperty rangeProperty() {
+        return range;
     }
 }

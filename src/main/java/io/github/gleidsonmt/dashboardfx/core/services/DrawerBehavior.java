@@ -46,6 +46,8 @@ public class DrawerBehavior {
 
     public DrawerBehavior(StackPane content, ToggleGroup group) {
 
+        if (!content.getId().equals("drawer-root")) return;
+
         VBox body = (VBox) content.lookup("#drawer-content");
 
         ScrollPane scrollPane = (ScrollPane) body.lookup("#drawer-scroll");

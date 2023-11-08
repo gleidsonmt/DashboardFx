@@ -38,7 +38,7 @@ public class Main extends Launcher {
             context.routes().nav("dash");
         });
 
-        icons.add(new Image(context.getResource("style/img/logo_64.png").toExternalForm(), 128, 128, true, true));
+        icons.add(new Image(context.getResource("style/logo/test04.png").toExternalForm(),128,128,true, true));
 
 //        layout.setContent((Node) loadCircle);
     }

@@ -320,10 +320,13 @@ public class SideNavController extends ActionView {
 //        this.context = context;
         super.onInit(context);
 
-        Platform.runLater(() -> {
-            behavior = new DrawerBehavior(root, group);
-        });
+
         configLayout();
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        super.initialize(location, resources);
+        behavior = new DrawerBehavior(root, group);
+    }
 }
