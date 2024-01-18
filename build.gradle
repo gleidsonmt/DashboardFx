@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'io.github.gleidsonmt.dashboardfx'
-version '1.0.4'
+version '1.0.5'
 
 repositories {
     mavenCentral()
@@ -67,7 +67,7 @@ dependencies {
 
 //    implementation files('vendor/gndecorator-2.2.31.jar')     // Decorator lib for custom windows
 
-    implementation files('vendor/scenicView.jar')          // thta's scenic view using jfx 8.. i need to updgrade.. this is essential for view all nodes in process
+//    implementation files('vendor/scenicView.jar')          // thta's scenic view using jfx 8.. i need to updgrade.. this is essential for view all nodes in process
 //    implementation files('vendor/controlsfx-8.40.17.jar') // My favorite lib.. has a lot of functionality
 
 //    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")

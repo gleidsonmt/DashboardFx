@@ -37,7 +37,7 @@ public class Rating extends Control {
     private final StyleableIntegerProperty range =
             new SimpleStyleableIntegerProperty(RANGE, this, "range", 2);
 
-    private BooleanProperty editable = new SimpleBooleanProperty(true);
+    private final BooleanProperty editable = new SimpleBooleanProperty(true);
 
     public Rating() {
         this(5);
@@ -52,7 +52,6 @@ public class Rating extends Control {
         setRange(range);
         getStyleClass().add("rating");
 
-        rangeProperty().addListener((observable, oldValue, newValue) -> System.out.println("observable = " + observable));
     }
 
     @Override

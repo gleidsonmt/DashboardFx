@@ -1,5 +1,10 @@
 package io.github.gleidsonmt.dashboardfx.core.controls;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.css.PseudoClass;
@@ -16,6 +21,7 @@ public class RatingSkin extends SkinBase<Rating> {
 
     private final TilePane body;
     private final ObservableList<Star> stars;
+    private final IntegerProperty selectedStars = new SimpleIntegerProperty();
 
     protected RatingSkin(Rating control) {
         super(control);
@@ -42,24 +48,31 @@ public class RatingSkin extends SkinBase<Rating> {
             }
         });
 
-        registerChangeListener(control.rangeProperty(), c -> {
-            System.out.println("c = " + c);
-            if (c.getValue() != null) {
+        control.rangeProperty().bind(selectedStars);
 
-                int value = (int) c.getValue();
+//        registerChangeListener(control.rangeProperty(), c -> {
+//            if (c.getValue() != null) {
+//
+//                int value = (int) c.getValue();
+//
+//                if (value > 0) {
+//                    if (value <= control.getNumberOfStars() ) {
+//                        reset(false);
+//                        var count = 0;
+//                        for (int i = (int) c.getValue() - 1; i > -1; i--) {
+//                            body.getChildren().get(i).pseudoClassStateChanged(PseudoClass.getPseudoClass("activate"), true);
+//                            count++;
+//                        }
+//                        System.out.println("count = " + count);
+//                    } else {
+//                        reset(true);
+//                    }
+//                }
+//            }
+//        });
 
-                if (value > 0) {
-                    if (value <= control.getNumberOfStars() ) {
-                        reset(false);
-                        for (int i = (int) c.getValue() - 1; i > -1; i--) {
-                            body.getChildren().get(i).pseudoClassStateChanged(PseudoClass.getPseudoClass("activate"), true);
-                        }
-                    } else {
-                        reset(true);
-                    }
-                }
-            }
-        });
+
+
 
     }
 
@@ -84,6 +97,7 @@ public class RatingSkin extends SkinBase<Rating> {
     private void setRange(int num) {
         for (int i = 0; i < num; i++) {
             stars.get(i).pseudoClassStateChanged(PseudoClass.getPseudoClass("activate"), true);
+            selectedStars.set(i);
         }
     }
 
@@ -108,7 +122,9 @@ public class RatingSkin extends SkinBase<Rating> {
 
                             s.pseudoClassStateChanged(PseudoClass.getPseudoClass("activate"), index <= ac);
 
+                            selectedStars.set(ac + 1);
                         });
+
             });
         });
     }

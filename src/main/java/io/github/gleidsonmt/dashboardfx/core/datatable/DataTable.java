@@ -3,9 +3,7 @@ package io.github.gleidsonmt.dashboardfx.core.datatable;
 import com.dlsc.gemsfx.SearchTextField;
 import io.github.gleidsonmt.dashboardfx.core.Context;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
-import io.github.gleidsonmt.dashboardfx.model.Developer;
 import io.github.gleidsonmt.dashboardfx.model.Item;
-import io.github.gleidsonmt.dashboardfx.model.Status;
 import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
@@ -25,7 +23,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
@@ -37,6 +38,7 @@ import java.util.function.Predicate;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  30/08/2023
  */
+@SuppressWarnings("all")
 public class DataTable<T extends Item> {
 
     // Layout
@@ -80,6 +82,13 @@ public class DataTable<T extends Item> {
 
     public DataTable<T> addEvent(EventHandler<ActionEvent> event) {
         this.add = event;
+        return this;
+    }
+
+    private EventHandler<ActionEvent> printEvent;
+
+    public DataTable<T> printEvent(EventHandler<ActionEvent> event) {
+        this.printEvent = event;
         return this;
     }
 
@@ -256,6 +265,10 @@ public class DataTable<T extends Item> {
         dataHandler.applyFilter(filter);
     }
 
+    public void resetFilter() {
+        dataHandler.applyDefaultFilter();
+    }
+
     public T getSelectedItem() {
         return tableView.getSelectionModel().getSelectedItem();
     }
@@ -335,6 +348,7 @@ public class DataTable<T extends Item> {
     private Button createPrint() {
         Button button = createButton();
         button.setGraphic(createGraphic("M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"));
+        button.setOnAction(printEvent);
         return button;
     }
 

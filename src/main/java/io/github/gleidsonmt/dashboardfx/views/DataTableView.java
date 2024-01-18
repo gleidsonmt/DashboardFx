@@ -26,8 +26,11 @@ import io.github.gleidsonmt.dashboardfx.core.controls.icon.Icons;
 import io.github.gleidsonmt.dashboardfx.core.datatable.DataTable;
 import io.github.gleidsonmt.dashboardfx.core.interfaces.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.view.View;
+import io.github.gleidsonmt.dashboardfx.core.view.layout.DialogContainer;
 import io.github.gleidsonmt.dashboardfx.core.view.layout.options.SnackColors;
 import io.github.gleidsonmt.dashboardfx.factory.DefaultEntityFactory;
+import io.github.gleidsonmt.dashboardfx.factory.ListOptions;
+import io.github.gleidsonmt.dashboardfx.factory.Option;
 import io.github.gleidsonmt.dashboardfx.factory.cells.*;
 import io.github.gleidsonmt.dashboardfx.factory.tasks.CreateDevelopers;
 import io.github.gleidsonmt.dashboardfx.model.Developer;
@@ -50,10 +53,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import org.controlsfx.control.RangeSlider;
 import org.jetbrains.annotations.ApiStatus;
@@ -114,6 +114,22 @@ public class DataTableView extends ActionView implements View {
                 .columns(nameColumn, statusColumn, ratingColumn, priceColumn, optionsColumn)
                 .task(task)
                 .filterEvent(filterPane, filter)
+                .printEvent(event -> {
+                    ListOptions listOptions = new ListOptions(context)
+                            .items(
+                                    new Option("PDF", Icons.NONE, null),
+                                    new Option("Print", Icons.NONE, null)
+
+                            );
+
+                    if (event.getSource() instanceof Node node) {
+                        context.flow().content(
+                                        new DialogContainer(listOptions.build()).size(200, 100))
+                                .show(Pos.BOTTOM_CENTER, node);
+                    }
+
+
+                })
                 .deleteEvent(event -> {
 //                    items.remove(index.getAndIncrement());
                     if (dataTable.getSelectedItems().isEmpty()) {
@@ -182,18 +198,34 @@ public class DataTableView extends ActionView implements View {
 
         GridPane root = new GridPane();
 
+        root.setPadding(new Insets(20));
+
         Node node = createRightList();
         Node range = createRangePanel();
         Node experiencePanel = createExperiencePanel();
 
         root.getChildren().addAll(node, experiencePanel);
 
+        HBox actionContainer = new HBox();
+        actionContainer.setAlignment(Pos.CENTER);
         Button apply = new Button("Apply");
-        root.getChildren().add(apply);
+        apply.setDefaultButton(true);
+        Button reset = new Button("Reset");
+        reset.setCancelButton(true);
+        apply.setPrefWidth(200);
+        reset.setPrefWidth(200);
+        actionContainer.getChildren().addAll(apply, reset);
+        actionContainer.setSpacing(10);
+        root.getChildren().add(actionContainer);
+
+        reset.setOnAction(event -> {
+            dataTable.resetFilter();
+            context.flow().close();
+        });
 
         GridPane.setConstraints(node, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
         GridPane.setConstraints(experiencePanel, 0,1,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-        GridPane.setConstraints(apply, 0,2,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(actionContainer, 0,2,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
 
         ObjectProperty<Predicate<Developer>> statusFilter = new SimpleObjectProperty<>();
         ObjectProperty<Predicate<Developer>> ratingFilter = new SimpleObjectProperty<>();
@@ -233,7 +265,7 @@ public class DataTableView extends ActionView implements View {
                 dataTable.applyFilter(filter);
             }
 
-            System.out.println("event = " + filter);
+            context.flow().close();
 //
 
         });
@@ -283,12 +315,11 @@ public class DataTableView extends ActionView implements View {
         Text legend = new Text("Experience:");
         legend.getStyleClass().addAll("h5");
 
-        Rating rating = new Rating();
-        rating.numberOfStarsProperty().addListener((observable, oldValue, newValue) -> System.out.println("newValue = " + newValue));
+        Rating rating = new Rating(0, 4);
+
 
         rating.rangeProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("newValue = " + newValue);
-            ratingObject.setValue(newValue.intValue());
+            ratingObject.setValue(newValue.intValue() );
         });
 
         box.getChildren().addAll(legend, rating);

@@ -62,7 +62,7 @@ public class Flow implements WrapperContainer {
 
         content.addEventFilter(MouseEvent.MOUSE_EXITED, event -> {
             if (root.getChildren().size() <= 2) return;
-            if (event.getPickResult().getIntersectedNode().getStyleClass().contains("gn-badge")) return;
+//            if (event.getPickResult().getIntersectedNode().getStyleClass().contains("gn-badge")) return;
             if (!opened) return;
 //            System.out.println("event = " + event.getTarget());
 //            if (event.getTarget() instanceof DialogContainer) return;

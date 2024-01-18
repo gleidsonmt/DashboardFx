@@ -24,7 +24,7 @@ module io.github.gleidsonmt.dashboardfx {
 
     requires fr.brouillard.oss.cssfx;
 //    requires io.github.gleidsonmt.gncontrols;
-    requires scenicView;
+//    requires scenicView;
     requires com.dlsc.gemsfx;
 
     opens io.github.gleidsonmt.dashboardfx to javafx.fxml;

@@ -87,6 +87,17 @@ public class DataHandler<E extends Item> {
         pagination();
     }
 
+    public void applyDefaultFilter() {
+
+        bigPicture = Bindings.createObjectBinding(
+                () -> nameFilter.get(),
+                nameFilter
+        );
+
+        filteredList.predicateProperty().unbind();
+        filteredList.predicateProperty().bind(bigPicture);
+        pagination();
+    }
     private void resetFilter() {
         bigPicture = Bindings.createObjectBinding(
                 () -> nameFilter.get(),

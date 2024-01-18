@@ -46,7 +46,6 @@ public class LoadViews extends Task<View> {
                 loadView(viewComposer);
             });
 
-            Thread.sleep(1000);
         }
         return null;
     }
