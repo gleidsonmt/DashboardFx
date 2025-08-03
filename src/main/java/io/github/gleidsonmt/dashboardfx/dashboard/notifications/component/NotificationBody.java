@@ -33,6 +33,8 @@ public class NotificationBody extends ScrollPane {
 
         Node emptyLabel = createEmptyBody();
 
+        container.getChildren().setAll(manager.getFilteredNotifications());
+
         manager.getFilteredNotifications().addListener((ListChangeListener<NotificationItem<Notification>>) change -> {
             if (change.next()) {
 
