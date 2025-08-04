@@ -7,6 +7,7 @@ import io.github.gleidsonmt.dashboardfx.drawer.CardUserOptions;
 import io.github.gleidsonmt.dashboardfx.drawer.Drawer;
 import io.github.gleidsonmt.dashboardfx.model.User;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
+import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.internal.Module;
 import io.github.gleidsonmt.glad.base.internal.View;
@@ -35,7 +36,7 @@ import javafx.scene.layout.VBox;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  10/06/2025
  */
-public class Main extends BorderPane {
+public class Main extends BorderPane implements Layout {
 
     private VBox wrapper;
     private ScrollPane container;
@@ -44,12 +45,10 @@ public class Main extends BorderPane {
     private NavBar navBar = new NavBar();
     private BreadCrumbBar crumb = new BreadCrumbBar();
 
-
     private Drawer drawer;
     private CardUserOptions card;
 
     private ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
-
 
     public Main() {
         card = new CardUserOptions(new User(Assets.getImage("default_avatar.jpg", 80), "johndoe54@gmail.com", "Jhon Doe"));
@@ -82,6 +81,13 @@ public class Main extends BorderPane {
         navBar.setStyle("-fx-border-width: 0px 0px 2px 0px;");
 
         hamb.setCancelButton(true);
+
+        hamb.setOnAction(e -> {
+            Root root = (Root) this.getScene().getRoot();
+            root.behavior().setDrawer(drawer);
+
+            root.behavior().openDrawer();
+        });
 
 
 //        drawer.currentModuleProperty().addListener((_, oldValue, newValue) -> {
@@ -127,6 +133,11 @@ public class Main extends BorderPane {
         });
     }
 
+    @Override
+    public Node getDrawer() {
+        return this.getLeft();
+    }
+
 //    public Main updateContent(View view) {
 //        super.setContent(view.getContent());
 //        return this;
@@ -138,6 +149,7 @@ public class Main extends BorderPane {
         this.drawer = new Drawer();
         setLeft(drawer);
         setCenter(this.wrapper);
+
     }
 
     private void configLayout() {

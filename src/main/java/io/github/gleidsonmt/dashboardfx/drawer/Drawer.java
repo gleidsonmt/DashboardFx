@@ -12,6 +12,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.presentations.layout.TextFl
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.shapes.TextPres;
 import io.github.gleidsonmt.dashboardfx.presentation.util.ColorsPres;
 import io.github.gleidsonmt.dashboardfx.utils.pages.BuildingPage;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.internal.Module;
 import io.github.gleidsonmt.glad.base.internal.ModuleView;
 import io.github.gleidsonmt.glad.base.internal.View;
@@ -27,6 +28,7 @@ import javafx.geometry.NodeOrientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
@@ -113,14 +115,11 @@ public class Drawer extends VBox {
                         new View("Alignment", new BuildingPage())),
                 new View("About", new AboutPres())
         ));
-
-//        this();
-
-
     }
 
     public Drawer(@NotNull List<Module> _modules) {
 //    public Drawer(List _modules) {
+
         this.modules = _modules;
         this.setId("drawer");
         this.drawerContainer = new DrawerContainer(defaultBox);
@@ -342,13 +341,17 @@ public class Drawer extends VBox {
         b.setAlignment(Pos.CENTER_LEFT);
         b.setPrefWidth(Double.MAX_VALUE);
         b.setOnMouseClicked(e -> currentModule.set(moduleImpl));
+
+        b.addEventFilter(MouseEvent.MOUSE_RELEASED,_-> {
+            Root root = (Root) getScene().getRoot();
+            root.behavior().closeDrawer();
+        });
+
         if (moduleImpl.getGraphic() != null) {
             b.setGraphic(moduleImpl.getGraphic());
         }
 
-
         group.getToggles().add(b);
-        new Region();
         return b;
     }
 
@@ -375,7 +378,6 @@ public class Drawer extends VBox {
             ((VBox) this.drawerContainer.getContent()).getChildren().add(createToggle(module));
         } else {
             TitledPane container = createPanel(module, true);
-
             container.getStyleClass().add("module-first");
 //            this.getChildren().add(container);
             ((VBox) this.drawerContainer.getContent()).getChildren().add(container);
