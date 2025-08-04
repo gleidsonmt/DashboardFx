@@ -155,7 +155,7 @@ public class Behavior extends StackPane {
 
     private Node createDemo() {
         Button button = new Button("Click on me!");
-        button.setOnAction(e -> {
+        button.setOnAction(_ -> {
             Root root = (Root) button.getScene().getRoot();
             root.behavior().openDrawer();
         });

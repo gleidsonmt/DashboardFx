@@ -57,13 +57,13 @@ dependencies {
 
 }
 
-//distTar {
-//    setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-//}
-//
-//distZip {
-//    setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-//}
+distTar {
+    setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+}
+
+distZip {
+    setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+}
 
 test {
     useJUnitPlatform()

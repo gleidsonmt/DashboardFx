@@ -1,8 +1,13 @@
 package io.github.gleidsonmt.dashboardfx.drawer;
 
 import io.github.gleidsonmt.dashboardfx.dashboard.Dashboard;
+import io.github.gleidsonmt.dashboardfx.presentation.Newsletter;
 import io.github.gleidsonmt.dashboardfx.presentation.Scroll;
 import io.github.gleidsonmt.dashboardfx.presentation.about.AboutPres;
+import io.github.gleidsonmt.dashboardfx.presentation.core.Behavior;
+import io.github.gleidsonmt.dashboardfx.presentation.core.FlowPres;
+import io.github.gleidsonmt.dashboardfx.presentation.core.Introduction;
+import io.github.gleidsonmt.dashboardfx.presentation.core.Wrapper;
 import io.github.gleidsonmt.dashboardfx.presentation.drawer.DrawerExample;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.charts.*;
@@ -60,12 +65,13 @@ public class Drawer extends VBox {
     public Drawer() {
         this(List.of(
                 new View("Dashboard", new Dashboard()),
+                new View("Newsletter", new Newsletter()),
                 new ModuleSeparator(new SVGIcon(Icon.HUB), "Project"),
-//                new ModuleView("Core",
-//                        new View("Introduction", new Introduction()),
-//                        new View("Wrapper", new Wrapper()),
-//                        new View("Flow", new FlowPres()),
-//                        new View("Behavior", new Behavior())),
+                new ModuleView("Core",
+                        new View("Introduction", new Introduction()),
+                        new View("Wrapper", new Wrapper()),
+                        new View("Flow", new FlowPres()),
+                        new View("Behavior", new Behavior())),
                 new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
                 new ModuleView("Shapes",
                         new View("Text", new TextPres()),

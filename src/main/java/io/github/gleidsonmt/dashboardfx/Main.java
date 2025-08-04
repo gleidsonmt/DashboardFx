@@ -26,10 +26,8 @@ import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.web.WebView;
 
 
 /**
@@ -135,21 +133,16 @@ public class Main extends BorderPane implements Layout {
 
     @Override
     public Node getDrawer() {
-        return this.getLeft();
+        return this.drawer;
     }
-
-//    public Main updateContent(View view) {
-//        super.setContent(view.getContent());
-//        return this;
-//    }
 
     private void init() {
         this.wrapper = new VBox();
         this.container = new ScrollPane();
         this.drawer = new Drawer();
+        
         setLeft(drawer);
         setCenter(this.wrapper);
-
     }
 
     private void configLayout() {
@@ -159,7 +152,7 @@ public class Main extends BorderPane implements Layout {
     }
 
     private void bind() {
-        currentModule.addListener((observable, oldValue, newValue) -> {
+        currentModule.addListener((_, _, newValue) -> {
             if (newValue != null) {
                 updateView(newValue);
             }
