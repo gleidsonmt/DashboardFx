@@ -143,7 +143,7 @@ public class Drawer extends VBox {
         this.setMaxWidth(250);
 //        getStylesheets().add(Objects.requireNonNull(Start.class.getResource("css/drawer/variante_one.css")).toExternalForm());
 
-        currentModule.addListener((observableValue, oldValue, newValue) -> group.getToggles().forEach(e -> {
+        currentModule.addListener((_, _, newValue) -> group.getToggles().forEach(e -> {
             if (e.getUserData() == newValue) {
                 group.selectToggle(e);
             }

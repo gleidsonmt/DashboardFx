@@ -1,48 +1,19 @@
 package io.github.gleidsonmt.dashboardfx.presentation.core;
-//
-//import io.github.gleidsonmt.dashboardfx.Main;
-//import io.github.gleidsonmt.dashboardfx.drawer.ModuleLoad;
-//import io.github.gleidsonmt.dashboardfx.presentation.drawer.SimpleDrawer;
-//import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
-//import io.github.gleidsonmt.dashboardfx.utils.Assets;
-//import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
-//import io.github.gleidsonmt.glad.base.Root;
-//import io.github.gleidsonmt.glad.base.responsive.Break;
-//import io.github.gleidsonmt.glad.controls.button.IconButton;
-//import io.github.gleidsonmt.glad.controls.icon.Icon;
-//import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
-//import io.github.gleidsonmt.glad.theme.Css;
-//import io.github.gleidsonmt.glad.theme.Font;
-//import io.github.gleidsonmt.glad.theme.ThemeProvider;
-//import javafx.beans.binding.Bindings;
-//import javafx.event.EventHandler;
-//import javafx.geometry.Insets;
-//import javafx.geometry.Pos;
-//import javafx.scene.Node;
-//import javafx.scene.Scene;
-//import javafx.scene.control.Button;
-//import javafx.scene.control.Label;
-//import javafx.scene.input.MouseEvent;
-//import javafx.scene.layout.GridPane;
-//import javafx.scene.layout.Priority;
-//import javafx.scene.layout.StackPane;
-//import javafx.scene.layout.VBox;
-//import javafx.scene.text.Text;
-//import javafx.stage.Stage;
-//
-//import java.net.URI;
-//import java.net.URISyntaxException;
-//
 
+import io.github.gleidsonmt.dashboardfx.presentation.drawer.SimpleDrawer;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.responsive.Break;
+import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
+import javafx.beans.binding.Bindings;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -51,10 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -92,157 +60,153 @@ public class Introduction extends StackPane {
         return grid;
     }
 
-//    private Node createStep8() {
-//        return createButton(e -> {
-//            Stage stage = new Stage();
-//            VBox body = new VBox(new Text("You Do it!"), new Button("Welcome!"));
-//            body.setAlignment(Pos.CENTER);
-//
-//            Layout layout = new Layout(body);
-//            Root root = new Root(layout);
-//            SimpleDrawer drawer = new SimpleDrawer();
-//
-//            NavBar nav = new NavBar();
-//
-//            IconButton hamb = new IconButton(new SVGIcon(Icon.MENU));
-//            hamb.getStyleClass().add("flat");
-//            Text title = new Text("Dashboard");
-//            title.getStyleClass().addAll("text-accent", "h3", "bold");
-//
-//            hamb.setOnMouseClicked(_ -> root.behavior().openDrawer());
-//
-//            nav.add(hamb, 0,0);
-//            nav.add(title, 1,0);
-//
-//            layout.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
-//
-//            layout.addPoint(_ -> {
-//                layout.setLeft(null);
-//                layout.setTop(nav);
-//            }, Break.MOBILE);
-//
-//            layout.addPoint(_ -> {
-//                layout.setLeft(drawer);
-//                layout.setTop(null);
-//            }, Break.values());
-//
-//
-//            Scene scene = new Scene(root, 800, 600);
-//            ThemeProvider.install(scene, Font.POPPINS);
-//            ThemeProvider.install(scene, Css.DEFAULT, Css.BUTTON, Css.LIST_VIEW);
-//            stage.setScene(scene);
-//            stage.show();
-//        });
-//    }
+    private Node createStep8() {
+        return createButton(_ -> {
+            Stage stage = new Stage();
+            VBox body = new VBox(new Text("You Do it!"), new Button("Welcome!"));
+            body.setAlignment(Pos.CENTER);
 
-//    private Node createStep6() {
-//        return createButton(e -> {
-//            Stage stage = new Stage();
-//            VBox body = new VBox(new Text("You Do it!"), new Button("Welcome!"));
-//            body.setAlignment(Pos.CENTER);
+            Lay layout = new Lay(body);
+            Root root = new Root(layout);
+            SimpleDrawer drawer = new SimpleDrawer();
+
+            NavBar nav = new NavBar();
+
+            IconButton hamb = new IconButton(new SVGIcon(Icon.MENU));
+            hamb.getStyleClass().add("flat");
+            Text title = new Text("Dashboard");
+            title.getStyleClass().addAll("text-accent", "h3", "bold");
+
+            hamb.setOnMouseClicked(_ -> root.behavior().openDrawer());
+
+            nav.add(hamb, 0,0);
+            nav.add(title, 1,0);
+
+            layout.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
+
+            root.addPoint(_ -> {
+                layout.setLeft(null);
+                layout.setTop(nav);
+            }, Break.MOBILE);
+
+            root.addPoint(_ -> {
+                layout.setLeft(drawer);
+                layout.setTop(null);
+            }, Break.values());
+
+            Scene scene = new Scene(root, 800, 600);
+            ThemeProvider.install(scene, Font.POPPINS);
+            ThemeProvider.install(scene, Css.DEFAULT, Css.BUTTON, Css.LIST_VIEW);
+            stage.setScene(scene);
+            stage.show();
+        });
+    }
+
+    private Node createStep6() {
+        return createButton(_ -> {
+            Stage stage = new Stage();
+            VBox body = new VBox(new Text("You Do it!"), new Button("Welcome!"));
+            body.setAlignment(Pos.CENTER);
+
+            Lay layout = new Lay(body);
+            Root root = new Root(layout);
+            SimpleDrawer drawer = new SimpleDrawer();
+
+            NavBar nav = new NavBar();
+
+            IconButton hamb = new IconButton(new SVGIcon(Icon.MENU));
+            hamb.getStyleClass().add("flat");
+            Text title = new Text("Dashboard");
+            title.getStyleClass().addAll("text-accent", "h3", "bold");
+
+            nav.add(hamb, 0,0);
+            nav.add(title, 1,0);
+
+            layout.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
+
+            root.addPoint(_ -> {
+                layout.setLeft(null);
+                layout.setTop(nav);
+            }, Break.MOBILE);
+
+            root.addPoint(_ -> {
+                layout.setLeft(drawer);
+                layout.setTop(null);
+            }, Break.values());
+
+            Scene scene = new Scene(root, 800, 600);
+            ThemeProvider.install(scene, Font.POPPINS);
+            ThemeProvider.install(scene, Css.DEFAULT, Css.BUTTON, Css.LIST_VIEW);
+            stage.setScene(scene);
+            stage.show();
+        });
+    }
+
+    private Node createStep7() {
+        return createButton(e -> {
+            Stage stage = new Stage();
+            VBox body = new VBox(new Text("You Do it!"), new Button("Welcome!"));
+            body.setAlignment(Pos.CENTER);
+
+            Lay layout = new Lay(body);
+            Root root = new Root(layout);
+            SimpleDrawer drawer = new SimpleDrawer();
+
+            layout.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
+
+            root.addPoint(_ -> {
+                layout.setLeft(null);
+            }, Break.MOBILE);
+
+            root.addPoint(_ -> {
+                layout.setLeft(drawer);
+            }, Break.values());
+
+            Scene scene = new Scene(root, 800, 600);
+            ThemeProvider.install(scene, Font.POPPINS);
+            ThemeProvider.install(scene, Css.DEFAULT, Css.BUTTON, Css.LIST_VIEW);
+            stage.setScene(scene);
+            stage.show();
+        });
+    }
+
+    private Node createStep5() {
+        return createButton(e -> {
+            Stage stage = new Stage();
+            VBox body = new VBox(new Text("You Do it!"), new Button("Welcome!"));
+            body.setAlignment(Pos.CENTER);
+            Lay layout = new Lay(body);
+            Root root = new Root(layout);
+            SimpleDrawer drawer = new SimpleDrawer();
 //
-//            Layout layout = new Layout(body);
-//            Root root = new Root(layout);
-//            SimpleDrawer drawer = new SimpleDrawer();
+            root.addPoint(_ -> {
+                layout.setLeft(null);
+            }, Break.MOBILE);
 //
-//            NavBar nav = new NavBar();
-//
-//            IconButton hamb = new IconButton(new SVGIcon(Icon.MENU));
-//            hamb.getStyleClass().add("flat");
-//            Text title = new Text("Dashboard");
-//            title.getStyleClass().addAll("text-accent", "h3", "bold");
-//
-//            nav.add(hamb, 0,0);
-//            nav.add(title, 1,0);
-//
-//            layout.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
-//
-//            layout.addPoint(_ -> {
-//                layout.setLeft(null);
-//                layout.setTop(nav);
-//            }, Break.MOBILE);
-//
-//            layout.addPoint(_ -> {
-//                layout.setLeft(drawer);
-//                layout.setTop(null);
-//            }, Break.values());
-//
-//
-//            Scene scene = new Scene(root, 800, 600);
-//            ThemeProvider.install(scene, Font.POPPINS);
-//            ThemeProvider.install(scene, Css.DEFAULT, Css.BUTTON, Css.LIST_VIEW);
-//            stage.setScene(scene);
-//            stage.show();
-//        });
-//    }
-//
-//    private Node createStep7() {
-//        return createButton(e -> {
-//            Stage stage = new Stage();
-//            VBox body = new VBox(new Text("You Do it!"), new Button("Welcome!"));
-//            body.setAlignment(Pos.CENTER);
-//
-//            Layout layout = new Layout(body);
-//            Root root = new Root(layout);
-//            SimpleDrawer drawer = new SimpleDrawer();
-//
-//
-//            layout.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
-//
-//            layout.addPoint(_ -> {
-//                layout.setLeft(null);
-//            }, Break.MOBILE);
-//
-//            layout.addPoint(_ -> {
-//                layout.setLeft(drawer);
-//            }, Break.values());
-//
-//            Scene scene = new Scene(root, 800, 600);
-//            ThemeProvider.install(scene, Font.POPPINS);
-//            ThemeProvider.install(scene, Css.DEFAULT, Css.BUTTON, Css.LIST_VIEW);
-//            stage.setScene(scene);
-//            stage.show();
-//        });
-//    }
-//
-//    private Node createStep5() {
-//        return createButton(e -> {
-//            Stage stage = new Stage();
-//            VBox body = new VBox(new Text("You Do it!"), new Button("Welcome!"));
-//            body.setAlignment(Pos.CENTER);
-//            Layout layout = new Layout(body);
-//            Root root = new Root(layout);
-//            SimpleDrawer drawer = new SimpleDrawer();
-//
-//            layout.addPoint(_ -> {
-//                layout.setLeft(null);
-//            }, Break.MOBILE);
-//
-//            layout.addPoint(_ -> {
-//                layout.setLeft(drawer);
-//            }, Break.values());
-//
-//            Scene scene = new Scene(root, 800, 600);
-//            ThemeProvider.install(scene, Font.POPPINS);
-//            ThemeProvider.install(scene, Css.DEFAULT, Css.BUTTON, Css.LIST_VIEW);
-//            stage.setScene(scene);
-//            stage.show();
-//        });
-//    }
-//
-//    private Node createRootExample() {
-//        return createButton(e -> {
-//            Main main = (Main) getScene().getRoot();
-//            IconButton button = new IconButton(new SVGIcon(Icon.APPS));
-//            button.getStyleClass().addAll("padding-20", "raised");
-//            button.setOnAction(ev -> {
-//                main.flow().clear();
-//            });
-//            main.flow()
-//                    .openByCursor(button, e);
-////
-//        });
-//    }
+            root.addPoint(_ -> {
+                layout.setLeft(drawer);
+            }, Break.values());
+
+            Scene scene = new Scene(root, 800, 600);
+            ThemeProvider.install(scene, Font.POPPINS);
+            ThemeProvider.install(scene, Css.DEFAULT, Css.BUTTON, Css.LIST_VIEW);
+            stage.setScene(scene);
+            stage.show();
+        });
+    }
+
+    private Node createRootExample() {
+        return createButton(e -> {
+            Root main = (Root) getScene().getRoot();
+            IconButton button = new IconButton(new SVGIcon(Icon.APPS));
+            button.getStyleClass().addAll("padding-20", "raised");
+            button.setOnAction(ev -> {
+                main.flow().clear();
+            });
+            main.flow()
+                    .openByCursor(button, e);
+        });
+    }
 
     private Node createStep3() {
         return createButton(e -> {
@@ -258,32 +222,32 @@ public class Introduction extends StackPane {
         });
     }
 
-//    private Node createStep4() {
-//        return createButton(e -> {
-//            Stage stage = new Stage();
-//            VBox body = new VBox(new Text("You Do it!"), new Button("Welcome!"));
-//            body.setAlignment(Pos.CENTER);
-//            Layout layout = new Layout(body);
-//            layout.setLeft(new SimpleDrawer());
-//            Root root = new Root(layout);
-//            Scene scene = new Scene(root, 800, 600);
-//            ThemeProvider.install(scene, Font.POPPINS);
-//            ThemeProvider.install(scene,
-//                    Css.DEFAULT,
-//                    Css.BUTTON,
-//                    Css.IMMERSIVE_SCROLL,
-//                    Css.SHAPES,
-//                    Css.LIST_VIEW);
-//
-//            stage.setScene(scene);
-//            stage.show();
-//
-//        });
-//    }
+    private Node createStep4() {
+        return createButton(e -> {
+            Stage stage = new Stage();
+            VBox body = new VBox(new Text("You Do it!"), new Button("Welcome!"));
+            body.setAlignment(Pos.CENTER);
+            Lay lay = new Lay();
+            lay.setLeft(new SimpleDrawer());
+            Root root = new Root(lay);
+            Scene scene = new Scene(root, 800, 600);
+            ThemeProvider.install(scene, Font.POPPINS);
+            ThemeProvider.install(scene,
+                    Css.DEFAULT,
+                    Css.BUTTON,
+                    Css.IMMERSIVE_SCROLL,
+                    Css.SHAPES,
+                    Css.LIST_VIEW);
 
-    class Lay extends StackPane implements Layout {
+            stage.setScene(scene);
+            stage.show();
+//
+        });
+    }
+
+    class Lay extends BorderPane implements Layout {
         public Lay() {
-            getChildren().setAll(new Text("You do it!"));
+            setCenter(new Text("You do it!"));
         }
 
         public Lay(Node node) {
@@ -312,11 +276,11 @@ public class Introduction extends StackPane {
     private Node createStep2() {
         return createButton(e -> {
             Stage stage = new Stage();
-//            Root root = new Root(new Layout(new Text("You do it!")));
-//            Scene scene = new Scene(root, 800, 600);
-//            ThemeProvider.install(scene, Font.POPPINS);
-//            ThemeProvider.install(scene, Css.COLORS, Css.TYPOGRAPHIC);
-//            stage.setScene(scene);
+            Root root = new Root(new Lay(new Text("You do it!")));
+            Scene scene = new Scene(root, 800, 600);
+            ThemeProvider.install(scene, Font.POPPINS);
+            ThemeProvider.install(scene, Css.COLORS, Css.TYPOGRAPHIC);
+            stage.setScene(scene);
             stage.show();
 //
         });
@@ -406,162 +370,162 @@ public class Introduction extends StackPane {
                                     ...
                                     """)
                             .node(createStep3())
-//                            .node(TutorialUtils.createTextWithLink("You can see more about button styling right here", "Button", "Labeled", "Button"))
+                            .node(TutorialUtils.createTextWithLink("You can see more about button styling right here", "Button", "Labeled", "Button"))
 //
+
+                            .h4("Root", "Start an AppOld")
+                            .legend("io.gleidsonmt.glad.base.Root")
+                            .text("""
+                                    The Root class is an ideia to have stacked components, actual apps has flow components,
+                                    usually stacked, like snacks, alerts etc. So the root class is wrapper to a StackPane.
+                                    These methods can be called as behavior.
+                                    This app actually uses a root class.
+                                    Try to get a button in root scene.
+                                    """)
+
+                            .node(createRootExample())
+                            .code("""
+
+                                    IconButton button = new IconButton(new SVGIcon(Icon.APPS));
+                                    button.getStyleClass().addAll("padding-20", "raised");
+
+                                    button.setOnMouseClicked(event -> {
+                                        Root main = (Root) getScene().getRoot();
+                                        main.flow() // call global method
+                                                .openByCursor(button, event);
+                                    });""")
+
+                            .h4("Global Methods", "Root")
+                            .text("""
+                                    These global methods are called when application needs to update the root.
+                                    Calling notifications and custom alerts.
+                                    """)
+                            .node(TutorialUtils.createLink("Wrapper", "Wrapper"))
+                            .node(TutorialUtils.createLink("Flow", "Flow"))
+                            .node(TutorialUtils.createLink("Behavior", "Behavior"))
 //
-//                            .h4("Root", "Start an AppOld")
-//                            .legend("io.gleidsonmt.glad.base.Root")
-//                            .text("""
-//                                    The Root class is an ideia to have stacked components, actual apps has flow components,
-//                                    usually stacked, like snacks, alerts etc. So the root class is wrapper to a StackPane.
-//                                    These methods can be called as behavior.
-//                                    This app actually uses a root class.
-//                                    Try to get a button in root scene.
-//                                    """)
+                            .h4("Layout", "Start an App")
+                            .text("""
+                                    The Layout class is the global parts of the application.
+                                    The combinations of these two layouts, creates an empty region with five separating blocks.
+                                    """)
+                            .legend("io.gleidsonmt.glad.base.Layout")
+                            .code("Root root = new Root(new Layout());")
+                            .image(Assets.getImage("part3.png"))
+                            .text("""
+                                    As knowing to much nodes cause leaks of memory, using BorderPane or a
+                                    complex layout can be combined with putting things without modifying the actual view,
+                                    example dashboards with drawer, aside, navs, footers.. and so on.
+                                    """)
+                            .text("Working with layout")
+                            .code("""
+                                    ...
+                                    Layout layout = new Layout(body);
+
+                                    Root root = new Root(layout);
+                                    ...
+                                    """)
+                            .text("Let's add list view css")
+                            .code("""
+                                    ThemeProvider.install(scene,
+                                            Css.COLORS,
+                                            Css.TYPOGRAPHIC,
+                                            Css.BUTTON,
+                                            Css.LIST_VIEW,
+                                            Css.IMMERSIVE_SCROLL
+                                    );
+                                    """)
+                            .text("List View and layouts that use scroll bars need to add immersive scroll as a theme, it can style the scroll pane")
+                            .text("Lets add a short version.")
+                            .code("""
+                                    ThemeProvider.install(scene,
+                                        Css.DEFAULT,
+                                        Css.BUTTON,
+                                        Css.LIST_VIEW
+                                    );
+                                    """)
+                            .text("Now only focus on component css.")
+                            .demo(createStep4())
+
+                            .h3("Responsive", "Layout")
+
+                            .text("Let's get out of this static layout.")
+                            .text("Try to resize this new stage.")
+                            .demo(createStep5())
+                            .text("To get that result layout has a component called Sizer.")
+                            .text("It's a class designed to response when scene is resized.")
+                            .text("Sizer uses points in the width of scene, this points change the view, in order to get the expect result.")
+                            .text("Instead of set left node, will use a response action.")
+                            .text("Add our first point")
+                            .code("""
+                                     layout.setLeft(new SimpleDrawer()); // remove this line
+                                     // and add this
+                                     SimpleDrawer drawer = new SimpleDrawer();
+                                     ...
+                                     layout.addPoint(_ -> {
+                                        layout.setLeft(drawer);
+                                    }, Break.values());""")
+                            .node(TutorialUtils.createTextWithLink("SimpleDrawer Class here is used as an example, to view more about click ", "here", "Drawer"))
+                            .text("Nothing change, that's because only set one point to all widths.")
+                            .text("To mobile width.")
+                            .code("""
+                                    root.addPoint(_ -> {
+                                         layout.setLeft(null);
+                                     }, Break.MOBILE);""")
+                            .text("Now when the size of scene is small the drawer is not showed.")
+                            .text("Because add point it's only really called after scene is settled, it's possible to call getScene() adn getRoot() methods.")
 //
-//                            .node(createRootExample())
-//                            .code("""
+                            .demo(createStep6())
+                            .text("It's not possible to invoke the drawer right now.")
+                            .code("""
+                                    ...
+                                    NavBar nav = new NavBar();
+                                    IconButton hamb = new IconButton(new SVGIcon(Icon.MENU));
+                                    hamb.getStyleClass().add("flat");
+                                    Text title = new Text("Dashboard");
+                                    title.getStyleClass().addAll("text-accent", "h3", "bold");
+                                    ....
+                                    """)
+
+                            .text("With this when size changes the hamb appears.")
+                            .code("""
+                                    ...
+                                    nav.add(hamb, 0,0);
+                                    nav.add(title, 1,0);
+                                    ...
+                                    root.addPoint(_ -> {
+                                        layout.setLeft(null);
+                                        layout.setTop(nav);
+                                    }, Break.MOBILE);
+
+                                    root.addPoint(_ -> {
+                                        layout.setLeft(drawer);
+                                        layout.setTop(null);
+                                    }, Break.values());
+                                    """)
+                            .text("But hamb doesn't have any action. Let's fix.")
+                            .code("""
+                                    hamb.setOnMouseClicked(_ -> root.behavior().openDrawer());
+                                    """)
+                            .demo(createStep8())
 //
-//                                    IconButton button = new IconButton(new SVGIcon(Icon.APPS));
-//                                    button.getStyleClass().addAll("padding-20", "raised");
-//
-//                                    button.setOnMouseClicked(event -> {
-//                                        Main main = (Main) getScene().getRoot();
-//                                        main.flow() // call global method
-//                                                .openByCursor(button, event);
-//                                    });""")
-//
-//                            .h4("Global Methods", "Root")
-//                            .text("""
-//                                    These global methods are called when application needs to update the root.
-//                                    Calling notifications and custom alerts.
-//                                    """)
-//                            .node(TutorialUtils.createLink("Wrapper", "Wrapper"))
-//                            .node(TutorialUtils.createLink("Flow", "Flow"))
-//                            .node(TutorialUtils.createLink("Behavior", "Behavior"))
-//
-//                            .h4("Layout", "Start an AppOld")
-//                            .text("""
-//                                    The Layout class is the global parts of the application.
-//                                    The combinations of these two layouts, creates an empty region with five separating blocks.
-//                                    """)
-//                            .legend("io.gleidsonmt.glad.base.Layout")
-//                            .code("Root root = new Root(new Layout());")
-//                            .image(Assets.getImage("part3.png"))
-//                            .text("""
-//                                    As knowing to much nodes cause leaks of memory, using BorderPane or a
-//                                    complex layout can be combined with putting things without modifying the actual view,
-//                                    example dashboards with drawer, aside, navs, footers.. and so on.
-//                                    """)
-//                            .text("Working with layout")
-//                            .code("""
-//                                    ...
-//                                    Layout layout = new Layout(body);
-//
-//                                    Root root = new Root(layout);
-//                                    ...
-//                                    """)
-//                            .text("Let's add list view css")
-//                            .code("""
-//                                    ThemeProvider.install(scene,
-//                                            Css.COLORS,
-//                                            Css.TYPOGRAPHIC,
-//                                            Css.BUTTON,
-//                                            Css.LIST_VIEW,
-//                                            Css.IMMERSIVE_SCROLL
-//                                    );
-//                                    """)
-//                            .text("List View and layouts that use scroll bars need to add immersive scroll as a theme, it can style the scroll pane")
-//                            .text("Lets add a short version.")
-//                            .code("""
-//                                    ThemeProvider.install(scene,
-//                                        Css.DEFAULT,
-//                                        Css.BUTTON,
-//                                        Css.LIST_VIEW
-//                                    );
-//                                    """)
-//                            .text("Now only focus on component css.")
-//                            .demo(createStep4())
-//
-//                            .h3("Responsive", "Layout")
-//
-//                            .text("Let's get out of this static layout.")
-//                            .text("Try to resize this new stage.")
-//                            .demo(createStep5())
-//                            .text("To get that result layout has a component called Sizer.")
-//                            .text("It's a class designed to response when scene is resized.")
-//                            .text("Sizer uses points in the width of scene, this points change the view, in order to get the expect result.")
-//                            .text("Instead of set left node, will use a response action.")
-//                            .text("Add our first point")
-//                            .code("""
-//                                     layout.setLeft(new SimpleDrawer()); // remove this line
-//                                     // and add this
-//                                     SimpleDrawer drawer = new SimpleDrawer();
-//                                     ...
-//                                     layout.addPoint(_ -> {
-//                                        layout.setLeft(drawer);
-//                                    }, Break.values());""")
-//                            .node(TutorialUtils.createTextWithLink("SimpleDrawer Class here is used as an example, to view more about click ", "here", "Drawer"))
-//                            .text("Nothing change, that's because only set one point to all widths.")
-//                            .text("To mobile width.")
-//                            .code("""
-//                                    layout.addPoint(_ -> {
-//                                         layout.setLeft(null);
-//                                     }, Break.MOBILE);""")
-//                            .text("Now when the size of scene is small the drawer is not showed.")
-//                            .text("Because add point it's only really called after scene is settled, it's possible to call getScene() adn getRoot() methods.")
-//
-//                            .demo(createStep6())
-//                            .text("It's not possible to invoke the drawer right now.")
-//                            .code("""
-//                                    ...
-//                                    NavBar nav = new NavBar();
-//                                    IconButton hamb = new IconButton(new SVGIcon(Icon.MENU));
-//                                    hamb.getStyleClass().add("flat");
-//                                    Text title = new Text("Dashboard");
-//                                    title.getStyleClass().addAll("text-accent", "h3", "bold");
-//                                    ....
-//                                    """)
-//
-//                            .text("With this when size changes the hamb appears.")
-//                            .code("""
-//                                    ...
-//                                    nav.add(hamb, 0,0);
-//                                    nav.add(title, 1,0);
-//                                    ...
-//                                    layout.addPoint(_ -> {
-//                                        layout.setLeft(null);
-//                                        layout.setTop(nav);
-//                                    }, Break.MOBILE);
-//
-//                                    layout.addPoint(_ -> {
-//                                        layout.setLeft(drawer);
-//                                        layout.setTop(null);
-//                                    }, Break.values());
-//                                    """)
-//                            .text("But hamb doesn't have any action. Let's fix.")
-//                            .code("""
-//                                    hamb.setOnMouseClicked(_ -> root.behavior().openDrawer());
-//                                    """)
-//                            .demo(createStep8())
-//
-//                            .text("To change the view here, it's used a bind with two nodes, this nodes are encapsulated by ObjectProperty")
-//                            .text("And then bind the drawer node selecetd and layout center")
-//                            .code("""
-//                                    ...
-//                                    layout.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
-//                                    ...
-//                                    """)
-//
-//                            .text("That's the end. But it's also the beginning to this project. Most things it's experimental, but the time will make consistence.")
-//
-//                            .h3("Testing", "Introduction")
-//                            .node(createWarning())
-//                            .text("Tools used to build and test this project.")
-//                            .node(TutorialUtils.createCardLink("Scenic View Project", new URI("https://github.com/JonathanGiles/scenic-view")))
-//                            .text("ScenicView can get information about layout, css and transform nodes in runtime.")
-//                            .node(TutorialUtils.createCardLink("CSSFX", new URI("https://github.com/McFoggy/cssfx")))
-//                            .text("Special lib to visualize and update css when app is running.")
+                            .text("To change the view here, it's used a bind with two nodes, this nodes are encapsulated by ObjectProperty")
+                            .text("And then bind the drawer node selecetd and layout center")
+                            .code("""
+                                    ...
+                                    layout.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
+                                    ...
+                                    """)
+
+                            .text("That's the end. But it's also the beginning to this project. Most things it's experimental, but the time will make consistence.")
+
+                            .h3("Testing", "Introduction")
+                            .node(createWarning())
+                            .text("Tools used to build and test this project.")
+                            .node(TutorialUtils.createCardLink("Scenic View Project", new URI("https://github.com/JonathanGiles/scenic-view")))
+                            .text("ScenicView can get information about layout, css and transform nodes in runtime.")
+                            .node(TutorialUtils.createCardLink("CSSFX", new URI("https://github.com/McFoggy/cssfx")))
+                            .text("Special lib to visualize and update css when app is running.")
                             .build()
                             .getRoot()
             );
