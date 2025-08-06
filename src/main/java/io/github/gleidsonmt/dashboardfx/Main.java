@@ -6,6 +6,7 @@ import io.github.gleidsonmt.dashboardfx.dashboard.notifications.factory.Notifica
 import io.github.gleidsonmt.dashboardfx.drawer.CardUserOptions;
 import io.github.gleidsonmt.dashboardfx.drawer.Drawer;
 import io.github.gleidsonmt.dashboardfx.model.User;
+import io.github.gleidsonmt.dashboardfx.presentation.ProfileView;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
@@ -80,10 +81,8 @@ public class Main extends BorderPane implements Layout {
 
         hamb.setCancelButton(true);
 
-        hamb.setOnAction(e -> {
+        hamb.setOnAction(_ -> {
             Root root = (Root) this.getScene().getRoot();
-            root.behavior().setDrawer(drawer);
-
             root.behavior().openDrawer();
         });
 
@@ -162,7 +161,8 @@ public class Main extends BorderPane implements Layout {
         crumb.currentModuleProperty().bind(currentModule);
     }
 
-    private void updateView(Module node) {
+    @Override
+    public void updateView(Module node) {
 
         if (node instanceof View view) {
             this.container.setContent(view.getContent());
