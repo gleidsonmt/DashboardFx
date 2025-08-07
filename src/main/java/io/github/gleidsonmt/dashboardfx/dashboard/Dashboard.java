@@ -38,13 +38,12 @@ public class Dashboard extends StackPane implements ActionableView {
     TileBlock three = new TileBlock(Icon.NOTIFICATION_IMPORTANT, "4", "Notifications", "-warning");
     TileBlock four = new TileBlock(Icon.TODAY, "18", "Schedules", "-success");
     TableView<Activity> tableView = new TableView<>();
-    Node boxTable = createBox("Companies", tableView);
+    Node boxTable = createBox("Hardware", tableView);
     BarChart<String, Number> barChart = createBarchart();
     DonutChart donutChart = createDonut();
 
-    Node boxAudience = createBox("Top Audience for country", createListView());
+    Node boxAudience = createBox("Technologies", createListView());
     Node boxLineChart = createBox("Sales", createLineChart());
-
 
     public Dashboard() {
         scrollPane.setFitToHeight(true);
@@ -52,9 +51,6 @@ public class Dashboard extends StackPane implements ActionableView {
         scrollPane.setContent(grid);
         grid.setPadding(new Insets(20));
         getChildren().add(scrollPane);
-
-
-
 
         grid.setHgap(10);
         grid.setVgap(10);
@@ -68,7 +64,7 @@ public class Dashboard extends StackPane implements ActionableView {
 
         tableView.getItems().addAll(
                 new Activity(
-                        new Company(Assets.getImage("google_logo.jpeg", 80), "Google Office", "Mountain View, California"),
+                        new Company(Assets.getImage("technology/chip.png", 80), "Intel Core i7-10700F", "Intel"),
                         Type.CORPORATE, Status.BUSY, new BigDecimal(225132),
                         new User(Assets.getImage("avatar1.png"), "Username", "Name"),
                         new User(Assets.getImage("avatar3.png"), "Username", "Name"),
@@ -82,19 +78,19 @@ public class Dashboard extends StackPane implements ActionableView {
                         new User(Assets.getImage("default_avatar.jpg"), "Username", "Name")
                 ),
                 new Activity(
-                        new Company(Assets.getImage("amazon_logo.jpeg", 70), "Amazon", "Terry Avenue North/Seattle"),
+                        new Company(Assets.getImage("technology/motherboard.png", 70), "Asus TUF Gaming Z490-Plus (Wi-Fi)", "Asus"),
                         Type.CONVENTIONAL, Status.FREE, new BigDecimal(35154),
                         new User(Assets.getImage("avatar1.png"), "Username", "Name"),
                         new User(Assets.getImage("avatar2.jpg"), "Username", "Name"),
                         new User(Assets.getImage("avatar4.png"), "Username", "Name")
                 ),
                 new Activity(
-                        new Company(Assets.getImage("microsoft_logo.jpeg", 90), "Microsoft Office", "Microsoft Way/Redmond"),
+                        new Company(Assets.getImage("technology/computer.png", 90), "Gamer Sharkoon Pure Steel White RGB", "Microsoft Way/Redmond"),
                         Type.CONVENTIONAL, Status.FREE, new BigDecimal(35154),
                         new User(Assets.getImage("avatar1.png"), "Username", "Name")
                 ),
                 new Activity(
-                        new Company(Assets.getImage("meta_logo.JPG", 80), "Meta Office", "Menlo Park, California"),
+                        new Company(Assets.getImage("technology/ram-memory.png", 80), "Patriot Viper Steel 16GB", "Menlo Park, California"),
                         Type.CORPORATE, Status.BUSY, new BigDecimal(225132),
                         new User(Assets.getImage("avatar1.png"), "Username", "Name"),
                         new User(Assets.getImage("avatar3.png"), "Username", "Name"),
@@ -249,36 +245,59 @@ public class Dashboard extends StackPane implements ActionableView {
     public BarChart<String, Number> createBarchart() {
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setCategories(FXCollections.observableArrayList(
-                Arrays.asList("10", "20", "30", "40", "50", "60", "70")));
+                Arrays.asList("1080 FPS", "1440 FPS", "4K FPS")));
+        xAxis.setAnimated(true);
+        xAxis.setStartMargin(10);
+        xAxis.setEndMargin(10);
+        xAxis.setGapStartAndEnd(true);
 
         NumberAxis yAxis = new NumberAxis(0, 1000, 100);
-        yAxis.setLabel("Population in Millions");
+        yAxis.setLabel("Default FPS");
+        yAxis.setAnimated(true);
+
+//        NumberAxis xAxis = new NumberAxis(0, 1000, 100);
+//        xAxis.setLabel("Population in Millions");
+//        xAxis.setAnimated(true);
 
         BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+        barChart.setCategoryGap(50);
+        barChart.setSnapToPixel(true);
         barChart.setMinHeight(300);
-//        barChart.getStyleClass().addAll("border-box", "border-1");
+        barChart.setLegendVisible(true);
+        barChart.setAnimated(true);
+        barChart.setTitle("Graphic Cards Performance");
+        barChart.getStyleClass().addAll("border-box", "border-1");
         barChart.getStyleClass().addAll("bg-white", "border-2", "border-light-gray-2", "radius-5");
-        XYChart.Series<String, Number> s = new XYChart.Series<>();
-        s.getData().add(new XYChart.Data<>("20", 40));
-        s.getData().add(new XYChart.Data<>("30", 300));
-        s.getData().add(new XYChart.Data<>("40", 500));
-        s.getData().add(new XYChart.Data<>("50", 798));
-        s.setName("North");
 
-        XYChart.Series<String, Number> b = new XYChart.Series<>();
-        b.getData().add(new XYChart.Data<>("20", 146));
-        b.getData().add(new XYChart.Data<>("30", 456));
-        b.getData().add(new XYChart.Data<>("40", 234));
-        b.getData().add(new XYChart.Data<>("50", 609));
-        b.setName("South");
+        XYChart.Series<String, Number> rtx5090 = new XYChart.Series<>();
+        rtx5090.setNode(new Label("LUAL"));
+        rtx5090.setName("RTX 5090");
+        rtx5090.getData().add(new XYChart.Data<>("1080 FPS", 409.7));
+        rtx5090.getData().add(new XYChart.Data<>("1440 FPS", 309.2));
+        rtx5090.getData().add(new XYChart.Data<>("4K FPS", 194.4));
+        barChart.getData().add(rtx5090);
 
-        XYChart.Series<String, Number> c = new XYChart.Series<>();
-        c.getData().add(new XYChart.Data<>("40", 200));
-        c.getData().add(new XYChart.Data<>("60", 280));
-        c.getData().add(new XYChart.Data<>("40", 900));
-        c.getData().add(new XYChart.Data<>("40", 700));
-        c.setName("East");
-        barChart.getData().addAll(s, b, c);
+        XYChart.Series<String, Number> rtx4090 = new XYChart.Series<>();
+        rtx4090.setName("RTX 4090");
+        rtx4090.getData().add(new XYChart.Data<>("1080 FPS", 356.1));
+        rtx4090.getData().add(new XYChart.Data<>("1440 FPS", 272.5));
+        rtx4090.getData().add(new XYChart.Data<>("4K FPS", 172.7));
+        barChart.getData().add(rtx4090);
+
+        XYChart.Series<String, Number> rtx4080ti = new XYChart.Series<>();
+        rtx4080ti.setName("RTX 4080 Ti");
+        rtx4080ti.getData().add(new XYChart.Data<>("1080 FPS", 332.3));
+        rtx4080ti.getData().add(new XYChart.Data<>("1440 FPS", 254.3));
+        rtx4080ti.getData().add(new XYChart.Data<>("4K FPS", 161.2));
+        barChart.getData().add(rtx4080ti);
+
+        XYChart.Series<String, Number> rtx4080 = new XYChart.Series<>();
+        rtx4080.setName("RTX 4080 Ti");
+        rtx4080.getData().add(new XYChart.Data<>("1080 FPS", 308.6));
+        rtx4080.getData().add(new XYChart.Data<>("1440 FPS", 236));
+        rtx4080.getData().add(new XYChart.Data<>("4K FPS", 149.6));
+        barChart.getData().add(rtx4080);
+
         return barChart;
     }
 
@@ -286,16 +305,17 @@ public class Dashboard extends StackPane implements ActionableView {
         DonutChart donutChart = new DonutChart();
         donutChart.getStyleClass().addAll("bg-white", "border-2", "border-light-gray-2", "radius-5");
         ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
-        data.add(new PieChart.Data("left", 30));
-        data.add(new PieChart.Data("top", 20));
-        data.add(new PieChart.Data("bottom", 10));
-        data.add(new PieChart.Data("right", 40));
-
-        donutChart.setTitle("Processors");
+        donutChart.setTitle("Most Valuable Parts");
         donutChart.setAnimated(true);
         donutChart.setLabelsVisible(true);
         donutChart.setLabelLineLength(10);
         donutChart.setMinHeight(300);
+
+        data.add(new PieChart.Data("Chip", 2_199.88));
+        data.add(new PieChart.Data("Monitor 4k", 1_264.98));
+        data.add(new PieChart.Data("Motherboard", 1_552.82));
+        data.add(new PieChart.Data("Video Card", 3_800.55));
+
 //        donutChart.setMaxWidth(325);
 
         donutChart.setData(data);

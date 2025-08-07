@@ -6,6 +6,7 @@ import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.internal.Module;
 import io.github.gleidsonmt.glad.base.responsive.Break;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
@@ -252,6 +253,11 @@ public class Introduction extends StackPane {
 
         public Lay(Node node) {
             getChildren().setAll(node);
+        }
+
+        @Override
+        public void updateView(Module view) {
+            throw new RuntimeException("Not implemented");
         }
     }
 

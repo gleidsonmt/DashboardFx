@@ -31,7 +31,9 @@ public class TableCellCompanyFactory implements Callback<TableColumn<Activity, C
                     title.getStyleClass().addAll("h5", "bold");
                     Text legend = new Text(item.getAddress());
                     legend.getStyleClass().addAll("h5");
-                    AvatarView avatar = new AvatarView(item.getAvatar(), 40);
+                    AvatarView avatar = new AvatarView(item.getAvatar(), 0);
+                    avatar.setWidth(40);
+                    avatar.setHeight(40);
 //                    avatar.getStyleClass().addAll("stroke-light-gray-2");
                     grid.add(avatar, 0,0);
                     grid.add(title, 1,0);
