@@ -4,6 +4,7 @@ import io.github.gleidsonmt.dashboardfx.model.*;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.responsive.Break;
+import io.github.gleidsonmt.glad.charts.CurvedChart;
 import io.github.gleidsonmt.glad.charts.DonutChart;
 import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
@@ -40,6 +41,36 @@ public class Dashboard extends StackPane implements ActionableView {
     TableView<Activity> tableView = new TableView<>();
     Node boxTable = createBox("Hardware", tableView);
     BarChart<String, Number> barChart = createBarchart();
+
+    CurvedChart curvedChart = createCurvedChart();
+
+    private CurvedChart createCurvedChart() {
+        NumberAxis xAxis = new NumberAxis();
+        xAxis.setLabel("No of employees");
+
+        NumberAxis yAxis = new NumberAxis();
+        yAxis.setLabel("Revenue per employee");
+
+
+        XYChart.Series<Number, Number> dataSeries1 = new XYChart.Series<>();
+        dataSeries1.setName("2014");
+
+        dataSeries1.getData().add(new XYChart.Data<>(1, 120));
+        dataSeries1.getData().add(new XYChart.Data<>(5, 150));
+        dataSeries1.getData().add(new XYChart.Data<>(10, 354));
+        dataSeries1.getData().add(new XYChart.Data<>(20, 500));
+        dataSeries1.getData().add(new XYChart.Data<>(40, 452));
+        dataSeries1.getData().add(new XYChart.Data<>(80, 630));
+
+        CurvedChart<Number, Number> curvedChart = new CurvedChart<>(
+                new NumberAxis(),
+                new NumberAxis()
+        );
+        curvedChart.getData().add(dataSeries1);
+
+        return curvedChart;
+    }
+
     DonutChart donutChart = createDonut();
 
     Node boxAudience = createBox("Technologies", createListView());
@@ -127,7 +158,7 @@ public class Dashboard extends StackPane implements ActionableView {
         GridPane.setColumnSpan(tableView, GridPane.REMAINING);
 
 
-        grid.getChildren().addAll(title, one, two, three, four, barChart, donutChart, boxAudience, boxTable, boxLineChart);
+        grid.getChildren().addAll(title, one, two, three, four, barChart, curvedChart, donutChart, boxAudience, boxTable, boxLineChart);
 //        grid.getChildren().addAll(title, one, two, three, four);
 
         for (Node node : grid.getChildren()) {
@@ -196,12 +227,14 @@ public class Dashboard extends StackPane implements ActionableView {
             GridPane.setConstraints(three, 2, 1,1,1);
             GridPane.setConstraints(four, 3, 1,1,1);
 
-            GridPane.setConstraints(barChart, 0, 2,3,1);
-            GridPane.setConstraints(donutChart, 3, 2, 1,1);
+            GridPane.setConstraints(curvedChart, 0, 2,2,1);
+            GridPane.setConstraints(barChart, 2, 2,2,1);
 
-            GridPane.setConstraints(boxAudience, 0, 3, 1,1);
-            GridPane.setConstraints(boxTable, 1, 3,2,1);
-            GridPane.setConstraints(boxLineChart, 3, 3,2,1);
+            GridPane.setConstraints(donutChart, 0, 3, 1,1);
+            GridPane.setConstraints(boxTable, 1, 3, 3,1);
+
+//            GridPane.setConstraints(boxAudience, 1, 3,2,1);
+//            GridPane.setConstraints(boxLineChart, 3, 3,2,1);
 //
         }, Break.XL, Break.XXL, Break.WIDE);
     }
@@ -251,7 +284,7 @@ public class Dashboard extends StackPane implements ActionableView {
         xAxis.setEndMargin(10);
         xAxis.setGapStartAndEnd(true);
 
-        NumberAxis yAxis = new NumberAxis(0, 1000, 100);
+        NumberAxis yAxis = new NumberAxis(0, 500, 100);
         yAxis.setLabel("Default FPS");
         yAxis.setAnimated(true);
 

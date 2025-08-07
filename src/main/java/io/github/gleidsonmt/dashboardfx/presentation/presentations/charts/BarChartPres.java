@@ -63,12 +63,13 @@ public class BarChartPres extends StackPane {
     public Node createChart() {
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setCategories(FXCollections.observableArrayList(
-                Arrays.asList("10", "20", "30", "40", "50", "60", "70" )));
+                Arrays.asList("10", "20", "30" )));
 
         NumberAxis yAxis = new NumberAxis(0, 1000, 100);
         yAxis.setLabel("Population in Millions");
 
         BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+        barChart.setMinWidth(800);
         barChart.getStyleClass().addAll("border-box", "border-1");
         XYChart.Series<String, Number> s = new XYChart.Series<>();
         s.getData().add(new XYChart.Data<>("20", 40));

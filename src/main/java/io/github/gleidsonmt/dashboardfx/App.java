@@ -22,6 +22,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.setMinWidth(400);
         stage.setMinHeight(600);
+        stage.setMaximized(true);
         ThemeProvider.install(scene, Font.POPPINS, Font.INSTAGRAM);
         ThemeProvider.install(scene, Css.DEFAULT, Css.BUTTON,
                 Css.SHAPES,  Css.CONTEXT_MENU,
