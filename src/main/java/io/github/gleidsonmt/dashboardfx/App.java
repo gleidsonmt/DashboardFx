@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.dashboardfx;
 
+import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
@@ -7,7 +8,6 @@ import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import org.scenicview.ScenicView;
 
 /**
@@ -39,7 +39,8 @@ public class App extends Application {
         stage.getIcons().add(Assets.getImage("logo_128.png"));
         stage.show();
 
-//        ScenicView.show(scene);
+        ScenicView.show(scene);
+//        CSSFX.start(scene);
     }
 
 //    @Override

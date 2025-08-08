@@ -1,19 +1,21 @@
 module io.github.gleidsonmt.dashboardfx {
 
+    requires javafx.media;
+
     requires io.github.gleidsonmt.glad;
-
     requires org.jetbrains.annotations;
-    requires org.scenicview.scenicview;
-//    requires fr.brouillard.oss.cssfx;
-    requires java.net.http;
 
+    //    requires org.scenicview.scenicview;
+//    requires fr.brouillard.oss.cssfx;
+
+    requires java.net.http;
     exports io.github.gleidsonmt.dashboardfx.drawer;
 
     requires eu.hansolo.colors;
-    requires javafx.media;
     requires io.github.gleidsonmt.presentation;
     requires io.github.gleidsonmt.blockcode;
     requires java.desktop;
+    requires org.scenicview.scenicview;
 
     opens io.github.gleidsonmt.dashboardfx to javafx.fxml;
     exports io.github.gleidsonmt.dashboardfx;

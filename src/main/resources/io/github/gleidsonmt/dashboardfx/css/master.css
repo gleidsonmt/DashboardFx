@@ -197,3 +197,8 @@
     CHART_COLOR_1_TRANS_20: linear-gradient(to bottom, derive(-info, 50%), transparent);
 }
 
+.chart-title .text {
+    -fx-font-family: Poppins Regular;
+    -fx-font-size: 18px;
+}
+

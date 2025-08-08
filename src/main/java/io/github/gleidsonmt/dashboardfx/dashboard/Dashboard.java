@@ -13,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Side;
+import javafx.scene.CacheHint;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
@@ -43,9 +44,9 @@ public class Dashboard extends StackPane implements ActionableView {
     Node boxTable = createBox("Hardware", tableView);
     BarChart<String, Number> barChart = createBarchart();
 
-    CurvedChart curvedChart = createCurvedChart();
+    CurvedChart<Number, Number> curvedChart = createCurvedChart();
 
-    private CurvedChart createCurvedChart() {
+    private CurvedChart<Number, Number> createCurvedChart() {
 
         NumberAxis yAxis = new NumberAxis(0, 700, 100);
         yAxis.setLabel("Total");
@@ -69,7 +70,7 @@ public class Dashboard extends StackPane implements ActionableView {
         CurvedChart<Number, Number> curvedChart = new CurvedChart<>(xAxis, yAxis);
         curvedChart.setLegendVisible(true);
         curvedChart.setTitle("Contributions (GitHub)");
-        curvedChart.getData().addAll(dataSeries1);
+        curvedChart.getData().setAll(dataSeries1);
 
         curvedChart.getStyleClass().addAll("border-box", "border-1");
         curvedChart.getStyleClass().addAll("bg-white", "border-2", "border-light-gray-2", "radius-5");
@@ -79,7 +80,7 @@ public class Dashboard extends StackPane implements ActionableView {
 
     DonutChart donutChart = createDonut();
 
-    Node boxAudience = createBox("Technologies", createListView());
+    Node boxTechnologies = createBox("Technologies", createListView());
     Node boxLineChart = createBox("Sales", createLineChart());
 
     public Dashboard() {
@@ -164,7 +165,7 @@ public class Dashboard extends StackPane implements ActionableView {
         GridPane.setColumnSpan(tableView, GridPane.REMAINING);
 
 
-        grid.getChildren().addAll(title, one, two, three, four, barChart, curvedChart, donutChart, boxAudience, boxTable);
+        grid.getChildren().addAll(title, one, two, three, four, barChart, curvedChart, donutChart, boxTechnologies, boxTable);
 //        grid.getChildren().addAll(title, one, two, three, four);
 
         for (Node node : grid.getChildren()) {
@@ -202,7 +203,7 @@ public class Dashboard extends StackPane implements ActionableView {
             GridPane.setConstraints(barChart, 0, 3,4,1);
             GridPane.setConstraints(donutChart, 0, 4, 4,1);
 
-            GridPane.setConstraints(boxAudience, 0, 5, 4,1);
+            GridPane.setConstraints(boxTechnologies, 0, 5, 4,1);
             GridPane.setConstraints(boxTable, 0, 6,4,1);
             GridPane.setConstraints(boxLineChart, 0, 7,4,1);
 
@@ -220,7 +221,7 @@ public class Dashboard extends StackPane implements ActionableView {
             GridPane.setConstraints(barChart, 0, 3,4,1);
             GridPane.setConstraints(donutChart, 0, 4, 4,1);
 
-            GridPane.setConstraints(boxAudience, 0, 5, 4,1);
+            GridPane.setConstraints(boxTechnologies, 0, 5, 4,1);
             GridPane.setConstraints(boxTable, 0, 6,4,1);
             GridPane.setConstraints(boxLineChart, 0, 7,4,1);
         },  Break.LG);
@@ -236,7 +237,7 @@ public class Dashboard extends StackPane implements ActionableView {
             GridPane.setConstraints(curvedChart, 0, 2,2,1);
             GridPane.setConstraints(barChart, 2, 2,1,1);
 
-            GridPane.setConstraints(boxAudience, 3, 2,1,1);
+            GridPane.setConstraints(boxTechnologies, 3, 2,1,1);
 
 
             GridPane.setConstraints(donutChart, 0, 3, 1,1);
@@ -296,10 +297,6 @@ public class Dashboard extends StackPane implements ActionableView {
         yAxis.setLabel("Default FPS");
         yAxis.setAnimated(true);
 
-//        NumberAxis xAxis = new NumberAxis(0, 1000, 100);
-//        xAxis.setLabel("Population in Millions");
-//        xAxis.setAnimated(true);
-
         BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
         barChart.setCategoryGap(50);
         barChart.setSnapToPixel(true);
@@ -308,7 +305,7 @@ public class Dashboard extends StackPane implements ActionableView {
         barChart.setAnimated(true);
         barChart.setTitle("Graphic Cards Performance");
         barChart.getStyleClass().addAll("border-box", "border-1");
-        barChart.getStyleClass().addAll("bg-white", "border-2", "border-light-gray-2", "radius-5");
+        barChart.getStyleClass().addAll("bg-white border-2 border-light-gray-2 radius-5 font-poppins".split(" "));
 
         XYChart.Series<String, Number> rtx5090 = new XYChart.Series<>();
         rtx5090.setNode(new Label("LUAL"));
@@ -368,14 +365,15 @@ public class Dashboard extends StackPane implements ActionableView {
     private Node createBox(String _title, Node node) {
 
         VBox box = new VBox();
-        box.getStyleClass().addAll("bg-white", "border-2", "border-light-gray-2", "radius-5");
-        box.setPadding(new Insets(20));
+        box.getStyleClass().addAll("bg-white border-2 border-light-gray-2 radius-5 align-top-center".split(" "));
+        box.setPadding(new Insets(5));
 
         Text title = new Text(_title);
-        title.setStyle("-fx-font-family: \"Instagram Sans\";");
-        title.getStyleClass().add("h3");
+        title.setCacheHint(CacheHint.QUALITY);
+//        title.setStyle("-fx-font-family: \"Instagram Sans\";");
+        title.getStyleClass().add("h4");
 
-        box.getChildren().addAll(title, new Separator(), node);
+        box.getChildren().addAll(title, node);
         box.setMinHeight(300);
 
         return box;
