@@ -39,7 +39,7 @@ public class App extends Application {
         stage.getIcons().add(Assets.getImage("logo_128.png"));
         stage.show();
 
-        ScenicView.show(scene);
+//        ScenicView.show(scene);
     }
 
 //    @Override

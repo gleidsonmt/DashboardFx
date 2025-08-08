@@ -12,6 +12,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
@@ -45,28 +46,33 @@ public class Dashboard extends StackPane implements ActionableView {
     CurvedChart curvedChart = createCurvedChart();
 
     private CurvedChart createCurvedChart() {
-        NumberAxis xAxis = new NumberAxis();
-        xAxis.setLabel("No of employees");
 
-        NumberAxis yAxis = new NumberAxis();
-        yAxis.setLabel("Revenue per employee");
+        NumberAxis yAxis = new NumberAxis(0, 700, 100);
+        yAxis.setLabel("Total");
 
+        NumberAxis xAxis = new NumberAxis(2016, 2025, 1);
 
         XYChart.Series<Number, Number> dataSeries1 = new XYChart.Series<>();
-        dataSeries1.setName("2014");
+        dataSeries1.setName("Years");
+        dataSeries1.getData().add(new XYChart.Data<>(2016, 1));
+        dataSeries1.getData().add(new XYChart.Data<>(2017, 1));
+        dataSeries1.getData().add(new XYChart.Data<>(2018, 496));
+        dataSeries1.getData().add(new XYChart.Data<>(2019, 194));
+        dataSeries1.getData().add(new XYChart.Data<>(2020, 145));
+        dataSeries1.getData().add(new XYChart.Data<>(2021, 14));
+        dataSeries1.getData().add(new XYChart.Data<>(2022, 631));
+        dataSeries1.getData().add(new XYChart.Data<>(2023, 483));
+        dataSeries1.getData().add(new XYChart.Data<>(2024, 420));
+        dataSeries1.getData().add(new XYChart.Data<>(2025, 223));
 
-        dataSeries1.getData().add(new XYChart.Data<>(1, 120));
-        dataSeries1.getData().add(new XYChart.Data<>(5, 150));
-        dataSeries1.getData().add(new XYChart.Data<>(10, 354));
-        dataSeries1.getData().add(new XYChart.Data<>(20, 500));
-        dataSeries1.getData().add(new XYChart.Data<>(40, 452));
-        dataSeries1.getData().add(new XYChart.Data<>(80, 630));
 
-        CurvedChart<Number, Number> curvedChart = new CurvedChart<>(
-                new NumberAxis(),
-                new NumberAxis()
-        );
-        curvedChart.getData().add(dataSeries1);
+        CurvedChart<Number, Number> curvedChart = new CurvedChart<>(xAxis, yAxis);
+        curvedChart.setLegendVisible(true);
+        curvedChart.setTitle("Contributions (GitHub)");
+        curvedChart.getData().addAll(dataSeries1);
+
+        curvedChart.getStyleClass().addAll("border-box", "border-1");
+        curvedChart.getStyleClass().addAll("bg-white", "border-2", "border-light-gray-2", "radius-5");
 
         return curvedChart;
     }
@@ -158,7 +164,7 @@ public class Dashboard extends StackPane implements ActionableView {
         GridPane.setColumnSpan(tableView, GridPane.REMAINING);
 
 
-        grid.getChildren().addAll(title, one, two, three, four, barChart, curvedChart, donutChart, boxAudience, boxTable, boxLineChart);
+        grid.getChildren().addAll(title, one, two, three, four, barChart, curvedChart, donutChart, boxAudience, boxTable);
 //        grid.getChildren().addAll(title, one, two, three, four);
 
         for (Node node : grid.getChildren()) {
@@ -228,12 +234,14 @@ public class Dashboard extends StackPane implements ActionableView {
             GridPane.setConstraints(four, 3, 1,1,1);
 
             GridPane.setConstraints(curvedChart, 0, 2,2,1);
-            GridPane.setConstraints(barChart, 2, 2,2,1);
+            GridPane.setConstraints(barChart, 2, 2,1,1);
+
+            GridPane.setConstraints(boxAudience, 3, 2,1,1);
+
 
             GridPane.setConstraints(donutChart, 0, 3, 1,1);
-            GridPane.setConstraints(boxTable, 1, 3, 3,1);
+            GridPane.setConstraints(boxTable, 1, 3, 2,1);
 
-//            GridPane.setConstraints(boxAudience, 1, 3,2,1);
 //            GridPane.setConstraints(boxLineChart, 3, 3,2,1);
 //
         }, Break.XL, Break.XXL, Break.WIDE);

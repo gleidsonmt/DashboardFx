@@ -192,3 +192,8 @@
     -fx-background-color: -fx-background;
     -fx-background-insets: 0px;
 }
+
+.curved-chart  {
+    CHART_COLOR_1_TRANS_20: linear-gradient(to bottom, derive(-info, 50%), transparent);
+}
+
