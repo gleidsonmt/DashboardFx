@@ -8,11 +8,9 @@ import io.github.gleidsonmt.glad.charts.CurvedChart;
 import io.github.gleidsonmt.glad.charts.DonutChart;
 import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.geometry.Side;
 import javafx.scene.CacheHint;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
@@ -382,42 +380,43 @@ public class Dashboard extends StackPane implements ActionableView {
 
     private Node createListView() {
 
-        ListView<CountryBox> listView = new ListView<>();
-        listView.setStyle("-fx-fixed-cell-size: 60px;");
+        ListView<LanguageExperience> listView = new ListView<>();
+        listView.setStyle("-fx-fixed-cell-size: 80px;");
         listView.setItems(FXCollections.observableArrayList(
-                new CountryBox(Assets.getImage("united-states.png", 60), "United States", 0.9),
-                new CountryBox(Assets.getImage("united-kingdom.png", 60), "United Kingdom", 0.85),
-                new CountryBox(Assets.getImage("brazil-.png", 60), "Brazil", 0.65)
+                new LanguageExperience("Java", "Focus on learn and teach (java 8, 20+)", 0.96, "info"),
+                new LanguageExperience( "React", "Focus on learn and web", 0.65, "secondary"),
+                new LanguageExperience( "Javascript", "Focus on learn and web", 0.72, "warning")
         ));
         count = 0;
         List<String> colors = List.of("accent", "danger", "success");
         listView.setCellFactory(_ -> new ListCell<>() {
 
             @Override
-            protected void updateItem(CountryBox item, boolean empty) {
+            protected void updateItem(LanguageExperience item, boolean empty) {
                 if (item != null) {
 
                     GridPane grid = new GridPane();
                     grid.setHgap(10);
                     grid.setVgap(10);
 
-                    Label text = new Label(item.getTitle());
-                    text.getStyleClass().addAll("bold", "h5");
-                    text.setGraphicTextGap(10);
-
-                    text.setGraphic(new AvatarView(item.getAvatar(), 15));
-
+                    Text text = new Text(item.getTitle());
+                    text.getStyleClass().addAll("h5");
                     ProgressBar progressBar = new ProgressBar();
 
-                    progressBar.getStyleClass().addAll("bg-" + colors.get(getIndex()));
+                    progressBar.getStyleClass().addAll("bg-" + item.getColor());
                     progressBar.progressProperty().bind(item.percentageProperty());
 
-                    Text legend = new Text((item.getPercentage() * 100) + "%");
-                    legend.getStyleClass().addAll("bold", "h5");
+                    Text percent = new Text((item.getPercentage() * 100) + "%");
+                    percent.getStyleClass().addAll("bold", "h5");
+
+                    Text legend = new Text(item.getLegend());
+                    legend.getStyleClass().addAll( "h6");
 
                     grid.add(text, 0, 0);
-                    grid.add(progressBar, 0, 1);
-                    grid.add(legend, 1, 0);
+                    grid.add(legend, 0, 1);
+                    grid.add(progressBar, 0, 2);
+
+                    grid.add(percent, 1, 0);
 
                     GridPane.setHgrow(text, Priority.ALWAYS);
                     GridPane.setHgrow(progressBar, Priority.ALWAYS);

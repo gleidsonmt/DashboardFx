@@ -7,28 +7,42 @@ import javafx.scene.image.Image;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  17/03/2025
  */
-public class CountryBox extends Model {
+public class LanguageExperience extends Model {
 
-    private ObjectProperty<Image> avatar = new SimpleObjectProperty<>();
     private StringProperty title = new SimpleStringProperty();
+    private StringProperty legend = new SimpleStringProperty();
     private DoubleProperty percentage = new SimpleDoubleProperty();
+    private StringProperty color = new SimpleStringProperty();
 
-    public CountryBox(Image image, String title, double percentage) {
+    public LanguageExperience( String title, String legend, double percentage, String color) {
         this.title.set(title);
-        this.avatar.set(image);
+        this.legend.set(legend);
         this.setPercentage(percentage);
+        this.setColor(color);
     }
 
-    public Image getAvatar() {
-        return avatar.get();
+    public String getLegend() {
+        return legend.get();
     }
 
-    public ObjectProperty<Image> avatarProperty() {
-        return avatar;
+    public StringProperty legendProperty() {
+        return legend;
     }
 
-    public void setAvatar(Image avatar) {
-        this.avatar.set(avatar);
+    public void setLegend(String legend) {
+        this.legend.set(legend);
+    }
+
+    public String getColor() {
+        return color.get();
+    }
+
+    public StringProperty colorProperty() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color.set(color);
     }
 
     public String getTitle() {
