@@ -39,19 +39,19 @@ public class Introduction extends StackPane {
     private Node createWarning() {
         GridPane grid = new GridPane();
         grid.setHgap(10);
-        grid.setStyle("-fx-background-color: derive(-warning, 95%); " +
+        grid.setStyle("-fx-background-color: derive(-amber, 90%); " +
                       "-fx-background-radius: 10px; " +
                       "-fx-border-width: 0px 0px 0px 2px;" +
-                      "-fx-border-color: -warning;"
+                      "-fx-border-color: -amber;"
         );
         grid.setPadding(new Insets(20));
         SVGIcon icon = new SVGIcon(Icon.NOTIFICATION_IMPORTANT);
         icon.setScale(2);
-        icon.getPath().setStyle("-fx-fill: -warning;");
+        icon.getPath().setStyle("-fx-fill: -amber;");
         icon.getStyleClass().add("warning");
 
         Label flow = new Label("This libs it's only used in runtime do not create an jar file, or an .exe with this, they will probably crash.");
-        flow.getStyleClass().addAll("text-warning","h5");
+        flow.getStyleClass().addAll("text-amber","h5");
         flow.setWrapText(true);
 
         grid.setAlignment(Pos.CENTER_LEFT);
@@ -526,7 +526,7 @@ public class Introduction extends StackPane {
                             .text("That's the end. But it's also the beginning to this project. Most things it's experimental, but the time will make consistence.")
 
                             .h3("Testing", "Introduction")
-                            .node(createWarning())
+                            .legend("This libs it's only used in runtime do not create an jar file, or an .exe with this, they will probably crash.")
                             .text("Tools used to build and test this project.")
                             .node(TutorialUtils.createCardLink("Scenic View Project", new URI("https://github.com/JonathanGiles/scenic-view")))
                             .text("ScenicView can get information about layout, css and transform nodes in runtime.")

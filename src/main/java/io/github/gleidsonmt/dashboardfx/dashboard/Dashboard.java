@@ -11,6 +11,7 @@ import io.github.gleidsonmt.glad.controls.icon.Icon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.CacheHint;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
@@ -18,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -81,6 +83,60 @@ public class Dashboard extends StackPane implements ActionableView {
     Node boxTechnologies = createBox("Technologies", createListView());
     Node boxLineChart = createBox("Sales", createLineChart());
 
+    Node viewBox = createViewBox();
+
+    private Node createViewBox() {
+
+        StackPane header = new StackPane();
+        header.setId("card-header");
+        Region background = new Region();
+        background.getStyleClass().add("card-poster");
+        background.setId("card-header-background");
+        background.setStyle("-fx-background-color: blue");
+        background.setPrefHeight(150);
+        background.setMaxHeight(Region.USE_PREF_SIZE);
+        StackPane.setAlignment(background, Pos.TOP_CENTER);
+
+        VBox headerContent = new VBox();
+        headerContent.setId("card-header-content");
+
+        header.getChildren().setAll(background, headerContent);
+
+        VBox body = new VBox();
+        body.setSpacing(20);
+        body.setId("card-body");
+        body.setAlignment(Pos.CENTER);
+
+        Text title = new Text("@jhon_doe");
+        title.getStyleClass().addAll("h3");
+
+        Text legend = new Text("The mission is always done perfectly.");
+        legend.setTextAlignment(TextAlignment.CENTER);
+        legend.getStyleClass().addAll("h5");
+        legend.setWrappingWidth(300);
+
+        HBox social = new HBox();
+        social.setAlignment(Pos.BOTTOM_CENTER);
+        social.setSpacing(10);
+        social.setPadding(new Insets(20));
+        social.getChildren().addAll(
+                new AvatarView(Assets.getImage("social/facebook.png", 60), 40),
+                new AvatarView(Assets.getImage("social/twitter.png", 60), 40),
+                new AvatarView(Assets.getImage("social/youtube.png", 60), 40)
+        );
+
+        body.getChildren().addAll(title, legend, social);
+
+
+        VBox card = new VBox();
+        card.setSpacing(10);
+        card.setPadding(new Insets(10));
+        card.getChildren().setAll(header, body);
+
+        card.getStyleClass().addAll("bg-white border-2 border-light-gray-2 radius-5 align-top-center".split(" "));
+        return card;
+    }
+
     public Dashboard() {
         scrollPane.setFitToHeight(true);
         scrollPane.setFitToWidth(true);
@@ -100,7 +156,7 @@ public class Dashboard extends StackPane implements ActionableView {
 
         tableView.getItems().addAll(
                 new Activity(
-                        new Company(Assets.getImage("technology/chip.png", 80), "Intel Core i7-10700F", "Intel"),
+                        new Company(Assets.getImage("technology/chip.png", 40), "Intel Core i7-10700F", "Intel"),
                         Type.CORPORATE, Status.BUSY, new BigDecimal(225132),
                         new User(Assets.getImage("avatar1.png"), "Username", "Name"),
                         new User(Assets.getImage("avatar3.png"), "Username", "Name"),
@@ -163,7 +219,7 @@ public class Dashboard extends StackPane implements ActionableView {
         GridPane.setColumnSpan(tableView, GridPane.REMAINING);
 
 
-        grid.getChildren().addAll(title, one, two, three, four, barChart, curvedChart, donutChart, boxTechnologies, boxTable);
+        grid.getChildren().addAll(title, one, two, three, four, barChart, curvedChart, donutChart, boxTechnologies, boxTable, viewBox);
 //        grid.getChildren().addAll(title, one, two, three, four);
 
         for (Node node : grid.getChildren()) {
@@ -239,9 +295,9 @@ public class Dashboard extends StackPane implements ActionableView {
 
 
             GridPane.setConstraints(donutChart, 0, 3, 1,1);
-            GridPane.setConstraints(boxTable, 1, 3, 2,1);
+            GridPane.setConstraints(viewBox, 1, 3, 1,1);
 
-//            GridPane.setConstraints(boxLineChart, 3, 3,2,1);
+            GridPane.setConstraints(boxTable, 2, 3,2,1);
 //
         }, Break.XL, Break.XXL, Break.WIDE);
     }

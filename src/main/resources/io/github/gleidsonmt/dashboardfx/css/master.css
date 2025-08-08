@@ -202,3 +202,8 @@
     -fx-font-size: 18px;
 }
 
+.card-poster {
+    -fx-background-image: url("../img/poster.png");
+    -fx-background-size: contain;
+}
+
