@@ -1,9 +1,8 @@
 package io.github.gleidsonmt.dashboardfx.drawer;
 
-import io.github.gleidsonmt.dashboardfx.Main;
-//import io.github.gleidsonmt.dashboardfx.dashboard.Aside;
+import io.github.gleidsonmt.dashboardfx.dashboard.Aside;
 import io.github.gleidsonmt.dashboardfx.model.User;
-//import io.github.gleidsonmt.glad.base.Layout;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.WrapperEffect;
 import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
 import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
@@ -108,24 +107,25 @@ public class CardUserOptions extends GridPane {
         menuSettings.setGraphic(new SVGIcon(Icon.SETTINGS));
 
         menuSettings.setOnAction(e -> {
-//            Layout root = (Main) this.getScene().getRoot();
-//            Aside aside = new Aside();
-//            aside.setPrefWidth(280);
-//            root.flow()
-//                    .anchor(Anchor.RIGHT)
-//                    .content(aside)
-//                    .pos(Pos.CENTER_RIGHT)
-//                    .with(WrapperEffect.GRAY)
-//                    .show();
-//
-//            new Timeline(
-//                    new KeyFrame(Duration.ZERO, new KeyValue(
-//                            aside.translateXProperty(), 350
-//                    )),
-//                    new KeyFrame(Duration.millis(200), new KeyValue(
-//                            aside.translateXProperty(), 0
-//                    ))
-//            ).play();
+            Root root = (Root) this.getScene().getRoot();
+            Aside aside = new Aside();
+            aside.setPrefWidth(280);
+
+            root.flow()
+                    .anchor(Anchor.RIGHT)
+                    .content(aside)
+                    .pos(Pos.CENTER_RIGHT)
+                    .with(WrapperEffect.GRAY)
+                    .show();
+
+            new Timeline(
+                    new KeyFrame(Duration.ZERO, new KeyValue(
+                            aside.translateXProperty(), 350
+                    )),
+                    new KeyFrame(Duration.millis(200), new KeyValue(
+                            aside.translateXProperty(), 0
+                    ))
+            ).play();
         });
 
         MenuItem menuManageAccount = new MenuItem("Manage Account");

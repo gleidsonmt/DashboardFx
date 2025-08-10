@@ -44,7 +44,7 @@ public class AreaChartPres extends StackPane {
                         .text("""
                                 Descendant of area chart with curves.
                                 """)
-                        .legend("io.github.gleidsonmt.glad.charts.CurvedChart")
+                        .legend("io.github.gleidsonmt.glad.charts.ContributionsChart")
                         .demo(createCurved())
                         .code("""
                                 NumberAxis xAxis = new NumberAxis();
@@ -64,7 +64,7 @@ public class AreaChartPres extends StackPane {
                                 dataSeries1.getData().add(new XYChart.Data<>(40, 452));
                                 dataSeries1.getData().add(new XYChart.Data<>(80, 630));
                         
-                                CurvedChart<Number, Number> curvedChart = new CurvedChart<>(
+                                ContributionsChart<Number, Number> curvedChart = new ContributionsChart<>(
                                         new NumberAxis(),
                                         new NumberAxis()
                                 );
@@ -156,7 +156,7 @@ public class AreaChartPres extends StackPane {
 //        c.setName("East");
 //        barChart.getData().addAll(s, b, c);
 //
-//CurvedChart<Number, Number> curvedChart = new CurvedChart<>(
+//ContributionsChart<Number, Number> curvedChart = new ContributionsChart<>(
 //        new NumberAxis(),
 //        new NumberAxis()
 //);

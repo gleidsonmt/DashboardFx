@@ -9,4 +9,6 @@ import io.github.gleidsonmt.glad.base.Root;
 public interface ActionableView {
 
     void onEnter(Root root);
+
+    default void onExit(Root root){}
 }

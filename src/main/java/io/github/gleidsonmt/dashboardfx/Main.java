@@ -39,66 +39,12 @@ public class Main extends BorderPane implements Layout {
 
     private VBox wrapper;
     private ScrollPane container;
-
-    private IconButton hamb = new IconButton(new SVGIcon(Icon.MENU));
-    private NavBar navBar = new NavBar();
-    private BreadCrumbBar crumb = new BreadCrumbBar();
-
+    private final NavBar navBar = new NavBar(60);
     private Drawer drawer;
-    private CardUserOptions card;
-
-    private ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
+    private final ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
 
     public Main() {
-        card = new CardUserOptions(new User(Assets.getImage("default_avatar.jpg", 80), "johndoe54@gmail.com", "Jhon Doe"));
 
-        navBar.setMinHeight(60);
-        navBar.add(crumb, 0, 0);
-        Badge badgeMessage = new Badge(Icon.CHAT, 8, 10);
-        badgeMessage.setStyle("-fx-box-color: -red-500;");
-//
-        Badge badgeNotification = new Badge(Icon.NOTIFICATION_IMPORTANT, 5, 10);
-        badgeNotification.setStyle("-fx-box-color: -info;");
-
-        NotificationManager notificationManager = new NotificationManager();
-//        badgeNotification.setOnMouseClicked(e -> notificationManager.show(getScene(), e, navBar.getHeight() / 2));
-        badgeNotification.setOnMouseClicked(e -> notificationManager.show(getScene(), navBar));
-
-        navBar.add(badgeNotification, 2, 0);
-        navBar.add(badgeMessage, 1, 0);
-        navBar.add(card, 3, 0);
-
-        GridPane.setValignment(crumb, VPos.CENTER);
-        GridPane.setValignment(badgeNotification, VPos.CENTER);
-        GridPane.setValignment(badgeMessage, VPos.CENTER);
-        GridPane.setHalignment(card, HPos.RIGHT);
-        GridPane.setValignment(card, VPos.CENTER);
-        GridPane.setHgrow(crumb, Priority.ALWAYS);
-
-        navBar.setHgap(10);
-        navBar.getStyleClass().addAll("border-light-gray-2");
-        navBar.setStyle("-fx-border-width: 0px 0px 2px 0px;");
-
-        hamb.setCancelButton(true);
-
-        hamb.setOnAction(_ -> {
-            Root root = (Root) this.getScene().getRoot();
-            root.behavior().openDrawer();
-        });
-
-
-//        drawer.currentModuleProperty().addListener((_, oldValue, newValue) -> {
-//            if (newValue != null) {
-//                if (newValue instanceof View view) {
-//                    if (view.getOnEnter() != null) view.getOnEnter().handle(new ActionEvent());
-//                    updateView(view.getContent());
-//                }
-//            } else if (oldValue != null) {
-//                if (oldValue instanceof View view) {
-//                    if (view.getOnExit() != null) view.getOnExit().handle(new ActionEvent());
-//                }
-//            }
-//        });
         init();
         configLayout();
         bind();
@@ -107,25 +53,10 @@ public class Main extends BorderPane implements Layout {
             Root root = (Root) this.getScene().getRoot();
             root.addPoint(_ -> {
                 setLeft(null);
-                navBar.getChildren().add(0, hamb);
-                GridPane.setColumnIndex(crumb, 1);
-                GridPane.setColumnIndex(badgeMessage, 2);
-                GridPane.setColumnIndex(badgeNotification, 3);
-                GridPane.setColumnIndex(card, 4);
             }, Break.MOBILE);
 
             root.addPoint(_ -> {
-//            if (behavior().isDrawerAbsolute()) {
-//                wrapper().hide();
-//            }
-//            getContainer().setLeft(drawer);
                 setLeft(drawer);
-                navBar.getChildren().remove(hamb);
-
-                GridPane.setColumnIndex(crumb, 0);
-                GridPane.setColumnIndex(badgeMessage, 1);
-                GridPane.setColumnIndex(badgeNotification, 2);
-                GridPane.setColumnIndex(card, 3);
             }, Break.SM, Break.MD, Break.LG, Break.XL, Break.XXL, Break.WIDE);
         });
     }
@@ -139,7 +70,7 @@ public class Main extends BorderPane implements Layout {
         this.wrapper = new VBox();
         this.container = new ScrollPane();
         this.drawer = new Drawer();
-        
+
         setLeft(drawer);
         setCenter(this.wrapper);
     }
@@ -151,20 +82,21 @@ public class Main extends BorderPane implements Layout {
     }
 
     private void bind() {
-        currentModule.addListener((_, _, newValue) -> {
+        currentModule.addListener((_, oldValue, newValue) -> {
             if (newValue != null) {
-                updateView(newValue);
+                updateView(oldValue, newValue);
             }
+
         });
 
         currentModule.bind(drawer.currentModuleProperty());
-        crumb.currentModuleProperty().bind(currentModule);
+        navBar.currentModuleProperty().bind(currentModule);
     }
 
     @Override
-    public void updateView(Module node) {
+    public void updateView(Module oldVal, Module newVal) {
 
-        if (node instanceof View view) {
+        if (newVal instanceof View view) {
             this.container.setContent(view.getContent());
 
             if (view.getContent() instanceof ActionableView actionableView) {
@@ -172,6 +104,15 @@ public class Main extends BorderPane implements Layout {
                     Root root = (Root) this.getScene().getRoot();
                     actionableView.onEnter(root);
                 });
+
+            }
+            if (oldVal != null) {
+                if (oldVal instanceof ActionableView actionableView) {
+                    Platform.runLater(() -> {
+                        Root root = (Root) this.getScene().getRoot();
+                        actionableView.onExit(root);
+                    });
+                }
             }
 
         }

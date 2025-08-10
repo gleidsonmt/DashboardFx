@@ -1,10 +1,8 @@
 package io.github.gleidsonmt.dashboardfx.dashboard;
 
-import io.github.gleidsonmt.dashboardfx.model.Activity;
-import io.github.gleidsonmt.dashboardfx.model.Company;
+import io.github.gleidsonmt.dashboardfx.model.Hardware;
 import io.github.gleidsonmt.dashboardfx.model.Type;
 import io.github.gleidsonmt.dashboardfx.utils.StringUtils;
-import io.github.gleidsonmt.glad.controls.avatar.AvatarCircleView;
 import javafx.geometry.Pos;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -13,15 +11,13 @@ import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 
-import static javafx.scene.layout.GridPane.REMAINING;
-
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  14/03/2025
  */
-public class TableCellTypeFactory implements Callback<TableColumn<Activity, Type>, TableCell<Activity, Type>> {
+public class TableCellTypeFactory implements Callback<TableColumn<Hardware, Type>, TableCell<Hardware, Type>> {
     @Override
-    public TableCell<Activity, Type> call(TableColumn<Activity, Type> activityCompanyTableColumn) {
+    public TableCell<Hardware, Type> call(TableColumn<Hardware, Type> activityCompanyTableColumn) {
         return new TableCell<>(){
             @Override
             protected void updateItem(Type item, boolean empty) {

@@ -19,11 +19,10 @@ import javafx.scene.text.Text;
  */
 public class GridBarView extends Pane {
 
-    
     public GridBarView() {
         setMinHeight(40);
         this.getStyleClass().addAll("border", "border-light-gray-2", "border-2", "pattern-circle");
-        this.sceneProperty().addListener((observableVal, oldVal, newVal) -> {
+        this.sceneProperty().addListener((_, _, newVal) -> {
             if (newVal != null) {
                 for (Break br : Break.values()) {
                     Node create = createGrid(br);
@@ -33,7 +32,6 @@ public class GridBarView extends Pane {
                 }
             }
         });
-      
     }
 
     private Node createGrid(Break br) {

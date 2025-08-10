@@ -14,8 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.shape.Circle;
 import org.jetbrains.annotations.ApiStatus;
-//
-import java.util.Objects;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -24,15 +22,15 @@ import java.util.Objects;
 @ApiStatus.Experimental
 public class BreadCrumbBar extends FlowPane {
 
-    private ObjectProperty<Module> currentModule;
-    private ObjectProperty<BreadSeparator> separator = new SimpleObjectProperty<>(BreadSeparator.BAR);
+    private final ObjectProperty<Module> currentModule;
+    private final ObjectProperty<BreadSeparator> separator = new SimpleObjectProperty<>(BreadSeparator.BAR);
 //
     public BreadCrumbBar() {
         getStyleClass().add("breadcrumb");
         setAlignment(Pos.CENTER_LEFT);
         this.currentModule = new SimpleObjectProperty<>();
 //        this.currentModule.bindBidirectional(currentModule);
-//
+
         this.currentModule.addListener((observableValue, module, newValue) -> {
             getChildren().clear();
             recur(newValue);
@@ -71,11 +69,11 @@ public class BreadCrumbBar extends FlowPane {
 //    }
 //
     public Node getLastChild() {
-        return getChildren().get(getChildren().size() - 1);
+        return getChildren().getLast();
     }
 
     public Node getFirstChild() {
-        return getChildren().get(0);
+        return getChildren().getFirst();
     }
 
 //    public void setSeparator(BreadSeparator separator) {

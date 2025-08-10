@@ -197,13 +197,28 @@
     CHART_COLOR_1_TRANS_20: linear-gradient(to bottom, derive(-info, 50%), transparent);
 }
 
+.chart-area-symbol {
+    -fx-stroke: CHART_COLOR_1;
+    -fx-fill: white;
+    -fx-stroke-width: 2px;
+}
+
 .chart-title .text {
     -fx-font-family: Poppins Regular;
     -fx-font-size: 18px;
 }
 
+.tooltip {
+    -fx-smooth: gray;
+}
+
 .card-poster {
     -fx-background-image: url("../img/poster.png");
     -fx-background-size: contain;
+}
+
+.contributors-avatar-stacked .avatar-view {
+    -fx-stroke: white;
+    -fx-stroke-width: 2px;
 }
 

@@ -256,7 +256,7 @@ public class Introduction extends StackPane {
         }
 
         @Override
-        public void updateView(Module view) {
+        public void updateView(Module oldVal, Module newVal) {
             throw new RuntimeException("Not implemented");
         }
     }

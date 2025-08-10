@@ -13,9 +13,9 @@ import javafx.scene.text.Text;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  13/03/2025
  */
-public class TileBlock extends GridPane {
+public class Widget extends GridPane {
 
-    public TileBlock(Icon _icon, String _number, String _legend, String cls) {
+    public Widget(Icon _icon, String _number, String _legend, String cls) {
         this.getStyleClass().addAll("bg-white", "border-2", "border-light-gray-2", "radius-5");
         setPrefSize(100, 100);
         this.setPadding(new Insets(20));

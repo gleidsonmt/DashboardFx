@@ -13,14 +13,17 @@ import javafx.scene.image.Image;
 @SuppressWarnings("unused")
 public class User extends Entity {
 
-    private  StringProperty name = new SimpleStringProperty();
-    private  StringProperty username = new SimpleStringProperty();
-    private ObjectProperty<Image> avatar = new SimpleObjectProperty<>();
-    private  StringProperty password = new SimpleStringProperty();
+    private final StringProperty name = new SimpleStringProperty();
+    private final StringProperty username = new SimpleStringProperty();
+    private final ObjectProperty<Image> avatar = new SimpleObjectProperty<>();
+    private final StringProperty password = new SimpleStringProperty();
+
+    public User(String username, String name) {
+        this.username.set(username);
+        this.name.set(name);
+    }
 
     public User(Image image, String username, String name) {
-//        this.password = password;
-//        this.username = username;
         this.username.set(username);
         this.name.set(name);
         this.avatar.set(image);

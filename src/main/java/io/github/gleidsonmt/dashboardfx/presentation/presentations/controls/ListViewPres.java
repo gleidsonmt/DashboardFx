@@ -1,6 +1,5 @@
 package io.github.gleidsonmt.dashboardfx.presentation.presentations.controls;
 
-import io.github.gleidsonmt.dashboardfx.model.Activity;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
