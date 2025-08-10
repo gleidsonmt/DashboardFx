@@ -45,8 +45,10 @@ public class Dashboard extends StackPane implements ActionableView {
 
     private final CurvedChart<Number, Number> curvedChart = new ContributionsChart();
     private final BarChart<String, Number> barChart = new VideoCardChart();
-
     private Node boxTechnologies = new Tile("Technologies", createListView());
+
+    private final DonutChart donutChart = new HardwarePartsDonut();
+    private final Node personalCard = new PersonalCard();
 
 
     TableView<Hardware> tableView = new TableView<>();
@@ -105,63 +107,11 @@ public class Dashboard extends StackPane implements ActionableView {
 
 
 
-    DonutChart donutChart = createDonut();
 
     Node boxLineChart = createBox("Sales", createLineChart());
 
-    Node viewBox = createViewBox();
-
-    private Node createViewBox() {
-
-        StackPane header = new StackPane();
-        header.setId("card-header");
-        Region background = new Region();
-        background.getStyleClass().add("card-poster");
-        background.setId("card-header-background");
-        background.setStyle("-fx-background-color: blue");
-        background.setPrefHeight(150);
-        background.setMaxHeight(Region.USE_PREF_SIZE);
-        StackPane.setAlignment(background, Pos.TOP_CENTER);
-
-        VBox headerContent = new VBox();
-        headerContent.setId("card-header-content");
-
-        header.getChildren().setAll(background, headerContent);
-
-        VBox body = new VBox();
-        body.setSpacing(20);
-        body.setId("card-body");
-        body.setAlignment(Pos.CENTER);
-
-        Text title = new Text("@jhon_doe");
-        title.getStyleClass().addAll("h3");
-
-        Text legend = new Text("The mission is always done perfectly.");
-        legend.setTextAlignment(TextAlignment.CENTER);
-        legend.getStyleClass().addAll("h5");
-        legend.setWrappingWidth(300);
-
-        HBox social = new HBox();
-        social.setAlignment(Pos.BOTTOM_CENTER);
-        social.setSpacing(10);
-        social.setPadding(new Insets(20));
-        social.getChildren().addAll(
-                new AvatarView(Assets.getImage("social/facebook.png", 60), 40),
-                new AvatarView(Assets.getImage("social/twitter.png", 60), 40),
-                new AvatarView(Assets.getImage("social/youtube.png", 60), 40)
-        );
-
-        body.getChildren().addAll(title, legend, social);
 
 
-        VBox card = new VBox();
-        card.setSpacing(10);
-        card.setPadding(new Insets(10));
-        card.getChildren().setAll(header, body);
-
-        card.getStyleClass().addAll("bg-white border-2 border-light-gray-2 radius-5 align-top-center".split(" "));
-        return card;
-    }
 
     public Dashboard() {
         scrollPane.setFitToHeight(true);
@@ -240,7 +190,7 @@ public class Dashboard extends StackPane implements ActionableView {
 
 
 //        grid.getChildren().addAll(title, one, two, three, four, barChart, curvedChart, donutChart, boxTechnologies, boxTable, viewBox, boxTeam);
-        grid.getChildren().addAll(title, one, two, three, four, curvedChart, barChart, boxTechnologies);
+        grid.getChildren().addAll(title, one, two, three, four, curvedChart, barChart, boxTechnologies, donutChart, personalCard);
 //        grid.getChildren().addAll(title, one, two, three, four);
 
         for (Node node : grid.getChildren()) {
@@ -315,12 +265,11 @@ public class Dashboard extends StackPane implements ActionableView {
 
             GridPane.setConstraints(curvedChart, 0, 2,2,1);
             GridPane.setConstraints(barChart, 2, 2,1,1);
-
             GridPane.setConstraints(boxTechnologies, 3, 2,1,1);
 
-
             GridPane.setConstraints(donutChart, 0, 3, 1,1);
-            GridPane.setConstraints(viewBox, 1, 3, 1,1);
+            GridPane.setConstraints(personalCard, 1, 3, 1,1);
+
 
             GridPane.setConstraints(boxTable, 2, 3,1,1);
             GridPane.setConstraints(boxTeam, 3, 3,1,1);
@@ -419,27 +368,6 @@ public class Dashboard extends StackPane implements ActionableView {
         barChart.getData().add(rtx4080);
 
         return barChart;
-    }
-
-    private DonutChart createDonut() {
-        DonutChart donutChart = new DonutChart();
-        donutChart.getStyleClass().addAll("bg-white", "border-2", "border-light-gray-2", "radius-5");
-        ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
-        donutChart.setTitle("Most Valuable Parts");
-        donutChart.setAnimated(true);
-        donutChart.setLabelsVisible(true);
-        donutChart.setLabelLineLength(10);
-        donutChart.setMinHeight(300);
-
-        data.add(new PieChart.Data("Chip", 2_199.88));
-        data.add(new PieChart.Data("Monitor 4k", 1_264.98));
-        data.add(new PieChart.Data("Motherboard", 1_552.82));
-        data.add(new PieChart.Data("Video Card", 3_800.55));
-
-//        donutChart.setMaxWidth(325);
-
-        donutChart.setData(data);
-        return donutChart;
     }
 
     private Node createBox(String _title, Node node) {
