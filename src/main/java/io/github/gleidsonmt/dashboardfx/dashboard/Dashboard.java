@@ -43,11 +43,15 @@ public class Dashboard extends StackPane implements ActionableView {
     private final Widget three = new Widget(Icon.NOTIFICATION_IMPORTANT, "4", "Notifications", "-warning");
     private final Widget four = new Widget(Icon.TODAY, "18", "Schedules", "-success");
 
+    private final CurvedChart<Number, Number> curvedChart = new ContributionsChart();
+    private final BarChart<String, Number> barChart = new VideoCardChart();
+
+    private Node boxTechnologies = new Tile("Technologies", createListView());
+
+
     TableView<Hardware> tableView = new TableView<>();
     Node boxTable = new Tile("Hardware", tableView);
-    BarChart<String, Number> barChart = createBarchart();
 
-    CurvedChart<Number, Number> curvedChart = new ContributionsChart();
     Node boxTeam = new Tile("Total Contributors", createBoxTeam());
 
     private Node createBoxTeam() {
@@ -103,7 +107,6 @@ public class Dashboard extends StackPane implements ActionableView {
 
     DonutChart donutChart = createDonut();
 
-    Node boxTechnologies = createBox("Technologies", createListView());
     Node boxLineChart = createBox("Sales", createLineChart());
 
     Node viewBox = createViewBox();
@@ -226,6 +229,7 @@ public class Dashboard extends StackPane implements ActionableView {
 //        usersColumn.setCellFactory(new TableCellUsersFactory());
         incomeColumn.setCellFactory(new MonetaryCellFactory<>());
 
+        //noinspection unchecked
         tableView.getColumns().addAll(avatarColumn, nameColumn, incomeColumn);
 
         for (TableColumn<Hardware, ?> column : tableView.getColumns()) {
@@ -236,7 +240,7 @@ public class Dashboard extends StackPane implements ActionableView {
 
 
 //        grid.getChildren().addAll(title, one, two, three, four, barChart, curvedChart, donutChart, boxTechnologies, boxTable, viewBox, boxTeam);
-        grid.getChildren().addAll(title, one, two, three, four, curvedChart);
+        grid.getChildren().addAll(title, one, two, three, four, curvedChart, barChart, boxTechnologies);
 //        grid.getChildren().addAll(title, one, two, three, four);
 
         for (Node node : grid.getChildren()) {
@@ -272,6 +276,7 @@ public class Dashboard extends StackPane implements ActionableView {
             GridPane.setConstraints(four, 0, 4,GridPane.REMAINING,1);
 
             GridPane.setConstraints(curvedChart, 0, 5,GridPane.REMAINING,1);
+            GridPane.setConstraints(barChart, 0, 6,GridPane.REMAINING,1);
 //            GridPane.setConstraints(donutChart, 0, 4, 4,1);
 //
 //            GridPane.setConstraints(boxTechnologies, 0, 5, 4,1);
@@ -289,12 +294,15 @@ public class Dashboard extends StackPane implements ActionableView {
             GridPane.setConstraints(three, 0, 2,2,1);
             GridPane.setConstraints(four, 2, 2,2,1);
 
-            GridPane.setConstraints(barChart, 0, 3,4,1);
-            GridPane.setConstraints(donutChart, 0, 4, 4,1);
+            GridPane.setConstraints(curvedChart, 0, 3,2,1);
+            GridPane.setConstraints(barChart, 2, 3,1,1);
+            GridPane.setConstraints(boxTechnologies, 3, 3,1,1);
 
-            GridPane.setConstraints(boxTechnologies, 0, 5, 4,1);
-            GridPane.setConstraints(boxTable, 0, 6,4,1);
-            GridPane.setConstraints(boxLineChart, 0, 7,4,1);
+//            GridPane.setConstraints(donutChart, 0, 4, 4,1);
+//
+//            GridPane.setConstraints(boxTechnologies, 0, 5, 4,1);
+//            GridPane.setConstraints(boxTable, 0, 6,4,1);
+//            GridPane.setConstraints(boxLineChart, 0, 7,4,1);
         },  Break.LG);
 
         root.addPoint(_ -> {
