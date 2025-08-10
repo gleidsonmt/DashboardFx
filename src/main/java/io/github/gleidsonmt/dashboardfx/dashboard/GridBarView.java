@@ -28,7 +28,6 @@ public class GridBarView extends Pane {
                     Node create = createGrid(br);
                     create.setLayoutY(10);
                     getChildren().add(create);
-
                 }
             }
         });

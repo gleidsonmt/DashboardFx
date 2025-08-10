@@ -49,12 +49,8 @@ public class Dashboard extends StackPane implements ActionableView {
 
     private final DonutChart donutChart = new HardwarePartsDonut();
     private final Node personalCard = new PersonalCard();
-
-
-    TableView<Hardware> tableView = new TableView<>();
-    Node boxTable = new Tile("Hardware", tableView);
-
-    Node boxTeam = new Tile("Total Contributors", createBoxTeam());
+    private final Node boxTable = new Tile("Hardware", new TableHardware());
+   private final Node boxTeam = new Tile("Total Contributors", createBoxTeam());
 
     private Node createBoxTeam() {
         GridPane grid = new GridPane();
@@ -106,13 +102,6 @@ public class Dashboard extends StackPane implements ActionableView {
     }
 
 
-
-
-    Node boxLineChart = createBox("Sales", createLineChart());
-
-
-
-
     public Dashboard() {
         scrollPane.setFitToHeight(true);
         scrollPane.setFitToWidth(true);
@@ -126,72 +115,7 @@ public class Dashboard extends StackPane implements ActionableView {
         title.getStyleClass().addAll("h3", "font-instagram");
         title.minHeight(180);
 
-        tableView.getStyleClass().addAll("transparent-table");
-        tableView.setMinHeight(300);
-
-        tableView.getItems().addAll(
-                new Hardware(
-                        Assets.getImage("technology/chip.png", 40), "Intel Core i7-10700F", new BigDecimal("2199.88")
-                ),
-                new Hardware(
-                       Assets.getImage("technology/motherboard.png", 70), "Asus TUF Gaming Z490-Plus (Wi-Fi)", new BigDecimal("1552.82")
-                ),
-                new Hardware(
-                        Assets.getImage("technology/computer.png", 90), "Gamer Sharkoon Pure Steel White RGB", new BigDecimal("670.47")
-                ),
-                new Hardware(
-                        Assets.getImage("technology/ram-memory.png", 80), "Patriot Viper Steel 16GB", new BigDecimal("588.12")
-                )
-        );
-
-        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
-
-        TableColumn<Hardware, Image> avatarColumn = new TableColumn<>("#");
-        avatarColumn.setMaxWidth(100);
-        TableColumn<Hardware, String> nameColumn = new TableColumn<>("Name");
-//        TableColumn<Hardware, Type> typeColumn = new TableColumn<>("Type");
-//        TableColumn<Hardware, Status> statusColumn = new TableColumn<>("Status");
-//        TableColumn<Hardware, ObservableList<User>> usersColumn = new TableColumn<>("Users");
-        TableColumn<Hardware, BigDecimal> incomeColumn = new TableColumn<>("Value");
-        incomeColumn.setMaxWidth(100);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        avatarColumn.setCellValueFactory(new PropertyValueFactory<>("avatar"));
-//        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-//        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
-//        usersColumn.setCellValueFactory(new PropertyValueFactory<>("users"));
-        incomeColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
-
-        nameColumn.setCellFactory(new TableCellCompanyFactory());
-        avatarColumn.setCellFactory(_ -> new TableCell<>() {
-            @Override
-            protected void updateItem(Image item, boolean empty) {
-                if (item != null && !empty) {
-                    setGraphic(new AvatarView(item, 0, 40));
-                } else {
-                    setItem(null);
-                    setText(null);
-                    setGraphic(null);
-                }
-            }
-        });
-//        typeColumn.setCellFactory(new TableCellTypeFactory());
-//        statusColumn.setCellFactory(new TableCellStatusFactory());
-//        usersColumn.setCellFactory(new TableCellUsersFactory());
-        incomeColumn.setCellFactory(new MonetaryCellFactory<>());
-
-        //noinspection unchecked
-        tableView.getColumns().addAll(avatarColumn, nameColumn, incomeColumn);
-
-        for (TableColumn<Hardware, ?> column : tableView.getColumns()) {
-            column.setMinWidth(100);
-        }
-
-        GridPane.setColumnSpan(tableView, GridPane.REMAINING);
-
-
-//        grid.getChildren().addAll(title, one, two, three, four, barChart, curvedChart, donutChart, boxTechnologies, boxTable, viewBox, boxTeam);
-        grid.getChildren().addAll(title, one, two, three, four, curvedChart, barChart, boxTechnologies, donutChart, personalCard);
-//        grid.getChildren().addAll(title, one, two, three, four);
+        grid.getChildren().addAll(title, one, two, three, four, curvedChart, barChart, boxTechnologies, donutChart, personalCard, boxTable, boxTeam);
 
         for (Node node : grid.getChildren()) {
             GridPane.setHgrow(node, Priority.ALWAYS);
@@ -218,26 +142,14 @@ public class Dashboard extends StackPane implements ActionableView {
     @Override
     public void onEnter(Root root) {
         root.addPoint(_ -> {
-//            grid.getColumnConstraints().clear();
-            GridPane.setConstraints(title, 0, 0, GridPane.REMAINING,1);
-            GridPane.setConstraints(one, 0, 1, GridPane.REMAINING,1);
-            GridPane.setConstraints(two, 0, 2,GridPane.REMAINING,1);
-            GridPane.setConstraints(three, 0, 3,GridPane.REMAINING,1);
-            GridPane.setConstraints(four, 0, 4,GridPane.REMAINING,1);
+            int row = 0;
+            for (Node child : grid.getChildren()) {
+                GridPane.setConstraints(child, 0, row++, GridPane.REMAINING,1);
+            }
 
-            GridPane.setConstraints(curvedChart, 0, 5,GridPane.REMAINING,1);
-            GridPane.setConstraints(barChart, 0, 6,GridPane.REMAINING,1);
-//            GridPane.setConstraints(donutChart, 0, 4, 4,1);
-//
-//            GridPane.setConstraints(boxTechnologies, 0, 5, 4,1);
-//            GridPane.setConstraints(boxTable, 0, 6,4,1);
-//            GridPane.setConstraints(boxLineChart, 0, 7,4,1);
-
-//            GridPane.setConstraints(boxLineChart, 0, 9,4,1);
         },  Break.MD, Break.SM, Break.MOBILE);
 
         root.addPoint(_ -> {
-//            getRowConstraints().clear();
             GridPane.setConstraints(title, 0, 0, 1,1);
             GridPane.setConstraints(one, 0, 1, 2,1);
             GridPane.setConstraints(two, 2, 1,2,1);
@@ -245,18 +157,18 @@ public class Dashboard extends StackPane implements ActionableView {
             GridPane.setConstraints(four, 2, 2,2,1);
 
             GridPane.setConstraints(curvedChart, 0, 3,2,1);
-            GridPane.setConstraints(barChart, 2, 3,1,1);
-            GridPane.setConstraints(boxTechnologies, 3, 3,1,1);
+            GridPane.setConstraints(barChart, 2, 3,2,1);
 
-//            GridPane.setConstraints(donutChart, 0, 4, 4,1);
-//
-//            GridPane.setConstraints(boxTechnologies, 0, 5, 4,1);
-//            GridPane.setConstraints(boxTable, 0, 6,4,1);
-//            GridPane.setConstraints(boxLineChart, 0, 7,4,1);
-        },  Break.LG);
+            GridPane.setConstraints(boxTechnologies, 0, 4,2,1);
+            GridPane.setConstraints(donutChart, 2, 4, 2,1);
+
+            GridPane.setConstraints(personalCard, 0, 5, 2,1);
+            GridPane.setConstraints(boxTeam, 2, 5,2,1);
+
+            GridPane.setConstraints(boxTable, 0, 6, 4,1);
+        },  Break.LG, Break.XL, Break.XXL);
 
         root.addPoint(_ -> {
-//            getRowConstraints().clear();
             GridPane.setConstraints(title, 0, 0, 1,1);
             GridPane.setConstraints(one, 0, 1, 1,1);
             GridPane.setConstraints(two, 1, 1,1,1);
@@ -269,12 +181,10 @@ public class Dashboard extends StackPane implements ActionableView {
 
             GridPane.setConstraints(donutChart, 0, 3, 1,1);
             GridPane.setConstraints(personalCard, 1, 3, 1,1);
-
-
-            GridPane.setConstraints(boxTable, 2, 3,1,1);
+            GridPane.setConstraints(boxTable, 2, 3, 1,1);
             GridPane.setConstraints(boxTeam, 3, 3,1,1);
 //
-        }, Break.XL, Break.XXL, Break.WIDE);
+        }, Break.WIDE);
     }
 
 
