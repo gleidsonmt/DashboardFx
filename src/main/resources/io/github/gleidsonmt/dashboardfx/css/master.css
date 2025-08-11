@@ -206,10 +206,11 @@
 .chart-title .text {
     -fx-font-family: Poppins Regular;
     -fx-font-size: 18px;
+        -fx-font-smoothing-type: GRAY;
 }
 
-.tooltip {
-    -fx-smooth: gray;
+.tooltip, .text {
+    -fx-font-smoothing-type: gray;
 }
 
 .card-poster {
