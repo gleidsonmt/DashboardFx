@@ -387,11 +387,11 @@ public class Drawer extends VBox {
             container.getStyleClass().add("module-first");
 //            this.getChildren().add(container);
             ((VBox) this.drawerContainer.getContent()).getChildren().add(container);
-            if (!module.getModules().isEmpty()) {
+            if (module.getModules() != null || !module.getModules().isEmpty()) {
 //            VBox.setMargin(b, new Insets(0, 0, 0, 10));
                 module.getModules().forEach(el -> {
 //                    if (el instanceof View view) {
-                    if (!el.getModules().isEmpty()) {
+                    if (el != null && !el.getModules().isEmpty()) {
                         TitledPane pane = createPanel(el);
                         ((Pane) container.getContent()).getChildren().add(pane);
                         el.setContainer((Pane) container.getContent());

@@ -40,28 +40,21 @@ public class Introduction extends StackPane {
         try {
             getChildren().setAll(
                     new Tutorial()
-                            .h3("Introduction")
+                            .h3("🙋🏼‍ Introduction")
                             .text("""
-                                    The main idea is to create a fast way to create apps, of course there's
-                                    a lot of techniques to do that, but it's not a normal thing to see in javafx.
-                                    In a normal day you need ways to get fast to get your design, repeating tasks is the most hating thing daily.
-                                    This projects expects to add some layers to production by using known patterns.""")
-                            .text("""
-                                    The jar dependencies are located in vendor folder.""")
+                                    Hi, my name is Gleidson. I’m a developer from Brazil.
+                                    I’ll tutor you around this ecosystem I built.
+                                    The main idea here, it’s creating examples to show the power of JavaFX.
+                                    There’s a lot of techniques to do that, but it’s not a normal thing to see in JavaFX.
+                                    On a normal day, you need ways to get fast to get a system design, repeating tasks is the most boring thing daily.
+                                    This project expects to add some layers to production by using known patterns.
+                                    And I know there’s a curve to learn. But I hope to make it easier.
+                                    """)
 
-                            .h3("Dependencies", "Introduction")
-                            .h3("Block Code", "Dependencies")
-                            .text("This libs creates a block of codes using syntax highlight.")
-                            .node(TutorialUtils.createCardLink("BlockCode Project", new URI("https://github.com/gleidsonmt/blockcode")))
+                            .text("(Colocar aqui a card para o projeto de skeleton)")
 
-                            .h3("Presentation", "Dependencies")
-                            .text("The main base class to create presentations.")
-                            .node(TutorialUtils.createCardLink("Presentation Project", new URI("https://github.com/gleidsonmt/presentation")))
+                            .h3("First Step. Create ", "Introduction")
 
-                            .h3("Glad", "Dependencies")
-                            .text("The core that contains customizable controls and themes.")
-                            .node(TutorialUtils.createCardLink("Glad Project", new URI("https://github.com/gleidsonmt/glad")))
-//
                             .h3("Start an App", "Introduction")
                             .code("""
                                     /**
@@ -135,10 +128,10 @@ public class Introduction extends StackPane {
 
                             .node(createRootExample())
                             .code("""
-
+                                    
                                     IconButton button = new IconButton(new SVGIcon(Icon.APPS));
                                     button.getStyleClass().addAll("padding-20", "raised");
-
+                                    
                                     button.setOnMouseClicked(event -> {
                                         Root main = (Root) getScene().getRoot();
                                         main.flow() // call global method
@@ -171,7 +164,7 @@ public class Introduction extends StackPane {
                             .code("""
                                     ...
                                     Layout layout = new Layout(body);
-
+                                    
                                     Root root = new Root(layout);
                                     ...
                                     """)
@@ -247,7 +240,7 @@ public class Introduction extends StackPane {
                                         layout.setLeft(null);
                                         layout.setTop(nav);
                                     }, Break.MOBILE);
-
+                                    
                                     root.addPoint(_ -> {
                                         layout.setLeft(drawer);
                                         layout.setTop(null);
@@ -267,15 +260,37 @@ public class Introduction extends StackPane {
                                     ...
                                     """)
 
+
+                            .text("""
+                                    This is a Gradle multi-project, which means it contains multiple projects within it.
+                                    The first one is blockcode, an adaption to view highlighted code. (java, css, xml)
+                                    The second one is presentation, a base class to create presentations.
+                                    The third one is glad, the core that contains customizable controls and themes.
+                                    All projects has its repositories and you can see it in the bootom of this presentation.
+                                    """)
+
+                            .h3("Dependencies", "Introduction")
+                            .h3("Block Code", "Dependencies")
+                            .text("This libs creates a block of codes using syntax highlight.")
+                            .node(TutorialUtils.createCardLink("BlockCode Project", new URI("https://github.com/gleidsonmt/blockcode")))
+
+                            .h3("Presentation", "Dependencies")
+                            .text("The main base class to create presentations.")
+                            .node(TutorialUtils.createCardLink("Presentation Project", new URI("https://github.com/gleidsonmt/presentation")))
+
+                            .h3("Glad", "Dependencies")
+                            .text("The core that contains customizable controls and themes.")
+                            .node(TutorialUtils.createCardLink("Glad Project", new URI("https://github.com/gleidsonmt/glad")))
+
+                            .h3("Testing", "Dependencies")
+                            .text("Tools used to build and test this project.")
+                            .text("(This libs it's only used in runtime do not create an jar file, or an .exe with this, they will probably crash)")
+                            .text("ScenicView can get information about layout, css and transform nodes in runtime.")
+                            .node(TutorialUtils.createCardLink("Scenic View Project", new URI("https://github.com/JonathanGiles/scenic-view")))
+                            .text("Special lib to visualize and update css when app is running.")
+                            .node(TutorialUtils.createCardLink("CSSFX", new URI("https://github.com/McFoggy/cssfx")))
                             .text("That's the end. But it's also the beginning to this project. Most things it's experimental, but the time will make consistence.")
 
-                            .h3("Testing", "Introduction")
-                            .legend("This libs it's only used in runtime do not create an jar file, or an .exe with this, they will probably crash.")
-                            .text("Tools used to build and test this project.")
-                            .node(TutorialUtils.createCardLink("Scenic View Project", new URI("https://github.com/JonathanGiles/scenic-view")))
-                            .text("ScenicView can get information about layout, css and transform nodes in runtime.")
-                            .node(TutorialUtils.createCardLink("CSSFX", new URI("https://github.com/McFoggy/cssfx")))
-                            .text("Special lib to visualize and update css when app is running.")
                             .build()
                             .getRoot()
             );
@@ -299,7 +314,7 @@ public class Introduction extends StackPane {
         icon.getStyleClass().add("warning");
 
         Label flow = new Label("This libs it's only used in runtime do not create an jar file, or an .exe with this, they will probably crash.");
-        flow.getStyleClass().addAll("text-amber","h5");
+        flow.getStyleClass().addAll("text-amber", "h5");
         flow.setWrapText(true);
 
         grid.setAlignment(Pos.CENTER_LEFT);
@@ -328,8 +343,8 @@ public class Introduction extends StackPane {
 
             hamb.setOnMouseClicked(_ -> root.behavior().openDrawer());
 
-            nav.add(hamb, 0,0);
-            nav.add(title, 1,0);
+            nav.add(hamb, 0, 0);
+            nav.add(title, 1, 0);
 
             layout.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
 
@@ -368,8 +383,8 @@ public class Introduction extends StackPane {
             Text title = new Text("Dashboard");
             title.getStyleClass().addAll("text-accent", "h3", "bold");
 
-            nav.add(hamb, 0,0);
-            nav.add(title, 1,0);
+            nav.add(hamb, 0, 0);
+            nav.add(title, 1, 0);
 
             layout.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
 

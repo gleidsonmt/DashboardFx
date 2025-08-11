@@ -15,6 +15,21 @@ repositories {
 
 ext {
     junitVersion = '5.10.2'
+
+    Properties _props = new Properties()
+    File _propsFile = new File('./app.properties')
+    _props.load(_propsFile.newDataInputStream())
+
+    // Load act version from properties
+    project.version =
+            _props.getProperty("app.version.major") +
+                    "." + _props.getProperty("app.version.minor") +
+                    "." + _props.getProperty("app.version.build");
+
+    // Variables used in flows to update..
+    propsFile = _propsFile
+    props = _props
+    buildVersion = _props.getProperty("app.version.build")
 }
 
 tasks.withType(JavaCompile).configureEach {
