@@ -61,6 +61,7 @@ public class TableHardware extends TableView<Hardware> {
         });
         incomeColumn.setCellFactory(new MonetaryCellFactory<>());
 
+        //noinspection unchecked
         getColumns().addAll(avatarColumn, nameColumn, incomeColumn);
         for (TableColumn<Hardware, ?> column : getColumns()) {
             column.setMinWidth(100);
