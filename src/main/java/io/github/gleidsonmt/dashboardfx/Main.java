@@ -1,34 +1,21 @@
 package io.github.gleidsonmt.dashboardfx;
 
-import io.github.gleidsonmt.dashboardfx.breadcrumb.BreadCrumbBar;
 import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
-import io.github.gleidsonmt.dashboardfx.dashboard.notifications.factory.NotificationManager;
-import io.github.gleidsonmt.dashboardfx.drawer.CardUserOptions;
+import io.github.gleidsonmt.dashboardfx.dashboard.Aside;
 import io.github.gleidsonmt.dashboardfx.drawer.Drawer;
-import io.github.gleidsonmt.dashboardfx.model.User;
-import io.github.gleidsonmt.dashboardfx.presentation.ProfileView;
-import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.internal.Module;
 import io.github.gleidsonmt.glad.base.internal.View;
 import io.github.gleidsonmt.glad.base.responsive.Break;
-import io.github.gleidsonmt.glad.controls.badge.Badge;
-import io.github.gleidsonmt.glad.controls.button.IconButton;
-import io.github.gleidsonmt.glad.controls.icon.Icon;
-import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.geometry.HPos;
-import javafx.geometry.VPos;
 import javafx.scene.Node;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.*;
-import javafx.scene.web.WebView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 
 
 /**
@@ -42,6 +29,7 @@ public class Main extends BorderPane implements Layout {
     private final NavBar navBar = new NavBar(60);
     private Drawer drawer;
     private final ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
+    private Aside aside;
 
     public Main() {
 
@@ -66,10 +54,16 @@ public class Main extends BorderPane implements Layout {
         return this.drawer;
     }
 
+    @Override
+    public Node getAside() {
+        return this.aside;
+    }
+
     private void init() {
         this.wrapper = new VBox();
         this.container = new ScrollPane();
         this.drawer = new Drawer();
+        this.aside = new Aside();
 
         setLeft(drawer);
         setCenter(this.wrapper);

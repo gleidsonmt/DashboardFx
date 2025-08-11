@@ -18,6 +18,7 @@ import javafx.geometry.VPos;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -108,24 +109,16 @@ public class CardUserOptions extends GridPane {
 
         menuSettings.setOnAction(e -> {
             Root root = (Root) this.getScene().getRoot();
-            Aside aside = new Aside();
-            aside.setPrefWidth(280);
+            root.behavior().openAside();
 
-            root.flow()
-                    .anchor(Anchor.RIGHT)
-                    .content(aside)
-                    .pos(Pos.CENTER_RIGHT)
-                    .with(WrapperEffect.GRAY)
-                    .show();
-
-            new Timeline(
-                    new KeyFrame(Duration.ZERO, new KeyValue(
-                            aside.translateXProperty(), 350
-                    )),
-                    new KeyFrame(Duration.millis(200), new KeyValue(
-                            aside.translateXProperty(), 0
-                    ))
-            ).play();
+//            new Timeline(
+//                    new KeyFrame(Duration.ZERO, new KeyValue(
+//                            aside.translateXProperty(), 350
+//                    )),
+//                    new KeyFrame(Duration.millis(200), new KeyValue(
+//                            aside.translateXProperty(), 0
+//                    ))
+//            ).play();
         });
 
         MenuItem menuManageAccount = new MenuItem("Manage Account");

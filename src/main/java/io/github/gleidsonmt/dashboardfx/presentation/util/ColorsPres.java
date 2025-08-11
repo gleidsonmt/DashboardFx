@@ -1,37 +1,28 @@
 package io.github.gleidsonmt.dashboardfx.presentation.util;
 
-import eu.hansolo.colors.ColorHelper;
 import eu.hansolo.colors.MaterialDesign;
-import io.github.gleidsonmt.dashboardfx.material.MaterialGrid;
 import io.github.gleidsonmt.dashboardfx.material.MaterialColumn;
+import io.github.gleidsonmt.dashboardfx.material.MaterialGrid;
 import io.github.gleidsonmt.dashboardfx.material.MaterialItem;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.HoverAnimation;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -169,9 +160,9 @@ public class ColorsPres extends StackPane {
         Tooltip tooltip = new Tooltip(name);
 
         if (name.equals("-white") || name.equals("-light-gray") || name.equals("-light-gray-2")) {
-            content.getStyleClass().addAll("bold", "h5");
+            content.getStyleClass().addAll("bold", "h5", "cursor-hand");
         } else {
-            content.getStyleClass().addAll("text-white", "bold", "h5");
+            content.getStyleClass().addAll("text-white", "bold", "h5", "cursor-hand");
         }
 
         StackPane stackPane = new StackPane();
@@ -182,7 +173,7 @@ public class ColorsPres extends StackPane {
 //        stackPane.setMaxWidth(150);
         stackPane.getStyleClass().addAll("padding-10", "bg-insets-1",
                 name.equals("white") || name.equals("black") ? name.replace("-", "") : ("bg" + name),
-                "border-2", "border-white", "depth-1", "round");
+                "border-2", "border-white", "depth-1", "round", "cursor-hand");
 
         stackPane.setOnMouseClicked(e -> {
             Clipboard clipboard = Clipboard.getSystemClipboard();

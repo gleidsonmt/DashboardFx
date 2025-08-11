@@ -12,10 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Separator;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import org.jetbrains.annotations.NotNull;
 
@@ -26,6 +23,7 @@ import org.jetbrains.annotations.NotNull;
 public class Aside extends VBox {
 //
     public Aside() {
+        this.setMinWidth(250);
         ToggleSwitch _switch = new ToggleSwitch();
         sceneProperty().addListener((_, _, newVal) -> {
             if (newVal != null) {
@@ -98,6 +96,7 @@ public class Aside extends VBox {
             Root main = (Root) getScene().getRoot();
             main.wrapper().hide();
             main.flow().remove(this);
+            ((BorderPane) main.getLayout()).setRight(null);
         });
         return box;
     }
