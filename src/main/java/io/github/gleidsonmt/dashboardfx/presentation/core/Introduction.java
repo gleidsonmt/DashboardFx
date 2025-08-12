@@ -52,7 +52,9 @@ public class Introduction extends StackPane {
                                     And I know there’s a curve to learn. But I hope to make it easier.
                                     """)
 
-                            .text("(Colocar aqui a card para o projeto de skeleton)")
+                            .text("Try clone the project skeleton.")
+                            .node(TutorialUtils.createCardLink("Skeleton", new URI("https://github.com/gleidsonmt/dash-skeleton")))
+
 
                             .h3("🔎Understanding", "Introduction")
                             .text("Let's start seeing our base class.")

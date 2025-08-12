@@ -16,6 +16,9 @@ module io.github.gleidsonmt.dashboardfx {
     requires io.github.gleidsonmt.blockcode;
     requires java.desktop;
     requires org.scenicview.scenicview;
+    requires javafx.graphics;
+    requires javafx.controls;
+    requires javafx.base;
 
     opens io.github.gleidsonmt.dashboardfx to javafx.fxml;
     exports io.github.gleidsonmt.dashboardfx;

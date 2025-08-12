@@ -70,7 +70,9 @@ public class Drawer extends VBox {
                         new View("Introduction", new Introduction()),
                         new View("Wrapper", new Wrapper()),
                         new View("Flow", new FlowPres()),
-                        new View("Behavior", new Behavior())),
+                        new View("Behavior", new Behavior()),
+                        new View("SnackBar", new SnackBarPres())
+                ),
                 new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
                 new ModuleView("Shapes",
                         new View("Text", new TextPres()),
@@ -171,7 +173,7 @@ public class Drawer extends VBox {
 
         if (!group.getToggles().isEmpty()) {
             group.selectToggle(group.getToggles().get(0));
-            currentModule.setValue((ModuleView) group.getToggles().get(2).getUserData());
+            currentModule.setValue((ModuleView) group.getToggles().get(6).getUserData());
         }
 
         search.textProperty().addListener((_, _, newVal) -> {
