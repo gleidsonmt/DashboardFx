@@ -68,7 +68,10 @@ public class DonutChartPres extends StackPane {
     public Node createPieChart() {
         PieChart pieChart = new PieChart();
         ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
-        data.add(new PieChart.Data("left", 30));
+        PieChart.Data data1 = new PieChart.Data("left", 30);
+//        data1.getNode().setStyle("-fx-pie-color: #0088ff;");
+        pieChart.setAnimated(true);
+        data.add(data1);
         data.add(new PieChart.Data("top", 20));
         data.add(new PieChart.Data("bottom", 10));
         data.add(new PieChart.Data("right", 40));
@@ -76,7 +79,7 @@ public class DonutChartPres extends StackPane {
         pieChart.setTitle("Processors");
         pieChart.setAnimated(true);
         pieChart.setLabelsVisible(true);
-        pieChart.setLabelLineLength(10);
+        pieChart.setLabelLineLength(20);
 
         pieChart.setData(data);
         return pieChart;

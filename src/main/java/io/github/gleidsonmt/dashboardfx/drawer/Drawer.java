@@ -8,7 +8,6 @@ import io.github.gleidsonmt.dashboardfx.presentation.core.Behavior;
 import io.github.gleidsonmt.dashboardfx.presentation.core.FlowPres;
 import io.github.gleidsonmt.dashboardfx.presentation.core.Introduction;
 import io.github.gleidsonmt.dashboardfx.presentation.core.Wrapper;
-import io.github.gleidsonmt.dashboardfx.presentation.drawer.DrawerExample;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.charts.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.*;
@@ -106,7 +105,7 @@ public class Drawer extends VBox {
 
                 ),
                 new ModuleView("Styled",
-                        new View("Drawer", new DrawerExample()),
+                        new View("Drawer", new BuildingPage()),
                         new View("BreadCrumb", new BuildingPage()),
                         new View("Tree View", new TreeViewExample()),
                         new View("Label", new LabelExample()),
@@ -172,7 +171,7 @@ public class Drawer extends VBox {
 
         if (!group.getToggles().isEmpty()) {
             group.selectToggle(group.getToggles().get(0));
-            currentModule.setValue((ModuleView) group.getToggles().get(0).getUserData());
+            currentModule.setValue((ModuleView) group.getToggles().get(2).getUserData());
         }
 
         search.textProperty().addListener((_, _, newVal) -> {

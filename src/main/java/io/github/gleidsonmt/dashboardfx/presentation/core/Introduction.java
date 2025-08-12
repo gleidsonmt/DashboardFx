@@ -1,16 +1,17 @@
 package io.github.gleidsonmt.dashboardfx.presentation.core;
 
-import io.github.gleidsonmt.dashboardfx.presentation.drawer.SimpleDrawer;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.internal.Module;
+import io.github.gleidsonmt.glad.base.internal.View;
 import io.github.gleidsonmt.glad.base.responsive.Break;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import io.github.gleidsonmt.glad.drawer.SimpleDrawer;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
@@ -53,214 +54,66 @@ public class Introduction extends StackPane {
 
                             .text("(Colocar aqui a card para o projeto de skeleton)")
 
-                            .h3("First Step. Create ", "Introduction")
-
-                            .h3("Start an App", "Introduction")
+                            .h3("🔎Understanding", "Introduction")
+                            .text("Let's start seeing our base class.")
                             .code("""
                                     /**
                                      * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
                                      * Create on  20/02/2025
                                      */
-                                    public class AppOld extends Application {
+                                    public class App extends Application {
+                                    
                                         @Override
                                         public void start(Stage stage) {
-                                            Root root = new Root(new Layout(new Button("Welcome")));
-                                            Scene scene = new Scene(root, 800, 600);
-                                            stage.setScene(scene);
-                                            stage.show();
+                                              // here it's the part of code that define the root and its layout
+                                              // Root is the base of the scene, it's the point to get environment around.
+                                              // The Main class is a layout, it's a container of other views.
+                                              // The View class it's a module representation.
+                                              Root root = new Root(new Main(
+                                                       new View("Orders", new SVGIcon(Icon.ORDERS), new Text("Orders View")),
+                                                       new View("Apps",  new SVGIcon(Icon.APPS), new Text("Apps View")),
+                                                       new View("Products",  new SVGIcon(Icon.LOCAL_MALL), new Text("Products View"))
+                                               ));
+                                               Scene scene = new Scene(root, 800, 600);
+                                               // Install the custom css styles, colors and typographic.
+                                               // ThemeProvider is a class that install css, colors and typographic.
+                                               ThemeProvider.install(scene, Css.DEFAULT, Css.LIST_VIEW);
+                                               // Also can be include fonts.
+                                               ThemeProvider.install(root, Font.POPPINS);
+                                               stage.setScene(scene);
+                                               stage.show();
+                                        }
+                                        
+                                        // Here we have the layout of the app, based on border pane.
+                                        // BorderPane is a layout that uses four regions, top, left, right and bottom.
+                                        // The SimpleDrawer class is just like the name.
+                                        // It's a drawer that can have multiple modules. The modules are views.
+                                        // The Main class is a layout, it's a container of other views.
+                                        // The View class it's a module representation.
+                                        static class Main extends BorderPane implements Layout  {
+                                
+                                            private final SimpleDrawer drawer;
+                                
+                                            public Main(Module... modules) {
+                                                this.drawer = new SimpleDrawer(modules);
+                                                this.setLeft(this.drawer);
+                                                // With this bind I can change the node in the center with a selected drawer item.
+                                                this.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
+                                            }
                                         }
                                     }
                                     """)
 
-                            .node(createActionStart())
-                            .h4("Theme", "Start an AppOld")
-                            .text("Let's add some milk with a different font")
-                            .code("""
-                                    ....
-                                    ThemeProvider.install(scene, Font.POPPINS);
-                                    ....
-                                    """)
-                            .text("This isn't work very well, because this code install font, but doesn't use it.")
-                            .text("And we have a css problem with typographic and colors, let's solve.")
-                            .code("""
-                                    ....
-                                    ThemeProvider.install(scene,
-                                            Css.COLORS,
-                                            Css.TYPOGRAPHIC
-                                    );
-                                    ....
-                                    """)
-                            .text("Now theme colors and typographic is settled.")
-                            .node(createStep2())
-                            .node(TutorialUtils.createTextWithLink("You can see more about text styling right here", "Text", "Text"))
-                            .text("Let's add a button.")
-                            .text("First add the button in scene")
-                            .code("""
-                                    ...
-                                    VBox body = new VBox(new Text("You Do it!"), new Button("Welcome!"));
-                                    body.setAlignment(Pos.CENTER); // align in center
-                                    Root root = new Root(new Layout(body));
-                                    ...
-                                    """)
-                            .text("Now add theme")
-                            .code("""
-                                    ...
-                                    ThemeProvider.install(scene,
-                                            Css.COLORS,
-                                            Css.TYPOGRAPHIC,
-                                            Css.BUTTON
-                                    );
-                                    ...
-                                    """)
-                            .node(createStep3())
-                            .node(TutorialUtils.createTextWithLink("You can see more about button styling right here", "Button", "Labeled", "Button"))
-//
+                            .node(createStep5())
 
-                            .h4("Root", "Start an AppOld")
-                            .legend("io.gleidsonmt.glad.base.Root")
-                            .text("""
-                                    The Root class is an ideia to have stacked components, actual apps has flow components,
-                                    usually stacked, like snacks, alerts etc. So the root class is wrapper to a StackPane.
-                                    These methods can be called as behavior.
-                                    This app actually uses a root class.
-                                    Try to get a button in root scene.
-                                    """)
 
-                            .node(createRootExample())
-                            .code("""
-                                    
-                                    IconButton button = new IconButton(new SVGIcon(Icon.APPS));
-                                    button.getStyleClass().addAll("padding-20", "raised");
-                                    
-                                    button.setOnMouseClicked(event -> {
-                                        Root main = (Root) getScene().getRoot();
-                                        main.flow() // call global method
-                                                .openByCursor(button, event);
-                                    });""")
-
-                            .h4("Global Methods", "Root")
-                            .text("""
-                                    These global methods are called when application needs to update the root.
-                                    Calling notifications and custom alerts.
-                                    """)
+                            .h4("See more", "Introduction")
+                            .node(TutorialUtils.createLink("Drawer", "Drawer"))
                             .node(TutorialUtils.createLink("Wrapper", "Wrapper"))
                             .node(TutorialUtils.createLink("Flow", "Flow"))
                             .node(TutorialUtils.createLink("Behavior", "Behavior"))
-//
-                            .h4("Layout", "Start an App")
-                            .text("""
-                                    The Layout class is the global parts of the application.
-                                    The combinations of these two layouts, creates an empty region with five separating blocks.
-                                    """)
-                            .legend("io.gleidsonmt.glad.base.Layout")
-                            .code("Root root = new Root(new Layout());")
-                            .image(Assets.getImage("part3.png"))
-                            .text("""
-                                    As knowing to much nodes cause leaks of memory, using BorderPane or a
-                                    complex layout can be combined with putting things without modifying the actual view,
-                                    example dashboards with drawer, aside, navs, footers.. and so on.
-                                    """)
-                            .text("Working with layout")
-                            .code("""
-                                    ...
-                                    Layout layout = new Layout(body);
-                                    
-                                    Root root = new Root(layout);
-                                    ...
-                                    """)
-                            .text("Let's add list view css")
-                            .code("""
-                                    ThemeProvider.install(scene,
-                                            Css.COLORS,
-                                            Css.TYPOGRAPHIC,
-                                            Css.BUTTON,
-                                            Css.LIST_VIEW,
-                                            Css.IMMERSIVE_SCROLL
-                                    );
-                                    """)
-                            .text("List View and layouts that use scroll bars need to add immersive scroll as a theme, it can style the scroll pane")
-                            .text("Lets add a short version.")
-                            .code("""
-                                    ThemeProvider.install(scene,
-                                        Css.DEFAULT,
-                                        Css.BUTTON,
-                                        Css.LIST_VIEW
-                                    );
-                                    """)
-                            .text("Now only focus on component css.")
-                            .demo(createStep4())
 
-                            .h3("Responsive", "Layout")
-
-                            .text("Let's get out of this static layout.")
-                            .text("Try to resize this new stage.")
-                            .demo(createStep5())
-                            .text("To get that result layout has a component called Sizer.")
-                            .text("It's a class designed to response when scene is resized.")
-                            .text("Sizer uses points in the width of scene, this points change the view, in order to get the expect result.")
-                            .text("Instead of set left node, will use a response action.")
-                            .text("Add our first point")
-                            .code("""
-                                     layout.setLeft(new SimpleDrawer()); // remove this line
-                                     // and add this
-                                     SimpleDrawer drawer = new SimpleDrawer();
-                                     ...
-                                     layout.addPoint(_ -> {
-                                        layout.setLeft(drawer);
-                                    }, Break.values());""")
-                            .node(TutorialUtils.createTextWithLink("SimpleDrawer Class here is used as an example, to view more about click ", "here", "Drawer"))
-                            .text("Nothing change, that's because only set one point to all widths.")
-                            .text("To mobile width.")
-                            .code("""
-                                    root.addPoint(_ -> {
-                                         layout.setLeft(null);
-                                     }, Break.MOBILE);""")
-                            .text("Now when the size of scene is small the drawer is not showed.")
-                            .text("Because add point it's only really called after scene is settled, it's possible to call getScene() adn getRoot() methods.")
-//
-                            .demo(createStep6())
-                            .text("It's not possible to invoke the drawer right now.")
-                            .code("""
-                                    ...
-                                    NavBar nav = new NavBar();
-                                    IconButton hamb = new IconButton(new SVGIcon(Icon.MENU));
-                                    hamb.getStyleClass().add("flat");
-                                    Text title = new Text("Dashboard");
-                                    title.getStyleClass().addAll("text-accent", "h3", "bold");
-                                    ....
-                                    """)
-
-                            .text("With this when size changes the hamb appears.")
-                            .code("""
-                                    ...
-                                    nav.add(hamb, 0,0);
-                                    nav.add(title, 1,0);
-                                    ...
-                                    root.addPoint(_ -> {
-                                        layout.setLeft(null);
-                                        layout.setTop(nav);
-                                    }, Break.MOBILE);
-                                    
-                                    root.addPoint(_ -> {
-                                        layout.setLeft(drawer);
-                                        layout.setTop(null);
-                                    }, Break.values());
-                                    """)
-                            .text("But hamb doesn't have any action. Let's fix.")
-                            .code("""
-                                    hamb.setOnMouseClicked(_ -> root.behavior().openDrawer());
-                                    """)
-                            .demo(createStep8())
-//
-                            .text("To change the view here, it's used a bind with two nodes, this nodes are encapsulated by ObjectProperty")
-                            .text("And then bind the drawer node selecetd and layout center")
-                            .code("""
-                                    ...
-                                    layout.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
-                                    ...
-                                    """)
-
-
+                            .h3("Structure of this dash", "Introduction")
                             .text("""
                                     This is a Gradle multi-project, which means it contains multiple projects within it.
                                     The first one is blockcode, an adaption to view highlighted code. (java, css, xml)
@@ -436,26 +289,38 @@ public class Introduction extends StackPane {
 
     private Node createStep5() {
         return createButton(e -> {
-            Stage stage = new Stage();
-            VBox body = new VBox(new Text("You Do it!"), new Button("Welcome!"));
-            body.setAlignment(Pos.CENTER);
-            Lay layout = new Lay(body);
-            Root root = new Root(layout);
-            SimpleDrawer drawer = new SimpleDrawer();
-//
-            root.addPoint(_ -> {
-                layout.setLeft(null);
-            }, Break.MOBILE);
-//
-            root.addPoint(_ -> {
-                layout.setLeft(drawer);
-            }, Break.values());
 
+            class Main extends BorderPane implements Layout  {
+
+                private final SimpleDrawer drawer;
+
+                public Main(Module... modules) {
+                    this.drawer = new SimpleDrawer(modules);
+                    this.setLeft(this.drawer);
+                    this.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
+                }
+//
+            }
+
+            // Root is the base of the scene, it's the point to get environment around.
+            // The Main class is a layout, it's a container of other views.
+            // The View class it's a module representation.
+            Root root = new Root(new Main(
+                    new View("Orders", new SVGIcon(Icon.ORDERS), new Text("Orders View")),
+                    new View("Apps",  new SVGIcon(Icon.APPS), new Text("Apps View")),
+                    new View("Products",  new SVGIcon(Icon.LOCAL_MALL), new Text("Products View"))
+            ));
             Scene scene = new Scene(root, 800, 600);
-            ThemeProvider.install(scene, Font.POPPINS);
-            ThemeProvider.install(scene, Css.DEFAULT, Css.BUTTON, Css.LIST_VIEW);
+            // Install the custom css styles, colors and typographic.
+            // ThemeProvider is a class that install css, colors and typographic.
+            ThemeProvider.install(scene, Css.DEFAULT, Css.LIST_VIEW);
+            // Also can be include fonts.
+            ThemeProvider.install(root, Font.POPPINS);
+            Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
+
+
         });
     }
 
