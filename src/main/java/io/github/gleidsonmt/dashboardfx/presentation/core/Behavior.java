@@ -39,23 +39,23 @@ public class Behavior extends StackPane {
                         .h4("Dialogs", "Behavior")
                         .demo(
                                 createDemo(e -> {
-                                    Root main = (Root) getScene().getRoot();
+                                    Root root = (Root) getScene().getRoot();
                                     Button ok = new Button("Button");
                                     ok.setOnAction(el -> {
-                                        main.behavior().dialog().close();
+                                        root.behavior().dialog().close();
                                     });
                                     VBox content = new VBox(new Text("Lorem ipsum dolor color"), ok);
                                     content.setAlignment(Pos.CENTER);
                                     content.setSpacing(10);
-                                    main.behavior().dialog().open(content);
+                                    root.behavior().dialog().open(content);
 
                                 })
                         )
                         .code("""
-                                Main main = (Main) getScene().getRoot();
+                                Root root = (Root) getScene().getRoot();
                                 Button ok = new Button("Button");
                                 VBox content = new VBox(new Text("Lorem ipsum dolor color"), ok);
-                                main.behavior().dialog().open(content);
+                                root.behavior().dialog().open(content);
                                 """)
                         /*   */
                         .h4("Opening", "Behavior")
