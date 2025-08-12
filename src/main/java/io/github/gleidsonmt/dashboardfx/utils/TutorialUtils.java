@@ -3,13 +3,16 @@ package io.github.gleidsonmt.dashboardfx.utils;
 import io.github.gleidsonmt.dashboardfx.drawer.Drawer;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Separator;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
@@ -25,6 +28,18 @@ import java.net.URI;
  * Create on  15/03/2025
  */
 public class TutorialUtils {
+
+    public static @NotNull Node createAction( EventHandler<MouseEvent> event) {
+        return createAction("Try on!", event);
+    }
+
+    public static @NotNull Node createAction(String placeholder, EventHandler<MouseEvent> event) {
+        Button button = new Button(placeholder);
+        button.setPadding(new Insets(10));
+        VBox.setMargin(button, new Insets(20));
+        button.setOnMouseClicked(event);
+        return button;
+    }
 
     public static @NotNull Node createCardLink(String placeholder, URI uri) {
         SVGPath path = createSVG();
