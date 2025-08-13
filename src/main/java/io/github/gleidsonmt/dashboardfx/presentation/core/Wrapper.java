@@ -2,6 +2,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.core;
 
 import io.github.gleidsonmt.dashboardfx.Main;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.WrapperEffect;
@@ -23,17 +24,25 @@ public class Wrapper extends StackPane {
                         .text("The wrapper interface disposes a region with color to focus on the element stacked.")
                         .legend("io.github.gleidsonmt.glad.base.Wrapper")
                         .legend("Click on it, to hide.")
-                        .demo(createDemo())
                         .code("""
-                                Main main = (Main) getScene().getRoot();
+                                Root main = (Root) getScene().getRoot();
                                 main.wrapper().show();
                                 """)
+                        .demo(TutorialUtils.createAction(_-> {
+                            Root main = (Root) getScene().getRoot();
+                            main.wrapper().show();
+                        }))
+
                         .h3("Effect", "Wrapper")
-                        .demo(createDemo(WrapperEffect.BLUR))
+                        .text("Add a bit effect.")
                         .code("""
-                                Main main = (Main) getScene().getRoot();
+                                Root main = (Root) getScene().getRoot();
                                 main.wrapper().show(WrapperEffect.BLUR);
                                 """)
+                        .demo(TutorialUtils.createAction(_-> {
+                            Root main = (Root) getScene().getRoot();
+                            main.wrapper().show(WrapperEffect.BLUR);
+                        }))
                         .h4("Closing", "Wrapper")
                         .code("""
                                 Main main = (Main) getScene().getRoot();

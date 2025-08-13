@@ -26,17 +26,17 @@ public class FlowPres extends StackPane {
     public FlowPres() {
 
         this.setOnMouseClicked(e -> {
-            Root main = (Root) getScene().getRoot();
+            Root root = (Root) getScene().getRoot();
             StackPane stackPane = new StackPane(new Label("Opened by cursor!"));
             stackPane.getStyleClass().addAll("padding-10", "bg-red");
-            main.flow().openByCursor(stackPane, e, Pos.CENTER);
+            root.flow().openByCursor(stackPane, e, Pos.CENTER);
         });
 
         getChildren().setAll(
                 new Tutorial()
                         .h3("Flow")
                         .text("""
-                                The main ideia is putting absolute nodes in rootImpl.
+                                The main ideia is putting absolute nodes in onto root.
                                 Using stack pane you can add nodes in the main positions, and translate this
                                 nodes using insets.
                                 """)
@@ -79,8 +79,8 @@ public class FlowPres extends StackPane {
 
                         .h4("Close", "Flow")
                         .demo(createDemo(e -> {
-                            Root main = (Root) getScene().getRoot();
-                            main.flow().clear();
+                            Root root = (Root) getScene().getRoot();
+                            root.flow().clear();
                         }))
                         .code("""
                                 Main main = (Main) getScene().getRoot();
@@ -95,7 +95,6 @@ public class FlowPres extends StackPane {
 
     private Node createDemo(EventHandler<ActionEvent> eventEventHandler) {
         Button button = new Button("Click on me!");
-
         button.setOnAction(eventEventHandler);
         return button;
     }
@@ -109,6 +108,12 @@ public class FlowPres extends StackPane {
                     ok.setGraphic(new SVGIcon(Icon.ADD));
                     ok.getStyleClass().addAll("round", "size-50", "display-graphic");
                     main.flow().openByNode(ok, button, Pos.BOTTOM_RIGHT);
+//                    main.flow()
+//                            .content(ok)
+//                            .pos(Pos.BOTTOM_RIGHT)
+//
+//                            .insets(insets)
+//                            .show();
                 }
         );
         return button;
@@ -122,9 +127,15 @@ public class FlowPres extends StackPane {
                     Button ok = new Button("");
                     ok.setGraphic(new SVGIcon(Icon.ADD));
                     ok.getStyleClass().addAll("round", "size-50", "display-graphic");
-                    main.flow().openAbsolute(ok, pos, insets);
+//                    main.flow().openAbsolute(ok, pos, insets);
+                    main.flow()
+                            .pos(pos)
+                            .content(ok)
+                            .insets(insets)
+                            .show();
                 }
         );
+
         return button;
     }
 }
