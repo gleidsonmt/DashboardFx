@@ -65,8 +65,8 @@ public class Drawer extends VBox {
                 new ModuleSeparator(new SVGIcon(Icon.HUB), "Project"),
                 new ModuleView("Core",
                         new View("Introduction", new Introduction()),
-                        new View("Wrapper", new WrapperPres()),
                         new View("Flow", new FlowPres()),
+                        new View("Wrapper", new WrapperPres()),
                         new View("Behavior", new BehaviorPres()),
                         new View("SnackBar", new SnackBarPres())
                 ),
@@ -114,7 +114,7 @@ public class Drawer extends VBox {
 //                        new View("Login", new LoginPage()),
                         new View("Error Page 404")),
                 new ModuleSeparator(new SVGIcon(Icon.HELP), "Theme"),
-                new ModuleView("Utils",
+                new ModuleView("Extras",
                         new View("Pallet Color", new ColorsPres()),
                         new View("Alignment", new BuildingPage())),
                 new View("About", new AboutPres())

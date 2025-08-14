@@ -45,19 +45,46 @@ public class Introduction extends StackPane {
                             .text("""
                                     Hi, my name is Gleidson. I’m a developer from Brazil.
                                     I’ll tutor you around this ecosystem I built.
+                                    
                                     The main idea here, it’s creating examples to show the power of JavaFX.
                                     There’s a lot of techniques to do that, but it’s not a normal thing to see in JavaFX.
                                     On a normal day, you need ways to get fast to get a system design, repeating tasks is the most boring thing daily.
                                     This project expects to add some layers to production by using known patterns.
                                     And I know there’s a curve to learn. But I hope to make it easier.
+                                    
+                                    As the most dashboards the drawer is on the left, with the logo and a search field
+                                    As suggested the search view is used to filter by modules. When you typed inside it.
+                                    
+                                    The modules is the view or a group of views. 
+                                    If the it's a view is represented by a ToggleButton.
+                                    If it's a group of views is represented by a TilePane.
+                                    
+                                    When a view (ToggleButton) is clicked the content is updated to the content of this view.
+                                    
+                                    The modules are separated by sections, project, theme, example and extras.
+                                    
+                                    The theme section contains examples using default javafx + a custom theme. 
+                                    The custom theme is provided by a class called ThemeProvider.
+                                    On the each view you can see how to install the custom css.
+                                    
+                                    The example section has examples and customizable controls and how to work with it.
+                                    
+                                    The extras section represents tips with javafx and additional resource.
+                                    
+                                    Now if you want a point of start..
+                                    I've been working and idealizing a skeleton with the minimal to create a project and start.
+                                    (I'm still working on it, all help is welcome.).
                                     """)
 
-                            .text("Try clone the project skeleton.")
+                            .text("Try clone the project skeleton, and start by yourself with minimal settings.")
                             .node(TutorialUtils.createCardLink("Skeleton", new URI("https://github.com/gleidsonmt/dash-skeleton")))
 
 
                             .h3("🔎Understanding", "Introduction")
-                            .text("Let's start seeing our base class.")
+                            .text("You cloned the project, so you'll see the default javafx project except for the main class and a one jar.")
+                            .text("The jar is a core of the project.")
+                            .text("And the class App is the point of start.")
+                            .text("Let's start seeing this App class.")
                             .code("""
                                     /**
                                      * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -106,7 +133,11 @@ public class Introduction extends StackPane {
                                     }
                                     """)
 
+                            .text("Now you can click on the button below to see a new stage.")
+
                             .node(createStep5())
+
+                            .text("I'm very active in this project, because it's a hobby I really like (theming things) you always can talk with me if you want.")
 
 
                             .h4("See more", "Introduction")
@@ -115,14 +146,6 @@ public class Introduction extends StackPane {
                             .node(TutorialUtils.createLink("Flow", "Flow"))
                             .node(TutorialUtils.createLink("BehaviorPres", "BehaviorPres"))
 
-                            .h3("Structure", "Introduction")
-                            .text("""
-                                    This is a Gradle multi-project, which means it contains multiple projects within it.
-                                    The first one is blockcode, an adaption to view highlighted code. (java, css, xml)
-                                    The second one is presentation, a base class to create presentations.
-                                    The third one is glad, the core that contains customizable controls and themes.
-                                    All projects has its repositories and you can see it in the bootom of this presentation.
-                                    """)
 
                             .h3("Dependencies", "Introduction")
                             .h3("Block Code", "Dependencies")
