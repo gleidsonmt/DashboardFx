@@ -19,31 +19,21 @@ import javafx.scene.text.TextFlow;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  20/03/2025
  */
-public class Behavior extends StackPane {
+public class BehaviorPres extends StackPane {
 
-    public Behavior() {
-//        Layout layout= new Layout();
-//        layout.addPoint(event -> {
-//
-//        });
-//        Root ro = new Root(new Layout());
-//        ro.behavior().openDrawer();
-
-//        ro.behavior().alert().open();
+    public BehaviorPres() {
         getChildren().setAll(
                 new Tutorial()
                         .h3("Behavior")
                         .text("""
-                                Behavior class has calling the actions on the root.""")
-                        .legend("io.github.gleidsonmt.glad.base.Behavior")
+                                BehaviorPres class has calling the actions on the root.""")
+                        .legend("io.github.gleidsonmt.glad.base.BehaviorPres")
                         .h4("Dialogs", "Behavior")
                         .demo(
                                 createDemo(e -> {
                                     Root root = (Root) getScene().getRoot();
                                     Button ok = new Button("Button");
-                                    ok.setOnAction(el -> {
-                                        root.behavior().dialog().close();
-                                    });
+                                    ok.setOnAction(_ -> root.behavior().dialog().close());
                                     VBox content = new VBox(new Text("Lorem ipsum dolor color"), ok);
                                     content.setAlignment(Pos.CENTER);
                                     content.setSpacing(10);
@@ -60,9 +50,18 @@ public class Behavior extends StackPane {
                         /*   */
                         .h4("Opening", "Behavior")
                         .demo(new Node[]{
-                                        createDemo(e -> {
+                                        createDemo(_ -> {
                                                     Root root = (Root) this.getScene().getRoot();
-                                                    root.behavior().alert().open("About", new Text("Press escape to close."), AlertType.ERROR);
+//                                                    root.behavior().alert()
+//                                                            .open("About", new Text("Press escape to close."), AlertType.ERROR);
+
+                                                    root.behavior().alert()
+                                                            .title("About")
+                                                            .content(new Text("Press escape to close."))
+                                                            .effect(WrapperEffect.BLUR)
+                                                            .type(AlertType.ERROR)
+                                                            .show();
+
                                                 }
                                         ),
                                         createDemo(e -> {
@@ -88,7 +87,7 @@ public class Behavior extends StackPane {
                                  root.behavior().alert().open("About", new Text("Lorem ipsum dolor color"), AlertType.DANGER);
                                  root.behavior().alert().open("About", new Text("Lorem ipsum dolor color"), AlertType.SUCCESS);
                                 """)
-                        .h4("Combine with Wrapper", "Behavior")
+                        .h4("Combine with WrapperPres", "BehaviorPres")
                         .demo(createDemo(e -> {
                             Root root = (Root) this.getScene().getRoot();
                             root.wrapper().show(WrapperEffect.BLUR);
@@ -111,7 +110,7 @@ public class Behavior extends StackPane {
                             cancel.setCancelButton(true);
                             cancel.setOnAction(_ -> {
                                 root.wrapper().hide();
-                                root.behavior().alert().close();
+                                root.behavior().alert().hide();
                             });
                             root.wrapper().show(WrapperEffect.BLUR);
                             root.behavior().alert().open("About", new Text("Press  to close."), AlertType.SUCCESS, cancel, apply);

@@ -24,6 +24,8 @@ import io.github.gleidsonmt.blockcode.BlockCode;
 import io.github.gleidsonmt.blockcode.CodeType;
 import io.github.gleidsonmt.blockcode.Theme;
 import io.github.gleidsonmt.dashboardfx.presentation.Scroll;
+import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.responsive.Break;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.presentation.Presentation;
@@ -32,9 +34,12 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -54,7 +59,7 @@ import java.util.*;
 public class Tutorial extends Presentation<Tutorial> {
 
     private final ScrollPane scroll = new ScrollPane();
-//    private final Layout body = new Layout();
+    private final BorderPane body = new BorderPane();
     private final VBox aside = new VBox();
     private final VBox menu = new VBox();
     private final VBox center = new VBox();
@@ -68,17 +73,52 @@ public class Tutorial extends Presentation<Tutorial> {
     private boolean indicators = false;
 
     public Tutorial() {
-//        body.setUserData(this);
-//        body.setPadding(new Insets(20));
+        body.setUserData(this);
+        body.setPadding(new Insets(20));
         aside.setPadding(new Insets(0, 20, 0, 20));
         aside.setPrefWidth(250);
         btnTop.getStyleClass().addAll("btn-directions padding-20 round".split(" "));
         center.setId("tutorial-center-body");
         scroll.setId("tutorial-scroll");
-//        body.setId("tutorial-body");
+        body.setId("tutorial-body");
 
         scroll.setMinHeight(500);
 
+        Platform.runLater(() -> {
+            System.out.println("getRoot().getScene() = " + getRoot().getScene());
+        });
+
+        getRoot().sceneProperty().addListener(new ChangeListener<Scene>() {
+            @Override
+            public void changed(ObservableValue<? extends Scene> observable, Scene oldValue, Scene newValue) {
+                System.out.println("observable = " + observable);
+                if (newValue != null) {
+                    Root main = (Root) newValue.getRoot();
+                    main.addPoint(_ -> {
+                        body.setRight(null);
+                        body.setTop(aside);
+                        StackPane.setMargin(btnTop, new Insets(10, 40, 10, 10));
+                        aside.setPadding(new Insets(0));
+
+                        aside.setMaxHeight(100);
+                        aside.setPrefHeight(100);
+
+                    }, Break.MOBILE, Break.SM, Break.MD);
+
+                    main.addPoint(_ -> {
+                        menu.setMaxHeight(-1);
+                        if (body.getChildren().contains(aside)) {
+                            body.getChildren().remove(aside);
+                            body.setRight(aside);
+                        } else {
+                            body.setRight(aside);
+                        }
+                        aside.setPadding(new Insets(0, 20, 0, 20));
+                        StackPane.setMargin(btnTop, new Insets(10, 40 + 250, 10, 10));
+                    }, Break.WIDE, Break.XL, Break.XXL);
+                }
+            }
+        });
 //        body.addPoint(_ -> {
 //            body.getChildren().remove(aside);
 //            body.setTop(aside);
@@ -139,17 +179,17 @@ public class Tutorial extends Presentation<Tutorial> {
 
         this.getRoot().sceneProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {
-//                ToggleButton first = firstList.getFirst().getChildren()
-//                        .stream()
-//                        .filter(e -> e instanceof GridPane)
-//                        .map(e -> (GridPane) e)
-//                        .findFirst().get().getChildren()
-//                        .stream()
-//                        .filter(e -> e instanceof ToggleButton)
-//                        .map(e -> (ToggleButton) e)
-//                        .findFirst().get();
-//                first.setSelected(true);
-//                first.getParent().requestFocus();
+                ToggleButton first = firstList.getFirst().getChildren()
+                        .stream()
+                        .filter(e -> e instanceof GridPane)
+                        .map(e -> (GridPane) e)
+                        .findFirst().get().getChildren()
+                        .stream()
+                        .filter(e -> e instanceof ToggleButton)
+                        .map(e -> (ToggleButton) e)
+                        .findFirst().get();
+                first.setSelected(true);
+                first.getParent().requestFocus();
             }
         });
     }
@@ -265,7 +305,7 @@ public class Tutorial extends Presentation<Tutorial> {
                     });
                 }
             };
-             new Timer().schedule(timerTask, 2000);
+            new Timer().schedule(timerTask, 2000);
         });
         return button;
     }
@@ -324,7 +364,6 @@ public class Tutorial extends Presentation<Tutorial> {
                 .map(mapped -> (TreeTitle) mapped)
 //
                 .toList();
-
 //                .peek(el -> VBox.setVgrow(el, Priority.ALWAYS))
         items
                 .stream().filter(el -> el instanceof BlockCode)
@@ -334,8 +373,6 @@ public class Tutorial extends Presentation<Tutorial> {
 
                     double height = e.getContent().lines().count() * 10;
                     e.setMinHeight(e.getMinHeight() + height);
-
-
 //                    e.setMinHeight(500);
                 });
 
@@ -343,13 +380,11 @@ public class Tutorial extends Presentation<Tutorial> {
         createTree(data, aside);
 //        ((ToggleButton)aside.getChildren().get(0)).setSelected(true);
 
-//        root.getChildren().setAll(body);
-//        body.setCenter(scroll);
+        root.getChildren().setAll(body);
+        body.setCenter(scroll);
+        body.setRight(aside);
 
-
-        scroll.setPadding(new Insets(0, 0, 0, 0));
         scroll.setContent(center);
-        root.getChildren().setAll(scroll);
         root.getChildren().add(btnTop);
         root.setAlignment(Pos.BOTTOM_RIGHT);
         root.getStyleClass().addAll("padding-20".split(" "));

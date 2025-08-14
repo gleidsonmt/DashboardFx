@@ -1,15 +1,9 @@
-package io.github.gleidsonmt.dashboardfx.presentation.presentations.components;
+package io.github.gleidsonmt.dashboardfx.presentation.core;
 
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.presentation.Presentation;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -20,6 +14,8 @@ public class SnackBarPres extends StackPane {
         getChildren().setAll(
                 new Tutorial()
                         .h3("SnackBar")
+                        .text("SnackBar is a component that displays a message at the bottom of the screen.")
+                        .legend("")
                         .node(TutorialUtils.createAction(e -> {
                             Root root = (Root) getScene().getRoot();
                             root.behavior()

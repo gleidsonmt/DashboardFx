@@ -41,7 +41,7 @@ public class Introduction extends StackPane {
         try {
             getChildren().setAll(
                     new Tutorial()
-                            .h3("🙋🏼‍ Introduction")
+                            .h3("Introduction")
                             .text("""
                                     Hi, my name is Gleidson. I’m a developer from Brazil.
                                     I’ll tutor you around this ecosystem I built.
@@ -111,11 +111,11 @@ public class Introduction extends StackPane {
 
                             .h4("See more", "Introduction")
                             .node(TutorialUtils.createLink("Drawer", "Drawer"))
-                            .node(TutorialUtils.createLink("Wrapper", "Wrapper"))
+                            .node(TutorialUtils.createLink("WrapperPres", "WrapperPres"))
                             .node(TutorialUtils.createLink("Flow", "Flow"))
-                            .node(TutorialUtils.createLink("Behavior", "Behavior"))
+                            .node(TutorialUtils.createLink("BehaviorPres", "BehaviorPres"))
 
-                            .h3("Structure of this dash", "Introduction")
+                            .h3("Structure", "Introduction")
                             .text("""
                                     This is a Gradle multi-project, which means it contains multiple projects within it.
                                     The first one is blockcode, an adaption to view highlighted code. (java, css, xml)
@@ -179,87 +179,6 @@ public class Introduction extends StackPane {
         return grid;
     }
 
-    private Node createStep8() {
-        return createButton(_ -> {
-            Stage stage = new Stage();
-            VBox body = new VBox(new Text("You Do it!"), new Button("Welcome!"));
-            body.setAlignment(Pos.CENTER);
-
-            Lay layout = new Lay(body);
-            Root root = new Root(layout);
-            SimpleDrawer drawer = new SimpleDrawer();
-
-            NavBar nav = new NavBar();
-
-            IconButton hamb = new IconButton(new SVGIcon(Icon.MENU));
-            hamb.getStyleClass().add("flat");
-            Text title = new Text("Dashboard");
-            title.getStyleClass().addAll("text-accent", "h3", "bold");
-
-            hamb.setOnMouseClicked(_ -> root.behavior().openDrawer());
-
-            nav.add(hamb, 0, 0);
-            nav.add(title, 1, 0);
-
-            layout.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
-
-            root.addPoint(_ -> {
-                layout.setLeft(null);
-                layout.setTop(nav);
-            }, Break.MOBILE);
-
-            root.addPoint(_ -> {
-                layout.setLeft(drawer);
-                layout.setTop(null);
-            }, Break.values());
-
-            Scene scene = new Scene(root, 800, 600);
-            ThemeProvider.install(scene, Font.POPPINS);
-            ThemeProvider.install(scene, Css.DEFAULT, Css.BUTTON, Css.LIST_VIEW);
-            stage.setScene(scene);
-            stage.show();
-        });
-    }
-
-    private Node createStep6() {
-        return createButton(_ -> {
-            Stage stage = new Stage();
-            VBox body = new VBox(new Text("You Do it!"), new Button("Welcome!"));
-            body.setAlignment(Pos.CENTER);
-
-            Lay layout = new Lay(body);
-            Root root = new Root(layout);
-            SimpleDrawer drawer = new SimpleDrawer();
-
-            NavBar nav = new NavBar();
-
-            IconButton hamb = new IconButton(new SVGIcon(Icon.MENU));
-            hamb.getStyleClass().add("flat");
-            Text title = new Text("Dashboard");
-            title.getStyleClass().addAll("text-accent", "h3", "bold");
-
-            nav.add(hamb, 0, 0);
-            nav.add(title, 1, 0);
-
-            layout.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
-
-            root.addPoint(_ -> {
-                layout.setLeft(null);
-                layout.setTop(nav);
-            }, Break.MOBILE);
-
-            root.addPoint(_ -> {
-                layout.setLeft(drawer);
-                layout.setTop(null);
-            }, Break.values());
-
-            Scene scene = new Scene(root, 800, 600);
-            ThemeProvider.install(scene, Font.POPPINS);
-            ThemeProvider.install(scene, Css.DEFAULT, Css.BUTTON, Css.LIST_VIEW);
-            stage.setScene(scene);
-            stage.show();
-        });
-    }
 
     private Node createStep7() {
         return createButton(e -> {

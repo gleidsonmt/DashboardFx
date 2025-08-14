@@ -1,29 +1,20 @@
 package io.github.gleidsonmt.dashboardfx.drawer;
 
-import io.github.gleidsonmt.dashboardfx.dashboard.Aside;
 import io.github.gleidsonmt.dashboardfx.model.User;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.WrapperEffect;
-import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
 import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.geometry.Side;
 import javafx.geometry.VPos;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

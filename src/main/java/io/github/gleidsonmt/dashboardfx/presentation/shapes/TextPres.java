@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.dashboardfx.presentation.presentations.shapes;
+package io.github.gleidsonmt.dashboardfx.presentation.shapes;
 
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.presentation.Row;

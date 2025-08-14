@@ -4,16 +4,13 @@ import io.github.gleidsonmt.dashboardfx.dashboard.Dashboard;
 import io.github.gleidsonmt.dashboardfx.presentation.Newsletter;
 import io.github.gleidsonmt.dashboardfx.presentation.Scroll;
 import io.github.gleidsonmt.dashboardfx.presentation.about.AboutPres;
-import io.github.gleidsonmt.dashboardfx.presentation.core.Behavior;
-import io.github.gleidsonmt.dashboardfx.presentation.core.FlowPres;
-import io.github.gleidsonmt.dashboardfx.presentation.core.Introduction;
-import io.github.gleidsonmt.dashboardfx.presentation.core.Wrapper;
+import io.github.gleidsonmt.dashboardfx.presentation.core.*;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.charts.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.layout.TextFlowPres;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.shapes.TextPres;
+import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
 import io.github.gleidsonmt.dashboardfx.presentation.util.ColorsPres;
 import io.github.gleidsonmt.dashboardfx.utils.pages.BuildingPage;
 import io.github.gleidsonmt.glad.base.Root;
@@ -68,9 +65,9 @@ public class Drawer extends VBox {
                 new ModuleSeparator(new SVGIcon(Icon.HUB), "Project"),
                 new ModuleView("Core",
                         new View("Introduction", new Introduction()),
-                        new View("Wrapper", new Wrapper()),
+                        new View("Wrapper", new WrapperPres()),
                         new View("Flow", new FlowPres()),
-                        new View("Behavior", new Behavior()),
+                        new View("Behavior", new BehaviorPres()),
                         new View("SnackBar", new SnackBarPres())
                 ),
                 new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
