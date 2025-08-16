@@ -74,10 +74,17 @@ public class NavBar extends GridPane {
         badgeNotification.setStyle("-fx-box-color: -info;");
 
         NotificationManager notificationManager = new NotificationManager();
-        badgeNotification.setOnMouseClicked(_ -> notificationManager.show(getScene(), this));
+        badgeNotification.setOnMouseClicked(_ -> notificationManager.show(getScene(), badgeNotification));
+
 
         Platform.runLater(() -> {
             Root root = (Root) this.getScene().getRoot();
+            IconButton button= new IconButton(new SVGIcon(Icon.ADD));
+            button.setOnMouseClicked(_ -> notificationManager.show(getScene(), button));
+
+            root.flow().content(button)
+                            .pos(Pos.CENTER)
+                                    .show();
             root.addPoint(_ -> {
                 getColumnConstraints().clear();
                 getRowConstraints().clear();

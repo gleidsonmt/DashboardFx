@@ -65,10 +65,13 @@ public class Drawer extends VBox {
                 new ModuleSeparator(new SVGIcon(Icon.HUB), "Project"),
                 new ModuleView("Core",
                         new View("Introduction", new Introduction()),
-                        new View("Flow", new FlowPres()),
-                        new View("Wrapper", new WrapperPres()),
-                        new View("Behavior", new BehaviorPres()),
-                        new View("SnackBar", new SnackBarPres())
+                        new View("Interactivity", new InteractivityPres()),
+                        new View("Module", new BuildingPage()),
+                        //  Testing
+//                        new View("Flow", new FlowPres()),
+                        new View("Wrapper", new WrapperPres())
+//                        new View("Behavior", new BehaviorPres()),
+//                        new View("SnackBar", new SnackBarPres())
                 ),
                 new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
                 new ModuleView("Shapes",

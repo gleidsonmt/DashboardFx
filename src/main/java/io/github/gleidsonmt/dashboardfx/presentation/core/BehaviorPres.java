@@ -55,12 +55,12 @@ public class BehaviorPres extends StackPane {
 //                                                    root.behavior().alert()
 //                                                            .open("About", new Text("Press escape to close."), AlertType.ERROR);
 
-                                                    root.behavior().alert()
-                                                            .title("About")
-                                                            .content(new Text("Press escape to close."))
-                                                            .effect(WrapperEffect.BLUR)
-                                                            .type(AlertType.ERROR)
-                                                            .show();
+//                                                    root.behavior().alert()
+//                                                            .title("About")
+//                                                            .content(new Text("Press escape to close."))
+//                                                            .effect(WrapperEffect.BLUR)
+//                                                            .type(AlertType.ERROR)
+//                                                            .show();
 
                                                 }
                                         ),

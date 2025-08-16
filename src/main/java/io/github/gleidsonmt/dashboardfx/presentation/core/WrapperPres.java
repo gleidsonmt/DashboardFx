@@ -4,6 +4,8 @@ import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.WrapperEffect;
+import io.github.gleidsonmt.glad.base.internal.Anchor;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -37,7 +39,12 @@ public class WrapperPres extends StackPane {
                                 """)
                         .demo(TutorialUtils.createAction(_-> {
                             Root main = (Root) getScene().getRoot();
-                            main.wrapper().onClick(e -> main.wrapper().hide()).show();
+                            main.wrapper()
+                                    .pos(Pos.CENTER_RIGHT)
+                                    .anchor(Anchor.RIGHT)
+                                    .onClick(_ -> main.wrapper().hide())
+                                    .with(new Button("Click me!"))
+                                    .show();
                         }))
 
                         .h3("Effect", "Wrapper")

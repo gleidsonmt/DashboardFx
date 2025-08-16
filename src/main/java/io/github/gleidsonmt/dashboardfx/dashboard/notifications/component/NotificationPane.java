@@ -11,9 +11,10 @@ public class NotificationPane extends VBox {
 
     public NotificationPane(Node... children) {
         super(children);
-        getStyleClass().addAll("rounded", "padding-10", "notification-pane", "bg-white");
+        getStyleClass().addAll("rounded", "padding-10", "border-1", "border-light-gray-2", "notification-pane", "bg-white");
         setSpacing(10);
 //        setMinHeight(400);
-        setPrefWidth(500);
+//        setPrefWidth(93);
+//        setMaxWidth(93);
     }
 }

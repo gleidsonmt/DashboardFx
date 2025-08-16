@@ -15,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -65,15 +66,10 @@ public class NotificationManager {
 
         );
     }
-    public void show(Scene scene,  Node target) {
+    public void show(Scene scene,  Region target) {
         Root root = (Root) scene.getRoot();
 
         Region old = (Region) root.getChildren().getFirst();
-
-        root.wrapper().setOnClick(_ -> {
-            root.wrapper().hide();
-            root.flow().remove(pane);
-        });
 
         if (!root.flow().fits(pane)) {
             root.getChildren().clear();
@@ -89,9 +85,21 @@ public class NotificationManager {
                 }
             });
         } else {
-            root.wrapper().show();
-            root.flow().openByNode(pane,
-                   target, Pos.BOTTOM_RIGHT);
+//            root.wrapper()
+//                    .onClick(e -> {
+//                        root.wrapper().hide();
+//                        root.flow().remove(pane);
+//                    })
+//                    .show();
+//            root.flow().openByNode(pane,
+//                   target, Pos.BOTTOM_RIGHT);
+            root.flow()
+                    .content(pane)
+                    .width(500, 500, 900)
+                    .height(300)
+                    .pos(Pos.CENTER)
+                    .insets(new Insets(0,0,0,0))
+                    .show(target);
         }
     }
 
@@ -101,11 +109,6 @@ public class NotificationManager {
 
         Region old = (Region) root.getChildren().getFirst();
 
-        root.wrapper().setOnClick(_ -> {
-            root.wrapper().hide();
-            root.flow().remove(pane);
-        });
-
         if (!root.flow().fits(pane)) {
             root.flow().clearConstraints(pane);
             root.flow().remove(pane);
@@ -121,7 +124,12 @@ public class NotificationManager {
                 }
             });
         } else {
-            root.wrapper().show();
+            root.wrapper()
+                    .onClick(_ -> {
+                        root.wrapper().hide();
+                        root.flow().remove(pane);
+                    })
+                    .show();
             root.flow().openByCursor(pane,
                     e, Pos.BOTTOM_CENTER, 0, y);
         }

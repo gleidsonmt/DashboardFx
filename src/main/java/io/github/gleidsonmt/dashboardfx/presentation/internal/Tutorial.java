@@ -84,14 +84,9 @@ public class Tutorial extends Presentation<Tutorial> {
 
         scroll.setMinHeight(500);
 
-        Platform.runLater(() -> {
-            System.out.println("getRoot().getScene() = " + getRoot().getScene());
-        });
-
         getRoot().sceneProperty().addListener(new ChangeListener<Scene>() {
             @Override
             public void changed(ObservableValue<? extends Scene> observable, Scene oldValue, Scene newValue) {
-                System.out.println("observable = " + observable);
                 if (newValue != null) {
                     Root main = (Root) newValue.getRoot();
                     main.addPoint(_ -> {

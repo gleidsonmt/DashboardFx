@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -39,6 +40,14 @@ public class TutorialUtils {
         VBox.setMargin(button, new Insets(20));
         button.setOnMouseClicked(event);
         return button;
+    }
+
+    public static @NotNull Node createCardLink(String placeholder, String uri) {
+        try {
+            return createCardLink(placeholder, new URI(uri));
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static @NotNull Node createCardLink(String placeholder, URI uri) {

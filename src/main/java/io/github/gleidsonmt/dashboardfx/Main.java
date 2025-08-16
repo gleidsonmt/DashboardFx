@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
 
@@ -50,12 +51,12 @@ public class Main extends BorderPane implements Layout {
     }
 
     @Override
-    public Node getDrawer() {
+    public Region getDrawer() {
         return this.drawer;
     }
 
     @Override
-    public Node getAside() {
+    public Region getAside() {
         return this.aside;
     }
 
