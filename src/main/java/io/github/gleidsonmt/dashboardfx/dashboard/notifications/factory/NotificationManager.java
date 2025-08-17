@@ -96,8 +96,8 @@ public class NotificationManager {
             root.flow()
                     .content(pane)
                     .width(500, 500, 900)
-                    .height(300)
-                    .pos(Pos.CENTER)
+                    .height(150)
+                    .pos(Pos.TOP_CENTER)
                     .insets(new Insets(0,0,0,0))
                     .show(target);
         }

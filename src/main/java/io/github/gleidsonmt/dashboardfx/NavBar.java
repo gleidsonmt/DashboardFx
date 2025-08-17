@@ -79,17 +79,19 @@ public class NavBar extends GridPane {
 
         Platform.runLater(() -> {
             Root root = (Root) this.getScene().getRoot();
-            IconButton button= new IconButton(new SVGIcon(Icon.ADD));
+            IconButton button = new IconButton(new SVGIcon(Icon.ADD));
             button.setOnMouseClicked(_ -> notificationManager.show(getScene(), button));
 
             root.flow().content(button)
-                            .pos(Pos.CENTER)
-                                    .show();
+                    .pos(Pos.CENTER)
+                    .insets(new Insets(100,0,0,0))
+                    .show();
+
             root.addPoint(_ -> {
                 getColumnConstraints().clear();
                 getRowConstraints().clear();
-                GridPane.setConstraints(left, 0,0,1,1);
-                GridPane.setConstraints(right, 0,1,1,1);
+                GridPane.setConstraints(left, 0, 0, 1, 1);
+                GridPane.setConstraints(right, 0, 1, 1, 1);
                 left.getChildren().addFirst(hamb);
                 updateHeight(maxHeight);
                 right.setAlignment(Pos.CENTER);
@@ -101,16 +103,16 @@ public class NavBar extends GridPane {
                 getColumnConstraints().clear();
                 getRowConstraints().clear();
                 updateHeight(height);
-                GridPane.setConstraints(left, 0,0,1,1);
-                GridPane.setConstraints(right, 1,0,1,1);
+                GridPane.setConstraints(left, 0, 0, 1, 1);
+                GridPane.setConstraints(right, 1, 0, 1, 1);
                 right.setAlignment(Pos.CENTER_RIGHT);
             }, Break.SM, Break.MD, Break.LG, Break.XL, Break.XXL, Break.WIDE);
         });
     }
 
     private void configLayout() {
-        add(left, 0,0);
-        add(right, 1,0);
+        add(left, 0, 0);
+        add(right, 1, 0);
 
         right.setSpacing(10);
         left.getChildren().add(crumb);
