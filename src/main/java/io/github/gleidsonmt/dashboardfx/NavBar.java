@@ -92,11 +92,11 @@ public class NavBar extends GridPane {
             Root root = (Root) this.getScene().getRoot();
             IconButton button = new IconButton(new SVGIcon(Icon.ADD));
             button.setOnMouseClicked(_ -> {
-                notificationManager.show(getScene(), button);
-//                root.flow()
-//                        .content(test)
-//                        .pos(Pos.CENTER)
-//                        .show(button);
+//                notificationManager.show(getScene(), button);
+                root.flow()
+                        .content(test)
+                        .pos(Pos.TOP_CENTER)
+                        .show(button);
             });
 //            button.setOnMouseClicked(_ -> {
 //              root.flow()
@@ -106,7 +106,7 @@ public class NavBar extends GridPane {
 //            });
 
             root.flow().content(button)
-                    .pos(Pos.CENTER)
+                    .pos(Pos.TOP_CENTER)
                     .insets(new Insets(100,0,0,0))
                     .show();
 

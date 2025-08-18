@@ -97,7 +97,7 @@ public class NotificationManager {
                     .content(pane)
 //                    .width(500)
 //                    .height(300)
-                    .pos(Pos.CENTER)
+                    .pos(Pos.TOP_CENTER)
                     .insets(new Insets(0,0,0,0))
                     .show(target);
         }
