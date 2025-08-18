@@ -8,17 +8,21 @@ import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.internal.Module;
 import io.github.gleidsonmt.glad.base.responsive.Break;
+import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
 import io.github.gleidsonmt.glad.controls.badge.Badge;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
+import javafx.scene.control.Label;
+import javafx.scene.layout.*;
+
+import java.io.IOException;
+import java.util.Objects;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -76,11 +80,30 @@ public class NavBar extends GridPane {
         NotificationManager notificationManager = new NotificationManager();
         badgeNotification.setOnMouseClicked(_ -> notificationManager.show(getScene(), badgeNotification));
 
+        Region test;
+        try {
+            test = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("fxml/hero.fxml")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
         Platform.runLater(() -> {
             Root root = (Root) this.getScene().getRoot();
             IconButton button = new IconButton(new SVGIcon(Icon.ADD));
-            button.setOnMouseClicked(_ -> notificationManager.show(getScene(), button));
+            button.setOnMouseClicked(_ -> {
+                notificationManager.show(getScene(), button);
+//                root.flow()
+//                        .content(test)
+//                        .pos(Pos.CENTER)
+//                        .show(button);
+            });
+//            button.setOnMouseClicked(_ -> {
+//              root.flow()
+//                      .content(new Label("Lorem ipsum dolor color"))
+//                      .pos(Pos.CENTER_LEFT)
+//                      .show(button);
+//            });
 
             root.flow().content(button)
                     .pos(Pos.CENTER)

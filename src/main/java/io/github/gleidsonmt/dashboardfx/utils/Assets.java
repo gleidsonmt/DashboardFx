@@ -30,4 +30,6 @@ public class Assets {
     public static Image getImage(String name, int size) {
         return new Image(Objects.requireNonNull(App.class.getResource("img/" + name)).toExternalForm(), size, size, true, true);
     }
+
+
 }

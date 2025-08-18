@@ -5,9 +5,11 @@ import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 /**
@@ -25,11 +27,9 @@ public class NotificationHeader extends GridPane {
         link.getStyleClass().addAll("h5", "bold");
         link.setGraphic(new SVGIcon(Icon.DONE_ALL));
 
-        link.setOnAction(e -> {
-            manager.clear();
-        });
+        link.setOnAction(_ -> manager.clear());
 
-        add(title, 0, 0);
+        add(title, 0, 0,1,1);
         add(link, 1, 0);
 
         GridPane.setHgrow(title, Priority.ALWAYS);
@@ -39,7 +39,6 @@ public class NotificationHeader extends GridPane {
         GridPane.setHgrow(notificationsToggle, Priority.ALWAYS);
         GridPane.setColumnSpan(notificationsToggle, REMAINING);
         add(notificationsToggle, 0, 1);
-
 
     }
 }

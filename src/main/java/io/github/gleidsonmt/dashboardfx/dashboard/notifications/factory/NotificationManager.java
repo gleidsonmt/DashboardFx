@@ -95,9 +95,9 @@ public class NotificationManager {
 //                   target, Pos.BOTTOM_RIGHT);
             root.flow()
                     .content(pane)
-                    .width(500, 500, 900)
-                    .height(150)
-                    .pos(Pos.TOP_CENTER)
+//                    .width(500)
+//                    .height(300)
+                    .pos(Pos.CENTER)
                     .insets(new Insets(0,0,0,0))
                     .show(target);
         }
@@ -134,7 +134,6 @@ public class NotificationManager {
                     e, Pos.BOTTOM_CENTER, 0, y);
         }
 
-
     }
 
     @SafeVarargs
@@ -143,11 +142,11 @@ public class NotificationManager {
         filteredNotifications = new FilteredList<>(notifications, _ -> true);
 
         pane = new NotificationPane(
-                new NotificationHeader(this),
-                new Separator(),
-                new NotificationBody(this),
-                new Separator(),
-                new NotificationFooter()
+                new NotificationHeader(this)
+//                new Separator(),
+//                new NotificationBody(this),
+//                new Separator(),
+//                new NotificationFooter()
         );
     }
 
