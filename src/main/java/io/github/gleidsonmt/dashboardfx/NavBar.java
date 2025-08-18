@@ -106,8 +106,8 @@ public class NavBar extends GridPane {
 //            });
 
             root.flow().content(button)
-                    .pos(Pos.TOP_CENTER)
-                    .insets(new Insets(100,0,0,0))
+                    .pos(Pos.CENTER_RIGHT)
+                    .insets(new Insets(300, 420, 300,300))
                     .show();
 
             root.addPoint(_ -> {

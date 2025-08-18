@@ -98,7 +98,7 @@ public class NotificationManager {
 //                    .width(500)
 //                    .height(300)
                     .pos(Pos.TOP_CENTER)
-                    .insets(new Insets(0,0,0,0))
+                    .insets(new Insets(0))
                     .show(target);
         }
     }
