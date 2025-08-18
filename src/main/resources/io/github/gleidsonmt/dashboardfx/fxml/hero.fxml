@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<!--
+  ~
+  ~    Copyright (C) Gleidson Neves da Silveira
+  ~
+  ~    This program is free software: you can redistribute it and/or modify
+  ~    it under the terms of the GNU General Public License as published by
+  ~    the Free Software Foundation, either version 3 of the License, or
+  ~   (at your option) any later version.
+  ~
+  ~    This program is distributed in the hope that it will be useful,
+  ~    but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~    GNU General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU General Public License
+  ~     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
+<?import io.github.gleidsonmt.glad.controls.avatar.AvatarView?>
+<StackPane style="-fx-background-color: white; -fx-border-color: gray; -fx-border-width: 2px;" fx:id="root" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+   <children>
+      <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="view-block">
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+         <content>
+            <VBox>
+               <children>
+                  <GridPane fx:id="grid">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <AvatarView>
+                           <image>
+                              <Image url="@../../../../../../../../../../../../Projetos/Atual/DashboardFx/src/main/resources/io.github.gleidsonmt.dashboardfx/style/img/logo_48.png" />
+                           </image>
+                        </AvatarView>
+                        <HBox fx:id="bar" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1">
+                           <children>
+                              <Button mnemonicParsing="false" styleClass="btn-flat" text="Product" />
+                              <Button layoutX="181.0" layoutY="10.0" mnemonicParsing="false" styleClass="btn-flat" text="Features" />
+                              <Button layoutX="177.0" layoutY="10.0" mnemonicParsing="false" styleClass="btn-flat" text="Company" />
+                              <Button layoutX="135.0" layoutY="10.0" mnemonicParsing="false" styleClass="btn-flat" text="Marketplace" />
+                           </children>
+                        </HBox>
+                        <Hyperlink fx:id="loginButton" contentDisplay="RIGHT" prefHeight="23.0" text="Login" GridPane.columnIndex="2">
+                           <graphic>
+                              <Group>
+                                 <children>
+                                    <SVGPath content="m480-192-51-51 201-201H192v-72h438L429-717l51-51 288 288-288 288Z" scaleX="0.02" scaleY="0.02" />
+                                 </children>
+                              </Group>
+                           </graphic>
+                        </Hyperlink>
+                     </children>
+                  </GridPane>
+                  <VBox alignment="CENTER" spacing="30.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="CENTER" minHeight="600.0" spacing="20.0">
+                           <children>
+                              <HBox maxHeight="-Infinity" maxWidth="-Infinity" style="-fx-border-color: -light-gray-2; -fx-border-radius: 20px; -fx-padding: 5px;">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-14" text="Announcing our next round of funding." />
+                                    <Hyperlink contentDisplay="RIGHT" text="Read more">
+                                       <graphic>
+                                          <Group>
+                                             <children>
+                                                <SVGPath content="m480-192-51-51 201-201H192v-72h438L429-717l51-51 288 288-288 288Z" scaleX="0.02" scaleY="0.02" />
+                                             </children>
+                                          </Group>
+                                       </graphic>
+                                    </Hyperlink>
+                                 </children>
+                              </HBox>
+                              <Label text="Data to enrich your online business" wrapText="true">
+                                 <styleClass>
+                                    <String fx:value="text-bold" />
+                                    <String fx:value="h2" />
+                                 </styleClass>
+                              </Label>
+                              <TextFlow textAlignment="CENTER">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-12" text="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua." textAlignment="CENTER" />
+                                 </children>
+                              </TextFlow>
+                              <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="335.0" spacing="10.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Get started" />
+                                    <Button contentDisplay="RIGHT" mnemonicParsing="false" styleClass="btn-flat" text="Learn more">
+                                       <graphic>
+                                          <Group>
+                                             <children>
+                                                <SVGPath content="m480-192-51-51 201-201H192v-72h438L429-717l51-51 288 288-288 288Z" scaleX="0.02" scaleY="0.02" />
+                                             </children>
+                                          </Group>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="2.0" top="2.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+    
+      </StackPane>
