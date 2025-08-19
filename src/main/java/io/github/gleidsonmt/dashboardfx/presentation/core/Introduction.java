@@ -257,7 +257,8 @@ public class Introduction extends StackPane {
                 main.flow().clear();
             });
             main.flow()
-                    .openByCursor(button, e);
+                    .content(button)
+                    .show(e);
         });
     }
 

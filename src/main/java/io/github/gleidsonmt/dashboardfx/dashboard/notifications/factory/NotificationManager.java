@@ -66,7 +66,8 @@ public class NotificationManager {
 
         );
     }
-    public void show(Scene scene,  Region target) {
+
+    public void show(Scene scene, Region target) {
         Root root = (Root) scene.getRoot();
 
         Region old = (Region) root.getChildren().getFirst();
@@ -93,13 +94,14 @@ public class NotificationManager {
 //                    .show();
 //            root.flow().openByNode(pane,
 //                   target, Pos.BOTTOM_RIGHT);
+            pane.setOnMouseExited(e -> root.flow().remove(pane));
             root.flow()
                     .content(pane)
                     .width(500)
-                    .height(600)
                     .pos(Pos.BOTTOM_CENTER)
                     .insets(new Insets(0))
                     .show(target);
+            pane.requestFocus();
         }
     }
 
@@ -130,8 +132,11 @@ public class NotificationManager {
                         root.flow().remove(pane);
                     })
                     .show();
-            root.flow().openByCursor(pane,
-                    e, Pos.BOTTOM_CENTER, 0, y);
+            root.flow()
+                    .content(pane)
+                    .pos(Pos.BOTTOM_CENTER)
+                    .insets(new Insets(y,0,0,0))
+                    .show();
         }
 
     }
