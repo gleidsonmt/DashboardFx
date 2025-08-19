@@ -36,6 +36,13 @@ public class ColorsPres extends StackPane {
                             .h3("Colors")
                             .h4("Install", "Colors")
                             .code("ThemeProvider.install(scene, \n\t... \n\tCss.COLORS);", "java")
+
+                            .h4("Grid Colors", "Colors")
+                            //                        .link("Original","https://github.com/HanSolo/Colors")
+                            //                        .node(createCard())
+                            .node(TutorialUtils.createCardLink("HanSolo Colors", new URI("https://github.com/HanSolo/Colors")))
+                            .node(createGrid())
+
                             .h4("Bootstrap", "Colors")
                             .text("Common colors.")
                             .demo(new Node[]{
@@ -97,11 +104,6 @@ public class ColorsPres extends StackPane {
                                     createDemo("-black")
                             })
 
-                            .h4("Grid Colors", "Colors")
-                            //                        .link("Original","https://github.com/HanSolo/Colors")
-                            //                        .node(createCard())
-                            .node(TutorialUtils.createCardLink("https://github.com/HanSolo/Colors", new URI("https://github.com/HanSolo/Colors")))
-                            .node(createGrid())
                             .build()
                             .getRoot()
             );
