@@ -41,9 +41,9 @@ public class Timeline extends Presentation<Timeline> {
     }
 
     public Timeline title(String title) {
-        TreeTitle treeTitle = new TreeTitle(title);
-        treeTitle.getStyleClass().add("h3");
-        items.add(treeTitle);
+//        TreeTitle treeTitle = new TreeTitle(title);
+//        treeTitle.getStyleClass().add("h3");
+//        items.add(treeTitle);
         return this;
     }
 
@@ -94,32 +94,32 @@ public class Timeline extends Presentation<Timeline> {
     }
 
     private @NotNull Label createDate(String title, String related, String... styles) {
-        TreeTitle label = new TreeTitle(title);
-        Circle circle = new Circle();
-        circle.setStyle("-fx-fill: -medium-gray-2;");
-        circle.setRadius(4);
-        label.setGraphic(circle);
-        if (related != null) {
-            label.setRelated(new TreeTitle(related));
-        }
+//        TreeTitle label = new TreeTitle(title, "title-" + idCount++);
+//        Circle circle = new Circle();
+//        circle.setStyle("-fx-fill: -medium-gray-2;");
+//        circle.setRadius(4);
+//        label.setGraphic(circle);
+//        if (related != null) {
+////            label.setRelated(new TreeTitle(related));
+//        }
+//
+//        StringBuilder builder = new StringBuilder();
+//        if (styles != null) {
+//            for(String c : styles) {
+//                if (c.startsWith("-fx-")) {
+//                    builder.append(c);
+//                } else {
+//                    label.getStyleClass().add(c);
+//                }
+//            }
+//        }
+//
+//        label.setStyle(builder.toString() + "-text-color: -medium-gray-2; -fx-translate-x: -5px;");
+//        label.toFront();
+//
+//        VBox.setMargin(label, new Insets(10, 0, 10,0));
 
-        StringBuilder builder = new StringBuilder();
-        if (styles != null) {
-            for(String c : styles) {
-                if (c.startsWith("-fx-")) {
-                    builder.append(c);
-                } else {
-                    label.getStyleClass().add(c);
-                }
-            }
-        }
-
-        label.setStyle(builder.toString() + "-text-color: -medium-gray-2; -fx-translate-x: -5px;");
-        label.toFront();
-
-        VBox.setMargin(label, new Insets(10, 0, 10,0));
-
-        return label;
+        return null;
     }
 
 

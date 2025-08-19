@@ -60,67 +60,66 @@ public class Drawer extends VBox {
 
     public Drawer() {
         this(List.of(
-                new View("Dashboard", new Dashboard()),
-                new View("Newsletter", new Newsletter()),
-                new ModuleSeparator(new SVGIcon(Icon.HUB), "Project"),
-                new ModuleView("Core",
-                        new View("Introduction", new Introduction()),
-                        new View("Interactivity", new InteractivityPres()),
-                        new View("Module", new BuildingPage()),
-                        //  Testing
-//                        new View("Flow", new FlowPres()),
-                        new View("Wrapper", new WrapperPres())
-//                        new View("Behavior", new BehaviorPres()),
-//                        new View("SnackBar", new SnackBarPres())
-                ),
-                new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
-                new ModuleView("Shapes",
-                        new View("Text", new TextPres()),
-                        new View("Circle", new BuildingPage())),
-                new ModuleView("Controls",
-                        new View("Region", new RegionPres()),
-                        new View("Labeled", new LabeledPres()),
-                        new View("Text Input", new TextInputPres()),
-                        new View("Progress Bar", new ProgressBarPres()),
-                        new View("Table View", new TableViewPres()),
-                        new View("Tree View", new TreeViewPres()),
-                        new View("List View", new ListViewPres())),
-                new ModuleView("Containers",
-                        new View("TitledPane", new BuildingPage()),
-                        new View("TabPane", new TabPres()),
-                        new View("Text Flow", new TextFlowPres())),
-                new ModuleView("Charts",
-                        new View("Bar Chart", new BarChartPres()),
-                        new View("Area Chart", new AreaChartPres()),
-                        new View("Stacked Area Chart", new StackedAreaChartPres()),
-                        new View("Stacked Bar Chart", new StackedBarChartPres()),
-                        new View("Pie Chart", new DonutChartPres()),
-                        new View("Line Chart", new LineChartPres())),
-                new ModuleSeparator(new SVGIcon(Icon.STACK), "Examples"),
-                new ModuleView("Components",
-
-                        new View("SVGIcon", new SVGIconPres()),
-                        new View("Button", new ButtonExample()),
-                        new View("Badge", new BadgeExample()),
-                        new View("Avatar View", new AvatarPres()),
-                        new View("Toggle Switch", new ToggleSwitchPres())
-
-                ),
-                new ModuleView("Styled",
-                        new View("Drawer", new BuildingPage()),
-                        new View("BreadCrumb", new BuildingPage()),
-                        new View("Tree View", new TreeViewExample()),
-                        new View("Label", new LabelExample()),
-                        new View("Cards", new CardsPres())),
-                new ModuleView("Pages",
-//                        new View("Home Page", new HomePage()),
-//                        new View("Login", new LoginPage()),
-                        new View("Error Page 404")),
-                new ModuleSeparator(new SVGIcon(Icon.HELP), "Theme"),
-                new ModuleView("Extras",
-                        new View("Pallet Color", new ColorsPres()),
-                        new View("Alignment", new BuildingPage())),
-                new View("About", new AboutPres())
+                new InteractivePres()
+//                new View("Dashboard", new Dashboard()),
+//                new View("Newsletter", new Newsletter()),
+//                new ModuleSeparator(new SVGIcon(Icon.HUB), "Project"),
+//                new ModuleView("Core",
+//                        new View("Introduction", new Introduction()),
+//                        new InteractivePres(),
+//                        new View("Module", new BuildingPage()),
+//                        //  Testing
+////                        new View("Flow", new FlowPres()),
+//                        new View("Wrapper", new WrapperPres())
+////                        new View("Behavior", new BehaviorPres()),
+////                        new View("SnackBar", new SnackBarPres())
+//                ),
+//                new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
+//                new ModuleView("Shapes",
+//                        new View("Text", new TextPres()),
+//                        new View("Circle", new BuildingPage())),
+//                new ModuleView("Controls",
+//                        new View("Region", new RegionPres()),
+//                        new View("Labeled", new LabeledPres()),
+//                        new View("Text Input", new TextInputPres()),
+//                        new View("Progress Bar", new ProgressBarPres()),
+//                        new View("Table View", new TableViewPres()),
+//                        new View("Tree View", new TreeViewPres()),
+//                        new View("List View", new ListViewPres())),
+//                new ModuleView("Containers",
+//                        new View("TitledPane", new BuildingPage()),
+//                        new View("TabPane", new TabPres()),
+//                        new View("Text Flow", new TextFlowPres())),
+//                new ModuleView("Charts",
+//                        new View("Bar Chart", new BarChartPres()),
+//                        new View("Area Chart", new AreaChartPres()),
+//                        new View("Stacked Area Chart", new StackedAreaChartPres()),
+//                        new View("Stacked Bar Chart", new StackedBarChartPres()),
+//                        new View("Pie Chart", new DonutChartPres()),
+//                        new View("Line Chart", new LineChartPres())),
+//                new ModuleSeparator(new SVGIcon(Icon.STACK), "Examples"),
+//                new ModuleView("Components",
+//                        new View("SVGIcon", new SVGIconPres()),
+//                        new View("Button", new ButtonExample()),
+//                        new View("Badge", new BadgeExample()),
+//                        new View("Avatar View", new AvatarPres()),
+//                        new View("Toggle Switch", new ToggleSwitchPres())
+//                ),
+//                new ModuleView("Styled",
+//                        new View("Drawer", new BuildingPage()),
+//                        new View("BreadCrumb", new BuildingPage()),
+//                        new View("Tree View", new TreeViewExample()),
+//                        new View("Label", new LabelExample()),
+//                        new View("Cards", new CardsPres())),
+//                new ModuleView("Pages",
+////                        new View("Home Page", new HomePage()),
+////                        new View("Login", new LoginPage()),
+//                        new View("Error Page 404")),
+//                new ModuleSeparator(new SVGIcon(Icon.HELP), "Theme"),
+//                new ModuleView("Extras",
+//                        new View("Pallet Color", new ColorsPres()),
+//                        new View("Alignment", new BuildingPage())),
+//                new View("About", new AboutPres())
         ));
     }
 
@@ -173,7 +172,7 @@ public class Drawer extends VBox {
 
         if (!group.getToggles().isEmpty()) {
             group.selectToggle(group.getToggles().get(0));
-            currentModule.setValue((ModuleView) group.getToggles().get(6).getUserData());
+            currentModule.setValue((ModuleView) group.getToggles().get(0).getUserData());
         }
 
         search.textProperty().addListener((_, _, newVal) -> {

@@ -80,6 +80,7 @@ public class Dashboard extends StackPane implements ActionableView {
 
     @Override
     public void onEnter(Root root) {
+
         root.addPoint(_ -> {
             int row = 0;
             for (Node child : grid.getChildren()) {

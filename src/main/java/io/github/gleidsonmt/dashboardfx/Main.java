@@ -81,7 +81,6 @@ public class Main extends BorderPane implements Layout {
             if (newValue != null) {
                 updateView(oldValue, newValue);
             }
-
         });
 
         currentModule.bind(drawer.currentModuleProperty());
@@ -90,16 +89,15 @@ public class Main extends BorderPane implements Layout {
 
     @Override
     public void updateView(Module oldVal, Module newVal) {
-
         if (newVal instanceof View view) {
-            this.container.setContent(view.getContent());
-
-            if (view.getContent() instanceof ActionableView actionableView) {
+            if (view instanceof ActionableView actionableView) {
                 Platform.runLater(() -> {
                     Root root = (Root) this.getScene().getRoot();
                     actionableView.onEnter(root);
+                    this.container.setContent(view.getContent());
                 });
-
+            } else {
+                this.container.setContent(view.getContent());
             }
             if (oldVal != null) {
                 if (oldVal instanceof ActionableView actionableView) {

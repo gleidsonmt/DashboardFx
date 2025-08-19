@@ -144,7 +144,7 @@ public class Tutorial extends Presentation<Tutorial> {
      * Add numbers to the TreeTiles
      */
     public Tutorial indicators() {
-        this.indicators = false;
+        this.indicators = true;
         return this;
     }
 
@@ -159,14 +159,10 @@ public class Tutorial extends Presentation<Tutorial> {
                 .toList();
 
         count = 1;
-
         List<VBox> firstList = firstLevel.stream().map(this::buildTree).toList();
 
         firstList.forEach(c -> menu.getChildren().add(c));
-//        ScrollPane pane = new ScrollPane(menu);
-//        pane.setFitToWidth(true);
-//        pane.setFitToHeight(true);
-//        nav.getChildren().add(pane);
+
         nav.getChildren().add(menu);
         menu.getStyleClass().add("menu-content");
         VBox.setVgrow(menu, Priority.ALWAYS);
@@ -197,13 +193,15 @@ public class Tutorial extends Presentation<Tutorial> {
 
         List<TreeTitle> children =
                 data.stream().filter(child -> child.getRelated() != null
-                                              && child.getRelated().getText().equals(item.getText()))
+                                              &&
+                                              child.getRelated().getText().equals(item.getText()) && child.getRelated().getId().equals(item.getId())
+                        )
                         .toList();
 
         if (!children.isEmpty()) {
             children.forEach(c -> {
                 c.setIndex(item.getIndex() + "." + count++);
-//                c.setText(item.getIndex() + "." + count++);
+//                c.setText(item.getIndex() + "." + count++ + " " + c.getText());
             });
             count = 1;
         }
@@ -306,7 +304,9 @@ public class Tutorial extends Presentation<Tutorial> {
     }
 
     private ToggleButton createToggle(TreeTitle label) {
-        ToggleButton toggle = new ToggleButton(indicators ? label.getIndex() + ". " + label.getText() : label.getText());
+//        ToggleButton toggle = new ToggleButton(indicators ? label.getIndex() + ". " + label.getText() : label.getText());
+        System.out.println("indicators = " + indicators);
+        ToggleButton toggle = new ToggleButton( label.getIndex() + ". " + label.getText() );
         toggle.setUserData(label);
         toggle.getStyleClass().addAll("overview-item");
         group.getToggles().add(toggle);
@@ -335,6 +335,8 @@ public class Tutorial extends Presentation<Tutorial> {
         return toggle;
     }
 
+    int idCount = 0;
+
     @Override
     public Tutorial build() {
         Label title = new Label("Overview Content");
@@ -353,11 +355,12 @@ public class Tutorial extends Presentation<Tutorial> {
 
         // pegando todos os items q são label position e titulos
 
+
         data = items.stream()
                 .filter(filter -> filter instanceof TreeTitle
                                   && (filter.getStyleClass().contains("title") || filter.getStyleClass().stream().anyMatch(clazz -> clazz.startsWith("h"))))
                 .map(mapped -> (TreeTitle) mapped)
-//
+                .peek(peeked -> peeked.setId("tile-" + idCount++))
                 .toList();
 //                .peek(el -> VBox.setVgrow(el, Priority.ALWAYS))
         items
