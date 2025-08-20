@@ -1,77 +1,81 @@
 package io.github.gleidsonmt.dashboardfx.presentation.presentations.charts;
 
+import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.glad.charts.CurvedChart;
 import javafx.scene.Node;
-import javafx.scene.chart.*;
-import javafx.scene.layout.StackPane;
+import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  13/03/2025
  */
-public class AreaChartPres extends StackPane {
-    public AreaChartPres() {
-        getChildren().setAll(
-                new Tutorial()
-                        .h3("Area Chart")
-                        .text("""
-                                AreaChart - Plots the area between the line that connects the data points and the 0 line on the Y axis.
-                                """)
-                        .legend("javafx.scene.chart.AreaChart")
-                        .demo(createChart())
-                        .code("""
-                                NumberAxis xAxis = new NumberAxis();
-                                xAxis.setLabel("No of employees");
-                                
-                                NumberAxis yAxis = new NumberAxis();
-                                yAxis.setLabel("Revenue per employee");
-                                
-                                AreaChart<Number, Number> areaChart = new AreaChart<>(xAxis, yAxis);
-                                
-                                XYChart.Series<Number, Number> dataSeries1 = new XYChart.Series<>();
-                                dataSeries1.setName("2014");
-                                
-                                dataSeries1.getData().add(new XYChart.Data<>( 1, 120));
-                                dataSeries1.getData().add(new XYChart.Data<>( 5, 150));
-                                dataSeries1.getData().add(new XYChart.Data<>(10, 354));
-                                dataSeries1.getData().add(new XYChart.Data<>(20, 500));
-                                dataSeries1.getData().add(new XYChart.Data<>(40, 452));
-                                dataSeries1.getData().add(new XYChart.Data<>(80, 630));
-                                areaChart.getData().add(dataSeries1);
-                                """)
-                        .h3("Curved Area Chart")
-                        .text("""
-                                Descendant of area chart with curves.
-                                """)
-                        .legend("io.github.gleidsonmt.glad.charts.ContributionsChart")
-                        .demo(createCurved())
-                        .code("""
-                                NumberAxis xAxis = new NumberAxis();
-                                xAxis.setLabel("No of employees");
-                        
-                                NumberAxis yAxis = new NumberAxis();
-                                yAxis.setLabel("Revenue per employee");
-                        
-                        
-                                XYChart.Series<Number, Number> dataSeries1 = new XYChart.Series<>();
-                                dataSeries1.setName("2014");
-                        
-                                dataSeries1.getData().add(new XYChart.Data<>(1, 120));
-                                dataSeries1.getData().add(new XYChart.Data<>(5, 150));
-                                dataSeries1.getData().add(new XYChart.Data<>(10, 354));
-                                dataSeries1.getData().add(new XYChart.Data<>(20, 500));
-                                dataSeries1.getData().add(new XYChart.Data<>(40, 452));
-                                dataSeries1.getData().add(new XYChart.Data<>(80, 630));
-                        
-                                ContributionsChart<Number, Number> curvedChart = new ContributionsChart<>(
-                                        new NumberAxis(),
-                                        new NumberAxis()
-                                );
-                                curvedChart.getData().add(dataSeries1);
-                                """)
-                        .build().getRoot());
+public class AreaChartPres extends CustomizablePresentation {
 
+    public AreaChartPres() {
+        super("AreaChart");
+    }
+
+    public Tutorial create() {
+        return new Tutorial()
+                .h3("Area Chart")
+                .text("""
+                        AreaChart - Plots the area between the line that connects the data points and the 0 line on the Y axis.
+                        """)
+                .legend("javafx.scene.chart.AreaChart")
+                .demo(createChart())
+                .code("""
+                        NumberAxis xAxis = new NumberAxis();
+                        xAxis.setLabel("No of employees");
+                        
+                        NumberAxis yAxis = new NumberAxis();
+                        yAxis.setLabel("Revenue per employee");
+                        
+                        AreaChart<Number, Number> areaChart = new AreaChart<>(xAxis, yAxis);
+                        
+                        XYChart.Series<Number, Number> dataSeries1 = new XYChart.Series<>();
+                        dataSeries1.setName("2014");
+                        
+                        dataSeries1.getData().add(new XYChart.Data<>( 1, 120));
+                        dataSeries1.getData().add(new XYChart.Data<>( 5, 150));
+                        dataSeries1.getData().add(new XYChart.Data<>(10, 354));
+                        dataSeries1.getData().add(new XYChart.Data<>(20, 500));
+                        dataSeries1.getData().add(new XYChart.Data<>(40, 452));
+                        dataSeries1.getData().add(new XYChart.Data<>(80, 630));
+                        areaChart.getData().add(dataSeries1);
+                        """)
+                .h3("Curved Area Chart")
+                .text("""
+                        Descendant of area chart with curves.
+                        """)
+                .legend("io.github.gleidsonmt.glad.charts.ContributionsChart")
+                .demo(createCurved())
+                .code("""
+                        NumberAxis xAxis = new NumberAxis();
+                        xAxis.setLabel("No of employees");
+                        
+                        NumberAxis yAxis = new NumberAxis();
+                        yAxis.setLabel("Revenue per employee");
+                        
+                        
+                        XYChart.Series<Number, Number> dataSeries1 = new XYChart.Series<>();
+                        dataSeries1.setName("2014");
+                        
+                        dataSeries1.getData().add(new XYChart.Data<>(1, 120));
+                        dataSeries1.getData().add(new XYChart.Data<>(5, 150));
+                        dataSeries1.getData().add(new XYChart.Data<>(10, 354));
+                        dataSeries1.getData().add(new XYChart.Data<>(20, 500));
+                        dataSeries1.getData().add(new XYChart.Data<>(40, 452));
+                        dataSeries1.getData().add(new XYChart.Data<>(80, 630));
+                        
+                        ContributionsChart<Number, Number> curvedChart = new ContributionsChart<>(
+                                new NumberAxis(),
+                                new NumberAxis()
+                        );
+                        curvedChart.getData().add(dataSeries1);
+                        """);
     }
 
     public Node createChart() {

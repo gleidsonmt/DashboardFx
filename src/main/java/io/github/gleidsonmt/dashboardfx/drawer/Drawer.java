@@ -1,15 +1,16 @@
 package io.github.gleidsonmt.dashboardfx.drawer;
 
 import io.github.gleidsonmt.dashboardfx.dashboard.Dashboard;
-import io.github.gleidsonmt.dashboardfx.presentation.Newsletter;
 import io.github.gleidsonmt.dashboardfx.presentation.Scroll;
 import io.github.gleidsonmt.dashboardfx.presentation.about.AboutPres;
 import io.github.gleidsonmt.dashboardfx.presentation.core.*;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.charts.*;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.*;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.*;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.layout.TextFlowPres;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.ToggleSwitchPres;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.LabeledPres;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.ListViewPres;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.RegionPres;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.SVGIconPres;
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
 import io.github.gleidsonmt.dashboardfx.presentation.util.ColorsPres;
 import io.github.gleidsonmt.dashboardfx.utils.pages.BuildingPage;
@@ -60,51 +61,49 @@ public class Drawer extends VBox {
 
     public Drawer() {
         this(List.of(
-                new InteractivePres()
-//                new View("Dashboard", new Dashboard()),
-//                new View("Newsletter", new Newsletter()),
-//                new ModuleSeparator(new SVGIcon(Icon.HUB), "Project"),
-//                new ModuleView("Core",
-//                        new View("Introduction", new Introduction()),
-//                        new InteractivePres(),
+                new Dashboard(),
+                new ModuleSeparator(new SVGIcon(Icon.HUB), "Project"),
+                new ModuleView("Core",
+                        new IntroductionPres(),
+                        new InteractivityPres()
 //                        new View("Module", new BuildingPage()),
 //                        //  Testing
 ////                        new View("Flow", new FlowPres()),
 //                        new View("Wrapper", new WrapperPres())
 ////                        new View("Behavior", new BehaviorPres()),
 ////                        new View("SnackBar", new SnackBarPres())
-//                ),
-//                new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
-//                new ModuleView("Shapes",
-//                        new View("Text", new TextPres()),
+                ),
+                new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
+                new ModuleView("Shapes",
+                        new TextPres()),
 //                        new View("Circle", new BuildingPage())),
-//                new ModuleView("Controls",
-//                        new View("Region", new RegionPres()),
-//                        new View("Labeled", new LabeledPres()),
+                new ModuleView("Controls",
+                        new RegionPres(),
+                         new LabeledPres(),
 //                        new View("Text Input", new TextInputPres()),
 //                        new View("Progress Bar", new ProgressBarPres()),
 //                        new View("Table View", new TableViewPres()),
 //                        new View("Tree View", new TreeViewPres()),
-//                        new View("List View", new ListViewPres())),
+                        new ListViewPres()),
 //                new ModuleView("Containers",
 //                        new View("TitledPane", new BuildingPage()),
 //                        new View("TabPane", new TabPres()),
 //                        new View("Text Flow", new TextFlowPres())),
-//                new ModuleView("Charts",
-//                        new View("Bar Chart", new BarChartPres()),
-//                        new View("Area Chart", new AreaChartPres()),
-//                        new View("Stacked Area Chart", new StackedAreaChartPres()),
-//                        new View("Stacked Bar Chart", new StackedBarChartPres()),
-//                        new View("Pie Chart", new DonutChartPres()),
-//                        new View("Line Chart", new LineChartPres())),
-//                new ModuleSeparator(new SVGIcon(Icon.STACK), "Examples"),
-//                new ModuleView("Components",
-//                        new View("SVGIcon", new SVGIconPres()),
+                new ModuleView("Charts",
+                        new BarChartPres(),
+                        new AreaChartPres(),
+                        new StackedAreaChartPres(),
+                        new StackedBarChartPres(),
+                        new DonutChartPres(),
+                        new LineChartPres()),
+                new ModuleSeparator(new SVGIcon(Icon.STACK), "Examples"),
+                new ModuleView("Components",
+                        new ToggleSwitchPres(),
+                         new SVGIconPres()
 //                        new View("Button", new ButtonExample()),
 //                        new View("Badge", new BadgeExample()),
 //                        new View("Avatar View", new AvatarPres()),
-//                        new View("Toggle Switch", new ToggleSwitchPres())
-//                ),
+                ),
 //                new ModuleView("Styled",
 //                        new View("Drawer", new BuildingPage()),
 //                        new View("BreadCrumb", new BuildingPage()),
@@ -115,11 +114,12 @@ public class Drawer extends VBox {
 ////                        new View("Home Page", new HomePage()),
 ////                        new View("Login", new LoginPage()),
 //                        new View("Error Page 404")),
-//                new ModuleSeparator(new SVGIcon(Icon.HELP), "Theme"),
-//                new ModuleView("Extras",
-//                        new View("Pallet Color", new ColorsPres()),
-//                        new View("Alignment", new BuildingPage())),
-//                new View("About", new AboutPres())
+                new ModuleSeparator(new SVGIcon(Icon.HELP), "Theme"),
+                new ModuleView("Extras",
+                        new ColorsPres()
+//                        new View("Alignment", new BuildingPage()))
+                ),
+                new AboutPres()
         ));
     }
 
@@ -348,7 +348,7 @@ public class Drawer extends VBox {
         b.setPrefWidth(Double.MAX_VALUE);
         b.setOnMouseClicked(e -> currentModule.set(moduleImpl));
 
-        b.addEventFilter(MouseEvent.MOUSE_RELEASED,_-> {
+        b.addEventFilter(MouseEvent.MOUSE_RELEASED, _ -> {
             Root root = (Root) getScene().getRoot();
             root.behavior().closeDrawer();
         });

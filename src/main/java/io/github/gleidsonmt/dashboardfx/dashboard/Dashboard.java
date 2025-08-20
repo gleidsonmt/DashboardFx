@@ -2,6 +2,7 @@ package io.github.gleidsonmt.dashboardfx.dashboard;
 
 import io.github.gleidsonmt.dashboardfx.model.LanguageExperience;
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.internal.View;
 import io.github.gleidsonmt.glad.base.responsive.Break;
 import io.github.gleidsonmt.glad.charts.CurvedChart;
 import io.github.gleidsonmt.glad.charts.DonutChart;
@@ -21,8 +22,9 @@ import javafx.scene.text.Text;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  12/03/2025
  */
-public class Dashboard extends StackPane implements ActionableView {
+public class Dashboard extends View implements ActionableView {
 
+    private final StackPane content = new StackPane();
     private final GridPane grid = new GridPane();
     private final Text title = new Text("Welcome, Jhon Doe!");
 
@@ -41,12 +43,14 @@ public class Dashboard extends StackPane implements ActionableView {
     private final Node boxTeam = new Tile("Total Contributors", new BoxTeam());
 
     public Dashboard() {
+        super("Dashboard");
+        setContent(content);
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setFitToHeight(true);
         scrollPane.setFitToWidth(true);
         scrollPane.setContent(grid);
         grid.setPadding(new Insets(20));
-        getChildren().add(scrollPane);
+        content.getChildren().add(scrollPane);
 
         grid.setHgap(10);
         grid.setVgap(10);

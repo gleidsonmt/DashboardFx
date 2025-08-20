@@ -12,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Separator;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -111,6 +113,12 @@ public class TutorialUtils {
         return box;
     }
 
+    public static void putTextOnClipboard(String text) {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent _content = new ClipboardContent();
+        _content.putString(text);
+        clipboard.setContent(_content);
+    }
 
     public static @NotNull Hyperlink createLink(String placeholder, String moduleName, String topic) {
         Hyperlink hyperlink = new Hyperlink(placeholder);

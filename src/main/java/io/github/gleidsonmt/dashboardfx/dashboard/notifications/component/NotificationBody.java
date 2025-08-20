@@ -24,6 +24,7 @@ public class NotificationBody extends ScrollPane {
         setFitToWidth(true);
         setFitToHeight(true);
 
+
 //        setMinWidth(600);
 //        setPrefWidth(600);
 //        setMaxWidth(600);

@@ -1,6 +1,7 @@
 module io.github.gleidsonmt.dashboardfx {
 
     requires javafx.media;
+    requires javafx.graphics;
 
     requires io.github.gleidsonmt.glad;
     requires org.jetbrains.annotations;
@@ -16,7 +17,6 @@ module io.github.gleidsonmt.dashboardfx {
     requires io.github.gleidsonmt.blockcode;
     requires java.desktop;
     requires org.scenicview.scenicview;
-    requires javafx.graphics;
     requires javafx.controls;
     requires javafx.base;
 

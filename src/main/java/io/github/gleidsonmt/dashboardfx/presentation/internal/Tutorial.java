@@ -74,7 +74,6 @@ public class Tutorial extends Presentation<Tutorial> {
 
     public Tutorial() {
         body.setUserData(this);
-        body.setPadding(new Insets(20));
         aside.setPadding(new Insets(0, 20, 0, 20));
         aside.setPrefWidth(250);
         btnTop.getStyleClass().addAll("btn-directions padding-20 round".split(" "));
@@ -84,34 +83,31 @@ public class Tutorial extends Presentation<Tutorial> {
 
         scroll.setMinHeight(500);
 
-        getRoot().sceneProperty().addListener(new ChangeListener<Scene>() {
-            @Override
-            public void changed(ObservableValue<? extends Scene> observable, Scene oldValue, Scene newValue) {
-                if (newValue != null) {
-                    Root main = (Root) newValue.getRoot();
-                    main.addPoint(_ -> {
-                        body.setRight(null);
-                        body.setTop(aside);
-                        StackPane.setMargin(btnTop, new Insets(10, 40, 10, 10));
-                        aside.setPadding(new Insets(0));
+        getRoot().sceneProperty().addListener((_, _, newValue) -> {
+            if (newValue != null) {
+                Root main = (Root) newValue.getRoot();
+                main.addPoint(_ -> {
+                    body.setRight(null);
+                    body.setTop(aside);
+                    StackPane.setMargin(btnTop, new Insets(10, 40, 10, 10));
+                    aside.setPadding(new Insets(0));
 
-                        aside.setMaxHeight(100);
-                        aside.setPrefHeight(100);
+                    aside.setMaxHeight(100);
+                    aside.setPrefHeight(100);
 
-                    }, Break.MOBILE, Break.SM, Break.MD);
+                }, Break.MOBILE, Break.SM, Break.MD);
 
-                    main.addPoint(_ -> {
-                        menu.setMaxHeight(-1);
-                        if (body.getChildren().contains(aside)) {
-                            body.getChildren().remove(aside);
-                            body.setRight(aside);
-                        } else {
-                            body.setRight(aside);
-                        }
-                        aside.setPadding(new Insets(0, 20, 0, 20));
-                        StackPane.setMargin(btnTop, new Insets(10, 40 + 250, 10, 10));
-                    }, Break.WIDE, Break.XL, Break.XXL);
-                }
+                main.addPoint(_ -> {
+                    menu.setMaxHeight(-1);
+                    if (body.getChildren().contains(aside)) {
+                        body.getChildren().remove(aside);
+                        body.setRight(aside);
+                    } else {
+                        body.setRight(aside);
+                    }
+                    aside.setPadding(new Insets(0, 20, 0, 20));
+                    StackPane.setMargin(btnTop, new Insets(10, 40 + 250, 10, 10));
+                }, Break.WIDE, Break.XL, Break.XXL);
             }
         });
 //        body.addPoint(_ -> {
@@ -236,10 +232,12 @@ public class Tutorial extends Presentation<Tutorial> {
     private VBox createMenu(TreeTitle label) {
         VBox root = new VBox();
 
+
 //        ToggleButton toggle = createToggle(label);
 //        ToggleButton toggle = createToggle(label);
 //        root.getChildren().add(toggle);
         GridPane grid = createItem(label);
+        grid.setPadding(new Insets(2));
         grid.setMaxHeight(30);
         grid.getStyleClass().addAll("grid-item", "h6");
         root.getChildren().add(grid);
@@ -304,9 +302,8 @@ public class Tutorial extends Presentation<Tutorial> {
     }
 
     private ToggleButton createToggle(TreeTitle label) {
-//        ToggleButton toggle = new ToggleButton(indicators ? label.getIndex() + ". " + label.getText() : label.getText());
-        System.out.println("indicators = " + indicators);
-        ToggleButton toggle = new ToggleButton( label.getIndex() + ". " + label.getText() );
+        ToggleButton toggle = new ToggleButton(indicators ? label.getIndex() + ". " + label.getText() : label.getText());
+//        ToggleButton toggle = new ToggleButton( label.getIndex() + ". " + label.getText() );
         toggle.setUserData(label);
         toggle.getStyleClass().addAll("overview-item");
         group.getToggles().add(toggle);

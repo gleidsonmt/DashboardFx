@@ -19,8 +19,8 @@ public class SnackBarPres extends StackPane {
                         .node(TutorialUtils.createAction(e -> {
                             Root root = (Root) getScene().getRoot();
                             root.behavior()
-                                    .alert()
-                                    .snack("Hello SnackBar")
+                                    .snack()
+                                    .message("Hello SnackBar")
                                     .show();
                         }))
 //                        .node(createButton())

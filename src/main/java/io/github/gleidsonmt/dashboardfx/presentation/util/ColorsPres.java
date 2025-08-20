@@ -4,21 +4,18 @@ import eu.hansolo.colors.MaterialDesign;
 import io.github.gleidsonmt.dashboardfx.material.MaterialColumn;
 import io.github.gleidsonmt.dashboardfx.material.MaterialGrid;
 import io.github.gleidsonmt.dashboardfx.material.MaterialItem;
+import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.HoverAnimation;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
+import io.github.gleidsonmt.glad.base.WrapperEffect;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Orientation;
 import javafx.scene.Node;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Separator;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 
 import java.net.URI;
@@ -28,88 +25,88 @@ import java.net.URISyntaxException;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  25/03/2025
  */
-public class ColorsPres extends StackPane {
+public class ColorsPres extends CustomizablePresentation {
+
     public ColorsPres() {
+        super("Colors");
+    }
+
+    @Override
+    public Tutorial create() {
         try {
-            getChildren().setAll(
-                    new Tutorial()
-                            .h3("Colors")
-                            .h4("Install", "Colors")
-                            .code("ThemeProvider.install(scene, \n\t... \n\tCss.COLORS);", "java")
+            return new Tutorial()
+                    .h3("Colors")
+                    .h4("Install", "Colors")
+                    .code("ThemeProvider.install(scene, \n\t... \n\tCss.COLORS);", "java")
 
-                            .h4("Grid Colors", "Colors")
-                            //                        .link("Original","https://github.com/HanSolo/Colors")
-                            //                        .node(createCard())
-                            .node(TutorialUtils.createCardLink("HanSolo Colors", new URI("https://github.com/HanSolo/Colors")))
-                            .node(createGrid())
+                    .h4("Grid Colors", "Colors")
+                    .node(TutorialUtils.createCardLink("HanSolo Colors", new URI("https://github.com/HanSolo/Colors")))
+                    .node(createGrid())
 
-                            .h4("Bootstrap", "Colors")
-                            .text("Common colors.")
-                            .demo(new Node[]{
-                                    createDemo("-primary"),
-                                    createDemo("-info"),
-                                    createDemo("-success"),
-                                    createDemo("-warning"),
-                                    createDemo("-danger"),
-                                    createDemo("-secondary"),
-                                    createDemo("-unique"),
-                                    createDemo("-elegant")
-                            })
-                            .h4("Theme", "Colors")
-                            .text("Named colors")
-                            .demo(new Node[]{
-                                    createDemo("-brown"),
-                                    createDemo("-red"),
-                                    createDemo("-grapefruit"),
-                                    createDemo("-grapefruit-2"),
-                                    createDemo("-bittersweet"),
-                                    createDemo("-bittersweet-2"),
-                                    createDemo("-deep-orange"),
-                                    createDemo("-orange"),
-                                    createDemo("-amber"),
-                                    createDemo("-sunflower"),
-                                    createDemo("-yellow"),
-                                    createDemo("-lime"),
-                                    createDemo("-grass"),
-                                    createDemo("-grass-2"),
-                                    createDemo("-green"),
-                                    createDemo("-mint"),
-                                    createDemo("-mint-2"),
-                                    createDemo("-teal"),
-                                    createDemo("-cyan"),
-                                    createDemo("-aqua"),
-                                    createDemo("-aqua-2"),
-                                    createDemo("-blue-jeans"),
-                                    createDemo("-blue-jeans-2"),
-                                    createDemo("-blue"),
-                                    createDemo("-indigo"),
-                                    createDemo("-purple"),
-                                    createDemo("-deep-purple"),
-                                    createDemo("-lavander"),
-                                    createDemo("-lavander-2"),
-                                    createDemo("-pink"),
-                                    createDemo("-pink-rose"),
-                                    createDemo("-pink-rose-2"),
-                                    createDemo("-light-gray"),
-                                    createDemo("-light-gray-2"),
-                                    createDemo("-medium-gray"),
-                                    createDemo("-medium-gray-2"),
-                                    createDemo("-dark-gray"),
-                                    createDemo("-dark-gray-2"),
-                                    createDemo("-blue-gray"),
-                                    createDemo("-light-green"),
-                                    createDemo("-light-blue"),
-                                    createDemo("-gray"),
-                                    createDemo("-white"),
-                                    createDemo("-black")
-                            })
-
-                            .build()
-                            .getRoot()
-            );
+                    .h4("Bootstrap", "Colors")
+                    .text("Common colors.")
+                    .demo(new Node[]{
+                            createDemo("-primary"),
+                            createDemo("-info"),
+                            createDemo("-success"),
+                            createDemo("-warning"),
+                            createDemo("-danger"),
+                            createDemo("-secondary"),
+                            createDemo("-unique"),
+                            createDemo("-elegant")
+                    })
+                    .h4("Theme", "Colors")
+                    .text("Named colors")
+                    .demo(new Node[]{
+                            createDemo("-brown"),
+                            createDemo("-red"),
+                            createDemo("-grapefruit"),
+                            createDemo("-grapefruit-2"),
+                            createDemo("-bittersweet"),
+                            createDemo("-bittersweet-2"),
+                            createDemo("-deep-orange"),
+                            createDemo("-orange"),
+                            createDemo("-amber"),
+                            createDemo("-sunflower"),
+                            createDemo("-yellow"),
+                            createDemo("-lime"),
+                            createDemo("-grass"),
+                            createDemo("-grass-2"),
+                            createDemo("-green"),
+                            createDemo("-mint"),
+                            createDemo("-mint-2"),
+                            createDemo("-teal"),
+                            createDemo("-cyan"),
+                            createDemo("-aqua"),
+                            createDemo("-aqua-2"),
+                            createDemo("-blue-jeans"),
+                            createDemo("-blue-jeans-2"),
+                            createDemo("-blue"),
+                            createDemo("-indigo"),
+                            createDemo("-purple"),
+                            createDemo("-deep-purple"),
+                            createDemo("-lavander"),
+                            createDemo("-lavander-2"),
+                            createDemo("-pink"),
+                            createDemo("-pink-rose"),
+                            createDemo("-pink-rose-2"),
+                            createDemo("-light-gray"),
+                            createDemo("-light-gray-2"),
+                            createDemo("-medium-gray"),
+                            createDemo("-medium-gray-2"),
+                            createDemo("-dark-gray"),
+                            createDemo("-dark-gray-2"),
+                            createDemo("-blue-gray"),
+                            createDemo("-light-green"),
+                            createDemo("-light-blue"),
+                            createDemo("-gray"),
+                            createDemo("-white"),
+                            createDemo("-black")
+                    });
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     private Node createGrid() {
@@ -155,6 +152,7 @@ public class ColorsPres extends StackPane {
         }
 
         StackPane stackPane = new StackPane();
+
         Tooltip.install(stackPane, tooltip);
         HoverAnimation.install(stackPane);
 
@@ -169,6 +167,11 @@ public class ColorsPres extends StackPane {
             ClipboardContent _content = new ClipboardContent();
             _content.putString(name);
             clipboard.setContent(_content);
+            getRoot()
+                    .behavior()
+                    .snack()
+                    .message("You copied " + name + " to clipboard.")
+                    .show();
         });
         return stackPane;
     }

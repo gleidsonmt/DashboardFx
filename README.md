@@ -17,8 +17,8 @@
 <!-- TOC -->
 * [📑 Overview](#-overview)
 * [💻 Environment](#-environment)
+* [☕ Running](#-running)
 * [🚀 Installing](#-installing)
-* [☕ Using Dashboard](#-using-dashboard)
 * [📺 On Youtube](#-on-youtube)
 * [🛠 Enhancements](#-enhancements)
 * [📫 Contributing to Project](#-contributing-to-project)
@@ -33,23 +33,26 @@
 Hy guys, I'm back, with more, after these years I looked for some things that can be really good-looking to build, and I want to share with you.
 In this example, you can see how components in Javafx can be worked to align with a good design (I try). 
 This time I use more time to create more tutorials and unify libs.
-
+When the app is running, you can have a tutorial about creating these things showed inside it.
 
 # 💻 Environment
 
 This is a project build using JavaFx, Official website [JavaFx](https://openjfx.io/), Tutorial [Getting Started](https://openjfx.io/openjfx-docs/)
 
-I've used a gradle 8.10 and Java and JavaFx +23 on Windows to build.
+I've used a gradle 8.13 (preference for wrapper) and Java and JavaFx 23+ on Windows.
 You'll find the jars in the folder called vendor.
+All libs are included in build.gradle
+
+# ☕ Running
+Just build and run -(º-º)- there's no trick… only use gradle to build and run in your ide.
+Use the command build and run to see application running. 
+If you have problems, open an issue.
 
 # 🚀 Installing
 I really recommend to use jpackage to create your jar and the .exe. <br>
-!🗒️Note ** The generate you .exe you need the wix tool, you can get the url if you using intellij or from here  https://wixtoolset.org 🥸***
+!🗒️Note ** To generate you .exe you need the wix tool, you can get the url if you using intellij or from here  https://wixtoolset.org 🥸***
 In intellij or visual studio (in visual you need to prepare the  ide to use javafx) it's really simple, only open the tab gradle and run the command build after jpackage.
-
-# ☕ Using Dashboard
-Just build and run -(º-º)- there's no trick.. only use gradle to build and run in your ide.
-If you have problem, or a tip do an issue.
+Don't use any library like scenicView, cssfx.. when you build a jpackage, that's only to test design. (maybe you can't get the result expected or crash your app)
 ...
 # 📺 On Youtube
 ...

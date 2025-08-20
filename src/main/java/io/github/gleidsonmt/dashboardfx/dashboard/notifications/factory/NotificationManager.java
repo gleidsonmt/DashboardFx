@@ -86,18 +86,12 @@ public class NotificationManager {
                 }
             });
         } else {
-//            root.wrapper()
-//                    .onClick(e -> {
-//                        root.wrapper().hide();
-//                        root.flow().remove(pane);
-//                    })
-//                    .show();
-//            root.flow().openByNode(pane,
-//                   target, Pos.BOTTOM_RIGHT);
+
             pane.setOnMouseExited(e -> root.flow().remove(pane));
             root.flow()
                     .content(pane)
                     .width(500)
+//                    .height(500)
                     .pos(Pos.BOTTOM_CENTER)
                     .insets(new Insets(0))
                     .show(target);

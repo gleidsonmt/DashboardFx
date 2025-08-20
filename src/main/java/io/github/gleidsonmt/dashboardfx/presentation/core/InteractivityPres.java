@@ -1,11 +1,9 @@
 package io.github.gleidsonmt.dashboardfx.presentation.core;
 
-import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.internal.Anchor;
-import io.github.gleidsonmt.glad.base.internal.View;
 import io.github.gleidsonmt.glad.controls.button.Button;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
@@ -22,34 +20,26 @@ import javafx.scene.text.TextFlow;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  19/08/2025
  */
-public class InteractivePres extends View implements ActionableView {
+public class InteractivityPres extends CustomizablePresentation {
 
-    private Tutorial tutorial;
+    public InteractivityPres() {
+        super("Interactivity");
+    }
 
-    public InteractivePres() {
-        super("InteractiveTest");
-
+    @Override
+    public Tutorial create() {
         Button node = new Button("Click on!");
         node.setPadding(new Insets(10));
         node.setOnAction(_ -> {
-            Root root = (Root) tutorial.getRoot().getScene().getRoot();
+            Root root = (Root) getRoot().getScene().getRoot();
             root.flow()
                     .content(createButton())
                     .show(node);
         });
 
-        tutorial = new Tutorial()
+        return new Tutorial()
 
-//                .h3("Introduction")
-//                .h3("Flow", "Introduction")
-//                .h3("Show", "Flow")
-//                .h3("Mouse", "Show")
-//                .h3("Node", "Show")
-//                .h3("Wrapper", "Introduction")
-//                .h3("Show", "Wrapper")
-//                .h3("Combine", "Wrapper")
-//                .h3("Action", "Wrapper")
-//                .h3("Hide", "Wrapper")
+
                 .indicators()
                 .h3("Introduction")
                 .text("I've been really interested in JavaFX interactivity.")
@@ -87,6 +77,19 @@ public class InteractivePres extends View implements ActionableView {
                 .legend("See more in")
                 .node(TutorialUtils.createLink("Button", "Button"))
                 .node(TutorialUtils.createLink("SVGIcon", "SVGIcon"))
+
+                .h3("Size", "Show")
+                .text("Set the size using width() and height().")
+                .code("""
+                        Root root = (Root) getScene().getRoot();
+                        root.flow()
+                                .content(createButton())
+                                .width(300)
+                                .height(300)
+                                .show();
+                        """)
+                .text("If width or height isn't set, the pref sizes will be used.")
+
                 .h3("Mouse", "Show")
                 .text("Showing using a mouse position.")
                 .code("""
@@ -95,6 +98,7 @@ public class InteractivePres extends View implements ActionableView {
                                 .content(createButton())
                                 .show(e); // The e represents the mouse event.
                         """)
+                .text("The center of cursor node in the mouse position is default. But you can also use insets and pos to modify.")
                 .node(TutorialUtils.createAction("Activate action", _ ->
                         getRoot().setOnMouseClicked(event ->
                                 getRoot().flow()
@@ -213,8 +217,9 @@ public class InteractivePres extends View implements ActionableView {
                         ...
                         root.wrapper().hide();
                         """);
-        ;
     }
+
+
 
     private IconButton createButton() {
         IconButton iconButton = new IconButton(new SVGIcon(Icon.ADD), false,
@@ -245,8 +250,4 @@ public class InteractivePres extends View implements ActionableView {
         return box;
     }
 
-    @Override
-    public void onEnter(Root root) {
-        setContent(tutorial.build().getRoot());
-    }
 }

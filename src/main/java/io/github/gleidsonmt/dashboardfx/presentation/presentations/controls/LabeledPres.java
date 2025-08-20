@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.presentation.presentations.controls;
 
+import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
@@ -15,147 +16,146 @@ import javafx.scene.layout.StackPane;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  20/02/2025
  */
-public class LabeledPres extends StackPane {
+public class LabeledPres extends CustomizablePresentation {
 
     public LabeledPres() {
-        getChildren().setAll(
-                new Tutorial()
-                        .indicators()
-                        .h3("Labeled", null)
-                        .text("""
-                                A Labeled Control is one which has as part of its user interface a textual content associated with it.
-                                For example, a Button displays text, as does a Label, a Tooltip, and many other controls.""")
-                        .h3("Label", "Labeled")
-                        .text("""
-                                Label is a non-editable text control.
-                                A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. 
-                                Labels also are useful in that they can have mnemonics which, if used, will send focus to the Control listed as the target of the labelFor property.""")
-                        .legend("javafx.scene.control.Label")
-                        .legend("All classes in (Text) works in the text inside label.")
-                        .legend("All classes in (Region) can by apply in label.")
+        super("Labeled");
+    }
+
+    public Tutorial create() {
+        return new Tutorial()
+                .indicators()
+                .h3("Labeled", null)
+                .text("""
+                        A Labeled Control is one which has as part of its user interface a textual content associated with it.
+                        For example, a Button displays text, as does a Label, a Tooltip, and many other controls.""")
+                .h3("Label", "Labeled")
+                .text("""
+                        Label is a non-editable text control.
+                        A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. 
+                        Labels also are useful in that they can have mnemonics which, if used, will send focus to the Control listed as the target of the labelFor property.""")
+                .legend("javafx.scene.control.Label")
+                .legend("All classes in (Text) works in the text inside label.")
+                .legend("All classes in (Region) can by apply in label.")
 //                        .legend("(The base font here is set to Poppins, by default, is not apply, but it's better to add all fonts before the app load. At the end you can see the code to add.)")
-                        // .link([link to explanation]) ir para temas
+                // .link([link to explanation]) ir para temas
 
-                        .demo(new Label("Lorem ipsum dolor color"))
-                        .code("Label label = new Label(\"Lorem ipsum dolor color\");")
+                .demo(new Label("Lorem ipsum dolor color"))
+                .code("Label label = new Label(\"Lorem ipsum dolor color\");")
 
-                        .h3("Graphic", "Label")
-                        .text("An optional icon for the Labeled.")
-                        .legend("Every node object can be an icon.")
-                        .node(TutorialUtils.createLink("See more icons in SVGIcon", "SVGIcon"))
-                        .demo(new Node[]{
-                                createDemo(new SVGIcon(Icon.MENU), "Menu"),
-                                createDemo(new SVGIcon(Icon.ARROW_BACK), "Arrow"),
-                                createDemo(new SVGIcon(Icon.LOCATION_ON), "Location")
-                        })
-                        .h3("Display", "Label")
-                        .table(
-                                new Row("display-top", " -fx-content-display: top;"),
-                                new Row("display-right ", "-fx-content-display: right;"),
-                                new Row("display-bottom", "-fx-content-display: bottom;"),
-                                new Row("display-left", "-fx-content-display: left;"),
-                                new Row("display-center", "-fx-content-display: center;"),
-                                new Row("display-graphic", "-fx-content-display: graphic_only;"),
-                                new Row("display-text", " -fx-content-display: text_only;")
-                        )
-                        .demo(new Node[]{
-                                createDemo(new SVGIcon(Icon.ADD), "Label", "display-top", "border-2", "border-light-gray-2", "padding-5"),
-                                createDemo(new SVGIcon(Icon.ADD), "Label", "display-right", "border-2", "border-light-gray-2", "padding-5"),
-                                createDemo(new SVGIcon(Icon.ADD), "Label", "display-bottom", "border-2", "border-light-gray-2", "padding-5"),
-                                createDemo(new SVGIcon(Icon.ADD), "Label", "display-left", "border-2", "border-light-gray-2", "padding-5"),
-                                createDemo(new SVGIcon(Icon.ADD), "Label", "display-center", "border-2", "border-light-gray-2", "padding-5"),
-                                createDemo(new SVGIcon(Icon.ADD), "Label", "display-graphic", "border-2", "border-light-gray-2", "padding-5"),
-                                createDemo(new SVGIcon(Icon.ADD), "Label", "display-text", "border-2", "border-light-gray-2", "padding-5")
-                        })
-                        .code("label.setGraphic(new SVGIcon(Icon.MENU));")
+                .h3("Graphic", "Label")
+                .text("An optional icon for the Labeled.")
+                .legend("Every node object can be an icon.")
+                .node(TutorialUtils.createLink("See more icons in SVGIcon", "SVGIcon"))
+                .demo(new Node[]{
+                        createDemo(new SVGIcon(Icon.MENU), "Menu"),
+                        createDemo(new SVGIcon(Icon.ARROW_BACK), "Arrow"),
+                        createDemo(new SVGIcon(Icon.LOCATION_ON), "Location")
+                })
+                .h3("Display", "Label")
+                .table(
+                        new Row("display-top", " -fx-content-display: top;"),
+                        new Row("display-right ", "-fx-content-display: right;"),
+                        new Row("display-bottom", "-fx-content-display: bottom;"),
+                        new Row("display-left", "-fx-content-display: left;"),
+                        new Row("display-center", "-fx-content-display: center;"),
+                        new Row("display-graphic", "-fx-content-display: graphic_only;"),
+                        new Row("display-text", " -fx-content-display: text_only;")
+                )
+                .demo(new Node[]{
+                        createDemo(new SVGIcon(Icon.ADD), "Label", "display-top", "border-2", "border-light-gray-2", "padding-5"),
+                        createDemo(new SVGIcon(Icon.ADD), "Label", "display-right", "border-2", "border-light-gray-2", "padding-5"),
+                        createDemo(new SVGIcon(Icon.ADD), "Label", "display-bottom", "border-2", "border-light-gray-2", "padding-5"),
+                        createDemo(new SVGIcon(Icon.ADD), "Label", "display-left", "border-2", "border-light-gray-2", "padding-5"),
+                        createDemo(new SVGIcon(Icon.ADD), "Label", "display-center", "border-2", "border-light-gray-2", "padding-5"),
+                        createDemo(new SVGIcon(Icon.ADD), "Label", "display-graphic", "border-2", "border-light-gray-2", "padding-5"),
+                        createDemo(new SVGIcon(Icon.ADD), "Label", "display-text", "border-2", "border-light-gray-2", "padding-5")
+                })
+                .code("label.setGraphic(new SVGIcon(Icon.MENU));")
 
-                        .h3("Button", "Labeled")
-                        .text("A simple button control. The button control can contain text and/or a graphic.")
-                        .legend("javafx.scene.control.Button")
-                        .text("All classes in (Text) works in the text inside button.")
-                        .text("All classes in (Region, Label) can by apply.")
-                        .demo(createButtonDemo())
-                        .code("""
-                                Button btn = new Button("Button");
-                                """)
+                .h3("Button", "Labeled")
+                .text("A simple button control. The button control can contain text and/or a graphic.")
+                .legend("javafx.scene.control.Button")
+                .text("All classes in (Text) works in the text inside button.")
+                .text("All classes in (Region, Label) can by apply.")
+                .demo(createButtonDemo())
+                .code("""
+                        Button btn = new Button("Button");
+                        """)
 
-                        .demo(createButtonDemo("Cancel", false, true))
-                        .code("btn.setCancelButton(true);")
+                .demo(createButtonDemo("Cancel", false, true))
+                .code("btn.setCancelButton(true);")
 
-                        .h2("Hyperlink", "Button")
-                        .text("""
-                                An HTML like label which can be a graphic and/or text which responds to rollovers and clicks. When a hyperlink is clicked/pressed isVisited becomes true.
-                                A Hyperlink behaves just like a Button.
-                                When a hyperlink is pressed and released a ActionEvent is sent, and your application can perform some action based on this event.
-                                """)
-                        .legend("javafx.scene.control.Hyperlink")
-                        .legend("All classes in (Text) works in the text inside hyperlink.")
-                        .text("All classes in (Region, Label) can by apply.")
+                .h2("Hyperlink", "Button")
+                .text("""
+                        An HTML like label which can be a graphic and/or text which responds to rollovers and clicks. When a hyperlink is clicked/pressed isVisited becomes true.
+                        A Hyperlink behaves just like a Button.
+                        When a hyperlink is pressed and released a ActionEvent is sent, and your application can perform some action based on this event.
+                        """)
+                .legend("javafx.scene.control.Hyperlink")
+                .legend("All classes in (Text) works in the text inside hyperlink.")
+                .text("All classes in (Region, Label) can by apply.")
 //                        .legend("(The base font here is set to Poppins, by default is not apply, but it's better to add all fonts before the app load. At the end you can see the code to add.)")
-                        // .link([link to explanation]) ir para temas
+                // .link([link to explanation]) ir para temas
 
-                        .demo(createHyperlink("google.com"))
-                        .code("Hyperlink hyperlink = new Hyperlink(\"google.com\");")
+                .demo(createHyperlink("google.com"))
+                .code("Hyperlink hyperlink = new Hyperlink(\"google.com\");")
 
-                        .h3("CheckBox", "Button")
-                        .text("""
-                                A tri-state selection Control typically skinned as a box with a checkmark or tick mark when checked.""")
-                        .legend("javafx.scene.control.CheckBox")
-                        .demo(createCheckBox("Select me"))
-                        .code("CheckBox checkBox = new CheckBox(\"Select me\");")
+                .h3("CheckBox", "Button")
+                .text("""
+                        A tri-state selection Control typically skinned as a box with a checkmark or tick mark when checked.""")
+                .legend("javafx.scene.control.CheckBox")
+                .demo(createCheckBox("Select me"))
+                .code("CheckBox checkBox = new CheckBox(\"Select me\");")
 
-                        .h3("Toggle Button", "Button")
-                        .text("""
-                                ToggleButton is a specialized control which has the ability to be selected.
-                                Typically a ToggleButton is rendered similarly to a Button. 
-                                However, they are two different types of Controls. 
-                                A Button is a "command" button which invokes a function when clicked.""")
-                        .legend("javafx.scene.control.ToggleButton")
-                        .text("All classes in (Text) works in the text inside button.")
-                        .text("All classes in (Region, Label, Button) can by apply.")
-                        .demo(
-                                new ToggleButton("Toggle")
-                        )
-                        .code("""
-                                ToggleButton btn = new ToggleButton("Button");
-                                """)
+                .h3("Toggle Button", "Button")
+                .text("""
+                        ToggleButton is a specialized control which has the ability to be selected.
+                        Typically a ToggleButton is rendered similarly to a Button. 
+                        However, they are two different types of Controls. 
+                        A Button is a "command" button which invokes a function when clicked.""")
+                .legend("javafx.scene.control.ToggleButton")
+                .text("All classes in (Text) works in the text inside button.")
+                .text("All classes in (Region, Label, Button) can by apply.")
+                .demo(
+                        new ToggleButton("Toggle")
+                )
+                .code("""
+                        ToggleButton btn = new ToggleButton("Button");
+                        """)
 
-                        .h3("Radio Button", "Button")
-                        .text("""
-                                RadioButtons create a series of items where only one item can be selected. RadioButtons are a specialized ToggleButton.""")
-                        .legend("javafx.scene.control.RadioButton")
-                        .demo(createDemoRadio("Select me"))
-                        .code("""
-                                RadioButton radioButton = new RadioButton("Select me");
-                                """)
+                .h3("Radio Button", "Button")
+                .text("""
+                        RadioButtons create a series of items where only one item can be selected. RadioButtons are a specialized ToggleButton.""")
+                .legend("javafx.scene.control.RadioButton")
+                .demo(createDemoRadio("Select me"))
+                .code("""
+                        RadioButton radioButton = new RadioButton("Select me");
+                        """)
 
-                        .h4("Toggle Group", "Button")
-                        .text(""" 
-                                A class which contains a reference to all Toggles whose selected variables should be managed such that only a single Toggle within the ToggleGroup may be selected at any one time.
-                                Generally ToggleGroups are managed automatically simply by specifying the name of a ToggleGroup on the Toggle, but in some situations it is desirable to explicitly manage which ToggleGroup is used by Toggles.""")
-                        .legend("javafx.scene.control.ToggleGroup")
-                        .demo(createGroupButton())
-                        .code("""
-                                ToggleGroup group = new ToggleGroup();
-                                ToggleButton optionOne = new ToggleButton("Option One");
-                                ToggleButton optionTwo = new ToggleButton("Option Two");
-                                HBox box = new HBox(optionOne, optionTwo);
-                                box.setSpacing(10);
-                                group.getToggles().addAll(optionOne, optionTwo);
-                                """)
-                        .demo(createGroupRadio())
-                        .code("""
-                                ToggleGroup group = new ToggleGroup();
-                                RadioButton optionOne = new RadioButton("Option One");
-                                RadioButton optionTwo = new RadioButton("Option Two");
-                                HBox box = new HBox(optionOne, optionTwo);
-                                box.setSpacing(10);
-                                group.getToggles().addAll(optionOne, optionTwo);
-                                """)
-                        .build()
-                        .getRoot()
-        );
-
+                .h4("Toggle Group", "Button")
+                .text(""" 
+                        A class which contains a reference to all Toggles whose selected variables should be managed such that only a single Toggle within the ToggleGroup may be selected at any one time.
+                        Generally ToggleGroups are managed automatically simply by specifying the name of a ToggleGroup on the Toggle, but in some situations it is desirable to explicitly manage which ToggleGroup is used by Toggles.""")
+                .legend("javafx.scene.control.ToggleGroup")
+                .demo(createGroupButton())
+                .code("""
+                        ToggleGroup group = new ToggleGroup();
+                        ToggleButton optionOne = new ToggleButton("Option One");
+                        ToggleButton optionTwo = new ToggleButton("Option Two");
+                        HBox box = new HBox(optionOne, optionTwo);
+                        box.setSpacing(10);
+                        group.getToggles().addAll(optionOne, optionTwo);
+                        """)
+                .demo(createGroupRadio())
+                .code("""
+                        ToggleGroup group = new ToggleGroup();
+                        RadioButton optionOne = new RadioButton("Option One");
+                        RadioButton optionTwo = new RadioButton("Option Two");
+                        HBox box = new HBox(optionOne, optionTwo);
+                        box.setSpacing(10);
+                        group.getToggles().addAll(optionOne, optionTwo);
+                        """);
     }
 
     private Node createCheckBox(String text) {
@@ -168,6 +168,7 @@ public class LabeledPres extends StackPane {
     private Hyperlink createHyperlink(String _text, String... _classes) {
         return createHyperlink(null, _text, _classes);
     }
+
     private Hyperlink createHyperlink(Node graphic, String _text, String... _classes) {
         Hyperlink text = new Hyperlink(_text);
         text.setGraphic(graphic);
