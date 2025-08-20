@@ -42,21 +42,16 @@ public class SVGIconPres extends CustomizablePresentation {
                 .demo(new SVGIcon(Icon.MENU))
                 .code("SVGIcon icon = new SVGIcon(Icon.MENU)")
                 .h3("Options")
-//                        .demo(createDemos())
-//                .demo(new Node[]{
-//                        new Array()
-//                })
+
                 .demo(demos());
 
     }
 
     private Node[] demos() {
         Node[] arr = new Node[Icon.values().length];
-
-        //Converting to Array
         for (int i = 0 ; i < arr.length ; i++) {
             Label label = new Label(Icon.values()[i].name());
-            label.setOnMouseClicked(e -> {
+            label.setOnMouseClicked(_ -> {
                 TutorialUtils.putTextOnClipboard("Icon." + label.getText());
                 getRoot().
                         behavior()
@@ -71,33 +66,5 @@ public class SVGIconPres extends CustomizablePresentation {
         }
 
         return arr;
-    }
-
-    private Node createDemos() {
-        TilePane flowPane = new TilePane();
-        flowPane.setStyle("-fx-background-color: red;");
-        flowPane.setHgap(10);
-        flowPane.setVgap(10);
-
-        for (Icon icon : Icon.values()) {
-            Label label = new Label(icon.name());
-            label.setGraphic(new SVGIcon(icon));
-            label.setContentDisplay(ContentDisplay.TOP);
-            flowPane.getChildren().add(label);
-
-        }
-
-        return flowPane;
-    }
-
-    private Label createDemo(String _text, String... _classes) {
-        return createDemo(null, _text, _classes);
-    }
-
-    private Label createDemo(Node graphic, String _text, String... _classes) {
-        Label text = new Label(_text);
-        text.setGraphic(graphic);
-        text.getStyleClass().addAll(_classes);
-        return text;
     }
 }
