@@ -6,14 +6,14 @@ import io.github.gleidsonmt.dashboardfx.presentation.about.AboutPres;
 import io.github.gleidsonmt.dashboardfx.presentation.core.*;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.charts.*;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.AvatarViewPres;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.LabelExamplePres;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.ToggleSwitchPres;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.LabeledPres;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.ListViewPres;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.RegionPres;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.SVGIconPres;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.*;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.TabPanePres;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.layout.TextFlowPres;
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
 import io.github.gleidsonmt.dashboardfx.presentation.util.ColorsPres;
-import io.github.gleidsonmt.dashboardfx.utils.pages.BuildingPage;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.internal.Module;
 import io.github.gleidsonmt.glad.base.internal.ModuleView;
@@ -79,16 +79,16 @@ public class Drawer extends VBox {
 //                        new View("Circle", new BuildingPage())),
                 new ModuleView("Controls",
                         new RegionPres(),
-                         new LabeledPres(),
+                        new LabeledPres(),
 //                        new View("Text Input", new TextInputPres()),
 //                        new View("Progress Bar", new ProgressBarPres()),
 //                        new View("Table View", new TableViewPres()),
 //                        new View("Tree View", new TreeViewPres()),
                         new ListViewPres()),
-//                new ModuleView("Containers",
+                new ModuleView("Containers",
 //                        new View("TitledPane", new BuildingPage()),
-//                        new View("TabPane", new TabPres()),
-//                        new View("Text Flow", new TextFlowPres())),
+                        new TabPanePres(),
+                        new TextFlowPres()),
                 new ModuleView("Charts",
                         new BarChartPres(),
                         new AreaChartPres(),
@@ -99,19 +99,20 @@ public class Drawer extends VBox {
                 new ModuleSeparator(new SVGIcon(Icon.STACK), "Examples"),
                 new ModuleView("Components",
                         new ToggleSwitchPres(),
-                         new SVGIconPres()
+                        new SVGIconPres(),
+                        new AvatarViewPres()
 //                        new View("Button", new ButtonExample()),
 //                        new View("Badge", new BadgeExample()),
-//                        new View("Avatar View", new AvatarPres()),
+
                 ),
-//                new ModuleView("Styled",
+                new ModuleView("Styled",
 //                        new View("Drawer", new BuildingPage()),
 //                        new View("BreadCrumb", new BuildingPage()),
 //                        new View("Tree View", new TreeViewExample()),
-//                        new View("Label", new LabelExample()),
+                        new LabelExamplePres()),
 //                        new View("Cards", new CardsPres())),
 //                new ModuleView("Pages",
-////                        new View("Home Page", new HomePage()),
+//                        new View("Home Page", new HomePage()),
 ////                        new View("Login", new LoginPage()),
 //                        new View("Error Page 404")),
                 new ModuleSeparator(new SVGIcon(Icon.HELP), "Theme"),
@@ -172,7 +173,7 @@ public class Drawer extends VBox {
 
         if (!group.getToggles().isEmpty()) {
             group.selectToggle(group.getToggles().get(0));
-            currentModule.setValue((ModuleView) group.getToggles().get(0).getUserData());
+            currentModule.setValue((ModuleView) group.getToggles().get(1).getUserData());
         }
 
         search.textProperty().addListener((_, _, newVal) -> {

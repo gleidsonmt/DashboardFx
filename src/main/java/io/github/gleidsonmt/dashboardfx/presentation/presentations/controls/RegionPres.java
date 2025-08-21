@@ -22,6 +22,7 @@ public class RegionPres extends CustomizablePresentation {
     public Tutorial create() {
         return new Tutorial()
                 .indicators()
+                .overview()
                 .h3("Region")
                 .text("""
                         Region is the base class for all JavaFX Node-based UI Controls, and all layout containers. 
@@ -40,7 +41,10 @@ public class RegionPres extends CustomizablePresentation {
                 .code("ThemeProvider.install(scene, \n\tCss.COLORS, \n\tCss.PROPERTIES);", "java")
                 .h3("Demo", "Installing")
                 .demo(createDemo("size-50", "bg-white", "depth-1", "radius-5"))
-                .code("Region region = new Region();\nregion.getStyleClass(\"size-50\", \"bg-white\", \"depth-1\", \"radius-5\");")
+                .code("""
+                        Region region = new Region();
+                        region.getStyleClass().addAll("size-50", "bg-white", "depth-1", "radius-5");")
+                        """)
                 .h3("Size", "Region")
                 .table(
                         new Row("w-2", "-fx-pref-width: 2px; ;"),

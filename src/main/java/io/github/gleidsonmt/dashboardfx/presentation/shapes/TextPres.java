@@ -19,6 +19,7 @@ public class TextPres extends CustomizablePresentation {
     public Tutorial create() {
         return new Tutorial()
                 .indicators()
+                .overview()
                 .h2("Text", null)
                 .text("The Text class defines a node that displays a text. Paragraphs are separated by \n and the text is wrapped on paragraph boundaries.")
                 .legend("javafx.scene.text.Text")

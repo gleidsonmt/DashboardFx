@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.presentation.presentations.controls;
 
+import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import javafx.geometry.Insets;
 import javafx.geometry.Side;
@@ -12,38 +13,40 @@ import javafx.scene.layout.StackPane;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  07/03/2025
  */
-public class TabPres extends StackPane {
-    public TabPres() {
-        TabPane demo = createDemo();
-        getChildren().setAll(
-                new Tutorial()
-                        .indicators()
-                        .h2("TabPane", null)
-                        .text("A control that allows switching between a group of Tabs. Only one tab is visible at a time. Tabs are added to the TabPane by using the getTabs.")
+public class TabPanePres extends CustomizablePresentation {
 
-                        .h3("Install", "TabPane")
-                        .code("ThemeProvider.install(root, \n\tCss.COLORS, \n\tCss.TAB_PANE);", "java")
-                        // .link([link to explanation]) ir para temas
-                        .separator()
-                        .demo(demo)
-                        .code("""
-                                TabPane tabPane = new TabPane();
-                                Tab one = new Tab("Example 01", new Label("Tab Content 01"));
-                                Tab two = new Tab("Example 02", new Label("Tab Content 02"));
-                                tabPane.getTabs().addAll(one, two);
-                                """)
-                        .h3("Sides", "TabPane")
-                        .demo(
-                                createGroupRadio(demo)
-                        )
-                        .code("""
-                                tabPane.setSide(Side.TOP) // default;
-                                tabPane.setSide(Side.BOTTOM);
-                                tabPane.setSide(Side.LEFT);
-                                tabPane.setSide(Side.RIGHT);
-                                """)
-                        .build().getRoot()
-        );
+    public TabPanePres() {
+        super("TabPane");
+    }
+
+    public Tutorial create() {
+        TabPane demo = createDemo();
+        return new Tutorial()
+                .indicators()
+                .h2("TabPane", null)
+                .text("A control that allows switching between a group of Tabs. Only one tab is visible at a time. Tabs are added to the TabPanePres by using the getTabs.")
+
+                .h3("Install", "TabPane")
+                .code("ThemeProvider.install(root, \n\tCss.COLORS, \n\tCss.TAB_PANE);", "java")
+                // .link([link to explanation]) ir para temas
+                .separator()
+                .demo(demo)
+                .code("""
+                        TabPane tabPane = new TabPane();
+                        Tab one = new Tab("Example 01", new Label("Tab Content 01"));
+                        Tab two = new Tab("Example 02", new Label("Tab Content 02"));
+                        tabPane.getTabs().addAll(one, two);
+                        """)
+                .h3("Sides", "TabPane")
+                .demo(
+                        createGroupRadio(demo)
+                )
+                .code("""
+                        tabPane.setSide(Side.TOP) // default;
+                        tabPane.setSide(Side.BOTTOM);
+                        tabPane.setSide(Side.LEFT);
+                        tabPane.setSide(Side.RIGHT);
+                        """);
     }
 
     private Node createGroupRadio(TabPane pane) {

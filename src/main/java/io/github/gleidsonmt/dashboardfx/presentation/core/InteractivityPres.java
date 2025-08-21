@@ -38,9 +38,8 @@ public class InteractivityPres extends CustomizablePresentation {
         });
 
         return new Tutorial()
-
-
                 .indicators()
+                .overview()
                 .h3("Introduction")
                 .text("I've been really interested in JavaFX interactivity.")
                 .text("I'm pro imperative style programming, I think is really cute, organized and readable.")

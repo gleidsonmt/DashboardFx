@@ -9,6 +9,8 @@ import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.HoverAnimation;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.WrapperEffect;
+import io.github.gleidsonmt.glad.controls.icon.Icon;
+import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
@@ -163,14 +165,12 @@ public class ColorsPres extends CustomizablePresentation {
                 "border-2", "border-white", "depth-1", "round", "cursor-hand");
 
         stackPane.setOnMouseClicked(e -> {
-            Clipboard clipboard = Clipboard.getSystemClipboard();
-            ClipboardContent _content = new ClipboardContent();
-            _content.putString(name);
-            clipboard.setContent(_content);
+            TutorialUtils.putTextOnClipboard(name);
             getRoot()
                     .behavior()
                     .snack()
-                    .message("You copied " + name + " to clipboard.")
+                    .graphic(new SVGIcon(Icon.NOTIFICATION_IMPORTANT_FILLED) )
+                    .message("You copied '" + name + "' to clipboard.")
                     .show();
         });
         return stackPane;

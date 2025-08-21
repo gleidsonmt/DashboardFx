@@ -34,12 +34,9 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -71,6 +68,7 @@ public class Tutorial extends Presentation<Tutorial> {
     int count = 1;
 
     private boolean indicators = false;
+    private boolean overview = false;
 
     public Tutorial() {
         body.setUserData(this);
@@ -141,6 +139,14 @@ public class Tutorial extends Presentation<Tutorial> {
      */
     public Tutorial indicators() {
         this.indicators = true;
+        return this;
+    }
+
+    /**
+     * Add a side nav with that indicates and rolls by TreeTiles
+     */
+    public Tutorial overview() {
+        this.overview = true;
         return this;
     }
 
@@ -336,48 +342,52 @@ public class Tutorial extends Presentation<Tutorial> {
 
     @Override
     public Tutorial build() {
-        Label title = new Label("Overview Content");
-        title.getStyleClass().addAll("overview-title");
-        title.setGraphic(new SVGIcon(Icon.STACK));
+        if (overview) {
+            Label title = new Label("Overview Content");
+            title.getStyleClass().addAll("overview-title");
+            title.setGraphic(new SVGIcon(Icon.STACK));
 //        title.setStyle("-fx-font-family: \"Instagram Sans Headline Bold\"; " +
 //                       "-fx-font-size: 14px; " +
 //                       "-fx-fill: -fx-accent; " +
 //                       "");
-        aside.setPadding(new Insets(20));
-        aside.getChildren().add(title);
-        aside.setSpacing(20);
-        aside.setAlignment(Pos.TOP_CENTER);
+            aside.setPadding(new Insets(20));
+            aside.getChildren().add(title);
+            aside.setSpacing(20);
+            aside.setAlignment(Pos.TOP_CENTER);
 
-        aside.getStyleClass().add("nav");
+            aside.getStyleClass().add("nav");
 
-        // pegando todos os items q são label position e titulos
+            // pegando todos os items q são label position e titulos
 
 
-        data = items.stream()
-                .filter(filter -> filter instanceof TreeTitle
-                                  && (filter.getStyleClass().contains("title") || filter.getStyleClass().stream().anyMatch(clazz -> clazz.startsWith("h"))))
-                .map(mapped -> (TreeTitle) mapped)
-                .peek(peeked -> peeked.setId("tile-" + idCount++))
-                .toList();
+            data = items.stream()
+                    .filter(filter -> filter instanceof TreeTitle
+                                      && (filter.getStyleClass().contains("title") || filter.getStyleClass().stream().anyMatch(clazz -> clazz.startsWith("h"))))
+                    .map(mapped -> (TreeTitle) mapped)
+                    .peek(peeked -> peeked.setId("tile-" + idCount++))
+                    .toList();
 //                .peek(el -> VBox.setVgrow(el, Priority.ALWAYS))
-        items
-                .stream().filter(el -> el instanceof BlockCode)
-                .map(el -> (BlockCode) el)
-                .forEach(e -> {
-                    VBox.setVgrow(e, Priority.ALWAYS);
+            items
+                    .stream().filter(el -> el instanceof BlockCode)
+                    .map(el -> (BlockCode) el)
+                    .forEach(e -> {
+                        VBox.setVgrow(e, Priority.ALWAYS);
 
-                    double height = e.getContent().lines().count() * 10;
-                    e.setMinHeight(e.getMinHeight() + height);
+                        double height = e.getContent().lines().count() * 10;
+                        e.setMinHeight(e.getMinHeight() + height);
 //                    e.setMinHeight(500);
-                });
+                    });
 
-        // Criando a tree
-        createTree(data, aside);
+            // Criando a tree
+            createTree(data, aside);
+            body.setRight(aside);
+        }
+
 //        ((ToggleButton)aside.getChildren().get(0)).setSelected(true);
 
         root.getChildren().setAll(body);
         body.setCenter(scroll);
-        body.setRight(aside);
+
 
         scroll.setContent(center);
         root.getChildren().add(btnTop);

@@ -3,6 +3,9 @@ package io.github.gleidsonmt.dashboardfx.material;
 import eu.hansolo.colors.ColorHelper;
 import eu.hansolo.colors.MaterialDesign;
 import io.github.gleidsonmt.dashboardfx.utils.HoverAnimation;
+import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.controls.icon.Icon;
+import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.control.Tooltip;
@@ -105,6 +108,13 @@ public class MaterialItem extends StackPane {
             ClipboardContent content = new ClipboardContent();
             content.putString(clipboardContent);
             clipboard.setContent(content);
+
+            ((Root) getScene().getRoot())
+                    .behavior()
+                    .snack()
+                    .graphic(new SVGIcon(Icon.NOTIFICATION_IMPORTANT_FILLED) )
+                    .message("You copied \n'" + clipboardContent + "' \nto clipboard.")
+                    .show();
         });
 
         HoverAnimation.install(this);

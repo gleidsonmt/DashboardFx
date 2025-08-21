@@ -13,6 +13,7 @@ import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.text.TextAlignment;
 
 import java.lang.reflect.Array;
 import java.util.List;
@@ -51,12 +52,16 @@ public class SVGIconPres extends CustomizablePresentation {
         Node[] arr = new Node[Icon.values().length];
         for (int i = 0 ; i < arr.length ; i++) {
             Label label = new Label(Icon.values()[i].name());
+            label.setTextAlignment(TextAlignment.JUSTIFY);
+            label.setWrapText(true);
+            label.getStyleClass().addAll("border-light-gray-2 round cursor-hand padding-10".split(" "));
             label.setOnMouseClicked(_ -> {
                 TutorialUtils.putTextOnClipboard("Icon." + label.getText());
                 getRoot().
                         behavior()
                         .snack()
                         .message("The text 'Icon." + label.getText() + "' has copied to clipboard.")
+                        .graphic(new SVGIcon(Icon.NOTIFICATION_IMPORTANT_FILLED) )
                         .show();
             });
             FlowPane.setMargin(label, new Insets(10));
