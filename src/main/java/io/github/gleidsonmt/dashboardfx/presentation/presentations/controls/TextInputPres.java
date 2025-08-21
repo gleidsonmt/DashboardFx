@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.presentation.presentations.controls;
 
+import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -9,32 +10,31 @@ import javafx.scene.layout.StackPane;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  11/04/2025
  */
-public class TextInputPres extends StackPane {
+public class TextInputPres extends CustomizablePresentation {
 
     public TextInputPres() {
-        getChildren().setAll(
-                new Tutorial()
-                        .h3("Text Input")
-                        .text("Abstract base class for text input controls.")
+        super("TextInput");
+    }
 
-                        .h3("Text Field", "Text Input")
-                        .text("""
-                               Text input component that allows a user to enter a single line of unformatted text.""")
-                        .legend("javafx.scene.control.TextField")
-                        .demo(
-                                new TextField("Placeholder")
-                        )
+    public Tutorial create() {
+        return new Tutorial()
+                .h3("Text Input")
+                .text("Abstract base class for text input controls.")
 
-                        .h3("Password", "Text Field")
-                        .text("Text field that masks entered characters.")
-                        .legend("javafx.scene.control.PasswordField")
-                        .demo(
-                                createPassword()
-                        )
+                .h3("Text Field", "Text Input")
+                .text("""
+                        Text input component that allows a user to enter a single line of unformatted text.""")
+                .legend("javafx.scene.control.TextField")
+                .demo(
+                        new TextField("Placeholder")
+                )
 
-                        .build()
-                        .getRoot()
-        );
+                .h3("Password", "Text Field")
+                .text("Text field that masks entered characters.")
+                .legend("javafx.scene.control.PasswordField")
+                .demo(
+                        createPassword()
+                );
     }
 
     private PasswordField createPassword() {

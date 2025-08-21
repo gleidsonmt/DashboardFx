@@ -107,10 +107,6 @@ public class Main extends BorderPane implements Layout {
                     });
                 }
             }
-
         }
-
-
     }
-
 }

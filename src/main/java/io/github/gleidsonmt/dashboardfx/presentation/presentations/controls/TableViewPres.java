@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.presentation.presentations.controls;
 
 import io.github.gleidsonmt.dashboardfx.model.Person;
+import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,11 +19,14 @@ import java.util.List;
  * Create on  17/03/2025
  */
 @SuppressWarnings("unchecked")
-public class TableViewPres extends StackPane {
+public class TableViewPres extends CustomizablePresentation {
 
     public TableViewPres() {
-        getChildren().setAll(
-                new Tutorial()
+        super("TableView");
+    }
+
+    public Tutorial create() {
+        return   new Tutorial()
                         .h3("Table View")
                         .text("""
                                 The TableView control is designed to visualize an unlimited number of rows of data, broken out into columns.
@@ -101,10 +105,7 @@ public class TableViewPres extends StackPane {
                         .text("""
                                 With the code shown above we have fully defined the minimum properties required to create a TableView instance. 
                                 Running this code will result in the TableView being shown with two columns for firstName and lastName. 
-                                Any other properties of the Person class will not be shown, as no TableColumns are defined.""")
-                        .demo(createDemo())
-                        .build().getRoot()
-        );
+                                Any other properties of the Person class will not be shown, as no TableColumns are defined.""");
     }
 
     private Node createDemo() {

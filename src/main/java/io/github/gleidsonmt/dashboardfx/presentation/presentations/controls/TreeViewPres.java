@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.presentation.presentations.controls;
 
+import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.TreeItem;
@@ -11,11 +12,14 @@ import javafx.scene.layout.StackPane;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  02/04/2025
  */
-public class TreeViewPres extends StackPane {
+public class TreeViewPres extends CustomizablePresentation {
 
     public TreeViewPres() {
-        getChildren().setAll(
-                new Tutorial()
+        super("TreeView");
+    }
+
+    public Tutorial create() {
+        return   new Tutorial()
                         .h3("Tree View")
                         .text("""
                                 The TreeView control provides a view on to a tree root (of type TreeItem).
@@ -53,10 +57,7 @@ public class TreeViewPres extends StackPane {
                         
                                 // set the cell factory
                                 treeView.setCellFactory(CheckBoxTreeCell.forTreeView());
-                                """)
-                        .build()
-                        .getRoot()
-        );
+                                """);
     }
 
     private TreeView<String> createTreeCheck() {
@@ -90,4 +91,6 @@ public class TreeViewPres extends StackPane {
         treeView.setRoot(root);
         return treeView;
     }
+
+
 }

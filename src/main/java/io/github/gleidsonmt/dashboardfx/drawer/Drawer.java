@@ -7,10 +7,11 @@ import io.github.gleidsonmt.dashboardfx.presentation.core.*;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.charts.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.AvatarViewPres;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.BadgeExample;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.LabelExamplePres;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.ToggleSwitchPres;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.*;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.TabPanePres;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.layout.TabPanePres;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.layout.TextFlowPres;
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
 import io.github.gleidsonmt.dashboardfx.presentation.util.ColorsPres;
@@ -80,10 +81,10 @@ public class Drawer extends VBox {
                 new ModuleView("Controls",
                         new RegionPres(),
                         new LabeledPres(),
-//                        new View("Text Input", new TextInputPres()),
-//                        new View("Progress Bar", new ProgressBarPres()),
-//                        new View("Table View", new TableViewPres()),
-//                        new View("Tree View", new TreeViewPres()),
+                        new ProgressBarPres(),
+                        new TextInputPres(),
+                        new TableViewPres(),
+                        new TreeViewPres(),
                         new ListViewPres()),
                 new ModuleView("Containers",
 //                        new View("TitledPane", new BuildingPage()),
@@ -100,9 +101,9 @@ public class Drawer extends VBox {
                 new ModuleView("Components",
                         new ToggleSwitchPres(),
                         new SVGIconPres(),
-                        new AvatarViewPres()
+                        new AvatarViewPres(),
 //                        new View("Button", new ButtonExample()),
-//                        new View("Badge", new BadgeExample()),
+                        new BadgeExample()
 
                 ),
                 new ModuleView("Styled",

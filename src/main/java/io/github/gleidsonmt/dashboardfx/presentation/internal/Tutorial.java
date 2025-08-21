@@ -97,12 +97,8 @@ public class Tutorial extends Presentation<Tutorial> {
 
                 main.addPoint(_ -> {
                     menu.setMaxHeight(-1);
-                    if (body.getChildren().contains(aside)) {
-                        body.getChildren().remove(aside);
-                        body.setRight(aside);
-                    } else {
-                        body.setRight(aside);
-                    }
+                    body.getChildren().remove(aside);
+                    if (overview) body.setRight(aside);
                     aside.setPadding(new Insets(0, 20, 0, 20));
                     StackPane.setMargin(btnTop, new Insets(10, 40 + 250, 10, 10));
                 }, Break.WIDE, Break.XL, Break.XXL);
@@ -381,6 +377,10 @@ public class Tutorial extends Presentation<Tutorial> {
             // Criando a tree
             createTree(data, aside);
             body.setRight(aside);
+
+            aside.setMinWidth(250);
+//        body.setSpacing(10);
+            aside.setStyle("-fx-background-color: -fx-background;");
         }
 
 //        ((ToggleButton)aside.getChildren().get(0)).setSelected(true);
@@ -388,15 +388,10 @@ public class Tutorial extends Presentation<Tutorial> {
         root.getChildren().setAll(body);
         body.setCenter(scroll);
 
-
         scroll.setContent(center);
         root.getChildren().add(btnTop);
         root.setAlignment(Pos.BOTTOM_RIGHT);
         root.getStyleClass().addAll("padding-20".split(" "));
-
-        aside.setMinWidth(250);
-//        body.setSpacing(10);
-        aside.setStyle("-fx-background-color: -fx-background;");
 
         scroll.setFitToHeight(true);
         scroll.setFitToWidth(true);

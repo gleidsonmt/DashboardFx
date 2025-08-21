@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.dashboardfx.presentation.presentations.controls;
+package io.github.gleidsonmt.dashboardfx.presentation.presentations.layout;
 
 import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;

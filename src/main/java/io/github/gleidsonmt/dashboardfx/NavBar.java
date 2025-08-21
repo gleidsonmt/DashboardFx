@@ -35,7 +35,6 @@ public class NavBar extends GridPane {
     private final Badge badgeMessage = new Badge(Icon.CHAT, 8, 10);
     private final Badge badgeNotification = new Badge(Icon.NOTIFICATION_IMPORTANT, 5, 10);
 
-
     private final BreadCrumbBar crumb = new BreadCrumbBar();
     private final CardUserOptions card = new CardUserOptions(
             new User(Assets.getImage("default_avatar.jpg", 80), "johndoe54@gmail.com", "Jhon Doe")
@@ -90,26 +89,6 @@ public class NavBar extends GridPane {
 
         Platform.runLater(() -> {
             Root root = (Root) this.getScene().getRoot();
-            IconButton button = new IconButton(new SVGIcon(Icon.ADD));
-            button.setOnMouseClicked(_ -> {
-                notificationManager.show(getScene(), button);
-//                root.flow()
-//                        .content(test)
-//                        .pos(Pos.CENTER)
-//                        .insets(new Insets(100, 0,0,100))
-//                        .show(button);
-            });
-//            button.setOnMouseClicked(_ -> {
-//              root.flow()
-//                      .content(new Label("Lorem ipsum dolor color"))
-//                      .pos(Pos.CENTER_LEFT)
-//                      .show(button);
-//            });
-
-            root.flow().content(button)
-                    .pos(Pos.CENTER)
-                    .insets(new Insets(0, 420, 300,300))
-                    .show();
 
             root.addPoint(_ -> {
                 getColumnConstraints().clear();

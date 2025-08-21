@@ -1,6 +1,8 @@
 
-[ ] Criar pagina de profile
-[ ] componentes que faltam
+[ ] All Default Controls (refactored)
+[ ] Carousell
+[ ] Comboboxes (Combobox, choicebox, etc)
+[ ] Menus
 [ ] contribution guide
 [ ] adicionar avatar crop (esta no outro projeto com o mesmo nome)
 
