@@ -103,7 +103,8 @@ public class Drawer extends VBox {
                         new SVGIconPres(),
                         new AvatarViewPres(),
 //                        new View("Button", new ButtonExample()),
-                        new BadgeExample()
+                        new BadgeExample(),
+                        new CarouselPres()
 
                 ),
                 new ModuleView("Styled",

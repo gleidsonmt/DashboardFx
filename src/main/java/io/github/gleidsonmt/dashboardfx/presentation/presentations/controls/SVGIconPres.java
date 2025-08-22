@@ -36,6 +36,8 @@ public class SVGIconPres extends CustomizablePresentation {
                 .text("""
                         This icon is minor collection of google icons.
                         """)
+                .legend("io.github.gleidsonmt.glad.controls.icon.SVGIcon")
+                .legend("io.github.gleidsonmt.glad.controls.icon.Icon")
                 .link("Google Fonts", "https://fonts.google.com/icons")
 //                .legend("(The base font here is set to Poppins, by default is not apply, but it's better to add all fonts before the app load. At the end you can see the code to add.)")
                 // .link([link to explanation]) ir para temas
