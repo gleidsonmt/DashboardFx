@@ -25,6 +25,7 @@ public class RegionPres extends CustomizablePresentation {
                 .indicators()
                 .overview()
                 .h3("Region")
+                .separator()
                 .text("""
                         Region is the base class for all JavaFX Node-based UI Controls, and all layout containers. 
                         It is a resizable Parent node which can be styled from CSS. It can have multiple backgrounds and borders. 

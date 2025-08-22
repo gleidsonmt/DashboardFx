@@ -2,6 +2,8 @@ package io.github.gleidsonmt.dashboardfx.presentation.presentations.layout;
 
 import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
+import io.github.gleidsonmt.glad.theme.Css;
 import javafx.geometry.Insets;
 import javafx.geometry.Side;
 import javafx.scene.Node;
@@ -23,14 +25,14 @@ public class TabPanePres extends CustomizablePresentation {
         TabPane demo = createDemo();
         return new Tutorial()
                 .indicators()
-                .h2("TabPane", null)
-                .text("A control that allows switching between a group of Tabs. Only one tab is visible at a time. Tabs are added to the TabPanePres by using the getTabs.")
-
-                .h3("Install", "TabPane")
-                .code("ThemeProvider.install(root, \n\tCss.COLORS, \n\tCss.TAB_PANE);", "java")
-                // .link([link to explanation]) ir para temas
+                .overview()
+                .h3("TabPane")
                 .separator()
+                .text("A control that allows switching between a group of Tabs. Only one tab is visible at a time. Tabs are added to the TabPanePres by using the getTabs.")
+                // .link([link to explanation]) ir para temas
                 .demo(demo)
+                .h4("Install", "TabPane")
+                .code(TutorialUtils.installExample(Css.TAB_PANE, "TabPane"))
                 .code("""
                         TabPane tabPane = new TabPane();
                         Tab one = new Tab("Example 01", new Label("Tab Content 01"));
@@ -38,6 +40,7 @@ public class TabPanePres extends CustomizablePresentation {
                         tabPane.getTabs().addAll(one, two);
                         """)
                 .h3("Sides", "TabPane")
+                .text("That side property controls the position of the tabs above.")
                 .demo(
                         createGroupRadio(demo)
                 )

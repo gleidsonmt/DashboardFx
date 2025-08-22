@@ -24,6 +24,7 @@ public class ComboBoxBasePres extends CustomizablePresentation {
     public Tutorial create() {
         return new Tutorial()
                 .h3("ComboBoxBase")
+                .separator()
                 .overview()
                 .indicators()
                 .text("""

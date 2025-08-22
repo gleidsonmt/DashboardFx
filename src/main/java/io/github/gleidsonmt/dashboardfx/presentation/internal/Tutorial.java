@@ -86,7 +86,7 @@ public class Tutorial extends Presentation<Tutorial> {
                 Root main = (Root) newValue.getRoot();
                 main.addPoint(_ -> {
                     body.setRight(null);
-                    body.setTop(aside);
+                    if (overview) body.setTop(aside);
                     StackPane.setMargin(btnTop, new Insets(10, 40, 10, 10));
                     aside.setPadding(new Insets(0));
 
