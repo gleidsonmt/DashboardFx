@@ -60,7 +60,7 @@ dependencies {
     implementation fileTree('vendor') { include '*.jar' }
 //    implementation files('vendor/colors-1.0.jar');
     implementation 'org.jetbrains:annotations:24.0.1'
-//    implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to visualize css when app is running.. so amazing!
+    implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to visualize css when app is running.. so amazing!
 //    implementation group: 'org.yaml', name: 'snakeyaml', version: '2.2'
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")

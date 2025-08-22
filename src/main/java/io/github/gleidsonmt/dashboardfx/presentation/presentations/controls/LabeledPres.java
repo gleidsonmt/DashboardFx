@@ -29,15 +29,15 @@ public class LabeledPres extends CustomizablePresentation {
                 .h3("Labeled", null)
                 .text("""
                         A Labeled Control is one which has as part of its user interface a textual content associated with it.
-                        For example, a Button displays text, as does a Label, a Tooltip, and many other controls.""")
+                        For example, a Button displays text, as does a Label, a Tooltip, and many other controls."""
+                )
                 .h3("Label", "Labeled")
                 .text("""
                         Label is a non-editable text control.
                         A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. 
                         Labels also are useful in that they can have mnemonics which, if used, will send focus to the Control listed as the target of the labelFor property.""")
                 .legend("javafx.scene.control.Label")
-                .legend("All classes in (Text) works in the text inside label.")
-                .legend("All classes in (Region) can by apply in label.")
+                .text("The label is a mix with Region + Text shape and you can additional add a graphic.")
 //                        .legend("(The base font here is set to Poppins, by default, is not apply, but it's better to add all fonts before the app load. At the end you can see the code to add.)")
                 // .link([link to explanation]) ir para temas
 
@@ -156,7 +156,11 @@ public class LabeledPres extends CustomizablePresentation {
                         HBox box = new HBox(optionOne, optionTwo);
                         box.setSpacing(10);
                         group.getToggles().addAll(optionOne, optionTwo);
-                        """);
+                        """)
+
+                .node(new MenuButton("MenuButton"))
+//                .node(new SplitMenuButton())
+                ;
     }
 
     private Node createCheckBox(String text) {

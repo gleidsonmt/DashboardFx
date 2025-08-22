@@ -3,6 +3,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.presentations.controls;
 import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
+import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.presentation.Row;
 import javafx.scene.Node;
 import javafx.scene.control.TreeView;
@@ -37,15 +38,24 @@ public class RegionPres extends CustomizablePresentation {
                 .text("\nRegion doesn't fit by default, if you do not apply some color and set the sizes, it continues hided")
                 .legend("javafx.scene.layout.Region")
                 .legend("\nEvery control descends by Region so every style in region is applicable to all controls.")
-                .h3("Installing", "Region")
-                .code("ThemeProvider.install(scene, \n\tCss.COLORS, \n\tCss.PROPERTIES);", "java")
-                .h3("Demo", "Installing")
                 .demo(createDemo("size-50", "bg-white", "depth-1", "radius-5"))
-                .code("""
+                .h4("Install", "Region")
+                .code(
+                        TutorialUtils.installExample(Css.COLORS, Css.SHAPES, Css.PROPERTIES) +
+                        """
+                        
+                        // Try this
                         Region region = new Region();
-                        region.getStyleClass().addAll("size-50", "bg-white", "depth-1", "radius-5");")
-                        """)
+                        region.getStyleClass().addAll("size-50 bg-white depth-1 radius-5".split(" "));
+                        """
+                )
+
                 .h3("Size", "Region")
+                .demo(new Node[]{
+                        createDemo("size-10", "max-size-10", "bg-white", "depth-3", "radius-5", "border-light-gray-2"),
+                        createDemo("size-50", "max-size-50", "bg-white", "depth-3", "radius-5", "border-light-gray-2"),
+                        createDemo("size-100", "max-size-100", "bg-white", "depth-3", "radius-5", "border-light-gray-2")
+                })
                 .table(
                         new Row("w-2", "-fx-pref-width: 2px; ;"),
                         new Row("w-5", "-fx-pref-width: 5px;"),
@@ -76,13 +86,9 @@ public class RegionPres extends CustomizablePresentation {
                         new Row("max-size-50", "-fx-max-width: 50px; -fx-max-height: 50px;"),
                         new Row("max-size-100", "-fx-max-width: 100px; -fx-max-height: 100px;")
                 )
-                .demo(new Node[]{
-                        createDemo("size-10", "max-size-10", "bg-white", "depth-1", "radius-5"),
-                        createDemo("size-50", "max-size-50", "bg-white", "depth-1", "radius-5"),
-                        createDemo("size-100", "max-size-100", "bg-white", "depth-1", "radius-5")
-                })
+
                 .h4("Background", "Region")
-                .node(TutorialUtils.createLink("See all the color options here", "Pallet Color"))
+
 
                 .table(
                         new Row("bg-primary", "-fx-background-color: -primary;"),
@@ -123,6 +129,7 @@ public class RegionPres extends CustomizablePresentation {
                 .code("""
                         region.getStyleClass().add("bg-[primary|info...]");
                         """)
+                .node(TutorialUtils.createLink("See more color options", "Colors"))
                 .h4("Border", "Region")
                 .h4("Size", "Border")
                 .table(
@@ -231,9 +238,6 @@ public class RegionPres extends CustomizablePresentation {
                         createDemo("min-size-50", "size-50", "border-2", "border-primary", "bg-medium-gray", "border-insets-10")
                 })
                 .h3("Shapes", "Region")
-                .text("Installing", "Shapes")
-                .code("ThemeProvider.install(scene, \n\tCss.COLORS, \n\tCss.PROPERTIES, \n\tCss.SHAPES);", "java")
-
                 .table(
                         new Row("rectangle", "-fx-border-radius: 0px;"),
                         new Row("rounded", "-fx-background-radius : 5px;"),

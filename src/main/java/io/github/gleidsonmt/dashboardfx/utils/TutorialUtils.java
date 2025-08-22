@@ -1,8 +1,12 @@
 package io.github.gleidsonmt.dashboardfx.utils;
 
+import io.github.gleidsonmt.blockcode.BlockCode;
+import io.github.gleidsonmt.blockcode.CodeType;
+import io.github.gleidsonmt.blockcode.Theme;
 import io.github.gleidsonmt.dashboardfx.drawer.Drawer;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import io.github.gleidsonmt.glad.theme.Css;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -19,6 +23,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -34,6 +39,33 @@ public class TutorialUtils {
 
     public static @NotNull Node createAction( EventHandler<MouseEvent> event) {
         return createAction("Try on!", event);
+    }
+
+    public static @NotNull String installExample(Css css, String code) {
+//        ThemeProvider.install(scene,
+//                Css.COLORS,
+//                Css.PROPERTIES);
+        return "// Install theme on scene\nThemeProvider.install(scene,\n\t\t...\n\t\tCss." + css + ");\n\n//Constructor\n"+ code + " " + css.toString().toLowerCase() + " = new " + code + "();";
+    }
+
+    public static @NotNull String installExample(Css css) {
+//        ThemeProvider.install(scene,
+//                Css.COLORS,
+//                Css.PROPERTIES);
+        return "// Install theme on scene\nThemeProvider.install(scene,\n\t\t...\n\t\tCss." + css + ");";
+    }
+
+    public static @NotNull String installExample(Css... css) {
+        StringBuilder build = new StringBuilder();
+        for (Css c: css) {
+            build.append("\n\t\tCss.").append(c).append(",");
+//            \n\t\t...\n\t\tCss." + css +
+        }
+        build.deleteCharAt(build.length()-1);
+//        ThemeProvider.install(scene,
+//                Css.COLORS,
+//                Css.PROPERTIES);
+        return "// Install theme on scene\nThemeProvider.install(scene, \n\t\t...\t\t" + build + ");";
     }
 
     public static @NotNull Node createAction(String placeholder, EventHandler<MouseEvent> event) {

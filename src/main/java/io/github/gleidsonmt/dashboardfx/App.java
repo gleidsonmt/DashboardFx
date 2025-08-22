@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.dashboardfx;
 
+import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.theme.Css;
@@ -31,6 +32,7 @@ public class App extends Application {
                 Css.TREE_VIEW, Css.TOGGLE_BUTTON,
                 Css.PROGRESS_BAR, Css.LIST_VIEW, Css.TABLE_VIEW,
                 Css.TAB_PANE, Css.IMMERSIVE_SCROLL,
+                Css.DATE_PICKER,
 
                 Css.TEXT_FIELD, Css.TEXT_BOX);
 
@@ -40,7 +42,7 @@ public class App extends Application {
         stage.show();
 
         ScenicView.show(scene);
-//        CSSFX.start(scene);
+        CSSFX.start(scene);
     }
 
 //    @Override

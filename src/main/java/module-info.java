@@ -7,7 +7,7 @@ module io.github.gleidsonmt.dashboardfx {
     requires org.jetbrains.annotations;
 
     //    requires org.scenicview.scenicview;
-//    requires fr.brouillard.oss.cssfx;
+    requires fr.brouillard.oss.cssfx;
 
     requires java.net.http;
     exports io.github.gleidsonmt.dashboardfx.drawer;

@@ -56,6 +56,9 @@ public class IntroductionPres extends CustomizablePresentation {
                             When a view (ToggleButton) is clicked the content is updated to the content of this view.
                             
                             The modules are separated by sections, project, theme, example and extras.
+                            All modules follow a top and dow overview.. so you can actually go deeper and learn more getting the sequence of the modules.
+                            
+                            The core section involves getting things by context and interactions by the root node.
                             
                             The theme section contains examples using default javafx + a custom theme.
                             The custom theme is provided by a class called ThemeProvider.
@@ -72,65 +75,11 @@ public class IntroductionPres extends CustomizablePresentation {
                     .text("Try clone the project skeleton, and start by yourself with minimal settings.")
                     .node(TutorialUtils.createCardLink("Skeleton", new URI("https://github.com/gleidsonmt/dash-skeleton")))
 
-                    .h3("Understanding", "Introduction")
-                    .text("You cloned the project, so you'll see the default javafx project except for the main class and a one jar.")
-                    .text("The jar is a core of the project.")
-                    .text("And the class App is the point of start.")
-                    .text("Let's start seeing this App class.")
-
-                    .code("""
-                            /**
-                             * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
-                             * Create on  20/02/2025
-                             */
-                            public class App extends Application {
-                            
-                                @Override
-                                public void start(Stage stage) {
-                                      // here it's the part of code that define the root and its layout
-                                      // Root is the base of the scene, it's the point to get environment around.
-                                      // The Main class is a layout, it's a container of other views.
-                                      // The View class it's a module representation.
-                                      Root root = new Root(new Main(
-                                               new View("Orders", new SVGIcon(Icon.ORDERS), new Text("Orders View")),
-                                               new View("Apps",  new SVGIcon(Icon.APPS), new Text("Apps View")),
-                                               new View("Products",  new SVGIcon(Icon.LOCAL_MALL), new Text("Products View"))
-                                       ));
-                                       Scene scene = new Scene(root, 800, 600);
-                                       // Install the custom css styles, colors and typographic.
-                                       // ThemeProvider is a class that install css, colors and typographic.
-                                       ThemeProvider.install(scene, Css.DEFAULT, Css.LIST_VIEW);
-                                       // Also can be include fonts.
-                                       ThemeProvider.install(root, Font.POPPINS);
-                                       stage.setScene(scene);
-                                       stage.show();
-                                }
-                            
-                                // Here we have the layout of the app, based on border pane.
-                                // BorderPane is a layout that uses four regions, top, left, right and bottom.
-                                // The SimpleDrawer class is just like the name.
-                                // It's a drawer that can have multiple modules. The modules are views.
-                                // The Main class is a layout, it's a container of other views.
-                                // The View class it's a module representation.
-                                static class Main extends BorderPane implements Layout  {
-                            
-                                    private final SimpleDrawer drawer;
-                            
-                                    public Main(Module... modules) {
-                                        this.drawer = new SimpleDrawer(modules);
-                                        this.setLeft(this.drawer);
-                                        // With this bind I can change the node in the center with a selected drawer item.
-                                        this.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
-                                    }
-                                }
-                            }
-                            """)
-
-                    .text("Now you can click on the button below to see a new stage.")
+                    .text("When cloned the project and run, you can see the same stage as the example bellow.")
                     .node(createExample())
 
                     .text("See more")
-                    .node(TutorialUtils.createLink("Drawer", "Drawer"))
+//                    .node(TutorialUtils.createLink("Drawer", "Drawer"))
                     .node(TutorialUtils.createLink("Interactivity", "Interactivity"))
                     ;
         } catch (URISyntaxException e) {

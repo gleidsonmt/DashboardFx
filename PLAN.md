@@ -5,6 +5,7 @@
 [ ] Menus
 [ ] contribution guide
 [ ] adicionar avatar crop (esta no outro projeto com o mesmo nome)
+[ ] Criar um color picker usando grid de cores.
 
 
 Readme
