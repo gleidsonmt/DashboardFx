@@ -2,6 +2,8 @@ package io.github.gleidsonmt.dashboardfx.presentation.presentations.controls;
 
 import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
+import io.github.gleidsonmt.glad.theme.Css;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
@@ -18,28 +20,37 @@ public class TextInputPres extends CustomizablePresentation {
 
     public Tutorial create() {
         return new Tutorial()
-                .h3("Text Input")
+                .overview()
+                .indicators()
+                .h3("TextInputControl")
                 .text("Abstract base class for text input controls.")
 
-                .h3("Text Field", "Text Input")
+                .h3("TextField", "TextInputControl")
                 .text("""
                         Text input component that allows a user to enter a single line of unformatted text.""")
                 .legend("javafx.scene.control.TextField")
-                .demo(
-                        new TextField("Placeholder")
-                )
+                .demo(createTextField())
+                .h4("Install", "TextField")
+                .code(TutorialUtils.installExample(Css.TEXT_FIELD, "TextField"))
 
-                .h3("Password", "Text Field")
+                .h3("PasswordField", "TextField")
                 .text("Text field that masks entered characters.")
                 .legend("javafx.scene.control.PasswordField")
-                .demo(
-                        createPassword()
-                );
+                .demo(createPassword())
+                .h4("Install", "PasswordField")
+                .code(TutorialUtils.installExample(Css.TEXT_FIELD, "PasswordField"))
+                ;
     }
 
-    private PasswordField createPassword() {
+    private TextField createTextField() {
         PasswordField password = new PasswordField();
-        password.setPromptText("Placeholder");
+        password.setPromptText("TextField");
+        return password;
+    }
+
+    private TextField createPassword() {
+        PasswordField password = new PasswordField();
+        password.setPromptText("PasswordField");
         return password;
     }
 }

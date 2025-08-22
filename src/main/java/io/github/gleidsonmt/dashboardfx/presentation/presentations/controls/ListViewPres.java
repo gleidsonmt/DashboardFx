@@ -2,6 +2,8 @@ package io.github.gleidsonmt.dashboardfx.presentation.presentations.controls;
 
 import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
+import io.github.gleidsonmt.glad.theme.Css;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
@@ -18,7 +20,7 @@ public class ListViewPres extends CustomizablePresentation {
 
     public Tutorial create() {
         return new Tutorial()
-                .h3("List View")
+                .h3("ListView")
                 .text("""
                         A ListView displays a horizontal or vertical list of items from which the user may select, or with which the user may interact.
                         A ListView is able to have its generic type set to represent the type of data in the backing model.
@@ -27,12 +29,24 @@ public class ListViewPres extends CustomizablePresentation {
                         """)
                 .legend("javafx.scene.control.ListView")
                 .demo(createDemo())
-                .code("""
+
+                .h4("Install", "ListView")
+                .code(TutorialUtils.installExample(Css.LIST_VIEW) + """
+                        
+                        // Building
                         ListView<String> listView = new ListView<>();
                         listView.setItems(FXCollections.observableArrayList(
                               "Item 01", "Item 02", "Item 03", "Item 04"
                         ));
-                        """);
+                        """)
+
+//                .code("""
+//                        ListView<String> listView = new ListView<>();
+//                        listView.setItems(FXCollections.observableArrayList(
+//                              "Item 01", "Item 02", "Item 03", "Item 04"
+//                        ));
+//                        """)
+                ;
     }
 
     private Node createDemo() {

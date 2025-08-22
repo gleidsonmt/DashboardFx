@@ -45,7 +45,15 @@ public class TutorialUtils {
 //        ThemeProvider.install(scene,
 //                Css.COLORS,
 //                Css.PROPERTIES);
-        return "// Install theme on scene\nThemeProvider.install(scene,\n\t\t...\n\t\tCss." + css + ");\n\n//Constructor\n"+ code + " " + css.toString().toLowerCase() + " = new " + code + "();";
+        return installExample(css, code, "");
+    }
+
+    public static @NotNull String installExample(Css css, String code, String con) {
+//        ThemeProvider.install(scene,
+//                Css.COLORS,
+//                Css.PROPERTIES);
+        return "// Install theme on scene\nThemeProvider.install(scene,\n\t\t...\n\t\tCss." + css + ");\n\n//Constructor\n"
+               + code + " " + css.toString().toLowerCase() + " = new " + code + "(" + con +");";
     }
 
     public static @NotNull String installExample(Css css) {

@@ -5,6 +5,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.presentation.Row;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -45,14 +46,14 @@ public class LabeledPres extends CustomizablePresentation {
                 .code("Label label = new Label(\"Lorem ipsum dolor color\");")
 
                 .h3("Graphic", "Label")
-                .text("An optional icon for the Labeled.")
-                .legend("Every node object can be an icon.")
-                .node(TutorialUtils.createLink("See more icons in SVGIcon", "SVGIcon"))
+                .legend("An optional icon for the Labeled.")
                 .demo(new Node[]{
                         createDemo(new SVGIcon(Icon.MENU), "Menu"),
                         createDemo(new SVGIcon(Icon.ARROW_BACK), "Arrow"),
                         createDemo(new SVGIcon(Icon.LOCATION_ON), "Location")
                 })
+                .code("label.setGraphic(new SVGIcon(Icon.MENU));")
+                .node(TutorialUtils.createLink("More options", "SVGIcon"))
                 .h3("Display", "Label")
                 .table(
                         new Row("display-top", " -fx-content-display: top;"),
@@ -72,20 +73,20 @@ public class LabeledPres extends CustomizablePresentation {
                         createDemo(new SVGIcon(Icon.ADD), "Label", "display-graphic", "border-2", "border-light-gray-2", "padding-5"),
                         createDemo(new SVGIcon(Icon.ADD), "Label", "display-text", "border-2", "border-light-gray-2", "padding-5")
                 })
-                .code("label.setGraphic(new SVGIcon(Icon.MENU));")
 
                 .h3("Button", "Labeled")
                 .text("A simple button control. The button control can contain text and/or a graphic.")
                 .legend("javafx.scene.control.Button")
-                .text("All classes in (Text) works in the text inside button.")
-                .text("All classes in (Region, Label) can by apply.")
-                .demo(createButtonDemo())
-                .code("""
-                        Button btn = new Button("Button");
+                .demo(new Node[]{
+                        createButtonDemo("Default", true, false),
+                        createButtonDemo("Cancel", false, true)
+                })
+                .h4("Install", "Button")
+                .code(TutorialUtils.installExample(Css.BUTTON, "Button") + """
+                        
+                        // Cancel button option
+                        button.setCancelButton(true);
                         """)
-
-                .demo(createButtonDemo("Cancel", false, true))
-                .code("btn.setCancelButton(true);")
 
                 .h2("Hyperlink", "Button")
                 .text("""
@@ -94,71 +95,84 @@ public class LabeledPres extends CustomizablePresentation {
                         When a hyperlink is pressed and released a ActionEvent is sent, and your application can perform some action based on this event.
                         """)
                 .legend("javafx.scene.control.Hyperlink")
-                .legend("All classes in (Text) works in the text inside hyperlink.")
-                .text("All classes in (Region, Label) can by apply.")
+                .demo(createHyperlink("google.com"))
+                .h4("Install", "Hyperlink")
+                .code(TutorialUtils.installExample(Css.HYPERLINK, "Hyperlink", "\"google.com\""))
+
 //                        .legend("(The base font here is set to Poppins, by default is not apply, but it's better to add all fonts before the app load. At the end you can see the code to add.)")
                 // .link([link to explanation]) ir para temas
 
-                .demo(createHyperlink("google.com"))
-                .code("Hyperlink hyperlink = new Hyperlink(\"google.com\");")
+
 
                 .h3("CheckBox", "Button")
                 .text("""
                         A tri-state selection Control typically skinned as a box with a checkmark or tick mark when checked.""")
                 .legend("javafx.scene.control.CheckBox")
-                .demo(createCheckBox("Select me"))
-                .code("CheckBox checkBox = new CheckBox(\"Select me\");")
 
-                .h3("Toggle Button", "Button")
+                .demo(createCheckBox("Select me"))
+                .h4("Install", "CheckBox")
+                .code(TutorialUtils.installExample(Css.CHECK_BOX, "CheckBox", "\"Select me\""))
+
+
+//                .code("CheckBox checkBox = new CheckBox(\"Select me\");")
+
+                .h3("ToggleButton", "Button")
                 .text("""
                         ToggleButton is a specialized control which has the ability to be selected.
                         Typically a ToggleButton is rendered similarly to a Button. 
                         However, they are two different types of Controls. 
                         A Button is a "command" button which invokes a function when clicked.""")
                 .legend("javafx.scene.control.ToggleButton")
-                .text("All classes in (Text) works in the text inside button.")
-                .text("All classes in (Region, Label, Button) can by apply.")
+
                 .demo(
                         new ToggleButton("Toggle")
                 )
-                .code("""
-                        ToggleButton btn = new ToggleButton("Button");
-                        """)
+                .h4("Install", "ToggleButton")
+                .code(TutorialUtils.installExample(Css.TOGGLE_BUTTON, "ToggleButton", "\"Button\""))
 
-                .h3("Radio Button", "Button")
+                .h3("RadioButton", "Button")
                 .text("""
                         RadioButtons create a series of items where only one item can be selected. RadioButtons are a specialized ToggleButton.""")
                 .legend("javafx.scene.control.RadioButton")
                 .demo(createDemoRadio("Select me"))
-                .code("""
-                        RadioButton radioButton = new RadioButton("Select me");
-                        """)
+                .h4("Install", "RadioButton")
+                .code(TutorialUtils.installExample(Css.RADIO_BUTTON, "RadioButton", "\"Select me\""))
 
-                .h4("Toggle Group", "Button")
+                .h3("ToggleGroup", "Button")
                 .text(""" 
                         A class which contains a reference to all Toggles whose selected variables should be managed such that only a single Toggle within the ToggleGroup may be selected at any one time.
                         Generally ToggleGroups are managed automatically simply by specifying the name of a ToggleGroup on the Toggle, but in some situations it is desirable to explicitly manage which ToggleGroup is used by Toggles.""")
                 .legend("javafx.scene.control.ToggleGroup")
+                .h4("ToggleButton", "ToggleGroup")
                 .demo(createGroupButton())
                 .code("""
+                        //Create a group
                         ToggleGroup group = new ToggleGroup();
+                        // Creating the children
                         ToggleButton optionOne = new ToggleButton("Option One");
                         ToggleButton optionTwo = new ToggleButton("Option Two");
+                        // Create a layout
                         HBox box = new HBox(optionOne, optionTwo);
                         box.setSpacing(10);
+                        // add them to the group
                         group.getToggles().addAll(optionOne, optionTwo);
                         """)
+                .h4("RadioButton", "ToggleGroup")
                 .demo(createGroupRadio())
                 .code("""
+                        //Create a group
                         ToggleGroup group = new ToggleGroup();
+                        // Creating the children
                         RadioButton optionOne = new RadioButton("Option One");
                         RadioButton optionTwo = new RadioButton("Option Two");
+                        // Create a layout
                         HBox box = new HBox(optionOne, optionTwo);
                         box.setSpacing(10);
+                        // add them to the group
                         group.getToggles().addAll(optionOne, optionTwo);
                         """)
 
-                .node(new MenuButton("MenuButton"))
+//                .node(new MenuButton("MenuButton"))
 //                .node(new SplitMenuButton())
                 ;
     }
