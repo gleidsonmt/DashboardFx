@@ -290,6 +290,8 @@ public class Tutorial extends Presentation<Tutorial> {
         StackPane.setMargin(button, new Insets(10));
         button.setOnMouseClicked(e -> {
             button.setContentDisplay(ContentDisplay.TEXT_ONLY);
+            Root r = (Root) getRoot().getScene().getRoot();
+            r.behavior().snack().graphic(new SVGIcon(Icon.PASTE)).message("The content is in clipboard.").show();
             TimerTask timerTask = new TimerTask() {
                 @Override
                 public void run() {
