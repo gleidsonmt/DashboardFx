@@ -3,16 +3,14 @@ package io.github.gleidsonmt.dashboardfx.drawer;
 import io.github.gleidsonmt.dashboardfx.dashboard.Dashboard;
 import io.github.gleidsonmt.dashboardfx.presentation.Scroll;
 import io.github.gleidsonmt.dashboardfx.presentation.about.AboutPres;
-import io.github.gleidsonmt.dashboardfx.presentation.core.*;
+import io.github.gleidsonmt.dashboardfx.presentation.core.CarouselPres;
+import io.github.gleidsonmt.dashboardfx.presentation.core.InteractivityPres;
+import io.github.gleidsonmt.dashboardfx.presentation.core.IntroductionPres;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.charts.*;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.AvatarViewPres;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.BadgeExample;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.LabelExamplePres;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.ToggleSwitchPres;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.layout.TabPanePres;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.layout.TextFlowPres;
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
 import io.github.gleidsonmt.dashboardfx.presentation.util.ColorsPres;
 import io.github.gleidsonmt.glad.base.Root;
@@ -32,7 +30,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -91,8 +92,8 @@ public class Drawer extends VBox {
                 ),
                 new ModuleView("Containers",
 //                        new View("TitledPane", new BuildingPage()),
-                        new TabPanePres(),
-                        new TextFlowPres()),
+                        new TabPanePres()
+                ),
                 new ModuleView("Charts",
                         new BarChartPres(),
                         new AreaChartPres(),
@@ -114,7 +115,9 @@ public class Drawer extends VBox {
 //                        new View("Drawer", new BuildingPage()),
 //                        new View("BreadCrumb", new BuildingPage()),
 //                        new View("Tree View", new TreeViewExample()),
-                        new LabelExamplePres()),
+                        new LabelExamplePres(),
+                        new CardsPres()
+                ),
 //                        new View("Cards", new CardsPres())),
 //                new ModuleView("Pages",
 //                        new View("Home Page", new HomePage()),

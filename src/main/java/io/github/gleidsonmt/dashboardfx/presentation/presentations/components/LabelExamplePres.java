@@ -26,6 +26,7 @@ public class LabelExamplePres extends CustomizablePresentation {
     public Tutorial create() {
         return new Tutorial()
                 .h3("Label")
+                .separator()
                 .text("Label style examples.")
                 .demo(new Node[]{
                         createCustom("Danger", "danger"),
