@@ -33,12 +33,8 @@ public class ProgressBarPres extends CustomizablePresentation {
                         createDemo(-1)
                 })
                 .h4("Install", "ProgressBar")
-                .code(TutorialUtils.installExample(Css.PROGRESS_BAR))
+                .code(TutorialUtils.installExample(Css.PROGRESS_BAR, "ProgressBar"))
                 ;
-//                .code("ProgressBar progressBar = new ProgressBar();")
-//                .h4("Indeterminate", "Progress Bar")
-//                .demo(createDemo(-1))
-//                .code("progressBar.setProgress(-1);");
     }
 
     private @NotNull ProgressBar createDemo(double progress, String... classes) {
