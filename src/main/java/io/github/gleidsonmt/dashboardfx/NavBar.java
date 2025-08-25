@@ -79,13 +79,6 @@ public class NavBar extends GridPane {
         NotificationManager notificationManager = new NotificationManager();
         badgeNotification.setOnMouseClicked(_ -> notificationManager.show(getScene(), badgeNotification));
 
-        Region test;
-        try {
-            test = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("fxml/hero.fxml")));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
 
         Platform.runLater(() -> {
             Root root = (Root) this.getScene().getRoot();

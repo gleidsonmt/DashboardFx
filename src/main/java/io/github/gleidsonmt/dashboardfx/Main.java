@@ -83,7 +83,7 @@ public class Main extends BorderPane implements Layout {
             }
         });
 
-        currentModule.bind(drawer.currentModuleProperty());
+        currentModule.bindBidirectional(drawer.currentModuleProperty());
         navBar.currentModuleProperty().bind(currentModule);
     }
 
@@ -93,6 +93,7 @@ public class Main extends BorderPane implements Layout {
             if (view instanceof ActionableView actionableView) {
                 Platform.runLater(() -> {
                     Root root = (Root) this.getScene().getRoot();
+                    root.init();
                     actionableView.onEnter(root);
                     this.container.setContent(view.getContent());
                 });
@@ -108,5 +109,20 @@ public class Main extends BorderPane implements Layout {
                 }
             }
         }
+    }
+
+    @Override
+    public ObjectProperty<Module> currentModuleProperty() {
+        return this.currentModule;
+    }
+
+    @Override
+    public Module getCurrentModule() {
+        return this.currentModule.get();
+    }
+
+    @Override
+    public void setCurrentModule(Module module) {
+        this.currentModule.set(module);
     }
 }

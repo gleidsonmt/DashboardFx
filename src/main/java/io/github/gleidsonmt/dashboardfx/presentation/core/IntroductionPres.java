@@ -13,6 +13,7 @@ import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.ObjectProperty;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -96,6 +97,21 @@ public class IntroductionPres extends CustomizablePresentation {
                     SimpleDrawer drawer = new SimpleDrawer(modules);
                     this.setLeft(drawer);
                     this.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
+                }
+
+                @Override
+                public ObjectProperty<Module> currentModuleProperty() {
+                    return null;
+                }
+
+                @Override
+                public Module getCurrentModule() {
+                    return null;
+                }
+
+                @Override
+                public void setCurrentModule(Module module) {
+
                 }
 //
             }

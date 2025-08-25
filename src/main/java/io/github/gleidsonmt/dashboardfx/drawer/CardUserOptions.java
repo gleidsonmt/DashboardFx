@@ -1,10 +1,14 @@
 package io.github.gleidsonmt.dashboardfx.drawer;
 
 import io.github.gleidsonmt.dashboardfx.model.User;
+import io.github.gleidsonmt.dashboardfx.presentation.Timeline;
+import io.github.gleidsonmt.dashboardfx.utils.pages.ProfilePage;
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.internal.View;
 import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import javafx.animation.KeyFrame;
 import javafx.geometry.Insets;
 import javafx.geometry.Side;
 import javafx.geometry.VPos;
@@ -113,6 +117,10 @@ public class CardUserOptions extends GridPane {
         });
 
         MenuItem menuManageAccount = new MenuItem("Manage Account");
+        menuManageAccount.setOnAction(e -> {
+            Root root = (Root) this.getScene().getRoot();
+            root.getLayout().setCurrentModule(new ProfilePage());
+        });
         menuManageAccount.getStyleClass().add("menu-item-last");
         menuManageAccount.setGraphic(new SVGIcon(Icon.MANAGE_ACCOUNTS));
 

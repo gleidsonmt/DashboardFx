@@ -120,9 +120,11 @@ public class Drawer extends VBox {
                 ),
 //                        new View("Cards", new CardsPres())),
 //                new ModuleView("Pages",
+
 //                        new View("Home Page", new HomePage()),
 ////                        new View("Login", new LoginPage()),
-//                        new View("Error Page 404")),
+//                        new View("Error Page 404")
+//                        ),
                 new ModuleSeparator(new SVGIcon(Icon.HELP), "Theme"),
                 new ModuleView("Extras",
                         new ColorsPres()
