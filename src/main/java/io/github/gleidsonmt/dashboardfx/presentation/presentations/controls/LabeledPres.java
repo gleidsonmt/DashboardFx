@@ -10,8 +10,6 @@ import io.github.gleidsonmt.presentation.Row;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -109,18 +107,15 @@ public class LabeledPres extends CustomizablePresentation {
                         A tri-state selection Control typically skinned as a box with a checkmark or tick mark when checked.""")
                 .legend("javafx.scene.control.CheckBox")
 
-                .demo(createCheckBox("Select me"))
+                .demo(createCheckBox())
                 .h4("Install", "CheckBox")
                 .code(TutorialUtils.installExample(Css.CHECK_BOX, "CheckBox", "\"Select me\""))
-
-
-//                .code("CheckBox checkBox = new CheckBox(\"Select me\");")
 
                 .h3("ToggleButton", "Button")
                 .text("""
                         ToggleButton is a specialized control which has the ability to be selected.
-                        Typically a ToggleButton is rendered similarly to a Button. 
-                        However, they are two different types of Controls. 
+                        Typically a ToggleButton is rendered similarly to a Button.
+                        However, they are two different types of Controls.
                         A Button is a "command" button which invokes a function when clicked.""")
                 .legend("javafx.scene.control.ToggleButton")
 
@@ -134,7 +129,7 @@ public class LabeledPres extends CustomizablePresentation {
                 .text("""
                         RadioButtons create a series of items where only one item can be selected. RadioButtons are a specialized ToggleButton.""")
                 .legend("javafx.scene.control.RadioButton")
-                .demo(createDemoRadio("Select me"))
+                .demo(createDemoRadio())
                 .h4("Install", "RadioButton")
                 .code(TutorialUtils.installExample(Css.RADIO_BUTTON, "RadioButton", "\"Select me\""))
 
@@ -172,13 +167,59 @@ public class LabeledPres extends CustomizablePresentation {
                         group.getToggles().addAll(optionOne, optionTwo);
                         """)
 
+
+                .h3("MenuButton", "Button")
+                .text("Chose an action using a popup.")
+
+                .demo(createMenuButton())
+                .h4("Install", "MenuButton")
+                .code(TutorialUtils.installExample(Css.MENU_BUTTON, "MenuButton") + """
+                        
+                        menu_button.setText("Menu Button");
+                        menu_button.getItems().setAll(
+                            new MenuItem("Item 01"),
+                            new MenuItem("Item 02"),
+                            new MenuItem("Item 03")
+                        );
+                        """)
+                .text("You can see more options of actions using popup bellow.")
+
+                .h3("SplitMenuButton", "MenuButton")
+                .text("Chose an action using a popup.")
+
+                .demo(createSplitMenuButton())
+                .h4("Install", "SplitMenuButton")
+                .code(TutorialUtils.installExample(Css.SPLIT_MENU_BUTTON, "SplitMenuButton") + """
+                        
+                        split_menu_button.setText("Split Menu Button");
+                        split_menu_button.getItems().setAll(
+                            new MenuItem("Item 01"),
+                            new MenuItem("Item 02"),
+                            new MenuItem("Item 03")
+                        );
+                        """)
+                .text("You can see more options of actions using popup bellow.")
+                .node(TutorialUtils.createLink("ChoiceBox", "ChoiceBoxPres"))
+
 //                .node(new MenuButton("MenuButton"))
 //                .node(new SplitMenuButton())
                 ;
     }
 
-    private Node createCheckBox(String text) {
-        CheckBox container = new CheckBox(text);
+    private Node createSplitMenuButton() {
+        SplitMenuButton menuButton = new SplitMenuButton( new MenuItem("Item 01"), new MenuItem("Item 02"), new MenuItem("Item 03"));
+        menuButton.setText("Split Menu Button");
+        return menuButton;
+    }
+
+    private Node createMenuButton() {
+        MenuButton menuButton = new MenuButton("Menu Button");
+        menuButton.getItems().setAll(new MenuItem("Item 01"), new MenuItem("Item 02"), new MenuItem("Item 03"));
+        return menuButton;
+    }
+
+    private Node createCheckBox() {
+        CheckBox container = new CheckBox("Select me");
         container.setIndeterminate(true);
         container.setAllowIndeterminate(true);
         return container;
@@ -195,9 +236,8 @@ public class LabeledPres extends CustomizablePresentation {
         return text;
     }
 
-    private Node createDemoRadio(String text) {
-        RadioButton container = new RadioButton(text);
-        return container;
+    private Node createDemoRadio() {
+        return new RadioButton("Select me");
     }
 
     private Node createGroupRadio() {
@@ -259,25 +299,6 @@ public class LabeledPres extends CustomizablePresentation {
         return btn;
     }
 
-
-    private Node createCustom(String text, String color) {
-
-        Region region = new Region();
-        region.setMinSize(20, 20);
-        region.getStyleClass().addAll("bg-" + color, "round", "bg-insets-5", "border-5");
-
-        region.getStyleClass().addAll("bg-" + color);
-        region.setStyle("-fx-border-color: derive(-" + color + ", 90%);");
-
-        Label label = new Label(text);
-        label.setGraphic(region);
-
-        return label;
-    }
-
-    private Label createDemo(String _text, String... _classes) {
-        return createDemo(null, _text, _classes);
-    }
 
     private Label createDemo(Node graphic, String _text, String... _classes) {
         Label text = new Label(_text);

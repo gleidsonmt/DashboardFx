@@ -83,9 +83,10 @@ public class Drawer extends VBox {
                 new ModuleView("Controls",
                         new RegionPres(),
                         new LabeledPres(),
-                        new ListViewPres(),
-                        new TextInputPres(),
+                        new ChoiceBoxPres(),
                         new ComboBoxBasePres(),
+                        new TextInputPres(),
+                        new ListViewPres(),
                         new TableViewPres(),
                         new TreeViewPres(),
                         new ProgressBarPres()
