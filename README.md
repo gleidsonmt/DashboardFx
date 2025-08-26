@@ -11,7 +11,7 @@
 
 
 <p align="center">
-  <img src="./screen.png"  />
+  <img src="./screenshots/dash-2.png.png"  />
 </p>
 
 <!-- TOC -->
