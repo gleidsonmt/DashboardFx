@@ -1,4 +1,15 @@
+
+## List of All Enhancements.
+
+- [x] Presentation sintax
 - [X] CodeBlock Syntax Highlight;
+- [ ] Root
+    - [x] Flow
+    - [x] Wrapper
+    - [ ] Behavior
+        - [ ] Alert
+        - [ ] Snack
+        - [ ] Dialog
 - [ ] Dark Mode;
 - [ ] Tutorials;
     - [ ] Shapes
@@ -36,4 +47,6 @@
         - [x] DonutChart;
         - [x] CurvedAreaChart;
         - [ ] RadialChart
+    - [ ] Table
+        - [ ] DataTableHandler
          
