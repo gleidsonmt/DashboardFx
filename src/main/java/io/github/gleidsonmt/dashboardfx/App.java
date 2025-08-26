@@ -33,7 +33,7 @@ public class App extends Application {
                 Css.PROGRESS_BAR, Css.LIST_VIEW, Css.TABLE_VIEW,
                 Css.TAB_PANE, Css.IMMERSIVE_SCROLL,
                 Css.DATE_PICKER, Css.MENU_BUTTON,
-                Css.SPLIT_MENU_BUTTON,
+                Css.SPLIT_MENU_BUTTON, Css.CHOICE_BOX,
 
 
                 Css.TEXT_FIELD, Css.TEXT_BOX);

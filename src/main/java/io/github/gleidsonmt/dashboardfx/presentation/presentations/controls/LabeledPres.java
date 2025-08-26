@@ -171,7 +171,10 @@ public class LabeledPres extends CustomizablePresentation {
                 .h3("MenuButton", "Button")
                 .text("Chose an action using a popup.")
 
-                .demo(createMenuButton())
+                .demo(new Node[] {
+                        createMenuButton(),
+                        createMenuButton("menu-outlined")
+                })
                 .h4("Install", "MenuButton")
                 .code(TutorialUtils.installExample(Css.MENU_BUTTON, "MenuButton") + """
                         
@@ -181,13 +184,18 @@ public class LabeledPres extends CustomizablePresentation {
                             new MenuItem("Item 02"),
                             new MenuItem("Item 03")
                         );
+                        // Add second option design
+                        menu_button.getStyleClass().add("menu-outlined");
                         """)
                 .text("You can see more options of actions using popup bellow.")
 
                 .h3("SplitMenuButton", "MenuButton")
                 .text("Chose an action using a popup.")
 
-                .demo(createSplitMenuButton())
+                .demo(new Node[]{
+                        createSplitMenuButton(),
+                        createSplitMenuButton("split-outlined")
+                })
                 .h4("Install", "SplitMenuButton")
                 .code(TutorialUtils.installExample(Css.SPLIT_MENU_BUTTON, "SplitMenuButton") + """
                         
@@ -197,6 +205,8 @@ public class LabeledPres extends CustomizablePresentation {
                             new MenuItem("Item 02"),
                             new MenuItem("Item 03")
                         );
+                        // Add second option design
+                        menu_button.getStyleClass().add("split-outlined");
                         """)
                 .text("You can see more options of actions using popup bellow.")
                 .node(TutorialUtils.createLink("ChoiceBox", "ChoiceBoxPres"))
@@ -206,15 +216,17 @@ public class LabeledPres extends CustomizablePresentation {
                 ;
     }
 
-    private Node createSplitMenuButton() {
+    private Node createSplitMenuButton(String... cls) {
         SplitMenuButton menuButton = new SplitMenuButton( new MenuItem("Item 01"), new MenuItem("Item 02"), new MenuItem("Item 03"));
         menuButton.setText("Split Menu Button");
+        menuButton.getStyleClass().addAll(cls);
         return menuButton;
     }
 
-    private Node createMenuButton() {
+    private Node createMenuButton(String... cls) {
         MenuButton menuButton = new MenuButton("Menu Button");
         menuButton.getItems().setAll(new MenuItem("Item 01"), new MenuItem("Item 02"), new MenuItem("Item 03"));
+        menuButton.getStyleClass().addAll(cls);
         return menuButton;
     }
 

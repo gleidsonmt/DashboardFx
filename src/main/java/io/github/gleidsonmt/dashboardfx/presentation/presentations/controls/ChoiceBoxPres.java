@@ -2,6 +2,8 @@ package io.github.gleidsonmt.dashboardfx.presentation.presentations.controls;
 
 import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
+import io.github.gleidsonmt.glad.theme.Css;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
@@ -13,20 +15,26 @@ import javafx.scene.control.ChoiceBox;
 public class ChoiceBoxPres extends CustomizablePresentation {
 
     public ChoiceBoxPres() {
-        super("ChoiceBoxPres");
+        super("ChoiceBox");
     }
 
     @Override
     public Tutorial create() {
         return new Tutorial()
-                .h3("ChoiceBoxPres")
-                .node(createChoiceBox())
+                .h3("ChoiceBox")
+                .demo(new Node[]{
+                        createChoiceBox(),
+                        createChoiceBox("outlined")
+                })
+                .h4("Install", "ChoiceBox")
+                .code(TutorialUtils.installExample(Css.CHOICE_BOX, "ChoiceBox"))
                 ;
     }
-    private Node createChoiceBox() {
-        ChoiceBox<String> box = new ChoiceBox<>(
-                FXCollections.observableArrayList("Item 01", "Item 02")
-        );
+    private Node createChoiceBox(String... clas) {
+        ChoiceBox<String> box = new ChoiceBox<>();
+        box.getStyleClass().addAll(clas);
+        box.getItems().setAll("Item 01", "Item 02");
+        box.getSelectionModel().selectFirst();
         return box;
     }
 }
