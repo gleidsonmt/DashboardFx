@@ -47,6 +47,17 @@
         - [x] DonutChart;
         - [x] CurvedAreaChart;
         - [ ] RadialChart
+    - [ ] Pages
+      - [ ] Login;
+      - [ ] Register;
+      - [ ] Home;
+      - [ ] About;
+      - [ ] Contact;
+      - [ ] Settings;
+      - [ ] Error;
+    - [ ] Layouts
+      - [ ] Grid;
+      - [ ] Flow; 
     - [ ] Table
         - [ ] DataTableHandler
          
