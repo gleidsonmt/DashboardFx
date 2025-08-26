@@ -57,7 +57,63 @@ Don't use any library like scenicView, cssfx.. when you build a jpackage, that's
 # 📺 On Youtube
 ...
 # 🛠 Enhancements
-...
+- [X] CodeBlock Syntax Highlight;
+- [ ] Dark Mode;
+- [ ] Tutorials;
+    - [ ] Shapes
+        - [ ] Text;
+        - [ ] Image;
+        - [ ] Line;
+        - [ ] Rectangle;
+        - [ ] Circle;
+        - [ ] Polygon;
+        - [ ] Polyline;
+        - [ ] Arc;
+        - [ ] Ellipse;
+        - [ ] Path;
+    - [ ] Region
+        - [x] Label;
+        - [X] Button;
+        - [x] CheckBox;
+        - [x] RadioButton;
+        - [x] ToggleButton;
+        - [ ] Slider;
+        - [x] ProgressBar;
+        - [ ] ScrollPane;
+        - [ ] ScrollBar;
+        - [ ] TextArea;
+    - [ ] Charts
+      - [ ] LineChart;
+      - [ ] BarChart;
+      - [ ] PieChart;
+      - [ ] ScatterAreaChart;
+      - [ ] ScatterBarChart;
+      - [ ] AreaChart;
+      - [ ] BubbleChart;
+      - [ ] ScatterChart;
+      - [ ] Extras
+        - [x] DonutChart;
+        - [x] CurvedAreaChart;
+        - [ ] RadialChart
+         
+
+
+
+[//]: # ([ ] More examples;)
+
+[//]: # ([ ] More libs;)
+
+[//]: # ([ ] More designs;)
+
+[//]: # ([ ] More animations;)
+
+[//]: # ([ ] More effects;)
+
+[//]: # ([ ] More components;)
+
+[//]: # ([ ] More tutorials;)
+
+[//]: # ([ ] More examples;)
 
 # 📫 Contributing to Project
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
