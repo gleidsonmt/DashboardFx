@@ -53,11 +53,12 @@ I really recommend to use jpackage to create your jar and the .exe. <br>
 !🗒️Note ** To generate you .exe you need the wix tool, you can get the url if you using intellij or from here  https://wixtoolset.org 🥸***
 In intellij or visual studio (in visual you need to prepare the  ide to use javafx) it's really simple, only open the tab gradle and run the command build after jpackage.
 Don't use any library like scenicView, cssfx.. when you build a jpackage, that's only to test design. (maybe you can't get the result expected or crash your app)
-...
+
 # 📺 On Youtube
 ...
-# 🛠 Enhancements
-[Google](./ENHANCEMENTS.md) 
+
+# 🛠 Enhancements 
+[Show All](./ENHANCEMENTS.md) 
 
 [//]: # ([ ] More examples;)
 
