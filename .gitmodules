@@ -1,4 +1,9 @@
 [submodule "blockcode"]
     path = blockcode
     url = https://github.com/gleidsonmt/blockcode.git
-
+[submodule "presentation"]
+    path = blockcode
+    url = https://github.com/gleidsonmt/presentation.git
+[submodule "glad"]
+    path = blockcode
+    url = https://github.com/gleidsonmt/glad.git
