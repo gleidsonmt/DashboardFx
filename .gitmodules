@@ -2,8 +2,8 @@
     path = blockcode
     url = https://github.com/gleidsonmt/blockcode.git
 [submodule "presentation"]
-    path = blockcode
+    path = presentation
     url = https://github.com/gleidsonmt/presentation.git
 [submodule "glad"]
-    path = blockcode
+    path = glad
     url = https://github.com/gleidsonmt/glad.git
