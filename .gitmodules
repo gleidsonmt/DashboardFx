@@ -1,9 +1,12 @@
 [submodule "blockcode"]
     path = blockcode
     url = https://github.com/gleidsonmt/blockcode.git
+    branch = main
 [submodule "presentation"]
     path = presentation
     url = https://github.com/gleidsonmt/presentation.git
+    branch = main
 [submodule "glad"]
     path = glad
     url = https://github.com/gleidsonmt/glad.git
+    branch = dev
