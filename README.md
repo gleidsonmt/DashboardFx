@@ -44,9 +44,27 @@ You'll find the jars in the folder called vendor.
 All libs are included in build.gradle
 
 # ☕ Running
+
+Clone the project using.
+```
+    git clone --recursive https://github.com/gleidsonmt/DashboardFx.git
+```
+This command will clone the project and all submodules.<br>
+Building using gradle wrapper is simple just run the command below.
+```
+    .\gradlew init
+    .\gradlew build
+    .\gradlew run
+```
+In the order. <br>
+First prepares the project. <br>
+Second builds the project. <br>
+Third runs the project. <br>
+
 Just build and run -(º-º)- there's no trick… only use gradle to build and run in your ide.
-Use the command build and run to see application running. 
+Use the command build and run to see the application running. 
 If you have problems, open an issue.
+
 
 # 🚀 Installing
 I really recommend to use jpackage to create your jar and the .exe. <br>
