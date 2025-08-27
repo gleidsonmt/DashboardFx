@@ -1,4 +1,4 @@
-<h1 style="text-align: center;" id="DashboardFx">DashboardFx</h1>
+<h1 style="text-align: center;" id="#DashboardFx">DashboardFx</h1>
 
 [//]: # ([![News]&#40;https://img.shields.io/badge/News-1-brightgreen.svg?style=for-the-badge&#41;]&#40;http://gleidson28.blogspot.com&#41;)
 [//]: # (![Version]&#40;https://img.shields.io/badge/Version-0.3.22-green.svg?style=for-the-badge&#41;)
@@ -20,7 +20,7 @@
 * [📺 On Youtube](#-on-youtube)
 * [🛠 Enhancements](#-enhancements-)
 * [📫 Contributing to Project](#-contributing-to-project)
-* [😄 Be a contritubutor<br>](#-be-a-contritubutorbr)
+* [😄 Be a contributor<br>](#-be-a-contributorbr)
 * [📝 License](#-license)
 <!-- TOC -->
 
@@ -59,15 +59,15 @@ First prepares the project. <br>
 Second builds the project. <br>
 Third runs the project. <br>
 
-Just build and run -(º-º)- there's no trick… only use gradle to build and run in your ide.
+Just build and run -(º-º)- there's no trick… only use Gradle to build and run in your ide.
 Use the command build and run to see the application running. 
 If you have problems, open an issue.
 
 
 # 🚀 Installing
-I really recommend to use jpackage to create your jar and the .exe. <br>
-!🗒️Note ** To generate you .exe you need the wix tool, you can get the url if you using intellij or from here  https://wixtoolset.org 🥸***
-In intellij or visual studio (in visual you need to prepare the  ide to use javafx) it's really simple, only open the tab gradle and run the command build after jpackage.
+I really recommend using jpackage to create your jar and the .exe. <br>
+!🗒️Note ** To generate you .exe you need the wix tool, you can get the url if you are using intellij or from here  https://wixtoolset.org 🥸***
+In intellij or Visual Studio (in visual you need to prepare the ide to use javafx) it's really simple, only open the tab gradle and run the command build after jpackage.
 Don't use any library like scenicView, cssfx.. when you build a jpackage, that's only to test design. (maybe you can't get the result expected or crash your app)
 
 # 📺 On Youtube
@@ -88,12 +88,12 @@ To contributing to project, follow these steps:
 
 However, if you don't know [How to create a pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-# 😄 Be a contritubutor<br>
+# 😄 Be a contributor<br>
 
-🤖I really need more friends.. Send me a  <a href='mailto:gleidisonmt@gmail.com?subject=Hi, I see you need my help!.. I am here.'> email <a/>.
+🤖I really need more friends. Send me <a href='mailto:gleidisonmt@gmail.com?subject=Hi, I see you need my help!.. I am here.'> email <a/>.
 
 # 📝 License
 
-This project is under license. See the file [LICENSE](LICENSE) to more details.
+This project is under license. See the file [LICENSE](LICENSE.txt) to more details.
 
 [⬆ Back to the top](#DashboardFx)<br>
