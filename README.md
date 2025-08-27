@@ -1,6 +1,4 @@
-<h1 align="center">DashboardFx</h1>
-<h1></h1>
-
+<h1 style="text-align: center;" id="DashboardFx">DashboardFx</h1>
 
 [//]: # ([![News]&#40;https://img.shields.io/badge/News-1-brightgreen.svg?style=for-the-badge&#41;]&#40;http://gleidson28.blogspot.com&#41;)
 [//]: # (![Version]&#40;https://img.shields.io/badge/Version-0.3.22-green.svg?style=for-the-badge&#41;)
@@ -10,8 +8,8 @@
 [![License](https://img.shields.io/github/license/Gleidson28/GNDecorator.svg?style=for-the-badge)](https://github.com/gleidsonmt/GNDecorator/blob/master/LICENSE)
 
 
-<p align="center">
-  <img src="./screenshots/dash-2.png"  />
+<p style="text-align: center">
+  <img src="./screenshots/area-chart.png"   alt="dashboard_screenshot"/>
 </p>
 
 <!-- TOC -->
@@ -20,7 +18,7 @@
 * [☕ Running](#-running)
 * [🚀 Installing](#-installing)
 * [📺 On Youtube](#-on-youtube)
-* [🛠 Enhancements](#-enhancements)
+* [🛠 Enhancements](#-enhancements-)
 * [📫 Contributing to Project](#-contributing-to-project)
 * [😄 Be a contritubutor<br>](#-be-a-contritubutorbr)
 * [📝 License](#-license)
