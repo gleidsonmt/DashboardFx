@@ -1,8 +1,7 @@
 # DashboardFx
 
-[![News](https://img.shields.io/badge/News-2-brightgreen.svg?style=for-the-badge)](NEWSLETTER.md)
+[![News](https://img.shields.io/badge/Newsletter-brightgreen.svg?style=for-the-badge)](NEWSLETTER.md)
 [![License](https://img.shields.io/github/license/gleidsonmt/DashboardFx.svg?style=for-the-badge)](https://github.com/gleidsonmt/DashboardFX/blob/alpha/LICENSE.txt)
-![Version](https://img.shields.io/badge/Version-0.3.22-green.svg?style=for-the-badge)
 ![Build](https://img.shields.io/github/v/tag/gleidsonmt/DashboardFx.svg?color=gray&label=Version&style=for-the-badge)
 
 
