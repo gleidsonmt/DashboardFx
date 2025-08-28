@@ -1,16 +1,13 @@
 # DashboardFx
 
-[![News](https://img.shields.io/badge/News-2-brightgreen.svg?style=for-the-badge)](NEWSLETTER.md)
+[![News](https://img.shields.io/badge/Newsletter-brightgreen.svg?style=for-the-badge)](NEWSLETTER.md)
 [![License](https://img.shields.io/github/license/gleidsonmt/DashboardFx.svg?style=for-the-badge)](https://github.com/gleidsonmt/DashboardFX/blob/alpha/LICENSE.txt)
-
-[//]: # (![Version]&#40;https://img.shields.io/badge/Version-0.3.22-green.svg?style=for-the-badge&#41;)
-[//]: # ([![Release]&#40;https://img.shields.io/badge/Release-v2.2.25-green.svg?style=for-the-badge&#41;]&#40;https://github.com/gleidsonmt/GNDecorator/releases/tag/2.1.25&#41;)
-[//]: # (![Build]&#40;https://img.shields.io/badge/Build-2.2.24+258-gold.svg?style=for-the-badge&#41;)
+![Build](https://img.shields.io/github/v/tag/gleidsonmt/DashboardFx.svg?color=gray&label=Version&style=for-the-badge)
 
 
 
 <p style="text-align: center">
-  <img src="./screen.png"   alt="dashboard_screenshot"/>
+  <img src="./screenshots/dash-2.png"   alt="dashboard_screenshot"/>
 </p>
 
 <!-- TOC -->

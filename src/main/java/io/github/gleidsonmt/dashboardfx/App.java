@@ -20,10 +20,12 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         Root root = new Root(new Main());
         Scene scene = new Scene(root, 1200,800);
+
         stage.setScene(scene);
         stage.setMinWidth(400);
         stage.setMinHeight(600);
         stage.setMaximized(true);
+
         ThemeProvider.install(scene, Font.POPPINS, Font.INSTAGRAM);
         ThemeProvider.install(scene, Css.DEFAULT, Css.BUTTON,
                 Css.SHAPES,  Css.CONTEXT_MENU,
@@ -42,9 +44,7 @@ public class App extends Application {
         stage.getIcons().add(Assets.getImage("logo_128.png"));
         stage.show();
 
-//        LibrariesTools.listenCss(stage.getScene());
-        LibrariesTools.showScenicView(stage.getScene());
-        LibrariesTools.listenCss(stage.getScene());
+        LibrariesTools.addTools(stage.getScene());
 
     }
 }
