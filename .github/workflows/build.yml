@@ -1,0 +1,33 @@
+name: Automated Versioning and Release
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Required to fetch all history for versioning
+
+      - name: Get next semantic version
+        id: semver
+        uses: PaulHatch/semantic-version@v4.0.3 # Example action
+        with:
+          tag_prefix: "v"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        if: ${{ steps.semver.outputs.is_release == 'true' }} # Only create release if a new version is determined
+        with:
+          tag_name: ${{ steps.semver.outputs.version }}
+          name: Release ${{ steps.semver.outputs.version }}
+          body: |
+            # Release Notes
+            ${{ steps.semver.outputs.changelog }} # Assuming changelog output
+          draft: false
+          prerelease: false
