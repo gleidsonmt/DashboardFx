@@ -25,3 +25,6 @@ jobs:
         run: echo "The new version is now $new_version"
         env:
           new_version: ${{ steps.increment-version.outputs.new-version }}
+
+  # See more
+  # https://github.com/marketplace/actions/semantic-versioning-git

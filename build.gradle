@@ -1,5 +1,3 @@
-import groovy.lang.GroovyClassLoader
-
 plugins {
     id 'java'
     id 'application'
@@ -8,24 +6,11 @@ plugins {
     id 'org.beryx.jlink' version '2.25.0'
 }
 
-Properties props = new Properties()
-File file = new File('./app.properties')
-props.load(file.newDataInputStream())
-println(props.getProperty("app.version.build"))
-
 group 'io.github.gleidsonmt'
-// 1 lancamento completo
-// 2 merge on dev
-// 3 artifact build
-// 4 build locally
-
-// version 1.2.3.4
-version + props.get("app.version.major") + props.get("app.version.minor") + props.get("app.version.artifact") + props.get("app.version.build")
 
 repositories {
     mavenCentral()
 }
-
 
 ext {
     junitVersion = '5.10.2'
@@ -57,10 +42,7 @@ javafx {
 
 dependencies {
     implementation files('vendor/colors-1.0.jar');
-//    runtimeOnly files("vendor/scenicview.jar")
-
     implementation 'org.jetbrains:annotations:24.0.1'
-//    implementation group: 'org.yaml', name: 'snakeyaml', version: '2.2'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
@@ -68,7 +50,6 @@ dependencies {
     implementation project(":blockcode")
     implementation project(":glad")
     implementation project(":presentation")
-
 }
 
 distTar {
