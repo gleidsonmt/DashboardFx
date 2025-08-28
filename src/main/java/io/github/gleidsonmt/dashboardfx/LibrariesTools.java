@@ -2,6 +2,7 @@ package io.github.gleidsonmt.dashboardfx;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -23,6 +24,7 @@ public final class LibrariesTools {
         Class<?> cls = null;
         try {
             File jarFile = new File(jarDirectory);
+            if (!jarFile.exists()) return null;
             URL[] urls = {jarFile.toURI().toURL()};
             URLClassLoader classLoader = new URLClassLoader(urls, ClassLoader.getSystemClassLoader());
             Thread.currentThread().setContextClassLoader(classLoader);
@@ -38,11 +40,12 @@ public final class LibrariesTools {
         listenCss(scene);
     }
 
-    public static void showScenicView(Scene scene) throws RuntimeException {
+    private static void showScenicView(Scene scene) throws RuntimeException {
         if (scene == null) return;
         ClassLoader originalCtx = Thread.currentThread().getContextClassLoader();
-
         Class<?> clazz = loadClassJar("./vendor/scenicview.jar", "org.scenicview.ScenicView");
+        if (clazz == null) return;
+
         try {
             clazz.getMethod("show", Scene.class).invoke(null, scene);
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException _) {
@@ -52,9 +55,10 @@ public final class LibrariesTools {
         }
     }
 
-    public static void listenCss(Scene scene) {
+    private static void listenCss(Scene scene) {
         if (scene == null) return;
         Class<?> clazz = loadClassJar("./vendor/cssfx-11.5.1.jar", "fr.brouillard.oss.cssfx.CSSFX");
+        if (clazz == null) return;
         try {
             clazz.getMethod("start", Scene.class).invoke(null, scene);
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException _) {
