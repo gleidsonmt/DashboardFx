@@ -1,33 +1,27 @@
-name: Automated Versioning and Release
-
-on:
-  push:
-    branches:
-      - dev
+name: Deploy
+on: [push]
 
 jobs:
-  release:
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
+    # Only run one job a time to avoid conflicts
+    concurrency: ci-${{ github.ref }}
+    # This permission may be required to grant access for the Action to push tags
+    permissions:
+      contents: write
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 # Required to fetch all history for versioning
+      - uses: actions/checkout@v4
 
-      - name: Get next semantic version
-        id: semver
-        uses: PaulHatch/semantic-version@v4.0.3 # Example action
-        with:
-          tag_prefix: "v"
+      - name: Increment version
+        id: increment-version
+        uses: RichardInnocent/semantic-versioning-git@v0.0.1
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        if: ${{ steps.semver.outputs.is_release == 'true' }} # Only create release if a new version is determined
-        with:
-          tag_name: ${{ steps.semver.outputs.version }}
-          name: Release ${{ steps.semver.outputs.version }}
-          body: |
-            # Release Notes
-            ${{ steps.semver.outputs.changelog }} # Assuming changelog output
-          draft: false
-          prerelease: false
+      # Everything below here shows how you might use the results of the action...
+
+      - name: Print if version changed
+        if: steps.increment-version.outputs.previous-version != steps.increment-version.outputs.new-version
+        run: echo "The new version is now $new_version"
+        env:
+          new_version: ${{ steps.increment-version.outputs.new-version }}
