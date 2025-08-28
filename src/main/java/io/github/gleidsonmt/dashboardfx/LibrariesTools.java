@@ -1,7 +1,8 @@
 package io.github.gleidsonmt.dashboardfx;
 
-import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -11,55 +12,53 @@ import java.net.URLClassLoader;
 
 
 /**
+ * Used only in runtime as tool to help development.
+ *
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  27/08/2025
  */
-public class LibrariesTools {
+public final class LibrariesTools {
 
-    public static void showScenicView(Scene scene) {
-        if (scene == null) return;
+    private static Class<?> loadClassJar(String jarDirectory, String fullClass) {
+        Class<?> cls = null;
         try {
-            // ... inside a method or class
-            File jarFile = new File("./vendor/scenicview.jar");
-            URL[] urls = { jarFile.toURI().toURL() };
+            File jarFile = new File(jarDirectory);
+            URL[] urls = {jarFile.toURI().toURL()};
             URLClassLoader classLoader = new URLClassLoader(urls, ClassLoader.getSystemClassLoader());
-            String className = "org.scenicview.ScenicView"; // Fully qualified class name
+            Thread.currentThread().setContextClassLoader(classLoader);
+            cls = Class.forName(fullClass, true, classLoader);
+        } catch (MalformedURLException | ClassNotFoundException _) {
 
-            Platform.runLater(() -> {
-                ClassLoader originalCtx = Thread.currentThread().getContextClassLoader();
-                Thread.currentThread().setContextClassLoader(classLoader);
-                try {
-                    Class<?> cls = Class.forName(className, true, classLoader);
-                    cls.getMethod("show", Scene.class).invoke(null, scene);
-                } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException |
-                         ClassNotFoundException e) {
-                    throw new RuntimeException(e);
-                } finally {
-                    Thread.currentThread().setContextClassLoader(originalCtx);
-                }
-            });
-            System.out.println("[ScenicView] Aberto com sucesso.");
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
+        }
+        return cls;
+    }
+
+    public static void addTools(Scene scene) {
+        showScenicView(scene);
+        listenCss(scene);
+    }
+
+    public static void showScenicView(Scene scene) throws RuntimeException {
+        if (scene == null) return;
+        ClassLoader originalCtx = Thread.currentThread().getContextClassLoader();
+
+        Class<?> clazz = loadClassJar("./vendor/scenicview.jar", "org.scenicview.ScenicView");
+        try {
+            clazz.getMethod("show", Scene.class).invoke(null, scene);
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException _) {
+
+        } finally {
+            Thread.currentThread().setContextClassLoader(originalCtx);
         }
     }
 
     public static void listenCss(Scene scene) {
         if (scene == null) return;
+        Class<?> clazz = loadClassJar("./vendor/cssfx-11.5.1.jar", "fr.brouillard.oss.cssfx.CSSFX");
         try {
+            clazz.getMethod("start", Scene.class).invoke(null, scene);
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException _) {
 
-            // ... inside a method or class
-            File jarFile = new File("./vendor/cssfx-11.5.1.jar");
-            URL[] urls = {jarFile.toURI().toURL()};
-            URLClassLoader classLoader = new URLClassLoader(urls, ClassLoader.getSystemClassLoader());
-            String className = "fr.brouillard.oss.cssfx.CSSFX"; // Fully qualified class name
-            Class<?> cls = Class.forName(className, true, classLoader);
-
-            cls.getMethod("start", Scene.class).invoke(null, scene);
-        } catch (ReflectiveOperationException e) {
-            System.out.println("[ScenicView] Error on invoking ScenicView.show(Scene): " + e.getMessage());
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
         }
     }
 

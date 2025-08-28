@@ -26,7 +26,6 @@ application {
 }
 
 subprojects {
-    // Thanks GOD!
     tasks.configureEach { task ->
         if (task.name.contains("run")) {
             task.enabled = false
@@ -71,7 +70,7 @@ jlink {
     launcher {
         name = 'DashboardFx'
     }
-    forceMerge("org.scenicview")
+//    forceMerge("org.scenicview")
 
     jpackage {
 
