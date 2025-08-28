@@ -1,3 +1,5 @@
+import groovy.lang.GroovyClassLoader
+
 plugins {
     id 'java'
     id 'application'
@@ -6,30 +8,31 @@ plugins {
     id 'org.beryx.jlink' version '2.25.0'
 }
 
+Properties props = new Properties()
+File file = new File('./app.properties')
+props.load(file.newDataInputStream())
+println(props.getProperty("app.version.build"))
+
 group 'io.github.gleidsonmt'
-version '1.0'
+// 1 lancamento completo
+// 2 merge on dev
+// 3 artifact build
+// 4 build locally
+
+// version 1.2.3.4
+version + props.get("app.version.major") + props.get("app.version.minor") + props.get("app.version.artifact") + props.get("app.version.build")
 
 repositories {
     mavenCentral()
 }
 
+
 ext {
     junitVersion = '5.10.2'
-
-    Properties _props = new Properties()
-    File _propsFile = new File('./app.properties')
-    _props.load(_propsFile.newDataInputStream())
-
-    // Load act version from properties
-    project.version =
-            _props.getProperty("app.version.major") +
-                    "." + _props.getProperty("app.version.minor") +
-                    "." + _props.getProperty("app.version.build");
-
-    // Variables used in flows to update..
-    propsFile = _propsFile
-    props = _props
-    buildVersion = _props.getProperty("app.version.build")
+    props.setProperty "app.version.build", (props.getProperty("app.version.build") as int + 1).toString();
+    props.store(file.newWriter(), null)
+    props.load(file.newDataInputStream())
+    println "Storing Properties."
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -57,11 +60,12 @@ javafx {
 }
 
 dependencies {
-    implementation fileTree('vendor') { include '*.jar' }
-//    implementation files('vendor/colors-1.0.jar');
+    implementation files('vendor/colors-1.0.jar');
+//    runtimeOnly files("vendor/scenicview.jar")
+
     implementation 'org.jetbrains:annotations:24.0.1'
-    implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to visualize css when app is running.. so amazing!
 //    implementation group: 'org.yaml', name: 'snakeyaml', version: '2.2'
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
@@ -86,9 +90,30 @@ test {
 jlink {
     imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+
     launcher {
-        name = 'app'
+        name = 'DashboardFx'
     }
+    forceMerge("org.scenicview")
+
+    jpackage {
+
+//        imageOptions = [
+//                '--icon', 'logo_256.ico'
+//        ]
+
+        installerType = 'exe'
+        appVersion = version
+        installerOptions = [
+                '--description', "A dashboardfx made in JavaFx UI Toolkit.",
+                '--copyright', 'Copyright © 2025 GLEIDSON NEVES DA SILVEIRA'
+//                , '--icon', 'logo_256.ico'
+
+        ]
+
+        addExtraDependencies("javafx")
+    }
+
 }
 
 jlinkZip {
