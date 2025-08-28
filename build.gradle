@@ -29,10 +29,6 @@ repositories {
 
 ext {
     junitVersion = '5.10.2'
-    props.setProperty "app.version.build", (props.getProperty("app.version.build") as int + 1).toString();
-    props.store(file.newWriter(), null)
-    props.load(file.newDataInputStream())
-    println "Storing Properties."
 }
 
 tasks.withType(JavaCompile).configureEach {
