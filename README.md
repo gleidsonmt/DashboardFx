@@ -10,7 +10,7 @@
 
 
 <p style="text-align: center">
-  <img src="./screen.png"   alt="dashboard_screenshot"/>
+  <img src="./screenshots/dash-2.png.png"   alt="dashboard_screenshot"/>
 </p>
 
 <!-- TOC -->
