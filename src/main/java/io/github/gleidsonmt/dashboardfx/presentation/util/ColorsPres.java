@@ -13,11 +13,15 @@ import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.net.URI;
@@ -37,11 +41,14 @@ public class ColorsPres extends CustomizablePresentation {
     public Tutorial create() {
         try {
             return new Tutorial()
+                    .overview()
                     .h3("Colors")
+                    .text("Sample of colors, you can copy and use.")
                     .h4("Install", "Colors")
                     .code("ThemeProvider.install(scene, \n\t... \n\tCss.COLORS);", "java")
 
                     .h4("Grid Colors", "Colors")
+                    .text("Common colors.")
                     .node(TutorialUtils.createCardLink("HanSolo Colors", new URI("https://github.com/HanSolo/Colors")))
                     .node(createGrid())
 
@@ -103,6 +110,7 @@ public class ColorsPres extends CustomizablePresentation {
                             createDemo("-light-blue"),
                             createDemo("-gray"),
                             createDemo("-white"),
+                            createDemo("-blue-gray"),
                             createDemo("-black")
                     });
         } catch (URISyntaxException e) {
@@ -142,6 +150,22 @@ public class ColorsPres extends CustomizablePresentation {
         return materialGrid;
     }
 
+    private Node createGrid2(String name, String... textClass) {
+        Text text = new Text(name);
+        text.getStyleClass().addAll(textClass);
+        Region region = new Region();
+        VBox block = new VBox(text, region);
+
+        region.setMinSize(30, 30);
+        region.setMaxSize(30, 30);
+        block.setMinSize(40, 40);
+        StackPane.setAlignment(text, Pos.TOP_CENTER);
+        StackPane.setAlignment(region, Pos.BOTTOM_CENTER);
+
+        region.getStyleClass().addAll("round", "padding-10", "depth-1", "border-2", "bg-" + name);
+        return block;
+    }
+
     private Node createDemo(String name) {
         Text content = new Text(name);
 
@@ -170,7 +194,8 @@ public class ColorsPres extends CustomizablePresentation {
                     .behavior()
                     .snack()
                     .graphic(new SVGIcon(Icon.NOTIFICATION_IMPORTANT_FILLED) )
-                    .message("You copied '" + name + "' to clipboard.")
+//                    .message("You copied '" + name + "' to clipboard.")
+                    .message("Copied to clipboard.")
                     .show();
         });
         return stackPane;
