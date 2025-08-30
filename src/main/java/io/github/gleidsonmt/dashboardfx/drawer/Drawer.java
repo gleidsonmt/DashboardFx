@@ -230,7 +230,9 @@ public class Drawer extends VBox {
                 .filter(el -> el instanceof BoxModule)
                 .map(el -> (BoxModule) el)
                 .filter(el -> module.getParent() != null)
-                .filter(el -> el.getName().equals(module.getParent().getName()))
+                .filter(el -> {
+                    return el.getName().equals(module.getParent().getName());
+                })
                 .findAny();
     }
 

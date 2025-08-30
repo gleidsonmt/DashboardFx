@@ -22,9 +22,12 @@ public class ChoiceBoxPres extends CustomizablePresentation {
     public Tutorial create() {
         return new Tutorial()
                 .h3("ChoiceBox")
+                .separator()
+                .text("ChoiceBox is a control that provides a drop-down list of choices for the user to select from.")
+                .legend("javafx.scene.control.ChoiceBox")
                 .demo(new Node[]{
                         createChoiceBox(),
-                        createChoiceBox("outlined")
+                        createChoiceBox("choice-outlined")
                 })
                 .h4("Install", "ChoiceBox")
                 .code(TutorialUtils.installExample(Css.CHOICE_BOX, "ChoiceBox"))
