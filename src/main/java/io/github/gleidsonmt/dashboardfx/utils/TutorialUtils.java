@@ -1,11 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.utils;
 
-import io.github.gleidsonmt.blockcode.BlockCode;
-import io.github.gleidsonmt.blockcode.CodeType;
-import io.github.gleidsonmt.blockcode.Theme;
 import io.github.gleidsonmt.dashboardfx.drawer.Drawer;
-import io.github.gleidsonmt.glad.controls.icon.Icon;
-import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.theme.Css;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -23,7 +18,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
-import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -97,9 +91,9 @@ public class TutorialUtils {
         HBox box = new HBox();
         box.getStyleClass().addAll("border-2", "border-light-gray-2", "padding-10", "radius-10");
         VBox.setMargin(box, new Insets(10, 0, 10, 0));
-        SVGIcon icon = new SVGIcon(Icon.ARROW_RIGHT_ALT);
+//        SVGIcon icon = new SVGIcon(Icon.ARROW_RIGHT_ALT);
+//        hyperlink.setGraphic(icon);
         Hyperlink hyperlink = createLink(placeholder, uri);
-        hyperlink.setGraphic(icon);
         hyperlink.setContentDisplay(ContentDisplay.RIGHT);
         hyperlink.setGraphicTextGap(10);
         hyperlink.getStyleClass().addAll("font-instagram h5".split(" "));
