@@ -2,16 +2,9 @@ package io.github.gleidsonmt.dashboardfx.presentation.presentations.components;
 
 import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
-import io.github.gleidsonmt.glad.controls.badge.Badge;
-import io.github.gleidsonmt.glad.controls.icon.Icon;
-import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
-import io.github.gleidsonmt.presentation.Row;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
-
-import java.util.Random;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -29,10 +22,10 @@ public class LabelExamplePres extends CustomizablePresentation {
                 .separator()
                 .text("Label style examples.")
                 .demo(new Node[]{
-                        createCustom("Danger", "danger"),
-                        createCustom("Warning", "warning"),
-                        createCustom("success", "success"),
-                        createCustom("info", "info")
+                        firstDemo( "danger"),
+                        firstDemo( "warning"),
+                        firstDemo( "success"),
+                        firstDemo( "info")
                 })
                 .code("""
                         Region region = new Region();
@@ -46,70 +39,76 @@ public class LabelExamplePres extends CustomizablePresentation {
                         label.setGraphic(region);
                         """)
                 .demo(new Node[]{
-                        createCustom2("Danger", "danger"),
-                        createCustom2("Warning", "warning"),
-                        createCustom2("success", "success"),
-                        createCustom2("info", "info")
+                        secondDemo("Danger", "bg-danger", "bold", "stroke-white", "rounded", "text-white"),
+                        secondDemo("Warning", "bg-warning", "bold", "stroke-white", "rounded", "text-white"),
+                        secondDemo("Success", "bg-success", "bold", "stroke-white", "rounded", "text-white"),
+                        secondDemo("Info", "bg-info", "bold", "stroke-white", "rounded", "text-white")
                 })
                 .code("""
                         Label label = new Label(text);
-                        label.getStyleClass().addAll( "bg-primary", "text-white", "padding-5", "rounded", "min-size-20", "align-center");
+                        // Try to update bg-primary for your color like bg-[color_name]
+                        label.getStyleClass().addAll("bg-primary", "text-white", "padding-5", "rounded", "min-size-20", "align-center");
                         """)
 
                 .demo(new Node[]{
-                        createDemo("", "min-size-20", "size-20", "bg-danger", "heart", "padding-5"),
-                        createDemo("", "min-size-20", "size-20", "bg-warning", "star", "padding-5"),
-                        createDemo("", "min-size-20", "size-20", "bg-amber", "star-2", "padding-5"),
-                        createDemo("", "min-size-20", "size-20", "bg-yellow", "pac", "padding-5"),
-                        createDemo("", "min-size-20", "size-20", "bg-green", "leaf", "padding-5"),
-                        createDemo("", "min-size-20", "size-20", "bg-purple", "jelly", "padding-5"),
-                        createDemo("", "min-size-20", "size-20", "bg-success", "lbl", "padding-5")
+                        thirdDemo( "heart", "bg-blue", "size-20", "display-graphic"),
+                        thirdDemo( "star", "bg-warning", "size-20", "display-graphic"),
+                        thirdDemo( "star-2", "bg-amber", "size-20", "display-graphic"),
+                        thirdDemo( "pac", "bg-yellow", "size-20", "display-graphic"),
+                        thirdDemo( "leaf", "bg-green", "size-20", "display-graphic"),
+                        thirdDemo( "jelly", "bg-purple", "size-20", "display-graphic"),
+                        thirdDemo( "lbl", "bg-success", "size-20", "display-graphic")
                 })
                 .code("""
-                        label.getStyleClass().addAll("min-size-20", "size-20",  "bg-danger", "heart", "padding-5");
-                        label.getStyleClass().addAll("min-size-20", "size-20",  "bg-warning", "star", "padding-5");
-                        label.getStyleClass().addAll("min-size-20", "size-20",  "bg-amber",  "star-2", "padding-5");
-                        label.getStyleClass().addAll("min-size-20", "size-20",  "bg-yellow", "pac", "padding-5");
-                        label.getStyleClass().addAll("min-size-20", "size-20",  "bg-green",  "leaf", "padding-5");
-                        label.getStyleClass().addAll("min-size-20", "size-20",  "bg-purple", "jelly", "padding-5");
-                        label.getStyleClass().addAll("min-size-20", "size-20",  "bg-success", "lbl", "padding-5");
+                        // Possibles names
+                        // heart, star, star-2, pac, leaf, jelly, lbl
+                        // replace by [name] for one of the above.
+                        label.getStyleClass().addAll("[name]", min-size-20", "size-20",  "bg-danger", "padding-5");
                         """)
 
-                .demo(createDemo(createDemo("", "min-size-20", "size-20", "bg-warning", "star", "padding-5"), "4.7", "bold"));
+                .demo(createDemo(createDemo("min-size-20", "size-20", "bg-warning", "star", "padding-5"), "bold"));
 
     }
 
-
-    private Node createCustom2(String text, String color) {
-        Label label = new Label(text);
-        label.getStyleClass().addAll("bg-" + color, "text-white", "padding-5", "rounded", "min-size-20", "align-center");
-        return label;
+    private Label createDemo(String... _classes) {
+        return createDemo(null, _classes);
     }
 
-    private Node createCustom(String text, String color) {
+    private Label createDemo(Node graphic, String... _classes) {
+        Label text = new Label("4.7");
+        text.setGraphic(graphic);
+        text.getStyleClass().addAll(_classes);
+        text.getStyleClass().addAll(" min-size-20  padding-5 bold".split(" "));
+        return text;
+    }
 
+    private Region createCircleGraphic(String color) {
         Region region = new Region();
         region.setMinSize(20, 20);
         region.getStyleClass().addAll("bg-" + color, "round", "bg-insets-5", "border-5");
 
-        region.getStyleClass().addAll("bg-" + color);
         region.setStyle("-fx-border-color: derive(-" + color + ", 90%);");
+        return region;
+    }
 
-        Label label = new Label(text);
-        label.setGraphic(region);
+    private Label firstDemo(String color) {
+        return demo(color, createCircleGraphic(color));
+    }
 
+    private Label secondDemo(String color, String... _classes) {
+        return demo(color, null, _classes);
+    }
+
+    private Label thirdDemo(String... _classes) {
+        return demo("Third", null, _classes);
+    }
+
+    private Label demo(String _text, Node _graphic, String... _classes) {
+        Label label = new Label(_text);
+        label.setGraphic(_graphic);
+        label.getStyleClass().addAll(_classes);
+        label.getStyleClass().addAll("min-size-20", "padding-5");
         return label;
-    }
-
-    private Label createDemo(String _text, String... _classes) {
-        return createDemo(null, _text, _classes);
-    }
-
-    private Label createDemo(Node graphic, String _text, String... _classes) {
-        Label text = new Label(_text);
-        text.setGraphic(graphic);
-        text.getStyleClass().addAll(_classes);
-        return text;
     }
 
 }
