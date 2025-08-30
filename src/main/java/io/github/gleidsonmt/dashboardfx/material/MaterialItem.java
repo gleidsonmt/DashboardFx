@@ -28,10 +28,10 @@ public class MaterialItem extends StackPane {
 
     private final String color;
 
-
     public MaterialItem(MaterialDesign color) {
         this.color = color.name();
-        this.setMinSize(80, 70);
+        this.setMinSize(50, 50);
+        this.setMaxSize(50, 50);
 //        this.setMaxSize(80, 70);
         String name = color.name().replace("_", " ");
         String mod = color.name().replaceAll("_", "-").toLowerCase();
@@ -39,7 +39,7 @@ public class MaterialItem extends StackPane {
         String strRgb = ColorHelper.rgb(color.get());
         String _text = String.join("", name, "\n", strWeb, "\n", strRgb, "\n", "-"+name.toLowerCase().replaceAll(" ", "-"));
 
-        this.getStyleClass().addAll("radius-5", "padding-10", "depth-1", "border-2", "bg-" + mod);
+        this.getStyleClass().addAll("round", "padding-10", "depth-1", "border-2", "bg-" + mod);
 
         this.setCursor(Cursor.HAND);
         Text text = new Text(name);
@@ -91,7 +91,7 @@ public class MaterialItem extends StackPane {
                 text.getStyleClass().addAll( "text-white", "bold");
             }
         }
-        getChildren().add(text);
+//        getChildren().add(text);
 
         this.setOnMousePressed(event -> {
 
@@ -113,12 +113,12 @@ public class MaterialItem extends StackPane {
                     .behavior()
                     .snack()
                     .graphic(new SVGIcon(Icon.NOTIFICATION_IMPORTANT_FILLED) )
-                    .message("You copied \n'" + clipboardContent + "' \nto clipboard.")
+//                    .message("You copied \n'" + clipboardContent + "' \nto clipboard.")
+                    .message("Copied to clipboard.")
                     .show();
         });
 
         HoverAnimation.install(this);
-
 
         Tooltip tooltip = new Tooltip(_text);
         Tooltip.install(this, tooltip);

@@ -8,16 +8,16 @@ import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentati
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.HoverAnimation;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
-import io.github.gleidsonmt.glad.base.WrapperEffect;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Tooltip;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.net.URI;
@@ -37,11 +37,14 @@ public class ColorsPres extends CustomizablePresentation {
     public Tutorial create() {
         try {
             return new Tutorial()
+                    .overview()
                     .h3("Colors")
+                    .text("Sample of colors, you can copy and use.")
                     .h4("Install", "Colors")
                     .code("ThemeProvider.install(scene, \n\t... \n\tCss.COLORS);", "java")
 
                     .h4("Grid Colors", "Colors")
+                    .text("Common colors.")
                     .node(TutorialUtils.createCardLink("HanSolo Colors", new URI("https://github.com/HanSolo/Colors")))
                     .node(createGrid())
 
@@ -103,6 +106,7 @@ public class ColorsPres extends CustomizablePresentation {
                             createDemo("-light-blue"),
                             createDemo("-gray"),
                             createDemo("-white"),
+                            createDemo("-blue-gray"),
                             createDemo("-black")
                     });
         } catch (URISyntaxException e) {
@@ -122,7 +126,7 @@ public class ColorsPres extends CustomizablePresentation {
                 columns.add(new MaterialColumn());
                 columns.getLast().addColor(new MaterialItem(color));
             } else {
-                String temp = "";
+                String temp;
                 if (color.name().matches("\\w+[0-9]")) {
                     temp = color.name().substring(0, color.name().lastIndexOf("_"));
                 } else {
@@ -137,7 +141,6 @@ public class ColorsPres extends CustomizablePresentation {
                 }
             }
         }
-//        columns.forEach(System.out::println);
         materialGrid.setColumns(columns);
         return materialGrid;
     }
@@ -164,13 +167,14 @@ public class ColorsPres extends CustomizablePresentation {
                 name.equals("white") || name.equals("black") ? name.replace("-", "") : ("bg" + name),
                 "border-2", "border-white", "depth-1", "round", "cursor-hand");
 
-        stackPane.setOnMouseClicked(e -> {
+        stackPane.setOnMouseClicked(_ -> {
             TutorialUtils.putTextOnClipboard(name);
             getRoot()
                     .behavior()
                     .snack()
                     .graphic(new SVGIcon(Icon.NOTIFICATION_IMPORTANT_FILLED) )
-                    .message("You copied '" + name + "' to clipboard.")
+//                    .message("You copied '" + name + "' to clipboard.")
+                    .message("Copied to clipboard.")
                     .show();
         });
         return stackPane;

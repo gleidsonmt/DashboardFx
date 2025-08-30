@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.drawer;
 
 import io.github.gleidsonmt.dashboardfx.dashboard.Dashboard;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.CircularLoaders;
 import io.github.gleidsonmt.dashboardfx.presentation.Scroll;
 import io.github.gleidsonmt.dashboardfx.presentation.about.AboutPres;
 import io.github.gleidsonmt.dashboardfx.presentation.core.CarouselPres;
@@ -116,6 +117,7 @@ public class Drawer extends VBox {
 //                        new View("Drawer", new BuildingPage()),
 //                        new View("BreadCrumb", new BuildingPage()),
 //                        new View("Tree View", new TreeViewExample()),
+                        new CircularLoaders(),
                         new LabelExamplePres(),
                         new CardsPres()
                 ),
