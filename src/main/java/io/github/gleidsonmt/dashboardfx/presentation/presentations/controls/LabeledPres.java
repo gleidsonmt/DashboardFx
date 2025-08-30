@@ -26,6 +26,7 @@ public class LabeledPres extends CustomizablePresentation {
                 .indicators()
                 .overview()
                 .h3("Labeled", null)
+                .separator()
                 .text("""
                         A Labeled Control is one which has as part of its user interface a textual content associated with it.
                         For example, a Button displays text, as does a Label, a Tooltip, and many other controls."""
