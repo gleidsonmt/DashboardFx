@@ -19,13 +19,14 @@ public class ToggleSwitchPres extends CustomizablePresentation {
     public Tutorial create() {
         return new Tutorial()
                 .h3("Toggle Switch")
+                .separator()
                 .text("""
                         A toggle specialized in turning off and on action.""")
                 .legend("io.github.gleidsonmt.glad.controls.toggle_switch.ToggleSwitch")
-                .h4("Demo", "Toggle Switch")
                 .demo(
                         new ToggleSwitch()
                 )
+                .h3("Install", "Toggle Switch")
                 .code("""
                         // Constructors
                         ToggleSwitch toggleSwitch = new ToggleSwitch();
