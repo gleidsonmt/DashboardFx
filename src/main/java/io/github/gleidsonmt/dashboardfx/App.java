@@ -6,14 +6,21 @@ import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.util.Locale;
+import java.util.logging.Filter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  10/06/2025
  */
 public class App extends Application {
+
 
     @Override
     public void start(Stage stage) throws Exception {

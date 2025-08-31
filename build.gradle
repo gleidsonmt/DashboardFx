@@ -17,7 +17,7 @@ ext {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
+    options.setEncoding("utf-8")
 }
 
 application {

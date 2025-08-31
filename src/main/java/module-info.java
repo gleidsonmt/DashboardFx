@@ -20,6 +20,7 @@ module io.github.gleidsonmt.dashboardfx {
     requires java.desktop;
     requires javafx.controls;
     requires javafx.base;
+    requires java.logging;
 
     opens io.github.gleidsonmt.dashboardfx to javafx.fxml;
     exports io.github.gleidsonmt.dashboardfx;

@@ -6,10 +6,13 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -26,6 +29,7 @@ public final class LibrariesTools {
             File jarFile = new File(jarDirectory);
             if (!jarFile.exists()) return null;
             URL[] urls = {jarFile.toURI().toURL()};
+
             URLClassLoader classLoader = new URLClassLoader(urls, ClassLoader.getSystemClassLoader());
             Thread.currentThread().setContextClassLoader(classLoader);
             cls = Class.forName(fullClass, true, classLoader);
