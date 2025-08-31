@@ -23,14 +23,16 @@ public class BarChartPres extends CustomizablePresentation {
 
     public Tutorial create() {
         return new Tutorial()
+                .overview()
                 .h3("Bar Chart")
+                .separator()
                 .text("""
                         A chart that plots bars indicating data values for a category.
                         The bars can be vertical or horizontal depending on which axis is a category axis.
                         Adding data with multiple occurrences of a category to a series shows the last occurrence.
                         """)
                 .legend("javafx.scene.chart.BarChart")
-                .demo(createChart())
+                .demo(createChartVertical())
                 .code("""
                         CategoryAxis xAxis = new CategoryAxis();
                         xAxis.setCategories(FXCollections.observableArrayList(
@@ -62,10 +64,85 @@ public class BarChartPres extends CustomizablePresentation {
                         c.getData().add(new XYChart.Data<>("40", 700));
                         c.setName("East");
                         barChart.getData().addAll(s, b, c);
-                        """);
+                        """)
+
+                .h3("Horizonal")
+                .demo(createChartHorizontal())
+                .code("""
+                        CategoryAxis yAxis = new CategoryAxis();
+                        yAxis.setCategories(FXCollections.observableArrayList(
+                                Arrays.asList("10", "20", "30")));
+                        yAxis.setLabel("Population in Millions");
+                
+                        NumberAxis xAxis = new NumberAxis(0, 1000, 100);
+                
+                        BarChart<Number, String> barChart = new BarChart<>(xAxis, yAxis);
+                        barChart.setMinWidth(800);
+                        barChart.getStyleClass().addAll("border-box", "border-1");
+                        XYChart.Series<Number, String> s = new XYChart.Series<>();
+                        s.getData().add(new XYChart.Data<>(40, "20"));
+                        s.getData().add(new XYChart.Data<>(300, "30"));
+                        s.getData().add(new XYChart.Data<>(500, "40"));
+                        s.getData().add(new XYChart.Data<>(798, "50"));
+                        s.setName("North");
+                
+                        XYChart.Series<Number, String> b = new XYChart.Series<>();
+                        b.getData().add(new XYChart.Data<>(146, "20"));
+                        b.getData().add(new XYChart.Data<>(456, "30"));
+                        b.getData().add(new XYChart.Data<>(234, "40"));
+                        b.getData().add(new XYChart.Data<>(609, "50"));
+                        b.setName("South");
+                
+                        XYChart.Series<Number, String> c = new XYChart.Series<>();
+                        c.getData().add(new XYChart.Data<>(200,"40" ));
+                        c.getData().add(new XYChart.Data<>(280,"60" ));
+                        c.getData().add(new XYChart.Data<>(900,"40" ));
+                        c.getData().add(new XYChart.Data<>(700,"40" ));
+                        c.setName("East");
+                        //noinspection unchecked
+                        barChart.getData().addAll(s, b, c);
+                        """)
+                ;
     }
 
-    public Node createChart() {
+    private BarChart<Number, String> createChartHorizontal() {
+
+        CategoryAxis yAxis = new CategoryAxis();
+        yAxis.setCategories(FXCollections.observableArrayList(
+                Arrays.asList("10", "20", "30")));
+        yAxis.setLabel("Population in Millions");
+
+        NumberAxis xAxis = new NumberAxis(0, 1000, 100);
+
+        BarChart<Number, String> barChart = new BarChart<>(xAxis, yAxis);
+        barChart.setMinWidth(800);
+        barChart.getStyleClass().addAll("border-box", "border-1");
+        XYChart.Series<Number, String> s = new XYChart.Series<>();
+        s.getData().add(new XYChart.Data<>(40, "20"));
+        s.getData().add(new XYChart.Data<>(300, "30"));
+        s.getData().add(new XYChart.Data<>(500, "40"));
+        s.getData().add(new XYChart.Data<>(798, "50"));
+        s.setName("North");
+
+        XYChart.Series<Number, String> b = new XYChart.Series<>();
+        b.getData().add(new XYChart.Data<>(146, "20"));
+        b.getData().add(new XYChart.Data<>(456, "30"));
+        b.getData().add(new XYChart.Data<>(234, "40"));
+        b.getData().add(new XYChart.Data<>(609, "50"));
+        b.setName("South");
+
+        XYChart.Series<Number, String> c = new XYChart.Series<>();
+        c.getData().add(new XYChart.Data<>(200,"40" ));
+        c.getData().add(new XYChart.Data<>(280,"60" ));
+        c.getData().add(new XYChart.Data<>(900,"40" ));
+        c.getData().add(new XYChart.Data<>(700,"40" ));
+        c.setName("East");
+        //noinspection unchecked
+        barChart.getData().addAll(s, b, c);
+        return barChart;
+    }
+
+    public Node createChartVertical() {
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setCategories(FXCollections.observableArrayList(
                 Arrays.asList("10", "20", "30")));
