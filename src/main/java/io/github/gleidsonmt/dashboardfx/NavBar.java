@@ -2,28 +2,21 @@ package io.github.gleidsonmt.dashboardfx;
 
 import io.github.gleidsonmt.dashboardfx.breadcrumb.BreadCrumbBar;
 import io.github.gleidsonmt.dashboardfx.dashboard.notifications.factory.NotificationManager;
-import io.github.gleidsonmt.dashboardfx.drawer.CardUserOptions;
+import io.github.gleidsonmt.dashboardfx.drawer.NavUserSection;
 import io.github.gleidsonmt.dashboardfx.model.User;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.internal.Module;
 import io.github.gleidsonmt.glad.base.responsive.Break;
-import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
 import io.github.gleidsonmt.glad.controls.badge.Badge;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
 import javafx.scene.layout.*;
-
-import java.io.IOException;
-import java.util.Objects;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -37,7 +30,7 @@ public class NavBar extends GridPane {
     private final Badge badgeNotification = new Badge(Icon.NOTIFICATION_IMPORTANT, 5, 10);
 
     private final BreadCrumbBar crumb = new BreadCrumbBar();
-    private final CardUserOptions card = new CardUserOptions(
+    private final NavUserSection card = new NavUserSection(
             new User(Assets.getImage("default_avatar.jpg", 80), "johndoe54@gmail.com", "Jhon Doe")
     );
 

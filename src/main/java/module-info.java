@@ -25,6 +25,7 @@ module io.github.gleidsonmt.dashboardfx {
     exports io.github.gleidsonmt.dashboardfx;
     exports io.github.gleidsonmt.dashboardfx.dashboard;
     opens io.github.gleidsonmt.dashboardfx.dashboard to javafx.fxml;
+    exports io.github.gleidsonmt.dashboardfx.model;
 
     opens io.github.gleidsonmt.dashboardfx.model to javafx.base;
     exports io.github.gleidsonmt.dashboardfx.material;
