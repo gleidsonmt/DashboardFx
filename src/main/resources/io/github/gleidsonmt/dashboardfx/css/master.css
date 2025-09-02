@@ -4,7 +4,6 @@
 
 .toggle-switch {
     -fx-track-color: -light-gray;
-
 }
 
 .icon {
@@ -93,45 +92,6 @@
 
 .breadcrumb .last .text {
     -fx-fill: -dark-gray;
-}
-
-
-.toggle-button:selected {
-    -fx-background-color : transparent;
-}
-
-.toggle-button:selected:focused {
-    -fx-background-insets: 0px;
-}
-
-.toggle-button {
-    -fx-padding: 4px;
-    -fx-border-width: 2px;
-    -fx-background-insets: 0px;
-    -fx-border-color : transparent;
-    -fx-background-color : -fx-accent;
-}
-
-.toggle-button:selected .text {
-    -fx-fill: white;
-}
-
-.toggle-button:selected {
-    -fx-padding: 4px;
-    -fx-background-color:
-            -fx-shadow-highlight-color,
-            linear-gradient(to bottom, derive(-fx-accent, -20%), -fx-accent),
-            linear-gradient(to bottom,
-                    derive(-fx-accent, -22%) 0%,
-                    derive(-fx-accent, -13%) 20%,
-                    derive(-fx-accent, -11%) 50%);
-
-}
-
-
-
-.toggle-button:selected:focused {
-    -fx-background-insets: 0px;
 }
 
 .button-bar .container {

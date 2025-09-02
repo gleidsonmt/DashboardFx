@@ -12,6 +12,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.presentations.charts.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.layout.TabPanePres;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.ToggleGroupPres;
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
 import io.github.gleidsonmt.dashboardfx.presentation.util.ColorsPres;
 import io.github.gleidsonmt.glad.base.Root;
@@ -117,6 +118,7 @@ public class Drawer extends VBox {
 //                        new View("Drawer", new BuildingPage()),
 //                        new View("BreadCrumb", new BuildingPage()),
 //                        new View("Tree View", new TreeViewExample()),
+                        new ToggleGroupPres(),
                         new CircularLoaders(),
                         new LabelExamplePres(),
                         new CardsPres()
