@@ -41,6 +41,7 @@ public class InteractivityPres extends CustomizablePresentation {
                 .indicators()
                 .overview()
                 .h3("Introduction")
+                .separator()
                 .text("I've been really interested in JavaFX interactivity.")
                 .text("I'm pro imperative style programming, I think is really cute, organized and readable.")
                 .text("The interactivity quoted here, it's about creating and putting absolute nodes in root.")
