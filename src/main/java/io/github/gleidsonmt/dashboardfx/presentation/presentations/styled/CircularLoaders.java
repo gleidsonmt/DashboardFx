@@ -22,8 +22,9 @@ public class CircularLoaders extends CustomizablePresentation {
         return new Tutorial()
                 .overview()
                 .h3("Circular Loaders")
+                .separator()
                 .text("Circular Loaders are used to indicate that the application is loading data.")
-                .text("If you to learn more.")
+                .text("If you want to learn more.")
                 .node(TutorialUtils.createCardLink("See this article", "https://gleidsonmt.github.io/#/blog/post/0"))
                 .demo(new Node[] {
                         new SuspenseCircle(),
