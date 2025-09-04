@@ -16,6 +16,8 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import java.lang.reflect.Method;
+
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -23,7 +25,7 @@ import javafx.scene.text.Text;
  */
 public class ToggleGroupPres extends CustomizablePresentation {
 
-    private ToggleGroup groupCustom = new ToggleGroup();
+    private final ToggleGroup groupCustom = new ToggleGroup();
 
     public ToggleGroupPres() {
         super("Toggle Group");
@@ -31,16 +33,31 @@ public class ToggleGroupPres extends CustomizablePresentation {
 
     @Override
     public Tutorial create() {
+
         return new Tutorial()
                 .overview()
-                .h3("ToggleButton Pres")
+                .h3("Toggle Group")
                 .separator()
                 .text("Examples of building multiple options with toggle buttons and groups.")
-                .text("First define a Container for your layout that can be any layout (StackPane, AnchorPane, etc).")
-                .text("Give that a class container-option")
-                .text("This will enable to switch outlined buttons to default.")
-                .text("Before copying that examples start add this piece of code to your main css file.")
+                .h3("Pill", "Toggle Group")
+                .demo(createExample())
 
+                .code("""
+                            HBox container = new HBox();
+                            container.getStyleClass().add("container-option");
+                            ToggleGroup group = new ToggleGroup();
+                            ToggleButton left = new ToggleButton("On");
+                            left.getStyleClass().addAll( "w-50","btn-outlined", "pill-left");
+                            left.setStyle("-fx-border-width: 2px 0px 2px 2px; ");
+                            ToggleButton right = new ToggleButton("Off");
+                            right.getStyleClass().addAll( "w-50", "btn-outlined", "pill-right");
+                            right.setStyle("-fx-border-width: 2px 2px 2px 0px;");
+                        
+                            group.getToggles().setAll(left,  right);
+                            container.getChildren().setAll(left, right);
+                        """)
+                .separator()
+                .text("Add this classes to your main css file.", "padding-10")
                 .code("""
                         .container-option .toggle-button {
                             -fx-effect: none;
@@ -56,76 +73,186 @@ public class ToggleGroupPres extends CustomizablePresentation {
                         .container-option .toggle-button:selected .text {
                             -text-color: white;
                         }
-
+                        
                         """, "css")
-                .text("Create the container")
-                .code("""
-                        ...
-                        HBox container = new HBox();
-                        container.getStyleClass().add("container-option");
-                        ...
-                        """)
-                .h3("Switch", "ToggleButton Pres")
-                .text("Create the buttons")
-                .code("""
-                    ...
-                    ToggleButton left = new ToggleButton("On");
-                    left.getStyleClass().addAll( "w-50","btn-outlined", "pill-left");
-                    left.setStyle("-fx-border-width: 2px 0px 2px 2px; ");
-                    
-                    ToggleButton right = new ToggleButton("Off");
-                    right.getStyleClass().addAll( "w-50", "btn-outlined", "pill-right");
-                    right.setStyle("-fx-border-width: 2px 2px 2px 0px;");
-                    ...
-                    container.getChildren().setAll(left, right);
-                    """)
-                .demo(createExample())
-                .h3("Align", "ToggleButton Pres")
+                .h3("Align", "Toggle Group")
                 .demo(createExample2())
-                .h3("Blocks", "ToggleButton Pres")
+                .code("""
+                    private Node createExample2() {
+                        HBox container = new HBox();
+                        container.setSpacing(5);
+                        container.getStyleClass().addAll("container-align");
+                        ToggleButton left = crateAlignToggle(Icon.FORMAT_ALIGN_LEFT);
+                        ToggleButton center = crateAlignToggle(Icon.FORMAT_ALIGN_CENTER);
+                        ToggleButton right = crateAlignToggle(Icon.FORMAT_ALIGN_RIGHT);
+                        ToggleButton justify = crateAlignToggle(Icon.FORMAT_ALIGN_JUSTIFY);
+                        container.getChildren().addAll(left, center, right, justify);
+                        new ToggleGroup().getToggles().addAll(left, center, right, justify);
+                        return container;
+                    }
+                
+                    private ToggleButton crateAlignToggle(Icon _icon) {
+                        SVGIcon icon = new SVGIcon(_icon);
+                        ToggleButton toggle = new ToggleButton();
+                        toggle.setGraphic(icon);
+                        toggle.getStyleClass().addAll("w-20 btn-outlined graphic-only".split(" "));
+                        return toggle;
+                    }
+                    """)
+                .separator()
+                .text("Add this classes to your main css file.", "padding-10")
+
+                .code("""
+                        .container-align .toggle-button {
+                            -fx-border-color: derive(-dark-gray, 30%);
+                            -fx-background-radius: 3px;
+                            -fx-border-radius: 3px;
+                            -fx-border-width: 2px;
+                            -fx-effect: none;
+                            -fx-background-color: white;
+                            -fx-border-insets: -1px;
+                        }
+                        .container-align .toggle-button .icon {
+                            -fx-fill: derive(-dark-gray, 30%);
+                        }
+                        
+                        .container-align .toggle-button:hover {
+                            -fx-border-color: -dark-gray;
+                        }
+                        
+                        .container-align .toggle-button:hover .icon {
+                            -fx-fill: -dark-gray;
+                        }
+                        .container-align .toggle-button:selected {
+                            -fx-background-color: -fx-accent;
+                            -fx-border-color: -fx-accent;
+                        }
+                        
+                        .container-align .toggle-button:selected .icon {
+                            -fx-fill: white;
+                        }
+                        
+                        """, "css")
+                .h3("Blocks", "Toggle Group")
                 .demo(createCustom())
-                .h4("Multiple Blocks", "Blocks")
+                .code("""
+                            private Node createCustom() {
+                                VBox box = new VBox();
+                                box.setSpacing(20);
+                        
+                                ToggleButton toggleOne = createToggle(
+                                        "Hobby",
+                                        "8GB / 4 CPUs * 160 GB SSD disk",
+                                        "$40",
+                                        "/mo");
+                        
+                                ToggleButton toggleTwo = createToggle(
+                                        "Startup",
+                                        "12GB / 6 CPUs · 256 GB SSD disk",
+                                        "$80",
+                                        "/mo");
+                        
+                        
+                                ToggleButton toggleThree = createToggle(
+                                        "Business",
+                                        "16GB / 8 CPUs · 512 GB SSD disk",
+                                        "$160",
+                                        "/mo");
+                        
+                                box.getChildren().setAll(toggleOne, toggleTwo, toggleThree);
+                                return box;
+                            }
+                        
+                            private ToggleButton createToggle(String text, String legend, String price, String legendt) {
+                                ToggleButton toggle = new ToggleButton(text);
+                                toggle.getStyleClass().add("inner-toggle");
+                                toggle.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                                GridPane grid = new GridPane();
+                        
+                                groupCustom.getToggles().add(toggle);
+                        
+                                Text one = new Text(text);
+                                Text two = new Text(legend);
+                                Text three = new Text(price);
+                                Text four = new Text(legendt);
+                        
+                                toggle.setGraphic(grid);
+                        
+                                grid.getChildren().addAll(one, two, three, four);
+                        
+                                GridPane.setConstraints(one, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                                GridPane.setConstraints(two, 0,1,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                                GridPane.setConstraints(three, 1,0,1,1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                                GridPane.setConstraints(four, 1,1,1,1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+                        
+                                return toggle;
+                            }
+                        """)
+                .h4("Storage Blocks", "Blocks")
                 .demo(createStorage())
+                .code("""
+                        HBox body = new HBox();
+                        VBox box = new VBox();
+                        
+                        Text title = new Text("Storage");
+                        title.getStyleClass().addAll("h5", "text-bold");
+                        Text legend = new Text("Transfer your balance to your bank account");
+                        legend.getStyleClass().addAll("h5");
+                        ToggleGroup group = new ToggleGroup();
+                        
+                        ToggleButton four = new ToggleButton("4 GB");
+                        ToggleButton eight = new ToggleButton("8 GB");
+                        ToggleButton sixteen = new ToggleButton("16 GB");
+                        ToggleButton thirtyTwo = new ToggleButton("32 GB");
+                        ToggleButton sixtyFour = new ToggleButton("64 GB");
+                        
+                        body.setSpacing(20);
+                        
+                        group.getToggles().setAll(four, eight, sixteen, thirtyTwo,  sixtyFour);
+                        body.getChildren().setAll(four, eight, sixteen, thirtyTwo, sixtyFour);
+                        box.getChildren().addAll(title, body);
+                        
+                        """)
 
                 ;
     }
 
-    private Node createExample() {
+    public Node createExample() {
         HBox container = new HBox();
         container.getStyleClass().add("container-option");
         ToggleGroup group = new ToggleGroup();
         ToggleButton left = new ToggleButton("On");
-        left.getStyleClass().addAll( "w-50","btn-outlined", "pill-left");
+        left.getStyleClass().addAll("w-50", "btn-outlined", "pill-left");
         left.setStyle("-fx-border-width: 2px 0px 2px 2px; ");
         ToggleButton right = new ToggleButton("Off");
-        right.getStyleClass().addAll( "w-50", "btn-outlined", "pill-right");
+        right.getStyleClass().addAll("w-50", "btn-outlined", "pill-right");
         right.setStyle("-fx-border-width: 2px 2px 2px 0px;");
 
-        group.getToggles().setAll(left,  right);
+        group.getToggles().setAll(left, right);
         container.getChildren().setAll(left, right);
         return container;
     }
 
     private Node createExample2() {
         HBox container = new HBox();
-        ToggleGroup group = new ToggleGroup();
-        ToggleButton left = new ToggleButton("left");
-        left.getStyleClass().addAll( "w-50","btn-outlined", "pill-left");
-        left.setStyle("-fx-border-width: 2px 0px 2px 2px; ");
-        ToggleButton middle = new ToggleButton("middle");
-        middle.getStyleClass().addAll("rect", "btn-outlined");
-        middle.setStyle("-fx-border-width: 2px 0px 2px 0px;");
-        ToggleButton right = new ToggleButton("right");
-        right.getStyleClass().addAll( "w-50", "btn-outlined", "pill-right");
-        right.setStyle("-fx-border-width: 2px 2px 2px 0px;");
-
-        group.getToggles().setAll(left, middle, right);
-        container.getChildren().setAll(left, middle, right);
-        new SVGIcon(Icon.LOCATION_ON);
-        container.getChildren().forEach(e -> {
-            e.getStyleClass().add("out-toggle-item");
-        });
+        container.setSpacing(5);
+        container.getStyleClass().addAll("container-align");
+        ToggleButton left = crateAlignToggle(Icon.FORMAT_ALIGN_LEFT);
+        ToggleButton center = crateAlignToggle(Icon.FORMAT_ALIGN_CENTER);
+        ToggleButton right = crateAlignToggle(Icon.FORMAT_ALIGN_RIGHT);
+        ToggleButton justify = crateAlignToggle(Icon.FORMAT_ALIGN_JUSTIFY);
+        container.getChildren().addAll(left, center, right, justify);
+        new ToggleGroup().getToggles().addAll(left, center, right, justify);
+        // left, center, righg e jusity
         return container;
+    }
+
+    private ToggleButton crateAlignToggle(Icon _icon) {
+        SVGIcon icon = new SVGIcon(_icon);
+        ToggleButton toggle = new ToggleButton();
+        toggle.setGraphic(icon);
+        toggle.getStyleClass().addAll("w-20 btn-outlined graphic-only".split(" "));
+        return toggle;
     }
 
     private Node createStorage() {
@@ -146,7 +273,7 @@ public class ToggleGroupPres extends CustomizablePresentation {
 
         body.setSpacing(20);
 
-        group.getToggles().setAll(four, eight, sixteen, thirtyTwo,  sixtyFour);
+        group.getToggles().setAll(four, eight, sixteen, thirtyTwo, sixtyFour);
         body.getChildren().setAll(four, eight, sixteen, thirtyTwo, sixtyFour);
         box.getChildren().addAll(title, body);
 
@@ -197,10 +324,10 @@ public class ToggleGroupPres extends CustomizablePresentation {
 
         grid.getChildren().addAll(one, two, three, four);
 
-        GridPane.setConstraints(one, 0,0,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-        GridPane.setConstraints(two, 0,1,1,1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-        GridPane.setConstraints(three, 1,0,1,1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
-        GridPane.setConstraints(four, 1,1,1,1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(one, 0, 0, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(two, 0, 1, 1, 1, HPos.LEFT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(three, 1, 0, 1, 1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
+        GridPane.setConstraints(four, 1, 1, 1, 1, HPos.RIGHT, VPos.CENTER, Priority.ALWAYS, Priority.ALWAYS);
 
         return toggle;
     }

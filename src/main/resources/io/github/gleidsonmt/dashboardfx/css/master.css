@@ -175,3 +175,48 @@
     -fx-stroke-width: 2px;
 }
 
+.container-option .toggle-button {
+    -fx-effect: none;
+    -fx-border-insets: 0px;
+    -fx-background-insets: 0px;
+}
+
+.container-option .toggle-button:selected {
+    -fx-background-color: -fx-accent;
+    -fx-border-width: 0px;
+}
+
+.container-option .toggle-button:selected .text {
+    -text-color: white;
+}
+
+.container-align .toggle-button {
+    -fx-border-color: derive(-dark-gray, 30%);
+    -fx-background-radius: 3px;
+    -fx-border-radius: 3px;
+    -fx-border-width: 2px;
+    -fx-effect: none;
+    -fx-background-color: white;
+    -fx-border-insets: -1px;
+}
+.container-align .toggle-button .icon {
+    -fx-fill: derive(-dark-gray, 30%);
+}
+
+.container-align .toggle-button:hover {
+    -fx-border-color: -dark-gray;
+}
+
+.container-align .toggle-button:hover .icon {
+    -fx-fill: -dark-gray;
+}
+.container-align .toggle-button:selected {
+    -fx-background-color: -fx-accent;
+    -fx-border-color: -fx-accent;
+}
+
+.container-align .toggle-button:selected .icon {
+    -fx-fill: white;
+}
+
+
