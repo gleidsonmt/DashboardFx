@@ -1,3 +1,11 @@
+
+## 🤠 Hello
+
+2025-09-04 <br>
+
+Alerts types style. <br>
+<img src="./screenshots/img_2.png" alt="logo"/>
+
 ## 🤠 Hello
 
 2025-08-29 <br>

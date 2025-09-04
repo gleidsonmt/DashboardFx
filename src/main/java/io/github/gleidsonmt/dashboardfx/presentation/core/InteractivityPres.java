@@ -11,6 +11,7 @@ import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.dialog.alert.AlertType;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -220,19 +221,141 @@ public class InteractivityPres extends CustomizablePresentation {
                         root.wrapper().hide();
                         """)
 
-                
-                .h3("Alert", "Flow")
-                .node(TutorialUtils.createAction(e -> {
-                    System.out.println("getRoot() = " + getRoot());
+
+                .h3("Behavior")
+                .h3("Alerts", "Behavior")
+                .text("Built-in alerts")
+
+                .demo(TutorialUtils.createAction(_-> {
                     getRoot()
                             .behavior()
                             .alert()
-                            .open("Hello World", new Label("Hello"), AlertType.ERROR);
+                            .title("You are about to delete task") // The main text of the alert
+                            .content( // Set a node as your content
+                                    new TextFlow(new Text(
+                                            "Are you sure you want to delete this post? This action cannot be undone"
+                                    ))
+                            )
+                            .show();
                 }))
+                .code("""
+                        root.behavior()
+                            .alert()
+                            .title("You are about to delete task")
+                            .content(
+                                    new TextFlow(new Text(
+                                            "Are you sure you want to delete this post? This action cannot be undone"
+                                    ))
+                            )
+                            .show();
+                        """)
+
+
+                .h3("Buttons", "Alerts")
+                .text("The alerts can use buttons like(ok, cancel, yes, no)")
+                .demo(TutorialUtils.createAction(_-> {
+                    getRoot()
+                            .behavior()
+                            .alert()
+                            .title("You are about to delete task") // The main text of the alert
+                            .content( // Set a node as your content
+                                    new TextFlow(new Text(
+                                            "Are you sure you want to delete this post? This action cannot be undone"
+                                    ))
+                            )
+                            .buttons(new Button("cancel"), new Button("ok")) // These are actions
+                            .show();
+                }))
+                .code("""
+                        root.behavior()
+                            .alert()
+                            .title("You are about to delete task") // The main text of the alert
+                            .content( // Set a node as your content
+                                    new TextFlow(new Text(
+                                            "Are you sure you want to delete this post? This action cannot be undone"
+                                    ))
+                            )
+                            .buttons(new Button("cancel"), new Button("ok")) // These are actions
+                            .show();
+                        """)
+
+                .text("The buttons with the name cancel and ok, is set by default as a default and cancel button respectively.")
+                .text("The buttons also have an event default that close its alert.")
+
+                .h3("Types", "Alerts")
+                .text("The alerts can use types (info, success, error, warning)")
+
+                .demo(new Node[]{
+                                TutorialUtils.createAction(_ -> getRoot()
+                                        .behavior()
+                                        .alert()
+                                        .title("You are about to delete task")
+                                        .content(
+                                                new TextFlow(new Text(
+                                                        "Are you sure you want to delete this post? This action cannot be undone"
+                                                ))
+                                        )
+                                        .buttons(new Button("cancel"), new Button("ok")) // These are actions
+                                        .type("ERROR")
+                                        .show()),
+                                TutorialUtils.createAction(_ -> getRoot()
+                                        .behavior()
+                                        .alert()
+                                        .title("You are about to delete task")
+                                        .content(
+                                                new TextFlow(new Text(
+                                                        "Are you sure you want to delete this post? This action cannot be undone"
+                                                )))
+                                        .buttons(new Button("cancel"), new Button("ok")) // These are actions
+                                        .type(AlertType.WARNING)
+                                        .show()),
+                                TutorialUtils.createAction(e -> {
+                                    getRoot()
+                                            .behavior()
+                                            .alert()
+                                            .title("You are about to delete task")
+                                            .buttons(new Button("cancel"), new Button("ok")) // These are actions
+                                            .content(
+                                                    new TextFlow(new Text(
+                                                            "Are you sure you want to delete this post? This action cannot be undone"
+                                                    )))
+                                            .type(AlertType.SUCCESS)
+                                            .show();
+                                }),
+                                TutorialUtils.createAction(e -> {
+                                    getRoot()
+                                            .behavior()
+                                            .alert()
+                                            .title("You are about to delete task")
+                                            .buttons(new Button("cancel"), new Button("ok")) // These are actions
+                                            .content(
+                                                    new TextFlow(new Text(
+                                                            "Are you sure you want to delete this post? This action cannot be undone"
+                                                    )))
+                                            .type(AlertType.INFO)
+                                            .show();
+                                })
+                        }
+                )
+
+                .code("""
+                        root.behavior()
+                            .alert()
+                            .title("You are about to delete task") // The main text of the alert
+                            .content( // Set a node as your content
+                                    new TextFlow(new Text(
+                                            "Are you sure you want to delete this post? This action cannot be undone"
+                                    ))
+                            )
+                            .buttons(new Button("cancel"), new Button("ok")) // These are actions
+                            .type(AlertType.ERROR) // The type of alert (WARNING, INFO, SUCCESS, ERROR),
+                            // you can also use .type("error")// this works as well
+                            .show();
+                        """)
+
 
                 ;
     }
-
 
 
     private IconButton createButton() {

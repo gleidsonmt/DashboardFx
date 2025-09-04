@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.dashboardfx;
 
+import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.theme.Css;
@@ -50,6 +51,7 @@ public class App extends Application {
         stage.getIcons().add(Assets.getImage("logo_128.png"));
         stage.show();
 
+//        CSSFX.start(stage.getScene().getRoot());
         LibrariesTools.addTools(stage.getScene());
 
     }

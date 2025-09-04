@@ -66,17 +66,17 @@ public class BehaviorPres extends StackPane {
                                         ),
                                         createDemo(e -> {
                                                     Root root = (Root) this.getScene().getRoot();
-                                                    root.behavior().alert().open("About", new Text("Press  to close."), AlertType.INFO);
+//                                                    root.behavior().alert().title("About").content(new Text("Press  to close.")).type(AlertType.INFO).show();
                                                 }
                                         ),
                                         createDemo(e -> {
                                                     Root root = (Root) this.getScene().getRoot();
-                                                    root.behavior().alert().open("About", new Text("Press  to close."), AlertType.WARNING);
+//                                                    root.behavior().alert().open("About", new Text("Press  to close."), AlertType.WARNING);
                                                 }
                                         ),
                                         createDemo(e -> {
                                                     Root root = (Root) this.getScene().getRoot();
-                                                    root.behavior().alert().open("About", new Text("Press  to close."), AlertType.SUCCESS);
+//                                                    root.behavior().alert().open("About", new Text("Press  to close."), AlertType.SUCCESS);
                                                 }
                                         )
                                 }
@@ -91,7 +91,7 @@ public class BehaviorPres extends StackPane {
                         .demo(createDemo(e -> {
                             Root root = (Root) this.getScene().getRoot();
                             root.wrapper().show(WrapperEffect.BLUR);
-                            root.behavior().alert().open("About", new Text("Press  to close."), AlertType.SUCCESS);
+//                            root.behavior().alert().open("About", new Text("Press  to close."), AlertType.SUCCESS);
                         }))
                         .code("""
                                 Root root = (Root) this.getScene().getRoot();
@@ -113,7 +113,7 @@ public class BehaviorPres extends StackPane {
                                 root.behavior().alert().hide();
                             });
                             root.wrapper().show(WrapperEffect.BLUR);
-                            root.behavior().alert().open("About", new Text("Press  to close."), AlertType.SUCCESS, cancel, apply);
+//                            root.behavior().alert().open("About", new Text("Press  to close."), AlertType.SUCCESS, cancel, apply);
                         }))
                         .code("""
                                 Button cancel = new Button("Cancel");

@@ -41,6 +41,7 @@ javafx {
 
 dependencies {
     implementation files('vendor/colors-1.0.jar');
+    implementation files('vendor/cssfx-11.5.1.jar');
     implementation 'org.jetbrains:annotations:24.0.1'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
