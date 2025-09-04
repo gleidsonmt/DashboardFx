@@ -8,8 +8,10 @@ import io.github.gleidsonmt.glad.controls.button.Button;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import io.github.gleidsonmt.glad.dialog.alert.AlertType;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -216,7 +218,19 @@ public class InteractivityPres extends CustomizablePresentation {
                 .code("""
                         ...
                         root.wrapper().hide();
-                        """);
+                        """)
+
+                
+                .h3("Alert", "Flow")
+                .node(TutorialUtils.createAction(e -> {
+                    System.out.println("getRoot() = " + getRoot());
+                    getRoot()
+                            .behavior()
+                            .alert()
+                            .open("Hello World", new Label("Hello"), AlertType.ERROR);
+                }))
+
+                ;
     }
 
 
