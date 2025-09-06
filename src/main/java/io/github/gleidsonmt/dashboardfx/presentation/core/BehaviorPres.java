@@ -33,11 +33,11 @@ public class BehaviorPres extends StackPane {
                                 createDemo(e -> {
                                     Root root = (Root) getScene().getRoot();
                                     Button ok = new Button("Button");
-                                    ok.setOnAction(_ -> root.behavior().dialog().close());
+//                                    ok.setOnAction(_ -> root.behavior().dialog().close());
                                     VBox content = new VBox(new Text("Lorem ipsum dolor color"), ok);
                                     content.setAlignment(Pos.CENTER);
                                     content.setSpacing(10);
-                                    root.behavior().dialog().open(content);
+//                                    root.behavior().dialog().open(content);
 
                                 })
                         )

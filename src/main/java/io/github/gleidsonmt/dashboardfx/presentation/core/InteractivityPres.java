@@ -1,9 +1,10 @@
 package io.github.gleidsonmt.dashboardfx.presentation.core;
 
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.internal.Anchor;
+import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.controls.button.Button;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
@@ -13,6 +14,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -160,53 +162,119 @@ public class InteractivityPres extends CustomizablePresentation {
                 .text("Now you see the button with some insets.")
                 .text("The button is now more 20px to the right.")
                 .h3("Anchor", "Flow")
+                .text("That one can be a little confuse. The nodes side can be anchor on sides, center and all.")
                 .text("Suppose you need a region on the top, that is fixed on top and the sides.")
                 .text("The max of its width it's set.")
                 .code("""
                         Root root = (Root) getScene().getRoot();
                         root.flow()
                                 .pos(Pos.TOP_CENTER)
-                                .anchor(Anchor.TOP) // That can be TOP, BOTTOM, RIGHT, LEFT, CENTER, NONE -> the last anchor is default
+                                .anchor(Anchor.TOP) // That can be TOP, BOTTOM, RIGHT, LEFT, CENTER, FULL -> the full anchor gets all windows size.
                                 .content(createTerms())
                                 .show();
                         """)
-                .node(TutorialUtils.createAction(_ ->
-                        getRoot().flow()
-                                .pos(Pos.TOP_CENTER)
-                                .anchor(Anchor.TOP)
-                                .content(createTerms())
-                                .show()))
+                .text("See examples.")
+                .demo(new Node[]{
+                                TutorialUtils.createAction("TOP", _ ->
+                                        getRoot().flow()
+                                                .pos(Pos.TOP_CENTER)
+                                                .anchor(Anchor.TOP)
+                                                .height(300)
+                                                .content(createTerms())
+                                                .show()),
+                                TutorialUtils.createAction("BOTTOM", _ ->
+                                        getRoot().flow()
+                                                .pos(Pos.BOTTOM_CENTER)
+                                                .anchor(Anchor.BOTTOM)
+                                                .height(300)
+                                                .content(createTerms())
+                                                .show()),
+                                TutorialUtils.createAction("LEFT", _ ->
+                                        getRoot().flow()
+                                                .pos(Pos.CENTER_LEFT)
+                                                .anchor(Anchor.LEFT)
+                                                .height(300)
+                                                .content(createTerms())
+                                                .show()),
+                                TutorialUtils.createAction("RIGHT", _ ->
+                                        getRoot().flow()
+                                                .pos(Pos.CENTER_RIGHT)
+                                                .anchor(Anchor.RIGHT)
+                                                .height(300)
+                                                .content(createTerms())
+                                                .show()),
+                                TutorialUtils.createAction("FULL", _ ->
+                                        getRoot().flow()
+                                                .anchor(Anchor.FULL)
+                                                .height(300)
+                                                .content(createTerms())
+                                                .show())
+                        }
+                )
+
                 .text("You can anchor any direction (Top, Bottom, Left, Right) direction or none.")
 //                        .text("This can be not to useful without an gray background. But it's the start of how drawer works.")
 //                        .text("And next let's see Wrapper class.")
 
-                .h3("Wrapper")
-                .text("The wrapper interface disposes a region with color to focus on the element stacked.")
-                .legend("io.github.gleidsonmt.glad.base.Wrapper")
-                .legend("Click on it, to hide.")
+        .
 
-                .h3("Show", "Wrapper")
-                .code("""
+                h3("Wrapper")
+                        .
+
+                text("The wrapper interface disposes a region with color to focus on the element stacked.")
+                        .
+
+                legend("io.github.gleidsonmt.glad.base.Wrapper")
+                        .
+
+                legend("Click on it, to hide.")
+
+                        .
+
+                h3("Show", "Wrapper")
+                        .
+
+                code("""
                         ...
                         root.wrapper().show();
                         """)
-                .node(TutorialUtils.createAction(_ ->
-                        getRoot().wrapper()
-                                .onClick(_ -> getRoot().wrapper().hide())
+                        .
+
+                node(TutorialUtils.createAction(_ ->
+                        getRoot()
+                                .wrapper()
+                                .onClick(_ ->
+                                        getRoot()
+                                                .wrapper()
+                                                .hide())
                                 .show()))
-                .h3("Combining", "Wrapper")
-                .text("The best use is combining with another node.")
-                .code("""
+                        .
+
+                h3("Combining", "Wrapper")
+                        .
+
+                text("The best use is combining with another node.")
+                        .
+
+                code("""
                         ...
                         root.wrapper()
                             .with(createButton())
                             .show();
                         """)
-                .node(TutorialUtils.createAction(_ ->
-                        getRoot().wrapper()
+                        .
+
+                node(TutorialUtils.createAction(_ ->
+
+                        getRoot()
+                                .wrapper()
                                 .with(createButton())
-                                .onClick(_ -> getRoot().wrapper().hide())
+                                .onClick(_ ->
+                                        getRoot()
+                                                .wrapper()
+                                                .hide())
                                 .show()))
+
                 .h3("Action", "Wrapper")
                 .code("""
                         ...
@@ -215,29 +283,40 @@ public class InteractivityPres extends CustomizablePresentation {
                             .onClick(_ -> root.wrapper().hide())
                             .show();
                         """)
+
                 .h3("Hide", "Wrapper")
                 .code("""
                         ...
                         root.wrapper().hide();
                         """)
-
-
                 .h3("Behavior")
-                .h3("Alerts", "Behavior")
-                .text("Built-in alerts")
-
-                .demo(TutorialUtils.createAction(_-> {
+                .h3("Dialog", "Behavior")
+                .text("The base for creating flown containers.")
+                .demo(TutorialUtils.createAction(e -> {
                     getRoot()
                             .behavior()
-                            .alert()
-                            .title("You are about to delete task") // The main text of the alert
-                            .content( // Set a node as your content
-                                    new TextFlow(new Text(
-                                            "Are you sure you want to delete this post? This action cannot be undone"
-                                    ))
-                            )
+                            .dialog()
+                            .content(createWelcome())
+                            .full()
                             .show();
                 }))
+
+
+
+                .h3("Alerts", "Behavior")
+                .text("Built-in alerts")
+                .demo(TutorialUtils.createAction(_ ->
+                        getRoot()
+                                .behavior()
+                                .alert()
+                                .title("You are about to delete task") // The main text of the alert
+                                .content( // Set a node as your content
+                                        new TextFlow(new Text(
+                                                "Are you sure you want to delete this post? This action cannot be undone"
+                                        ))
+                                )
+                                .show()))
+
                 .code("""
                         root.behavior()
                             .alert()
@@ -250,22 +329,20 @@ public class InteractivityPres extends CustomizablePresentation {
                             .show();
                         """)
 
-
                 .h3("Buttons", "Alerts")
                 .text("The alerts can use buttons like(ok, cancel, yes, no)")
-                .demo(TutorialUtils.createAction(_-> {
-                    getRoot()
-                            .behavior()
-                            .alert()
-                            .title("You are about to delete task") // The main text of the alert
-                            .content( // Set a node as your content
-                                    new TextFlow(new Text(
-                                            "Are you sure you want to delete this post? This action cannot be undone"
-                                    ))
-                            )
-                            .buttons(new Button("cancel"), new Button("ok")) // These are actions
-                            .show();
-                }))
+                .demo(TutorialUtils.createAction(_ ->
+                        getRoot()
+                                .behavior()
+                                .alert()
+                                .title("You are about to delete task") // The main text of the alert
+                                .content( // Set a node as your content
+                                        new TextFlow(new Text(
+                                                "Are you sure you want to delete this post? This action cannot be undone"
+                                        ))
+                                )
+                                .buttons(new Button("cancel"), new Button("ok")) // These are actions
+                                .show()))
                 .code("""
                         root.behavior()
                             .alert()
@@ -281,10 +358,8 @@ public class InteractivityPres extends CustomizablePresentation {
 
                 .text("The buttons with the name cancel and ok, is set by default as a default and cancel button respectively.")
                 .text("The buttons also have an event default that close its alert.")
-
                 .h3("Types", "Alerts")
                 .text("The alerts can use types (info, success, error, warning)")
-
                 .demo(new Node[]{
                                 TutorialUtils.createAction(_ -> getRoot()
                                         .behavior()
@@ -333,6 +408,8 @@ public class InteractivityPres extends CustomizablePresentation {
                                                             "Are you sure you want to delete this post? This action cannot be undone"
                                                     )))
                                             .type(AlertType.INFO)
+//                                            .width(600)
+//                                            .height(300)
                                             .show();
                                 })
                         }
@@ -354,7 +431,29 @@ public class InteractivityPres extends CustomizablePresentation {
                         """)
 
 
+
                 ;
+    }
+
+    private Region createWelcome() {
+        VBox box = new VBox();
+        box.setAlignment(Pos.CENTER);
+        box.setSpacing(20);
+        box.setPadding(new Insets(20));
+
+        ImageView imageView=new ImageView();
+        imageView.setImage(Assets.getImage("novice_256.png"));
+        imageView.setFitWidth(100);
+        imageView.setFitHeight(100);
+        Text title = new Text("Hey, you dropped this");
+        title.getStyleClass().add("h3");
+        Text text = new Text("Thank you for going premium --- Enjoy unlimited access to all features.");
+        TextFlow textFlow = new TextFlow(text);
+        textFlow.setTextAlignment(TextAlignment.CENTER);
+        Button button = new Button("Let's GOoooo!");
+        button.setCancelButton(true);
+        box.getChildren().addAll(imageView, title, textFlow, button);
+        return box;
     }
 
 
@@ -373,8 +472,10 @@ public class InteractivityPres extends CustomizablePresentation {
         Button button = new Button("Accept terms!");
         button.setOnAction(_ -> getRoot().flow().hide());
         TextFlow textFlow = new TextFlow(new Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, \nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
+        Text title = new Text("Here put your title"); // hehe
+        title.getStyleClass().add("h3");
         VBox box = new VBox(
-                new Text("Lorem"),
+                title,
                 textFlow,
                 button);
         textFlow.setTextAlignment(TextAlignment.CENTER);

@@ -40,7 +40,7 @@ public class DrawerFooter extends StackPane {
         link.setOnAction(e -> {
             Root root = (Root) getScene().getRoot();
             root.wrapper().show();
-            root.behavior().dialog().open(new CardContainerLink());
+//            root.behavior().dialog().open(new CardContainerLink());
         });
 
         addCircles();

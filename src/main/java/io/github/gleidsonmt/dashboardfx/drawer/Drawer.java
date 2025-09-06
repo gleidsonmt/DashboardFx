@@ -16,9 +16,9 @@ import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.Toggle
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
 import io.github.gleidsonmt.dashboardfx.presentation.util.ColorsPres;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.internal.Module;
-import io.github.gleidsonmt.glad.base.internal.ModuleView;
-import io.github.gleidsonmt.glad.base.internal.View;
+import io.github.gleidsonmt.glad.base.Module;
+import io.github.gleidsonmt.glad.base.ModuleView;
+import io.github.gleidsonmt.glad.base.View;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.controls.text_box.TextBox;

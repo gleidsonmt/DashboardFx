@@ -61,12 +61,15 @@ public final class LibrariesTools {
 
     private static void listenCss(Scene scene) {
         if (scene == null) return;
+        ClassLoader originalCtx = Thread.currentThread().getContextClassLoader();
         Class<?> clazz = loadClassJar("./vendor/cssfx-11.5.1.jar", "fr.brouillard.oss.cssfx.CSSFX");
         if (clazz == null) return;
         try {
             clazz.getMethod("start", Scene.class).invoke(null, scene);
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException _) {
 
+        } finally {
+            Thread.currentThread().setContextClassLoader(originalCtx);
         }
     }
 

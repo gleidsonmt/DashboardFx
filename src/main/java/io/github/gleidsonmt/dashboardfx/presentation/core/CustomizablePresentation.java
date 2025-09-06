@@ -3,7 +3,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.core;
 import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.internal.View;
+import io.github.gleidsonmt.glad.base.View;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

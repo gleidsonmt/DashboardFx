@@ -6,7 +6,7 @@ import io.github.gleidsonmt.dashboardfx.drawer.NavUserSection;
 import io.github.gleidsonmt.dashboardfx.model.User;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.internal.Module;
+import io.github.gleidsonmt.glad.base.Module;
 import io.github.gleidsonmt.glad.base.responsive.Break;
 import io.github.gleidsonmt.glad.controls.badge.Badge;
 import io.github.gleidsonmt.glad.controls.button.IconButton;

@@ -33,7 +33,7 @@ public class CardContainerLink extends VBox {
         Button close = new Button();
         close.setOnAction(e -> {
             Root main = (Root) getScene().getRoot();
-            main.behavior().dialog().close();
+//            main.behavior().dialog().close();
         });
         close.setGraphic(new SVGIcon(Icon.CLEAR));
         close.getStyleClass().addAll("size-30", "bg-light-gray", "round", "border-light-gray-2");

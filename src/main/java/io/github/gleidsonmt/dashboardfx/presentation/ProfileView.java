@@ -1,6 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.presentation;
 
-import io.github.gleidsonmt.glad.base.internal.View;
+import io.github.gleidsonmt.glad.base.View;
 import javafx.scene.control.Label;
 
 /**

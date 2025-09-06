@@ -4,8 +4,8 @@ import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.internal.Module;
-import io.github.gleidsonmt.glad.base.internal.View;
+import io.github.gleidsonmt.glad.base.Module;
+import io.github.gleidsonmt.glad.base.View;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.drawer.SimpleDrawer;
@@ -129,7 +129,7 @@ public class IntroductionPres extends CustomizablePresentation {
             // ThemeProvider is a class that install css, colors and typographic.
             ThemeProvider.install(scene, Css.DEFAULT, Css.LIST_VIEW);
             // Also can be include fonts.
-            ThemeProvider.install(root, Font.POPPINS);
+            ThemeProvider.install(scene, Font.POPPINS);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();

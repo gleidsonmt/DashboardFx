@@ -85,6 +85,9 @@ public class LabeledPres extends CustomizablePresentation {
                         
                         // Cancel button option
                         button.setCancelButton(true);
+                        // or
+                        button.getStyleClass().add("btn-outlined");
+                        
                         """)
 
                 .h2("Hyperlink", "Button")

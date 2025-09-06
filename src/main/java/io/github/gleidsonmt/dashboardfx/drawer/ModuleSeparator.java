@@ -1,6 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.drawer;
 
-import io.github.gleidsonmt.glad.base.internal.Module;
+import io.github.gleidsonmt.glad.base.Module;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;

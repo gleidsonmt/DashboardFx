@@ -1,7 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.breadcrumb;
 
-import io.github.gleidsonmt.glad.base.internal.Module;
-import io.github.gleidsonmt.glad.base.internal.View;
+import io.github.gleidsonmt.glad.base.Module;
+import io.github.gleidsonmt.glad.base.View;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.beans.property.ObjectProperty;
@@ -31,7 +31,7 @@ public class BreadCrumbBar extends FlowPane {
         this.currentModule = new SimpleObjectProperty<>();
 //        this.currentModule.bindBidirectional(currentModule);
 
-        this.currentModule.addListener((observableValue, module, newValue) -> {
+        this.currentModule.addListener((_, _, newValue) -> {
             getChildren().clear();
             recur(newValue);
             if (getChildren().size() > 1) {
