@@ -121,7 +121,7 @@ public class InteractivityPres extends CustomizablePresentation {
                         """)
                 .node(node)
 
-                .h3("Close", "Flow")
+                .h3("Hide", "Flow")
                 .text("But you can't close it, right?")
                 .text("No, the button has a method set to close the flow.")
                 .text("Like this one.")
@@ -217,96 +217,15 @@ public class InteractivityPres extends CustomizablePresentation {
 //                        .text("This can be not to useful without an gray background. But it's the start of how drawer works.")
 //                        .text("And next let's see Wrapper class.")
 
-        .
 
-                h3("Wrapper")
-                        .
-
-                text("The wrapper interface disposes a region with color to focus on the element stacked.")
-                        .
-
-                legend("io.github.gleidsonmt.glad.base.Wrapper")
-                        .
-
-                legend("Click on it, to hide.")
-
-                        .
-
-                h3("Show", "Wrapper")
-                        .
-
-                code("""
-                        ...
-                        root.wrapper().show();
-                        """)
-                        .
-
-                node(TutorialUtils.createAction(_ ->
-                        getRoot()
-                                .wrapper()
-                                .onClick(_ ->
-                                        getRoot()
-                                                .wrapper()
-                                                .hide())
-                                .show()))
-                        .
-
-                h3("Combining", "Wrapper")
-                        .
-
-                text("The best use is combining with another node.")
-                        .
-
-                code("""
-                        ...
-                        root.wrapper()
-                            .with(createButton())
-                            .show();
-                        """)
-                        .
-
-                node(TutorialUtils.createAction(_ ->
-
-                        getRoot()
-                                .wrapper()
-                                .with(createButton())
-                                .onClick(_ ->
-                                        getRoot()
-                                                .wrapper()
-                                                .hide())
-                                .show()))
-
-                .h3("Action", "Wrapper")
-                .code("""
-                        ...
-                        root.wrapper()
-                            .with(createButton())
-                            .onClick(_ -> root.wrapper().hide())
-                            .show();
-                        """)
-
-                .h3("Hide", "Wrapper")
-                .code("""
-                        ...
-                        root.wrapper().hide();
-                        """)
                 .h3("Behavior")
                 .h3("Dialog", "Behavior")
                 .text("The base for creating flown containers.")
-                .demo(TutorialUtils.createAction(e -> {
-//                    getRoot().wrapper()
-//                                    .with(new Button("Okk"))
-//                                    .show();
-
-
-                    getRoot()
-                            .behavior()
-                            .dialog()
-                            .content(createWelcome())
-                            .effect(WrapperEffect.GRAY)
-                            .show();
-                }))
-
+                .demo(TutorialUtils.createAction(_ -> getRoot()
+                        .behavior()
+                        .dialog()
+                        .content(createWelcome())
+                        .show()))
                 .code("""
                         getRoot()
                             .behavior()
@@ -314,7 +233,29 @@ public class InteractivityPres extends CustomizablePresentation {
                             .content(createWelcome())
                             .show();
                         """)
-
+                .h3("Effect", "Dialog")
+                .demo(new Node[]{
+                        TutorialUtils.createAction(_ -> getRoot()
+                                .behavior()
+                                .dialog()
+                                .content(createWelcome())
+                                .effect()
+                                .show()),
+                        TutorialUtils.createAction(_ -> getRoot()
+                                .behavior()
+                                .dialog()
+                                .content(createWelcome())
+                                .effect(WrapperEffect.BLUR)
+                                .show())
+                })
+                .code("""
+                        getRoot()
+                            .behavior()
+                            .dialog()
+                            .content(createWelcome())
+                            .effect() // Active effect if you want to change it pass like effect(WrapperEffect.BLUR)
+                            .show();
+                        """)
 
                 .h3("Alerts", "Behavior")
                 .text("Built-in alerts")
@@ -465,7 +406,7 @@ public class InteractivityPres extends CustomizablePresentation {
         Button button = new Button("Let's GOoooo!");
         button.setCancelButton(true);
         box.getChildren().addAll(imageView, title, textFlow, button);
-        button.setOnAction(e -> {
+        button.setOnAction(_ -> {
             getRoot()
                     .behavior()
                     .dialog()
