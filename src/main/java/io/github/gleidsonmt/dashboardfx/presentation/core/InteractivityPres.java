@@ -5,6 +5,7 @@ import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.Anchor;
+import io.github.gleidsonmt.glad.base.WrapperEffect;
 import io.github.gleidsonmt.glad.controls.button.Button;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
@@ -293,14 +294,26 @@ public class InteractivityPres extends CustomizablePresentation {
                 .h3("Dialog", "Behavior")
                 .text("The base for creating flown containers.")
                 .demo(TutorialUtils.createAction(e -> {
+//                    getRoot().wrapper()
+//                                    .with(new Button("Okk"))
+//                                    .show();
+
+
                     getRoot()
                             .behavior()
                             .dialog()
                             .content(createWelcome())
-                            .full()
+                            .effect(WrapperEffect.GRAY)
                             .show();
                 }))
 
+                .code("""
+                        getRoot()
+                            .behavior()
+                            .dialog()
+                            .content(createWelcome())
+                            .show();
+                        """)
 
 
                 .h3("Alerts", "Behavior")
@@ -431,17 +444,16 @@ public class InteractivityPres extends CustomizablePresentation {
                         """)
 
 
-
                 ;
     }
 
     private Region createWelcome() {
         VBox box = new VBox();
         box.setAlignment(Pos.CENTER);
-        box.setSpacing(20);
+        box.setSpacing(40);
         box.setPadding(new Insets(20));
 
-        ImageView imageView=new ImageView();
+        ImageView imageView = new ImageView();
         imageView.setImage(Assets.getImage("novice_256.png"));
         imageView.setFitWidth(100);
         imageView.setFitHeight(100);
@@ -453,6 +465,12 @@ public class InteractivityPres extends CustomizablePresentation {
         Button button = new Button("Let's GOoooo!");
         button.setCancelButton(true);
         box.getChildren().addAll(imageView, title, textFlow, button);
+        button.setOnAction(e -> {
+            getRoot()
+                    .behavior()
+                    .dialog()
+                    .hide();
+        });
         return box;
     }
 
