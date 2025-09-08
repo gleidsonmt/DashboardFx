@@ -70,12 +70,6 @@ public class Drawer extends VBox {
                 new ModuleView("Core",
                         new IntroductionPres(),
                         new InteractivityPres()
-//                        new View("Module", new BuildingPage()),
-//                        //  Testing
-////                        new View("Flow", new FlowPres()),
-//                        new View("Wrapper", new WrapperPres())
-////                        new View("Behavior", new BehaviorPres()),
-////                        new View("SnackBar", new SnackBarPres())
                 ),
                 new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
                 new ModuleView("Shapes",
@@ -109,7 +103,6 @@ public class Drawer extends VBox {
                         new ToggleSwitchPres(),
                         new SVGIconPres(),
                         new AvatarViewPres(),
-//                        new View("Button", new ButtonExample()),
                         new BadgeExample(),
                         new CarouselPres()
 
@@ -123,7 +116,6 @@ public class Drawer extends VBox {
                         new LabelExamplePres(),
                         new CardsPres()
                 ),
-//                        new View("Cards", new CardsPres())),
 //                new ModuleView("Pages",
 
 //                        new View("Home Page", new HomePage()),
@@ -140,7 +132,6 @@ public class Drawer extends VBox {
     }
 
     public Drawer(@NotNull List<Module> _modules) {
-//    public Drawer(List _modules) {
 
         this.modules = _modules;
         this.setId("drawer");

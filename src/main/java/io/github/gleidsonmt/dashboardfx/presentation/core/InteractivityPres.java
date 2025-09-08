@@ -3,14 +3,15 @@ package io.github.gleidsonmt.dashboardfx.presentation.core;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
-import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.Anchor;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
+import io.github.gleidsonmt.glad.base.dialog.alert.AlertType;
+import io.github.gleidsonmt.glad.base.dialog.snack.SnackItem;
 import io.github.gleidsonmt.glad.controls.button.Button;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
-import io.github.gleidsonmt.glad.base.dialog.alert.AlertType;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -337,37 +338,30 @@ public class InteractivityPres extends CustomizablePresentation {
                                         .buttons(new Button("cancel"), new Button("ok")) // These are actions
                                         .type(AlertType.WARNING)
                                         .show()),
-                                TutorialUtils.createAction(e -> {
-                                    getRoot()
-                                            .behavior()
-                                            .alert()
-                                            .title("You are about to delete task")
-                                            .buttons(new Button("cancel"), new Button("ok")) // These are actions
-                                            .content(
-                                                    new TextFlow(new Text(
-                                                            "Are you sure you want to delete this post? This action cannot be undone"
-                                                    )))
-                                            .type(AlertType.SUCCESS)
-                                            .show();
-                                }),
-                                TutorialUtils.createAction(e -> {
-                                    getRoot()
-                                            .behavior()
-                                            .alert()
-                                            .title("You are about to delete task")
-                                            .buttons(new Button("cancel"), new Button("ok")) // These are actions
-                                            .content(
-                                                    new TextFlow(new Text(
-                                                            "Are you sure you want to delete this post? This action cannot be undone"
-                                                    )))
-                                            .type(AlertType.INFO)
-//                                            .width(600)
-//                                            .height(300)
-                                            .show();
-                                })
+                                TutorialUtils.createAction(_ -> getRoot()
+                                        .behavior()
+                                        .alert()
+                                        .title("You are about to delete task")
+                                        .buttons(new Button("cancel"), new Button("ok")) // These are actions
+                                        .content(
+                                                new TextFlow(new Text(
+                                                        "Are you sure you want to delete this post? This action cannot be undone"
+                                                )))
+                                        .type(AlertType.SUCCESS)
+                                        .show()),
+                                TutorialUtils.createAction(_ -> getRoot()
+                                        .behavior()
+                                        .alert()
+                                        .title("You are about to delete task")
+                                        .buttons(new Button("cancel"), new Button("ok")) // These are actions
+                                        .content(
+                                                new TextFlow(new Text(
+                                                        "Are you sure you want to delete this post? This action cannot be undone"
+                                                )))
+                                        .type(AlertType.INFO)
+                                        .show())
                         }
                 )
-
                 .code("""
                         root.behavior()
                             .alert()
@@ -383,6 +377,58 @@ public class InteractivityPres extends CustomizablePresentation {
                             .show();
                         """)
 
+                .h3("Snack", "Behavior")
+                .text("As alerts 'snacks' can be used.")
+
+                .demo(TutorialUtils.createAction(_ -> getRoot()
+                        .behavior()
+                        .snack()
+                        .message("It's a message I write here.")
+                        .show()))
+                .code("""
+                        root.behavior()
+                            .snack()
+                            .message("Tracking your location.")
+                            .show();
+                        """)
+                .h3("Graphic", "Snack")
+                .text("Passing a graphic (only left)")
+                .demo(TutorialUtils.createAction(_ -> getRoot()
+                        .behavior()
+                        .snack()
+                        .message("Tracking your location.")
+                        .graphic(new SVGIcon(Icon.LOCATION_ON))
+                        .show()))
+                .code("""
+                        root.behavior()
+                            .snack()
+                            .message("Tracking your location.")
+                            .graphic(new SVGIcon(Icon.LOCATION_ON))
+                            .show();
+                        """)
+                .h3("Actions", "Snack")
+                .text("Adding actions (buttons)")
+                .demo(TutorialUtils.createAction(_ -> getRoot()
+                        .behavior()
+                        .snack()
+                        .message("Tracking your location.")
+                        .graphic(new SVGIcon(Icon.LOCATION_ON))
+                        .action(
+                                new SnackItem("Confirm", _ -> System.out.println("Action Confirm!")),
+                                new SnackItem("Cancel", _ -> System.out.println("Action Cancel!"))
+                        )
+                        .show()))
+                .code("""
+                        root.behavior()
+                            .snack()
+                            .message("Tracking your location.")
+                            .graphic(new SVGIcon(Icon.LOCATION_ON))
+                            .action(
+                                    new SnackItem("Confirm", _ -> System.out.println("Action Confirm!")),
+                                    new SnackItem("Cancel", _ -> System.out.println("Action Cancel!"))
+                            )
+                            .show();
+                        """)
 
                 ;
     }
@@ -405,12 +451,10 @@ public class InteractivityPres extends CustomizablePresentation {
         Button button = new Button("Let's GOoooo!");
         button.setCancelButton(true);
         box.getChildren().addAll(imageView, title, textFlow, button);
-        button.setOnAction(_ -> {
-            getRoot()
-                    .behavior()
-                    .dialog()
-                    .hide();
-        });
+        button.setOnAction(_ -> getRoot()
+                .behavior()
+                .dialog()
+                .hide());
         return box;
     }
 
