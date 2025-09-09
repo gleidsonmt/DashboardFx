@@ -1,5 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.presentation.core;
 
+import io.github.gleidsonmt.dashboardfx.drawer.Drawer;
+import io.github.gleidsonmt.dashboardfx.drawer.DrawerI;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.Layout;
@@ -8,20 +10,31 @@ import io.github.gleidsonmt.glad.base.Module;
 import io.github.gleidsonmt.glad.base.View;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import io.github.gleidsonmt.glad.drawer.DrawerCell;
+import io.github.gleidsonmt.glad.drawer.DrawerItem;
 import io.github.gleidsonmt.glad.drawer.SimpleDrawer;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
+import java.util.function.Predicate;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -94,7 +107,38 @@ public class IntroductionPres extends CustomizablePresentation {
             class Main extends BorderPane implements Layout {
 
                 public Main(Module... modules) {
-                    SimpleDrawer drawer = new SimpleDrawer(modules);
+                    SimpleDrawer drawer = new SimpleDrawer();
+                    Predicate<Module> predicate = module -> module.getName().matches("view");
+                    FilteredList<Module> filteredList = new FilteredList<>(FXCollections.observableArrayList(modules), predicate);
+                    drawer.getDrawerItems().setAll(filteredList);
+
+                    TitledPane titledPane = new TitledPane();
+                    ListView<Module> sub = new ListView<>();
+                    FilteredList<Module> subFiltered = new FilteredList<Module>(FXCollections.observableArrayList(Arrays.stream(modules).limit(2).toList()), _-> true);
+                    subFiltered.setPredicate(predicate);
+                    titledPane.setContent(sub);
+
+                    drawer.setCellFactory(new Callback<>() {
+                        @Override
+                        public ListCell<Module> call(ListView<Module> param) {
+                            return new ListCell<>() {
+                                @Override
+                                protected void updateItem(Module item, boolean empty) {
+                                    super.updateItem(item, empty);
+                                    if (item != null && !empty) {
+                                        DrawerCell cell = new DrawerCell(item);
+                                        setGraphic(cell);
+                                        setText(null);
+                                        setMouseTransparent(false);
+                                    } else {
+                                        setItem(null);
+                                        setText(null);
+                                    }
+                                }
+                            };
+                        }
+                    });
+
                     this.setLeft(drawer);
                     this.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
                 }
@@ -121,8 +165,8 @@ public class IntroductionPres extends CustomizablePresentation {
             // The View class it's a module representation.
             Root root = new Root(new Main(
                     new View("Orders", new SVGIcon(Icon.ORDERS), new Text("Orders View")),
-                    new View("Apps",  new SVGIcon(Icon.APPS), new Text("Apps View")),
-                    new View("Products",  new SVGIcon(Icon.LOCAL_MALL), new Text("Products View"))
+                    new View("Apps", new SVGIcon(Icon.APPS), new Text("Apps View")),
+                    new View("Products", new SVGIcon(Icon.LOCAL_MALL), new Text("Products View"))
             ));
             Scene scene = new Scene(root, 800, 600);
             // Install the custom css styles, colors and typographic.

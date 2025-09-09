@@ -28,8 +28,9 @@ public class Main extends BorderPane implements Layout {
     private ScrollPane container;
     private final NavBar navBar = new NavBar(60);
     private Drawer drawer;
-    private final ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
     private Aside aside;
+
+    private final ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
 
     public Main() {
 
@@ -39,13 +40,8 @@ public class Main extends BorderPane implements Layout {
 
         Platform.runLater(() -> {
             Root root = (Root) this.getScene().getRoot();
-            root.addPoint(_ -> {
-                setLeft(null);
-            }, Break.MOBILE);
-
-            root.addPoint(_ -> {
-                setLeft(drawer);
-            }, Break.SM, Break.MD, Break.LG, Break.XL, Break.XXL, Break.WIDE);
+            root.addPoint(_ -> setLeft(null), Break.MOBILE);
+            root.addPoint(_ -> setLeft(drawer), Break.SM, Break.MD, Break.LG, Break.XL, Break.XXL, Break.WIDE);
         });
     }
 
@@ -65,7 +61,7 @@ public class Main extends BorderPane implements Layout {
         this.drawer = new Drawer();
         this.aside = new Aside();
 
-        setLeft(drawer);
+        setLeft(getDrawer());
         setCenter(this.wrapper);
     }
 

@@ -9,8 +9,9 @@ import io.github.gleidsonmt.dashboardfx.presentation.core.IntroductionPres;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.charts.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.*;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.containers.TitledPanePres;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.*;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.layout.TabPanePres;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.containers.TabPanePres;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.CircularLoaders;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.ToggleGroupPres;
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
@@ -88,7 +89,7 @@ public class Drawer extends VBox {
                         new ProgressBarPres()
                 ),
                 new ModuleView("Containers",
-//                        new View("TitledPane", new BuildingPage()),
+                        new TitledPanePres(),
                         new TabPanePres()
                 ),
                 new ModuleView("Charts",
@@ -223,9 +224,7 @@ public class Drawer extends VBox {
                 .filter(el -> el instanceof BoxModule)
                 .map(el -> (BoxModule) el)
                 .filter(el -> module.getParent() != null)
-                .filter(el -> {
-                    return el.getName().equals(module.getParent().getName());
-                })
+                .filter(el -> el.getName().equals(module.getParent().getName()))
                 .findAny();
     }
 

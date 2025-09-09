@@ -1,5 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.drawer;
 
+import io.github.gleidsonmt.dashboardfx.Main;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.drawer.DrawerItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,9 +20,10 @@ public class DrawerImpl implements DrawerI {
     private ObservableList<DrawerItem> modules;
     private VBox body;
     private ListView<DrawerItem> drawerItems;
+    private Root root;
 
-    public DrawerImpl() {
-
+    public DrawerImpl(Root root) {
+        this.root = root;
     }
 
     @Override
@@ -51,6 +54,8 @@ public class DrawerImpl implements DrawerI {
     public void build() {
         body = new VBox();
         body.getChildren().setAll(header, drawerItems, footer);
+        Main main = (Main) root.getLayout();
+
     }
 
 

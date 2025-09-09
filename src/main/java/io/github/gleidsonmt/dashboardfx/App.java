@@ -19,7 +19,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Root root = new Root(new Main());
-        Scene scene = new Scene(root, 1200,800);
+        Scene scene = new Scene(root, 1200, 800);
 
         stage.setScene(scene);
         stage.setMinWidth(400);
@@ -27,21 +27,23 @@ public class App extends Application {
         stage.setMaximized(true);
 
         ThemeProvider.install(scene, Font.POPPINS, Font.INSTAGRAM);
-        ThemeProvider.install(scene, Css.DEFAULT, Css.BUTTON,
-                Css.SHAPES,  Css.CONTEXT_MENU,
-                Css.HYPERLINK,   Css.COMBO_BOX,
+        ThemeProvider.install(scene,
+                Css.DEFAULT, Css.BUTTON,
+                Css.SHAPES, Css.CONTEXT_MENU,
+                Css.HYPERLINK, Css.COMBO_BOX,
                 Css.RADIO_BUTTON, Css.CHECK_BOX,
                 Css.TREE_VIEW, Css.TOGGLE_BUTTON,
                 Css.PROGRESS_BAR, Css.LIST_VIEW, Css.TABLE_VIEW,
                 Css.TAB_PANE, Css.IMMERSIVE_SCROLL,
                 Css.DATE_PICKER, Css.MENU_BUTTON,
                 Css.SPLIT_MENU_BUTTON, Css.CHOICE_BOX,
-                Css.TEXT_FIELD, Css.TEXT_BOX);
+                Css.TEXT_FIELD, Css.TEXT_BOX, Css.TITLED_PANE
+        );
 
 
         scene.getStylesheets().add(Assets.getCss("drawer.css"));
         scene.getStylesheets().add(Assets.getCss("master.css"));
-        stage.getIcons().add(Assets.getImage("logo_128.png"));
+//        stage.getIcons().add(Assets.getImage("logo_128.png"));
         stage.show();
 
         LibrariesTools.addTools(stage.getScene());
