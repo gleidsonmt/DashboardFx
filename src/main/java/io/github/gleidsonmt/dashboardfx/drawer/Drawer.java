@@ -1,7 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.drawer;
 
 import io.github.gleidsonmt.dashboardfx.dashboard.Dashboard;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.CircularLoaders;
 import io.github.gleidsonmt.dashboardfx.presentation.Scroll;
 import io.github.gleidsonmt.dashboardfx.presentation.about.AboutPres;
 import io.github.gleidsonmt.dashboardfx.presentation.core.CarouselPres;
@@ -12,12 +11,13 @@ import io.github.gleidsonmt.dashboardfx.presentation.presentations.charts.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.layout.TabPanePres;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.CircularLoaders;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.ToggleGroupPres;
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
 import io.github.gleidsonmt.dashboardfx.presentation.util.ColorsPres;
-import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.Module;
 import io.github.gleidsonmt.glad.base.ModuleView;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.View;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;

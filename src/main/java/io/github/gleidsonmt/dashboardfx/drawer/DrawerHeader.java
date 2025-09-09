@@ -6,6 +6,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
@@ -17,20 +18,13 @@ public class DrawerHeader extends GridPane {
 
     public DrawerHeader() {
 
-        setPrefSize(200, 100);
+        setPrefSize(200, 60);
         this.setPadding(new Insets(10));
-//        this.setGridLinesVisible(true);
         this.setHgap(10);
 
-//        ImageView logoTest = new ImageView();
-//        logoTest.setFitWidth(50);
-//        logoTest.setFitHeight(50);
-//        logoTest.setImage(new Image(Objects.requireNonNull(AppOld.class.getResource("img/logo_128.png")).toExternalForm()));
-
         Text title = new Text("Blue Galaxy");
-//        Font.loadFont(Objects.requireNonNull(AppOld.class.getResource("fonts/Instagram-Sans-Bold.ttf")).toExternalForm(), 16);
-//        title.setFont(Font.loadFont(AppOld.class.getResource("fonts/Instagram-Sans.ttf").toExternalForm(), 16));
-        title.setStyle("-fx-font-family: \"Instagram Sans\"; -fx-font-size: 28px; -fx-fill: -fx-accent; -fx-font-weight: bold;");
+        title.setStyle(" -fx-font-size: 18px; -fx-fill: -fx-accent; -fx-font-weight: bold;");
+        title.getStyleClass().addAll("depth-1", "font-instagram-headline");
 
         Text legend = new Text("Gleidson, Inc. v0.7.223");
         legend.setStyle("-fx-text-weight: 14pt");
@@ -38,11 +32,12 @@ public class DrawerHeader extends GridPane {
         Text logoTest = new Text("G");
         logoTest.setStroke(Color.WHITE);
         logoTest.setRotate(180);
-        logoTest.setStyle("-fx-fill: -fx-accent; -fx-font-size: 62px; -fx-font-family: \"JetBrains Mono\"; -fx-font-weight: bold;");
+        logoTest.setStyle("-fx-fill: -fx-accent; -fx-font-size: 38px; -fx-font-family: \"JetBrains Mono\"; ");
+        logoTest.setStrokeType(StrokeType.OUTSIDE);
         logoTest.getStyleClass().addAll("depth-1", "font-instagram");
         logoTest.setStrokeWidth(1);
         logoTest.setUnderline(true);
-        logoTest.setWrappingWidth(50);
+        logoTest.setWrappingWidth(20);
         logoTest.setTextAlignment(TextAlignment.CENTER);
 
 
