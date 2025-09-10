@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.dashboardfx.drawer;
+package io.github.gleidsonmt.dashboardfx.dashboard;
 
 import io.github.gleidsonmt.dashboardfx.model.User;
 import io.github.gleidsonmt.dashboardfx.utils.pages.ProfilePage;

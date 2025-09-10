@@ -1,7 +1,5 @@
 package io.github.gleidsonmt.dashboardfx.presentation.core;
 
-import io.github.gleidsonmt.dashboardfx.drawer.Drawer;
-import io.github.gleidsonmt.dashboardfx.drawer.DrawerI;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.Layout;
@@ -11,7 +9,6 @@ import io.github.gleidsonmt.glad.base.View;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.drawer.DrawerCell;
-import io.github.gleidsonmt.glad.drawer.DrawerItem;
 import io.github.gleidsonmt.glad.drawer.SimpleDrawer;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
@@ -19,7 +16,6 @@ import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -93,7 +89,7 @@ public class IntroductionPres extends CustomizablePresentation {
                     .node(createExample())
 
                     .text("See more")
-//                    .node(TutorialUtils.createLink("Drawer", "Drawer"))
+//                    .node(TutorialUtils.createLink("DrawerOld", "DrawerOld"))
                     .node(TutorialUtils.createLink("Interactivity", "Interactivity"))
                     ;
         } catch (URISyntaxException e) {

@@ -129,7 +129,7 @@ public class BehaviorPres extends StackPane {
                                 """)
 
                         // maybe you change form here, to get from drawer() method
-                        .h4("Drawer", "Behavior")
+                        .h4("DrawerOld", "Behavior")
                         .text("""
                                 Try to open the drawer.
                                 if the width is small the drawer appears from left,

@@ -2,7 +2,7 @@ package io.github.gleidsonmt.dashboardfx;
 
 import io.github.gleidsonmt.dashboardfx.breadcrumb.BreadCrumbBar;
 import io.github.gleidsonmt.dashboardfx.dashboard.notifications.factory.NotificationManager;
-import io.github.gleidsonmt.dashboardfx.drawer.NavUserSection;
+import io.github.gleidsonmt.dashboardfx.dashboard.NavUserSection;
 import io.github.gleidsonmt.dashboardfx.model.User;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Root;

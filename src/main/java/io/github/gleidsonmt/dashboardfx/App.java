@@ -43,10 +43,10 @@ public class App extends Application {
 
         scene.getStylesheets().add(Assets.getCss("drawer.css"));
         scene.getStylesheets().add(Assets.getCss("master.css"));
-//        stage.getIcons().add(Assets.getImage("logo_128.png"));
+        stage.getIcons().add(Assets.getImage("logo_128.png"));
         stage.show();
 
-        LibrariesTools.addTools(stage.getScene());
+//        LibrariesTools.addTools(stage.getScene());
 
     }
 }

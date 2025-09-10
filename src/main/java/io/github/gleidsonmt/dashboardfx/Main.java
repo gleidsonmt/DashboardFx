@@ -2,11 +2,12 @@ package io.github.gleidsonmt.dashboardfx;
 
 import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.dashboard.Aside;
-import io.github.gleidsonmt.dashboardfx.drawer.Drawer;
+import io.github.gleidsonmt.dashboardfx.drawer.SideNav;
 import io.github.gleidsonmt.glad.base.Layout;
-import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.Module;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.View;
+import io.github.gleidsonmt.glad.base.drawer.Drawer;
 import io.github.gleidsonmt.glad.base.responsive.Break;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
@@ -58,8 +59,10 @@ public class Main extends BorderPane implements Layout {
     private void init() {
         this.wrapper = new VBox();
         this.container = new ScrollPane();
-        this.drawer = new Drawer();
+        this.drawer = new SideNav();
         this.aside = new Aside();
+
+
 
         setLeft(getDrawer());
         setCenter(this.wrapper);
