@@ -1,6 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.presentation.presentations.components;
 
-import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
+import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.controls.avatar.AvatarView;

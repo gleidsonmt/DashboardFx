@@ -23,7 +23,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.internal;
 import io.github.gleidsonmt.blockcode.BlockCode;
 import io.github.gleidsonmt.blockcode.CodeType;
 import io.github.gleidsonmt.blockcode.Theme;
-import io.github.gleidsonmt.dashboardfx.presentation.Scroll;
+import io.github.gleidsonmt.dashboardfx.utils.Scroll;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.responsive.Break;
 import io.github.gleidsonmt.glad.controls.icon.Icon;

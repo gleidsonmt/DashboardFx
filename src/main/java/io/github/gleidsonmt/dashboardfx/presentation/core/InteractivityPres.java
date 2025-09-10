@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.presentation.core;
 
+import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
@@ -378,7 +379,7 @@ public class InteractivityPres extends CustomizablePresentation {
                         """)
 
                 .h3("Snack", "Behavior")
-                .text("As alerts 'snacks' can be used.")
+                .text("'Snack' is a component that displays a message at the bottom of the screen.")
 
                 .demo(TutorialUtils.createAction(_ -> getRoot()
                         .behavior()

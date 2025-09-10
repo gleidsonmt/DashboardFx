@@ -15,7 +15,7 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.dashboardfx.presentation;
+package io.github.gleidsonmt.dashboardfx.utils;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;

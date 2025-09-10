@@ -1,12 +1,8 @@
 package io.github.gleidsonmt.dashboardfx.presentation.about;
 
-import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
+import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
-import io.github.gleidsonmt.glad.base.Root;
-import javafx.scene.layout.StackPane;
-
-import java.net.URI;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

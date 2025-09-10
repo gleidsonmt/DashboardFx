@@ -12,11 +12,14 @@ import io.github.gleidsonmt.glad.base.responsive.Break;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 
 
 /**
@@ -63,7 +66,33 @@ public class Main extends BorderPane implements Layout {
         this.aside = new Aside();
 
 
+        drawer.setCellFactory(new Callback<Drawer, ListCell<Module>>() {
+            @Override
+            public ListCell<Module> call(Drawer param) {
+                return new ListCell<>(){
+                    @Override
+                    protected void updateItem(Module item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            setText(item.getName());
+                        } else {
+                            setText(null);
+                            setGraphic(null);
+                        }
+                    }
+                };
+            }
+        });
 
+        drawer.build();
+
+        ListView listView = new ListView();
+        listView.setCellFactory(new Callback<ListView, ListCell>() {
+            @Override
+            public ListCell call(ListView param) {
+                return null;
+            }
+        });
         setLeft(getDrawer());
         setCenter(this.wrapper);
     }

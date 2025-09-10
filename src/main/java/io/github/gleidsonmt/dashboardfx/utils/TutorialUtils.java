@@ -1,6 +1,5 @@
 package io.github.gleidsonmt.dashboardfx.utils;
 
-import io.github.gleidsonmt.dashboardfx.presentation.Scroll;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.glad.base.Module;
 import io.github.gleidsonmt.glad.base.drawer.Drawer;

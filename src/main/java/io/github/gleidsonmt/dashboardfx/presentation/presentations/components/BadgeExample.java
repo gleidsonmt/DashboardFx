@@ -1,12 +1,11 @@
 package io.github.gleidsonmt.dashboardfx.presentation.presentations.components;
 
-import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
+import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.glad.controls.badge.Badge;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.presentation.Row;
 import javafx.scene.Node;
-import javafx.scene.layout.StackPane;
 
 import java.util.Random;
 

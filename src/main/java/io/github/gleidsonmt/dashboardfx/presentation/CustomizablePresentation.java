@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.dashboardfx.presentation.core;
+package io.github.gleidsonmt.dashboardfx.presentation;
 
 import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
