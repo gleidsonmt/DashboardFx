@@ -19,6 +19,7 @@ import io.github.gleidsonmt.glad.base.drawer.Drawer;
 import io.github.gleidsonmt.glad.base.drawer.ModuleSeparator;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import javafx.collections.FXCollections;
 
 import java.util.List;
 
@@ -29,12 +30,20 @@ import java.util.List;
 public class SideNav extends Drawer {
 
     public SideNav() {
-        super(List.of(
+        super(
+                FXCollections.observableArrayList(
                 new Dashboard(),
                 new ModuleSeparator(new SVGIcon(Icon.HUB), "Project"),
                 new ModuleView("Core",
                         new IntroductionPres(),
                         new InteractivityPres()
+                ),
+                new ModuleView("Test",
+                        new ModuleView("Test two",
+                                new InteractivityPres(),
+                                new ProgressBarPres()
+                        ),
+                        new LabeledPres()
                 ),
                 new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
                 new ModuleView("Shapes",

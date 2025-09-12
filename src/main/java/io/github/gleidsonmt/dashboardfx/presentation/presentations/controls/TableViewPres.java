@@ -75,6 +75,7 @@ public class TableViewPres extends CustomizablePresentation {
         TableColumn<Person, String> lastNameCol = new TableColumn<>("Last Name");
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
+
         table.getColumns().setAll(firstNameCol, lastNameCol);
         return table;
     }

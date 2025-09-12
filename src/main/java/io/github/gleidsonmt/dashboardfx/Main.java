@@ -3,23 +3,24 @@ package io.github.gleidsonmt.dashboardfx;
 import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.dashboard.Aside;
 import io.github.gleidsonmt.dashboardfx.drawer.SideNav;
-import io.github.gleidsonmt.glad.base.Layout;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.LabeledPres;
+import io.github.gleidsonmt.glad.base.*;
 import io.github.gleidsonmt.glad.base.Module;
-import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.View;
 import io.github.gleidsonmt.glad.base.drawer.Drawer;
+import io.github.gleidsonmt.glad.base.drawer.ModuleSeparator;
 import io.github.gleidsonmt.glad.base.responsive.Break;
+import io.github.gleidsonmt.glad.drawer.DrawerItem;
+import io.github.gleidsonmt.glad.drawer.DrawerMenu;
+import io.github.gleidsonmt.glad.drawer.DrawerSeparator;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.util.Callback;
 
 
 /**
@@ -46,6 +47,16 @@ public class Main extends BorderPane implements Layout {
             Root root = (Root) this.getScene().getRoot();
             root.addPoint(_ -> setLeft(null), Break.MOBILE);
             root.addPoint(_ -> setLeft(drawer), Break.SM, Break.MD, Break.LG, Break.XL, Break.XXL, Break.WIDE);
+
+
+            Button btn = new Button("Add");
+            btn.setOnAction(_ -> {
+                drawer.getItems().removeLast();
+            });
+
+            root.flow()
+                    .content(btn)
+                    .show();
         });
     }
 
@@ -62,37 +73,27 @@ public class Main extends BorderPane implements Layout {
     private void init() {
         this.wrapper = new VBox();
         this.container = new ScrollPane();
-        this.drawer = new SideNav();
         this.aside = new Aside();
+        this.drawer = new SideNav();
 
-
-        drawer.setCellFactory(new Callback<Drawer, ListCell<Module>>() {
-            @Override
-            public ListCell<Module> call(Drawer param) {
-                return new ListCell<>(){
-                    @Override
-                    protected void updateItem(Module item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (item != null) {
-                            setText(item.getName());
-                        } else {
-                            setText(null);
-                            setGraphic(null);
-                        }
-                    }
-                };
+        drawer.setCellFactory(param -> {
+            switch (param) {
+                case View view -> {
+                    return new DrawerItem(view);
+                }
+                case ModuleSeparator separator -> {
+                    return new DrawerSeparator(separator);
+                }
+                case ModuleView menu -> {
+                    return new DrawerMenu(menu);
+                }
+                case null, default -> {
+                    assert param != null;
+                    return new DrawerItem(param);
+                }
             }
         });
 
-        drawer.build();
-
-        ListView listView = new ListView();
-        listView.setCellFactory(new Callback<ListView, ListCell>() {
-            @Override
-            public ListCell call(ListView param) {
-                return null;
-            }
-        });
         setLeft(getDrawer());
         setCenter(this.wrapper);
     }
