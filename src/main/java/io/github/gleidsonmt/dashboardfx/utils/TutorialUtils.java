@@ -157,7 +157,6 @@ public class TutorialUtils {
         Hyperlink hyperlink = new Hyperlink(placeholder);
         hyperlink.setOnAction(_ -> {
             Drawer drawer = (Drawer) hyperlink.getScene().lookup("#drawer");
-            System.out.println("drawer = " + drawer);
             Module moduleImpl = drawer.find(moduleName);
             drawer.currentModuleProperty().set(moduleImpl);
 

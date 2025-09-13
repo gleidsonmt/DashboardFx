@@ -3,6 +3,7 @@ package io.github.gleidsonmt.dashboardfx;
 import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.dashboard.Aside;
 import io.github.gleidsonmt.dashboardfx.drawer.SideNav;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.ChoiceBoxPres;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.LabeledPres;
 import io.github.gleidsonmt.glad.base.*;
 import io.github.gleidsonmt.glad.base.Module;
@@ -21,6 +22,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+
+import java.util.Objects;
 
 
 /**
@@ -51,7 +54,12 @@ public class Main extends BorderPane implements Layout {
 
             Button btn = new Button("Add");
             btn.setOnAction(_ -> {
-                drawer.getItems().removeLast();
+//                var target = this.drawer.getItems().get(3).getModules().getFirst().getModules().get(1);
+//                drawer.getItems().remove(target);
+
+                ModuleView moduleView = new ModuleView("New Module", new ModuleView("New Module 1", new ModuleView("New Module 2", new ChoiceBoxPres())));
+                drawer.getItems().add(moduleView);
+                System.out.println("drawer = " + drawer.getCurrentModule());
             });
 
             root.flow()
