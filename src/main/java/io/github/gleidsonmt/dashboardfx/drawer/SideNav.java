@@ -38,13 +38,6 @@ public class SideNav extends Drawer {
                         new IntroductionPres(),
                         new InteractivityPres()
                 ),
-                new ModuleView("Test",
-                        new ModuleView("Test two",
-                                new InteractivityPres(),
-                                new ProgressBarPres()
-                        ),
-                        new LabeledPres()
-                ),
                 new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
                 new ModuleView("Shapes",
                         new TextPres()

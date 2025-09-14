@@ -18,12 +18,6 @@ SubProjects
 [ ] Create an article about carousel and how to use it.
 [ ] Create an article about drawer and how to use it.
 
-drawer()
-    .header()
-    .factory()
-    .footer()
-    .build();
-
 drawer as vbox
 Module as TitledPane
 View as toggleButton

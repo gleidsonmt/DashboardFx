@@ -52,19 +52,7 @@ public class Main extends BorderPane implements Layout {
             root.addPoint(_ -> setLeft(drawer), Break.SM, Break.MD, Break.LG, Break.XL, Break.XXL, Break.WIDE);
 
 
-            Button btn = new Button("Add");
-            btn.setOnAction(_ -> {
-//                var target = this.drawer.getItems().get(3).getModules().getFirst().getModules().get(1);
-//                drawer.getItems().remove(target);
 
-                ModuleView moduleView = new ModuleView("New Module", new ModuleView("New Module 1", new ModuleView("New Module 2", new ChoiceBoxPres())));
-                drawer.getItems().add(moduleView);
-                System.out.println("drawer = " + drawer.getCurrentModule());
-            });
-
-            root.flow()
-                    .content(btn)
-                    .show();
         });
     }
 

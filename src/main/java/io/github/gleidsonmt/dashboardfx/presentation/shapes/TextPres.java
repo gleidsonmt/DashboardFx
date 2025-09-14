@@ -20,12 +20,12 @@ public class TextPres extends CustomizablePresentation {
         return new Tutorial()
                 .indicators()
                 .overview()
-                .h2("Text", null)
+                .h2("Text")
+                .separator()
                 .text("The Text class defines a node that displays a text. Paragraphs are separated by \n and the text is wrapped on paragraph boundaries.")
                 .legend("javafx.scene.text.Text")
                 .legend("(The base font here is set to Poppins, by default is not apply, but it's better to add all fonts before the app load. At the end you can see the code to add.)")
                 // .link([link to explanation]) ir para temas
-                .h3("Demo", "Text")
                 .demo(new Text("Lorem ipsum dolor color"))
                 .code("Text text = new Text(\"Lorem ipsum dolor color\");")
 //                        .demonstration(List.of(
@@ -90,7 +90,8 @@ public class TextPres extends CustomizablePresentation {
                 .h3("Fonts", "Text")
                 .demo(new Node[]{
                         createDemo("Normal"),
-                        createDemo("Instagram", "font-instagram", "h5")
+                        createDemo("Instagram", "font-instagram", "h5"),
+                        createDemo("Instagram Headline", "font-instagram-headline", "h5"),
                 })
                 .code("ThemeProvider.install(root, Css.POPPINS, Css.INSTAGRAM);");
     }
