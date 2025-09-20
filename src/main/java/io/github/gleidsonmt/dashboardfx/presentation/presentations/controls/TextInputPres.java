@@ -3,8 +3,15 @@ package io.github.gleidsonmt.dashboardfx.presentation.presentations.controls;
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
+import io.github.gleidsonmt.glad.controls.icon.Icon;
+import io.github.gleidsonmt.glad.controls.skin.TextBoxBase;
+import io.github.gleidsonmt.glad.controls.text_box.PasswordBox;
+import io.github.gleidsonmt.glad.controls.text_box.TextBox;
 import io.github.gleidsonmt.glad.theme.Css;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Skin;
 import javafx.scene.control.TextField;
 
 /**
@@ -38,7 +45,49 @@ public class TextInputPres extends CustomizablePresentation {
                 .demo(createPassword())
                 .h4("Install", "PasswordField")
                 .code(TutorialUtils.installExample(Css.TEXT_FIELD, "PasswordField"))
+
+                .h3("TextBox", "TextInputControl")
+                .text("A TextBox is a complex TextField, allowing to add a graphic a an action.")
+                .legend("io.github.gleidsonmt.glad.controls.text_box.TextBox")
+                .demo(createTextBox(Icon.LOCATION_ON, "Location", true))
+                .code(TutorialUtils.installExample(Css.TEXT_BOX, "TextBox"))
+
+                .h3("PasswordBox", "TextInputControl")
+                .text("The same as TextBox, but with a mask.")
+                .legend("io.github.gleidsonmt.glad.controls.text_box.PasswordBox")
+
+                .code(TutorialUtils.installExample(Css.TEXT_BOX, "PasswordBox"))
+                .demo(createPasswordBox(Icon.VPN_KEY_FILLED,"PasswordBox", true))
+                .demo(createCustomTextBox(Icon.VPN_KEY_FILLED,"PasswordBox", true))
                 ;
+    }
+    private TextBoxBase createCustomTextBox(Icon icon, String text, boolean action) {
+        TextBoxBase textBoxBase= new TextBoxBase() {
+            {
+                setStyle("-fx-border-radius: 0px;");
+                var left = new Label("https://");
+                left.getStyleClass().addAll("border-2 border-light-gray-2 bg-light-gray-2".split(" "));
+                left.setStyle("-fx-border-width: 2px 0px 2px 2px; -fx-border-radius: 10px;");
+                left.setMinHeight(40);
+                setLeftNode(left);
+                setRightNode(new Label(".com"));
+//                getStyleClass().addAll("text-box");
+            }
+
+        };
+        return textBoxBase;
+    }
+
+    private PasswordBox createPasswordBox(Icon icon, String text, boolean action) {
+        PasswordBox password = new PasswordBox(icon, text, action);
+        password.setPromptText(text);
+        return password;
+    }
+
+    private TextBox createTextBox(Icon icon, String text, boolean action) {
+        TextBox password = new TextBox(icon, text, action);
+        password.setPromptText(text);
+        return password;
     }
 
     private TextField createTextField() {
