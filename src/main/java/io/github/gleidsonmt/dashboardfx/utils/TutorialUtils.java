@@ -1,5 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.utils;
 
+import io.github.gleidsonmt.blockcode.BlockCode;
+import io.github.gleidsonmt.dashboardfx.ResizablePane;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.glad.base.Module;
 import io.github.gleidsonmt.glad.base.drawer.Drawer;
@@ -10,17 +12,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Separator;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 import org.jetbrains.annotations.NotNull;
@@ -129,7 +127,6 @@ public class TutorialUtils {
         return hyperlink;
     }
 
-
     public static Node createTextWithLink(String text, String placeholder, String moduleName) {
         return createTextWithLink(text, placeholder, moduleName, null);
     }
@@ -172,7 +169,7 @@ public class TutorialUtils {
                                 .map(el -> (TreeTitle) el)
                                 .filter(el -> el.getText().equals(topic))
                                 .findAny();
-                        Scroll.scrollTo(scroll, opt.get());
+                        opt.ifPresent(e -> Scroll.scrollTo(scroll, e));
 
                         BorderPane border = (BorderPane) drawer.getScene().getRoot().lookup("#tutorial-body");
                         Tutorial tutorial = (Tutorial) border.getUserData();
@@ -198,5 +195,42 @@ public class TutorialUtils {
 //            drawer.navigate(moduleName);
         });
         return hyperlink;
+    }
+
+    public static Node createCodeOption(Node node, String code) {
+        VBox container = new VBox();
+        VBox.setVgrow(node, Priority.ALWAYS);
+//        container.setFillWidth(false);
+        container.setSpacing(20);
+        ToggleButton nodeOption = new ToggleButton("Preview");
+        nodeOption.getStyleClass().addAll( "w-100", "min-h-40", "btn-outlined", "round");
+        ToggleButton codeOption = new ToggleButton("Show code");
+        codeOption.getStyleClass().addAll( "w-100", "min-h-40","btn-outlined", "round");
+        HBox optionsContainer = new HBox(nodeOption, codeOption);
+        optionsContainer.setMaxWidth(Region.USE_PREF_SIZE);
+
+        optionsContainer.getStyleClass().addAll("w-300", "min-h-40", "border-2", "border-light-gray-2", "padding-10", "radius-10");
+        optionsContainer.setSpacing(5);
+
+//        ResizablePane preview = new ResizablePane(node);
+//        preview.setMaxWidth(700);
+        BlockCode blockCode = new BlockCode()
+                .content(code)
+                .build();
+
+        ToggleGroup group = new ToggleGroup();
+        group.getToggles().addAll(nodeOption, codeOption);
+        group.selectToggle(nodeOption);
+        group.selectedToggleProperty().addListener((_, _, newValue) -> {
+            if (newValue == codeOption) {
+                container.getChildren().set(1, blockCode);
+            } else {
+                container.getChildren().set(1, node);
+            }
+        });
+
+        container.getChildren().addAll(optionsContainer, node);
+
+        return container;
     }
 }

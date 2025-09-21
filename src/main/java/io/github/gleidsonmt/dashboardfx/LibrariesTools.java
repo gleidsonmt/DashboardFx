@@ -41,7 +41,7 @@ public final class LibrariesTools {
 
     public static void addTools(Scene scene) {
         showScenicView(scene);
-//        listenCss(scene);
+        listenCss(scene);
     }
 
     private static void showScenicView(Scene scene) throws RuntimeException {
