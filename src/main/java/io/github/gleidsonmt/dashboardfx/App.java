@@ -30,18 +30,19 @@ public class App extends Application {
         stage.setMaximized(true);
 
         ThemeProvider.install(scene,
-                Font.POPPINS, Font.INSTAGRAM,
-                Css.DEFAULT, Css.BUTTON,
-                Css.SHAPES, Css.CONTEXT_MENU,
-                Css.HYPERLINK, Css.COMBO_BOX,
-                Css.RADIO_BUTTON, Css.CHECK_BOX,
-                Css.TREE_VIEW, Css.TOGGLE_BUTTON,
-                Css.PROGRESS_BAR, Css.LIST_VIEW, Css.TABLE_VIEW,
-                Css.TAB_PANE, Css.IMMERSIVE_SCROLL,
-                Css.DATE_PICKER, Css.MENU_BUTTON,
-                Css.SPLIT_MENU_BUTTON, Css.CHOICE_BOX,
-                Css.TEXT_FIELD, Css.TEXT_BOX, Css.TITLED_PANE,
-                Drawer.DEFAULT
+                Css.ALL
+//                Font.POPPINS, Font.INSTAGRAM,
+//                Css.DEFAULT, Css.BUTTON,
+//                Css.SHAPES, Css.CONTEXT_MENU,
+//                Css.HYPERLINK, Css.COMBO_BOX,
+//                Css.RADIO_BUTTON, Css.CHECK_BOX,
+//                Css.TREE_VIEW, Css.TOGGLE_BUTTON,
+//                Css.PROGRESS_BAR, Css.LIST_VIEW, Css.TABLE_VIEW,
+//                Css.TAB_PANE, Css.IMMERSIVE_SCROLL,
+//                Css.DATE_PICKER, Css.MENU_BUTTON,
+//                Css.SPLIT_MENU_BUTTON, Css.CHOICE_BOX,
+//                Css.TEXT_FIELD, Css.TEXT_BOX, Css.TITLED_PANE,
+//                Drawer.DEFAULT
         );
 
 
@@ -50,7 +51,7 @@ public class App extends Application {
         stage.getIcons().add(Assets.getImage("logo_128.png"));
         stage.show();
 
-        LibrariesTools.addTools(stage.getScene());
+//        LibrariesTools.addTools(stage.getScene());
 
     }
 }

@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.presentation.core;
 
+import io.github.gleidsonmt.dashboardfx.LibrariesTools;
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
@@ -7,7 +8,6 @@ import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.*;
 import io.github.gleidsonmt.glad.base.Module;
 import io.github.gleidsonmt.glad.base.drawer.Drawer;
-import io.github.gleidsonmt.glad.base.drawer.DrawerSearchBox;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.theme.Css;
@@ -15,12 +15,11 @@ import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -45,7 +44,9 @@ public class IntroductionPres extends CustomizablePresentation {
     public Tutorial create() {
         try {
             return new Tutorial()
+                    .overview()
                     .h3("Introduction")
+                    .separator()
                     .text("""
                             I’ll tutor you around this ecosystem I built.
                             
@@ -102,6 +103,93 @@ public class IntroductionPres extends CustomizablePresentation {
                             I've been working and idealizing a skeleton with the minimal to create a project and start.
                             (I'm still working on it, all help is welcome.).
                             """)
+
+                    .h3("Starting")
+                    .h3("Layout", "Starting")
+                    .code("""
+                            class MyCustomLayout extends BorderPane implements Layout {
+                            
+                                 protected final ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
+                            
+                                 CustomLayout() {
+                                     bind();
+                                 }
+                            
+                                 private void bind() {
+                                     this.currentModule.addListener((_, oldValue, newValue) -> {
+                                         Logger.getGlobal().info("You switched between [" + oldValue + "] to [" + newValue + "]");
+                                         setCenter(((View) newValue).getContent());
+                                     });
+                                 }
+                            
+                                 @Override
+                                 public Region getDrawer() {
+                                     return (Region) getLeft();
+                                 }
+                            
+                                 @Override
+                                 public ObjectProperty<Module> currentModuleProperty() {
+                                     return currentModule;
+                                 }
+                             }
+                            """)
+                    .h3("Drawer", "Starting")
+
+                    .code("""
+                            class SideNav extends Drawer {
+                            
+                                public SideNav() {
+                                    super(
+                                            new View("Orders", new SVGIcon(Icon.ORDERS), new Text("Orders View")),
+                                            new View("Apps", new SVGIcon(Icon.APPS), new Text("Apps View")),
+                                            new View("Products", new SVGIcon(Icon.LOCAL_MALL), new Text("Products View")),
+                                            new ModuleView("View", new View("View 2"), new View("View 3"))
+                                    );
+                                    setHeader(createDrawerHeader());
+                                }
+                            
+                                public Node createDrawerHeader() {
+                                    GridPane drawerHeader = new GridPane();
+                                    drawerHeader.setPadding(new Insets(0, 0, 20, 0));
+                                    Label logo = new Label("Drawer, CO");
+                                    logo.getStyleClass().addAll("h3", "font-instagram", "bold");
+                                    SVGIcon icon = new SVGIcon(Icon.HUB);
+                                    Label iconContainer = new Label();
+                                    iconContainer.getStyleClass().addAll("rounded", "border-2", "border-light-gray", "padding-5");
+                            
+                                    iconContainer.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                                    iconContainer.setGraphic(icon);
+                                    logo.setGraphic(iconContainer);
+                                    drawerHeader.add(logo, 0, 0);
+                                    return drawerHeader;
+                                }
+                            }
+                            """)
+
+                    .h3("Main", "Starting")
+                    .code("""
+                            public class App extends Application {
+                            
+                                @Override
+                                public void start(Stage stage) throws Exception {
+                            
+                                // Root is the base of the scene, it's the point to get environment around.
+                                // The Main class is a layout, it's a container of other views.
+                                // The View class it's a module representation.
+                                Root root = new Root(new Main());
+                                Scene scene = new Scene(root, 800, 600);
+                                // Install the custom css styles, colors and typographic.
+                                // ThemeProvider is a class that install css, colors and typographic.
+                                // Also can be include fonts.
+                                ThemeProvider.install(scene, Css.ALL, Font.INSTAGRAM);
+                                Stage stage = new Stage();
+                                stage.setScene(scene);
+                                stage.show();
+                            
+                                }
+                            }
+                            
+                            """)
                     .node(createExample())
                     .text("Try clone the project skeleton, and start by yourself with minimal settings.")
                     .node(TutorialUtils.createCardLink("Skeleton", new URI("https://github.com/gleidsonmt/dash-skeleton")))
@@ -116,7 +204,8 @@ public class IntroductionPres extends CustomizablePresentation {
         return TutorialUtils.createAction(_ -> {
 
             class CustomLayout extends BorderPane implements Layout {
-                protected ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
+
+                protected final ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
 
                 CustomLayout() {
                     bind();
@@ -139,74 +228,72 @@ public class IntroductionPres extends CustomizablePresentation {
                     return currentModule;
                 }
 
-                @Override
-                public Module getCurrentModule() {
-                    return currentModule.get();
-                }
-
-                @Override
-                public void setCurrentModule(Module module) {
-                    this.currentModule.set(module);
-                }
             }
 
             class Main extends CustomLayout {
 
                 public Main() {
 
-                    ObservableList<Module> modules = FXCollections.observableArrayList(
-                            new View("Orders", new SVGIcon(Icon.ORDERS), new Text("Orders View")),
-                            new View("Apps", new SVGIcon(Icon.APPS), new Text("Apps View")),
-                            new View("Products", new SVGIcon(Icon.LOCAL_MALL), new Text("Products View")),
-                            new ModuleView("View", new View("View 2"), new View("View 3"))
-                    );
+//                    Drawer drawer = new Drawer(modules);
 
-                    Drawer drawer = new Drawer(modules);
+//                    var searchBox = new DrawerSearchBox();
+//                    drawer.setSearchable(searchBox.textProperty(), name -> name.toLowerCase().contains(searchBox.getText().toLowerCase()));
 
-                    var searchBox = new DrawerSearchBox();
-                    drawer.setSearchable(searchBox.textProperty(), name -> name.toLowerCase().contains(searchBox.getText().toLowerCase()));
+//                    drawer.getChildren().add(1, searchBox);
 
-                    GridPane drawerHeader = new GridPane();
-                    drawerHeader.setPadding(new Insets(0,0,20,0));
-                    Label logo = new Label("Drawer, CO");
-                    logo.getStyleClass().addAll("h3", "font-instagram", "bold");
-                    SVGIcon icon = new SVGIcon(Icon.HUB);
-                    Label iconContainer = new Label();
-                    iconContainer.getStyleClass().addAll("rounded", "border-2", "border-light-gray", "padding-5");
-
-                    iconContainer.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                    iconContainer.setGraphic(icon);
-                    logo.setGraphic(iconContainer);
-                    drawerHeader.add(logo, 0, 0);
-
-                    drawer.setHeader(drawerHeader);
-                    drawer.getChildren().add(1, searchBox);
-
-
-                    this.setLeft(drawer);
+                    var nav = new SideNav();
+                    this.setLeft(new SideNav());
                     // With this bind I can change the node in the center with a selected drawer item.
-//            this.centerProperty().bind(Bindings.select(drawer.currentModuleProperty(), "content"));
-                    this.currentModule.bind(drawer.currentModuleProperty());
-//            this.centerProperty().bind(Bindings.select(drawer.selectedProperty(), "content"));
+                    this.currentModule.bind(nav.currentModuleProperty());
                 }
             }
 
-                // Root is the base of the scene, it's the point to get environment around.
-                // The Main class is a layout, it's a container of other views.
-                // The View class it's a module representation.
-                Root root = new Root(new Main());
-                Scene scene = new Scene(root, 800, 600);
-                // Install the custom css styles, colors and typographic.
-                // ThemeProvider is a class that install css, colors and typographic.
-                ThemeProvider.install(scene, Css.DEFAULT, Css.LIST_VIEW, Css.TABLE_VIEW, Css.BUTTON, Css.TEXT_FIELD, Css.TEXT_BOX, Css.TOGGLE_BUTTON, Css.TITLED_PANE);
-                // Also can be include fonts.
-                ThemeProvider.install(scene, Font.POPPINS);
-                scene.getStylesheets().add(Assets.getCss("drawer.css"));
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.show();
+            // Root is the base of the scene, it's the point to get environment around.
+            // The Main class is a layout, it's a container of other views.
+            // The View class it's a module representation.
+            Root root = new Root(new Main());
+            Scene scene = new Scene(root, 800, 600);
+            // Install the custom css styles, colors and typographic.
+            // ThemeProvider is a class that install css, colors and typographic.
+            ThemeProvider.install(scene, Css.ALL, Font.INSTAGRAM);
+
+            // Also can be include fonts.
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+
+//            LibrariesTools.addTools(scene);
 
         });
     }
 
+}
+
+class SideNav extends Drawer {
+
+    public SideNav() {
+        super(
+                new View("Orders", new SVGIcon(Icon.ORDERS), new Text("Orders View")),
+                new View("Apps", new SVGIcon(Icon.APPS), new Text("Apps View")),
+                new View("Products", new SVGIcon(Icon.LOCAL_MALL), new Text("Products View")),
+                new ModuleView("View", new View("View 2"), new View("View 3"))
+        );
+        setHeader(createDrawerHeader());
+    }
+
+    public Node createDrawerHeader() {
+        GridPane drawerHeader = new GridPane();
+        drawerHeader.setPadding(new Insets(0, 0, 20, 0));
+        Label logo = new Label("Drawer, CO");
+        logo.getStyleClass().addAll("h3", "font-instagram", "bold");
+        SVGIcon icon = new SVGIcon(Icon.HUB);
+        Label iconContainer = new Label();
+        iconContainer.getStyleClass().addAll("rounded", "border-2", "border-light-gray", "padding-5");
+
+        iconContainer.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+        iconContainer.setGraphic(icon);
+        logo.setGraphic(iconContainer);
+        drawerHeader.add(logo, 0, 0);
+        return drawerHeader;
+    }
 }

@@ -43,7 +43,6 @@ public class DrawerHeader extends GridPane {
         logoTest.setWrappingWidth(20);
         logoTest.setTextAlignment(TextAlignment.CENTER);
 
-
         this.add(logoTest, 0,0,1,2);
         this.add(title, 1,0);
         this.add(legend, 1,1);
