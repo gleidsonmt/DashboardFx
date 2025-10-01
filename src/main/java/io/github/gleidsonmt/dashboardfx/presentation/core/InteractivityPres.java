@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.presentation.core;
 
+import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
@@ -7,7 +8,7 @@ import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import io.github.gleidsonmt.glad.base.dialog.alert.AlertType;
-import io.github.gleidsonmt.glad.base.dialog.snack.SnackItem;
+import io.github.gleidsonmt.glad.base.dialog.snack.SnackOption;
 import io.github.gleidsonmt.glad.controls.button.Button;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
@@ -378,7 +379,7 @@ public class InteractivityPres extends CustomizablePresentation {
                         """)
 
                 .h3("Snack", "Behavior")
-                .text("As alerts 'snacks' can be used.")
+                .text("'Snack' is a component that displays a message at the bottom of the screen.")
 
                 .demo(TutorialUtils.createAction(_ -> getRoot()
                         .behavior()
@@ -414,8 +415,8 @@ public class InteractivityPres extends CustomizablePresentation {
                         .message("Tracking your location.")
                         .graphic(new SVGIcon(Icon.LOCATION_ON))
                         .action(
-                                new SnackItem("Confirm", _ -> System.out.println("Action Confirm!")),
-                                new SnackItem("Cancel", _ -> System.out.println("Action Cancel!"))
+                                new SnackOption("Confirm", _ -> System.out.println("Action Confirm!")),
+                                new SnackOption("Cancel", _ -> System.out.println("Action Cancel!"))
                         )
                         .show()))
                 .code("""
@@ -424,8 +425,8 @@ public class InteractivityPres extends CustomizablePresentation {
                             .message("Tracking your location.")
                             .graphic(new SVGIcon(Icon.LOCATION_ON))
                             .action(
-                                    new SnackItem("Confirm", _ -> System.out.println("Action Confirm!")),
-                                    new SnackItem("Cancel", _ -> System.out.println("Action Cancel!"))
+                                    new SnackOption("Confirm", _ -> System.out.println("Action Confirm!")),
+                                    new SnackOption("Cancel", _ -> System.out.println("Action Cancel!"))
                             )
                             .show();
                         """)

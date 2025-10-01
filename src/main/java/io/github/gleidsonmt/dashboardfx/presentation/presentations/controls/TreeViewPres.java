@@ -1,12 +1,11 @@
 package io.github.gleidsonmt.dashboardfx.presentation.presentations.controls;
 
-import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
+import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.CheckBoxTreeCell;
-import javafx.scene.layout.StackPane;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

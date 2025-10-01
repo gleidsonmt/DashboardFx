@@ -1,10 +1,13 @@
 package io.github.gleidsonmt.dashboardfx.drawer;
 
+import io.github.gleidsonmt.glad.base.drawer.Drawer;
+import io.github.gleidsonmt.glad.base.drawer.DrawerSearchBox;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Text;
@@ -16,7 +19,7 @@ import javafx.scene.text.TextAlignment;
  */
 public class DrawerHeader extends GridPane {
 
-    public DrawerHeader() {
+    public DrawerHeader(Drawer drawer) {
 
         setPrefSize(200, 60);
         this.setPadding(new Insets(10));
@@ -40,21 +43,28 @@ public class DrawerHeader extends GridPane {
         logoTest.setWrappingWidth(20);
         logoTest.setTextAlignment(TextAlignment.CENTER);
 
-
-        this.add(logoTest, 0,0);
+        this.add(logoTest, 0,0,1,2);
         this.add(title, 1,0);
         this.add(legend, 1,1);
 
         GridPane.setHgrow(title, Priority.ALWAYS);
-        GridPane.setRowSpan(logoTest, REMAINING);
 
         GridPane.setValignment(title, VPos.BOTTOM);
         GridPane.setValignment(legend, VPos.TOP);
 
-        RowConstraints rowOne = new RowConstraints();
-        RowConstraints rowTwo = new RowConstraints();
-        rowOne.setPercentHeight(50);
-        rowTwo.setPercentHeight(50);
-        this.getRowConstraints().addAll(rowOne, rowTwo);
+        DrawerSearchBox searchBox = new DrawerSearchBox();
+        this.add(searchBox, 0,2,2,1);
+
+        VBox.setMargin(this, new Insets(0,0,10,0));
+
+        var rows = 3;
+        for (int i = 0; i < rows; i++) {
+             RowConstraints row = new RowConstraints();
+             row.setPercentHeight((double) 100 / rows);
+             getRowConstraints().add(row);
+        }
+
+        drawer.setSearchable(searchBox.textProperty(), name -> name.toLowerCase().contains(searchBox.getText().toLowerCase()));
+
     }
 }

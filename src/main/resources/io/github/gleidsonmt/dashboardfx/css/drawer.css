@@ -9,11 +9,17 @@
 #drawer .text {
     -fx-font-family: "Instagram Sans";
     -fx-font-size: 14px;
+    -fx-font-weight: normal;
 }
 
 #drawer .drawer-item {
     -fx-background-radius: 6px;
     -text-color: -dark-gray;
+}
+
+#drawer .module-selected .title .text,
+#drawer .drawer-item:selected .text {
+    -fx-font-weight: bold;
 }
 
 #drawer .drawer-item:selected {

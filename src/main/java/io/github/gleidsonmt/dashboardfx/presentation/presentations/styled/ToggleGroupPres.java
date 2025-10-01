@@ -1,6 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.presentation.presentations.styled;
 
-import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
+import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
@@ -16,8 +16,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-
-import java.lang.reflect.Method;
 
 
 /**

@@ -1,29 +1,40 @@
 package io.github.gleidsonmt.dashboardfx.utils;
 
-import io.github.gleidsonmt.dashboardfx.drawer.Drawer;
+import io.github.gleidsonmt.blockcode.BlockCode;
+import io.github.gleidsonmt.dashboardfx.ResizablePane;
+import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.glad.base.Module;
+import io.github.gleidsonmt.glad.base.drawer.Drawer;
 import io.github.gleidsonmt.glad.theme.Css;
+import io.github.gleidsonmt.glad.theme.Neutral;
+import io.github.gleidsonmt.glad.theme.ThemeProvider;
+import io.github.gleidsonmt.presentation.TreeTitle;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Separator;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Optional;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -31,7 +42,7 @@ import java.net.URISyntaxException;
  */
 public class TutorialUtils {
 
-    public static @NotNull Node createAction( EventHandler<MouseEvent> event) {
+    public static @NotNull Node createAction(EventHandler<MouseEvent> event) {
         return createAction("Try on!", event);
     }
 
@@ -47,7 +58,7 @@ public class TutorialUtils {
 //                Css.COLORS,
 //                Css.PROPERTIES);
         return "// Install theme on scene\nThemeProvider.install(scene,\n\t\t...\n\t\tCss." + css + ");\n\n//Constructor\n"
-               + code + " " + css.toString().toLowerCase() + " = new " + code + "(" + con +");";
+               + code + " " + css.toString().toLowerCase() + " = new " + code + "(" + con + ");";
     }
 
     public static @NotNull String installExample(Css css) {
@@ -59,11 +70,11 @@ public class TutorialUtils {
 
     public static @NotNull String installExample(Css... css) {
         StringBuilder build = new StringBuilder();
-        for (Css c: css) {
+        for (Css c : css) {
             build.append("\n\t\tCss.").append(c).append(",");
 //            \n\t\t...\n\t\tCss." + css +
         }
-        build.deleteCharAt(build.length()-1);
+        build.deleteCharAt(build.length() - 1);
 //        ThemeProvider.install(scene,
 //                Css.COLORS,
 //                Css.PROPERTIES);
@@ -121,18 +132,8 @@ public class TutorialUtils {
         return hyperlink;
     }
 
-    public static @NotNull Hyperlink createLink(String placeholder, String moduleName) {
-        Hyperlink hyperlink = new Hyperlink(placeholder);
-        hyperlink.getStyleClass().addAll("h5");
-        hyperlink.setOnAction(_ -> {
-            Drawer drawer = (Drawer) hyperlink.getScene().lookup("#drawer");
-            drawer.navigate(moduleName);
-        });
-        return hyperlink;
-    }
-
     public static Node createTextWithLink(String text, String placeholder, String moduleName) {
-        return createTextWithLink(text,placeholder, moduleName, null);
+        return createTextWithLink(text, placeholder, moduleName, null);
     }
 
     public static Node createTextWithLink(String _text, String placeholder, String moduleName, String topic) {
@@ -158,8 +159,97 @@ public class TutorialUtils {
         Hyperlink hyperlink = new Hyperlink(placeholder);
         hyperlink.setOnAction(_ -> {
             Drawer drawer = (Drawer) hyperlink.getScene().lookup("#drawer");
-            drawer.navigate(moduleName, topic);
+            Module moduleImpl = drawer.find(moduleName);
+            drawer.currentModuleProperty().set(moduleImpl);
+
+            TimerTask timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    Optional<Node> optional = drawer.getScene().getRoot().lookupAll("#tutorial-scroll").stream().findFirst();
+                    if (optional.isPresent() && optional.get() instanceof ScrollPane scroll) {
+                        VBox box = (VBox) scroll.getContent();
+
+                        Optional<TreeTitle> opt = box.getChildren().stream()
+                                .filter(el -> el instanceof TreeTitle)
+                                .map(el -> (TreeTitle) el)
+                                .filter(el -> el.getText().equals(topic))
+                                .findAny();
+                        opt.ifPresent(e -> Scroll.scrollTo(scroll, e));
+
+                        BorderPane border = (BorderPane) drawer.getScene().getRoot().lookup("#tutorial-body");
+                        Tutorial tutorial = (Tutorial) border.getUserData();
+                        tutorial.select(topic);
+                    }
+                }
+            };
+//
+            Timer timer = new Timer();
+            timer.schedule(timerTask, 50);
         });
         return hyperlink;
+    }
+
+
+    public static @NotNull Hyperlink createLink(String placeholder, String moduleName) {
+        Hyperlink hyperlink = new Hyperlink(placeholder);
+        hyperlink.getStyleClass().addAll("h5");
+        hyperlink.setOnAction(_ -> {
+            Drawer drawer = (Drawer) hyperlink.getScene().lookup("#drawer");
+            Module moduleImpl = drawer.find(moduleName);
+            drawer.currentModuleProperty().set(moduleImpl);
+//            drawer.navigate(moduleName);
+        });
+        return hyperlink;
+    }
+
+    public static void showPage(Parent node, Neutral... css) {
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(node, 1000, 800);
+        ThemeProvider.install(scene, Css.ALL);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public static Node createCodeOption(Node node, String code) {
+        VBox container = new VBox();
+//        container.setFillWidth(false);
+        container.setSpacing(20);
+        ToggleButton nodeOption = new ToggleButton("Preview");
+        nodeOption.getStyleClass().addAll( "w-100", "min-h-40", "btn-outlined", "round");
+        ToggleButton codeOption = new ToggleButton("Show code");
+        codeOption.getStyleClass().addAll( "w-100", "min-h-40","btn-outlined", "round");
+        HBox optionsContainer = new HBox(nodeOption, codeOption);
+        optionsContainer.setMaxWidth(Region.USE_PREF_SIZE);
+
+        optionsContainer.getStyleClass().addAll("w-300", "min-h-40", "border-2", "border-light-gray-2", "padding-10", "radius-10");
+        optionsContainer.setSpacing(5);
+
+        ResizablePane preview = new ResizablePane(node);
+//        preview.setMaxWidth(700);
+
+        BlockCode blockCode = new BlockCode()
+                .content(code)
+                .build();
+
+        VBox.setVgrow(preview, Priority.ALWAYS);
+        VBox.setVgrow(blockCode, Priority.ALWAYS);
+
+        ToggleGroup group = new ToggleGroup();
+        group.getToggles().addAll(nodeOption, codeOption);
+        group.selectToggle(nodeOption);
+
+        group.selectedToggleProperty().addListener((_, _, newValue) -> {
+            if (newValue == codeOption) {
+                container.getChildren().set(1, blockCode);
+            } else {
+                container.getChildren().set(1, preview);
+            }
+        });
+
+        container.getChildren().addAll(optionsContainer, preview);
+
+        return container;
     }
 }

@@ -1,6 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.presentation.presentations.components;
 
-import io.github.gleidsonmt.dashboardfx.presentation.core.CustomizablePresentation;
+import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -57,6 +57,13 @@ public class LabelExamplePres extends CustomizablePresentation {
                         thirdDemo( "pac", "bg-yellow", "size-20", "display-graphic"),
                         thirdDemo( "leaf", "bg-green", "size-20", "display-graphic"),
                         thirdDemo( "jelly", "bg-purple", "size-20", "display-graphic"),
+                        thirdDemo( "parallelogram-r", "bg-purple", "size-20", "display-graphic"),
+                        thirdDemo( "parallelogram-l", "bg-mint", "size-20", "display-graphic"),
+                        thirdDemo( "comb-left", "bg-red-700", "size-20", "display-graphic"),
+                        thirdDemo( "comb-right", "bg-red-700", "size-20", "display-graphic"),
+                        thirdDemo( "comb-open", "bg-red-700", "size-20", "display-graphic"),
+                        thirdDemo( "hexagon", "bg-red-700", "size-20", "display-graphic"),
+                        thirdDemo( "round-bl", "bg-red-700", "size-20", "display-graphic"),
                         thirdDemo( "lbl", "bg-success", "size-20", "display-graphic")
                 })
                 .code("""
