@@ -6,12 +6,16 @@ import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.glad.base.Module;
 import io.github.gleidsonmt.glad.base.drawer.Drawer;
 import io.github.gleidsonmt.glad.theme.Css;
+import io.github.gleidsonmt.glad.theme.Neutral;
+import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import io.github.gleidsonmt.presentation.TreeTitle;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -21,6 +25,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -197,9 +202,18 @@ public class TutorialUtils {
         return hyperlink;
     }
 
+    public static void showPage(Parent node, Neutral... css) {
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(node, 1000, 800);
+        ThemeProvider.install(scene, Css.ALL);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
     public static Node createCodeOption(Node node, String code) {
         VBox container = new VBox();
-        VBox.setVgrow(node, Priority.ALWAYS);
 //        container.setFillWidth(false);
         container.setSpacing(20);
         ToggleButton nodeOption = new ToggleButton("Preview");
@@ -212,24 +226,29 @@ public class TutorialUtils {
         optionsContainer.getStyleClass().addAll("w-300", "min-h-40", "border-2", "border-light-gray-2", "padding-10", "radius-10");
         optionsContainer.setSpacing(5);
 
-//        ResizablePane preview = new ResizablePane(node);
+        ResizablePane preview = new ResizablePane(node);
 //        preview.setMaxWidth(700);
+
         BlockCode blockCode = new BlockCode()
                 .content(code)
                 .build();
 
+        VBox.setVgrow(preview, Priority.ALWAYS);
+        VBox.setVgrow(blockCode, Priority.ALWAYS);
+
         ToggleGroup group = new ToggleGroup();
         group.getToggles().addAll(nodeOption, codeOption);
         group.selectToggle(nodeOption);
+
         group.selectedToggleProperty().addListener((_, _, newValue) -> {
             if (newValue == codeOption) {
                 container.getChildren().set(1, blockCode);
             } else {
-                container.getChildren().set(1, node);
+                container.getChildren().set(1, preview);
             }
         });
 
-        container.getChildren().addAll(optionsContainer, node);
+        container.getChildren().addAll(optionsContainer, preview);
 
         return container;
     }

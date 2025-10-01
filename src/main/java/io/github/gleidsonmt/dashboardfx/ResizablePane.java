@@ -72,6 +72,6 @@ public class ResizablePane extends StackPane {
     private void configLayout() {
         setAlignment(Pos.CENTER);
 //        setSpacing(20);
-        getStyleClass().addAll("border-2", "border-light-gray-2",  "radius-5");
+        getStyleClass().addAll("border-2", "border-light-gray-2",  "radius-10");
     }
 }

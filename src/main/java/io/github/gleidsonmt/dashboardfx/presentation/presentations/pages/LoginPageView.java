@@ -5,6 +5,7 @@ import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
+import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.presentation.Code;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -30,9 +31,14 @@ public class LoginPageView extends CustomizablePresentation implements Actionabl
         return new Tutorial()
                 .h3("Login Page")
                 .separator()
-                .node(TutorialUtils.createCodeOption(new LoginPage(), """
+//                .node(TutorialUtils.createAction("Preview", e -> {
+//                    TutorialUtils.showPage(new LoginPage());
+//                }))
+                .node(TutorialUtils.createCodeOption(
+                        new LoginPage(),
+                """
                         public class LoginPage extends VBox {
-                        
+                    
                             public LoginPage() {
                                 getChildren().addAll(
                                         createTitle(),
@@ -115,9 +121,8 @@ public class LoginPageView extends CustomizablePresentation implements Actionabl
                             }
 
                         }
-                        """))
-
-
+                        """)
+                )
 
 //                .demo(new ResizablePane(new LoginPage()))
 //                .code()
