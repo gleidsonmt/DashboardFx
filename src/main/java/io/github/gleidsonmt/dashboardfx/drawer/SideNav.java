@@ -2,6 +2,7 @@ package io.github.gleidsonmt.dashboardfx.drawer;
 
 import io.github.gleidsonmt.dashboardfx.dashboard.Dashboard;
 import io.github.gleidsonmt.dashboardfx.presentation.about.AboutPres;
+import io.github.gleidsonmt.dashboardfx.presentation.core.BuildingPres;
 import io.github.gleidsonmt.dashboardfx.presentation.core.CarouselPres;
 import io.github.gleidsonmt.dashboardfx.presentation.core.InteractivityPres;
 import io.github.gleidsonmt.dashboardfx.presentation.core.IntroductionPres;
@@ -37,6 +38,7 @@ public class SideNav extends Drawer {
                         new ModuleSeparator(new SVGIcon(Icon.HUB), "Project"),
                         new ModuleView("Core",
                                 new IntroductionPres(),
+                                new BuildingPres(),
                                 new InteractivityPres()
                         ),
                         new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
