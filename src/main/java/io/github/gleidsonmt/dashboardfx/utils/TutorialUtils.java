@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.utils;
 
 import io.github.gleidsonmt.blockcode.BlockCode;
+import io.github.gleidsonmt.blockcode.CodeType;
 import io.github.gleidsonmt.dashboardfx.ResizablePane;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.glad.base.Module;
@@ -8,6 +9,7 @@ import io.github.gleidsonmt.glad.base.drawer.Drawer;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Neutral;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
+import io.github.gleidsonmt.presentation.Code;
 import io.github.gleidsonmt.presentation.TreeTitle;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -213,6 +215,10 @@ public class TutorialUtils {
     }
 
     public static Node createCodeOption(Node node, String code) {
+        return createCodeOption(node, new Code(code));
+    }
+    public static Node createCodeOption(Node node, Code... code) {
+
         VBox container = new VBox();
 //        container.setFillWidth(false);
         container.setSpacing(20);
@@ -229,20 +235,43 @@ public class TutorialUtils {
         ResizablePane preview = new ResizablePane(node);
 //        preview.setMaxWidth(700);
 
-        BlockCode blockCode = new BlockCode()
-                .content(code)
-                .build();
+//        BlockCode blockCode = new BlockCode()
+//                .content(code)
+//                .build();
 
         VBox.setVgrow(preview, Priority.ALWAYS);
-        VBox.setVgrow(blockCode, Priority.ALWAYS);
+//        VBox.setVgrow(blockCode, Priority.ALWAYS);
+
 
         ToggleGroup group = new ToggleGroup();
         group.getToggles().addAll(nodeOption, codeOption);
         group.selectToggle(nodeOption);
 
+        final Node blockOption;
+        if (code.length > 1) {
+            TabPane blockView = new TabPane();
+            for (Code c : code) {
+                Tab tab = new Tab(c.name());
+                BlockCode blockCode = new BlockCode()
+                        .content(c.content())
+                        .codeType(c.type())
+                        .build();
+                tab.setContent(blockCode);
+                blockView.getTabs().add(tab);
+            }
+            blockOption = blockView;
+        } else {
+            blockOption = new BlockCode()
+                    .content(code[0].content())
+                    .codeType(code[0].type())
+                    .build();
+        }
+
+        VBox.setVgrow(blockOption, Priority.ALWAYS);
+
         group.selectedToggleProperty().addListener((_, _, newValue) -> {
             if (newValue == codeOption) {
-                container.getChildren().set(1, blockCode);
+                container.getChildren().set(1, blockOption);
             } else {
                 container.getChildren().set(1, preview);
             }
