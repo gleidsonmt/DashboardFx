@@ -10,6 +10,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.containers.TabPanePres;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.containers.TitledPanePres;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.*;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.pages.AboutPageView;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.pages.HomePageView;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.pages.LoginPageView;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.CircularLoaders;
@@ -85,8 +86,8 @@ public class SideNav extends Drawer {
                         ),
                         new ModuleView("Pages",
                                 new LoginPageView(),
-                                new HomePageView()
-//                        new View("Home Page", new HomePageView()),
+                                new HomePageView(),
+                                new AboutPageView()
 //                        new View("Error Page 404")
                         ),
                         new ModuleSeparator(new SVGIcon(Icon.HELP), "Theme"),

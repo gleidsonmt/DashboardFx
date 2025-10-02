@@ -29,7 +29,7 @@ public class App extends Application {
         stage.setMinHeight(600);
         stage.setMaximized(true);
 
-        ThemeProvider.install(scene);
+        ThemeProvider.install(scene, Css.ALL, Font.INSTAGRAM);
 
         scene.getStylesheets().add(Assets.getCss("master.css"));
         stage.getIcons().add(Assets.getImage("logo_128.png"));

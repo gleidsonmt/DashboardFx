@@ -44,6 +44,9 @@ dependencies {
 //    implementation files('vendor/cssfx-11.5.1.jar');
     implementation 'org.jetbrains:annotations:24.0.1'
 
+    // https://mvnrepository.com/artifact/org.yaml/snakeyaml
+    implementation("org.yaml:snakeyaml:2.5")
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 

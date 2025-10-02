@@ -18,6 +18,7 @@ module io.github.gleidsonmt.dashboardfx {
     requires javafx.controls;
     requires javafx.base;
     requires java.logging;
+    requires org.yaml.snakeyaml;
 
     opens io.github.gleidsonmt.dashboardfx to javafx.fxml;
     exports io.github.gleidsonmt.dashboardfx;
