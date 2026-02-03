@@ -23,7 +23,6 @@ public class PersonalCard extends VBox {
         Region background = new Region();
         background.getStyleClass().add("card-poster");
         background.setId("card-header-background");
-        background.setStyle("-fx-background-color: blue");
         background.setPrefHeight(150);
         background.setMaxHeight(Region.USE_PREF_SIZE);
         StackPane.setAlignment(background, Pos.TOP_CENTER);
@@ -40,7 +39,6 @@ public class PersonalCard extends VBox {
 
         Text title = new Text("@jhon_doe");
         title.getStyleClass().addAll("h3");
-
 
         Text legend = new Text("The mission is always done perfectly.");
         legend.setTextAlignment(TextAlignment.CENTER);
@@ -59,7 +57,6 @@ public class PersonalCard extends VBox {
         body.getChildren().addAll(title, legend, social);
 
         setSpacing(10);
-        setPadding(new Insets(10));
         getChildren().setAll(header, body);
 
         getStyleClass().addAll("bg-white border-2 border-light-gray-2 radius-5 align-top-center".split(" "));
