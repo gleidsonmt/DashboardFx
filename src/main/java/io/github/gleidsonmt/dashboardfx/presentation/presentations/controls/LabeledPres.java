@@ -105,7 +105,6 @@ public class LabeledPres extends CustomizablePresentation {
                 // .link([link to explanation]) ir para temas
 
 
-
                 .h3("CheckBox", "Button")
                 .text("""
                         A tri-state selection Control typically skinned as a box with a checkmark or tick mark when checked.""")

@@ -3,8 +3,6 @@ package io.github.gleidsonmt.dashboardfx;
 import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.dashboard.Aside;
 import io.github.gleidsonmt.dashboardfx.drawer.SideNav;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.ChoiceBoxPres;
-import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.LabeledPres;
 import io.github.gleidsonmt.glad.base.*;
 import io.github.gleidsonmt.glad.base.Module;
 import io.github.gleidsonmt.glad.base.drawer.Drawer;
@@ -16,14 +14,11 @@ import io.github.gleidsonmt.glad.drawer.DrawerSeparator;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-
-import java.util.Objects;
 
 
 /**
@@ -117,7 +112,7 @@ public class Main extends BorderPane implements Layout {
             if (view instanceof ActionableView actionableView) {
                 Platform.runLater(() -> {
                     Root root = (Root) this.getScene().getRoot();
-                    root.init();
+                    root.update();
                     actionableView.onEnter(root);
                     this.container.setContent(view.getContent());
                 });

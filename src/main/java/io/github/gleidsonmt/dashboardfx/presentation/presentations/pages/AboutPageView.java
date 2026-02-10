@@ -40,11 +40,11 @@ public class AboutPageView extends CustomizablePresentation implements Actionabl
                                             }
                                         
                                             private Node createTeamBox() {
-                                                VBox container = new VBox();
-                                                container.setSpacing(20);
+                                                VBox abstractContainer = new VBox();
+                                                abstractContainer.setSpacing(20);
                                                 var title = new Text("Our Team");
                                                 title.getStyleClass().addAll("h2", "text-bold", "font-instagram");
-                                                container.getChildren().setAll(title, createFlowText("Sit facilis neque ab nulla vel. Cum eos in laudantium. Temporibus eos totam in dolorum. Nemo vel facere repellendus ut eos dolores similique.", "h4"));
+                                                abstractContainer.getChildren().setAll(title, createFlowText("Sit facilis neque ab nulla vel. Cum eos in laudantium. Temporibus eos totam in dolorum. Nemo vel facere repellendus ut eos dolores similique.", "h4"));
                                         
                                                 TilePane tilePane = new TilePane();
                                         
@@ -64,8 +64,8 @@ public class AboutPageView extends CustomizablePresentation implements Actionabl
                                                     throw new RuntimeException(e);
                                                 }
                                         
-                                                container.getChildren().add(tilePane);
-                                                return container;
+                                                abstractContainer.getChildren().add(tilePane);
+                                                return abstractContainer;
                                             }
                                         
                                             public List<Member> parseYaml() throws IOException {

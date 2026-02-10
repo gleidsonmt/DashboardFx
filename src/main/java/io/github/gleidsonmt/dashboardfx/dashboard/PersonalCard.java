@@ -50,9 +50,9 @@ public class PersonalCard extends VBox {
         social.setSpacing(10);
         social.setPadding(new Insets(20));
         social.getChildren().addAll(
-                new AvatarView(Assets.getImage("social/facebook.png", 60), 40),
-                new AvatarView(Assets.getImage("social/twitter.png", 60), 40),
-                new AvatarView(Assets.getImage("social/youtube.png", 60), 40)
+                new AvatarView(Assets.getImage("social/facebook.png", 80), 60),
+                new AvatarView(Assets.getImage("social/twitter.png", 80), 60),
+                new AvatarView(Assets.getImage("social/youtube.png", 80), 60)
         );
         body.getChildren().addAll(title, legend, social);
 

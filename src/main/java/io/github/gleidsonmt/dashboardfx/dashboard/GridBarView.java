@@ -1,14 +1,9 @@
 package io.github.gleidsonmt.dashboardfx.dashboard;
 
-import io.github.gleidsonmt.glad.base.responsive.Break;
+import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -24,7 +19,7 @@ public class GridBarView extends Pane {
         this.getStyleClass().addAll("border", "border-light-gray-2", "border-2", "pattern-circle");
         this.sceneProperty().addListener((_, _, newVal) -> {
             if (newVal != null) {
-                for (Break br : Break.values()) {
+                for (DefaultBreak br : DefaultBreak.values()) {
                     Node create = createGrid(br);
                     create.setLayoutY(10);
                     getChildren().add(create);
@@ -33,7 +28,7 @@ public class GridBarView extends Pane {
         });
     }
 
-    private Node createGrid(Break br) {
+    private Node createGrid(DefaultBreak br) {
         GridPane grid = new GridPane();
         Text title = new Text(br.name());
         Text size = new Text(String.valueOf(br.getMax() ));

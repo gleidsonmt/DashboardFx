@@ -6,6 +6,7 @@ import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.skin.TextBoxBase;
 import io.github.gleidsonmt.glad.controls.text_box.PasswordBox;
+import io.github.gleidsonmt.glad.controls.text_box.SearchBox;
 import io.github.gleidsonmt.glad.controls.text_box.TextBox;
 import io.github.gleidsonmt.glad.theme.Css;
 import javafx.scene.Node;
@@ -52,13 +53,14 @@ public class TextInputPres extends CustomizablePresentation {
                 .demo(createTextBox(Icon.LOCATION_ON, "Location", true))
                 .code(TutorialUtils.installExample(Css.TEXT_BOX, "TextBox"))
 
-                .h3("PasswordBox", "TextInputControl")
+                .h3("PasswordBox", "TextBox")
                 .text("The same as TextBox, but with a mask.")
                 .legend("io.github.gleidsonmt.glad.controls.text_box.PasswordBox")
 
-                .code(TutorialUtils.installExample(Css.TEXT_BOX, "PasswordBox"))
                 .demo(createPasswordBox(Icon.VPN_KEY_FILLED,"PasswordBox", true))
-                .demo(createCustomTextBox(Icon.VPN_KEY_FILLED,"PasswordBox", true))
+                .code(TutorialUtils.installExample(Css.TEXT_BOX, "PasswordBox"))
+                .demo(new SearchBox())
+
                 ;
     }
     private TextBoxBase createCustomTextBox(Icon icon, String text, boolean action) {

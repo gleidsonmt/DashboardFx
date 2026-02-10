@@ -7,7 +7,7 @@ import io.github.gleidsonmt.dashboardfx.model.User;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.Module;
-import io.github.gleidsonmt.glad.base.responsive.Break;
+import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.controls.badge.Badge;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
@@ -86,7 +86,7 @@ public class NavBar extends GridPane {
                 updateHeight(maxHeight);
                 right.setAlignment(Pos.CENTER);
 
-            }, Break.MOBILE);
+            }, DefaultBreak.MOBILE);
 
             root.addPoint(_ -> {
                 left.getChildren().removeAll(hamb);
@@ -96,7 +96,7 @@ public class NavBar extends GridPane {
                 GridPane.setConstraints(left, 0, 0, 1, 1);
                 GridPane.setConstraints(right, 1, 0, 1, 1);
                 right.setAlignment(Pos.CENTER_RIGHT);
-            }, Break.SM, Break.MD, Break.LG, Break.XL, Break.XXL, Break.WIDE);
+            }, DefaultBreak.SM, DefaultBreak.MD, DefaultBreak.LG, DefaultBreak.XL, DefaultBreak.XXL, DefaultBreak.WIDE);
         });
     }
 

@@ -7,12 +7,13 @@ import javafx.scene.image.Image;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  17/03/2025
  */
+@SuppressWarnings("unused")
 public class LanguageExperience extends Model {
 
-    private StringProperty title = new SimpleStringProperty();
-    private StringProperty legend = new SimpleStringProperty();
-    private DoubleProperty percentage = new SimpleDoubleProperty();
-    private StringProperty color = new SimpleStringProperty();
+    private final StringProperty title = new SimpleStringProperty();
+    private final StringProperty legend = new SimpleStringProperty();
+    private final DoubleProperty percentage = new SimpleDoubleProperty();
+    private final StringProperty color = new SimpleStringProperty();
 
     public LanguageExperience( String title, String legend, double percentage, String color) {
         this.title.set(title);

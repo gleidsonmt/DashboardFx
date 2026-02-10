@@ -117,7 +117,7 @@ public class BuildingPres extends CustomizablePresentation {
                                 public void start(Stage stage) throws Exception {
                             
                                 // Root is the base of the scene, it's the point to get environment around.
-                                // The Main class is a layout, it's a container of other views.
+                                // The Main class is a layout, it's a abstractContainer of other views.
                                 // The View class it's a module representation.
                                 Root root = new Root(new Main());
                                 Scene scene = new Scene(root, 800, 600);
@@ -177,7 +177,7 @@ public class BuildingPres extends CustomizablePresentation {
             }
 
             // Root is the base of the scene, it's the point to get the environment around.
-            // The Main class is a layout, it's a container of other views.
+            // The Main class is a layout, it's a abstractContainer of other views.
             // The View class it's a module representation.
             Root root = new Root(new Main());
             Scene scene = new Scene(root, 800, 600);

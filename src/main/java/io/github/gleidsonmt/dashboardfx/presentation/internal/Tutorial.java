@@ -25,7 +25,7 @@ import io.github.gleidsonmt.blockcode.CodeType;
 import io.github.gleidsonmt.blockcode.Theme;
 import io.github.gleidsonmt.dashboardfx.utils.Scroll;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.responsive.Break;
+import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.presentation.Presentation;
@@ -93,7 +93,7 @@ public class Tutorial extends Presentation<Tutorial> {
                     aside.setMaxHeight(100);
                     aside.setPrefHeight(100);
 
-                }, Break.MOBILE, Break.SM, Break.MD);
+                },  DefaultBreak.SM, DefaultBreak.MD);
 
                 main.addPoint(_ -> {
                     menu.setMaxHeight(-1);
@@ -101,7 +101,7 @@ public class Tutorial extends Presentation<Tutorial> {
                     if (overview) body.setRight(aside);
                     aside.setPadding(new Insets(0, 20, 0, 20));
                     StackPane.setMargin(btnTop, new Insets(10, 40 + 250, 10, 10));
-                }, Break.WIDE, Break.XL, Break.XXL);
+                }, DefaultBreak.WIDE, DefaultBreak.XL, DefaultBreak.XXL);
             }
         });
 //        body.addPoint(_ -> {
@@ -113,7 +113,7 @@ public class Tutorial extends Presentation<Tutorial> {
 //            aside.setMaxHeight(100);
 //            aside.setPrefHeight(100);
 //
-//        }, Break.MOBILE, Break.SM, Break.MD);
+//        }, DefaultBreak.MOBILE, DefaultBreak.SM, DefaultBreak.MD);
 
 //        body.addPoint(_ -> {
 //            menu.setMaxHeight(-1);
@@ -125,7 +125,7 @@ public class Tutorial extends Presentation<Tutorial> {
 //            }
 //            aside.setPadding(new Insets(0, 20, 0, 20));
 //            StackPane.setMargin(btnTop, new Insets(10, 40 + 250, 10, 10));
-//        }, Break.values());
+//        }, DefaultBreak.values());
 
         StackPane.setAlignment(btnTop, Pos.BOTTOM_RIGHT);
     }
