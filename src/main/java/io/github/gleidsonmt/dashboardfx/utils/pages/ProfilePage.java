@@ -53,7 +53,7 @@ public class ProfilePage extends View implements ActionableView {
         GridPane.setVgrow(footer, Priority.ALWAYS);
         GridPane.setColumnSpan(footer, GridPane.REMAINING);
 
-        root.addPoint(e -> {
+        root.addBreakpoint(e -> {
             GridPane.setConstraints(header, 0, 0);
             GridPane.setConstraints(blockOne, 0, 1);
             GridPane.setConstraints(blockTwo, 1, 1);
@@ -69,7 +69,7 @@ public class ProfilePage extends View implements ActionableView {
             ((DetailsBlock) blockTwo.getChildren().getFirst()).updateLayout(2);
         }, DefaultBreak.XXL, DefaultBreak.XL, DefaultBreak.WIDE);
 
-        root.addPoint(e -> {
+        root.addBreakpoint(e -> {
             System.out.println("wide");
             GridPane.setConstraints(header, 0, 0);
             GridPane.setConstraints(blockOne, 0, 1);
@@ -85,7 +85,7 @@ public class ProfilePage extends View implements ActionableView {
             ((DetailsBlock) blockTwo.getChildren().getFirst()).updateLayout(1);
         }, DefaultBreak.LG);
 
-        root.addPoint(e -> {
+        root.addBreakpoint(e -> {
             System.out.println("wide");
             GridPane.setConstraints(header, 0, 0);
             GridPane.setConstraints(blockOne, 0, 1);
