@@ -84,7 +84,7 @@ public class Tutorial extends Presentation<Tutorial> {
         getRoot().sceneProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {
                 Root main = (Root) newValue.getRoot();
-                main.addPoint(_ -> {
+                main.addBreakpoint(_ -> {
                     body.setRight(null);
                     if (overview) body.setTop(aside);
                     StackPane.setMargin(btnTop, new Insets(10, 40, 10, 10));
@@ -95,7 +95,7 @@ public class Tutorial extends Presentation<Tutorial> {
 
                 },  DefaultBreak.SM, DefaultBreak.MD);
 
-                main.addPoint(_ -> {
+                main.addBreakpoint(_ -> {
                     menu.setMaxHeight(-1);
                     body.getChildren().remove(aside);
                     if (overview) body.setRight(aside);

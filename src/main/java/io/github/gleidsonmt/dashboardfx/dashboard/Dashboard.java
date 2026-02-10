@@ -85,7 +85,7 @@ public class Dashboard extends View implements ActionableView {
     @Override
     public void onEnter(Root root) {
 
-        root.addPoint(_ -> {
+        root.addBreakpoint(_ -> {
             int row = 0;
             for (Node child : grid.getChildren()) {
                 GridPane.setConstraints(child, 0, row++, GridPane.REMAINING, 1);
@@ -93,7 +93,7 @@ public class Dashboard extends View implements ActionableView {
 
         }, DefaultBreak.MD, DefaultBreak.SM, DefaultBreak.SM);
 
-        root.addPoint(_ -> {
+        root.addBreakpoint(_ -> {
             GridPane.setConstraints(title, 0, 0, 1, 1);
             GridPane.setConstraints(one, 0, 1, 2, 1);
             GridPane.setConstraints(two, 2, 1, 2, 1);
@@ -112,7 +112,7 @@ public class Dashboard extends View implements ActionableView {
             GridPane.setConstraints(boxTable, 0, 6, 4, 1);
         }, DefaultBreak.LG, DefaultBreak.XL, DefaultBreak.XXL);
 
-        root.addPoint(_ -> {
+        root.addBreakpoint(_ -> {
             GridPane.setConstraints(title, 0, 0, 1, 1);
             GridPane.setConstraints(one, 0, 1, 1, 1);
             GridPane.setConstraints(two, 1, 1, 1, 1);

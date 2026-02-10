@@ -77,7 +77,7 @@ public class NavBar extends GridPane {
         Platform.runLater(() -> {
             Root root = (Root) this.getScene().getRoot();
 
-            root.addPoint(_ -> {
+            root.addBreakpoint(_ -> {
                 getColumnConstraints().clear();
                 getRowConstraints().clear();
                 GridPane.setConstraints(left, 0, 0, 1, 1);
@@ -86,9 +86,9 @@ public class NavBar extends GridPane {
                 updateHeight(maxHeight);
                 right.setAlignment(Pos.CENTER);
 
-            }, DefaultBreak.MOBILE);
+            }, DefaultBreak.SM);
 
-            root.addPoint(_ -> {
+            root.addBreakpoint(_ -> {
                 left.getChildren().removeAll(hamb);
                 getColumnConstraints().clear();
                 getRowConstraints().clear();
