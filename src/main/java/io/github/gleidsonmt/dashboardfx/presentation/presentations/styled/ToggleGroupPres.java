@@ -44,8 +44,8 @@ public class ToggleGroupPres extends CustomizablePresentation {
                 .demo(createExample())
 
                 .code("""
-                            HBox container = new HBox();
-                            container.getStyleClass().add("container-option");
+                            HBox abstractContainer = new HBox();
+                            abstractContainer.getStyleClass().add("abstractContainer-option");
                             ToggleGroup group = new ToggleGroup();
                             ToggleButton left = new ToggleButton("On");
                             left.getStyleClass().addAll( "w-50","btn-outlined", "pill-left");
@@ -55,23 +55,23 @@ public class ToggleGroupPres extends CustomizablePresentation {
                             right.setStyle("-fx-border-width: 2px 2px 2px 0px;");
                         
                             group.getToggles().setAll(left,  right);
-                            container.getChildren().setAll(left, right);
+                            abstractContainer.getChildren().setAll(left, right);
                         """)
                 .separator()
                 .text("Add this classes to your main css file.", "padding-10")
                 .code("""
-                        .container-option .toggle-button {
+                        .abstractContainer-option .toggle-button {
                             -fx-effect: none;
                             -fx-border-insets: 0px;
                             -fx-background-insets: 0px;
                         }
                         
-                        .container-option .toggle-button:selected {
+                        .abstractContainer-option .toggle-button:selected {
                             -fx-background-color: -fx-accent;
                             -fx-border-width: 0px;
                         }
                         
-                        .container-option .toggle-button:selected .text {
+                        .abstractContainer-option .toggle-button:selected .text {
                             -text-color: white;
                         }
                         
@@ -80,16 +80,16 @@ public class ToggleGroupPres extends CustomizablePresentation {
                 .demo(createExample2())
                 .code("""
                     private Node createExample2() {
-                        HBox container = new HBox();
-                        container.setSpacing(5);
-                        container.getStyleClass().addAll("container-align");
+                        HBox abstractContainer = new HBox();
+                        abstractContainer.setSpacing(5);
+                        abstractContainer.getStyleClass().addAll("abstractContainer-align");
                         ToggleButton left = crateAlignToggle(Icon.FORMAT_ALIGN_LEFT);
                         ToggleButton center = crateAlignToggle(Icon.FORMAT_ALIGN_CENTER);
                         ToggleButton right = crateAlignToggle(Icon.FORMAT_ALIGN_RIGHT);
                         ToggleButton justify = crateAlignToggle(Icon.FORMAT_ALIGN_JUSTIFY);
-                        container.getChildren().addAll(left, center, right, justify);
+                        abstractContainer.getChildren().addAll(left, center, right, justify);
                         new ToggleGroup().getToggles().addAll(left, center, right, justify);
-                        return container;
+                        return abstractContainer;
                     }
                 
                     private ToggleButton crateAlignToggle(Icon _icon) {
@@ -104,7 +104,7 @@ public class ToggleGroupPres extends CustomizablePresentation {
                 .text("Add this classes to your main css file.", "padding-10")
 
                 .code("""
-                        .container-align .toggle-button {
+                        .abstractContainer-align .toggle-button {
                             -fx-border-color: derive(-dark-gray, 30%);
                             -fx-background-radius: 3px;
                             -fx-border-radius: 3px;
@@ -113,23 +113,23 @@ public class ToggleGroupPres extends CustomizablePresentation {
                             -fx-background-color: white;
                             -fx-border-insets: -1px;
                         }
-                        .container-align .toggle-button .icon {
+                        .abstractContainer-align .toggle-button .icon {
                             -fx-fill: derive(-dark-gray, 30%);
                         }
                         
-                        .container-align .toggle-button:hover {
+                        .abstractContainer-align .toggle-button:hover {
                             -fx-border-color: -dark-gray;
                         }
                         
-                        .container-align .toggle-button:hover .icon {
+                        .abstractContainer-align .toggle-button:hover .icon {
                             -fx-fill: -dark-gray;
                         }
-                        .container-align .toggle-button:selected {
+                        .abstractContainer-align .toggle-button:selected {
                             -fx-background-color: -fx-accent;
                             -fx-border-color: -fx-accent;
                         }
                         
-                        .container-align .toggle-button:selected .icon {
+                        .abstractContainer-align .toggle-button:selected .icon {
                             -fx-fill: white;
                         }
                         
@@ -219,8 +219,8 @@ public class ToggleGroupPres extends CustomizablePresentation {
     }
 
     public Node createExample() {
-        HBox container = new HBox();
-        container.getStyleClass().add("container-option");
+        HBox abstractContainer = new HBox();
+        abstractContainer.getStyleClass().add("abstractContainer-option");
         ToggleGroup group = new ToggleGroup();
         ToggleButton left = new ToggleButton("On");
         left.getStyleClass().addAll("w-50", "btn-outlined", "pill-left");
@@ -230,22 +230,22 @@ public class ToggleGroupPres extends CustomizablePresentation {
         right.setStyle("-fx-border-width: 2px 2px 2px 0px;");
 
         group.getToggles().setAll(left, right);
-        container.getChildren().setAll(left, right);
-        return container;
+        abstractContainer.getChildren().setAll(left, right);
+        return abstractContainer;
     }
 
     private Node createExample2() {
-        HBox container = new HBox();
-        container.setSpacing(5);
-        container.getStyleClass().addAll("container-align");
+        HBox abstractContainer = new HBox();
+        abstractContainer.setSpacing(5);
+        abstractContainer.getStyleClass().addAll("abstractContainer-align");
         ToggleButton left = crateAlignToggle(Icon.FORMAT_ALIGN_LEFT);
         ToggleButton center = crateAlignToggle(Icon.FORMAT_ALIGN_CENTER);
         ToggleButton right = crateAlignToggle(Icon.FORMAT_ALIGN_RIGHT);
         ToggleButton justify = crateAlignToggle(Icon.FORMAT_ALIGN_JUSTIFY);
-        container.getChildren().addAll(left, center, right, justify);
+        abstractContainer.getChildren().addAll(left, center, right, justify);
         new ToggleGroup().getToggles().addAll(left, center, right, justify);
         // left, center, righg e jusity
-        return container;
+        return abstractContainer;
     }
 
     private ToggleButton crateAlignToggle(Icon _icon) {

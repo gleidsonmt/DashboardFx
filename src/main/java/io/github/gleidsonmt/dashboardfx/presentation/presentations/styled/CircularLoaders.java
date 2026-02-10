@@ -50,17 +50,17 @@ public class CircularLoaders extends CustomizablePresentation {
                 .h3("Customize", "Circular Loaders")
                 .text("You can customize the loader using the css.")
                 .code("""
-                        .circle-loader > .container-circle > .track-circle
+                        .circle-loader > .abstractContainer-circle > .track-circle
                         {
                             -fx-stroke: -fx-accent;
                         }
                         
-                        .circle-loader > .container-circle > .foreground-circle
+                        .circle-loader > .abstractContainer-circle > .foreground-circle
                         {
                             -fx-stroke: rgba(0,0,0,.2);
                         }
                         
-                        .circle-loader > .container-circle > .title  {
+                        .circle-loader > .abstractContainer-circle > .title  {
                             -fx-font-size: 20pt;
                         }
                         

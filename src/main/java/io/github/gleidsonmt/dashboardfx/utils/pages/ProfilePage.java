@@ -4,7 +4,7 @@ import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.View;
-import io.github.gleidsonmt.glad.base.responsive.Break;
+import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -67,7 +67,7 @@ public class ProfilePage extends View implements ActionableView {
 
             ( (AvatarBlock) blockOne.getChildren().getLast()).setAvatarSize(400);
             ((DetailsBlock) blockTwo.getChildren().getFirst()).updateLayout(2);
-        }, Break.XXL, Break.XL, Break.WIDE);
+        }, DefaultBreak.XXL, DefaultBreak.XL, DefaultBreak.WIDE);
 
         root.addPoint(e -> {
             System.out.println("wide");
@@ -83,7 +83,7 @@ public class ProfilePage extends View implements ActionableView {
 
             ( (AvatarBlock) blockOne.getChildren().getLast()).setAvatarSize(300);
             ((DetailsBlock) blockTwo.getChildren().getFirst()).updateLayout(1);
-        }, Break.LG);
+        }, DefaultBreak.LG);
 
         root.addPoint(e -> {
             System.out.println("wide");
@@ -103,7 +103,7 @@ public class ProfilePage extends View implements ActionableView {
 //            GridPane.setVgrow(sectionOne, Priority.ALWAYS);
 
 
-        }, Break.MD, Break.SM, Break.MOBILE);
+        }, DefaultBreak.MD, DefaultBreak.SM);
 
     }
 

@@ -1,7 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.drawer;
 
 import io.github.gleidsonmt.glad.base.drawer.Drawer;
-import io.github.gleidsonmt.glad.base.drawer.DrawerSearchBox;
+import io.github.gleidsonmt.glad.controls.text_box.SearchBox;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.layout.GridPane;
@@ -52,7 +52,7 @@ public class DrawerHeader extends GridPane {
         GridPane.setValignment(title, VPos.BOTTOM);
         GridPane.setValignment(legend, VPos.TOP);
 
-        DrawerSearchBox searchBox = new DrawerSearchBox();
+        SearchBox searchBox = new SearchBox();
         this.add(searchBox, 0,2,2,1);
 
         VBox.setMargin(this, new Insets(0,0,10,0));

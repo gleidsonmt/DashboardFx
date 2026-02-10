@@ -3,7 +3,7 @@ package io.github.gleidsonmt.dashboardfx.dashboard;
 import io.github.gleidsonmt.dashboardfx.model.LanguageExperience;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.View;
-import io.github.gleidsonmt.glad.base.responsive.Break;
+import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.charts.CurvedChart;
 import io.github.gleidsonmt.glad.charts.DonutChart;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
@@ -91,7 +91,7 @@ public class Dashboard extends View implements ActionableView {
                 GridPane.setConstraints(child, 0, row++, GridPane.REMAINING, 1);
             }
 
-        }, Break.MD, Break.SM, Break.MOBILE);
+        }, DefaultBreak.MD, DefaultBreak.SM, DefaultBreak.SM);
 
         root.addPoint(_ -> {
             GridPane.setConstraints(title, 0, 0, 1, 1);
@@ -110,7 +110,7 @@ public class Dashboard extends View implements ActionableView {
             GridPane.setConstraints(boxTeam, 2, 5, 2, 1);
 
             GridPane.setConstraints(boxTable, 0, 6, 4, 1);
-        }, Break.LG, Break.XL, Break.XXL);
+        }, DefaultBreak.LG, DefaultBreak.XL, DefaultBreak.XXL);
 
         root.addPoint(_ -> {
             GridPane.setConstraints(title, 0, 0, 1, 1);
@@ -128,7 +128,7 @@ public class Dashboard extends View implements ActionableView {
             GridPane.setConstraints(boxTable, 2, 3, 1, 1);
             GridPane.setConstraints(boxTeam, 3, 3, 1, 1);
 //
-        }, Break.WIDE);
+        }, DefaultBreak.WIDE);
     }
 
     private Node createListView() {

@@ -3,7 +3,6 @@ package io.github.gleidsonmt.dashboardfx.presentation.presentations.pages;
 
 import io.github.gleidsonmt.dashboardfx.App;
 import io.github.gleidsonmt.dashboardfx.model.Member;
-import io.github.gleidsonmt.dashboardfx.model.Members;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
 import javafx.geometry.HPos;

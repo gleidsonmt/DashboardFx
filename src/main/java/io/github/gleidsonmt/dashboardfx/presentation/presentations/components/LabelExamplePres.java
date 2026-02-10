@@ -85,7 +85,7 @@ public class LabelExamplePres extends CustomizablePresentation {
         Label text = new Label("4.7");
         text.setGraphic(graphic);
         text.getStyleClass().addAll(_classes);
-        text.getStyleClass().addAll(" min-size-20  padding-5 bold".split(" "));
+        text.getStyleClass().addAll("min-size-20 padding-5 bold".split(" "));
         return text;
     }
 
