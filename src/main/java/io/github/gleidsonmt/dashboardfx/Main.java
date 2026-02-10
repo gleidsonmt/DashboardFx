@@ -7,7 +7,7 @@ import io.github.gleidsonmt.glad.base.*;
 import io.github.gleidsonmt.glad.base.Module;
 import io.github.gleidsonmt.glad.base.drawer.Drawer;
 import io.github.gleidsonmt.glad.base.drawer.ModuleSeparator;
-import io.github.gleidsonmt.glad.base.responsive.Break;
+import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.drawer.DrawerItem;
 import io.github.gleidsonmt.glad.drawer.DrawerMenu;
 import io.github.gleidsonmt.glad.drawer.DrawerSeparator;
@@ -43,11 +43,8 @@ public class Main extends BorderPane implements Layout {
 
         Platform.runLater(() -> {
             Root root = (Root) this.getScene().getRoot();
-            root.addPoint(_ -> setLeft(null), Break.MOBILE);
-            root.addPoint(_ -> setLeft(drawer), Break.SM, Break.MD, Break.LG, Break.XL, Break.XXL, Break.WIDE);
-
-
-
+            root.addPoint(_ -> setLeft(null), DefaultBreak.SM);
+            root.addPoint(_ -> setLeft(drawer),  DefaultBreak.MD, DefaultBreak.LG, DefaultBreak.XL, DefaultBreak.XXL, DefaultBreak.WIDE);
         });
     }
 
