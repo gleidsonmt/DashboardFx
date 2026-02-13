@@ -158,11 +158,6 @@ public class BuildingPres extends CustomizablePresentation {
                     });
                 }
 
-                @Override
-                public Region getDrawer() {
-                    return (Region) getLeft();
-                }
-
             }
 
             class Main extends CustomLayout {

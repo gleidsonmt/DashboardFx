@@ -44,16 +44,17 @@ public class Main extends BorderPane implements Layout {
         Platform.runLater(() -> {
             Root root = (Root) this.getScene().getRoot();
             root.addBreakpoint(_ -> setLeft(null), DefaultBreak.SM);
-            root.addBreakpoint(_ -> setLeft(drawer),  DefaultBreak.MD, DefaultBreak.LG, DefaultBreak.XL, DefaultBreak.XXL, DefaultBreak.WIDE);
+            root.addBreakpoint(_ -> {
+                setLeft(drawer);
+            },  ">MD");
+            
         });
     }
 
-    @Override
     public Region getDrawer() {
         return this.drawer;
     }
 
-    @Override
     public Region getAside() {
         return this.aside;
     }

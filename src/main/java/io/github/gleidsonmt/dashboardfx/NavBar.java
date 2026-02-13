@@ -5,18 +5,22 @@ import io.github.gleidsonmt.dashboardfx.dashboard.notifications.factory.Notifica
 import io.github.gleidsonmt.dashboardfx.dashboard.NavUserSection;
 import io.github.gleidsonmt.dashboardfx.model.User;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
+import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.Module;
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.controls.badge.Badge;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.*;
+import javafx.util.Duration;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -64,14 +68,31 @@ public class NavBar extends GridPane {
 
         hamb.setOnAction(_ -> {
             Root root = (Root) this.getScene().getRoot();
-            root.behavior().openDrawer();
+            var main = (Main) getParent().getParent();
+            main.getDrawer();
+            root.behavior()
+                        .dialog()
+                        .pos(Pos.CENTER_LEFT)
+                        .effect(WrapperEffect.GRAY)
+                        .content(main.getDrawer())
+                        .anchor(Anchor.LEFT)
+                        .insets(Insets.EMPTY)
+                        .width(250)
+                        .show();
+
+            TranslateTransition transition = new TranslateTransition(Duration.millis(200), main.getDrawer().getParent());
+            transition.setFromX(-250);
+            transition.setToX(0);
+            transition.play();
         });
 
         badgeMessage.setStyle("-fx-box-color: -red-500;");
         badgeNotification.setStyle("-fx-box-color: -info;");
 
         NotificationManager notificationManager = new NotificationManager();
-        badgeNotification.setOnMouseClicked(_ -> notificationManager.show(getScene(), badgeNotification));
+        badgeNotification.setOnMouseClicked(_ -> {
+            notificationManager.show(getScene(), badgeNotification);
+        });
 
 
         Platform.runLater(() -> {
@@ -96,7 +117,7 @@ public class NavBar extends GridPane {
                 GridPane.setConstraints(left, 0, 0, 1, 1);
                 GridPane.setConstraints(right, 1, 0, 1, 1);
                 right.setAlignment(Pos.CENTER_RIGHT);
-            }, DefaultBreak.SM, DefaultBreak.MD, DefaultBreak.LG, DefaultBreak.XL, DefaultBreak.XXL, DefaultBreak.WIDE);
+            }, ">SM");
         });
     }
 

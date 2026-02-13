@@ -1,12 +1,17 @@
 package io.github.gleidsonmt.dashboardfx.dashboard;
 
+import io.github.gleidsonmt.dashboardfx.Main;
 import io.github.gleidsonmt.dashboardfx.model.User;
 import io.github.gleidsonmt.dashboardfx.utils.pages.ProfilePage;
+import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import io.github.gleidsonmt.glad.controls.avatar.AvatarStatus;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.Side;
 import javafx.geometry.VPos;
 import javafx.scene.control.ContextMenu;
@@ -16,6 +21,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -98,7 +104,21 @@ public class NavUserSection extends HBox {
 
         menuSettings.setOnAction(_ -> {
             Root root = (Root) this.getScene().getRoot();
-            root.behavior().openAside();
+            var main = (Main) root.getLayout();
+            root.behavior()
+                    .dialog()
+                    .pos(Pos.CENTER_RIGHT)
+                    .effect(WrapperEffect.GRAY)
+                    .content(main.getAside())
+                    .anchor(Anchor.LEFT)
+                    .insets(Insets.EMPTY)
+                    .width(450)
+                    .show();
+
+            TranslateTransition transition = new TranslateTransition(Duration.millis(200), main.getAside().getParent());
+            transition.setFromX(450);
+            transition.setToX(0);
+            transition.play();
         });
 
         MenuItem menuManageAccount = new MenuItem("Manage Account");

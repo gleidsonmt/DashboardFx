@@ -21,17 +21,19 @@ import org.jetbrains.annotations.NotNull;
  * Create on  28/03/2025
  */
 public class Aside extends VBox {
-//
+
     public Aside() {
         this.setMinWidth(250);
         ToggleSwitch _switch = new ToggleSwitch();
         sceneProperty().addListener((_, _, newVal) -> {
+            // Updates toggle based on initial grid bar visibility
             if (newVal != null) {
                 Root root = (Root) getScene().getRoot();
                 _switch.setOn(((Main) root.getLayout()).getTop() != null);
             }
         });
 
+        // Toggles grid bar visibility based on the switch state
         _switch.onProperty().addListener((_, _, newVal) -> {
             Root root = (Root) getScene().getRoot();
             if (newVal) {
@@ -61,6 +63,9 @@ public class Aside extends VBox {
         return createBlock("Appearance", "Set or customize your preferences for the system", null);
     }
 
+    /**
+     * Creates a titled, legend ‑ described, node‑containing grid block
+     */
     private @NotNull Node createBlock(String _title, String _legend, Node node) {
         Text title = new Text(_title);
         title.getStyleClass().addAll("h5", "bold");
@@ -85,6 +90,9 @@ public class Aside extends VBox {
         return grid;
     }
 
+    /**
+     * Builds header with a close button; defines close action
+     */
     private HBox header() {
         Button close = new Button();
         close.setGraphic(new SVGIcon(Icon.CLEAR));
@@ -94,9 +102,7 @@ public class Aside extends VBox {
         box.setAlignment(Pos.CENTER_RIGHT);
         close.setOnAction(_-> {
             Root main = (Root) getScene().getRoot();
-            main.wrapper().hide();
-            main.flow().remove(this);
-            ((BorderPane) main.getLayout()).setRight(null);
+            main.behavior().dialog().hide();
         });
         return box;
     }

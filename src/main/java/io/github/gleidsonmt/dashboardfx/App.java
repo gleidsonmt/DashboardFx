@@ -35,7 +35,7 @@ public class App extends Application {
         stage.getIcons().add(Assets.getImage("logo_128.png"));
         stage.show();
 
-        LibrariesTools.addTools(stage.getScene());
+//        LibrariesTools.addTools(stage.getScene());
 
     }
 }
