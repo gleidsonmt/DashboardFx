@@ -124,7 +124,7 @@ public class NavUserSection extends HBox {
         MenuItem menuManageAccount = new MenuItem("Manage Account");
         menuManageAccount.setOnAction(_ -> {
             Root root = (Root) this.getScene().getRoot();
-            root.getLayout().setCurrentModule(new ProfilePage());
+            root.getLayout().setModule(new ProfilePage());
         });
         menuManageAccount.getStyleClass().add("menu-item-last");
         menuManageAccount.setGraphic(new SVGIcon(Icon.MANAGE_ACCOUNTS));
