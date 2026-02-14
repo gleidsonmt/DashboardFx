@@ -28,6 +28,7 @@ public class App extends Application {
         stage.setMinWidth(400);
         stage.setMinHeight(600);
         stage.setMaximized(true);
+        stage.setTitle("Blue Galaxy");
 
         ThemeProvider.install(scene, Css.ALL, Font.INSTAGRAM);
 
