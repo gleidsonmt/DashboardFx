@@ -5,6 +5,7 @@ package io.github.gleidsonmt.dashboardfx.drawer;
 
 import io.github.gleidsonmt.dashboardfx.presentation.internal.CardContainerLink;
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Hyperlink;
@@ -37,10 +38,14 @@ public class DrawerFooter extends StackPane {
         this.setMinHeight(120);
         this.getChildren().add(link);
 
-        link.setOnAction(e -> {
+        link.setOnAction(_ -> {
             Root root = (Root) getScene().getRoot();
-            root.wrapper().show();
-//            root.behavior().dialog().open(new CardContainerLink());
+            root.behavior().dialog()
+                    .content(new CardContainerLink())
+                    .width(500)
+                    .effect(WrapperEffect.GRAY)
+                    .pos(Pos.CENTER)
+                    .show();
         });
 
         addCircles();

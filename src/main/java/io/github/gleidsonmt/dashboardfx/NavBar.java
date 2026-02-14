@@ -103,7 +103,8 @@ public class NavBar extends GridPane {
                 getRowConstraints().clear();
                 GridPane.setConstraints(left, 0, 0, 1, 1);
                 GridPane.setConstraints(right, 0, 1, 1, 1);
-                left.getChildren().addFirst(hamb);
+
+                if (!left.getChildren().contains(hamb)) left.getChildren().addFirst(hamb);
                 updateHeight(maxHeight);
                 right.setAlignment(Pos.CENTER);
 
