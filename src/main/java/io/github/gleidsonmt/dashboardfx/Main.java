@@ -36,7 +36,6 @@ public class Main extends BorderPane implements Layout {
     private final ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
 
     public Main() {
-
         init();
         configLayout();
         bind();
@@ -45,7 +44,6 @@ public class Main extends BorderPane implements Layout {
             Root root = (Root) this.getScene().getRoot();
             root.addBreakpoint(_ -> setLeft(null), DefaultBreak.SM);
             root.addBreakpoint(_ -> setLeft(drawer),  ">MD");
-            
         });
     }
 
@@ -56,7 +54,9 @@ public class Main extends BorderPane implements Layout {
     public Region getAside() {
         return this.aside;
     }
-
+    /**
+     * Initializes layout with navigation and content areas
+     */
     private void init() {
         this.wrapper = new VBox();
         this.container = new ScrollPane();

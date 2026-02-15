@@ -14,6 +14,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.presentations.controls.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.pages.AboutPageView;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.pages.HomePageView;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.pages.LoginPageView;
+import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.AvatarCropExample;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.CircularLoaders;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.ToggleGroupPres;
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
@@ -84,6 +85,7 @@ public class SideNav extends Drawer {
                                 new ToggleGroupPres(),
                                 new CircularLoaders(),
                                 new LabelExamplePres(),
+                                new AvatarCropExample(),
                                 new CardsPres()
                         ),
                         new ModuleView("Pages",
