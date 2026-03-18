@@ -104,5 +104,7 @@ public class SideNav extends Drawer {
 
         setFooter(new DrawerFooter());
         setHeader(new DrawerHeader(this));
+
+        this.select(getItems().getFirst());
     }
 }

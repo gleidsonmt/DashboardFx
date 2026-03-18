@@ -61,8 +61,23 @@ public class TextInputPres extends CustomizablePresentation {
                 .code(TutorialUtils.installExample(Css.TEXT_BOX, "PasswordBox"))
                 .demo(new SearchBox())
 
+                .h3("Helper Text", "TextBox")
+                .demo(createBoxHelperText())
+
                 ;
     }
+
+    private TextBox createBoxHelperText() {
+        var textBox = new TextBox();
+        System.out.println("textBox = " + textBox.getEditor());
+        textBox.getStyleClass().add("helper-text");
+        textBox.setHelperText("Helper Text");
+        textBox.setPromptText("TextBox");
+        textBox.setValid(true);
+//        textBox.validate();
+        return textBox;
+    }
+
     private TextBoxBase createCustomTextBox(Icon icon, String text, boolean action) {
         TextBoxBase textBoxBase= new TextBoxBase() {
             {

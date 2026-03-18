@@ -1,0 +1,11 @@
+.text-box:error {
+    -fx-border-color: red;
+}
+
+.text-box:error .icon {
+    -fx-fill: red;
+}
+
+.text-box:error .helper-label .text {
+    -fx-fill: red;
+}

@@ -4,6 +4,8 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 scenicView.properties
+!**/test_project/**
+!**/test_project/
 
 ### IntelliJ IDEA ###
 .idea
