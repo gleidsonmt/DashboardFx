@@ -25,11 +25,11 @@ public class TitledPanePres extends CustomizablePresentation {
                 .overview()
                 .h3("TitledPane")
                 .separator()
-                .text("A control that allows switching between a group of Tabs. Only one tab is visible at a time. Tabs are added to the TabPanePres by using the getTabs.")
+                .text("A control with a titled header that can expand or collapse its content.")
                 // .link([link to explanation]) ir para temas
                 .demo(createExample())
                 .h4("Install", "TitledPane")
-                .code(TutorialUtils.installExample(Css.TITLED_PANE, "TabPane") + "\npane.setContent(new StackPane(new Label(\"TitledPane Content\")));")
+                .code(TutorialUtils.installExample(Css.TITLED_PANE, "TitledPane") + "\npane.setContent(new StackPane(new Label(\"TitledPane Content\")));")
             ;
     }
 
