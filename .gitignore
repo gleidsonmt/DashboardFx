@@ -7,7 +7,7 @@ scenicView.properties
 !**/test_project/**
 !**/test_project/
 /playground
-
+PLAN.md
 
 ### IntelliJ IDEA ###
 .idea
