@@ -320,6 +320,7 @@ public class InteractivityPres extends CustomizablePresentation {
                                         .behavior()
                                         .alert()
                                         .title("You are about to delete task")
+
                                         .content(
                                                 new TextFlow(new Text(
                                                         "Are you sure you want to delete this post? This action cannot be undone"
