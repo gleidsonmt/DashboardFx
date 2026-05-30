@@ -7,7 +7,7 @@ import io.github.gleidsonmt.dashboardfx.model.User;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.Module;
+import io.github.gleidsonmt.glad.base.drawer.Module;
 import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.controls.badge.Badge;
@@ -71,14 +71,16 @@ public class NavBar extends GridPane {
             var main = (Main) getParent().getParent();
             main.getDrawer();
             root.behavior()
-                        .dialog()
-                        .pos(Pos.CENTER_LEFT)
-                        .effect(WrapperEffect.GRAY)
-                        .content(main.getDrawer())
-                        .anchor(Anchor.LEFT)
-                        .insets(Insets.EMPTY)
-                        .width(250)
-                        .show();
+                    .dialog()
+                    .pos(Pos.CENTER_LEFT)
+                    .block()
+                    .with(WrapperEffect.GRAY)
+                    .content(main.getDrawer())
+                    .anchor(Anchor.LEFT)
+                    .insets(Insets.EMPTY)
+                    .width(250)
+                    .show();
+
 
             TranslateTransition transition = new TranslateTransition(Duration.millis(200), main.getDrawer().getParent());
             transition.setFromX(-250);
@@ -96,7 +98,16 @@ public class NavBar extends GridPane {
 
 
         Platform.runLater(() -> {
-            Root root = (Root) this.getScene().getRoot();
+            Root root = (Root) getScene().getRoot();
+
+            root.widthProperty().addListener((_, _, val) -> {
+                if (root.behavior().dialog().isShowing()) {
+                    root.behavior()
+                            .dialog()
+                            .hide();
+                    root.unblock();
+                }
+            });
 
             root.addBreakpoint(_ -> {
                 getColumnConstraints().clear();

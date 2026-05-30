@@ -19,12 +19,16 @@ import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.Circul
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.ToggleGroupPres;
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
 import io.github.gleidsonmt.dashboardfx.presentation.util.ColorsPres;
-import io.github.gleidsonmt.glad.base.ModuleView;
+import io.github.gleidsonmt.dashboardfx.utils.pages.BuildingPage;
+import io.github.gleidsonmt.glad.base.drawer.View;
+import io.github.gleidsonmt.glad.base.drawer.ViewGroup;
 import io.github.gleidsonmt.glad.base.drawer.Drawer;
 import io.github.gleidsonmt.glad.base.drawer.ModuleSeparator;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.collections.FXCollections;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -34,20 +38,19 @@ public class SideNav extends Drawer {
 
     public SideNav() {
         super(
-                FXCollections.observableArrayList(
                         new Dashboard(),
                         new ModuleSeparator(new SVGIcon(Icon.HUB), "Project"),
-                        new ModuleView("Core",
+                        new ViewGroup("Core",
                                 new IntroductionPres(),
                                 new BuildingPres(),
                                 new InteractivityPres()
                         ),
                         new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
-                        new ModuleView("Shapes",
+                        new ViewGroup("Shapes",
                                 new TextPres()
                         ),
 //                        new View("Circle", new BuildingPage())),
-                        new ModuleView("Controls",
+                        new ViewGroup("Controls",
                                 new RegionPres(),
                                 new LabeledPres(),
                                 new ChoiceBoxPres(),
@@ -58,11 +61,11 @@ public class SideNav extends Drawer {
                                 new TreeViewPres(),
                                 new ProgressBarPres()
                         ),
-                        new ModuleView("Containers",
+                        new ViewGroup("Containers",
                                 new TitledPanePres(),
                                 new TabPanePres()
                         ),
-                        new ModuleView("Charts",
+                        new ViewGroup("Charts",
                                 new BarChartPres(),
                                 new AreaChartPres(),
                                 new StackedAreaChartPres(),
@@ -70,7 +73,7 @@ public class SideNav extends Drawer {
                                 new DonutChartPres(),
                                 new LineChartPres()),
                         new ModuleSeparator(new SVGIcon(Icon.STACK), "Examples"),
-                        new ModuleView("Components",
+                        new ViewGroup("Components",
                                 new ToggleSwitchPres(),
                                 new SVGIconPres(),
                                 new AvatarViewPres(),
@@ -78,7 +81,7 @@ public class SideNav extends Drawer {
                                 new CarouselPres()
 
                         ),
-                        new ModuleView("Styled",
+                        new ViewGroup("Styled",
 //                        new View("DrawerOld", new BuildingPage()),
 //                        new View("BreadCrumb", new BuildingPage()),
 //                        new View("Tree View", new TreeViewExample()),
@@ -88,19 +91,19 @@ public class SideNav extends Drawer {
                                 new AvatarCropExample(),
                                 new CardsPres()
                         ),
-                        new ModuleView("Pages",
+                        new ViewGroup("Pages",
                                 new LoginPageView(),
                                 new HomePageView(),
                                 new AboutPageView()
 //                        new View("Error Page 404")
                         ),
                         new ModuleSeparator(new SVGIcon(Icon.HELP), "Theme"),
-                        new ModuleView("Extras",
+                        new ViewGroup("Extras",
                                 new ColorsPres()
 //                        new View("Alignment", new BuildingPage()))
                         ),
                         new AboutPres()
-                ));
+                );
 
         setFooter(new DrawerFooter());
         setHeader(new DrawerHeader(this));

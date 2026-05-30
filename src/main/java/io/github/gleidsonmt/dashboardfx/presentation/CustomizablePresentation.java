@@ -3,7 +3,7 @@ package io.github.gleidsonmt.dashboardfx.presentation;
 import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.View;
+import io.github.gleidsonmt.glad.base.drawer.View;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -20,5 +20,9 @@ public abstract class CustomizablePresentation extends View implements Actionabl
     @Override
     public void onEnter(Root root) {
         setContent(create().build().getRoot());
+    }
+
+    protected Root getRoot() {
+        return (Root) getContent().getScene().getRoot();
     }
 }

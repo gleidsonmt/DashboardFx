@@ -2,7 +2,7 @@ package io.github.gleidsonmt.dashboardfx.dashboard;
 
 import io.github.gleidsonmt.dashboardfx.model.LanguageExperience;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.View;
+import io.github.gleidsonmt.glad.base.drawer.View;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.charts.CurvedChart;
 import io.github.gleidsonmt.glad.charts.DonutChart;

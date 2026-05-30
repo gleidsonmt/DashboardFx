@@ -54,7 +54,7 @@ public class AvatarCropExample extends CustomizablePresentation {
                     getRoot().behavior()
                             .dialog()
                             .content(createAvatarCrop())
-                            .effect(WrapperEffect.GRAY)
+                            .with(WrapperEffect.GRAY)
                             .show();
                 }))
 

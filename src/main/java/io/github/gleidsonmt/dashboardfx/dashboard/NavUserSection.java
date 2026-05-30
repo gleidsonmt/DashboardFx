@@ -104,11 +104,11 @@ public class NavUserSection extends HBox {
 
         menuSettings.setOnAction(_ -> {
             Root root = (Root) this.getScene().getRoot();
-            var main = (Main) root.getLayout();
+            var main = (Main) root.getContent();
             root.behavior()
                     .dialog()
                     .pos(Pos.CENTER_RIGHT)
-                    .effect(WrapperEffect.GRAY)
+                    .with(WrapperEffect.GRAY)
                     .content(main.getAside())
                     .anchor(Anchor.LEFT)
                     .insets(Insets.EMPTY)

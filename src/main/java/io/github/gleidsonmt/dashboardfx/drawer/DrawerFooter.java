@@ -43,7 +43,7 @@ public class DrawerFooter extends StackPane {
             root.behavior().dialog()
                     .content(new CardContainerLink())
                     .width(500)
-                    .effect(WrapperEffect.GRAY)
+                    .with(WrapperEffect.GRAY)
                     .pos(Pos.CENTER)
                     .show();
         });

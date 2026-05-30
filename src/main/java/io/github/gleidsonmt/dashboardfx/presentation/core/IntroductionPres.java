@@ -1,34 +1,8 @@
 package io.github.gleidsonmt.dashboardfx.presentation.core;
 
-import io.github.gleidsonmt.dashboardfx.LibrariesTools;
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
-import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
-import io.github.gleidsonmt.glad.base.*;
-import io.github.gleidsonmt.glad.base.Module;
-import io.github.gleidsonmt.glad.base.drawer.Drawer;
-import io.github.gleidsonmt.glad.controls.icon.Icon;
-import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
-import io.github.gleidsonmt.glad.theme.Css;
-import io.github.gleidsonmt.glad.theme.Font;
-import io.github.gleidsonmt.glad.theme.ThemeProvider;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.logging.Logger;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

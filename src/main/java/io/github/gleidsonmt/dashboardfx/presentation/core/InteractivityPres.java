@@ -246,7 +246,7 @@ public class InteractivityPres extends CustomizablePresentation {
                                 .behavior()
                                 .dialog()
                                 .content(createWelcome())
-                                .effect(WrapperEffect.BLUR)
+                                .with(WrapperEffect.BLUR)
                                 .show())
                 })
                 .code("""
