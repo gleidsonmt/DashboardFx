@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Skin;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -61,6 +62,17 @@ public class TextInputPres extends CustomizablePresentation {
                 .code(TutorialUtils.installExample(Css.TEXT_BOX, "PasswordBox"))
                 .demo(new SearchBox())
 
+
+                .h3("TextArea", "TextInputControl")
+                .text("Text input component for entering and editing multiple lines of text.")
+                .legend("io.github.gleidsonmt.glad.controls.text_box.TextArea")
+
+                .demo(createTextArea())
+                .code("""
+                         TextArea textArea = new TextArea();
+                         textArea.setPromptText("TextArea");
+                        """)
+
                 ;
     }
     private TextBoxBase createCustomTextBox(Icon icon, String text, boolean action) {
@@ -102,5 +114,11 @@ public class TextInputPres extends CustomizablePresentation {
         PasswordField password = new PasswordField();
         password.setPromptText("PasswordField");
         return password;
+    }
+
+    private TextArea createTextArea() {
+        TextArea textArea = new TextArea();
+        textArea.setPromptText("TextArea");
+        return textArea;
     }
 }
