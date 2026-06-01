@@ -55,7 +55,9 @@ public class SideNav extends Drawer {
                                 new ListViewPres(),
                                 new TableViewPres(),
                                 new TreeViewPres(),
-                                new ProgressBarPres()
+                                new ProgressBarPres(),
+                                new ScrollPane()
+
                         ),
                         new ModuleView("Containers",
                                 new TitledPanePres(),
