@@ -33,7 +33,7 @@
         - [x] ProgressBar;
         - [x] ScrollPane;
         - [ ] ScrollBar;
-        - [x] TextArea;
+        - [ ] TextArea;
     - [ ] Charts
       - [ ] LineChart;
       - [ ] BarChart;
