@@ -17,12 +17,15 @@ public abstract class CustomizablePresentation extends View implements Actionabl
 
     public abstract Tutorial create();
 
+    private Root root;
+
     @Override
     public void onEnter(Root root) {
+        this.root =root;
         setContent(create().build().getRoot());
     }
 
-    protected Root getRoot() {
-        return (Root) getContent().getScene().getRoot();
+    public Root getRoot() {
+        return this.root;
     }
 }
