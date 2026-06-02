@@ -29,7 +29,7 @@
         - [x] CheckBox;
         - [x] RadioButton;
         - [x] ToggleButton;
-        - [ ] Slider;
+        - [x] Slider;
         - [x] ProgressBar;
         - [x] ScrollPane;
         - [ ] ScrollBar;
