@@ -2,17 +2,15 @@ package io.github.gleidsonmt.dashboardfx;
 
 import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.dashboard.Aside;
-import io.github.gleidsonmt.dashboardfx.drawer.SideNav;
+import io.github.gleidsonmt.dashboardfx.drawer.Nav;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.drawer.Drawer;
+import io.github.gleidsonmt.glad.base.drawer.Module;
 import io.github.gleidsonmt.glad.base.drawer.View;
 import io.github.gleidsonmt.glad.base.drawer.ViewGroup;
-import io.github.gleidsonmt.glad.base.drawer.Module;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.drawer.DrawerItem;
 import io.github.gleidsonmt.glad.drawer.DrawerMenu;
-import io.github.gleidsonmt.glad.drawer.DrawerSeparator;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -32,7 +30,7 @@ public class Main extends BorderPane implements Layout {
     private VBox wrapper;
     private ScrollPane container;
     private final NavBar navBar = new NavBar(60);
-    private Drawer drawer;
+    private Nav drawer;
     private Aside aside;
 
     private final ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
@@ -63,7 +61,7 @@ public class Main extends BorderPane implements Layout {
         this.wrapper = new VBox();
         this.container = new ScrollPane();
         this.aside = new Aside();
-        this.drawer = new SideNav();
+        this.drawer = new Nav();
 
         drawer.setCellFactory(param -> {
 

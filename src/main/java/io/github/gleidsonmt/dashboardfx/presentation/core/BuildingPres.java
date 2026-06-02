@@ -5,7 +5,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.*;
 import io.github.gleidsonmt.glad.base.drawer.Module;
-import io.github.gleidsonmt.glad.base.drawer.Drawer;
+import io.github.gleidsonmt.glad.base.drawer.SideNav;
 import io.github.gleidsonmt.glad.base.drawer.View;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
@@ -193,9 +193,9 @@ public class BuildingPres extends CustomizablePresentation {
 
 }
 
-class SideNav extends Drawer {
+class Nav extends SideNav {
 
-    public SideNav() {
+    public Nav() {
         super(
                 new View("Orders", new SVGIcon(Icon.ORDERS), new Text("Orders View")),
                 new View("Apps", new SVGIcon(Icon.APPS), new Text("Apps View")),

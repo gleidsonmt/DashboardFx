@@ -1,6 +1,5 @@
 package io.github.gleidsonmt.dashboardfx.drawer;
 
-import io.github.gleidsonmt.glad.base.drawer.Drawer;
 import io.github.gleidsonmt.glad.controls.text_box.SearchBox;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
@@ -19,7 +18,7 @@ import javafx.scene.text.TextAlignment;
  */
 public class DrawerHeader extends GridPane {
 
-    public DrawerHeader(Drawer drawer) {
+    public DrawerHeader(Nav drawer) {
 
         setPrefSize(200, 60);
         this.setPadding(new Insets(10));

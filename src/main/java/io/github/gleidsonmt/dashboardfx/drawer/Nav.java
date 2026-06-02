@@ -20,10 +20,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.Toggle
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
 import io.github.gleidsonmt.dashboardfx.presentation.util.ColorsPres;
 import io.github.gleidsonmt.dashboardfx.utils.pages.BuildingPage;
-import io.github.gleidsonmt.glad.base.drawer.View;
-import io.github.gleidsonmt.glad.base.drawer.ViewGroup;
-import io.github.gleidsonmt.glad.base.drawer.Drawer;
-import io.github.gleidsonmt.glad.base.drawer.ModuleSeparator;
+import io.github.gleidsonmt.glad.base.drawer.*;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.collections.FXCollections;
@@ -34,9 +31,9 @@ import javafx.scene.layout.StackPane;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  10/09/2025
  */
-public class SideNav extends Drawer {
+public class Nav extends SideNav {
 
-    public SideNav() {
+    public Nav() {
         super(
                         new Dashboard(),
                         new ModuleSeparator(new SVGIcon(Icon.HUB), "Project"),

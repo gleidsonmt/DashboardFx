@@ -4,7 +4,7 @@ import io.github.gleidsonmt.blockcode.BlockCode;
 import io.github.gleidsonmt.dashboardfx.ResizablePane;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.glad.base.drawer.Module;
-import io.github.gleidsonmt.glad.base.drawer.Drawer;
+import io.github.gleidsonmt.glad.base.drawer.SideNav;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Neutral;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
@@ -159,7 +159,7 @@ public class TutorialUtils {
     public static @NotNull Hyperlink createLink(String placeholder, String moduleName, String topic) {
         Hyperlink hyperlink = new Hyperlink(placeholder);
         hyperlink.setOnAction(_ -> {
-            Drawer drawer = (Drawer) hyperlink.getScene().lookup("#drawer");
+            SideNav drawer = (SideNav) hyperlink.getScene().lookup("#drawer");
             Module moduleImpl = drawer.find(moduleName);
             drawer.currentModuleProperty().set(moduleImpl);
 
@@ -195,7 +195,7 @@ public class TutorialUtils {
         Hyperlink hyperlink = new Hyperlink(placeholder);
         hyperlink.getStyleClass().addAll("h5");
         hyperlink.setOnAction(_ -> {
-            Drawer drawer = (Drawer) hyperlink.getScene().lookup("#drawer");
+            SideNav drawer = (SideNav) hyperlink.getScene().lookup("#drawer");
             Module moduleImpl = drawer.find(moduleName);
 //            drawer.currentModuleProperty().set(moduleImpl);
             drawer.select(moduleImpl);

@@ -29,7 +29,7 @@ public class Aside extends VBox {
             // Updates toggle based on initial grid bar visibility
             if (newVal != null) {
                 Root root = (Root) getScene().getRoot();
-                _switch.setOn(((Main) root.getLayout()).getTop() != null);
+                _switch.setOn(((Main) root.getContent()).getTop() != null);
             }
         });
 
@@ -37,9 +37,9 @@ public class Aside extends VBox {
         _switch.onProperty().addListener((_, _, newVal) -> {
             Root root = (Root) getScene().getRoot();
             if (newVal) {
-                ((Main) root.getLayout()).setTop(new GridBarView());
+                ((Main) root.getContent()).setTop(new GridBarView());
             } else {
-                ((Main) root.getLayout()).setTop(null);
+                ((Main) root.getContent()).setTop(null);
             }
         });
         getChildren().addAll(
