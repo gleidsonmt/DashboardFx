@@ -3,7 +3,7 @@ package io.github.gleidsonmt.dashboardfx.utils.pages;
 import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.View;
+import io.github.gleidsonmt.glad.base.drawer.View;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
 import javafx.geometry.HPos;

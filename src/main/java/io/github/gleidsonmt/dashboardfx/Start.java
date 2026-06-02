@@ -7,6 +7,5 @@ public class Start extends App {
 
     public static void main(String[] args) {
         launch(args);
-
     }
 }

@@ -1,6 +1,6 @@
 # DashboardFx
 
-[![News](https://img.shields.io/badge/Newsletter-brightgreen.svg?style=for-the-badge)](NEWSLETTER.md)
+[![News](https://img.shields.io/badge/Newsletter-brightgreen.svg?style=for-the-badge)](HISTORY.md)
 [![License](https://img.shields.io/github/license/gleidsonmt/DashboardFx.svg?style=for-the-badge)](https://github.com/gleidsonmt/DashboardFX/blob/alpha/LICENSE.txt)
 ![Build](https://img.shields.io/github/v/tag/gleidsonmt/DashboardFx.svg?color=gray&label=Version&style=for-the-badge)
 
@@ -27,7 +27,7 @@
 
 # 📑 Overview
 
-Hy guys, I'm back, with more, after these years I looked for some things that can be really good-looking to build, and I want to share with you.
+Hi guys, I'm back, with more, after these years I looked for some things that can be really good-looking to build, and I want to share it.
 In this example, you can see how components in Javafx can be worked to align with a good design (I try). 
 This time I use more time to create more tutorials and unify libs.
 When the app is running, you can have a tutorial about creating these things showed inside it.
