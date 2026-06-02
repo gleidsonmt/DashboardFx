@@ -31,9 +31,9 @@
         - [x] ToggleButton;
         - [ ] Slider;
         - [x] ProgressBar;
-        - [ ] ScrollPane;
+        - [x] ScrollPane;
         - [ ] ScrollBar;
-        - [x] TextArea;
+        - [ ] TextArea;
     - [ ] Charts
       - [ ] LineChart;
       - [ ] BarChart;
