@@ -82,7 +82,7 @@ public class InteractivityPres extends CustomizablePresentation {
                 .text("I'm calling a method content(Node node), that pass a node to flow.")
                 .text("The createButton() method returns an IconButton with an SVGIcon as a graphic.\n")
                 .legend("See more in")
-                .node(TutorialUtils.createLink("Button", "Button"))
+                .node(TutorialUtils.createLink("Button", "Labeled"))
                 .node(TutorialUtils.createLink("SVGIcon", "SVGIcon"))
 
                 .h3("Size", "Show")
@@ -240,11 +240,13 @@ public class InteractivityPres extends CustomizablePresentation {
                                 .behavior()
                                 .dialog()
                                 .content(createWelcome())
-                                .effect()
+                                .block()
+                                .with("gray")
                                 .show()),
                         TutorialUtils.createAction(_ -> getRoot()
                                 .behavior()
                                 .dialog()
+                                .block()
                                 .content(createWelcome())
                                 .with(WrapperEffect.BLUR)
                                 .show())

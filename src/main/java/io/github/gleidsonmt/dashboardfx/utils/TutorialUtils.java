@@ -197,7 +197,8 @@ public class TutorialUtils {
         hyperlink.setOnAction(_ -> {
             Drawer drawer = (Drawer) hyperlink.getScene().lookup("#drawer");
             Module moduleImpl = drawer.find(moduleName);
-            drawer.currentModuleProperty().set(moduleImpl);
+//            drawer.currentModuleProperty().set(moduleImpl);
+            drawer.select(moduleImpl);
 //            drawer.navigate(moduleName);
         });
         return hyperlink;

@@ -17,8 +17,10 @@ import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
 
@@ -70,10 +72,16 @@ public class NavBar extends GridPane {
             Root root = (Root) this.getScene().getRoot();
             var main = (Main) getParent().getParent();
             main.getDrawer();
+            EventHandler<MouseEvent> closeHandler = _ -> {
+                root.behavior().dialog().hide();
+                root.getForeground().removeAction();
+            };
+            root.getForeground().addAction(closeHandler);
             root.behavior()
                     .dialog()
                     .pos(Pos.CENTER_LEFT)
                     .block()
+//                    .effect(WrapperEffect.GRAY)
                     .with(WrapperEffect.GRAY)
                     .content(main.getDrawer())
                     .anchor(Anchor.LEFT)
@@ -101,7 +109,7 @@ public class NavBar extends GridPane {
             Root root = (Root) getScene().getRoot();
 
             root.widthProperty().addListener((_, _, val) -> {
-                if (root.behavior().dialog().isShowing()) {
+                if (root.behavior().dialog().isShowing() && !root.isBlocked()) {
                     root.behavior()
                             .dialog()
                             .hide();
