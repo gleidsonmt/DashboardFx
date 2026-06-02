@@ -29,7 +29,8 @@ public class CircularLoaders extends CustomizablePresentation {
                 .demo(new Node[] {
                         new SuspenseCircle(),
                         new Suspense3DCircle(),
-                        new TechCircle()
+                        new TechCircle(),
+                        new AtomicLoader()
                 })
                 .h3("Using", "Circular Loaders")
                 .code("""

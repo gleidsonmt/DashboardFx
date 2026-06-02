@@ -4,7 +4,7 @@ import io.github.gleidsonmt.blockcode.BlockCode;
 import io.github.gleidsonmt.blockcode.CodeType;
 import io.github.gleidsonmt.dashboardfx.ResizablePane;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
-import io.github.gleidsonmt.glad.base.Module;
+import io.github.gleidsonmt.glad.base.drawer.Module;
 import io.github.gleidsonmt.glad.base.drawer.Drawer;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Neutral;
@@ -198,7 +198,8 @@ public class TutorialUtils {
         hyperlink.setOnAction(_ -> {
             Drawer drawer = (Drawer) hyperlink.getScene().lookup("#drawer");
             Module moduleImpl = drawer.find(moduleName);
-            drawer.currentModuleProperty().set(moduleImpl);
+//            drawer.currentModuleProperty().set(moduleImpl);
+            drawer.select(moduleImpl);
 //            drawer.navigate(moduleName);
         });
         return hyperlink;

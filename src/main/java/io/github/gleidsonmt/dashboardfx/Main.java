@@ -3,10 +3,12 @@ package io.github.gleidsonmt.dashboardfx;
 import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.dashboard.Aside;
 import io.github.gleidsonmt.dashboardfx.drawer.SideNav;
-import io.github.gleidsonmt.glad.base.*;
-import io.github.gleidsonmt.glad.base.Module;
+import io.github.gleidsonmt.glad.base.Layout;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.drawer.Drawer;
-import io.github.gleidsonmt.glad.base.drawer.ModuleSeparator;
+import io.github.gleidsonmt.glad.base.drawer.View;
+import io.github.gleidsonmt.glad.base.drawer.ViewGroup;
+import io.github.gleidsonmt.glad.base.drawer.Module;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.drawer.DrawerItem;
 import io.github.gleidsonmt.glad.drawer.DrawerMenu;
@@ -36,7 +38,6 @@ public class Main extends BorderPane implements Layout {
     private final ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
 
     public Main() {
-
         init();
         configLayout();
         bind();
@@ -44,10 +45,7 @@ public class Main extends BorderPane implements Layout {
         Platform.runLater(() -> {
             Root root = (Root) this.getScene().getRoot();
             root.addBreakpoint(_ -> setLeft(null), DefaultBreak.SM);
-            root.addBreakpoint(_ -> {
-                setLeft(drawer);
-            },  ">MD");
-            
+            root.addBreakpoint(_ -> setLeft(drawer),  ">MD");
         });
     }
 
@@ -58,7 +56,9 @@ public class Main extends BorderPane implements Layout {
     public Region getAside() {
         return this.aside;
     }
-
+    /**
+     * Initializes layout with navigation and content areas
+     */
     private void init() {
         this.wrapper = new VBox();
         this.container = new ScrollPane();
@@ -66,15 +66,16 @@ public class Main extends BorderPane implements Layout {
         this.drawer = new SideNav();
 
         drawer.setCellFactory(param -> {
+
             switch (param) {
                 case View view -> {
                     return new DrawerItem(view);
                 }
-                case ModuleSeparator separator -> {
-                    return new DrawerSeparator(separator);
-                }
-                case ModuleView menu -> {
-                    return new DrawerMenu(menu);
+//                case ModuleSeparator separator -> {
+//                    return new DrawerSeparator(separator);
+//                }
+                case ViewGroup m -> {
+                    return new DrawerMenu(m);
                 }
                 case null, default -> {
                     assert param != null;
@@ -134,12 +135,12 @@ public class Main extends BorderPane implements Layout {
     }
 
     @Override
-    public Module getCurrentModule() {
+    public Module getModule() {
         return this.currentModule.get();
     }
 
     @Override
-    public void setCurrentModule(Module module) {
+    public void setModule(Module module) {
         this.currentModule.set(module);
     }
 }

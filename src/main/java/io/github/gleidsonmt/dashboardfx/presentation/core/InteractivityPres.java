@@ -82,7 +82,7 @@ public class InteractivityPres extends CustomizablePresentation {
                 .text("I'm calling a method content(Node node), that pass a node to flow.")
                 .text("The createButton() method returns an IconButton with an SVGIcon as a graphic.\n")
                 .legend("See more in")
-                .node(TutorialUtils.createLink("Button", "Button"))
+                .node(TutorialUtils.createLink("Button", "Labeled"))
                 .node(TutorialUtils.createLink("SVGIcon", "SVGIcon"))
 
                 .h3("Size", "Show")
@@ -240,13 +240,15 @@ public class InteractivityPres extends CustomizablePresentation {
                                 .behavior()
                                 .dialog()
                                 .content(createWelcome())
-                                .effect()
+                                .block()
+                                .with("gray")
                                 .show()),
                         TutorialUtils.createAction(_ -> getRoot()
                                 .behavior()
                                 .dialog()
+                                .block()
                                 .content(createWelcome())
-                                .effect(WrapperEffect.BLUR)
+                                .with(WrapperEffect.BLUR)
                                 .show())
                 })
                 .code("""
@@ -320,6 +322,7 @@ public class InteractivityPres extends CustomizablePresentation {
                                         .behavior()
                                         .alert()
                                         .title("You are about to delete task")
+
                                         .content(
                                                 new TextFlow(new Text(
                                                         "Are you sure you want to delete this post? This action cannot be undone"

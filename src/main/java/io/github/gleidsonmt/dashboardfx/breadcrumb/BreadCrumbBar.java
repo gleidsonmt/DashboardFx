@@ -1,7 +1,6 @@
 package io.github.gleidsonmt.dashboardfx.breadcrumb;
 
-import io.github.gleidsonmt.glad.base.Module;
-import io.github.gleidsonmt.glad.base.View;
+import io.github.gleidsonmt.glad.base.drawer.View;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.beans.property.ObjectProperty;
@@ -14,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.shape.Circle;
 import org.jetbrains.annotations.ApiStatus;
+import io.github.gleidsonmt.glad.base.drawer.Module;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
