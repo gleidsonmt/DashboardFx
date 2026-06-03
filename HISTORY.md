@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3 Jun 2026
+I've been tired to recreate the drawer.. so I separate it to a Nav class for this project
+a SideNav as component to reuse and a new call to Root to create a drawer.
+```java
+    // simple call to create a drawer.
+    root.behavior().drawer()
+        .content(nav)
+        .show();
+```
+
 ## 27 May 2026
 - I've been learning about maintain a history and make more intuitive.
 - Making this will be help me :D to stay update.
