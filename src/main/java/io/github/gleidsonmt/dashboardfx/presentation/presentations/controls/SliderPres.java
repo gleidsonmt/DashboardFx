@@ -238,20 +238,7 @@ public class SliderPres extends CustomizablePresentation {
                 textValueV.setText("    Vertical value: " + intValue);
             }
         });
-
-
-
-//        sliderHorizontal.valueProperty().addListener((obs, oldVal, newVal) -> {
-//            double percentage = (newVal.doubleValue() - sliderHorizontal.getMin()) / (sliderHorizontal.getMax() - sliderHorizontal.getMin()) * 100;
-//            String style = String.format("-fx-background-color: linear-gradient(to right, #2563EB %f%%, #E2E8F0 %f%%);", percentage, percentage);
-//            sliderHorizontal.lookup(".track").setStyle(style);
-//        });
-
-//        sliderHorizontalS.valueProperty().addListener((obs, oldVal, newVal) -> {
-//            double percentage = (newVal.doubleValue() - sliderHorizontalS.getMin()) / (sliderHorizontalS.getMax() - sliderHorizontalS.getMin()) * 100;
-//            String style = String.format("-fx-background-color: linear-gradient(to right, #2563EB %f%%, #E2E8F0 %f%%);", percentage, percentage);
-//            sliderHorizontalS.lookup(".track").setStyle(style);
-//        });
+        
         sliderHorizontal.valueProperty().addListener((obs, oldVal, newVal) -> {
             double percentage = (newVal.doubleValue() - sliderHorizontal.getMin())
                     / (sliderHorizontal.getMax() - sliderHorizontal.getMin()) * 100;
