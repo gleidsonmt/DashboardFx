@@ -32,7 +32,7 @@
         - [x] Slider;
         - [x] ProgressBar;
         - [x] ScrollPane;
-        - [ ] ScrollBar;
+        - [x] ScrollBar;
         - [ ] TextArea;
     - [ ] Charts
       - [ ] LineChart;
