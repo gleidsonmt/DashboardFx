@@ -71,29 +71,13 @@ public class NavBar extends GridPane {
         hamb.setOnAction(_ -> {
             Root root = (Root) this.getScene().getRoot();
             var main = (Main) getParent().getParent();
-            main.getDrawer();
-            EventHandler<MouseEvent> closeHandler = _ -> {
-                root.behavior().dialog().hide();
-                root.getForeground().removeAction();
-            };
-            root.getForeground().addAction(closeHandler);
-            root.behavior()
-                    .dialog()
-                    .pos(Pos.CENTER_LEFT)
-                    .block()
-//                    .effect(WrapperEffect.GRAY)
-                    .with(WrapperEffect.GRAY)
-                    .content(main.getDrawer())
-                    .anchor(Anchor.LEFT)
-                    .insets(Insets.EMPTY)
-                    .width(250)
+            var drawer = main.getDrawer();
+            main.setLeft(null);
+
+            root.behavior().drawer()
+                    .content(drawer)
+                    .with("gray")
                     .show();
-
-
-            TranslateTransition transition = new TranslateTransition(Duration.millis(200), main.getDrawer().getParent());
-            transition.setFromX(-250);
-            transition.setToX(0);
-            transition.play();
         });
 
         badgeMessage.setStyle("-fx-box-color: -red-500;");
@@ -109,12 +93,12 @@ public class NavBar extends GridPane {
             Root root = (Root) getScene().getRoot();
 
             root.widthProperty().addListener((_, _, val) -> {
-                if (root.behavior().dialog().isShowing() && !root.isBlocked()) {
-                    root.behavior()
-                            .dialog()
-                            .hide();
-                    root.unblock();
-                }
+//                if (root.behavior().dialog().isShowing() && !root.isBlocked()) {
+////                    root.behavior()
+////                            .dialog()
+////                            .hide();
+////                    root.unblock();
+//                }
             });
 
             root.addBreakpoint(_ -> {
