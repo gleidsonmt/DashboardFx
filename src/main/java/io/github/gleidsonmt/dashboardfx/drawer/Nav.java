@@ -56,7 +56,9 @@ public class Nav extends SideNav {
                                 new ListViewPres(),
                                 new TableViewPres(),
                                 new TreeViewPres(),
-                                new ProgressBarPres()
+                                new ProgressBarPres(),
+                                new ScrollPane()
+
                         ),
                         new ViewGroup("Containers",
                                 new TitledPanePres(),

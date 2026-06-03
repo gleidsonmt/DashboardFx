@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Skin;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -61,23 +62,19 @@ public class TextInputPres extends CustomizablePresentation {
                 .code(TutorialUtils.installExample(Css.TEXT_BOX, "PasswordBox"))
                 .demo(new SearchBox())
 
-                .h3("Helper Text", "TextBox")
-                .demo(createBoxHelperText())
+
+                .h3("TextArea", "TextInputControl")
+                .text("Text input component for entering and editing multiple lines of text.")
+                .legend("io.github.gleidsonmt.glad.controls.text_box.TextArea")
+
+                .demo(createTextArea())
+                .code("""
+                         TextArea textArea = new TextArea();
+                         textArea.setPromptText("TextArea");
+                        """)
 
                 ;
     }
-
-    private TextBox createBoxHelperText() {
-        var textBox = new TextBox();
-        System.out.println("textBox = " + textBox.getEditor());
-        textBox.getStyleClass().add("helper-text");
-        textBox.setHelperText("Helper Text");
-        textBox.setPromptText("TextBox");
-        textBox.setValid(true);
-//        textBox.validate();
-        return textBox;
-    }
-
     private TextBoxBase createCustomTextBox(Icon icon, String text, boolean action) {
         TextBoxBase textBoxBase= new TextBoxBase() {
             {
@@ -117,5 +114,11 @@ public class TextInputPres extends CustomizablePresentation {
         PasswordField password = new PasswordField();
         password.setPromptText("PasswordField");
         return password;
+    }
+
+    private TextArea createTextArea() {
+        TextArea textArea = new TextArea();
+        textArea.setPromptText("TextArea");
+        return textArea;
     }
 }

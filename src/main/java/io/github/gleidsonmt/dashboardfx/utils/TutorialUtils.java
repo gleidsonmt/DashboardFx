@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.utils;
 
 import io.github.gleidsonmt.blockcode.BlockCode;
+import io.github.gleidsonmt.blockcode.CodeType;
 import io.github.gleidsonmt.dashboardfx.ResizablePane;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.glad.base.drawer.Module;

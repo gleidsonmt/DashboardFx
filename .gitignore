@@ -4,9 +4,6 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 scenicView.properties
-!**/test_project/**
-!**/test_project/
-/playground
 PLAN.md
 
 ### IntelliJ IDEA ###
