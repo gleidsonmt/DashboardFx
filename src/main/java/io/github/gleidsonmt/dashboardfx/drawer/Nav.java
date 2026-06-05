@@ -17,6 +17,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.presentations.pages.LoginPa
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.AvatarCropExample;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.CircularLoaders;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.ToggleGroupPres;
+import io.github.gleidsonmt.dashboardfx.presentation.shapes.CirclePres;
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
 import io.github.gleidsonmt.dashboardfx.presentation.util.ColorsPres;
 import io.github.gleidsonmt.dashboardfx.utils.pages.BuildingPage;
@@ -44,7 +45,8 @@ public class Nav extends SideNav {
                         ),
                         new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
                         new ViewGroup("Shapes",
-                                new TextPres()
+                                new TextPres(),
+                                new CirclePres()
                         ),
 //                        new View("Circle", new BuildingPage())),
                         new ViewGroup("Controls",
