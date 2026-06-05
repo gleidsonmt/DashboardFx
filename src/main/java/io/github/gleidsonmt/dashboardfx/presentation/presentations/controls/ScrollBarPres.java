@@ -4,12 +4,20 @@ import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.Resources;
+import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.theme.Css;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
+import javafx.beans.property.DoubleProperty;
 import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollBar;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+
+import java.util.concurrent.Callable;
 
 public class ScrollBarPres extends CustomizablePresentation {
 
@@ -81,11 +89,11 @@ public class ScrollBarPres extends CustomizablePresentation {
         Label labelH = new Label("Amount: 0.0 ");
 
         scrollBarH.valueProperty().addListener((observable, oldValue, newValue) -> {
-            labelV.setText("Amount: " + String.format("%.1f", newValue));
+            labelV.setText("Y: " + String.format("%.1f", newValue));
         });
 
         scrollBarV.valueProperty().addListener((observable, oldValue, newValue) -> {
-            labelH.setText("Amount: " + String.format("%.1f", newValue));
+            labelH.setText("X: " + String.format("%.1f", newValue));
         });
 
         VBox root = new VBox(10, scrollBarV, scrollBarH, labelV, labelH);

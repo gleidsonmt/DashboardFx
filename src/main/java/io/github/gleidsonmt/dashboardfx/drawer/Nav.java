@@ -60,7 +60,6 @@ public class Nav extends SideNav {
                                 new ScrollPane(),
                                 new ScrollBarPres(),
                                 new SliderPres()
-
                         ),
                         new ViewGroup("Containers",
                                 new TitledPanePres(),
