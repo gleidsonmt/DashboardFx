@@ -18,6 +18,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.Avatar
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.CircularLoaders;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.ToggleGroupPres;
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.CirclePres;
+import io.github.gleidsonmt.dashboardfx.presentation.shapes.RectanglePres;
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
 import io.github.gleidsonmt.dashboardfx.presentation.util.ColorsPres;
 import io.github.gleidsonmt.dashboardfx.utils.pages.BuildingPage;
@@ -46,7 +47,8 @@ public class Nav extends SideNav {
                         new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
                         new ViewGroup("Shapes",
                                 new TextPres(),
-                                new CirclePres()
+                                new CirclePres(),
+                                new RectanglePres()
                         ),
 //                        new View("Circle", new BuildingPage())),
                         new ViewGroup("Controls",

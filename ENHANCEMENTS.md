@@ -16,7 +16,7 @@
         - [ ] Text;
         - [ ] Image;
         - [ ] Line;
-        - [ ] Rectangle;
+        - [x] Rectangle;
         - [x] Circle;
         - [ ] Polygon;
         - [ ] Polyline;
