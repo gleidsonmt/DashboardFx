@@ -13,8 +13,12 @@ import javafx.scene.control.Separator;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+
+import java.util.Locale;
+
 
 public class SliderPres extends CustomizablePresentation {
 
@@ -116,17 +120,39 @@ public class SliderPres extends CustomizablePresentation {
                         });
 
                         // Update the track fill dynamically as the slider value changes.
-                        sliderHorizontal.valueProperty().addListener((obs, oldVal, newVal) -> {
-                            double percentage = (newVal.doubleValue() - sliderHorizontal.getMin()) / (sliderHorizontal.getMax() - sliderHorizontal.getMin()) * 100;
-                            String style = String.format("-fx-background-color: linear-gradient(to right, #2563EB %f%%, #E2E8F0 %f%%);", percentage, percentage);
-                            sliderHorizontal.lookup(".track").setStyle(style);
-                        });
-
-                        sliderHorizontalS.valueProperty().addListener((obs, oldVal, newVal) -> {
-                            double percentage = (newVal.doubleValue() - sliderHorizontalS.getMin()) / (sliderHorizontalS.getMax() - sliderHorizontalS.getMin()) * 100;
-                            String style = String.format("-fx-background-color: linear-gradient(to right, #2563EB %f%%, #E2E8F0 %f%%);", percentage, percentage);
-                            sliderHorizontalS.lookup(".track").setStyle(style);
-                        });
+                         sliderHorizontal.valueProperty().addListener((obs, oldVal, newVal) -> {
+                                       double percentage = (newVal.doubleValue() - sliderHorizontal.getMin())
+                                               / (sliderHorizontal.getMax() - sliderHorizontal.getMin()) * 100;
+                        
+                                       String style = String.format(
+                                               Locale.US,
+                                               "-fx-background-color: linear-gradient(to right, #2563EB %.2f%%, #E2E8F0 %.2f%%);",
+                                               percentage,
+                                               percentage
+                                       );
+                        
+                                       Region track = (Region) sliderHorizontal.lookup(".track");
+                                       if (track != null) {
+                                           track.setStyle(style);
+                                       }
+                                   });
+                        
+                                   sliderHorizontalS.valueProperty().addListener((obs, oldVal, newVal) -> {
+                                       double percentage = (newVal.doubleValue() - sliderHorizontalS.getMin())
+                                               / (sliderHorizontalS.getMax() - sliderHorizontalS.getMin()) * 100;
+                        
+                                       String style = String.format(
+                                               Locale.US,
+                                               "-fx-background-color: linear-gradient(to right, #2563EB %.2f%%, #E2E8F0 %.2f%%);",
+                                               percentage,
+                                               percentage
+                                       );
+                        
+                                       Region track = (Region) sliderHorizontalS.lookup(".track");
+                                       if (track != null) {
+                                           track.setStyle(style);
+                                       }
+                                   });
 
                         FlowPane root = new FlowPane(10, 10, hBox);
                         """);
@@ -212,17 +238,39 @@ public class SliderPres extends CustomizablePresentation {
                 textValueV.setText("    Vertical value: " + intValue);
             }
         });
-
+        
         sliderHorizontal.valueProperty().addListener((obs, oldVal, newVal) -> {
-            double percentage = (newVal.doubleValue() - sliderHorizontal.getMin()) / (sliderHorizontal.getMax() - sliderHorizontal.getMin()) * 100;
-            String style = String.format("-fx-background-color: linear-gradient(to right, #2563EB %f%%, #E2E8F0 %f%%);", percentage, percentage);
-            sliderHorizontal.lookup(".track").setStyle(style);
+            double percentage = (newVal.doubleValue() - sliderHorizontal.getMin())
+                    / (sliderHorizontal.getMax() - sliderHorizontal.getMin()) * 100;
+
+            String style = String.format(
+                    Locale.US,
+                    "-fx-background-color: linear-gradient(to right, #2563EB %.2f%%, #E2E8F0 %.2f%%);",
+                    percentage,
+                    percentage
+            );
+
+            Region track = (Region) sliderHorizontal.lookup(".track");
+            if (track != null) {
+                track.setStyle(style);
+            }
         });
 
         sliderHorizontalS.valueProperty().addListener((obs, oldVal, newVal) -> {
-            double percentage = (newVal.doubleValue() - sliderHorizontalS.getMin()) / (sliderHorizontalS.getMax() - sliderHorizontalS.getMin()) * 100;
-            String style = String.format("-fx-background-color: linear-gradient(to right, #2563EB %f%%, #E2E8F0 %f%%);", percentage, percentage);
-            sliderHorizontalS.lookup(".track").setStyle(style);
+            double percentage = (newVal.doubleValue() - sliderHorizontalS.getMin())
+                    / (sliderHorizontalS.getMax() - sliderHorizontalS.getMin()) * 100;
+
+            String style = String.format(
+                    Locale.US,
+                    "-fx-background-color: linear-gradient(to right, #2563EB %.2f%%, #E2E8F0 %.2f%%);",
+                    percentage,
+                    percentage
+            );
+
+            Region track = (Region) sliderHorizontalS.lookup(".track");
+            if (track != null) {
+                track.setStyle(style);
+            }
         });
 
         FlowPane root = new FlowPane(10, 10, hBox);

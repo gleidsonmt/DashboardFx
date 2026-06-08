@@ -16,8 +16,8 @@
         - [ ] Text;
         - [ ] Image;
         - [ ] Line;
-        - [ ] Rectangle;
-        - [ ] Circle;
+        - [x] Rectangle;
+        - [x] Circle;
         - [ ] Polygon;
         - [ ] Polyline;
         - [ ] Arc;
@@ -62,3 +62,5 @@
         - [ ] DataTableHandler
          
 - [ ] Drawer uses a ViewGroup as view with content and node.
+- [ ] The drawer can be positioned on top, right or bottom
+- [ ] The drawer interface has a method to slide the drawer depending on the position.

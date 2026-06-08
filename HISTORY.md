@@ -1,6 +1,19 @@
-# History / Changelog
+# 🗺️ History / Changelog
 
 All notable changes to this project will be documented in this file.
+
+## 3 Jun 2026
+I've been tired of recreating the drawer… so I separate it to a Nav class for this project
+a SideNav as a component to reuse and a new call to Root to create a drawer.
+Also, I've been tired of adding an animation to slide the drawer in other projects and.
+Now drawer is more a concept not a component. The idea is it can be used in as top, bottom.. 
+
+```java
+    // simple call to create a drawer.
+    root.behavior().drawer()
+        .content(nav)
+        .show();
+```
 
 ## 27 May 2026
 - I've been learning about maintain a history and make more intuitive.
