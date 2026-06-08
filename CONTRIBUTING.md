@@ -51,8 +51,8 @@ Pull requests should target the `alpha` branch unless the maintainers request a 
 On Windows, build and run the project with:
 
 ```powershell
-.\gradlew.bat build
-.\gradlew.bat run
+.\gradlew build
+.\gradlew run
 ```
 
 On Linux or macOS, use:
@@ -100,7 +100,7 @@ git commit -m "docs: add contributing guide"
 Push your branch:
 
 ```bash
-git push -u origin <your-branch-name>
+git push -u fork <your-branch-name>
 ```
 
 Then open a pull request against `alpha`.
