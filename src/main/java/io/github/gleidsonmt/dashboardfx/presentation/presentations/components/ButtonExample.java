@@ -22,12 +22,12 @@ public class ButtonExample extends StackPane {
                         .legend("io.github.gleidsonmt.glad.controls.button.Button")
                         .demo(createButtonDemo("Button", true))
 
-                        .h3("Flat", "Button")
+                        .h3("Flat")
                         .demo(createButtonDemo("Button", true,"flat"))
                         .code("""
                                 btn.getStyleClass().addAll("flat");
                                 """)
-                        .h3("IconButton", "Button")
+                        .h3("IconButton")
                         .text("Icon Button is specialized button with display graphic_only")
                         .demo(createIconButton(Icon.APPS))
                         .code("""
@@ -35,7 +35,7 @@ public class ButtonExample extends StackPane {
                                 // Pass a node in the constructor
                                IconButton button = new IconButton(new SVGIcon(Icon.APPS));
                                 """)
-                        .h3("Fab Button", "IconButton")
+                        .h3("Fab Button")
                         .demo(createIconButton(Icon.ADD,"raised", "size-50", "round"))
                         .code("""
                                 // Constructor
@@ -43,7 +43,7 @@ public class ButtonExample extends StackPane {
                                button.getStyleClass().add("raised");
                                 """)
 
-                        .h3("Animated", "Button")
+                        .h3("Animated")
                         .legend("io.github.gleidsonmt.glad.controls.button.AnimatedButton")
 //                        .demo(new Node[]{
 //                                new SwipeDiagonal(),

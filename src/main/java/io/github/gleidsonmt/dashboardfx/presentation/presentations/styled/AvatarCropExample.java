@@ -6,6 +6,7 @@ import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import io.github.gleidsonmt.glad.controls.avatar_crop.AvatarCrop;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.scene.Node;
 import javafx.scene.layout.Region;
 
@@ -22,7 +23,7 @@ public class AvatarCropExample extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .overview()
                 .h3("Avatar Crop")
@@ -32,7 +33,7 @@ public class AvatarCropExample extends CustomizablePresentation {
 //                .node(TutorialUtils.createCardLink("See this article", "https://gleidsonmt.github.io/#/blog/post/0"))
                 .demo(new AvatarCrop(Assets.getImage("default_avatar.jpg")))
 
-                .h3("Using", "Avatar Crop")
+                .h3("Using")
                 .code("""
                         // Importing
                         import io.github.gleidsonmt.glad.controls.avatar_crop.AvatarCrop;
@@ -58,13 +59,13 @@ public class AvatarCropExample extends CustomizablePresentation {
                             .show();
                 }))
 
-                .h3("Saving", "Avatar Crop")
+                .h3("Saving")
                 .code("""
                         avatarCrop.setOnSave(image -> {
                             // do something with image
                         });
                         """)
-                .h3("Closing", "Avatar Crop")
+                .h3("Closing")
                 .code("""
                         avatarCrop.setOnSave(() -> {
                             // do something while closing

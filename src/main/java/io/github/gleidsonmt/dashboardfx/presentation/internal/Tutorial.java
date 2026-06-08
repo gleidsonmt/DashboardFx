@@ -1,28 +1,7 @@
-/*
- *
- *    Copyright (C) Gleidson Neves da Silveira
- *
- *    This program is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
- *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- */
-
 package io.github.gleidsonmt.dashboardfx.presentation.internal;
 
 
 import io.github.gleidsonmt.blockcode.BlockCode;
-import io.github.gleidsonmt.blockcode.CodeType;
-import io.github.gleidsonmt.blockcode.Theme;
 import io.github.gleidsonmt.dashboardfx.utils.Scroll;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
@@ -50,10 +29,9 @@ import java.util.*;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
  * Create on  19/01/2023
  */
-public class Tutorial extends Presentation<Tutorial> {
+public class Tutorial extends Presentation {
 
     private final ScrollPane scroll = new ScrollPane();
     private final BorderPane body = new BorderPane();
@@ -65,7 +43,7 @@ public class Tutorial extends Presentation<Tutorial> {
     private final Button btnTop = createButton();
     private final List<TreeTitle> breaks = new ArrayList<>();
     private boolean rolling = true;
-    int count = 1;
+    private int count = 1;
 
     private boolean indicators = false;
     private boolean overview = false;
@@ -153,6 +131,7 @@ public class Tutorial extends Presentation<Tutorial> {
                 .peek(c -> {
 //                    c.setText(count + c.getText());
                     c.setIndex(String.valueOf(count++));
+//                    c.setIndex(count++);
                 })
                 .toList();
 
@@ -186,6 +165,9 @@ public class Tutorial extends Presentation<Tutorial> {
     private int row = 0;
 
     private VBox buildTree(TreeTitle item) {
+        System.out.println("item = " + item);
+        count = 1;
+
         VBox parent = createMenu(item);
         parent.getStyleClass().add("menu");
 
@@ -195,13 +177,15 @@ public class Tutorial extends Presentation<Tutorial> {
                                               child.getRelated().getText().equals(item.getText()) && child.getRelated().getId().equals(item.getId())
                         )
                         .toList();
+        System.out.println("children = " + children);
 
         if (!children.isEmpty()) {
+
             children.forEach(c -> {
-                c.setIndex(item.getIndex() + "." + count++);
-//                c.setText(item.getIndex() + "." + count++ + " " + c.getText());
+//                c.setIndex(item.getIndex() + "." + count++);
+//                c.setText( + count++ + " " + c.getText());
             });
-            count = 1;
+
         }
 
         VBox subMenu = new VBox();
@@ -215,7 +199,6 @@ public class Tutorial extends Presentation<Tutorial> {
                     .map(el -> (GridPane) el)
                     .forEach(e -> {
                         String val = String.valueOf(((TreeTitle) e.getUserData()).getIndex()).replaceAll("[^0-9]", "") + 1;
-
                         for (int k = 0; k < val.length() - 1; k++) { // the spaces
                             Pane pane = new Pane();
                             pane.setMinWidth(10);
@@ -271,16 +254,16 @@ public class Tutorial extends Presentation<Tutorial> {
         });
     }
 
-    @ApiStatus.Internal
-    @Override
-    protected BlockCode createBlockCode(CodeType codeType, String content) {
-        return new BlockCode()
-                .theme(Theme.GITHUB)
-                .codeType(codeType)
-                .copy(createCopy())
-                .content(content)
-                .build();
-    }
+//    @ApiStatus.Internal
+//    @Override
+//    protected BlockCode createBlockCode(CodeType codeType, String content) {
+//        return new BlockCode()
+//                .theme(Theme.GITHUB)
+//                .codeType(codeType)
+//                .copy(createCopy())
+//                .content(content)
+//                .build();
+//    }
 
     private Button createCopy() {
         Button button = new Button("Copy");

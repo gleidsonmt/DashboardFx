@@ -12,6 +12,7 @@ import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
@@ -42,13 +43,12 @@ public class BuildingPres extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         try {
             return new Tutorial()
                     .overview()
-
                     .h3("Starting")
-                    .h3("Layout", "Starting")
+                    .h3("Layout")
                     .text("Main page, layout page, body page anything can be called but layout is the most important.")
                     .text("Everything starts here.")
                     .text("In JavaFx we have layout panes, you can chose one and implement using Layout interface.")
@@ -79,7 +79,7 @@ public class BuildingPres extends CustomizablePresentation {
                     .text("The getDrawer method returns the drawer region.")
                     .text("As I decide to use a border pane as the layout, I set my left side as my drawer.")
 
-                    .h3("Drawer", "Starting")
+                    .h3("Drawer")
                     .code("""
                             class SideNav extends Drawer {
                             
@@ -110,7 +110,7 @@ public class BuildingPres extends CustomizablePresentation {
                             }
                             """)
 
-                    .h3("Main", "Starting")
+                    .h3("Main")
                     .code("""
                             public class App extends Application {
                             

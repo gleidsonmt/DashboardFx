@@ -3,6 +3,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.core;
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
+import io.github.gleidsonmt.presentation.Presentation;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -15,7 +16,7 @@ public class IntroductionPres extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .overview()
                 .h3("Introduction")
@@ -31,14 +32,14 @@ public class IntroductionPres extends CustomizablePresentation {
                         
                         """)
                 .separator()
-                .h3("Layout", "Introduction")
+                .h3("Layout")
                 .text("""
                         As the most dashboards the drawer is on the left, with the logo and a search field
                         As suggested the search view is used to filter by modules. When you typed inside it.
                         """)
                 .image(Assets.getImage("part3.png"))
                 .separator()
-                .h3("Modules", "Introduction")
+                .h3("Modules")
                 .text("""
                         The modules is the view or a group of views.
                         If the it's a view is represented by a ToggleButton.
@@ -49,24 +50,24 @@ public class IntroductionPres extends CustomizablePresentation {
                         All modules follow a top and dow overview.. so you can actually go deeper and learn more getting the sequence of the modules.
                         """)
 
-                .h3("Core", "Introduction")
+                .h3("Core")
                 .text("""
                         The core section involves getting things by context and interactions by the root node.
                         """)
                 .separator()
-                .h3("Theme", "Introduction")
+                .h3("Theme")
                 .text("""
                         The theme section contains examples using default javafx + a custom theme.
                         The custom theme is provided by a class called ThemeProvider.
                         On the each view you can see how to install the custom css.
                         """)
                 .separator()
-                .h3("Example", "Introduction")
+                .h3("Example")
                 .text("""
                         The example section has examples and customizable controls and how to work with it.
                         """)
                 .separator()
-                .h3("Extras", "Introduction")
+                .h3("Extras")
                 .text("""
                         The extras section represents tips with javafx and additional resource.
                         """)

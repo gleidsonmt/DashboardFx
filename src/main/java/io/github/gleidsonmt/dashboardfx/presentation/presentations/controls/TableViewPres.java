@@ -5,6 +5,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.theme.Css;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
@@ -24,7 +25,7 @@ public class TableViewPres extends CustomizablePresentation {
         super("TableView");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .h3("TableView")
                 .text("""
@@ -32,7 +33,7 @@ public class TableViewPres extends CustomizablePresentation {
                         A TableView is therefore very similar to the ListView control, with the addition of support for columns.""")
                 .legend("javafx.scene.control.TableView")
                 .demo(createDemo())
-                .h4("Install", "TableView")
+                .h4("Install")
                 .code(TutorialUtils.installExample(Css.TABLE_VIEW) + """
                        
                         // Creating the data

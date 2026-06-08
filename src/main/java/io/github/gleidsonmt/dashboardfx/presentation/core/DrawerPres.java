@@ -2,6 +2,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.core;
 
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.presentation.Presentation;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -13,7 +14,7 @@ public class DrawerPres extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .overview()
                 .h3("Drawer")

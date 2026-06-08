@@ -4,6 +4,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.theme.Css;
+import io.github.gleidsonmt.presentation.Presentation;
 import io.github.gleidsonmt.presentation.Row;
 import javafx.scene.Node;
 import javafx.scene.layout.Region;
@@ -19,11 +20,11 @@ public class RegionPres extends CustomizablePresentation {
         super("Region");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
-                .indicators()
                 .overview()
-                .h3("Region")
+                .indicators()
+                .h1("Region")
                 .separator()
                 .text("""
                         Region is the base class for all JavaFX Node-based UI Controls, and all layout containers. 
@@ -39,7 +40,7 @@ public class RegionPres extends CustomizablePresentation {
                 .legend("javafx.scene.layout.Region")
                 .legend("\nEvery control descends by Region so every style in region is applicable to all controls.")
                 .demo(createDemo("size-50", "bg-white", "depth-1", "radius-5"))
-                .h4("Install", "Region")
+                .h2("Install")
                 .code(
                         TutorialUtils.installExample(Css.COLORS, Css.SHAPES, Css.PROPERTIES) +
                         """
@@ -50,7 +51,7 @@ public class RegionPres extends CustomizablePresentation {
                         """
                 )
 
-                .h3("Size", "Region")
+                .h2("Size")
                 .demo(new Node[]{
                         createDemo("size-10", "max-size-10", "bg-white", "depth-3", "radius-5", "border-light-gray-2"),
                         createDemo("size-50", "max-size-50", "bg-white", "depth-3", "radius-5", "border-light-gray-2"),
@@ -87,7 +88,7 @@ public class RegionPres extends CustomizablePresentation {
                         new Row("max-size-100", "-fx-max-width: 100px; -fx-max-height: 100px;")
                 )
 
-                .h4("Background", "Region")
+                .h2("Background")
 
 
                 .table(
@@ -130,8 +131,8 @@ public class RegionPres extends CustomizablePresentation {
                         region.getStyleClass().add("bg-[primary|info...]");
                         """)
                 .node(TutorialUtils.createLink("See more color options", "Colors"))
-                .h4("Border", "Region")
-                .h4("Size", "Border")
+                .h3("Border")
+                .h3("Size")
                 .table(
                         new Row("border-1", "-fx-border-width: 1px;"),
                         new Row("border-2", "-fx-border-width: 2px;"),
@@ -149,7 +150,7 @@ public class RegionPres extends CustomizablePresentation {
                 .code("""
                         region.getStyleClass().add("border-[1|2...5]");
                         """)
-                .h4("Position", "Border")
+                .h3("Position")
                 .table(
                         new Row("border-t-1", "-fx-border-width : 1px 0px 0px 0px; "),
                         new Row("border-r-1", "-fx-border-width : px 1px 0px 0px; "),
@@ -168,7 +169,7 @@ public class RegionPres extends CustomizablePresentation {
                 .code("""
                         region.getStyleClass().add("border-[t|l|b|r]-[1|2..]");
                         """)
-                .h4("Color", "Border")
+                .h3("Color")
                 .demo(new Node[]{
                         createDemo("size-50", "border-2", "border-primary", "bg-light-gray"),
                         createDemo("size-50", "border-2", "border-info", "bg-light-gray"),
@@ -177,7 +178,7 @@ public class RegionPres extends CustomizablePresentation {
                 .code("""
                         region.getStyleClass().add("border-[primary|info...]");
                         """)
-                .h4("Radius", "Region")
+                .h3("Radius")
                 .table(
                         new Row("radius-2", "-fx-background-radius: 2px; -fx-border-radius: 2px;"),
                         new Row("radius-5", "-fx-background-radius: 5px; -fx-border-radius: 5px;"),
@@ -197,7 +198,7 @@ public class RegionPres extends CustomizablePresentation {
                 .code("""
                         region.getStyleClass().add("radius-[2|5...]");
                         """)
-                .h4("Padding", "Region")
+                .h3("Padding")
                 .table(
                         new Row("padding-2", "-fx-padding: 2px;"),
                         new Row("padding-5", "-fx-padding: 5px;"),
@@ -213,9 +214,9 @@ public class RegionPres extends CustomizablePresentation {
                 .code("""
                         region.getStyleClass().add("padding-[2|5|10|20]");
                         """)
-                .h4("Insets", "Region")
+                .h3("Insets")
                 .text("The insets doesn't affect its children.")
-                .h4("Insets Background", "Insets")
+                .h4("Insets Background")
                 .table(
                         new Row("bg-insets-1", "-fx-background-insets: 1px;"),
                         new Row("bg-insets-5", "-fx-background-insets: 5px;"),
@@ -226,7 +227,7 @@ public class RegionPres extends CustomizablePresentation {
                         createDemo("min-size-50", "size-10", "border-2", "border-primary", "bg-medium-gray", "bg-insets-5"),
                         createDemo("min-size-50", "size-10", "border-2", "border-primary", "bg-medium-gray", "bg-insets-10")
                 })
-                .h4("Insets Border", "Insets")
+                .h4("Insets Border")
                 .table(
                         new Row("border-insets-1", "-fx-border-insets: 1px;"),
                         new Row("border-insets-5", "-fx-border-insets: 5px;"),
@@ -237,7 +238,7 @@ public class RegionPres extends CustomizablePresentation {
                         createDemo("min-size-50", "size-50", "border-2", "border-primary", "bg-medium-gray", "border-insets-5"),
                         createDemo("min-size-50", "size-50", "border-2", "border-primary", "bg-medium-gray", "border-insets-10")
                 })
-                .h3("Shapes", "Region")
+                .h3("Shapes")
                 .table(
                         new Row("rectangle", "-fx-border-radius: 0px;"),
                         new Row("rounded", "-fx-background-radius : 5px;"),
@@ -248,7 +249,7 @@ public class RegionPres extends CustomizablePresentation {
                         new Row("mountain", "-fx-background-radius: 100px 100px 0px 0px;")
                 )
 
-                .h3("Demo", "Shapes")
+                .h3("Demo")
                 .demo(new Node[]{
                         createDemo("min-size-50", "bg-primary", "rectangle"),
                         createDemo("min-size-50", "bg-primary", "rounded"),
@@ -286,7 +287,7 @@ public class RegionPres extends CustomizablePresentation {
                         region.getStyleClass().add("radius-[rectangle|rounded...]");
                         """)
 
-                .h3("Cursors", "Shapes")
+                .h3("Cursors")
                 .table(
                         new Row("cursor-default", "-fx-cursor: default;"),
                         new Row("cursor-close-hand", "-fx-cursor: close_hand;"),

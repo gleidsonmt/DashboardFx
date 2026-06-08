@@ -50,8 +50,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
-    implementation project(":blockcode")
     implementation project(":glad")
+    implementation project(":blockcode")
     implementation project(":presentation")
 }
 

@@ -5,6 +5,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.controls.loaders.*;
 
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.scene.Node;
 
 /**
@@ -18,7 +19,7 @@ public class CircularLoaders extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .overview()
                 .h3("Circular Loaders")
@@ -32,7 +33,7 @@ public class CircularLoaders extends CustomizablePresentation {
                         new TechCircle(),
                         new AtomicLoader()
                 })
-                .h3("Using", "Circular Loaders")
+                .h3("Using")
                 .code("""
                         // Importing
                         import io.github.gleidsonmt.glad.controls.loaders.*;
@@ -48,7 +49,7 @@ public class CircularLoaders extends CustomizablePresentation {
                         circle.setLegend("Loading.. ");
                         circle.setTitle("Task #23");
                         """)
-                .h3("Customize", "Circular Loaders")
+                .h3("Customize")
                 .text("You can customize the loader using the css.")
                 .code("""
                         .circle-loader > .abstractContainer-circle > .track-circle

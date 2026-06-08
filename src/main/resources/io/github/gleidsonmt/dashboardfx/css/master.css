@@ -160,11 +160,6 @@
     -fx-stroke-width: 2px;
 }
 
-.chart-title .text {
-}
-
-
-
 .card-poster {
     -fx-background-image: url("../img/poster.png");
     -fx-background-size: contain;
@@ -219,4 +214,14 @@
     -fx-fill: white;
 }
 
+.chart-legend-item,
+.chart-title {
+    -fx-font-family: "Instagram Sans";
+    -fx-font-weight: normal;
+}
+
+.box-module,
+.drawer-menu {
+    -fx-font-family: "Instagram Sans";
+}
 

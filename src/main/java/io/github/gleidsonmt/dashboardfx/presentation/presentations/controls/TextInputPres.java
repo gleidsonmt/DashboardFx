@@ -9,6 +9,7 @@ import io.github.gleidsonmt.glad.controls.text_box.PasswordBox;
 import io.github.gleidsonmt.glad.controls.text_box.SearchBox;
 import io.github.gleidsonmt.glad.controls.text_box.TextBox;
 import io.github.gleidsonmt.glad.theme.Css;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -26,35 +27,35 @@ public class TextInputPres extends CustomizablePresentation {
         super("TextInput");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .overview()
                 .indicators()
                 .h3("TextInputControl")
                 .text("Abstract base class for text input controls.")
 
-                .h3("TextField", "TextInputControl")
+                .h3("TextField")
                 .text("""
                         Text input component that allows a user to enter a single line of unformatted text.""")
                 .legend("javafx.scene.control.TextField")
                 .demo(createTextField())
-                .h4("Install", "TextField")
+                .h4("Install")
                 .code(TutorialUtils.installExample(Css.TEXT_FIELD, "TextField"))
 
-                .h3("PasswordField", "TextField")
+                .h3("PasswordField")
                 .text("Text field that masks entered characters.")
                 .legend("javafx.scene.control.PasswordField")
                 .demo(createPassword())
-                .h4("Install", "PasswordField")
+                .h4("Install")
                 .code(TutorialUtils.installExample(Css.TEXT_FIELD, "PasswordField"))
 
-                .h3("TextBox", "TextInputControl")
+                .h3("TextBox")
                 .text("A TextBox is a complex TextField, allowing to add a graphic a an action.")
                 .legend("io.github.gleidsonmt.glad.controls.text_box.TextBox")
                 .demo(createTextBox(Icon.LOCATION_ON, "Location", true))
                 .code(TutorialUtils.installExample(Css.TEXT_BOX, "TextBox"))
 
-                .h3("PasswordBox", "TextBox")
+                .h3("PasswordBox")
                 .text("The same as TextBox, but with a mask.")
                 .legend("io.github.gleidsonmt.glad.controls.text_box.PasswordBox")
 
@@ -63,7 +64,7 @@ public class TextInputPres extends CustomizablePresentation {
                 .demo(new SearchBox())
 
 
-                .h3("TextArea", "TextInputControl")
+                .h3("TextArea")
                 .text("Text input component for entering and editing multiple lines of text.")
                 .legend("io.github.gleidsonmt.glad.controls.text_box.TextArea")
 

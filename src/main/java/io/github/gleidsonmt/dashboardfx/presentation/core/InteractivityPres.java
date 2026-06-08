@@ -13,6 +13,7 @@ import io.github.gleidsonmt.glad.controls.button.Button;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -34,7 +35,7 @@ public class InteractivityPres extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         Button node = new Button("Click on!");
         node.setPadding(new Insets(10));
         node.setOnAction(_ -> {
@@ -66,7 +67,7 @@ public class InteractivityPres extends CustomizablePresentation {
                         nodes using insets.
                         """)
                 .legend("io.github.gleidsonmt.glad.base.Flow")
-                .h4("Show", "Flow")
+                .h4("Show")
                 .text("Create a floating button.")
                 .code("""
                         Root root = (Root) getScene().getRoot();
@@ -85,7 +86,7 @@ public class InteractivityPres extends CustomizablePresentation {
                 .node(TutorialUtils.createLink("Button", "Labeled"))
                 .node(TutorialUtils.createLink("SVGIcon", "SVGIcon"))
 
-                .h3("Size", "Show")
+                .h3("Size")
                 .text("Set the size using width() and height().")
                 .code("""
                         Root root = (Root) getScene().getRoot();
@@ -97,7 +98,7 @@ public class InteractivityPres extends CustomizablePresentation {
                         """)
                 .text("If width or height isn't set, the pref sizes will be used.")
 
-                .h3("Mouse", "Show")
+                .h3("Mouse")
                 .text("Showing using a mouse position.")
                 .code("""
                         Root root = (Root) getScene().getRoot();
@@ -112,7 +113,7 @@ public class InteractivityPres extends CustomizablePresentation {
                                         .content(createButton())
                                         .show(event))))
                 .legend("After activated, can you click and buttons will be show.")
-                .h3("Node", "Show")
+                .h3("Node")
                 .text("You can also show based on the node position.")
                 .code("""
                         Root root = (Root) getScene().getRoot();
@@ -122,7 +123,7 @@ public class InteractivityPres extends CustomizablePresentation {
                         """)
                 .node(node)
 
-                .h3("Hide", "Flow")
+                .h3("Hide")
                 .text("But you can't close it, right?")
                 .text("No, the button has a method set to close the flow.")
                 .text("Like this one.")
@@ -130,7 +131,7 @@ public class InteractivityPres extends CustomizablePresentation {
                         root.flow().hide();
                         root.flow().remove(node); // This one for specific nodes
                         """)
-                .h3("Position", "Flow")
+                .h3("Position")
                 .text("By default the button only appears on the center, but let's change it.")
                 .code("""
                         ...
@@ -146,7 +147,7 @@ public class InteractivityPres extends CustomizablePresentation {
                                 .show()))
                 .text("Now you see the button en right of the screen.")
                 .text("The pos() method receives a Pos, it's a default enum used by javafx to position nodes.")
-                .h3("Insets", "Flow")
+                .h3("Insets")
                 .text("But you actually needs to add some insets")
                 .code("""
                         root.flow()
@@ -163,7 +164,7 @@ public class InteractivityPres extends CustomizablePresentation {
                                 .show()))
                 .text("Now you see the button with some insets.")
                 .text("The button is now more 20px to the right.")
-                .h3("Anchor", "Flow")
+                .h3("Anchor")
                 .text("That one can be a little confuse. The nodes side can be anchor on sides, center and all.")
                 .text("Suppose you need a region on the top, that is fixed on top and the sides.")
                 .text("The max of its width it's set.")
@@ -220,7 +221,7 @@ public class InteractivityPres extends CustomizablePresentation {
 
 
                 .h3("Behavior")
-                .h3("Dialog", "Behavior")
+                .h3("Dialog")
                 .text("The base for creating flown containers.")
                 .demo(TutorialUtils.createAction(_ -> getRoot()
                         .behavior()
@@ -234,7 +235,7 @@ public class InteractivityPres extends CustomizablePresentation {
                             .content(createWelcome())
                             .show();
                         """)
-                .h3("Effect", "Dialog")
+                .h3("Effect")
                 .demo(new Node[]{
                         TutorialUtils.createAction(_ -> getRoot()
                                 .behavior()
@@ -260,7 +261,7 @@ public class InteractivityPres extends CustomizablePresentation {
                             .show();
                         """)
 
-                .h3("Alerts", "Behavior")
+                .h3("Alerts")
                 .text("Built-in alerts")
                 .demo(TutorialUtils.createAction(_ ->
                         getRoot()
@@ -286,7 +287,7 @@ public class InteractivityPres extends CustomizablePresentation {
                             .show();
                         """)
 
-                .h3("Buttons", "Alerts")
+                .h3("Buttons")
                 .text("The alerts can use buttons like(ok, cancel, yes, no)")
                 .demo(TutorialUtils.createAction(_ ->
                         getRoot()
@@ -315,7 +316,7 @@ public class InteractivityPres extends CustomizablePresentation {
 
                 .text("The buttons with the name cancel and ok, is set by default as a default and cancel button respectively.")
                 .text("The buttons also have an event default that close its alert.")
-                .h3("Types", "Alerts")
+                .h3("Types")
                 .text("The alerts can use types (info, success, error, warning)")
                 .demo(new Node[]{
                                 TutorialUtils.createAction(_ -> getRoot()
@@ -381,7 +382,7 @@ public class InteractivityPres extends CustomizablePresentation {
                             .show();
                         """)
 
-                .h3("Snack", "Behavior")
+                .h3("Snack")
                 .text("'Snack' is a component that displays a message at the bottom of the screen.")
 
                 .demo(TutorialUtils.createAction(_ -> getRoot()
@@ -395,7 +396,7 @@ public class InteractivityPres extends CustomizablePresentation {
                             .message("Tracking your location.")
                             .show();
                         """)
-                .h3("Graphic", "Snack")
+                .h3("Graphic")
                 .text("Passing a graphic (only left)")
                 .demo(TutorialUtils.createAction(_ -> getRoot()
                         .behavior()
@@ -410,7 +411,7 @@ public class InteractivityPres extends CustomizablePresentation {
                             .graphic(new SVGIcon(Icon.LOCATION_ON))
                             .show();
                         """)
-                .h3("Actions", "Snack")
+                .h3("Actions")
                 .text("Adding actions (buttons)")
                 .demo(TutorialUtils.createAction(_ -> getRoot()
                         .behavior()
