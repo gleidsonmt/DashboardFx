@@ -322,10 +322,9 @@ public class Tutorial extends Presentation {
                     .map(el -> (BlockCode) el)
                     .forEach(e -> {
                         VBox.setVgrow(e, Priority.ALWAYS);
-
-                        double height = e.getContent().lines().count() * 10;
+                        double height = e.getContent().lines().count() * 12.5;
+                        e.setMinHeight(100);
                         e.setMinHeight(e.getMinHeight() + height);
-//                    e.setMinHeight(500);
                     });
 
             // Criando a tree
