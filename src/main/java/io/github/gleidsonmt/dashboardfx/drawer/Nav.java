@@ -20,6 +20,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.presentations.styled.Toggle
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.CirclePres;
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.RectanglePres;
 import io.github.gleidsonmt.dashboardfx.presentation.shapes.TextPres;
+import io.github.gleidsonmt.dashboardfx.presentation.util.ColorPickerPres;
 import io.github.gleidsonmt.dashboardfx.presentation.util.ColorsPres;
 import io.github.gleidsonmt.dashboardfx.utils.pages.BuildingPage;
 import io.github.gleidsonmt.glad.base.drawer.*;
@@ -104,7 +105,8 @@ public class Nav extends SideNav {
                         ),
                         new ModuleSeparator(new SVGIcon(Icon.HELP), "Theme"),
                         new ViewGroup("Extras",
-                                new ColorsPres()
+                                new ColorsPres(),
+                                new ColorPickerPres()
 //                        new View("Alignment", new BuildingPage()))
                         ),
                         new AboutPres()
