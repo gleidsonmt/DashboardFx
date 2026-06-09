@@ -1,5 +1,5 @@
 
 rootProject.name = "dashboardfx"
-include ':blockcode'
+include ':presentation:blockcode'
 include ':presentation'
 include ':glad'
