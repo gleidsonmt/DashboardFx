@@ -1,0 +1,3 @@
+- [ ] Drawer uses a ViewGroup as a view with content and node.
+- [ ] All libs are getting from a jar instead of a submodule.
+- [ ] CSSFX and Scenic View will be load only in runtime as gradle task request example(debug).
