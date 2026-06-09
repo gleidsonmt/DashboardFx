@@ -43,7 +43,7 @@ public class Tutorial extends Presentation {
     private final Button btnTop = createButton();
     private final List<TreeTitle> breaks = new ArrayList<>();
     private boolean rolling = true;
-    private int count = 1;
+    int count = 1;
 
     private boolean indicators = false;
     private boolean overview = false;
@@ -60,6 +60,9 @@ public class Tutorial extends Presentation {
         scroll.setMinHeight(500);
 
         getRoot().sceneProperty().addListener((_, _, newValue) -> {
+            group.selectToggle(group.getToggles().getFirst());
+            ((ToggleButton) group.getToggles().getFirst()).requestFocus();
+
             if (newValue != null) {
                 Root main = (Root) newValue.getRoot();
                 main.addBreakpoint(_ -> {
@@ -71,7 +74,7 @@ public class Tutorial extends Presentation {
                     aside.setMaxHeight(100);
                     aside.setPrefHeight(100);
 
-                },  DefaultBreak.SM, DefaultBreak.MD);
+                }, DefaultBreak.SM, DefaultBreak.MD);
 
                 main.addBreakpoint(_ -> {
                     menu.setMaxHeight(-1);
@@ -128,11 +131,7 @@ public class Tutorial extends Presentation {
 
         List<TreeTitle> firstLevel = data.stream()
                 .filter(p -> p.getRelated() == null)
-                .peek(c -> {
-//                    c.setText(count + c.getText());
-                    c.setIndex(String.valueOf(count++));
-//                    c.setIndex(count++);
-                })
+                .peek(c -> c.setIndex(String.valueOf(count++)))
                 .toList();
 
         count = 1;
@@ -141,7 +140,7 @@ public class Tutorial extends Presentation {
         firstList.forEach(c -> menu.getChildren().add(c));
 
         nav.getChildren().add(menu);
-        menu.getStyleClass().add("menu-content");
+        menu.getStyleClass().addAll("menu-content", "padding-5");
         VBox.setVgrow(menu, Priority.ALWAYS);
         menu.setPadding(new Insets(0, 0, 20, 0));
 
@@ -149,15 +148,14 @@ public class Tutorial extends Presentation {
             if (newValue != null) {
                 ToggleButton first = firstList.getFirst().getChildren()
                         .stream()
-                        .filter(e -> e instanceof GridPane)
-                        .map(e -> (GridPane) e)
-                        .findFirst().get().getChildren()
-                        .stream()
                         .filter(e -> e instanceof ToggleButton)
                         .map(e -> (ToggleButton) e)
+
                         .findFirst().get();
-                first.setSelected(true);
-                first.getParent().requestFocus();
+                System.out.println("first = " + first);
+//                first.setSelected(true);
+//                group.selectToggle(first);
+//                first.getParent().requestFocus();
             }
         });
     }
@@ -165,9 +163,6 @@ public class Tutorial extends Presentation {
     private int row = 0;
 
     private VBox buildTree(TreeTitle item) {
-        System.out.println("item = " + item);
-        count = 1;
-
         VBox parent = createMenu(item);
         parent.getStyleClass().add("menu");
 
@@ -177,36 +172,33 @@ public class Tutorial extends Presentation {
                                               child.getRelated().getText().equals(item.getText()) && child.getRelated().getId().equals(item.getId())
                         )
                         .toList();
-        System.out.println("children = " + children);
 
         if (!children.isEmpty()) {
-
             children.forEach(c -> {
-//                c.setIndex(item.getIndex() + "." + count++);
-//                c.setText( + count++ + " " + c.getText());
+                c.setIndex(item.getIndex() + "." + count++);
             });
-
+            count = 1;
         }
 
         VBox subMenu = new VBox();
         for (TreeTitle child : children) {
             VBox i = buildTree(child);
             subMenu.getChildren().add(i);
-            subMenu.getStyleClass().add("sub-menu");
+
+            if (!subMenu.getStyleClass().contains("menu")) subMenu.getStyleClass().add("sub-menu");
 
             i.getChildren().stream()
-                    .filter(el -> el instanceof GridPane)
-                    .map(el -> (GridPane) el)
+                    .filter(el -> el instanceof ToggleButton)
+                    .map(el -> (ToggleButton) el)
                     .forEach(e -> {
-                        String val = String.valueOf(((TreeTitle) e.getUserData()).getIndex()).replaceAll("[^0-9]", "") + 1;
-                        for (int k = 0; k < val.length() - 1; k++) { // the spaces
-                            Pane pane = new Pane();
-                            pane.setMinWidth(10);
-
-                            e.add(pane, k, 0);
+                        var offset = 1;
+                        String before = String.valueOf(((TreeTitle) e.getUserData()).getIndex());
+                        String[] arr = before.split("\\.");
+                        for (int k = 0; k < arr.length; k++) {
+                            GridPane.setFillWidth(child, true);
+                            VBox.setMargin(e, new Insets(0, 0, 0, 10 * (offset++)));
                         }
                     });
-
         }
         if (!subMenu.getChildren().isEmpty()) {
             parent.getChildren().add(subMenu);
@@ -215,28 +207,18 @@ public class Tutorial extends Presentation {
     }
 
     private VBox createMenu(TreeTitle label) {
-        VBox root = new VBox();
-
-
-//        ToggleButton toggle = createToggle(label);
-//        ToggleButton toggle = createToggle(label);
-//        root.getChildren().add(toggle);
-        GridPane grid = createItem(label);
-        grid.setPadding(new Insets(2));
-        grid.setMaxHeight(30);
-        grid.getStyleClass().addAll("grid-item", "h6");
-        root.getChildren().add(grid);
-        return root;
+        ToggleButton grid = createItem(label);
+        return new VBox(grid);
     }
 
-    private GridPane createItem(TreeTitle label) {
-        GridPane gridPane = new GridPane();
-        gridPane.setUserData(label);
+    private ToggleButton createItem(TreeTitle label) {
         ToggleButton toggle = createToggle(label);
+        toggle.setMaxHeight(30);
+        toggle.setPadding(new Insets(2));
+        group.getToggles().add(toggle);
         toggle.setUserData(label);
-        toggle.getStyleClass().addAll("overview-item");
-        gridPane.add(toggle, ++row, 0);
-        return gridPane;
+        toggle.getStyleClass().addAll("overview-item", "h6");
+        return toggle;
     }
 
     public void select(String name) {
@@ -254,16 +236,6 @@ public class Tutorial extends Presentation {
         });
     }
 
-//    @ApiStatus.Internal
-//    @Override
-//    protected BlockCode createBlockCode(CodeType codeType, String content) {
-//        return new BlockCode()
-//                .theme(Theme.GITHUB)
-//                .codeType(codeType)
-//                .copy(createCopy())
-//                .content(content)
-//                .build();
-//    }
 
     private Button createCopy() {
         Button button = new Button("Copy");
@@ -292,8 +264,6 @@ public class Tutorial extends Presentation {
         ToggleButton toggle = new ToggleButton(indicators ? label.getIndex() + ". " + label.getText() : label.getText());
 //        ToggleButton toggle = new ToggleButton( label.getIndex() + ". " + label.getText() );
         toggle.setUserData(label);
-        toggle.getStyleClass().addAll("overview-item");
-        group.getToggles().add(toggle);
 
         toggle.selectedProperty().addListener((_, _, newValue) -> {
             if (rolling) return;
@@ -339,8 +309,6 @@ public class Tutorial extends Presentation {
             aside.getStyleClass().add("nav");
 
             // pegando todos os items q são label position e titulos
-
-
             data = items.stream()
                     .filter(filter -> filter instanceof TreeTitle
                                       && (filter.getStyleClass().contains("title") || filter.getStyleClass().stream().anyMatch(clazz -> clazz.startsWith("h"))))
@@ -353,11 +321,10 @@ public class Tutorial extends Presentation {
                     .map(el -> (BlockCode) el)
                     .forEach(e -> {
                         VBox.setVgrow(e, Priority.ALWAYS);
-                        double height = e.getContent().lines().count() * 12.5;
-                        e.setMinHeight(100);
+
+                        double height = e.getContent().lines().count() * 10;
                         e.setMinHeight(e.getMinHeight() + height);
-                        e.setStyle("-fx-padding: 0px;");
-//                    e.setMinHeight(100);
+//                    e.setMinHeight(500);
                     });
 
             // Criando a tree

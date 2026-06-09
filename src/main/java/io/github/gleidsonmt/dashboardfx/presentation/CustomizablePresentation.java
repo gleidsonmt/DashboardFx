@@ -23,7 +23,9 @@ public abstract class CustomizablePresentation extends View implements Actionabl
     @Override
     public void onEnter(Root root) {
         this.root = root;
-        setContent(create().build().getRoot());
+        var presentation = create().build();
+        setContent(presentation.getRoot());
+
         getContent().getStyleClass().addAll("font-instagram");
     }
 
