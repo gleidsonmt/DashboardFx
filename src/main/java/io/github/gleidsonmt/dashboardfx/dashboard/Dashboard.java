@@ -55,7 +55,7 @@ public class Dashboard extends View implements ActionableView {
         grid.setHgap(10);
         grid.setVgap(10);
 
-        title.getStyleClass().addAll("h3", "font-instagram");
+        title.getStyleClass().addAll("h3", "font-instagram-headline");
         title.minHeight(180);
 
         grid.getChildren().addAll(title, one, two, three, four, curvedChart, barChart, boxTechnologies, donutChart, personalCard, boxTable, boxTeam);

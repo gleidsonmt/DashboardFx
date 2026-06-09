@@ -17,24 +17,24 @@ public class ButtonPres extends StackPane {
     public ButtonPres() {
         getChildren().setAll(
                 new Tutorial()
-                        .h3("Button", null)
+                        .h3("Button")
                         .text("A simple button control. The button control can contain text and/or a graphic.")
                         .legend("javafx.scene.control.Button")
                         .text("All classes in (Text) works in the text inside button.")
                         .text("All classes in (Region, Label) can by apply.")
-                        .h3("Theme", "Button")
-                        .h4("Install", "Theme")
+                        .h3("Theme" )
+                        .h4("Install" )
                         .code("ThemeProvider.install(scene, ... \n\tCss.BUTTON);", "java")
-                        .h4("Demo", "Button")
+                        .h4("Demo")
                         .demo(createDemo())
                         .code("""
                                 Button btn = new Button("Button");
                                 """)
 
-                        .h4("Cancel", "Button")
+                        .h4("Cancel")
                         .demo(createDemo("Cancel", false, true))
                         .code("btn.setCancelButton(true);")
-                        .h3("Graphic", "Button")
+                        .h3("Graphic")
                         .text("An optional icon for the Labeled.")
                         .legend("Every node object can be an icon.")
                         .node(TutorialUtils.createLink("See more icons in SVGIcon", "SVGIcon"))
@@ -43,14 +43,14 @@ public class ButtonPres extends StackPane {
                                 Button btn = new Button("Button");
                                 btn.setGraphic(new SVGIcon(Icon.ADD));
                                 """)
-                        .h3("Content Display", "Button")
+                        .h3("Content Display")
                         .node(TutorialUtils.createLink("See more displays in Label", "Label", "Display"))
                         .demo(createDemo("Button", new SVGIcon(Icon.HOME), "display-bottom", "padding-10"))
                         .code("""
                                 Button btn = new Button("Button");
                                 btn.getStyleClass().addAll("display-bottom");
                                 """)
-                        .h3("Flat", "Button")
+                        .h3("Flat")
                         .demo(createDemo("Button", new SVGIcon(Icon.HOME), "flat"))
                         .code("""
                                 btn.getStyleClass().addAll("flat");

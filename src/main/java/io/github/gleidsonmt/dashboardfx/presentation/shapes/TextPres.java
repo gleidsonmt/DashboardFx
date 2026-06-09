@@ -2,6 +2,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.shapes;
 
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.presentation.Presentation;
 import io.github.gleidsonmt.presentation.Row;
 import javafx.scene.Node;
 import javafx.scene.text.Text;
@@ -16,7 +17,7 @@ public class TextPres extends CustomizablePresentation {
         super("Text");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .indicators()
                 .overview()
@@ -32,7 +33,7 @@ public class TextPres extends CustomizablePresentation {
 //                                new Text("Lorem ipsum dolor color")
 //                        ), "Text text = new Text(\"Lorem ipsum dolor color\");", "")
 
-                .h3("Install", "Text")
+                .h3("Install")
                 .code("ThemeProvider.install(root, \n\t... \n\tCss.TYPOGRAPHIC);", "java")
 
                 .demo(new Node[]{
@@ -52,7 +53,7 @@ public class TextPres extends CustomizablePresentation {
                         new Row("h6", "-fx-font-size: 12px;")
                 )
                 .code(" text.getStyleClass().add(\"h-[1|2|3|4|5|6]\"")
-                .h3("Colors", "Text")
+                .h3("Colors")
                 .demo(new Node[]{
                         createDemo("Text Accent", "text-accent"),
                         createDemo("Text Info", "text-info"),
@@ -71,7 +72,7 @@ public class TextPres extends CustomizablePresentation {
                 )
                 .code("text.getStyleClass().add(\"text-[info|elegant|...]\");")
 
-                .h3("Sizes", "Text")
+                .h3("Sizes")
                 .demo(new Node[]{
                         createDemo("text-10", "text-10"),
                         createDemo("text-12", "text-12"),
@@ -87,7 +88,7 @@ public class TextPres extends CustomizablePresentation {
                 })
 
                 .code("text.getStyleClass().add(\"text-[*number*]\");")
-                .h3("Fonts", "Text")
+                .h3("Fonts")
                 .demo(new Node[]{
                         createDemo("Normal"),
                         createDemo("Instagram", "font-instagram", "h5"),

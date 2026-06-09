@@ -3,6 +3,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.presentations.charts;
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.glad.charts.DonutChart;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
@@ -19,7 +20,7 @@ public class DonutChartPres extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .h3("Pie Chart")
                 .text("""

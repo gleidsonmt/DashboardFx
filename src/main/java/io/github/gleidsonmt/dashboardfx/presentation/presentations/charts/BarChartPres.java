@@ -2,6 +2,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.presentations.charts;
 
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
@@ -21,7 +22,7 @@ public class BarChartPres extends CustomizablePresentation {
         super("BarChart");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .overview()
                 .h3("Bar Chart")

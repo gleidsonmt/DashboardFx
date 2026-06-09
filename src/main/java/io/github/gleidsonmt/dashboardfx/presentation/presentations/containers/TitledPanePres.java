@@ -4,6 +4,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.theme.Css;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
@@ -19,7 +20,7 @@ public class TitledPanePres extends CustomizablePresentation {
         super("TitledPane");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .indicators()
                 .overview()
@@ -28,7 +29,7 @@ public class TitledPanePres extends CustomizablePresentation {
                 .text("A control with a titled header that can expand or collapse its content.")
                 // .link([link to explanation]) ir para temas
                 .demo(createExample())
-                .h4("Install", "TitledPane")
+                .h4("Install")
                 .code(TutorialUtils.installExample(Css.TITLED_PANE, "TitledPane") + "\npane.setContent(new StackPane(new Label(\"TitledPane Content\")));")
             ;
     }

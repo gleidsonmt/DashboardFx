@@ -4,6 +4,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.theme.Css;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -14,7 +15,7 @@ public class ScrollPane extends CustomizablePresentation {
         super("ScrollPane");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .h3("ScrollPane")
                 .text("""
@@ -22,7 +23,7 @@ public class ScrollPane extends CustomizablePresentation {
                         Put multiple controls inside a layout container, then set that container as the ScrollPane content.""")
                 .legend("javafx.scene.control.ScrollPane")
                 .demo(createDemo())
-                .h4("Install", "ScrollPane")
+                .h4("Install")
                 .code(TutorialUtils.installExample(Css.IMMERSIVE_SCROLL) + """
                        
                         VBox contentBox = new VBox(15);

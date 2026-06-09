@@ -4,6 +4,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.presentation.Presentation;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -16,7 +17,7 @@ public class HomePageView extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .h3("Home Page")
                 .separator()

@@ -4,6 +4,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.theme.Css;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Orientation;
@@ -26,7 +27,7 @@ public class SliderPres extends CustomizablePresentation {
         super("Slider");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .h3("Slider")
                 .text("""
@@ -34,7 +35,7 @@ public class SliderPres extends CustomizablePresentation {
                         It can be displayed horizontally or vertically, show tick marks and labels, snap to fixed steps, and react to value changes in real time.""")
                 .legend("javafx.scene.control.Slider")
                 .demo(createDemo())
-                .h4("Install", "Slider")
+                .h4("Install")
                 .code(TutorialUtils.installExample(Css.SLIDER) + """
                         Text textSimpleSlider = new Text("Basic Slider: ");
 

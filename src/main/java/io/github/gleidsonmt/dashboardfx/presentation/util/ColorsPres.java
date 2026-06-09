@@ -10,6 +10,7 @@ import io.github.gleidsonmt.dashboardfx.utils.HoverAnimation;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
@@ -31,21 +32,21 @@ public class ColorsPres extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         try {
             return new Tutorial()
                     .overview()
                     .h3("Colors")
                     .text("Sample of colors, you can copy and use.")
-                    .h4("Install", "Colors")
+                    .h4("Install")
                     .code("ThemeProvider.install(scene, \n\t... \n\tCss.COLORS);", "java")
 
-                    .h4("Grid Colors", "Colors")
+                    .h4("Grid Colors")
                     .text("Common colors.")
                     .node(TutorialUtils.createCardLink("HanSolo Colors", new URI("https://github.com/HanSolo/Colors")))
                     .node(createGrid())
 
-                    .h4("Bootstrap", "Colors")
+                    .h4("Bootstrap")
                     .text("Common colors.")
                     .demo(new Node[]{
                             createDemo("-primary"),
@@ -57,7 +58,7 @@ public class ColorsPres extends CustomizablePresentation {
                             createDemo("-unique"),
                             createDemo("-elegant")
                     })
-                    .h4("Theme", "Colors")
+                    .h4("Theme")
                     .text("Named colors")
                     .demo(new Node[]{
                             createDemo("-brown"),

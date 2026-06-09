@@ -1,5 +1,4 @@
 module io.github.gleidsonmt.dashboardfx {
-
     requires javafx.media;
     requires javafx.graphics;
 
@@ -13,12 +12,13 @@ module io.github.gleidsonmt.dashboardfx {
 
     requires eu.hansolo.colors;
     requires io.github.gleidsonmt.presentation;
-    requires io.github.gleidsonmt.blockcode;
     requires java.desktop;
     requires javafx.controls;
     requires javafx.base;
     requires java.logging;
     requires org.yaml.snakeyaml;
+
+    requires transitive io.github.gleidsonmt.blockcode;
 
     opens io.github.gleidsonmt.dashboardfx to javafx.fxml;
     exports io.github.gleidsonmt.dashboardfx;
@@ -29,5 +29,4 @@ module io.github.gleidsonmt.dashboardfx {
     opens io.github.gleidsonmt.dashboardfx.model to javafx.base;
     exports io.github.gleidsonmt.dashboardfx.material;
     opens io.github.gleidsonmt.dashboardfx.material to javafx.fxml;
-
 }

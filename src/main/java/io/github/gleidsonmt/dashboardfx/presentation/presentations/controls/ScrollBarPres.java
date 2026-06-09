@@ -6,6 +6,7 @@ import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.Resources;
 import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.theme.Css;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.property.DoubleProperty;
@@ -25,7 +26,7 @@ public class ScrollBarPres extends CustomizablePresentation {
         super("ScrollBar");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .h3("ScrollBar")
                 .text("""
@@ -33,7 +34,7 @@ public class ScrollBarPres extends CustomizablePresentation {
                         It is useful when you need direct control over a value, or when you are building a custom scrollable component.""")
                 .legend("javafx.scene.control.ScrollBar")
                 .demo(createDemo())
-                .h4("Install", "ScrollBar")
+                .h4("Install")
                 .code(TutorialUtils.installExample(Css.SCROLLBAR) + """ 
                         
                                ScrollBar scrollBarV = new ScrollBar();

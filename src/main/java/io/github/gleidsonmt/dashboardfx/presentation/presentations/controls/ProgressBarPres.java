@@ -4,6 +4,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.theme.Css;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.scene.Node;
 import javafx.scene.control.ProgressBar;
 import org.jetbrains.annotations.NotNull;
@@ -18,21 +19,21 @@ public class ProgressBarPres extends CustomizablePresentation {
         super("ProgressBar");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .h3("ProgressBar")
                 .text("A specialization of the ProgressIndicator which is represented as a horizontal bar.\n" +
                       "ProgressBar sets focusTraversable to false.")
                 .legend("javafx.scene.control.ProgressBar")
 
-                .h4("Install", "ProgressBar")
+                .h4("Install")
                 .demo(new Node[]{
                         createDemo(0.5),
                         createDemo(0.75),
                         createDemo(0.75),
                         createDemo(-1)
                 })
-                .h4("Install", "ProgressBar")
+                .h4("Install")
                 .code(TutorialUtils.installExample(Css.PROGRESS_BAR, "ProgressBar"))
                 ;
     }

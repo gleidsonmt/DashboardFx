@@ -2,6 +2,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.presentations.charts;
 
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.scene.Node;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.StackedAreaChart;
@@ -17,7 +18,7 @@ public class StackedAreaChartPres extends CustomizablePresentation {
         super("StackedAreaChart");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .h3("Stacked Area Chart")
                 .text("""

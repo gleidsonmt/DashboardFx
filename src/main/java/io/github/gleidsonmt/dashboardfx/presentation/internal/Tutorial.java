@@ -1,28 +1,7 @@
-/*
- *
- *    Copyright (C) Gleidson Neves da Silveira
- *
- *    This program is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
- *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- */
-
 package io.github.gleidsonmt.dashboardfx.presentation.internal;
 
 
 import io.github.gleidsonmt.blockcode.BlockCode;
-import io.github.gleidsonmt.blockcode.CodeType;
-import io.github.gleidsonmt.blockcode.Theme;
 import io.github.gleidsonmt.dashboardfx.utils.Scroll;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
@@ -50,10 +29,9 @@ import java.util.*;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Version 0.0.1
  * Create on  19/01/2023
  */
-public class Tutorial extends Presentation<Tutorial> {
+public class Tutorial extends Presentation {
 
     private final ScrollPane scroll = new ScrollPane();
     private final BorderPane body = new BorderPane();
@@ -82,6 +60,9 @@ public class Tutorial extends Presentation<Tutorial> {
         scroll.setMinHeight(500);
 
         getRoot().sceneProperty().addListener((_, _, newValue) -> {
+            group.selectToggle(group.getToggles().getFirst());
+            ((ToggleButton) group.getToggles().getFirst()).requestFocus();
+
             if (newValue != null) {
                 Root main = (Root) newValue.getRoot();
                 main.addBreakpoint(_ -> {
@@ -93,7 +74,7 @@ public class Tutorial extends Presentation<Tutorial> {
                     aside.setMaxHeight(100);
                     aside.setPrefHeight(100);
 
-                },  DefaultBreak.SM, DefaultBreak.MD);
+                }, DefaultBreak.SM, DefaultBreak.MD);
 
                 main.addBreakpoint(_ -> {
                     menu.setMaxHeight(-1);
@@ -150,10 +131,7 @@ public class Tutorial extends Presentation<Tutorial> {
 
         List<TreeTitle> firstLevel = data.stream()
                 .filter(p -> p.getRelated() == null)
-                .peek(c -> {
-//                    c.setText(count + c.getText());
-                    c.setIndex(String.valueOf(count++));
-                })
+                .peek(c -> c.setIndex(String.valueOf(count++)))
                 .toList();
 
         count = 1;
@@ -162,7 +140,7 @@ public class Tutorial extends Presentation<Tutorial> {
         firstList.forEach(c -> menu.getChildren().add(c));
 
         nav.getChildren().add(menu);
-        menu.getStyleClass().add("menu-content");
+        menu.getStyleClass().addAll("menu-content", "padding-5");
         VBox.setVgrow(menu, Priority.ALWAYS);
         menu.setPadding(new Insets(0, 0, 20, 0));
 
@@ -170,15 +148,14 @@ public class Tutorial extends Presentation<Tutorial> {
             if (newValue != null) {
                 ToggleButton first = firstList.getFirst().getChildren()
                         .stream()
-                        .filter(e -> e instanceof GridPane)
-                        .map(e -> (GridPane) e)
-                        .findFirst().get().getChildren()
-                        .stream()
                         .filter(e -> e instanceof ToggleButton)
                         .map(e -> (ToggleButton) e)
+
                         .findFirst().get();
-                first.setSelected(true);
-                first.getParent().requestFocus();
+                System.out.println("first = " + first);
+//                first.setSelected(true);
+//                group.selectToggle(first);
+//                first.getParent().requestFocus();
             }
         });
     }
@@ -199,7 +176,6 @@ public class Tutorial extends Presentation<Tutorial> {
         if (!children.isEmpty()) {
             children.forEach(c -> {
                 c.setIndex(item.getIndex() + "." + count++);
-//                c.setText(item.getIndex() + "." + count++ + " " + c.getText());
             });
             count = 1;
         }
@@ -208,22 +184,21 @@ public class Tutorial extends Presentation<Tutorial> {
         for (TreeTitle child : children) {
             VBox i = buildTree(child);
             subMenu.getChildren().add(i);
-            subMenu.getStyleClass().add("sub-menu");
+
+            if (!subMenu.getStyleClass().contains("menu")) subMenu.getStyleClass().add("sub-menu");
 
             i.getChildren().stream()
-                    .filter(el -> el instanceof GridPane)
-                    .map(el -> (GridPane) el)
+                    .filter(el -> el instanceof ToggleButton)
+                    .map(el -> (ToggleButton) el)
                     .forEach(e -> {
-                        String val = String.valueOf(((TreeTitle) e.getUserData()).getIndex()).replaceAll("[^0-9]", "") + 1;
-
-                        for (int k = 0; k < val.length() - 1; k++) { // the spaces
-                            Pane pane = new Pane();
-                            pane.setMinWidth(10);
-
-                            e.add(pane, k, 0);
+                        var offset = 1;
+                        String before = String.valueOf(((TreeTitle) e.getUserData()).getIndex());
+                        String[] arr = before.split("\\.");
+                        for (int k = 0; k < arr.length; k++) {
+                            GridPane.setFillWidth(child, true);
+                            VBox.setMargin(e, new Insets(0, 0, 0, 10 * (offset++)));
                         }
                     });
-
         }
         if (!subMenu.getChildren().isEmpty()) {
             parent.getChildren().add(subMenu);
@@ -232,28 +207,18 @@ public class Tutorial extends Presentation<Tutorial> {
     }
 
     private VBox createMenu(TreeTitle label) {
-        VBox root = new VBox();
-
-
-//        ToggleButton toggle = createToggle(label);
-//        ToggleButton toggle = createToggle(label);
-//        root.getChildren().add(toggle);
-        GridPane grid = createItem(label);
-        grid.setPadding(new Insets(2));
-        grid.setMaxHeight(30);
-        grid.getStyleClass().addAll("grid-item", "h6");
-        root.getChildren().add(grid);
-        return root;
+        ToggleButton grid = createItem(label);
+        return new VBox(grid);
     }
 
-    private GridPane createItem(TreeTitle label) {
-        GridPane gridPane = new GridPane();
-        gridPane.setUserData(label);
+    private ToggleButton createItem(TreeTitle label) {
         ToggleButton toggle = createToggle(label);
+        toggle.setMaxHeight(30);
+        toggle.setPadding(new Insets(2));
+        group.getToggles().add(toggle);
         toggle.setUserData(label);
-        toggle.getStyleClass().addAll("overview-item");
-        gridPane.add(toggle, ++row, 0);
-        return gridPane;
+        toggle.getStyleClass().addAll("overview-item", "h6");
+        return toggle;
     }
 
     public void select(String name) {
@@ -271,16 +236,6 @@ public class Tutorial extends Presentation<Tutorial> {
         });
     }
 
-    @ApiStatus.Internal
-    @Override
-    protected BlockCode createBlockCode(CodeType codeType, String content) {
-        return new BlockCode()
-                .theme(Theme.GITHUB)
-                .codeType(codeType)
-                .copy(createCopy())
-                .content(content)
-                .build();
-    }
 
     private Button createCopy() {
         Button button = new Button("Copy");
@@ -309,8 +264,6 @@ public class Tutorial extends Presentation<Tutorial> {
         ToggleButton toggle = new ToggleButton(indicators ? label.getIndex() + ". " + label.getText() : label.getText());
 //        ToggleButton toggle = new ToggleButton( label.getIndex() + ". " + label.getText() );
         toggle.setUserData(label);
-        toggle.getStyleClass().addAll("overview-item");
-        group.getToggles().add(toggle);
 
         toggle.selectedProperty().addListener((_, _, newValue) -> {
             if (rolling) return;
@@ -356,8 +309,6 @@ public class Tutorial extends Presentation<Tutorial> {
             aside.getStyleClass().add("nav");
 
             // pegando todos os items q são label position e titulos
-
-
             data = items.stream()
                     .filter(filter -> filter instanceof TreeTitle
                                       && (filter.getStyleClass().contains("title") || filter.getStyleClass().stream().anyMatch(clazz -> clazz.startsWith("h"))))
@@ -370,11 +321,10 @@ public class Tutorial extends Presentation<Tutorial> {
                     .map(el -> (BlockCode) el)
                     .forEach(e -> {
                         VBox.setVgrow(e, Priority.ALWAYS);
-                        double height = e.getContent().lines().count() * 12.5;
-                        e.setMinHeight(100);
+
+                        double height = e.getContent().lines().count() * 10;
                         e.setMinHeight(e.getMinHeight() + height);
-                        e.setStyle("-fx-padding: 0px;");
-//                    e.setMinHeight(100);
+//                    e.setMinHeight(500);
                     });
 
             // Criando a tree

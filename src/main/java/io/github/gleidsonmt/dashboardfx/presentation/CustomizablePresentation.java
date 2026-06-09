@@ -4,6 +4,7 @@ import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.drawer.View;
+import io.github.gleidsonmt.presentation.Presentation;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -15,14 +16,17 @@ public abstract class CustomizablePresentation extends View implements Actionabl
         super(name);
     }
 
-    public abstract Tutorial create();
+    public abstract Presentation create();
 
     private Root root;
 
     @Override
     public void onEnter(Root root) {
-        this.root =root;
-        setContent(create().build().getRoot());
+        this.root = root;
+        var presentation = create().build();
+        setContent(presentation.getRoot());
+
+        getContent().getStyleClass().addAll("font-instagram");
     }
 
     public Root getRoot() {

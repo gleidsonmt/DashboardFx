@@ -5,6 +5,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;
@@ -22,10 +23,10 @@ public class SVGIconPres extends CustomizablePresentation {
         super("SVGIcon");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
 
         return new Tutorial()
-                .h2("Icons", null)
+                .h2("Icons")
                 .text("""
                         This icon is minor collection of google icons.
                         """)

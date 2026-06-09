@@ -2,6 +2,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.presentations.charts;
 
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.scene.Node;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -19,7 +20,7 @@ public class LineChartPres extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .h3("Line Chart")
                 .text("""

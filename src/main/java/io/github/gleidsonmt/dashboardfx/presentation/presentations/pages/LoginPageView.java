@@ -7,6 +7,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.presentation.Code;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -26,7 +27,7 @@ public class LoginPageView extends CustomizablePresentation implements Actionabl
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
 
         return new Tutorial()
                 .h3("Login Page")

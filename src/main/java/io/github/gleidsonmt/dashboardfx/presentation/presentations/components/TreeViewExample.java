@@ -23,7 +23,7 @@ public class TreeViewExample extends StackPane {
                 new Tutorial()
                         .h3("TreeView")
                         .text("Button style examples.")
-                        .h3("Check List", "Tree View")
+                        .h3("Check List")
                         .demo(createTreeCheck())
                         .code("""
                                 CheckBoxTreeItem<String> jonathanGiles = new CheckBoxTreeItem<>("Jonathan");
