@@ -66,7 +66,7 @@ public class BarChartPres extends CustomizablePresentation {
                         barChart.getData().addAll(s, b, c);
                         """)
 
-                .h3("Horizonal")
+                .h3("Horizontal")
                 .demo(createChartHorizontal())
                 .code("""
                         CategoryAxis yAxis = new CategoryAxis();
