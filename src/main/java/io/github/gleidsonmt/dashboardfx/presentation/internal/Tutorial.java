@@ -60,6 +60,7 @@ public class Tutorial extends Presentation {
         scroll.setMinHeight(500);
 
         getRoot().sceneProperty().addListener((_, _, newValue) -> {
+            if (!overview) return;
             group.selectToggle(group.getToggles().getFirst());
             ((ToggleButton) group.getToggles().getFirst()).requestFocus();
 
