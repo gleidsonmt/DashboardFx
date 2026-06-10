@@ -236,3 +236,6 @@
     -fx-font-family: "Instagram Sans";
 }
 
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    -fx-font-family: "Instagram Sans Headline";
+}
