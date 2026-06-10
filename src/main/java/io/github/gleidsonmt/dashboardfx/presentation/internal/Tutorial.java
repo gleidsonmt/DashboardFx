@@ -51,12 +51,11 @@ public class Tutorial extends Presentation {
     public Tutorial() {
         body.setUserData(this);
         aside.setPadding(new Insets(0, 20, 0, 20));
-        aside.setPrefWidth(250);
+//        aside.setPrefWidth(250);
         btnTop.getStyleClass().addAll("btn-directions padding-20 round".split(" "));
         center.setId("tutorial-center-body");
         scroll.setId("tutorial-scroll");
         body.setId("tutorial-body");
-
         scroll.setMinHeight(500);
 
         getRoot().sceneProperty().addListener((_, _, newValue) -> {
@@ -141,9 +140,9 @@ public class Tutorial extends Presentation {
         firstList.forEach(c -> menu.getChildren().add(c));
 
         nav.getChildren().add(menu);
-        menu.getStyleClass().addAll("menu-content", "padding-5");
+        menu.getStyleClass().addAll("menu-content", "padding-20");
         VBox.setVgrow(menu, Priority.ALWAYS);
-        menu.setPadding(new Insets(0, 0, 20, 0));
+//        menu.setPadding(new Insets(0, 0, 20, 0));
 
         this.getRoot().sceneProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {
@@ -153,15 +152,12 @@ public class Tutorial extends Presentation {
                         .map(e -> (ToggleButton) e)
 
                         .findFirst().get();
-                System.out.println("first = " + first);
 //                first.setSelected(true);
 //                group.selectToggle(first);
 //                first.getParent().requestFocus();
             }
         });
     }
-
-    private int row = 0;
 
     private VBox buildTree(TreeTitle item) {
         VBox parent = createMenu(item);
