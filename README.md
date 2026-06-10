@@ -1,4 +1,4 @@
-# DashboardFx
+# 🚀 DashboardFx
 
 [![News](https://img.shields.io/badge/Newsletter-brightgreen.svg?style=for-the-badge)](HISTORY.md)
 [![License](https://img.shields.io/github/license/gleidsonmt/DashboardFx.svg?style=for-the-badge)](https://github.com/gleidsonmt/DashboardFX/blob/alpha/LICENSE.txt)
@@ -11,7 +11,6 @@
 </p>
 
 <!-- TOC -->
-* [DashboardFx](#dashboardfx)
 * [📑 Overview](#-overview)
 * [💻 Environment](#-environment)
 * [☕ Running](#-running)
