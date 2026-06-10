@@ -123,16 +123,16 @@ public class DesignSystem extends CustomizablePresentation {
 
     private HBox createFontContainer(String example) {
         HBox box = new HBox(
-                createRightContainer("Aa", example.toLowerCase()),
-                createLeftContainer(example, example.toLowerCase().equals("poppins") ? " (Tile/Headings) " : " (Body/Text) ")
+                createRightContainer(example.toLowerCase()),
+                createLeftContainer(example, example.equalsIgnoreCase("poppins") ? " (Tile/Headings) " : " (Body/Text) ")
         );
         box.setSpacing(20);
         box.getStyleClass().addAll("padding-10  radius-10".split(" "));
         return box;
     }
 
-    private Label createRightContainer(String val, String font) {
-        Label label = new Label(val);
+    private Label createRightContainer(String font) {
+        Label label = new Label("Aa");
         label.getStyleClass().addAll("font-" + font, "text-48");
         return label;
     }

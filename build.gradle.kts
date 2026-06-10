@@ -79,3 +79,14 @@ jlink {
 
     addExtraDependencies("javafx")
 }
+
+tasks.register("debug") {
+    group = "application"
+    description = "Runs the application in debug mode."
+    dependsOn("run")
+}
+
+tasks.register("log") {
+    group = "application"
+    dependsOn("run")
+}
