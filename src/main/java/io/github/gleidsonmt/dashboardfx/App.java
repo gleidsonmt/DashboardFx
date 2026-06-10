@@ -26,9 +26,10 @@ public class App extends Application {
         stage.setMaximized(true);
         stage.setTitle("Blue Galaxy");
 
-        ThemeProvider.install(scene, Css.ALL, Font.INSTAGRAM);
+        ThemeProvider.install(scene, Css.ALL, Font.INSTAGRAM, Font.POPPINS);
 
         scene.getStylesheets().add(Assets.getCss("master.css"));
+        scene.getStylesheets().add(Assets.getCss("drawer.css"));
         stage.getIcons().add(Assets.getImage("logo_128.png"));
         stage.show();
 

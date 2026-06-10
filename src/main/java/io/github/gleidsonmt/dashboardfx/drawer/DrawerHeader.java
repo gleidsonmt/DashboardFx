@@ -36,7 +36,7 @@ public class DrawerHeader extends GridPane {
         logoTest.setRotate(180);
         logoTest.setStyle("-fx-fill: -fx-accent; -fx-font-size: 38px; -fx-font-family: \"JetBrains Mono\"; ");
         logoTest.setStrokeType(StrokeType.OUTSIDE);
-        logoTest.getStyleClass().addAll("depth-1", "font-instagram");
+        logoTest.getStyleClass().addAll("font-instagram-headline");
         logoTest.setStrokeWidth(1);
         logoTest.setUnderline(true);
         logoTest.setWrappingWidth(20);

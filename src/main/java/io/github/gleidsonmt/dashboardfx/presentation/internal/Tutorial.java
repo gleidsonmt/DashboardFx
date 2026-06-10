@@ -51,12 +51,11 @@ public class Tutorial extends Presentation {
     public Tutorial() {
         body.setUserData(this);
         aside.setPadding(new Insets(0, 20, 0, 20));
-        aside.setPrefWidth(250);
+//        aside.setPrefWidth(250);
         btnTop.getStyleClass().addAll("btn-directions padding-20 round".split(" "));
         center.setId("tutorial-center-body");
         scroll.setId("tutorial-scroll");
         body.setId("tutorial-body");
-
         scroll.setMinHeight(500);
 
         getRoot().sceneProperty().addListener((_, _, newValue) -> {
@@ -141,9 +140,9 @@ public class Tutorial extends Presentation {
         firstList.forEach(c -> menu.getChildren().add(c));
 
         nav.getChildren().add(menu);
-        menu.getStyleClass().addAll("menu-content", "padding-5");
+        menu.getStyleClass().addAll("menu-content", "padding-20");
         VBox.setVgrow(menu, Priority.ALWAYS);
-        menu.setPadding(new Insets(0, 0, 20, 0));
+//        menu.setPadding(new Insets(0, 0, 20, 0));
 
         this.getRoot().sceneProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {
@@ -153,15 +152,12 @@ public class Tutorial extends Presentation {
                         .map(e -> (ToggleButton) e)
 
                         .findFirst().get();
-                System.out.println("first = " + first);
 //                first.setSelected(true);
 //                group.selectToggle(first);
 //                first.getParent().requestFocus();
             }
         });
     }
-
-    private int row = 0;
 
     private VBox buildTree(TreeTitle item) {
         VBox parent = createMenu(item);
@@ -295,17 +291,17 @@ public class Tutorial extends Presentation {
     @Override
     public Tutorial build() {
         if (overview) {
-            Label title = new Label("Overview Content");
-            title.getStyleClass().addAll("overview-title");
-            title.setGraphic(new SVGIcon(Icon.STACK));
+            Label title = new Label("Overview");
+            title.getStyleClass().addAll("overview-title", "h5");
+            title.setStyle("-fx-graphic-text-gap: 12px;");
+            title.setGraphic(new SVGIcon(Icon.STACK, 1.2));
 //        title.setStyle("-fx-font-family: \"Instagram Sans Headline Bold\"; " +
 //                       "-fx-font-size: 14px; " +
 //                       "-fx-fill: -fx-accent; " +
 //                       "");
-            aside.setPadding(new Insets(20));
             aside.getChildren().add(title);
-            aside.setSpacing(20);
-            aside.setAlignment(Pos.TOP_CENTER);
+            aside.getStyleClass().addAll("align-top-left", "spacing-20", "padding-20");
+            title.setTranslateX(-10);
 
             aside.getStyleClass().add("nav");
 

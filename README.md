@@ -4,8 +4,6 @@
 [![License](https://img.shields.io/github/license/gleidsonmt/DashboardFx.svg?style=for-the-badge)](https://github.com/gleidsonmt/DashboardFX/blob/alpha/LICENSE.txt)
 ![Build](https://img.shields.io/github/v/tag/gleidsonmt/DashboardFx.svg?color=gray&label=Version&style=for-the-badge)
 
-
-
 <p style="text-align: center">
   <img src="./screenshots/dash-2.png"   alt="dashboard_screenshot"/>
 </p>
