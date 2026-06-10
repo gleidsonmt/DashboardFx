@@ -110,7 +110,7 @@ public class DesignSystem extends CustomizablePresentation {
     private VBox createBox(String color, String hex) {
         VBox box = new VBox(createLabel(color), createLabel(hex), createLabel("-" + color.toLowerCase()));
         box.getStyleClass().add("bg-" + color.toLowerCase());
-        box.getStyleClass().addAll("padding-10 w-100 h-100 radius-10".split(" "));
+        box.getStyleClass().addAll("padding-10 w-100 h-100 radius-10 h6 bold".split(" "));
         return box;
     }
 

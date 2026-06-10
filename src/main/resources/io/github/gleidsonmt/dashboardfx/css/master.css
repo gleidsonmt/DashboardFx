@@ -239,3 +239,11 @@
 .h1, .h2, .h3, .h4, .h5, .h6 {
     -fx-font-family: "Instagram Sans Headline";
 }
+
+.copy-button .text {
+    -fx-fill: -dark-gray;
+}
+.copy-button {
+    -fx-background-color: white;
+    -fx-border-color: -light-gray-2;
+}
