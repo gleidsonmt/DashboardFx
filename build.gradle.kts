@@ -42,7 +42,7 @@ dependencies {
 
 application {
     mainModule = "io.github.gleidsonmt.dashboardfx"
-    mainClass = "io.github.gleidsonmt.dashboardfx.App"
+    mainClass = "io.github.gleidsonmt.dashboardfx.Launcher"
 }
 
 val requestedTasks = gradle.startParameter.taskNames
@@ -78,6 +78,10 @@ jlink {
     }
 
     addExtraDependencies("javafx")
+}
+
+tasks.named<JavaExec>("run") {
+    args(runMode)
 }
 
 tasks.register("debug") {
