@@ -291,17 +291,17 @@ public class Tutorial extends Presentation {
     @Override
     public Tutorial build() {
         if (overview) {
-            Label title = new Label("Overview Content");
-            title.getStyleClass().addAll("overview-title");
-            title.setGraphic(new SVGIcon(Icon.STACK));
+            Label title = new Label("Overview");
+            title.getStyleClass().addAll("overview-title", "h5");
+            title.setStyle("-fx-graphic-text-gap: 12px;");
+            title.setGraphic(new SVGIcon(Icon.STACK, 1.2));
 //        title.setStyle("-fx-font-family: \"Instagram Sans Headline Bold\"; " +
 //                       "-fx-font-size: 14px; " +
 //                       "-fx-fill: -fx-accent; " +
 //                       "");
-            aside.setPadding(new Insets(20));
             aside.getChildren().add(title);
-            aside.setSpacing(20);
-            aside.setAlignment(Pos.TOP_CENTER);
+            aside.getStyleClass().addAll("align-top-left", "spacing-20", "padding-20");
+            title.setTranslateX(-10);
 
             aside.getStyleClass().add("nav");
 

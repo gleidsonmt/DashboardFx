@@ -30,7 +30,7 @@ public class DesignSystem extends CustomizablePresentation {
         return new Tutorial()
                 .overview()
                 .indicators()
-                .h1(new SVGIcon(Icon.DESIGN_SERVICES, 2),"Design System")
+                .h1(new SVGIcon(Icon.DESIGN_SERVICES, 1.8),"Design System")
                 .separator()
 
                 .text("The most important thing to understand is that the design system here is a set of css files essentially.")

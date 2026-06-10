@@ -29,6 +29,7 @@ public class App extends Application {
         ThemeProvider.install(scene, Css.ALL, Font.INSTAGRAM, Font.POPPINS);
 
         scene.getStylesheets().add(Assets.getCss("master.css"));
+        scene.getStylesheets().add(Assets.getCss("drawer.css"));
         stage.getIcons().add(Assets.getImage("logo_128.png"));
         stage.show();
 
