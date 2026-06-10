@@ -3,6 +3,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.presentations.components;
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.glad.controls.toggle_switch.ToggleSwitch;
+import io.github.gleidsonmt.presentation.Presentation;
 import io.github.gleidsonmt.presentation.Row;
 import javafx.scene.Node;
 
@@ -16,7 +17,7 @@ public class ToggleSwitchPres extends CustomizablePresentation {
         super("ToggleSwitch");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .h3("Toggle Switch")
                 .separator()
@@ -26,7 +27,7 @@ public class ToggleSwitchPres extends CustomizablePresentation {
                 .demo(
                         new ToggleSwitch()
                 )
-                .h3("Install", "Toggle Switch")
+                .h3("Install")
                 .code("""
                         // Constructors
                         ToggleSwitch toggleSwitch = new ToggleSwitch();
@@ -42,7 +43,7 @@ public class ToggleSwitchPres extends CustomizablePresentation {
                         new Row("-fx-track-color", "<paint>")
                 )
 
-                .h3("Custom", "Toggle Switch")
+                .h3("Custom")
                 .demo(
                         new Node[]{
                                 createDemo("-fx-arc-size: 0px;"),

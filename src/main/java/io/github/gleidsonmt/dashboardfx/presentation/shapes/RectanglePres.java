@@ -2,6 +2,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.shapes;
 
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -14,7 +15,7 @@ public class RectanglePres extends CustomizablePresentation {
         super("Rectangle");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .indicators()
                 .overview()
@@ -26,7 +27,7 @@ public class RectanglePres extends CustomizablePresentation {
                         Use x and y to place each rectangle freely inside a Pane.""")
 
                 .legend("javafx.scene.shape.Rectangle")
-                .h3("Install", "Rectangle")
+                .h3("Install")
                 .code("ThemeProvider.install(root, \n\t... \n\tCss.RECTANGLE);", "java")
 
                 .separator()

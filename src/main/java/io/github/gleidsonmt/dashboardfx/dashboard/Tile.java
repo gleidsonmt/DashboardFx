@@ -25,7 +25,7 @@ public class Tile extends VBox {
         Text title = new Text(_title);
         title.setCacheHint(CacheHint.QUALITY);
 //        title.setStyle("-fx-font-family: \"Instagram Sans\";");
-        title.getStyleClass().add("h4");
+        title.getStyleClass().addAll("h4");
 
         this.getChildren().addAll(title, content);
         this.setMinHeight(300);

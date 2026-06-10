@@ -2,6 +2,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.presentations.controls;
 
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -17,7 +18,7 @@ public class TreeViewPres extends CustomizablePresentation {
         super("TreeView");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return   new Tutorial()
                         .h3("Tree View")
                         .text("""
@@ -25,7 +26,7 @@ public class TreeViewPres extends CustomizablePresentation {
                                 By using a TreeView, it is possible to drill down into the children of a TreeItem, recursively until a TreeItem has no children (that is, it is a leaf node in the tree). 
                                 To facilitate this, unlike controls like ListView, in TreeView it is necessary to only specify the root node.""")
                         .legend("javafx.scene.control.TreeView")
-                        .h3("Default", "Tree View")
+                        .h3("Default")
                         .demo(createDemo())
                         .code("""
                                 TreeView<String> treeView = new TreeView<>();
@@ -36,7 +37,7 @@ public class TreeViewPres extends CustomizablePresentation {
                                 root.getChildren().addAll(leafOne, leafTwo);
                                 treeView.setRoot(root);
                                 """)
-                        .h3("Check List", "Tree View")
+                        .h3("Check List")
                         .demo(createTreeCheck())
                         .code("""
                                 CheckBoxTreeItem<String> jonathanGiles = new CheckBoxTreeItem<>("Jonathan");

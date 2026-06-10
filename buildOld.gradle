@@ -1,9 +1,14 @@
 plugins {
     id 'java'
     id 'application'
+    id 'java-library'
     id 'org.javamodularity.moduleplugin' version '1.8.12'
-    id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
     id 'org.beryx.jlink' version '2.25.0'
+}
+
+java {
+    modularity.inferModulePath = true
 }
 
 group 'io.github.gleidsonmt'
@@ -41,7 +46,8 @@ javafx {
 
 dependencies {
     implementation files('vendor/colors-1.0.jar');
-//    implementation files('vendor/cssfx-11.5.1.jar');
+//    implementation files('vendor/presentation-1.1.0.jar');
+//    implementation files('vendor/blockcode-1.0.353.jar');
     implementation 'org.jetbrains:annotations:24.0.1'
 
     // https://mvnrepository.com/artifact/org.yaml/snakeyaml
@@ -50,18 +56,18 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
-    implementation project(":blockcode")
     implementation project(":glad")
+//    implementation project(":blockcode")
     implementation project(":presentation")
 }
 
-distTar {
-    setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-}
-
-distZip {
-    setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-}
+//distTar {
+//    setDuplicatesStrategy(DuplicatesStrategy.INHERIT)
+//}
+//
+//distZip {
+//    setDuplicatesStrategy(DuplicatesStrategy.INHERIT)
+//}
 
 test {
     useJUnitPlatform()
@@ -95,6 +101,8 @@ jlink {
     }
 
 }
+
+
 
 jlinkZip {
     group = 'distribution'

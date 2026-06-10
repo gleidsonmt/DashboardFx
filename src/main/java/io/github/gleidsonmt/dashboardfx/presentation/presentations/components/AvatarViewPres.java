@@ -6,6 +6,7 @@ import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.controls.avatar.AvatarStatus;
 import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
 import io.github.gleidsonmt.glad.controls.avatar.StackedAvatar;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.scene.Node;
 
 /**
@@ -18,14 +19,14 @@ public class AvatarViewPres extends CustomizablePresentation {
         super("AvatarView");
     }
 
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .h3("Avatar View")
                 .text("A simple shape using ImagePattern, to build a shape with an image.")
                 .legend("io.github.gleidsonmt.glad.controls.avatar.AvatarView")
                 .legend("All classes in (Shapes) can by apply in avatar.")
 
-                .h4("Creating", "Avatar View")
+                .h4("Creating")
                 .demo(new Node[]{
                                 new AvatarView(Assets.getImage("default_avatar.jpg"), 0, 40),
                                 new AvatarView(Assets.getImage("default_avatar.jpg"), 0, 60),
@@ -40,7 +41,7 @@ public class AvatarViewPres extends CustomizablePresentation {
                         avatar.setRadius(60); // Third
                         """)
 
-                .h5("Circle", "Creating")
+                .h5("Circle")
                 .demo(new Node[]{
                         new AvatarView(Assets.getImage("default_avatar.jpg"), 40, 40),
                         new AvatarView(Assets.getImage("default_avatar.jpg"), 60, 60),
@@ -51,15 +52,15 @@ public class AvatarViewPres extends CustomizablePresentation {
                         """)
 
 
-                .h4("Stroke", "Avatar View")
-                .h4("Size", "Stroke")
+                .h4("Stroke")
+                .h4("Size")
                 .demo(new Node[]{
                         createDemo("stroke-1", "stroke-primary"),
                         createDemo("stroke-2", "stroke-primary"),
                         createDemo("stroke-3", "stroke-primary")
                 })
                 .code("avatar.getStyleClass().add(\"stroke-[1|2..5]\");")
-                .h4("Color", "Stroke")
+                .h4("Color")
 //                        .node(createLink("Pallet Color"))
 //                        .node(createLink("Home"))
                 .demo(new Node[]{
@@ -69,8 +70,8 @@ public class AvatarViewPres extends CustomizablePresentation {
                 })
                 .code("avatar.getStyleClass().add(\"stroke-[primary|success|unique..]\");")
 
-                .h4("Effect", "Avatar View")
-                .h3("Depth", "Effect")
+                .h4("Effect")
+                .h3("Depth")
                 .text("A little shadow.")
                 .demo(new Node[]{
                         createDemo("depth-1"),
@@ -79,7 +80,7 @@ public class AvatarViewPres extends CustomizablePresentation {
 //                                createDemo("depth-2")
                 })
                 .code("avatar.getStyleClass().add(\"depth-[1|2]\");")
-                .h3("Raised", "Effect")
+                .h3("Raised")
                 .text("A a shadow when clicked.")
                 .legend("Click on it.")
                 .demo(new Node[]{
@@ -88,7 +89,7 @@ public class AvatarViewPres extends CustomizablePresentation {
                         createDemo("stroke-2", "depth-2", "raised")
                 })
                 .code("avatar.getStyleClass().add(\"depth-[1|2]\");")
-                .h3("Grouping", "Avatar View")
+                .h3("Grouping")
                 .demo(
                         createCustom()
                 )
@@ -107,7 +108,7 @@ public class AvatarViewPres extends CustomizablePresentation {
                                 new AvatarView(Assets.getImage("default_avatar.jpg")),
                                 new AvatarView(Assets.getImage("default_avatar.jpg"))
                         );""")
-                .h3("Status", "Avatar View")
+                .h3("Status")
                 .demo(createAvatar())
                 .code("""
                         AvatarStatus avatarStatus = new AvatarStatus(Assets.getImage("default_avatar.jpg"));

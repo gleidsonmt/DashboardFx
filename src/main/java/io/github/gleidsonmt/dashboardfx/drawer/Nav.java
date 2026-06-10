@@ -2,10 +2,7 @@ package io.github.gleidsonmt.dashboardfx.drawer;
 
 import io.github.gleidsonmt.dashboardfx.dashboard.Dashboard;
 import io.github.gleidsonmt.dashboardfx.presentation.about.AboutPres;
-import io.github.gleidsonmt.dashboardfx.presentation.core.BuildingPres;
-import io.github.gleidsonmt.dashboardfx.presentation.core.CarouselPres;
-import io.github.gleidsonmt.dashboardfx.presentation.core.InteractivityPres;
-import io.github.gleidsonmt.dashboardfx.presentation.core.IntroductionPres;
+import io.github.gleidsonmt.dashboardfx.presentation.core.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.charts.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.components.*;
 import io.github.gleidsonmt.dashboardfx.presentation.presentations.containers.TabPanePres;
@@ -44,6 +41,7 @@ public class Nav extends SideNav {
                         new ViewGroup("Core",
                                 new IntroductionPres(),
                                 new BuildingPres(),
+                                new DesignSystem(),
                                 new InteractivityPres()
                         ),
                         new ModuleSeparator(new SVGIcon(Icon.DESIGN_SERVICES), "Theme"),
@@ -66,7 +64,6 @@ public class Nav extends SideNav {
                                 new ScrollPane(),
                                 new ScrollBarPres(),
                                 new SliderPres()
-
                         ),
                         new ViewGroup("Containers",
                                 new TitledPanePres(),

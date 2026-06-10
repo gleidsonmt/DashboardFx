@@ -4,6 +4,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.theme.Css;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -21,31 +22,32 @@ public class ComboBoxBasePres extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
-                .h3("ComboBoxBase")
-                .separator()
                 .overview()
                 .indicators()
+                .h3("ComboBoxBase")
+                .separator()
+
                 .text("""
                         Abstract base class for ComboBox-like controls. 
                         Because of that all class bellow are descendants of ComboBoxBase.
                         """)
                 .legend("javafx.scene.control.ComboBoxBase")
-                .h3("ComboBox", "ComboBoxBase")
+                .h3("ComboBox")
                 .text("""
                         An implementation of the ComboBoxBase abstract class for the most common form of ComboBox, where a popup list is shown to users providing them with a choice that they may select from. 
                         For more information around the general concepts and API of ComboBox, refer to the ComboBoxBase class documentation.
                         """)
                 .legend("javafx.scene.control.ComboBox")
                 .node(createDefaultComboBox())
-                .h4("Install", "ComboBox")
+                .h4("Install")
                 .code(TutorialUtils.installExample(Css.COMBO_BOX, "ComboBox"))
-                .h3("DatePicker", "ComboBoxBase")
+                .h3("DatePicker")
                 .legend("javafx.scene.control.DatePicker")
                 .text("The DatePicker control allows the user to enter a date as text or to select a date from a calendar popup.")
                 .node(createDefaultDatePicker())
-                .h4("Install", "DatePicker")
+                .h4("Install")
                 .code(TutorialUtils.installExample(Css.DATE_PICKER, "DatePicker"))
 //                .node(new ColorPicker())
 //                .node(new DatePicker())

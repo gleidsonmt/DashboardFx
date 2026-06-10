@@ -6,6 +6,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.presentation.Code;
+import io.github.gleidsonmt.presentation.Presentation;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -18,8 +19,8 @@ public class AboutPageView extends CustomizablePresentation implements Actionabl
     }
 
     @Override
-    public Tutorial create() {
-        return new Tutorial()
+    public Presentation create() {
+        return  new Tutorial()
                 .h3("Login Page")
                 .separator()
 

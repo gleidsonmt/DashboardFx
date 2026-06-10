@@ -4,6 +4,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.theme.Css;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 
@@ -18,7 +19,7 @@ public class ChoiceBoxPres extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .h3("ChoiceBox")
                 .separator()
@@ -28,7 +29,7 @@ public class ChoiceBoxPres extends CustomizablePresentation {
                         createChoiceBox(),
                         createChoiceBox("choice-outlined")
                 })
-                .h4("Install", "ChoiceBox")
+                .h4("Install")
                 .code(TutorialUtils.installExample(Css.CHOICE_BOX, "ChoiceBox"))
                 ;
     }

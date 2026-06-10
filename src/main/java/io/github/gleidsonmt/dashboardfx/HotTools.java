@@ -1,27 +1,20 @@
 package io.github.gleidsonmt.dashboardfx;
 
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 /**
- * Used only in runtime as tool to help development.
- *
+ * Tools to help to debug when the application is running.
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  27/08/2025
  */
-public final class LibrariesTools {
+public final class HotTools {
 
     private static Class<?> loadClassJar(String jarDirectory, String fullClass) {
         Class<?> cls = null;
@@ -39,12 +32,13 @@ public final class LibrariesTools {
         return cls;
     }
 
-    public static void addTools(Scene scene) {
-        showScenicView(scene);
-        listenCss(scene);
-    }
-
-    private static void showScenicView(Scene scene) throws RuntimeException {
+    /**
+     * Invoke scenic view to analyze nodes.
+     * ScenicView is a amazing tool to see properties and nodes together in real time.
+     * @param scene The scene to analyze.
+     * @throws RuntimeException
+     */
+    public static void analyzeNodes(Scene scene) {
         if (scene == null) return;
         ClassLoader originalCtx = Thread.currentThread().getContextClassLoader();
         Class<?> clazz = loadClassJar("./vendor/scenicview.jar", "org.scenicview.ScenicView");
@@ -53,13 +47,17 @@ public final class LibrariesTools {
         try {
             clazz.getMethod("show", Scene.class).invoke(null, scene);
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException _) {
-
+            throw new RuntimeException("ScenicView not found.");
         } finally {
             Thread.currentThread().setContextClassLoader(originalCtx);
         }
     }
 
-    private static void listenCss(Scene scene) {
+    /**
+     * The CCSFX is a CSS engine that allows you to change CSS in JavaFX when is running and see imeditiatly.
+     * @param scene The scene to listen.
+     */
+    public static void listenCss(Scene scene) {
         if (scene == null) return;
         ClassLoader originalCtx = Thread.currentThread().getContextClassLoader();
         Class<?> clazz = loadClassJar("./vendor/cssfx-11.5.1.jar", "fr.brouillard.oss.cssfx.CSSFX");
@@ -67,7 +65,7 @@ public final class LibrariesTools {
         try {
             clazz.getMethod("start", Scene.class).invoke(null, scene);
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException _) {
-
+            throw new RuntimeException("ScenicView not found.");
         } finally {
             Thread.currentThread().setContextClassLoader(originalCtx);
         }

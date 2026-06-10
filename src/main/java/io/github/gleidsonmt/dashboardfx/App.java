@@ -3,15 +3,11 @@ package io.github.gleidsonmt.dashboardfx;
 import io.github.gleidsonmt.dashboardfx.utils.Assets;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.theme.Css;
-import io.github.gleidsonmt.glad.theme.Drawer;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -36,7 +32,10 @@ public class App extends Application {
         stage.getIcons().add(Assets.getImage("logo_128.png"));
         stage.show();
 
-//        LibrariesTools.addTools(stage.getScene());
+        if (Launcher.mode == Mode.DEBUG) {
+            HotTools.analyzeNodes(scene);
+            HotTools.listenCss(scene);
+        }
 
     }
 }

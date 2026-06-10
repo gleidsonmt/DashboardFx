@@ -3,6 +3,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.core;
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.glad.controls.carousel.Carousel;
+import io.github.gleidsonmt.presentation.Presentation;
 import io.github.gleidsonmt.presentation.Row;
 import javafx.scene.Node;
 import javafx.scene.layout.Region;
@@ -20,7 +21,7 @@ public class CarouselPres extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .h3("Carousel")
                 .text("Carousel it's a region that can slide nodes with indicators and arrows to move through the children.")

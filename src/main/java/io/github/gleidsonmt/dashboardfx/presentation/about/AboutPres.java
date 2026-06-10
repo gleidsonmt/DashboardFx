@@ -3,6 +3,7 @@ package io.github.gleidsonmt.dashboardfx.presentation.about;
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
+import io.github.gleidsonmt.presentation.Presentation;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -15,7 +16,7 @@ public class AboutPres extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .h3("Introduction")
                 .text("Hi, my name is Gleidson. I’m a developer from Brazil.")
@@ -49,15 +50,15 @@ public class AboutPres extends CustomizablePresentation {
                         """)
 
                 .h3("Dependencies")
-                .h3("Block Code", "Dependencies")
+                .h3("Block Code")
                 .node(TutorialUtils.createCardLink("BlockCode Project", "https://github.com/gleidsonmt/blockcode"))
-                .h3("Presentation", "Dependencies")
+                .h3("Presentation")
                 .text("The main base class to create presentations.")
                 .node(TutorialUtils.createCardLink("Presentation Project", "https://github.com/gleidsonmt/presentation"))
-                .h3("Glad", "Dependencies")
+                .h3("Glad")
                 .text("The core that contains customizable controls and themes.")
                 .node(TutorialUtils.createCardLink("Glad Project", "https://github.com/gleidsonmt/glad"))
-                .h3("Testing", "Dependencies")
+                .h3("Testing")
                 .text("Tools used to build and test this project.")
                 .text("(This libs it's only used in runtime do not create an jar file, or an .exe with this, they will probably crash)")
                 .text("ScenicView can get information about layout, css and transform nodes in runtime.")

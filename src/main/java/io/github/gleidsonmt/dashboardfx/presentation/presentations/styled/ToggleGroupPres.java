@@ -5,6 +5,7 @@ import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
@@ -31,14 +32,14 @@ public class ToggleGroupPres extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
 
         return new Tutorial()
                 .overview()
                 .h3("Toggle Group")
                 .separator()
                 .text("Examples of building multiple options with toggle buttons and groups.")
-                .h3("Pill", "Toggle Group")
+                .h3("Pill")
                 .text("If you want to learn more.")
                 .node(TutorialUtils.createCardLink("See this article", "https://gleidsonmt.github.io/#/blog/post/1"))
                 .demo(createExample())
@@ -76,7 +77,7 @@ public class ToggleGroupPres extends CustomizablePresentation {
                         }
                         
                         """, "css")
-                .h3("Align", "Toggle Group")
+                .h3("Align")
                 .demo(createExample2())
                 .code("""
                     private Node createExample2() {
@@ -134,7 +135,7 @@ public class ToggleGroupPres extends CustomizablePresentation {
                         }
                         
                         """, "css")
-                .h3("Blocks", "Toggle Group")
+                .h3("Blocks")
                 .demo(createCustom())
                 .code("""
                             private Node createCustom() {
@@ -189,7 +190,7 @@ public class ToggleGroupPres extends CustomizablePresentation {
                                 return toggle;
                             }
                         """)
-                .h4("Storage Blocks", "Blocks")
+                .h4("Storage Blocks")
                 .demo(createStorage())
                 .code("""
                         HBox body = new HBox();
