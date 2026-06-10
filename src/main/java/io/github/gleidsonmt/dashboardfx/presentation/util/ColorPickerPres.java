@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.presentation.util;
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
+import io.github.gleidsonmt.presentation.Presentation;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.geometry.Pos;
@@ -21,13 +22,14 @@ public class ColorPickerPres  extends CustomizablePresentation {
     }
 
     @Override
-    public Tutorial create() {
+    public Presentation create() {
         return new Tutorial()
                 .overview()
-                .h3("ColorPicker")
+                .h1("ColorPicker")
+                .separator()
                 .text("Select a color and preview how it looks when applied to text and different shapes")
                 .demo(createDemoV())
-                .h4("Install", "ColorPicker")
+                .h2("Install")
                 .code("ThemeProvider.install(scene, \n\t... \n\tCss.COLOR_PICKER);", "java");
     }
 

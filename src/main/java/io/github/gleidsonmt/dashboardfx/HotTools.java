@@ -32,6 +32,11 @@ public final class HotTools {
         return cls;
     }
 
+    public static void debug(Scene scene) {
+        analyzeNodes(scene);
+        listenCss(scene);
+    }
+
     /**
      * Invoke scenic view to analyze nodes.
      * ScenicView is a amazing tool to see properties and nodes together in real time.

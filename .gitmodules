@@ -1,8 +1,7 @@
 [submodule "presentation"]
     path = presentation
     url = https://github.com/gleidsonmt/presentation.git
-    branch = feature_update
-;     branch = main
+    branch = main
 
 [submodule "glad"]
     path = glad
