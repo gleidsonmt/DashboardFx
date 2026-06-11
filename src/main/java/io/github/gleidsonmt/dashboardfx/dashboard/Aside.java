@@ -50,7 +50,7 @@ public class Aside extends VBox {
 //                createBlock(),
                 createBlock("Language", "Select the language of the platform", createCombo()),
                 createBlock("Grid View", "Set the visible pane grid ", _switch),
-                createBlock("Interface theme", "Customize your application appearance ", createThemeBlock(), Orientation.VERTICAL),
+                createBlock("Interface theme", "Customize your application appearance ", new ThemeBlock(Theme.DARK), Orientation.VERTICAL),
                 createBlock("Accent color", "Pick your platform's main color ", createFlow(
                                 createBox("Primary"),
                                 createBox("Info"),
