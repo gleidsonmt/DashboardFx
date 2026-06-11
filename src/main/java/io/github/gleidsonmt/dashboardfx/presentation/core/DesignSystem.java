@@ -64,7 +64,14 @@ public class DesignSystem extends CustomizablePresentation {
                         );""")
                 .text("It's not the intention to make short but fast to use.")
                 .separator()
-                .h2("Primary Colors")
+                .h2("Theme")
+                .h3("Primary")
+                .demo(new Node[] {
+                        createLayer("Accent", "-fx-accent"),
+                        createLayer("Background Color", "-fx-background",  "border-2", "border-light-gray-2", "padding-5", "text-elegant"),
+                })
+
+                .h2("Default Colors")
                 .demo(new Node[] {
                         createBox("Primary", "#4285f4"),
                         createBox("Info", "#33B5E5"),
@@ -75,6 +82,7 @@ public class DesignSystem extends CustomizablePresentation {
                         createBox("Unique", "#880E4F"),
                         createBox("Elegant", "#2E2E2E")
                 })
+
 
                 .separator()
                 .text("""
@@ -105,6 +113,16 @@ public class DesignSystem extends CustomizablePresentation {
 //                He manages every stylesheet as a enum to injet it in the scene.
 //        The class to do that is a static ThemeProvider see a call.
                 ;
+    }
+
+    private VBox createLayer(String color, String text, String... properties) {
+        VBox box = new VBox(createLabel(color));
+        box.getStyleClass().addAll("bg-" + color.toLowerCase());
+        box.getStyleClass().addAll(properties);
+        box.getChildren().get(0).getStyleClass().addAll(properties);
+
+        box.getStyleClass().addAll("padding-10 w-200 h-100 radius-10 h6 bold".split(" "));
+        return box;
     }
 
     private VBox createBox(String color, String hex) {
