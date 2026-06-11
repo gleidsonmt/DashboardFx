@@ -5,7 +5,6 @@ import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
 import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
-import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.presentation.Presentation;
 import io.github.gleidsonmt.presentation.Row;
 import javafx.scene.Node;
@@ -39,9 +38,10 @@ public class LabeledPres extends CustomizablePresentation {
                         		...
                         		Css.LABEL);""")
                 .h2("Label")
+                .separator()
                 .text("""
                         Label is a non-editable text control.
-                        A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. 
+                        A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit.
                         Labels also are useful in that they can have mnemonics which, if used, will send focus to the Control listed as the target of the labelFor property.""")
                 .legend("javafx.scene.control.Label")
                 .text("The label is a mix with Region + Text shape and you can additional add a graphic.")
@@ -79,6 +79,7 @@ public class LabeledPres extends CustomizablePresentation {
                 })
 
                 .h2("Button")
+                .separator()
                 .text("A simple button control. The button control can contain text and/or a graphic.")
                 .legend("javafx.scene.control.Button")
                 .demo(new Node[]{
@@ -225,23 +226,15 @@ public class LabeledPres extends CustomizablePresentation {
     }
 
     private Hyperlink createHyperlink(String _text, String... _classes) {
-        return createHyperlink(null, _text, _classes);
-    }
-
-    private Hyperlink createHyperlink(Node graphic, String _text, String... _classes) {
         Hyperlink text = new Hyperlink(_text);
-        text.setGraphic(graphic);
         text.getStyleClass().addAll(_classes);
         return text;
-    }
-
-    private Node createDemoRadio() {
-        return new RadioButton("Select me");
     }
 
     private Node createGroupRadio() {
         ToggleGroup group = new ToggleGroup();
         RadioButton optionOne = new RadioButton("Option One");
+        optionOne.setSelected(true);
         RadioButton optionTwo = new RadioButton("Option Two");
         HBox box = new HBox(optionOne, optionTwo);
         box.setSpacing(10);
@@ -249,19 +242,10 @@ public class LabeledPres extends CustomizablePresentation {
         return box;
     }
 
-    private Node createGroupButton(ToggleButton... nodes) {
-        ToggleGroup group = new ToggleGroup();
-        HBox box = new HBox(nodes);
-        box.getStyleClass().addAll("bg-light-gray".split(" "));
-        box.setStyle("-fx-background-radius: 11.5; -fx-border-radius: 11.5; -fx-padding: 3px");
-        box.setSpacing(10);
-        group.getToggles().addAll(nodes);
-        return box;
-    }
-
     private Node createGroupButton() {
         ToggleGroup group = new ToggleGroup();
         ToggleButton optionOne = new ToggleButton("Option One");
+        optionOne.setSelected(true);
         ToggleButton optionTwo = new ToggleButton("Option Two");
         HBox box = new HBox(optionOne, optionTwo);
         box.getStyleClass().addAll("bg-light-gray".split(" "));
@@ -269,23 +253,6 @@ public class LabeledPres extends CustomizablePresentation {
         box.setSpacing(10);
         group.getToggles().addAll(optionOne, optionTwo);
         return box;
-    }
-
-    private Node createSimpleGroup() {
-        ToggleGroup group = new ToggleGroup();
-        ToggleButton left = new ToggleButton("Left");
-        ToggleButton middle = new ToggleButton("Middle");
-        ToggleButton right = new ToggleButton("Right");
-        left.getStyleClass().addAll("pill-left");
-        right.getStyleClass().addAll("pill-right");
-        middle.getStyleClass().addAll("radius-0");
-        group.getToggles().addAll(left, middle, right);
-        return new HBox(left, middle, right);
-    }
-
-
-    private Node createButtonDemo(String... classes) {
-        return createButtonDemo("Button", false, false, classes);
     }
 
     private Button createButtonDemo(String text, boolean _default, boolean _cancel, String... classes) {

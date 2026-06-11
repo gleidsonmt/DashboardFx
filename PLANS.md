@@ -2,3 +2,5 @@
 - [x] CSSFX and Scenic View will be load only in runtime as gradle task request example(debug).
 - [ ] build.gradle will change to kotlin.
 - [ ] Remove colors library and use classes instead.
+- [ ] Add an accent style for DatePicker.
+- [ ] Pass choice box and choice box to a unique module.
