@@ -26,21 +26,25 @@ public class LabeledPres extends CustomizablePresentation {
         return new Tutorial()
                 .indicators()
                 .overview()
-                .h3("Labeled")
+                .h1("Labeled")
                 .separator()
                 .text("""
                         A Labeled Control is one which has as part of its user interface a textual content associated with it.
                         For example, a Button displays text, as does a Label, a Tooltip, and many other controls."""
                 )
-                .h3("Label")
+                .code("""
+                        // Install theme on scene
+                        // put the name of the component in uppercase ex.
+                        ThemeProvider.install(scene,
+                        		...
+                        		Css.LABEL);""")
+                .h2("Label")
                 .text("""
                         Label is a non-editable text control.
                         A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. 
                         Labels also are useful in that they can have mnemonics which, if used, will send focus to the Control listed as the target of the labelFor property.""")
                 .legend("javafx.scene.control.Label")
                 .text("The label is a mix with Region + Text shape and you can additional add a graphic.")
-//                        .legend("(The base font here is set to Poppins, by default, is not apply, but it's better to add all fonts before the app load. At the end you can see the code to add.)")
-                // .link([link to explanation]) ir para temas
 
                 .demo(new Label("Lorem ipsum dolor color"))
                 .code("Label label = new Label(\"Lorem ipsum dolor color\");")
@@ -74,24 +78,16 @@ public class LabeledPres extends CustomizablePresentation {
                         createDemo(new SVGIcon(Icon.ADD), "Label", "display-text", "border-2", "border-light-gray-2", "padding-5")
                 })
 
-                .h3("Button")
+                .h2("Button")
                 .text("A simple button control. The button control can contain text and/or a graphic.")
                 .legend("javafx.scene.control.Button")
                 .demo(new Node[]{
                         createButtonDemo("Default", true, false),
                         createButtonDemo("Cancel", false, true)
                 })
-                .h4("Install")
-                .code(TutorialUtils.installExample(Css.BUTTON, "Button") + """
-                        
-                        // Cancel button option
-                        button.setCancelButton(true);
-                        // or
-                        button.getStyleClass().add("btn-outlined");
-                        
-                        """)
 
-                .h2("Hyperlink")
+                .demo(createCheckBox())
+                .h3("Hyperlink")
                 .text("""
                         An HTML like label which can be a graphic and/or text which responds to rollovers and clicks. When a hyperlink is clicked/pressed isVisited becomes true.
                         A Hyperlink behaves just like a Button.
@@ -99,50 +95,33 @@ public class LabeledPres extends CustomizablePresentation {
                         """)
                 .legend("javafx.scene.control.Hyperlink")
                 .demo(createHyperlink("google.com"))
-                .h4("Install")
-                .code(TutorialUtils.installExample(Css.HYPERLINK, "Hyperlink", "\"google.com\""))
-
-//                        .legend("(The base font here is set to Poppins, by default is not apply, but it's better to add all fonts before the app load. At the end you can see the code to add.)")
-                // .link([link to explanation]) ir para temas
-
 
                 .h3("CheckBox")
                 .text("""
                         A tri-state selection Control typically skinned as a box with a checkmark or tick mark when checked.""")
                 .legend("javafx.scene.control.CheckBox")
 
-                .demo(createCheckBox())
-                .h4("Install")
-                .code(TutorialUtils.installExample(Css.CHECK_BOX, "CheckBox", "\"Select me\""))
-
-                .h3("ToggleButton")
-                .text("""
-                        ToggleButton is a specialized control which has the ability to be selected.
-                        Typically a ToggleButton is rendered similarly to a Button.
-                        However, they are two different types of Controls.
-                        A Button is a "command" button which invokes a function when clicked.""")
-                .legend("javafx.scene.control.ToggleButton")
-
                 .demo(
-                        new ToggleButton("Toggle")
+                        new CheckBox("Select me!")
                 )
-                .h4("Install")
-                .code(TutorialUtils.installExample(Css.TOGGLE_BUTTON, "ToggleButton", "\"Button\""))
-
-                .h3("RadioButton")
-                .text("""
-                        RadioButtons create a series of items where only one item can be selected. RadioButtons are a specialized ToggleButton.""")
-                .legend("javafx.scene.control.RadioButton")
-                .demo(createDemoRadio())
-                .h4("Install")
-                .code(TutorialUtils.installExample(Css.RADIO_BUTTON, "RadioButton", "\"Select me\""))
 
                 .h3("ToggleGroup")
                 .text(""" 
                         A class which contains a reference to all Toggles whose selected variables should be managed such that only a single Toggle within the ToggleGroup may be selected at any one time.
                         Generally ToggleGroups are managed automatically simply by specifying the name of a ToggleGroup on the Toggle, but in some situations it is desirable to explicitly manage which ToggleGroup is used by Toggles.""")
                 .legend("javafx.scene.control.ToggleGroup")
+                .code("""
+                        ToggleGroup group = new ToggleGroup();
+                        // Create your children children
+                        group.getToggles().addAll(optionOne, optionTwo);
+                        """)
                 .h4("ToggleButton")
+                .text("""
+                        ToggleButton is a specialized control which has the ability to be selected.
+                        Typically a ToggleButton is rendered similarly to a Button.
+                        However, they are two different types of Controls.
+                        A Button is a "command" button which invokes a function when clicked.""")
+                .legend("javafx.scene.control.ToggleButton")
                 .demo(createGroupButton())
                 .code("""
                         //Create a group
@@ -157,6 +136,10 @@ public class LabeledPres extends CustomizablePresentation {
                         group.getToggles().addAll(optionOne, optionTwo);
                         """)
                 .h4("RadioButton")
+                .text("""
+                        RadioButtons create a series of items where only one item can be selected. RadioButtons are a specialized ToggleButton.""")
+                .legend("javafx.scene.control.RadioButton")
+
                 .demo(createGroupRadio())
                 .code("""
                         //Create a group
@@ -173,15 +156,15 @@ public class LabeledPres extends CustomizablePresentation {
 
 
                 .h3("MenuButton")
-                .text("Chose an action using a popup.")
+                .text("MenuButton is a specialized control which has a popup menu.")
 
-                .demo(new Node[] {
+                .demo(new Node[]{
                         createMenuButton(),
                         createMenuButton("menu-outlined")
                 })
-                .h4("Install")
-                .code(TutorialUtils.installExample(Css.MENU_BUTTON, "MenuButton") + """
-                        
+                .code("""
+                        //Constructor
+                        MenuButton menu_button = new MenuButton();
                         menu_button.setText("Menu Button");
                         menu_button.getItems().setAll(
                             new MenuItem("Item 01"),
@@ -194,15 +177,15 @@ public class LabeledPres extends CustomizablePresentation {
                 .text("You can see more options of actions using popup bellow.")
 
                 .h3("SplitMenuButton")
-                .text("Chose an action using a popup.")
+                .text("SplitMenuButton is a specialized control which has a popup menu and a button to open the menu.")
 
                 .demo(new Node[]{
                         createSplitMenuButton(),
                         createSplitMenuButton("split-outlined")
                 })
-                .h4("Install")
-                .code(TutorialUtils.installExample(Css.SPLIT_MENU_BUTTON, "SplitMenuButton") + """
-                        
+                .code("""
+                        // Constructor
+                        SplitMenuButton split_menu_button = new SplitMenuButton();
                         split_menu_button.setText("Split Menu Button");
                         split_menu_button.getItems().setAll(
                             new MenuItem("Item 01"),
@@ -221,7 +204,7 @@ public class LabeledPres extends CustomizablePresentation {
     }
 
     private Node createSplitMenuButton(String... cls) {
-        SplitMenuButton menuButton = new SplitMenuButton( new MenuItem("Item 01"), new MenuItem("Item 02"), new MenuItem("Item 03"));
+        SplitMenuButton menuButton = new SplitMenuButton(new MenuItem("Item 01"), new MenuItem("Item 02"), new MenuItem("Item 03"));
         menuButton.setText("Split Menu Button");
         menuButton.getStyleClass().addAll(cls);
         return menuButton;
@@ -266,11 +249,23 @@ public class LabeledPres extends CustomizablePresentation {
         return box;
     }
 
+    private Node createGroupButton(ToggleButton... nodes) {
+        ToggleGroup group = new ToggleGroup();
+        HBox box = new HBox(nodes);
+        box.getStyleClass().addAll("bg-light-gray".split(" "));
+        box.setStyle("-fx-background-radius: 11.5; -fx-border-radius: 11.5; -fx-padding: 3px");
+        box.setSpacing(10);
+        group.getToggles().addAll(nodes);
+        return box;
+    }
+
     private Node createGroupButton() {
         ToggleGroup group = new ToggleGroup();
         ToggleButton optionOne = new ToggleButton("Option One");
         ToggleButton optionTwo = new ToggleButton("Option Two");
         HBox box = new HBox(optionOne, optionTwo);
+        box.getStyleClass().addAll("bg-light-gray".split(" "));
+        box.setStyle("-fx-background-radius: 11.5; -fx-border-radius: 11.5; -fx-padding: 3px");
         box.setSpacing(10);
         group.getToggles().addAll(optionOne, optionTwo);
         return box;
@@ -293,20 +288,6 @@ public class LabeledPres extends CustomizablePresentation {
         return createButtonDemo("Button", false, false, classes);
     }
 
-    private Button createButtonDemo(String text, String... classes) {
-        return createButtonDemo(text, false, false, classes);
-    }
-
-    private Button createButtonDemo(String text, boolean _default, String... classes) {
-        return createButtonDemo(text, _default, false, classes);
-    }
-
-    private Button createButtonDemo(String text, Node graphic, String... classes) {
-        Button button = createButtonDemo(text, classes);
-        button.setGraphic(graphic);
-        return button;
-    }
-
     private Button createButtonDemo(String text, boolean _default, boolean _cancel, String... classes) {
         Button btn = new Button(text);
         btn.setDefaultButton(_default);
@@ -314,7 +295,6 @@ public class LabeledPres extends CustomizablePresentation {
         btn.getStyleClass().addAll(classes);
         return btn;
     }
-
 
     private Label createDemo(Node graphic, String _text, String... _classes) {
         Label text = new Label(_text);
