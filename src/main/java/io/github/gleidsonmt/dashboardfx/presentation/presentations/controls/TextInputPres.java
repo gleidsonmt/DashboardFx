@@ -31,35 +31,47 @@ public class TextInputPres extends CustomizablePresentation {
         return new Tutorial()
                 .overview()
                 .indicators()
-                .h3("TextInputControl")
+                .h1("TextInputControl")
+                .separator()
                 .text("Abstract base class for text input controls.")
 
-                .h3("TextField")
+                .code("""
+                        // Install theme on scene
+                        // put the name of the component in uppercase ex.
+                        ThemeProvider.install(scene,
+                        		...
+                        		Css.[CONTROL_NAME]);""")
+                .h2("TextField")
+                .separator()
                 .text("""
                         Text input component that allows a user to enter a single line of unformatted text.""")
                 .legend("javafx.scene.control.TextField")
-                .demo(createTextField())
-                .h4("Install")
-                .code(TutorialUtils.installExample(Css.TEXT_FIELD, "TextField"))
+                .demo(new TextField("TextField"))
 
                 .h3("PasswordField")
                 .text("Text field that masks entered characters.")
                 .legend("javafx.scene.control.PasswordField")
                 .demo(createPassword())
-                .h4("Install")
-                .code(TutorialUtils.installExample(Css.TEXT_FIELD, "PasswordField"))
 
-                .h3("TextBox")
+
+                .h2("TextBox")
+                .separator()
                 .text("A TextBox is a complex TextField, allowing to add a graphic a an action.")
+                .text("The graphic can be a Icon or a Node.")
+                .text("The default action clear the text and only appears when the text is not empty.")
                 .legend("io.github.gleidsonmt.glad.controls.text_box.TextBox")
                 .demo(createTextBox(Icon.LOCATION_ON, "Location", true))
-                .code(TutorialUtils.installExample(Css.TEXT_BOX, "TextBox"))
+                .code("""
+                        TextBox textBox = new TextBox();
+                        textBox.setIcon(new SVGIcon(Icon.LOCATION_ON)); // sets the icon
+                        textBox.setAction(new SVGIcon(Icon.CLEAR)); // sets the action
+                        """)
 
                 .h3("PasswordBox")
                 .text("The same as TextBox, but with a mask.")
                 .legend("io.github.gleidsonmt.glad.controls.text_box.PasswordBox")
 
-                .demo(createPasswordBox(Icon.VPN_KEY_FILLED,"PasswordBox", true))
+                .demo(createPasswordBox(Icon.VPN_KEY_FILLED, "PasswordBox", true))
                 .code(TutorialUtils.installExample(Css.TEXT_BOX, "PasswordBox"))
                 .demo(new SearchBox())
 
@@ -76,8 +88,9 @@ public class TextInputPres extends CustomizablePresentation {
 
                 ;
     }
+
     private TextBoxBase createCustomTextBox(Icon icon, String text, boolean action) {
-        TextBoxBase textBoxBase= new TextBoxBase() {
+        TextBoxBase textBoxBase = new TextBoxBase() {
             {
                 setStyle("-fx-border-radius: 0px;");
                 var left = new Label("https://");
