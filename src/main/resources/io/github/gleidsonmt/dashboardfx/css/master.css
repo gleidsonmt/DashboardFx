@@ -205,6 +205,7 @@
     -fx-background-color: white;
     -fx-border-insets: -1px;
 }
+
 .container-align .toggle-button .icon {
     -fx-fill: derive(-dark-gray, 30%);
 }
@@ -236,6 +237,30 @@
     -fx-font-family: "Instagram Sans";
 }
 
+.theme-container .toggle-button:selected {
+    -fx-background-color: transparent;
+}
+
+.theme-container .toggle-button {
+    -fx-padding: 0px;
+}
+
+.theme-container {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-width: 4px;
+    -fx-border-color: transparent;
+    -fx-padding: 0px;
+    -fx-border-width: 4px;
+    -fx-background-insets: -10px;
+}
+
+.theme-container:selected {
+    -fx-border-color: -elegant;
+    -fx-border-width: 4px;
+    -fx-padding: 0px;
+}
+
 .h1, .h2, .h3, .h4, .h5, .h6 {
     -fx-font-family: "Instagram Sans Headline";
 }
@@ -243,6 +268,7 @@
 .copy-button .text {
     -fx-fill: -dark-gray;
 }
+
 .copy-button {
     -fx-background-color: white;
     -fx-border-color: -light-gray-2;

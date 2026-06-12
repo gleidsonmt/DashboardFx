@@ -1,12 +1,17 @@
 package io.github.gleidsonmt.dashboardfx.dashboard;
 
+import javafx.css.PseudoClass;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
+import javafx.scene.text.Text;
+
+import java.util.Arrays;
 
 /**
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
@@ -14,98 +19,125 @@ import javafx.scene.shape.StrokeType;
  */
 public class ThemeBlock extends FlowPane {
 
+    private ToggleGroup group;
+
     public ThemeBlock(Theme theme) {
-        setHgap(5);
-        setVgap(5);
+        this.group = new ToggleGroup();
+        setHgap(10);
+        setVgap(10);
         getChildren().setAll(
-                createBlock("Auto"),
-                createToggleButton("Light", true),
-                createToggleButton("Dark", false)
+//                createBlock("Auto", "", "", "text-"),
+//                createBlock("Light", "white", "light-gray-2", "-dark-gray"),
+//                createBlock("Dark", "elegant", "dark-gray", "white")
+                createAutoBlock(),
+                createBlockLight(),
+                createBlockDark()
         );
     }
 
-    private StackPane createBlock(String text) {
-        ToggleButton button = new ToggleButton(text);
+    private Pane createAutoBlock() {
+        var light = createBlock(80, 80, "Light", "white", "light-gray-2", "-dark-gray", false);
+        var dark = createBlock(80, 80, "Dark", "elegant", "dark-gray", "white", false);
 
-        button.getStyleClass().addAll("display-bottom".split(""));
+        light.setStyle(light.getStyle() + "-fx-border-radius: 0px 0px 0px 0px; -fx-background-radius: 10px 0px 0px 10px; ");
+        dark.setStyle(dark.getStyle() + "-fx-border-radius: 0px 0px 0px 0px; -fx-background-radius: 0px 10px 10px 0px; ");
+
+        HBox container = new HBox(
+               light, dark
+        );
+
+        return createContainer("Auto", container);
+    }
+
+    private ToggleButton createToggleButton(double width, double height) {
+        ToggleButton button = new ToggleButton();
+        button.setMouseTransparent(true);
         button.setStyle("-fx-border-radius: 10px; -fx-background-radius: 10px; -fx-border-width: 2px; -fx-border-color: transparent; ");
-        button.setMinSize(120, 120);
-        Pane pane = new Pane();
-        pane.getStyleClass().addAll("min-w-80 min-h-80  bg-light-gray border-2 border-white".split(" "));
-        pane.setStyle("-fx-border-radius: 10px 0px 0px 0px; -fx-border-color: green;");
-        button.setGraphic(pane);
+        button.setMinSize(width, height);
+        button.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+        return button;
+    }
+
+    private VBox createPane(double width, double height, String background, String foreground, String textColor) {
+        VBox pane = new VBox();
+        pane.setMouseTransparent(true);
+        pane.getStyleClass().add("bg-" + background);
+        pane.getStyleClass().addAll("min-w-80 min-h-80 padding-5".split(" "));
+        pane.setStyle("-fx-border-radius: 10px 0px 0px 0px; -fx-background-radius: 10px 0px 0px 0px; -fx-border-color: -medium-gray-2; ");
+        Text insideText = new Text("Aa");
+        insideText.getStyleClass().addAll("text-" + textColor, "h4");
+        pane.getChildren().add(insideText);
+        return pane;
+    }
+
+    private VBox createContainer(String text, Node container) {
+
+        ToggleButton button = new ToggleButton();
+        group.getToggles().add(button);
+
+        Text title = new Text(text);
+        title.getStyleClass().addAll("h5", "bold");
+        VBox box = new VBox(button);
+        box.setStyle("-fx-border-radius: 10px; -fx-background-radius: 10px; -fx-border-width: 2px; -fx-border-color: transparent; ");
+
+        box.setSpacing(10);
+        box.setAlignment(Pos.BOTTOM_CENTER);
+        box.getChildren().add(title);
+
+        button.setGraphic(container);
+        button.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+        button.getStyleClass().add("theme-container");
+
+        return box;
+    }
+
+    private Node createBlockLight() {
+        var wrapper = createContainer("Light",
+                createBlock(80, 80, "Light", "white", "light-gray-2", "-dark-gray"));
+        return wrapper;
+    }
+
+    private Node createBlockDark() {
+        var wrapper = createContainer("Dark",
+                createBlock(80, 80, "Dark", "elegant", "dark-gray", "white"));
+        return wrapper;
+    }
+
+    private StackPane createBlock(double boxWidth, double boxHeight, String text, String background, String foreground, String textColor) {
+        return createBlock(boxWidth, boxHeight, text, background, foreground, textColor, true);
+    }
+
+    private StackPane createBlock(double boxWidth, double boxHeight, String text, String background, String foreground, String textColor, boolean useArc) {
+//        var boxHeight = 80;
+//        var boxWidth = 120;
+
+//        ToggleButton button = createToggleButton(boxWidth, boxHeight);
+        Pane pane = createPane(boxWidth, boxHeight, background, foreground, textColor);
+
+//        button.setGraphic(pane);
         Rectangle clip = new Rectangle();
-        clip.setStrokeType(StrokeType.INSIDE);
-        clip.setStyle("-fx-background-color: transparent; -fx-border-width: 2px; ");
-        clip.setWidth(122);
-        clip.setHeight(122);
-        clip.setArcWidth(20);
-        clip.setArcHeight(20);
+        clip.setMouseTransparent(true);
+        clip.setWidth(boxWidth + 4);
+        clip.setHeight(boxHeight );
+        if (useArc) {
+            clip.setArcWidth(15);
+            clip.setArcHeight(15);
+        }
 
-        pane.setTranslateX(30);
-        pane.setTranslateY(10);
-        button.setClip(clip);
+        pane.setTranslateX(20);
+        pane.setTranslateY(20);
+//        button.setClip(clip);
 
-        StackPane container = new StackPane(button);
-        container.setPrefSize(122, 122);
-        container.setStyle("-fx-border-radius: 10px; -fx-border-color: pink; -fx-border-width: 2px; -fx-padding: 3px;");
+        StackPane container = new StackPane();
 
-//        pane.setClip(clip);
-//
-//        button.getStyleClass().addAll("size-30", "border-light-gray-2", "text-elegant", "padding-5", "radius-5");
-        button.setContentDisplay(ContentDisplay.BOTTOM);
+        container.getChildren().add(pane);
+        container.setPrefSize(boxWidth +4, boxHeight+4);
+        container.getStyleClass().addAll("bg-" + foreground, "border-2");
+
+        container.setClip(clip);
 
         return container;
     }
-
-    private StackPane createToggleButton(String text, boolean selected) {
-
-        ToggleButton button = new ToggleButton(text);
-
-        button.getStyleClass().addAll("display-bottom".split(""));
-        button.setStyle("-fx-border-radius: 10px; -fx-background-radius: 10px; -fx-border-width: 2px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-border-color: transparent;");
-        button.setMinSize(120, 120);
-        Pane pane = new Pane();
-        pane.getStyleClass().addAll("min-w-80 min-h-80  bg-light-gray border-2 border-white".split(" "));
-        pane.setStyle("-fx-border-radius: 10px 0px 0px 0px; -fx-border-color: green;");
-        button.setGraphic(pane);
-        Rectangle clip = new Rectangle();
-        clip.setStrokeType(StrokeType.INSIDE);
-        clip.setStyle("-fx-background-color: transparent; -fx-border-width: 2px; ");
-        clip.setWidth(122);
-        clip.setHeight(122);
-        clip.setArcWidth(20);
-        clip.setArcHeight(20);
-
-        pane.setTranslateX(30);
-        pane.setTranslateY(10);
-        button.setClip(clip);
-
-        StackPane container = new StackPane(button);
-        container.setPrefSize(122, 122);
-        container.setStyle("-fx-border-radius: 10px; -fx-border-color: pink; -fx-border-width: 2px; -fx-padding: 3px;");
-
-//        pane.setClip(clip);
-//
-//        button.getStyleClass().addAll("size-30", "border-light-gray-2", "text-elegant", "padding-5", "radius-5");
-        button.setContentDisplay(ContentDisplay.BOTTOM);
-//        Pane block;
-//        if (text.toLowerCase().equals("light")) {
-//            block  = createBlockLight();
-//            button.getStyleClass().add("bg-light-gray");
-//        } else if (text.toLowerCase().equals("dark")) {
-//            button.getStyleClass().addAll("bg-dark-gray", "border-elegant", "border-2");
-//            block = createBlockDark();
-//        } else {
-//            button.getStyleClass().add("bg-light-gray");
-//            block = createBlockDark();
-//        }
-//        button.setGraphic(block);
-//        button.setSelected(selected);
-        return container;
-    }
-
-
 }
 
 enum Theme {
