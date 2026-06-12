@@ -48,8 +48,6 @@ public class ResizablePane extends StackPane {
         setPrefSize(width, height);
         getChildren().addAll(content);
         getChildren().add(createBar());
-        setPrefSize(width, height);
-        setMaxSize(width, height);
 
     }
 
@@ -64,6 +62,8 @@ public class ResizablePane extends StackPane {
             Pane box = (Pane) getParent();
             Bounds bounds = box.sceneToLocal(box.getLayoutBounds());
             setMaxWidth((e.getSceneX() + bounds.getMaxX()) - box.getWidth());
+            setPrefWidth((e.getSceneX() + bounds.getMaxX()) - box.getWidth());
+//            setPrefWidth(e.getSceneX() + bounds.getMaxX());
         });
         StackPane.setAlignment(bar, Pos.CENTER_RIGHT);
         return bar;

@@ -19,7 +19,7 @@ public class HomePageView extends CustomizablePresentation {
     @Override
     public Presentation create() {
         return new Tutorial()
-                .h3("Home Page")
+                .h2("Home Page")
                 .separator()
                 .node(TutorialUtils.createCodeOption(new HomePage(), """
                         

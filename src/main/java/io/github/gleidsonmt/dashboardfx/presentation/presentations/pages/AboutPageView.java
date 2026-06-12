@@ -21,9 +21,8 @@ public class AboutPageView extends CustomizablePresentation implements Actionabl
     @Override
     public Presentation create() {
         return  new Tutorial()
-                .h3("Login Page")
+                .h2("Login Page")
                 .separator()
-
                 .node(TutorialUtils.createCodeOption(
                         new About(),
                         new Code("About.java",

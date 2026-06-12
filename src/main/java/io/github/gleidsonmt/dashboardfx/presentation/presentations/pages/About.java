@@ -37,7 +37,7 @@ public class About extends ScrollPane {
     private final VBox body = new VBox();
 
     public About() {
-        getStyleClass().addAll("fit-width ".split(" "));
+        getStyleClass().addAll("fit-width".split(" "));
         body.getStyleClass().addAll("padding-30 align-center".split(" "));
         setContent(body);
         body.setSpacing(20);

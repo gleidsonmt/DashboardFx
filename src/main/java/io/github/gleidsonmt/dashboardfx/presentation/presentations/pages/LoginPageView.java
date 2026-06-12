@@ -30,11 +30,10 @@ public class LoginPageView extends CustomizablePresentation implements Actionabl
     public Presentation create() {
 
         return new Tutorial()
-                .h3("Login Page")
-                .separator()
 //                .node(TutorialUtils.createAction("Preview", e -> {
 //                    TutorialUtils.showPage(new LoginPage());
 //                }))
+                .h2("Login Page")
                 .node(TutorialUtils.createCodeOption(
                         new LoginPage(),
                 """

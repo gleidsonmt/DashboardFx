@@ -10,10 +10,8 @@ import io.github.gleidsonmt.glad.controls.text_box.SearchBox;
 import io.github.gleidsonmt.glad.controls.text_box.TextBox;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.presentation.Presentation;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.Skin;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextArea;
 
@@ -64,17 +62,20 @@ public class TextInputPres extends CustomizablePresentation {
                 .code("""
                         TextBox textBox = new TextBox();
                         textBox.setIcon(new SVGIcon(Icon.LOCATION_ON)); // sets the icon
-                        textBox.setAction(new SVGIcon(Icon.CLEAR)); // sets the action
+                        textBox.setAction(true); // sets the action
                         """)
 
                 .h3("PasswordBox")
-                .text("The same as TextBox, but with a mask.")
+                .text("The same as TextBox, but with a mask fort text.")
+                .text("The default action is to show the mask.")
                 .legend("io.github.gleidsonmt.glad.controls.text_box.PasswordBox")
 
-                .demo(createPasswordBox(Icon.VPN_KEY_FILLED, "PasswordBox", true))
-                .code(TutorialUtils.installExample(Css.TEXT_BOX, "PasswordBox"))
-                .demo(new SearchBox())
-
+                .demo(createPasswordBox())
+                .code("""
+                        PasswordBox passwordBox = new PasswordBox();
+                        passwordBox.setIcon(new SVGIcon(Icon.VPN_KEY_FILLED)); // sets the icon
+                        passwordBox.setAction(true)); // sets the action
+                        """)
 
                 .h3("TextArea")
                 .text("Text input component for entering and editing multiple lines of text.")
@@ -106,9 +107,9 @@ public class TextInputPres extends CustomizablePresentation {
         return textBoxBase;
     }
 
-    private PasswordBox createPasswordBox(Icon icon, String text, boolean action) {
-        PasswordBox password = new PasswordBox(icon, text, action);
-        password.setPromptText(text);
+    private PasswordBox createPasswordBox() {
+        PasswordBox password = new PasswordBox(Icon.VPN_KEY_FILLED, "pass", true);
+        password.setPromptText("PasswordBox");
         return password;
     }
 

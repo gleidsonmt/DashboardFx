@@ -20,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
@@ -224,22 +225,24 @@ public class TutorialUtils {
 //        container.setFillWidth(false);
         container.setSpacing(20);
         ToggleButton nodeOption = new ToggleButton("Preview");
-        nodeOption.getStyleClass().addAll( "w-100", "min-h-40", "btn-outlined", "round");
+//        nodeOption.getStyleClass().addAll( "w-100", "min-h-40", "btn-outlined", "round");
         ToggleButton codeOption = new ToggleButton("Show code");
-        codeOption.getStyleClass().addAll( "w-100", "min-h-40","btn-outlined", "round");
+//        codeOption.getStyleClass().addAll( "w-100", "min-h-40","btn-outlined", "round");
         HBox optionsContainer = new HBox(nodeOption, codeOption);
+        optionsContainer.getStyleClass().addAll("min-h-40 bg-light-gray align-center padding-5 radius-10".split(" "));
         optionsContainer.setMaxWidth(Region.USE_PREF_SIZE);
 
-        optionsContainer.getStyleClass().addAll("w-300", "min-h-40", "border-2", "border-light-gray-2", "padding-10", "radius-10");
+//        optionsContainer.getStyleClass().addAll("w-300", "min-h-40", "border-2", "border-light-gray-2", "padding-10", "radius-10");
         optionsContainer.setSpacing(5);
 
         ResizablePane preview = new ResizablePane(node);
-//        preview.setMaxWidth(700);
+//        preview.setMaxWidth(-1);
 
 //        BlockCode blockCode = new BlockCode()
 //                .content(code)
 //                .build();
 
+        VBox.setVgrow(container, Priority.ALWAYS);
         VBox.setVgrow(preview, Priority.ALWAYS);
 //        VBox.setVgrow(blockCode, Priority.ALWAYS);
 

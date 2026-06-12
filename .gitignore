@@ -5,6 +5,7 @@ build/
 !**/src/test/**/build/
 scenicView.properties
 PLAN.md
+FEATURES.md
 
 ### IntelliJ IDEA ###
 .idea
