@@ -26,15 +26,16 @@ public class DrawerHeader extends GridPane {
 
         Text title = new Text("Blue Galaxy");
         title.setStyle(" -fx-font-size: 18px; -fx-fill: -fx-accent; -fx-font-weight: bold;");
-        title.getStyleClass().addAll("depth-1", "font-instagram-headline");
+//        title.getStyleClass().addAll("depth-1", "font-instagram-headline");
 
         Text legend = new Text("Gleidson, Inc. v0.7.223");
-        legend.setStyle("-fx-text-weight: 14pt");
+        legend.getStyleClass().addAll("text-14", "font-instagram-headline");
+        legend.setStyle("-fx-text-weight: 14pt;");
 
         Text logoTest = new Text("G");
-        logoTest.setStroke(Color.WHITE);
+//        logoTest.setStroke(Color.WHITE);
         logoTest.setRotate(180);
-        logoTest.setStyle("-fx-fill: -fx-accent; -fx-font-size: 38px; -fx-font-family: \"JetBrains Mono\"; ");
+        logoTest.setStyle("-fx-fill: -fx-accent; -fx-font-size: 38px;; ");
         logoTest.setStrokeType(StrokeType.OUTSIDE);
         logoTest.getStyleClass().addAll("font-instagram-headline");
         logoTest.setStrokeWidth(1);
