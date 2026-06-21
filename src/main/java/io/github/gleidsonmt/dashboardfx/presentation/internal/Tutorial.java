@@ -2,6 +2,8 @@ package io.github.gleidsonmt.dashboardfx.presentation.internal;
 
 
 import io.github.gleidsonmt.blockcode.BlockCode;
+import io.github.gleidsonmt.blockcode.Theme;
+import io.github.gleidsonmt.dashboardfx.MainScene;
 import io.github.gleidsonmt.dashboardfx.utils.Scroll;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
@@ -12,7 +14,9 @@ import io.github.gleidsonmt.presentation.TreeTitle;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.application.ColorScheme;
 import javafx.application.Platform;
+import javafx.css.PseudoClass;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -25,6 +29,7 @@ import javafx.util.Duration;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.*;
+import java.util.prefs.Preferences;
 
 
 /**
@@ -347,34 +352,49 @@ public class Tutorial extends Presentation {
 
         HBox.setHgrow(scroll, Priority.ALWAYS);
 
+        Preferences prefs = Preferences.userNodeForPackage(MainScene.class);
+
         for (Node node : items) {
-            center.getChildren().add(node);
-        }
+            if (node instanceof BlockCode block) {
 
-        center.setAlignment(Pos.TOP_LEFT);
-        btnTop.setVisible(false);
+                String themePreference = prefs.get("theme", "LIGHT");
 
-        scroll.vvalueProperty().addListener((observable, oldValue, newValue) -> {
-            btnTop.setVisible(newValue.doubleValue() > 0.5);
-            if (!rolling) return;
-
-            for (int i = 1; i < breaks.size(); i++) {
-                TreeTitle la = breaks.get(i);
-                ToggleButton t = (ToggleButton) la.getLabelFor();
-
-                if (Scroll.getY(scroll, la) <= newValue.doubleValue()) {
-                    t.setSelected(true);
-                    t.getParent().requestFocus();
-                }
-//
-                if (newValue.doubleValue() == 0) {
-                    TreeTitle l = breaks.getFirst();
-                    ToggleButton f = (ToggleButton) l.getLabelFor();
-                    f.setSelected(true);
-                    f.getParent().requestFocus();
-                }
+                Theme theme = switch (themePreference) {
+                    case "AUTO" -> Platform.getPreferences().getColorScheme() == ColorScheme.LIGHT
+                            ? Theme.GITHUB
+                            : Theme.GITHUB_DARK;
+                    case "DARK" -> Theme.GITHUB_DARK;
+                    default -> Theme.GITHUB;
+                };
+                block.theme(theme).build();
+                center.getChildren().add(node);
             }
-        });
+
+            center.setAlignment(Pos.TOP_LEFT);
+            btnTop.setVisible(false);
+
+            scroll.vvalueProperty().addListener((observable, oldValue, newValue) -> {
+                btnTop.setVisible(newValue.doubleValue() > 0.5);
+                if (!rolling) return;
+
+                for (int i = 1; i < breaks.size(); i++) {
+                    TreeTitle la = breaks.get(i);
+                    ToggleButton t = (ToggleButton) la.getLabelFor();
+
+                    if (Scroll.getY(scroll, la) <= newValue.doubleValue()) {
+                        t.setSelected(true);
+                        t.getParent().requestFocus();
+                    }
+//
+                    if (newValue.doubleValue() == 0) {
+                        TreeTitle l = breaks.getFirst();
+                        ToggleButton f = (ToggleButton) l.getLabelFor();
+                        f.setSelected(true);
+                        f.getParent().requestFocus();
+                    }
+                }
+            });
+        }
         return this;
     }
 

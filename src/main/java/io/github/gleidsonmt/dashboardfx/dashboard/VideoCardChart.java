@@ -28,7 +28,7 @@ public class VideoCardChart extends BarChart<String, Number> {
         setAnimated(true);
         setTitle("Graphic Cards Performance");
         getStyleClass().addAll("border-box", "border-1");
-        getStyleClass().addAll("bg-white border-2 border-light-gray-2 radius-5 font-poppins".split(" "));
+        getStyleClass().addAll("bg-foreground border-2 border-theme radius-5 font-poppins".split(" "));
 
         XYChart.Series<String, Number> rtx5090 = new XYChart.Series<>();
         rtx5090.setNode(new Label("LUAL"));

@@ -51,8 +51,7 @@ public class ContributionsChart extends CurvedChart<Number, Number> {
         //noinspection unchecked
         getData().setAll(dataSeries1);
 
-        getStyleClass().addAll("border-box", "border-1");
-        getStyleClass().addAll("bg-white", "border-2", "border-light-gray-2", "radius-5");
+        getStyleClass().addAll("bg-foreground", "border-2", "border-theme", "radius-5", "font-instagram");
 
 
     }

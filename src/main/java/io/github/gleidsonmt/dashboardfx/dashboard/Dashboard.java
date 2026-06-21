@@ -134,6 +134,7 @@ public class Dashboard extends View implements ActionableView {
     private Node createListView() {
 
         ListView<LanguageExperience> listView = new ListView<>();
+        listView.getStyleClass().addAll("bg-foreground");
         listView.setStyle("-fx-fixed-cell-size: 80px;");
         listView.setItems(FXCollections.observableArrayList(
                 new LanguageExperience("Java", "Focus on learn and teach (java 8, 20+)", 0.96, "info"),

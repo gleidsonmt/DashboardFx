@@ -1,5 +1,4 @@
 .root {
-    -fx-accent: #0085ff;
 }
 
 .toggle-switch {
@@ -33,7 +32,6 @@
     -fx-scale-x: 1.3;
     -fx-scale-y: 1.3;
 }
-
 
 .menu-content .overview-item:selected {
     -fx-border-color:  -fx-accent;
@@ -76,7 +74,6 @@
     -fx-background-image: url('../img/circles_10.png');
 }
 
-
 /** @ BreadCrumb **/
 
 .breadcrumb {
@@ -95,6 +92,7 @@
 
 
 .breadcrumb .hyperlink .text {
+    -fx-fill: -text-color;
 }
 
 .breadcrumb .hyperlink:visited .text,
@@ -102,7 +100,7 @@
 }
 
 .breadcrumb .last .text {
-    -fx-fill: -dark-gray;
+    -fx-fill: -text-color;
 }
 
 .button-bar .container {
@@ -227,14 +225,13 @@
 }
 
 .chart-legend-item,
-.chart-title {
-    -fx-font-family: "Instagram Sans";
+.chart-title .text {
+    -fx-font-family: "Instagram Sans Headline";
     -fx-font-weight: normal;
 }
 
 .box-module,
 .drawer-menu {
-    -fx-font-family: "Instagram Sans";
 }
 
 .theme-container .toggle-button:selected {
@@ -274,3 +271,7 @@
     -fx-border-color: -light-gray-2;
 }
 
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}

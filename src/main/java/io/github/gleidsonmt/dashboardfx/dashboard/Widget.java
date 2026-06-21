@@ -16,7 +16,7 @@ import javafx.scene.text.Text;
 public class Widget extends GridPane {
 
     public Widget(Icon _icon, String _number, String _legend, String cls) {
-        this.getStyleClass().addAll("bg-white", "border-2", "border-light-gray-2", "radius-5");
+        this.getStyleClass().addAll("bg-foreground", "border-2", "border-theme", "radius-5");
         setPrefSize(100, 100);
         this.setPadding(new Insets(20));
         this.setHgap(10);
@@ -30,7 +30,7 @@ public class Widget extends GridPane {
         icon.setScale(1.5);
         icon.getPath().setStyle("-fx-fill: white;");
         StackPane block = new StackPane(icon);
-        block.getStyleClass().addAll("bg" + cls, "bg-insets-1",  "border-2", "border-white",  "radius-5");
+        block.getStyleClass().addAll("bg" + cls, "bg-insets-1",  "border-2", "border-theme",  "radius-5");
         block.setMinSize(100, 50);
 
 //        setGridLinesVisible(true);

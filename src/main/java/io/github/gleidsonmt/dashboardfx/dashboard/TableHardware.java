@@ -17,7 +17,7 @@ import java.math.BigDecimal;
  */
 public class TableHardware extends TableView<Hardware> {
     public TableHardware() {
-        getStyleClass().addAll("transparent-table");
+        getStyleClass().addAll("transparent-table", "bg-foreground");
         setMinHeight(300);
         setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 

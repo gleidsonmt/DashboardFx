@@ -30,8 +30,6 @@ import org.jetbrains.annotations.NotNull;
  */
 public class NavUserSection extends HBox {
 
-    // NavUserSection
-
     private final GridPane content;
     private final Text email;
     private final Text name;
@@ -91,7 +89,7 @@ public class NavUserSection extends HBox {
 
     private Text createEmailComponent(String _text) {
         Text text = new Text(_text);
-        text.getStyleClass().addAll("h6");
+        text.getStyleClass().addAll("h5", "font-instagram-headline");
         return text;
     }
 
@@ -103,10 +101,13 @@ public class NavUserSection extends HBox {
         menuSettings.setGraphic(new SVGIcon(Icon.SETTINGS));
 
         menuSettings.setOnAction(_ -> {
+
             Root root = (Root) this.getScene().getRoot();
             var main = (Main) root.getContent();
+
             root.behavior()
                     .dialog()
+                    .block()
                     .pos(Pos.CENTER_RIGHT)
                     .with(WrapperEffect.GRAY)
                     .content(main.getAside())

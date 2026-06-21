@@ -12,7 +12,7 @@ import javafx.scene.chart.PieChart;
 public class HardwarePartsDonut extends DonutChart {
 
     public HardwarePartsDonut() {
-        getStyleClass().addAll("bg-white", "border-2", "border-light-gray-2", "radius-5");
+        getStyleClass().addAll("bg-foreground", "border-2", "border-theme", "radius-5");
         ObservableList<Data> data = FXCollections.observableArrayList();
         setTitle("Most Valuable Parts");
         setAnimated(true);

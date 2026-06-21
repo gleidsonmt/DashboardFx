@@ -34,6 +34,7 @@ public class Aside extends VBox {
             }
         });
 
+
         // Toggles grid bar visibility based on the switch state
         _switch.onProperty().addListener((_, _, newVal) -> {
             Root root = (Root) getScene().getRoot();
@@ -49,7 +50,7 @@ public class Aside extends VBox {
 //                createBlock(),
                 createBlock("Language", "Select the language of the platform", createCombo()),
                 createBlock("Grid View", "Set the visible pane grid ", _switch),
-                createBlock("Interface theme", "Customize your application appearance ", new ThemeBlock(Theme.DARK), Orientation.VERTICAL),
+                createBlock("Interface theme", "Customize your application appearance ", new ThemeBlock(), Orientation.VERTICAL),
                 createBlock("Accent color", "Pick your platform's main color ", createFlow(
                                 createBox("Primary"),
                                 createBox("Info"),
@@ -62,7 +63,7 @@ public class Aside extends VBox {
                         ), Orientation.VERTICAL
                 ));
         setPadding(new Insets(20));
-        getStyleClass().addAll("bg-white", "border-l-2", "border-light-gray-2");
+        getStyleClass().addAll("bg-theme", "border-l-2", "border-theme");
     }
 
     private FlowPane createThemeBlock() {

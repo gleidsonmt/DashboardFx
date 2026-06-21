@@ -19,7 +19,7 @@ public class Tile extends VBox {
         this.title = _title;
         this.content = content;
 
-        this.getStyleClass().addAll("bg-white border-2 border-light-gray-2 radius-5 align-top-center".split(" "));
+        this.getStyleClass().addAll("bg-foreground border-2 border-theme radius-5 align-top-center".split(" "));
         this.setPadding(new Insets(5));
 
         Text title = new Text(_title);

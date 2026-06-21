@@ -53,7 +53,7 @@ public class NavBar extends GridPane {
         updateHeight(height);
         setAlignment(Pos.CENTER_LEFT);
         setHgap(10);
-        getStyleClass().addAll("border-light-gray-2");
+        getStyleClass().addAll("border-theme ".split(" "));
         setStyle("-fx-border-width: 0px 0px 2px 0px;");
         init();
         configLayout();

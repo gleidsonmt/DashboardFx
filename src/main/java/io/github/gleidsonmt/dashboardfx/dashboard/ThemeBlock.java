@@ -1,6 +1,8 @@
 package io.github.gleidsonmt.dashboardfx.dashboard;
 
-import javafx.css.PseudoClass;
+import io.github.gleidsonmt.dashboardfx.MainScene;
+import io.github.gleidsonmt.dashboardfx.events.ThemeChangeEvent;
+import javafx.event.Event;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;
@@ -8,10 +10,9 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Text;
 
-import java.util.Arrays;
+import java.util.prefs.Preferences;
 
 /**
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
@@ -19,20 +20,35 @@ import java.util.Arrays;
  */
 public class ThemeBlock extends FlowPane {
 
-    private ToggleGroup group;
+    private final ToggleGroup group;
 
-    public ThemeBlock(Theme theme) {
+    public ThemeBlock() {
+        Preferences preferences = Preferences.userNodeForPackage(MainScene.class);
+
         this.group = new ToggleGroup();
         setHgap(10);
         setVgap(10);
         getChildren().setAll(
-//                createBlock("Auto", "", "", "text-"),
-//                createBlock("Light", "white", "light-gray-2", "-dark-gray"),
-//                createBlock("Dark", "elegant", "dark-gray", "white")
                 createAutoBlock(),
                 createBlockLight(),
                 createBlockDark()
         );
+
+        group.getToggles().stream().filter(el -> el instanceof ToggleButton).map(el -> (ToggleButton) el).forEach(e -> {
+
+            var text = (String) e.getUserData();
+             if (text.toUpperCase().equals(preferences.get("theme", "LIGHT"))) {
+                group.selectToggle(e);
+            }
+
+        });
+
+        group.getToggles().forEach(toggle -> toggle.selectedProperty().addListener((_, _, newVal) -> {
+            if (newVal) {
+                preferences.put("theme", toggle.getUserData().toString().toUpperCase());
+                Event.fireEvent(this.getScene().getRoot(), new ThemeChangeEvent(ThemeChangeEvent.ANY, Theme.valueOf(toggle.getUserData().toString().toUpperCase())));
+            }
+        }));
     }
 
     private Pane createAutoBlock() {
@@ -42,20 +58,9 @@ public class ThemeBlock extends FlowPane {
         light.setStyle(light.getStyle() + "-fx-border-radius: 0px 0px 0px 0px; -fx-background-radius: 10px 0px 0px 10px; ");
         dark.setStyle(dark.getStyle() + "-fx-border-radius: 0px 0px 0px 0px; -fx-background-radius: 0px 10px 10px 0px; ");
 
-        HBox container = new HBox(
-               light, dark
-        );
+        HBox container = new HBox(light, dark);
 
         return createContainer("Auto", container);
-    }
-
-    private ToggleButton createToggleButton(double width, double height) {
-        ToggleButton button = new ToggleButton();
-        button.setMouseTransparent(true);
-        button.setStyle("-fx-border-radius: 10px; -fx-background-radius: 10px; -fx-border-width: 2px; -fx-border-color: transparent; ");
-        button.setMinSize(width, height);
-        button.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-        return button;
     }
 
     private VBox createPane(double width, double height, String background, String foreground, String textColor) {
@@ -74,6 +79,7 @@ public class ThemeBlock extends FlowPane {
 
         ToggleButton button = new ToggleButton();
         group.getToggles().add(button);
+        button.setUserData(text);
 
         Text title = new Text(text);
         title.getStyleClass().addAll("h5", "bold");
@@ -118,7 +124,8 @@ public class ThemeBlock extends FlowPane {
         Rectangle clip = new Rectangle();
         clip.setMouseTransparent(true);
         clip.setWidth(boxWidth + 4);
-        clip.setHeight(boxHeight );
+        clip.setHeight(boxHeight);
+        
         if (useArc) {
             clip.setArcWidth(15);
             clip.setArcHeight(15);
@@ -131,15 +138,11 @@ public class ThemeBlock extends FlowPane {
         StackPane container = new StackPane();
 
         container.getChildren().add(pane);
-        container.setPrefSize(boxWidth +4, boxHeight+4);
+        container.setPrefSize(boxWidth + 4, boxHeight + 4);
         container.getStyleClass().addAll("bg-" + foreground, "border-2");
 
         container.setClip(clip);
 
         return container;
     }
-}
-
-enum Theme {
-    AUTO, LIGHT, DARK
 }

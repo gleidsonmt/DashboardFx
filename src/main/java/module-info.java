@@ -18,6 +18,7 @@ module io.github.gleidsonmt.dashboardfx {
     requires org.yaml.snakeyaml;
 
     requires io.github.gleidsonmt.presentation;
+    requires java.prefs;
 
     opens io.github.gleidsonmt.dashboardfx to javafx.fxml;
     exports io.github.gleidsonmt.dashboardfx;

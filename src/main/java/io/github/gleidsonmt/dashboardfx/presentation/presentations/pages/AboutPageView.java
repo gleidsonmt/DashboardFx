@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.dashboardfx.presentation.presentations.pages;
 
 import io.github.gleidsonmt.blockcode.CodeType;
+import io.github.gleidsonmt.blockcode.Theme;
 import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.presentation.CustomizablePresentation;
 import io.github.gleidsonmt.dashboardfx.presentation.internal.Tutorial;
@@ -20,7 +21,7 @@ public class AboutPageView extends CustomizablePresentation implements Actionabl
 
     @Override
     public Presentation create() {
-        return  new Tutorial()
+        return new Tutorial()
                 .h2("Login Page")
                 .separator()
                 .node(TutorialUtils.createCodeOption(
@@ -171,7 +172,7 @@ public class AboutPageView extends CustomizablePresentation implements Actionabl
                                 }
                                 
                                 """),
-                        new Code("members.yml","""
+                        new Code("members.yml", """
                                 img: "avatars/man@400.png"
                                 name: "Ethan Wright"
                                 legend: "UX Designer"

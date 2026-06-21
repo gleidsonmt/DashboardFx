@@ -26,7 +26,8 @@ public class BreadCrumbBar extends FlowPane {
     private final ObjectProperty<BreadSeparator> separator = new SimpleObjectProperty<>(BreadSeparator.BAR);
 //
     public BreadCrumbBar() {
-        getStyleClass().add("breadcrumb");
+        getStyleClass().addAll("breadcrumb");
+
         setAlignment(Pos.CENTER_LEFT);
         this.currentModule = new SimpleObjectProperty<>();
 //        this.currentModule.bindBidirectional(currentModule);

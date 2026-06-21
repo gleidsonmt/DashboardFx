@@ -3,11 +3,10 @@
     -fx-effect: none;
     -fx-border-color: -medium-gray;
     -fx-border-width: 0px 1px 0px 0px;
-    -fx-background-color: -fx-background;
+    -fx-background-color: -fx-foreground;
 }
 
 #drawer .text {
-    -fx-font-family: "Instagram Sans";
     -fx-font-size: 12px;
     -fx-font-weight: normal;
 }

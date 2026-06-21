@@ -3,7 +3,6 @@ package io.github.gleidsonmt.dashboardfx;
 import io.github.gleidsonmt.dashboardfx.dashboard.ActionableView;
 import io.github.gleidsonmt.dashboardfx.dashboard.Aside;
 import io.github.gleidsonmt.dashboardfx.drawer.Nav;
-import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.drawer.Module;
 import io.github.gleidsonmt.glad.base.drawer.View;
@@ -20,12 +19,11 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
-
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  10/06/2025
  */
-public class Main extends BorderPane implements Layout {
+public class Main extends BorderPane {
 
     private VBox wrapper;
     private ScrollPane container;
@@ -39,11 +37,15 @@ public class Main extends BorderPane implements Layout {
         init();
         configLayout();
         bind();
+        getStyleClass().add("main");
 
         Platform.runLater(() -> {
             Root root = (Root) this.getScene().getRoot();
             root.addBreakpoint(_ -> setLeft(null), DefaultBreak.SM);
             root.addBreakpoint(_ -> {
+                if (root.behavior().dialog().isShowing()) {
+                    return;
+                }
                 root.unblock();
                 setLeft(drawer);
             },  ">SM");
@@ -90,7 +92,7 @@ public class Main extends BorderPane implements Layout {
     }
 
     private void configLayout() {
-        container.getStyleClass().addAll("fit-width fit-height".split(" "));
+        container.getStyleClass().addAll("container fit-width fit-height".split(" "));
         this.wrapper.getChildren().setAll(navBar, container);
         VBox.setVgrow(container, Priority.ALWAYS);
     }
@@ -106,7 +108,6 @@ public class Main extends BorderPane implements Layout {
         navBar.currentModuleProperty().bind(currentModule);
     }
 
-    @Override
     public void updateView(Module oldVal, Module newVal) {
 
         if (newVal instanceof View view) {
@@ -131,18 +132,5 @@ public class Main extends BorderPane implements Layout {
         }
     }
 
-    @Override
-    public ObjectProperty<Module> currentModuleProperty() {
-        return this.currentModule;
-    }
 
-    @Override
-    public Module getModule() {
-        return this.currentModule.get();
-    }
-
-    @Override
-    public void setModule(Module module) {
-        this.currentModule.set(module);
-    }
 }

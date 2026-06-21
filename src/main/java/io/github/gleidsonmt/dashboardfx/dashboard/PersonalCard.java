@@ -59,6 +59,6 @@ public class PersonalCard extends VBox {
         setSpacing(10);
         getChildren().setAll(header, body);
 
-        getStyleClass().addAll("bg-white border-2 border-light-gray-2 radius-5 align-top-center".split(" "));
+        getStyleClass().addAll("bg-foreground border-2 border-theme radius-5 align-top-center".split(" "));
     }
 }
