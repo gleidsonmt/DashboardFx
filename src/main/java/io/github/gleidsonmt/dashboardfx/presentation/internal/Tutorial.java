@@ -334,7 +334,6 @@ public class Tutorial extends Presentation {
 
             aside.setMinWidth(250);
 //        body.setSpacing(10);
-            aside.setStyle("-fx-background-color: -fx-background;");
         }
 
 //        ((ToggleButton)aside.getChildren().get(0)).setSelected(true);

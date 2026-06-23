@@ -1,12 +1,8 @@
 .root {
-
     -fx-foreground: white;
-
 }
 
-.toggle-switch {
-    -fx-track-color: -light-gray;
-}
+
 
 .icon {
     -fx-fill: -text-color;
@@ -269,16 +265,49 @@
     -fx-fill: -dark-gray;
 }
 
-.copy-button {
-    -fx-background-color: white;
-    -fx-border-color: -light-gray-2;
+.root:dark-theme .copy-button {
+    -fx-background-color: -fx-foreground;
+    -fx-border-color: -dark-gray-2;
 }
 
+.copy-button {
+    -fx-background-color: -fx-foreground;
+    -fx-border-color: -medium-gray;
+}
+
+.root:dark-theme .nav .toggle-button .text {
+    -fx-fill: #cecece;
+    -fx-font-smoothing-type: lcd;
+}
+
+.root:dark-theme .block-code {
+    -fx-background-color: -fx-foreground;
+    -fx-font-smoothing-type: gray;
+    -fx-font-size: 14px;
+}
+
+.block-code {
+    -fx-background-color: -light-gray;
+    -fx-font-smoothing-type: gray;
+    -fx-font-size: 14px;
+}
+
+.root:dark-theme  .label .text {
+    -fx-font-smoothing-type: lcd;
+}
 
 .scroll-pane {
     -fx-background-color: transparent;
 }
 
-.separator {
-    -fx-background-color:  -elegant;
+.root:dark-theme Separator {
+    -fx-background-color:  -dark-gray-2;
 }
+
+Separator{
+    -fx-background-color:  -light-gray-2;
+    -fx-fill: red;
+}
+
+
+

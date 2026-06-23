@@ -29,8 +29,6 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        setUserAgentStylesheet("");
-
         Preferences prefs = Preferences.userNodeForPackage(App.class);
         double width = prefs.getDouble(WIDTH_KEY, DEFAULT_WIDTH);
         double height = prefs.getDouble(HEIGHT_KEY, DEFAULT_HEIGHT);

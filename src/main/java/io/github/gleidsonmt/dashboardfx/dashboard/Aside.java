@@ -238,8 +238,8 @@ public class Aside extends VBox {
 
         Button close = new Button();
         close.setGraphic(new SVGIcon(Icon.CLEAR));
-        close.getStyleClass().addAll("size-30", "bg-light-gray", "round", "border-light-gray-2");
-        close.setStyle("-icon-color: -dark-gray;");
+        close.setCancelButton(true);
+        close.getStyleClass().addAll("size-30",  "round");
         GridPane box = new GridPane();
         box.add(title, 0, 0);
         box.add(close, 1, 0);
