@@ -367,8 +367,8 @@ public class Tutorial extends Presentation {
                     default -> Theme.GITHUB;
                 };
                 block.theme(theme).build();
-                center.getChildren().add(node);
             }
+            center.getChildren().add(node);
 
             center.setAlignment(Pos.TOP_LEFT);
             btnTop.setVisible(false);
@@ -376,24 +376,22 @@ public class Tutorial extends Presentation {
             scroll.vvalueProperty().addListener((observable, oldValue, newValue) -> {
                 btnTop.setVisible(newValue.doubleValue() > 0.5);
                 if (!rolling) return;
-
+//
                 for (int i = 1; i < breaks.size(); i++) {
                     TreeTitle la = breaks.get(i);
                     ToggleButton t = (ToggleButton) la.getLabelFor();
-
-                    if (Scroll.getY(scroll, la) <= newValue.doubleValue()) {
-                        t.setSelected(true);
-                        t.getParent().requestFocus();
-                    }
 //
                     if (newValue.doubleValue() == 0) {
                         TreeTitle l = breaks.getFirst();
                         ToggleButton f = (ToggleButton) l.getLabelFor();
                         f.setSelected(true);
-                        f.getParent().requestFocus();
+                    } else if (Scroll.getY(scroll, la) <= newValue.doubleValue()) {
+                        t.setSelected(true);
+//                        t.getParent().requestFocus();
                     }
                 }
             });
+
         }
         return this;
     }

@@ -1,4 +1,7 @@
 .root {
+
+    -fx-foreground: white;
+
 }
 
 .toggle-switch {
@@ -274,4 +277,8 @@
 
 .scroll-pane {
     -fx-background-color: transparent;
+}
+
+.separator {
+    -fx-background-color:  -elegant;
 }

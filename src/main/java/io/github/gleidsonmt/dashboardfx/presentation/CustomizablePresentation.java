@@ -50,28 +50,28 @@ public abstract class CustomizablePresentation extends View implements Actionabl
 
         setContent(pres.getRoot());
 
-        root.getPseudoClassStates().addListener((SetChangeListener<PseudoClass>) c -> {
-           if (c.wasAdded()) {
-               if (c.getElementAdded().equals(PseudoClass.getPseudoClass("dark-theme"))) {
-                   System.out.println("dark-theme");
-//                   setContent(null);
-
-                   StackPane presentation = (StackPane) root.lookup(".presentation");
-                   BorderPane border = (BorderPane) presentation.getChildren().get(0);
-                   border.setCenter(null);
-                   border.setCenter(create().theme(io.github.gleidsonmt.blockcode.Theme.GITHUB_DARK).build().getRoot());
-               }
-           } else if(c.wasRemoved())  {
-               if (c.getElementRemoved().equals(PseudoClass.getPseudoClass("dark-theme"))) {
-                   StackPane presentation = (StackPane) root.lookup(".presentation");
-                   BorderPane border = (BorderPane) presentation.getChildren().get(0);
-                   border.setCenter(null);
-                   border.setCenter(create().theme(io.github.gleidsonmt.blockcode.Theme.GITHUB).build().getRoot());
-//                   border.setCenter(create().theme(Theme.GITHUB).build().getRoot());
-//                   setContent(create().theme(Theme.BESPIN).build().getRoot());
-               }
-           }
-        });
+//        root.getPseudoClassStates().addListener((SetChangeListener<PseudoClass>) c -> {
+//           if (c.wasAdded()) {
+//               if (c.getElementAdded().equals(PseudoClass.getPseudoClass("dark-theme"))) {
+//                   System.out.println("dark-theme");
+////                   setContent(null);
+//
+//                   StackPane presentation = (StackPane) root.lookup(".presentation");
+//                   BorderPane border = (BorderPane) presentation.getChildren().get(0);
+//                   border.setCenter(null);
+//                   border.setCenter(create().theme(io.github.gleidsonmt.blockcode.Theme.GITHUB_DARK).build().getRoot());
+//               }
+//           } else if(c.wasRemoved())  {
+//               if (c.getElementRemoved().equals(PseudoClass.getPseudoClass("dark-theme"))) {
+//                   StackPane presentation = (StackPane) root.lookup(".presentation");
+//                   BorderPane border = (BorderPane) presentation.getChildren().get(0);
+//                   border.setCenter(null);
+//                   border.setCenter(create().theme(io.github.gleidsonmt.blockcode.Theme.GITHUB).build().getRoot());
+////                   border.setCenter(create().theme(Theme.GITHUB).build().getRoot());
+////                   setContent(create().theme(Theme.BESPIN).build().getRoot());
+//               }
+//           }
+//        });
         getContent().getStyleClass().addAll("font-instagram");
     }
 

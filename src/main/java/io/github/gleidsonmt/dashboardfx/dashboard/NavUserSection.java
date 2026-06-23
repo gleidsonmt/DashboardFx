@@ -109,7 +109,7 @@ public class NavUserSection extends HBox {
                     .dialog()
                     .block()
                     .pos(Pos.CENTER_RIGHT)
-                    .with(WrapperEffect.GRAY)
+//                    .with(WrapperEffect.BLUR)
                     .content(main.getAside())
                     .anchor(Anchor.LEFT)
                     .insets(Insets.EMPTY)
