@@ -42,7 +42,7 @@ dependencies {
 
 application {
     mainModule = "io.github.gleidsonmt.dashboardfx"
-    mainClass = "io.github.gleidsonmt.dashboardfx.Launcher"
+    mainClass = "io.github.gleidsonmt.dashboardfx.App"
 }
 
 val requestedTasks = gradle.startParameter.taskNames

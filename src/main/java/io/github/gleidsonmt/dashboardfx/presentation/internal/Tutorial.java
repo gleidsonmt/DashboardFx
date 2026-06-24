@@ -295,6 +295,7 @@ public class Tutorial extends Presentation {
 
     @Override
     public Tutorial build() {
+        center.getChildren().clear();
         if (overview) {
             Label title = new Label("Overview");
             title.getStyleClass().addAll("overview-title", "h5");

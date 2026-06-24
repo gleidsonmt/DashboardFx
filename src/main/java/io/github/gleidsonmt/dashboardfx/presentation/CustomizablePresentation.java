@@ -9,6 +9,7 @@ import io.github.gleidsonmt.presentation.Presentation;
 import javafx.collections.SetChangeListener;
 import javafx.css.PseudoClass;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
@@ -34,45 +35,42 @@ public abstract class CustomizablePresentation extends View implements Actionabl
 
     private Root root;
 
+    SetChangeListener<PseudoClass> listenerThemeChange  = new SetChangeListener<>() {
+
+        @Override
+        public void onChanged(Change<? extends PseudoClass> c) {
+            Preferences prefs = Preferences.userNodeForPackage(MainScene.class);
+
+            if (c.wasAdded()) {
+                if (c.getElementAdded().equals(PseudoClass.getPseudoClass("dark-theme"))) {
+
+                    prefs.put("theme", "DARK");
+                    ScrollPane scroll = (ScrollPane) root.getScene().lookup(".container");
+                    scroll.setContent(create().build().getRoot());
+                }
+            } else if (c.wasRemoved()) {
+                if (c.getElementRemoved().equals(PseudoClass.getPseudoClass("dark-theme"))) {
+                    prefs.put("theme", "LIGHT");
+                    ScrollPane scroll = (ScrollPane) root.getScene().lookup(".container");
+                    scroll.setContent(create().build().getRoot());
+                }
+            }
+        }
+    };
+
     @Override
     public void onEnter(Root root) {
         this.root = root;
-        Presentation pres ;
 
-        if (root.getPseudoClassStates().contains(PseudoClass.getPseudoClass("dark-theme"))) {
-            pres = create().theme(io.github.gleidsonmt.blockcode.Theme.GITHUB_DARK).build();
-        } else {
-            pres = create().build();
-        }
+        setContent(create().build().getRoot());
 
-        Preferences prefs = Preferences.userNodeForPackage(MainScene.class);
-        prefs.get("theme", "LIGHT");
-
-        setContent(pres.getRoot());
-
-        root.getPseudoClassStates().addListener((SetChangeListener<PseudoClass>) c -> {
-           if (c.wasAdded()) {
-               if (c.getElementAdded().equals(PseudoClass.getPseudoClass("dark-theme"))) {
-                   System.out.println("dark-theme");
-//                   setContent(null);
-
-                   StackPane presentation = (StackPane) root.lookup(".presentation");
-                   BorderPane border = (BorderPane) presentation.getChildren().get(0);
-                   border.setCenter(null);
-                   border.setCenter(create().theme(io.github.gleidsonmt.blockcode.Theme.GITHUB_DARK).build().getRoot());
-               }
-           } else if(c.wasRemoved())  {
-               if (c.getElementRemoved().equals(PseudoClass.getPseudoClass("dark-theme"))) {
-                   StackPane presentation = (StackPane) root.lookup(".presentation");
-                   BorderPane border = (BorderPane) presentation.getChildren().get(0);
-                   border.setCenter(null);
-                   border.setCenter(create().theme(io.github.gleidsonmt.blockcode.Theme.GITHUB).build().getRoot());
-//                   border.setCenter(create().theme(Theme.GITHUB).build().getRoot());
-//                   setContent(create().theme(Theme.BESPIN).build().getRoot());
-               }
-           }
-        });
+        root.getPseudoClassStates().addListener(listenerThemeChange);
         getContent().getStyleClass().addAll("font-instagram");
+    }
+
+    @Override
+    public void onExit(Root root) {
+        root.getPseudoClassStates().removeListener(listenerThemeChange);
     }
 
     public Root getRoot() {
