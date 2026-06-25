@@ -6,9 +6,11 @@ import io.github.gleidsonmt.dashboardfx.utils.TutorialUtils;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.presentation.Presentation;
+import io.github.gleidsonmt.presentation.Row;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -26,21 +28,24 @@ public class DesignSystem extends CustomizablePresentation {
 
     @Override
     public Presentation create() {
-
+    new Text();
         return new Tutorial()
                 .overview()
                 .indicators()
-                .h1(new SVGIcon(Icon.DESIGN_SERVICES, 1.8),"Design System")
+                .h1(new SVGIcon(Icon.DESIGN_SERVICES, 1.8), "Design System")
                 .separator()
 
-                .text("The most important thing to understand is that the design system here is a set of css files essentially.")
-                .text("The css files are organized in a way that makes it easy to understand and modify the application.")
-                .text("To do that the css files are divided into categories and variables are used to define the colors, fonts, and other properties.\n")
+                .text("The most important thing to understand is that the design system here is a set of css files, essentially.")
+                .text("The CSS files are structured to simplify understanding and modifying the application.")
+                .text("This is achieved by organizing CSS files into categories and utilizing variables for colors, fonts, and other properties..\n")
                 .text("Every css file can clash with another, so it's important to use the same order.")
                 .text("The css files are organized in the following order:")
-                .text("colors.css, typographic.css, properties.css, shapes.css, skin.css, bootstrap.css, immersive_scroll.css")
-                .text("Some variables are used in the whole project design, so it's important to use the same values.")
-                .h2("Theme Provider")
+
+                // Here using a table of content
+                .list(new String[]{"colors.css", "typographic.css", "properties.css", "shapes.css", "immersive_scroll.css"})
+
+                .text("Why am I using this design system? well, sometimes it's a hell to combine css files, and it's not easy to understand what's happening.")
+                .h2("Injecting")
                 .separator()
                 .text("""
                         Instead of passing a stylesheet to a scene, this lib uses a different approach.
@@ -51,49 +56,65 @@ public class DesignSystem extends CustomizablePresentation {
                         ...
                         ThemeProvider.install(scene, Css.DEFAULT);
                         // The Css.DEFAULT is a enum with all mentioned classes above""")
-                .text("That is works like")
+                .text("That works like")
                 .code("""
                         scene.getStylesheets().addAll(
                             getClass().getResource("/css/colors.css").toExternalForm(),
                             getClass().getResource("/css/typographic.css").toExternalForm(),
                             getClass().getResource("/css/properties.css").toExternalForm(),
                             getClass().getResource("/css/shapes.css").toExternalForm(),
-                            getClass().getResource("/css/skin.css").toExternalForm(),
-                            getClass().getResource("/css/bootstrap.css").toExternalForm(),
                             getClass().getResource("/css/immersive_scroll.css").toExternalForm()
                         );""")
                 .text("It's not the intention to make short but fast to use.")
-                .separator()
-                .h2("Theme")
-                .h3("Primary")
-                .demo(new Node[] {
-                        createLayer("Accent", "-fx-accent"),
-                        createLayer("Background Color", "-fx-background",  "border-2", "border-light-gray-2", "padding-5", "text-elegant"),
-                })
-
-                .h2("Default Colors")
-                .demo(new Node[] {
-                        createBox("Primary", "#4285f4"),
-                        createBox("Info", "#33B5E5"),
-                        createBox("Success", "#02C852"),
-                        createBox("Warning", "#FF8800"),
-                        createBox("Danger", "#FF3547"),
-                        createBox("Secondary", "#AA66CC"),
-                        createBox("Unique", "#880E4F"),
-                        createBox("Elegant", "#2E2E2E")
-                })
-
-
-                .separator()
-                .text("""
-                        Region is the base class for all JavaFX Node controls and all layout containers.
-                        So manipulating its properties can be applied to another control everywhere.
-                        For example, the background color of a button can be changed to the primary color as well, or a Label background.""")
+                .h4("Types")
+                .text("The css files are divided into 3 types:")
+//                .text("CSS, FONT and THEME")
+                .list(new String[]{"CSS", "FONT", "THEME"})
+                .text("Every these ones are a css, but they have different purposes.")
+                .text("CSS is used to style the components. FONT is used to style the text. THEME is used to style the theme.")
+                .h5("Css")
+                .text("Normally used to add a component like ~accent{Css.BUTTON}~, but are also the special ones.")
+                .text("The ~accent{Css.ALL}~ is a enum with all mentioned classes above including all components.")
+                .text("The ~accent{Css.DEFAULT}~ is a enum with the minimum style to start.")
+                .h5("Fonts")
+                .text("Used to load optionally custom fonts. By default, the font Poppins is loaded.")
+                .h5("Theme")
+                .text("Used to choose the theme.")
+                .text("It's possible to pass all together.")
                 .code("""
-                        var region = new Region();
-                        // will have the same effect
-                        region.getStyleClass().add("bg-primary");""")
-                .node(TutorialUtils.createLink("See more", "Region"))
+                        ..
+                        ThemeProvider.install(scene, Css.DEFAULT, Font.INSTAGRAM, Theme.DARK);
+                        ..
+                        stage.show();
+                        """)
+                .separator()
+                .h3("Stylesheet")
+                .text("That's a possibility as well replace the default theme.")
+                .text("You can change component as you wish. But you can follow the design system as well.")
+                .text("For that you can use the css global variables.")
+
+                .text("The css global variables are:")
+                .table(
+                        new Row("-fx-background", "Region background color"),
+                        new Row("-fx-foreground", "Secondary Color for background"),
+                        new Row("-fx-accent", "Highlighted colors"),
+                        new Row("-text-color", "Default Color for texts")
+                )
+
+                .text("The css global variables are managed by theme so if you're in dark theme and change to light, the color will be update as well.")
+                .text("Suppose you added a custom variable called ~accent{main.css}~ and inside you have region and you want a color for that.")
+                .code("""
+                        .my-custom-region {
+                            -fx-background-color: -fx-background; 
+                        }
+                        """, "CSS")
+                .text("Instead you can also use a class ~secondary{.bg-theme}~")
+                .code("""
+                        myComponent.getStyleClass().add("bg-theme"); //
+                        """)
+
+                .text("Class ended in theme uses global variables.")
+
 
                 .h2("Typographic")
                 .separator()
@@ -108,10 +129,34 @@ public class DesignSystem extends CustomizablePresentation {
                         var text = new Text();
                         //text.getStyleClass().add("font-[font_name]")
                         text.getStyleClass().add("font-instagram");""")
-//        ThemeProvider
-//        Instead of passing a stylesheet to a scene, this lib uses a different approach.
-//                He manages every stylesheet as a enum to injet it in the scene.
-//        The class to do that is a static ThemeProvider see a call.
+                .node(TutorialUtils.createLink("Go To Text", "Text"))
+
+                .h2("Region")
+
+                .separator()
+                .text("""
+                        Region is the base class for all JavaFX Node controls and all layout containers.
+                        So manipulating its properties can be applied to another control everywhere.
+                        For example, the background color of a button can be changed to the primary color as well, or a Label background.""")
+                .code("""
+                        var region = new Region();
+                        // will have the same effect
+                        region.getStyleClass().add("bg-primary");""")
+
+                .h2("Default Colors")
+                .demo(new Node[]{
+                        createBox("Primary", "#4285f4"),
+                        createBox("Info", "#33B5E5"),
+                        createBox("Success", "#02C852"),
+                        createBox("Warning", "#FF8800"),
+                        createBox("Danger", "#FF3547"),
+                        createBox("Secondary", "#AA66CC"),
+                        createBox("Unique", "#880E4F"),
+                        createBox("Elegant", "#2E2E2E")
+                })
+
+
+                .node(TutorialUtils.createLink("Go To Region", "Region"))
                 ;
     }
 
@@ -156,7 +201,6 @@ public class DesignSystem extends CustomizablePresentation {
     }
 
     private Node createLeftContainer(String val, String desc) {
-        System.out.println("val.toLowerCase() = " + val.toLowerCase());
         var title = new Label(val);
         var description = new Label(desc);
         HBox box = new HBox(title, description);

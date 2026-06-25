@@ -33,7 +33,7 @@ public class DrawerFooter extends StackPane {
         StackPane.setMargin(text, new Insets(10));
 
         link = new Hyperlink("Learn More");
-        link.getStyleClass().addAll("bg-white", "padding-10", "radius-5");
+        link.getStyleClass().addAll("bg-white", "padding-10", "radius-5", "text-accent", "bold");
         this.getStyleClass().addAll("w-100", "bg-accent", "align-center");
         this.setMinHeight(120);
         this.getChildren().add(link);

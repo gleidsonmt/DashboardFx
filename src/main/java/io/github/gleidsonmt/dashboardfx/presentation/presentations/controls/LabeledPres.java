@@ -248,7 +248,7 @@ public class LabeledPres extends CustomizablePresentation {
         optionOne.setSelected(true);
         ToggleButton optionTwo = new ToggleButton("Option Two");
         HBox box = new HBox(optionOne, optionTwo);
-        box.getStyleClass().addAll("bg-light-gray".split(" "));
+        box.getStyleClass().addAll("bg-foreground".split(" "));
         box.setStyle("-fx-background-radius: 11.5; -fx-border-radius: 11.5; -fx-padding: 3px");
         box.setSpacing(10);
         group.getToggles().addAll(optionOne, optionTwo);

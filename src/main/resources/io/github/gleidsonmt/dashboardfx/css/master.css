@@ -1,8 +1,14 @@
 .root {
-    -fx-foreground: white;
 }
 
+.h1 .text,
+.h2 .text,
+.h3 .text,
+.h4 .text
 
+{
+    -fx-font-family: "Instagram Sans Headline";
+}
 
 .icon {
     -fx-fill: -text-color;
@@ -134,10 +140,26 @@
     -fx-background-radius: 10px;
 }
 
+.root:dark-theme .notifications-toggle {
+    -fx-background-color: -fx-background;
+}
+
 .notifications-toggle
 {
     -fx-padding: 5px;
     -fx-background-color: -light-gray;
+}
+
+.root:dark-theme .notification-toggle:selected {
+    -fx-background-color: -elegant;
+}
+.toggle-button:selected .text,
+.root:dark-theme .toggle-button:selected .text
+{
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,.1) , 5, 0 , 0 , 1 );
+
+    -fx-font-weight: bold;
+    -text-color: -fx-accent;
 }
 
 .notification-toggle:selected,
@@ -145,12 +167,14 @@
 {
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,.1) , 5, 0 , 0 , 1 );
     -fx-background-color: white;
-    -fx-fill: -text-color;
+    -text-color: -fx-accent;
+    -fx-font-weight: bold;
 }
+
+
 
 .notification-toggle {
     -fx-background-color: transparent;
-    -text-color: -dark-gray-2;
 }
 
 .popup {
@@ -310,4 +334,12 @@ Separator{
 }
 
 
+.notification-pane {
+    -fx-border-color: -border-color;
+    -fx-border-width: 1px;
 
+}
+:dark-theme .notification-pane {
+    -fx-border-color: -dark-gray-2;
+    -fx-border-width: 2px;
+}

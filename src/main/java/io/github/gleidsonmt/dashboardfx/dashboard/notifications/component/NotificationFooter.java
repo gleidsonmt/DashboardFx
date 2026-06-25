@@ -20,7 +20,7 @@ public class NotificationFooter extends GridPane {
         setMinHeight(60);
         Button viewAll = new Button("View all notifications");
         Button manage = new Button("Manage notifications");
-        manage.getStyleClass().addAll("flat");
+        manage.setCancelButton(true);
 
         add(manage, 0, 0);
         add(viewAll, 1, 0);

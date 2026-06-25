@@ -67,7 +67,7 @@ public class NavBar extends GridPane {
 
     private void init() {
         hamb.setCancelButton(true);
-        hamb.getStyleClass().addAll("min-w-20 radius-2".split(" "));
+        hamb.getStyleClass().addAll("min-w-40 radius-2".split(" "));
 
         hamb.setOnAction(_ -> {
             Root root = (Root) this.getScene().getRoot();
