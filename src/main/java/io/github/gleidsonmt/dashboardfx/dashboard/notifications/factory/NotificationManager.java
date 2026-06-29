@@ -91,29 +91,33 @@ public class NotificationManager {
             pane.setOnMouseExited(null);
         } else {
             root.flow().clearConstraints(pane);
-            pane.setOnMouseExited(e ->  {
+            pane.setOnMouseExited(e -> {
                 // this if prevents auto hide from the event
                 if (!(e.getPickResult().getIntersectedNode() instanceof Badge)) {
                     root.flow().remove(pane);
                 }
             });
 
+            pane.requestFocus();
+
             root.flow()
                     .content(pane)
                     .width(450)
                     .pos(Pos.BOTTOM_CENTER)
-                    .insets(new Insets(0))
+                    .height(500)
+                    .insets(new
+                            Insets(0))
 
                     .show(target);
 
             pane.requestFocus();
         }
     }
+
     @SafeVarargs
     public NotificationManager(NotificationItem<Notification>... _notifications) {
         notifications = FXCollections.observableArrayList(_notifications);
         filteredNotifications = new FilteredList<>(notifications, _ -> true);
-
         pane = new NotificationPane(
                 new NotificationHeader(this),
                 new Separator(),
@@ -139,7 +143,7 @@ public class NotificationManager {
 
     public void remove(NotificationItem<Notification> notification) {
         notifications.remove(notification);
-    // Initializes filtered notification list and UI pane
+        // Initializes filtered notification list and UI pane
     }
 
     public void remove(int from, int to) {

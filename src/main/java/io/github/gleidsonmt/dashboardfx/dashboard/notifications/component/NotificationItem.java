@@ -84,7 +84,7 @@ public class NotificationItem<T extends Notification> extends ToggleButton {
 
         if (!notification.visualized()) {
             Circle circle = new Circle();
-            circle.setStyle("-fx-fill: -indigo");
+            circle.setStyle("-fx-fill: -fx-accent;");
             circle.setRadius(5);
             card.add(circle, 3, 0);
             GridPane.setHalignment(circle, HPos.RIGHT);
@@ -163,6 +163,8 @@ public class NotificationItem<T extends Notification> extends ToggleButton {
         GridPane card = new GridPane();
         card.setHgap(15);
         card.setPadding(new Insets(5));
+
+        VBox.setVgrow(card, Priority.ALWAYS);
 //
 //        ColumnConstraints one = new ColumnConstraints();
 //        one.setPercentWidth(10);

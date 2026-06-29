@@ -324,13 +324,18 @@
     -fx-background-color: transparent;
 }
 
+.root:dark-theme Separator .line,
 .root:dark-theme Separator {
     -fx-background-color:  -dark-gray-2;
+    -fx-border-color: white;
 }
 
-Separator{
+Separator .line,
+Separator {
     -fx-background-color:  -light-gray-2;
-    -fx-fill: red;
+    -fx-stroke: -light-gray-2;
+    -fx-border-width: 0.1px;
+    -fx-border-color: -medium-gray-2;
 }
 
 

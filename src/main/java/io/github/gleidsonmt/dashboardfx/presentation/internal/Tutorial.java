@@ -57,7 +57,7 @@ public class Tutorial extends Presentation {
         body.setUserData(this);
         aside.setPadding(new Insets(0, 20, 0, 20));
 //        aside.setPrefWidth(250);
-        btnTop.getStyleClass().addAll("btn-directions padding-20 round".split(" "));
+        btnTop.getStyleClass().addAll("btn-directions padding-20 round min-w-60 min-h-60".split(" "));
         center.setId("tutorial-center-body");
         scroll.setId("tutorial-scroll");
         body.setId("tutorial-body");

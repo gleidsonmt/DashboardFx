@@ -6,6 +6,7 @@ import javafx.collections.ListChangeListener;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -21,6 +22,9 @@ public class NotificationBody extends ScrollPane {
         VBox container = new VBox();
         setContent(container);
 
+        VBox.setVgrow(this, Priority.ALWAYS);
+        VBox.setVgrow(container, Priority.ALWAYS);
+
         setFitToWidth(true);
         setFitToHeight(true);
 
@@ -33,6 +37,7 @@ public class NotificationBody extends ScrollPane {
         container.setSpacing(10);
 
         Node emptyLabel = createEmptyBody();
+
 
         container.getChildren().setAll(manager.getFilteredNotifications());
 
@@ -65,6 +70,7 @@ public class NotificationBody extends ScrollPane {
         VBox box = new VBox(new Text("You don't have any notification."));
         box.setAlignment(Pos.CENTER);
         box.setMinHeight(60);
+        VBox.setVgrow(box, Priority.ALWAYS);
         return box;
     }
 
