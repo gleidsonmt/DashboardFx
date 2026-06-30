@@ -33,6 +33,7 @@
 .menu-content .overview-item:hover .text {
     -fx-fill: -fx-accent;
 }
+
 .menu-content .overview-item:hover {
     -fx-scale-x: 1.3;
     -fx-scale-y: 1.3;

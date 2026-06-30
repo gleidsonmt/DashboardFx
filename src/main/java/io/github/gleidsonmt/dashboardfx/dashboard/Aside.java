@@ -66,18 +66,6 @@ public class Aside extends VBox {
         getStyleClass().addAll("bg-theme", "border-l-2", "border-theme");
     }
 
-    private FlowPane createThemeBlock() {
-        FlowPane flow = new FlowPane();
-        flow.setHgap(5);
-        flow.setVgap(5);
-        flow.getChildren().addAll(
-                createToggleButton("Auto", false),
-                createToggleButton("Light", true),
-                createToggleButton("Dark", false)
-        );
-        return flow;
-    }
-
     private StackPane createToggleButton(String text, boolean selected) {
 
         ToggleButton button = new ToggleButton(text);
@@ -180,7 +168,10 @@ public class Aside extends VBox {
     private VBox createBox(String color) {
         VBox box = new VBox();
         box.getStyleClass().add("bg-" + color.toLowerCase());
-        box.getStyleClass().addAll("min-w-50 min-h-50 radius-2 h6 bold".split(" "));
+        box.getStyleClass().addAll("min-w-50 min-h-50 radius-2 h6 bold cursor-hand".split(" "));
+        box.setOnMouseClicked(e -> {
+            getScene().getRoot().setStyle("-fx-accent: -" + color.toLowerCase());
+        });
         return box;
     }
 

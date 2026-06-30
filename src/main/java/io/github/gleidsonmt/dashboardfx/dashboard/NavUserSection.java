@@ -134,7 +134,6 @@ public class NavUserSection extends HBox {
         menuManageAccount.setGraphic(new SVGIcon(Icon.MANAGE_ACCOUNTS));
 
         options.getItems().addAll(menuManageAccount, new SeparatorMenuItem(), menuSettings);
-        options.getStyleClass().add("drawer-context-menu");
 
         this.content.setOnMouseClicked(_ -> {
             if (options.isShowing()) return;
